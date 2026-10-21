@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "migration_date": "2026-10-21",
+  "repository": "No1dry/Learning-Not-to-Act",
+  "purpose": "Separate method research from benchmark evaluation",
+  "imports": [
+    {
+      "path": "docs/research/2026-10-20_baseline_results.md",
+      "origin_repository": "No1dry/LIBERO-Remain",
+      "origin_commit": "dd1fcef852ff8d615cfa3e1d263859aeebf7dd06",
+      "origin_sha256": "ce9963174e897bd284d9b5a247b23e1c0efb68f35abf0359415b11d908c252ad",
+      "import_sha256": "ce9963174e897bd284d9b5a247b23e1c0efb68f35abf0359415b11d908c252ad",
+      "content_changed_for_repository_migration": false
+    },
+    {
+      "path": "docs/research/2026-10-20_codex_method_proposals.md",
+      "origin_repository": "No1dry/LIBERO-Remain",
+      "origin_commit": "dd1fcef852ff8d615cfa3e1d263859aeebf7dd06",
+      "origin_sha256": "c12beca9659d2a73725ea35e4cc77282f770ecb9201cf377bbc0c915fc279a9c",
+      "import_sha256": "c12beca9659d2a73725ea35e4cc77282f770ecb9201cf377bbc0c915fc279a9c",
+      "content_changed_for_repository_migration": false
+    },
+    {
+      "path": "docs/research/2026-10-21_remaining_goal_selector_full_design.md",
+      "origin_repository": "No1dry/LIBERO-Remain",
+      "origin_commit": "edbcaf5b3a599e1265ab81ce9efd71cd12b68ab9",
+      "origin_sha256": "29737010a3b6a8b5120638495b17b7c334f3909b9e5843d712f36de153a6a61d",
+      "import_sha256": "eb1e1371ef1e0113fa48be963486b5aee73abda90d5e6eca951137e931b40c95",
+      "content_changed_for_repository_migration": true
+    },
+    {
+      "path": "collaboration/tasks/015_remaining_goal_selector_design_review.md",
+      "origin_repository": "No1dry/LIBERO-Remain",
+      "origin_commit": "edbcaf5b3a599e1265ab81ce9efd71cd12b68ab9",
+      "origin_sha256": "d1b3b0a581f786d1aab4a0537dae9d94c5c006acb260689ea95769b18ee03e24",
+      "import_sha256": "88a6401dd2e8aa09d384cd76e172fe7643701e7521488ab35ee4e6d8a21ac5a8",
+      "content_changed_for_repository_migration": true
+    },
+    {
+      "path": "collaboration/responses/methods_2026-10-20_round1_independent.md",
+      "origin_repository": "No1dry/LIBERO-Remain",
+      "origin_commit": "8be66040e24d2a3fc1f67a761faf3e0f8b6a7cb8",
+      "origin_sha256": "0498c93a2fac262328d511197df622ad9f7802394f902454da9f9ff523e1e706",
+      "import_sha256": "0498c93a2fac262328d511197df622ad9f7802394f902454da9f9ff523e1e706",
+      "content_changed_for_repository_migration": false
+    },
+    {
+      "path": "collaboration/responses/methods_2026-10-20_round2_comparison.md",
+      "origin_repository": "No1dry/LIBERO-Remain",
+      "origin_commit": "20a172a6a511ff1687a298f48aea6c79c65381d7",
+      "origin_sha256": "36b79787d8633b43f2c10c19f2b57566069b15f5110a5fe6891c8c6bebb3640d",
+      "import_sha256": "36b79787d8633b43f2c10c19f2b57566069b15f5110a5fe6891c8c6bebb3640d",
+      "content_changed_for_repository_migration": false
+    }
+  ],
+  "changes": "Only active full-design/015 repository ownership and links updated; X manuscripts and baseline/proposals unchanged.",
+  "old_pr_11_merged": false,
+  "old_open_task_015_status": "open; canonical delivery moved here",
+  "benchmark_dependency": {
+    "repository": "No1dry/LIBERO-Remain-Eval",
+    "reference_commit": "515e87d9b93ab838428791273a0f3020d6f56e9c",
+    "duplicated_evaluator_code": false
+  },
+  "new_experiments_started": 0
+}
