@@ -11,9 +11,9 @@
 | 任务 | 状态 | 下一执行者 |
 |---|---|---|
 | [015设计审阅](tasks/015_remaining_goal_selector_design_review.md) | accepted/closed，仅设计审阅范围；[裁决](reviews/015_round1.md)；X原文见PR #1固定提交，PR未自动合并 | — |
-| [016完整软件实现](tasks/016_egrs_full_implementation.md) | open，已获实现与定向CPU/fake授权 | X |
+| [016完整软件实现](tasks/016_egrs_full_implementation.md) | implementation delivered on this PR，等待集中审查；[回复](responses/016_round1.md) | Codex审查，X按意见修正 |
 
-设计审阅100%；完整实现交付0%、真实数据准备/标注/训练/新方法评测0%。没有假定X已开始写代码。
+设计审阅100%；本轮软件准备100%、实现与定向CPU/fake交付100%（待Codex接受）；真实数据准备/标注/训练/新方法评测各0%。软件交付不表示方法有效、真实processor已验证或014批处理已联通。
 
 ## 授权边界
 
