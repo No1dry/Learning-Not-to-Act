@@ -1,0 +1,42 @@
+{
+  "format": "egrs.catalog.v1",
+  "dataset": "yifengzhu-hf/LIBERO-datasets",
+  "revision": "147fa5eb607bb696dd922c3518084a90954cd2f3",
+  "catalog_source": "015 review bdb63187680315673e40ed73fc52ac0aeddfcf7d section 6.1",
+  "status": "candidate_directory_manifest_only",
+  "actual_verified_episodes": 0,
+  "actual_annotated_queries": 0,
+  "budget_only": {"sources": 200, "windows_max": 1200, "queries_max": 3600},
+  "exclusion_required": [
+    "alphabet soup and tomato sauce in basket",
+    "stove on and moka pot",
+    "cream cheese and butter in basket",
+    "alphabet soup and cream cheese in basket",
+    "two mugs on left and right plates",
+    "white mug on plate and pudding to its right",
+    "semantic equivalents of all six composites",
+    "frozen evaluation official init 0..9 and known equivalent/derived sources"
+  ],
+  "files": [
+    {"suite": "libero_goal", "file": "open_the_middle_drawer_of_the_cabinet_demo.hdf5"},
+    {"suite": "libero_goal", "file": "open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5"},
+    {"suite": "libero_goal", "file": "push_the_plate_to_the_front_of_the_stove_demo.hdf5"},
+    {"suite": "libero_goal", "file": "put_the_bowl_on_the_plate_demo.hdf5"},
+    {"suite": "libero_goal", "file": "put_the_bowl_on_the_stove_demo.hdf5"},
+    {"suite": "libero_goal", "file": "put_the_bowl_on_top_of_the_cabinet_demo.hdf5"},
+    {"suite": "libero_goal", "file": "put_the_cream_cheese_in_the_bowl_demo.hdf5"},
+    {"suite": "libero_goal", "file": "put_the_wine_bottle_on_the_rack_demo.hdf5"},
+    {"suite": "libero_goal", "file": "put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5"},
+    {"suite": "libero_goal", "file": "turn_on_the_stove_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_butter_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_cream_cheese_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_ketchup_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_milk_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_orange_juice_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_salad_dressing_and_place_it_in_the_basket_demo.hdf5"},
+    {"suite": "libero_object", "file": "pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo.hdf5"}
+  ]
+}
