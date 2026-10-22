@@ -1,0 +1,5 @@
+{
+  "role_supervision": false,
+  "use_history": true,
+  "device": "cuda"
+}

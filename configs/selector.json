@@ -1,0 +1,21 @@
+{
+  "model_id": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "processor_id": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "processor_revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "dtype": "bfloat16",
+  "device": "cuda",
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "learning_rate": 0.0001,
+  "epochs": 3,
+  "global_batch_size": 16,
+  "max_images": 6,
+  "max_visual_tokens": 256,
+  "max_length": 4096,
+  "max_new_tokens": 1024,
+  "use_history": true,
+  "role_supervision": true,
+  "packing": false,
+  "seed": 0
+}
