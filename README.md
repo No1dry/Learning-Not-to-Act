@@ -4,12 +4,13 @@
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
 
-目前是完整方法设计与集中可实施性审阅阶段：还没有新增方法实现、已训练选择器或新方法评测成绩。不是运行软件包或一条命令可启动的新系统。
+2026-10-22：015设计审阅已接受，已进入[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)。X获准写代码与定向CPU/fake测试；尚未交付实现、训练selector或取得新方法评测成绩。
 
 ## 从这里开始
 
 - [完整方法设计v1](docs/research/2026-10-21_remaining_goal_selector_full_design.md)
-- [015：X当前需要完成的设计审阅](collaboration/tasks/015_remaining_goal_selector_design_review.md)
+- [016：X当前需要完成的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
+- [015设计审阅裁决](collaboration/reviews/015_round1.md)
 - [当前协作状态](collaboration/STATUS.md)
 - [协作规则](collaboration/README.md)
 
@@ -38,4 +39,4 @@ X两份原文保持原字节和署名。原PR #11并未因迁入而自动合并�
 
 ## 当前下一步
 
-X在**本仓库**回复015的一轮集中可实施性审阅，Codex形成后续实现工单。完整实现不以先跑MVP为门槛。真实数据恢复、标注推理、训练和模型评测仍由用户亲自启动。
+X在**本仓库**按016提交完整实现PR与定向CPU/fake结果，Codex集中审查。不以MVP或55—80人时人力承诺作为代码开工门槛；真实标签、人力与运行预算需另行确认，真实数据恢复、标注推理、训练和模型评测仍由用户启动。

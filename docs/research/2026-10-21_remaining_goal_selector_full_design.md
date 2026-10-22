@@ -1,6 +1,8 @@
 # 完整方法设计v1：带实体证据与可撤销历史的剩余目标选择器
 
-日期：2026-10-21。决策/设计：Codex。状态：完整架构候选，交X做一次集中可实施性审阅；不是实现或真实数据/训练/eval启动授权。
+日期：2026-10-21。决策/设计：Codex。原始状态为015完整架构审阅。
+
+**2026-10-22执行补充：**015意见已采纳，当前按[016完整实现工单](../../collaboration/tasks/016_egrs_full_implementation.md)推进。以下v1示例保留设计演变；目标身份、持物绑定、worker/context与字段loss以016及R1—R4补充为准。文中“本轮仅审阅”指015当时范围；016只授权代码/CPU-fake，不授权任何真实数据、训练或eval。55—80人时预算仍未批准。
 
 本文件承接[实验结果](2026-10-20_baseline_results.md)、[四路线讨论](2026-10-20_codex_method_proposals.md)与[X第二轮对比](../../collaboration/responses/methods_2026-10-20_round2_comparison.md)。X原稿的[固定来源](https://github.com/No1dry/LIBERO-Remain/blob/20a172a6a511ff1687a298f48aea6c79c65381d7/collaboration/responses/methods_2026-10-20_round2_comparison.md)保留。不要求先完成MVP或一组额外诊断才允许设计完整方法。
 
