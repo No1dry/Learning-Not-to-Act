@@ -25,3 +25,13 @@ videos/
 *.pem
 *.key
 .DS_Store
+# Public static catalog is tracked; real data remains excluded.
+!data/
+data/*
+!data/catalog.json
+*.egg-info/
+build/
+dist/
+.venv*/
+.superpowers/
+.work/

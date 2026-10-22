@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "learning-not-to-act-egrs"
+version = "0.1.0"
+description = "Evidence-grounded remaining-goal selection for frozen VLA actors"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3", "Pillow>=10"]
+
+[project.optional-dependencies]
+data = ["h5py>=3.10"]
+test = ["pytest>=8", "h5py>=3.10"]
+
+[project.scripts]
+egrs = "egrs.cli:main"
+egrs-data = "egrs.datacli:main"
+egrs-train = "egrs.selector.train:main"
+egrs-infer = "egrs.selector.infer:main"
+
+[tool.setuptools.packages.find]
+include = ["egrs", "egrs.*"]
+exclude = ["tests*", "testsupport*", "benchmark*"]
+
+[tool.setuptools.data-files]
+"share/egrs" = ["data/catalog.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

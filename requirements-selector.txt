@@ -1,0 +1,12 @@
+# Isolated selector environment; do not install into an actor environment.
+torch==2.6.0
+torchvision==0.21.0
+transformers==4.51.3
+tokenizers==0.21.1
+peft==0.15.2
+accelerate==1.6.0
+numpy==2.2.5
+Pillow==11.2.1
+h5py==3.13.0
+safetensors==0.5.3
+huggingface-hub==0.30.2

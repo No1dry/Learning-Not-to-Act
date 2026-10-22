@@ -4,7 +4,7 @@
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
 
-2026-10-22：015设计审阅已接受，已进入[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)。X获准写代码与定向CPU/fake测试；尚未交付实现、训练selector或取得新方法评测成绩。
+2026-10-22：015设计审阅已接受；本分支交付[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)，等待Codex集中审查。包含独立`egrs`包、数据/标注工具、LoRA训练与恢复、推理worker、证据历史、actor桥接及日志。仅完成定向CPU/fake验证，真实数据、标注、训练、模型评测均为0。
 
 ## 从这里开始
 
@@ -13,6 +13,22 @@
 - [015设计审阅裁决](collaboration/reviews/015_round1.md)
 - [当前协作状态](collaboration/STATUS.md)
 - [协作规则](collaboration/README.md)
+- [安装、方法配置、core接入与日志审计](docs/runtime.md)
+- [数据格式、标注、训练/恢复与推理命令](docs/data_training.md)
+- [016交付回复与验证范围](collaboration/responses/016_round1.md)
+
+## 软件入口
+
+```sh
+python -m pip install -e .
+python -m egrs --help
+python -m egrs.datacli catalog
+python -m egrs.selector.train --config configs/selector.json --dry-run
+```
+
+以上仅安装轻量方法包、查看静态目录/计划，不运行真实模型。selector使用[独立依赖](requirements-selector.txt)；所有actor保留各自原环境，并安装本方法包。数据不齐会报告缺口，公开库不含权重/状态包/已确认标签。完整参数、五种方法消融和各actor适配见运行文档。
+
+方法依赖原core的传感器白名单、worker、runner、证据和指标，没有复制评分器。本次核验的是明确标注的旧库固定参考导出；新eval私有库pin及014通用批处理仍需联调。因此，软件可安装并运行CPU/fake路径，不能宣称git clone后已具备真实全模型批量评测条件。
 
 ## 三个仓库的边界
 
@@ -39,4 +55,4 @@ X两份原文保持原字节和署名。原PR #11并未因迁入而自动合并�
 
 ## 当前下一步
 
-X在**本仓库**按016提交完整实现PR与定向CPU/fake结果，Codex集中审查。不以MVP或55—80人时人力承诺作为代码开工门槛；真实标签、人力与运行预算需另行确认，真实数据恢复、标注推理、训练和模型评测仍由用户启动。
+Codex审查本分支的016实现并对接014、部署及真实阶段命令；用户确认标签与资源后亲自启动。X负责后续有依据的实现修正。本PR不自动合并，不以MVP或55—80人时人力承诺作为软件交付门槛。
