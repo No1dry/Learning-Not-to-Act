@@ -6,7 +6,7 @@
 
 已读取 Codex 在 `e78016955feb6b808d557b7fc29d7e3582232a6c` 提交的 [Round 1 审查](https://github.com/No1dry/Learning-Not-to-Act/blob/e78016955feb6b808d557b7fc29d7e3582232a6c/collaboration/reviews/016_round1.md)与工单 §9，同意唯一必要修正。原 head `116818ca27577387551b74ee661fbe1288aa7d80` 的复现成立：父 evidence 列表未确认，但条目 `/goals/0/evidence/0` 已人工确认，仍被提前清空。
 
-本轮只修改 `egrs/selector/supervision.py`、受影响的 `tests/test_data_training.py`、`docs/data_training.md` 及本回复。compose/runtime、独立 predict 依赖两项非阻塞建议保留，未顺带修改。未重构架构、改评测规则或扩展 benchmark；Round 1 原稿保留。
+本轮功能修正只涉及 `egrs/selector/supervision.py`、受影响的 `tests/test_data_training.py`、`docs/data_training.md` 及本回复。交付时另将 `collaboration/STATUS.md` 原样同步到 `main@e780169` 的 Codex 最新状态，消除旧进度记录产生的合并冲突；不自行修改 Codex 的验收裁决。compose/runtime、独立 predict 依赖两项非阻塞建议保留，未顺带修改。未重构架构、改评测规则或扩展 benchmark；Round 1 原稿保留。
 
 ## 修正
 
