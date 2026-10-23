@@ -11,9 +11,9 @@
 | 任务 | 状态 | 下一执行者 |
 |---|---|---|
 | [015设计审阅](tasks/015_remaining_goal_selector_design_review.md) | accepted/closed，仅设计审阅范围；[裁决](reviews/015_round1.md)；X原文见PR #1固定提交，PR未自动合并 | — |
-| [016完整软件实现](tasks/016_egrs_full_implementation.md) | accepted/closed，软件范围；[最终裁决](reviews/016_round2.md)，PR #2未合并 | Codex部署与数据命令准备 |
+| [016完整软件实现](tasks/016_egrs_full_implementation.md) | accepted/closed，软件范围；[最终裁决](reviews/016_round2.md)，PR #2未合并 | Codex数据方案与命令准备 |
 
-设计与016软件验收均100%；本轮受影响30/30项CPU/fake通过（100%），其余23项复用首轮证据，不冒称全部重跑。真实数据准备/标注/训练/新方法评测仍为0%。[阶段总结](../docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)。
+设计与016软件验收均100%；本轮受影响30/30项CPU/fake通过（100%），其余23项复用首轮证据，不冒称全部重跑。固定代码上传与独立selector环境安装均100%，类导入/命令/core身份静态核对通过；不代表真实processor/CUDA/模型效果已验证。真实数据准备/标注/训练/新方法评测仍为0%。[阶段总结](../docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)。
 
 ## 授权边界
 
@@ -23,6 +23,6 @@ X现在可以实现完整方法、训练/推理入口、数据导入/弱标签�
 
 ## 后续
 
-X本轮无需继续返修 → Codex准备隔离部署、数据标签/资源选择与完整命令 → 用户确认并启动真实阶段。本轮只验收归档，未部署或启动真实作业。014在评测侧单列，不能在此复制评分；其尚未交付不阻塞方法本体与fake契约实现。
+X本轮无需继续返修 → Codex准备数据标签/资源选择与完整命令 → 用户确认并启动真实阶段。隔离部署已完成，旧VLA环境未修改；未启动真实作业。014在评测侧单列，不能在此复制评分；其尚未交付不阻塞方法本体与fake契约实现。
 
 不自动merge、扩benchmark、加01/11模型评测或FINISH。原稿/失败/数据保留，不清理开放或未闭环事项。

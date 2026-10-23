@@ -4,12 +4,14 @@
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
 
-2026-10-22：015设计审阅已接受，已进入[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)。X获准写代码与定向CPU/fake测试；尚未交付实现、训练selector或取得新方法评测成绩。
+2026-10-23：[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)已验收，固定实现为[PR #2 / 5a77f158](https://github.com/No1dry/Learning-Not-to-Act/tree/5a77f158229442d9a9ee95ba828b371dfc4c995a)，代码和独立selector环境已部署。PR未自动合并，main暂不含该实现；运行请使用上述固定版本。真实训练、新方法评测均为0。
 
 ## 从这里开始
 
 - [完整方法设计v1](docs/research/2026-10-21_remaining_goal_selector_full_design.md)
-- [016：X当前需要完成的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
+- [016：已验收的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
+- [016最终验收](collaboration/reviews/016_round2.md)
+- [软件与部署阶段总结](docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)
 - [015设计审阅裁决](collaboration/reviews/015_round1.md)
 - [当前协作状态](collaboration/STATUS.md)
 - [协作规则](collaboration/README.md)
@@ -39,4 +41,4 @@ X两份原文保持原字节和署名。原PR #11并未因迁入而自动合并�
 
 ## 当前下一步
 
-X在**本仓库**按016提交完整实现PR与定向CPU/fake结果，Codex集中审查。不以MVP或55—80人时人力承诺作为代码开工门槛；真实标签、人力与运行预算需另行确认，真实数据恢复、标注推理、训练和模型评测仍由用户启动。
+016已完成，X无需继续返修。Codex准备实际数据来源、标签/资源选择和完整运行命令；真实标签、人力与预算仍需确认，不默认承诺55—80人时。真实数据准备、标注推理、训练和模型评测均由用户亲自启动，不先扩benchmark或训练FINISH。
