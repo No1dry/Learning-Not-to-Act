@@ -57,6 +57,8 @@ def test_unconfirmed_values_neutralized_human_unknown_preserved_and_role_ablatio
     answer, supervised = prepare_answer(sample["answer"], sample["provenance"], role_supervision=False)
     assert answer["goals"][0]["entity_ref"] is None
     assert answer["goals"][0]["role"] == "UNKNOWN"
+    assert answer["goals"][0]["evidence"] == []
+    assert not any("/evidence/" in p for p in supervised)
     assert not any(p.endswith(("/entity_ref", "/role", "/association")) for p in supervised)
 
 
@@ -188,6 +190,77 @@ def test_partial_evidence_weak_values_do_not_leak_and_unknown_provenance_rejecte
     assert answer["goals"][0]["evidence"] == []
     with pytest.raises(ValueError, match="provenance"):
         prepare_answer(sample["answer"], {"/goals/0/relation": "teacher"})
+
+
+@pytest.mark.parametrize("source", ["human", "reviewed_candidate"])
+def test_item_confirmed_evidence_survives_import_build_and_final_token_mask(tmp_path, source):
+    from PIL import Image
+    from egrs.data import export_annotations, import_annotations, build_dataset
+    from egrs.selector.encoding import encode_sample
+    sample = example()
+    image = tmp_path / "frame.png"
+    Image.new("RGB", (2, 2)).save(image)
+    sample["payload"]["sensor"][0]["observation"] = {"agentview_image": str(image), "robot0_eye_in_hand_image": str(image)}
+    package = export_annotations([sample])
+    package["samples"][0]["provenance"]["/goals/0/evidence/0"] = source
+    imported = import_annotations([sample], package)
+    dataset = tmp_path / "data"
+    report = build_dataset(imported, dataset, attestation={"six_composites_excluded": True, "semantic_equivalents_excluded": True, "eval_sources_excluded": True})
+    rows = (dataset / "train.jsonl").read_text() + (dataset / "dev.jsonl").read_text()
+    built = json.loads(rows.strip())
+    encoded = encode_sample(built, FakeProcessor(), max_length=20000)
+    text = "".join(chr(i - 1) for i in encoded["input_ids"][0].tolist())
+    assistant = json.loads(text.split("assistant:")[-1])
+    assert assistant["goals"][0]["evidence"] == sample["answer"]["goals"][0]["evidence"]
+    learned = "".join(chr(i - 1) for i in encoded["labels"][0].tolist() if i != -100)
+    assert learned == '"SAT""g0""bowl1"1"q1""agentview"0.10.10.70.7"normalized_xyxy""entity""role""relation""release""interaction"'
+    assert report["field_supervision"]["entity_ref"] == 1
+
+
+@pytest.mark.parametrize("first_source", ["weak_child", "unconfirmed"])
+def test_evidence_filter_retains_safe_sibling_and_remaps_supervision(tmp_path, first_source):
+    from PIL import Image
+    from egrs.selector.encoding import encode_sample
+    from egrs.selector.supervision import prepare_answer
+    sample = example()
+    evidence = sample["answer"]["goals"][0]["evidence"]
+    evidence.append(dict(copy.deepcopy(evidence[0]), camera="wrist", bbox=[.2, .3, .8, .9]))
+    sample["provenance"]["/goals/0/evidence/1"] = "human"
+    if first_source == "weak_child":
+        sample["provenance"].update({"/goals/0/evidence": "human", "/goals/0/evidence/0/bbox/0": "weak"})
+    answer, fields = prepare_answer(sample["answer"], sample["provenance"])
+    assert answer["goals"][0]["evidence"] == [evidence[1]]
+    assert "/goals/0/evidence/0/bbox/0" in fields
+    assert not any(p.startswith("/goals/0/evidence/1") for p in fields)
+    assert len(evidence) == 2  # Preparing supervision must not mutate the source.
+    image = tmp_path / "frame.png"
+    Image.new("RGB", (2, 2)).save(image)
+    sample["payload"]["sensor"][0]["observation"] = {"agentview_image": str(image), "robot0_eye_in_hand_image": str(image)}
+    encoded = encode_sample(sample, FakeProcessor(), max_length=20000)
+    text = "".join(chr(i - 1) for i in encoded["input_ids"][0].tolist()).split("assistant:")[-1]
+    assert '"camera":"agentview"' not in text
+    learned = "".join(chr(i - 1) for i in encoded["labels"][0].tolist() if i != -100)
+    assert learned == '"SAT""g0""bowl1"1"q1""wrist"0.20.30.80.9"normalized_xyxy""entity""role""relation""release""interaction"'
+
+
+@pytest.mark.parametrize("missing_leaf", [False, True])
+def test_evidence_uses_effective_leaf_provenance_over_weak_parent(missing_leaf):
+    from egrs.selector.supervision import prepare_answer
+    sample = example()
+    prefix = "/goals/0/evidence/0"
+    sample["provenance"][prefix] = "weak"
+    for field in ("goal_ref", "entity_ref", "query_id", "snapshot_id", "camera", "coordinate_system", "supports"):
+        sample["provenance"][prefix + "/" + field] = "human"
+    for i in range(3 if missing_leaf else 4):
+        sample["provenance"][prefix + "/bbox/" + str(i)] = "reviewed_candidate"
+    answer, fields = prepare_answer(sample["answer"], sample["provenance"])
+    if missing_leaf:
+        assert answer["goals"][0]["evidence"] == []
+        assert fields == {"/goals/0/relation"}
+    else:
+        assert answer["goals"][0]["evidence"] == sample["answer"]["goals"][0]["evidence"]
+        assert prefix + "/bbox/3" in fields
+        assert prefix + "/supports/4" in fields
 
 
 def test_language_lora_selection_excludes_vision_and_requires_all_four_projections():
