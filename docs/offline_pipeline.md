@@ -1,5 +1,7 @@
 # Task017 offline candidate and human review pipeline
 
+Task018 adds bounded teacher-output decoding and a CPU-only `diagnose` command on the implementation branch. See [teacher wire protocol and diagnostics](teacher_wire_diagnostics.md) for the versioned behavior, exact commands and unchanged research boundaries. The task017 verification below remains its historical evidence.
+
 This is software for separately invoked stages, not an experiment run. The task017 implementation extends the accepted task016 code (`5a77f158`) on the implementation branch; it is not available in the old fixed task016 commit or a main branch without the implementation. Use the reviewed task017 PR commit supplied by Codex. Do not install into the frozen VLA actor environment.
 
 No real sources, teacher calls, human confirmations, training or model evaluations were performed for this delivery. Tests use small synthetic HDF5 files, fake model outputs and synthetic review events. Software completion does not establish dataset quality, task coverage, VRAM requirements or research readiness.
