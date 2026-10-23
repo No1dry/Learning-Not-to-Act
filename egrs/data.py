@@ -135,7 +135,7 @@ def grouped_split(records, seed=0, dev_fraction=.2):
     return {r["sample_id"]: assignment[find("source:" + r["source_id"])] for r in records}
 
 
-def build_dataset(records, output, *, attestation, seed=0):
+def build_dataset(records, output, *, attestation, seed=0, fixed_source_splits=None):
     from egrs.selector.supervision import prepare_answer
     if not all(attestation.get(key) is True for key in ATTESTATION_KEYS):
         raise ValueError("explicit six-composite, equivalent and eval-source exclusion attestation required")
@@ -144,7 +144,22 @@ def build_dataset(records, output, *, attestation, seed=0):
     records = [validate_sample(r) for r in records]
     if len({r["sample_id"] for r in records}) != len(records):
         raise ValueError("duplicate sample_id")
-    split = grouped_split(records, seed)
+    if fixed_source_splits is None:
+        split = grouped_split(records, seed)
+    else:
+        if not isinstance(fixed_source_splits, dict) or any(v not in {'train', 'dev'} for v in fixed_source_splits.values()):
+            raise ValueError('fixed source splits must map source IDs to train/dev')
+        split, aliases = {}, {}
+        for record in records:
+            source = record['source_id']
+            if source not in fixed_source_splits:
+                raise ValueError('source missing from fixed split: ' + source)
+            part = fixed_source_splits[source]
+            split[record['sample_id']] = part
+            for group in record.get('group_ids', []):
+                if group in aliases and aliases[group] != part:
+                    raise ValueError('known alias crosses fixed source splits: ' + group)
+                aliases[group] = part
     report = {"ready": False, "counts": {"sources": len({r['source_id'] for r in records}), "windows": len({(r['source_id'], r['window_id']) for r in records}), "queries": len(records)}, "splits": {"train": 0, "dev": 0}, "field_supervision": {}, "unsupervised_fields": 0, "gaps": [], "unknown_ancestry_sources": sorted({r["source_id"] for r in records if not r.get("ancestry_known", False)}), "exclusion_attestation": attestation, "seed": seed}
     outputs = {"train": [], "dev": []}
     for record in records:
