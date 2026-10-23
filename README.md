@@ -4,31 +4,18 @@
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
 
-2026-10-22：015设计审阅已接受；本分支交付[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)，等待Codex集中审查。包含独立`egrs`包、数据/标注工具、LoRA训练与恢复、推理worker、证据历史、actor桥接及日志。仅完成定向CPU/fake验证，真实数据、标注、训练、模型评测均为0。
+2026-10-23：[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)已验收，固定实现为[PR #2 / 5a77f158](https://github.com/No1dry/Learning-Not-to-Act/tree/5a77f158229442d9a9ee95ba828b371dfc4c995a)，代码和独立selector环境已部署。当前实现分支在其基础上增加[017离线批量候选和人工审核管线](docs/offline_pipeline.md)，入口为 `python -m egrs.offline --help`。017请使用Codex审阅交付的增量PR提交；旧5a77f158不含017，PR未自动合并到main。真实数据处理、教师调用、人工确认、训练和新方法评测本轮均为0。
 
 ## 从这里开始
 
 - [完整方法设计v1](docs/research/2026-10-21_remaining_goal_selector_full_design.md)
-- [016：X当前需要完成的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
+- [016：已验收的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
+- [016最终验收](collaboration/reviews/016_round2.md)
+- [017完整离线入口、文件和逐阶段命令](docs/offline_pipeline.md)
+- [软件与部署阶段总结](docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)
 - [015设计审阅裁决](collaboration/reviews/015_round1.md)
 - [当前协作状态](collaboration/STATUS.md)
 - [协作规则](collaboration/README.md)
-- [安装、方法配置、core接入与日志审计](docs/runtime.md)
-- [数据格式、标注、训练/恢复与推理命令](docs/data_training.md)
-- [016交付回复与验证范围](collaboration/responses/016_round1.md)
-
-## 软件入口
-
-```sh
-python -m pip install -e .
-python -m egrs --help
-python -m egrs.datacli catalog
-python -m egrs.selector.train --config configs/selector.json --dry-run
-```
-
-以上仅安装轻量方法包、查看静态目录/计划，不运行真实模型。selector使用[独立依赖](requirements-selector.txt)；所有actor保留各自原环境，并安装本方法包。数据不齐会报告缺口，公开库不含权重/状态包/已确认标签。完整参数、五种方法消融和各actor适配见运行文档。
-
-方法依赖原core的传感器白名单、worker、runner、证据和指标，没有复制评分器。本次核验的是明确标注的旧库固定参考导出；新eval私有库pin及014通用批处理仍需联调。因此，软件可安装并运行CPU/fake路径，不能宣称git clone后已具备真实全模型批量评测条件。
 
 ## 三个仓库的边界
 
@@ -55,4 +42,4 @@ X两份原文保持原字节和署名。原PR #11并未因迁入而自动合并�
 
 ## 当前下一步
 
-Codex审查本分支的016实现并对接014、部署及真实阶段命令；用户确认标签与资源后亲自启动。X负责后续有依据的实现修正。本PR不自动合并，不以MVP或55—80人时人力承诺作为软件交付门槛。
+017软件与定向CPU/fake测试由X交付，下一步由X／控制器交付原PR #2增量，外部协作Codex审阅并准备隔离部署；不自动合并PR或运行真实阶段。用户随后分别启动真实数据准备、候选推理、人工确认、训练和模型评测。工具记录实际确认/修正数与UI观察时间，不承诺55—80人时或候选节省时长；软件通过不代表真实标签覆盖或研究效果已经验证。

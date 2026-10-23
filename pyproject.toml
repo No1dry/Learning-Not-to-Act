@@ -19,6 +19,7 @@ egrs = "egrs.cli:main"
 egrs-data = "egrs.datacli:main"
 egrs-train = "egrs.selector.train:main"
 egrs-infer = "egrs.selector.infer:main"
+egrs-offline = "egrs.offline.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["egrs", "egrs.*"]
@@ -26,6 +27,9 @@ exclude = ["tests*", "testsupport*", "benchmark*"]
 
 [tool.setuptools.data-files]
 "share/egrs" = ["data/catalog.json"]
+
+[tool.setuptools.package-data]
+"egrs.offline" = ["assets/*.html", "assets/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
