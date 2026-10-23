@@ -26,22 +26,37 @@ def prepare_answer(answer, provenance, role_supervision=True):
     supervised = set()
     identity = {"goal_ref", "query_id"}
 
-    def walk(value, pointer="", key=""):
+    def fully_confirmed(value, pointer):
+        # Resolve the effective source at each leaf, including more-specific
+        # overrides. Empty containers need their own inherited confirmation.
+        if isinstance(value, dict) and value:
+            return all(fully_confirmed(v, pointer + "/" + pointer_escape(k)) for k, v in value.items())
+        if isinstance(value, list) and value:
+            return all(fully_confirmed(v, pointer + "/" + str(i)) for i, v in enumerate(value))
+        return source_for(pointer, provenance) in CONFIRMED
+
+    def walk(value, pointer="", key="", output_pointer=""):
         confirmed = source_for(pointer, provenance) in CONFIRMED
         if key == "physical_truth":
             raise ValueError("physical_truth cannot appear in an answer")
         if not role_supervision and key in ROLE_FIELDS:
             return None if key == "entity_ref" else "UNKNOWN"
-        if key == "evidence" and (not confirmed or not role_supervision or any(p.startswith(pointer + "/") and s not in CONFIRMED for p, s in provenance.items())):
-            # An evidence item itself asserts a physical/entity conclusion. Partial
-            # evidence cannot be retained as teacher-forcing context.
-            return []
+        if key == "evidence":
+            retained = []
+            if role_supervision:
+                for i, item in enumerate(value):
+                    source_pointer = pointer + "/" + str(i)
+                    if fully_confirmed(item, source_pointer):
+                        # Filter before teacher forcing; supervise the compacted
+                        # answer index while reading provenance at the source index.
+                        retained.append(walk(item, source_pointer, output_pointer=output_pointer + "/" + str(len(retained))))
+            return retained
         if isinstance(value, dict):
-            return {k: walk(v, pointer + "/" + pointer_escape(k), k) for k, v in value.items()}
+            return {k: walk(v, pointer + "/" + pointer_escape(k), k, output_pointer + "/" + pointer_escape(k)) for k, v in value.items()}
         if isinstance(value, list):
-            return [walk(v, pointer + "/" + str(i), key) for i, v in enumerate(value)]
+            return [walk(v, pointer + "/" + str(i), key, output_pointer + "/" + str(i)) for i, v in enumerate(value)]
         if confirmed:
-            supervised.add(pointer)
+            supervised.add(output_pointer)
             return copy.deepcopy(value)
         if key in identity:
             return copy.deepcopy(value)
