@@ -53,3 +53,11 @@
 [018](tasks/018_teacher_wire_format_and_schema_alignment.md)软件范围accepted/closed；[裁决](reviews/018_round1.md)，固定交付`119cd50bde04a53f41ddac47871d0f688276b146`。Codex独立55/55受影响CPU/fake通过（100%），新目录部署100%，未放宽契约、修改student prompt、环境依赖或旧数据，PR #2未自动merge。X当前无返修项。
 
 用户下一步直接复用3200条已有查询启动新版视觉候选，不重抽帧、不重标文本规格、不另设GPU预检或CPU诊断门槛。新提示真实有效率尚未验证，不把UNKNOWN/格式成功当标注准确率。旧PID已不在运行，未由Codex停止；新推理/训练/eval仍未启动。见[阶段总结](../docs/stage_summaries/2026-10-24_teacher_wire_repair_acceptance.md)。
+
+## 2026-10-24：新版视觉候选已结束，用户已确认仿真监督标注
+
+用户启动的018候选生成已结束（100%处理）：3200条中1072通过schema（33.50%）、822失败（25.69%）、1306跳过（40.81%）；实际调用1894次，schema通过率56.60%。17/20任务有通过记录，但不等于视觉准确或训练监督已ready。12条针对性双视角抽查发现起始状态错判SAT、证据框落机械臂等明确问题，不能只修release后直接训练。
+
+018软件验收保持accepted，暂不要求继续修解析。用户已确认改用已有仿真轨迹生成离线监督，来源、帧对应和可观察性有明确边界。正式[019工单](tasks/019_sim_supervised_annotations.md)已交接X；**尚未启动真实状态恢复、渲染、新教师、训练或eval**。原图/窗口/规格/分组和旧结果保留。见[本轮结果、图像核查与决策依据](../docs/stage_summaries/2026-10-24_teacher_candidate_quality_review.md)。
+
+下一执行者：X实现019并CPU/fake验证；Codex审查部署；用户启动真实标注。018软件已闭环，不继续因模型标注质量反修解析；RGB、窗口、文本规格和160/40分组不重建。
