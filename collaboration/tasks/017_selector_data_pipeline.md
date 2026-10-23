@@ -1,6 +1,6 @@
 # 017：完整离线数据、候选标注与人工确认管线
 
-日期：2026-10-23。执行者：X。状态：open。用户已接受“VLM候选＋人工确认”；**本工单只授权实现与定向CPU/fake测试，不授权X/Codex运行真实数据、模型或训练。**
+日期：2026-10-23。执行者：X。状态：accepted/closed（仅软件与CPU/fake范围，2026-10-23）。用户已接受“VLM候选＋人工确认”；**本工单只授权实现与定向CPU/fake测试，不授权X/Codex运行真实数据、模型或训练。**
 
 ## 1. 本轮交付与边界
 
@@ -79,3 +79,7 @@ CPU/fake只覆盖本次路径：数字episode选择/gap不替换；固定采样�
 - [固定Goal目录](https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets/tree/147fa5eb607bb696dd922c3518084a90954cd2f3/libero_goal)、[Object目录](https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets/tree/147fa5eb607bb696dd922c3518084a90954cd2f3/libero_object)；2026-10-23仅查询文件元信息。
 - [LIBERO官方create_dataset](https://github.com/Lifelong-Robot-Learning/LIBERO/blob/master/scripts/create_dataset.py)读取problem_info语言并直接保存已有相机RGB；本工单不执行其中重放代码。
 - [7B教师固定模型目录](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct/tree/cc594898137f460bfe9f0759e9844b3ce807cfb5)；只是候选，不声明其LIBERO标签准确率。
+
+## 8. 最终软件验收
+
+固定c6840ae6已通过[Codex验收](../reviews/017_round1.md)，59/59项定向CPU/fake独立通过（100%），并已隔离部署。017软件范围closed，无需X返修；真实数据处理与模型运行仍由用户另行启动。见[阶段总结](../../docs/stage_summaries/2026-10-23_offline_pipeline_acceptance.md)。

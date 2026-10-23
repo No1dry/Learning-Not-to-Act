@@ -12,9 +12,9 @@
 |---|---|---|
 | [015设计审阅](tasks/015_remaining_goal_selector_design_review.md) | accepted/closed，仅设计审阅范围；[裁决](reviews/015_round1.md)；X原文见PR #1固定提交，PR未自动合并 | — |
 | [016完整软件实现](tasks/016_egrs_full_implementation.md) | accepted/closed，软件范围；[最终裁决](reviews/016_round2.md)，PR #2未合并 | — |
-| [017离线数据与人工确认](tasks/017_selector_data_pipeline.md) | open；用户已接受VLM候选＋人工确认，原始文件改由Codex本地下载后传输 | X实现；Codex搬运原始文件 |
+| [017离线数据与人工确认](tasks/017_selector_data_pipeline.md) | accepted/closed，软件范围；[裁决](reviews/017_round1.md)；新版本已部署 | Codex权重搬运；用户启动真实阶段 |
 
-设计与016软件验收均100%；本轮受影响30/30项CPU/fake通过（100%），其余23项复用首轮证据，不冒称全部重跑。固定代码上传与独立selector环境安装均100%，类导入/命令/core身份静态核对通过；不代表真实processor/CUDA/模型效果已验证。真实数据准备/标注/训练/新方法评测仍为0%。[阶段总结](../docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)。
+设计与016软件验收均100%；本轮受影响30/30项CPU/fake通过（100%），其余23项复用首轮证据，不冒称全部重跑。固定代码上传与独立selector环境安装均100%，类导入/命令/core身份静态核对通过；不代表真实processor/CUDA/模型效果已验证。原始20文件搬运100%，017的59/59项CPU/fake通过且已隔离部署；真实来源/图像/标签构建、训练、新方法eval仍0%。[阶段总结](../docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)。
 
 ## 授权边界
 
@@ -31,3 +31,7 @@ X现在可以实现完整方法、训练/推理入口、数据导入/弱标签�
 ## 原始文件搬运范围补充
 
 2026-10-23网络例外：用户明确授权Codex本地下载固定20个原始文件，再经SSH传到服务器；仅做字节搬运和完整性校验，不含HDF5轨迹读取、抽帧、候选推理、训练或eval。 当前为传输进行中，完成字节/文件数以传输日志和校验为准；不据此宣称200来源或训练集已准备完成，其他真实阶段仍由用户启动。
+
+## 017后续实际状态
+
+017不再返修。20文件已于2026-10-23 12:17北京时间全部上传并校验（100%），但不等于200来源/训练集ready。用户已新增授权固定7B教师快照的本地下载与上传，仅文件搬运；本地下载已启动，当前SSH端口拒绝连接，上传需恢复连接。真实inventory/候选/人工审核/训练仍由用户分别启动。见[017阶段总结](../docs/stage_summaries/2026-10-23_offline_pipeline_acceptance.md)。
