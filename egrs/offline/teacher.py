@@ -1,9 +1,9 @@
 """Independent pinned offline 7B teacher. No student config, LoRA or fallback."""
 import copy
-import json
 import time
 
-from .common import digest
+from .parsing import PARSE_PROTOCOL, empty_parse_audit, parse_teacher_output
+from .teacher_prompt import PROMPT_VERSION, PROMPT_SHA256, build_teacher_messages
 
 MODEL = 'Qwen/Qwen2.5-VL-7B-Instruct'
 REVISION = 'cc594898137f460bfe9f0759e9844b3ce807cfb5'
@@ -60,23 +60,24 @@ class _Backend:
 class OfflineTeacher:
     """One lazy backend per invocation, raw failures retained; injection is for tests."""
     def __init__(self, config=None, *, loader=None):
-        from egrs.selector.prompt import PREDICTION_SCHEMA, REGISTRY_SCHEMA
         self.config = resolve_config(config)
-        self.metadata = {'config': self.config, 'prompt_sha256': digest([REGISTRY_SCHEMA, PREDICTION_SCHEMA]),
+        self.metadata = {'config': self.config, 'prompt_sha256': PROMPT_SHA256,
+                         'prompt_version': PROMPT_VERSION, 'parse_protocol': PARSE_PROTOCOL,
                          'synthetic_backend': loader is not None}
         self._loader, self._backend = loader or _Backend, None
         self._load_error = None
         self.calls = 0
 
     def _run(self, *, instruction=None, payload=None):
-        from egrs.contracts import validate_registry, validate_prediction, validate_payload
-        from egrs.selector.prompt import build_messages, IMAGE_KEYS
+        from egrs.contracts import validate_payload
+        from egrs.selector.prompt import IMAGE_KEYS
         from egrs.selector.encoding import load_images
         start = time.monotonic()
         self.calls += 1
         audit = {'call': self.calls, 'attempted': True, 'raw': None, 'answer': None, 'error': None,
                  'generation_attempted': False, 'input_tokens': None, 'generated_tokens': None,
-                 'payload': copy.deepcopy(payload), 'instruction': instruction, 'image_count': 0}
+                 'payload': copy.deepcopy(payload), 'instruction': instruction, 'image_count': 0,
+                 'parsing': empty_parse_audit()}
         try:
             images = []
             if payload is not None:
@@ -91,7 +92,7 @@ class OfflineTeacher:
                         if key in snap['observation']:
                             snap['observation'][key] = np.asarray(next(image_iter))
                 validate_payload(materialized)
-            messages = build_messages(payload, instruction=instruction)
+            messages = build_teacher_messages(payload, instruction=instruction)
             audit.update(messages=messages, image_count=len(images))
             if self._load_error is not None:
                 raise RuntimeError('previous backend load failed; no retry: ' + self._load_error)
@@ -102,12 +103,10 @@ class OfflineTeacher:
                     self._load_error = f'{type(exc).__name__}: {exc}'
                     raise
             audit['raw'] = self._backend.generate(messages, images, audit)
-            parsed = json.loads(audit['raw'])
-            if instruction is not None:
-                audit['answer'] = validate_registry(parsed, instruction)
-            else:
-                c = payload['context']
-                audit['answer'] = validate_prediction(parsed, c['registry'], c['query_id'], payload['sensor'])
+            parsed = parse_teacher_output(audit['raw'], instruction=instruction, payload=payload)
+            audit['answer'] = parsed['answer']
+            audit['error'] = parsed['error']
+            audit['parsing'] = {k: v for k, v in parsed.items() if k != 'answer'}
         except Exception as exc:
             audit['error'] = f'{type(exc).__name__}: {exc}'
         audit['elapsed_seconds'] = time.monotonic() - start

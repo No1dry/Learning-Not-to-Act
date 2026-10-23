@@ -7,6 +7,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('plan', help='static catalog and budgets; opens no data or model')
+    diagnostic = commands.add_parser('diagnose', help='CPU-only analysis of existing raw outputs; no images or model calls')
+    diagnostic.add_argument('--input', required=True, help='candidate/registry manifest JSON or candidate journal JSONL')
+    diagnostic.add_argument('--output', required=True, help='new directory for derived report; originals stay unchanged')
     inventory = commands.add_parser('inventory', help='inspect local approved files; freeze all source splits')
     inventory.add_argument('--root', required=True)
     inventory.add_argument('--instruction-map')
@@ -44,6 +47,9 @@ def main(argv=None):
     if args.command == 'plan':
         from .inventory import plan
         result = plan()
+    elif args.command == 'diagnose':
+        from .diagnostics import diagnose
+        result = diagnose(args.input, args.output)
     elif args.command == 'inventory':
         from .inventory import inventory
         result = inventory(args.root, instruction_map=read(args.instruction_map) if args.instruction_map else None,
