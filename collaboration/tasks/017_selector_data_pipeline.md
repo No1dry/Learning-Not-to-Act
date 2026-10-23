@@ -18,7 +18,7 @@
 - 读原文件`data.attrs.problem_info.language_instruction`，原文不改。缺失时需要显式人工指令映射，不能用任务编号查在线答案或悄悄猜文本。
 - 读取已有双相机uint8 HWC RGB及其长度/来源元信息；不恢复state/render，不调用VLA，不拿动作、reward、done、谓词、坐标等生成答案。
 - 记录`macros_image_convention`（可unknown）。官方存图与当前core都保留raw RGB，不盲目翻转/裁剪/替换OFT处理后图。样本meta保存相机/方向/原frame索引；不塞进模型context。
-- 用户将独立启动20文件原始下载，与本工单实现并行。工具不把download自动串成教师或训练。
+- 原始下载因服务器网络失败，2026-10-23用户授权Codex本地下载这20文件再SSH搬运，仍与本工单实现并行。这只是原始字节与完整性校验；X/工具不把download自动串成抽帧、教师或训练。
 
 ## 3. 来源分组、窗口与query（固定规则，不看成败）
 
