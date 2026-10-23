@@ -1,0 +1,387 @@
+{
+  "format": "egrs.registries.confirmed.v1",
+  "inventory_id": "3f550e7736ba5428dad789a307e2c18b32f25ec51dcc763e1fb8e65db563bb33",
+  "candidate_id": "f753433d61ffba0615078f0df9992094a01a3abf2b293365bbe579cb2058e8a0",
+  "annotation_protocol": "egrs.instruction-specification-annotation.v2",
+  "confirmation_semantics": "finalized_text_task_specification_not_independent_human_UI_review",
+  "annotation_process": {
+    "annotator": "Codex",
+    "basis": "Exact original instructions only; complete action language, target identity and destination explicitly retained.",
+    "independent_human_review": false,
+    "human_ui_session_used": false,
+    "visual_state_labels_included": false,
+    "model_calls_added": 0,
+    "user_authorization": "2026-10-23 user delegated final text task specification annotation and removed formal per-item or overall confirmation. Visual annotation policy is unchanged."
+  },
+  "registries": {
+    "8f9e871db6fa37f3b24930bdf26b95202bff2487d3bcaa05065c0ed31a7c002b": {
+      "registry": {
+        "instruction": "open the middle drawer of the cabinet",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "open the middle drawer of the cabinet",
+            "actor_text": "open the middle drawer of the cabinet",
+            "target": "middle drawer",
+            "destination": null,
+            "kind": "mechanism"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "352280b1667f5ea32d72b5f5f9a197bc360275a6ef08d38be4d9d85e45cfbfa7": {
+      "registry": {
+        "instruction": "open the top drawer and put the bowl inside",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "open the top drawer",
+            "actor_text": "open the top drawer",
+            "target": "top drawer",
+            "destination": null,
+            "kind": "mechanism"
+          },
+          {
+            "goal_ref": "g1",
+            "source_text": "put the bowl inside",
+            "actor_text": "put the bowl inside the top drawer",
+            "target": "bowl",
+            "destination": "top drawer",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "20c897a07f472882af615e25e6c764426a3a1f97f804a5c95ac0ea5e3623f205": {
+      "registry": {
+        "instruction": "push the plate to the front of the stove",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "push the plate to the front of the stove",
+            "actor_text": "push the plate to the front of the stove",
+            "target": "plate",
+            "destination": "front of the stove",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "fa5f1e99b1c251b5da47d62717adc2e231f90ac67e28670736ba2fb6e5a3dd50": {
+      "registry": {
+        "instruction": "put the bowl on the plate",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "put the bowl on the plate",
+            "actor_text": "put the bowl on the plate",
+            "target": "bowl",
+            "destination": "plate",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "fe26098c41b4691bbf3bef453b14fd054852bab519cc07ed8d8c29b61555d5c2": {
+      "registry": {
+        "instruction": "put the bowl on the stove",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "put the bowl on the stove",
+            "actor_text": "put the bowl on the stove",
+            "target": "bowl",
+            "destination": "stove",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "5430783d59a7f0dafa928fb190ae69449128c1fc7b79fd6c0409030a7e27cd3d": {
+      "registry": {
+        "instruction": "put the bowl on top of the cabinet",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "put the bowl on top of the cabinet",
+            "actor_text": "put the bowl on top of the cabinet",
+            "target": "bowl",
+            "destination": "top of the cabinet",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "23834ac35b6fa648c4fdc17f99e2ea5c8812c010c6a81d1ec64bc164a199e594": {
+      "registry": {
+        "instruction": "put the cream cheese in the bowl",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "put the cream cheese in the bowl",
+            "actor_text": "put the cream cheese in the bowl",
+            "target": "cream cheese",
+            "destination": "bowl",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "21869e4b17ff913bf078c838d461a9b52b399b7f3d60bb89895a51a83aa904b1": {
+      "registry": {
+        "instruction": "put the wine bottle on the rack",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "put the wine bottle on the rack",
+            "actor_text": "put the wine bottle on the rack",
+            "target": "wine bottle",
+            "destination": "rack",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "226fe20f46ceb6928a9563394c4ae47ec4072d3117292944d23f903e709398be": {
+      "registry": {
+        "instruction": "put the wine bottle on top of the cabinet",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "put the wine bottle on top of the cabinet",
+            "actor_text": "put the wine bottle on top of the cabinet",
+            "target": "wine bottle",
+            "destination": "top of the cabinet",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "602a2ef62782008d1633ae0493be553faaffb647d16800231e68adc3720b9136": {
+      "registry": {
+        "instruction": "turn on the stove",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "turn on the stove",
+            "actor_text": "turn on the stove",
+            "target": "stove",
+            "destination": null,
+            "kind": "mechanism"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "24b85cb2ecf82344146da4cc84a83cbe2b6bd0a796f0441da038e000b141fc32": {
+      "registry": {
+        "instruction": "pick up the alphabet soup and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the alphabet soup and place it in the basket",
+            "actor_text": "pick up the alphabet soup and place it in the basket",
+            "target": "alphabet soup",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "e3f03a961eca22abebac85cce29340b6a35b3af7a84341b8f30dc08695b52475": {
+      "registry": {
+        "instruction": "pick up the bbq sauce and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the bbq sauce and place it in the basket",
+            "actor_text": "pick up the bbq sauce and place it in the basket",
+            "target": "bbq sauce",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "c8dc193c125bc854bfac4f6f38b008c0ee5cb6a3ab5f8213d4c9e0c1cf7671b9": {
+      "registry": {
+        "instruction": "pick up the butter and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the butter and place it in the basket",
+            "actor_text": "pick up the butter and place it in the basket",
+            "target": "butter",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "33df16d1f718e95e3b0999a0baa62e8fd0e71df8fdcb51989dfb0221d3d117a7": {
+      "registry": {
+        "instruction": "pick up the chocolate pudding and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the chocolate pudding and place it in the basket",
+            "actor_text": "pick up the chocolate pudding and place it in the basket",
+            "target": "chocolate pudding",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "071532b7742d1767fa99a003e0e93c3a2f01b9d53d1e79f4de1eed23e65a0853": {
+      "registry": {
+        "instruction": "pick up the cream cheese and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the cream cheese and place it in the basket",
+            "actor_text": "pick up the cream cheese and place it in the basket",
+            "target": "cream cheese",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "b06bbe9f3a3e2b8c144e85fa6f4f2d34e95fe136f7718230dcf214e382b0bc6e": {
+      "registry": {
+        "instruction": "pick up the ketchup and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the ketchup and place it in the basket",
+            "actor_text": "pick up the ketchup and place it in the basket",
+            "target": "ketchup",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "ff3e36d55d30954cee67e320d4bea251a08ec1af5ad738530f96ef9a7c7c7887": {
+      "registry": {
+        "instruction": "pick up the milk and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the milk and place it in the basket",
+            "actor_text": "pick up the milk and place it in the basket",
+            "target": "milk",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "115b544f147f7d2ca4f646baabde5cd6d229616e58c1a73ea39fdb5dedb71792": {
+      "registry": {
+        "instruction": "pick up the orange juice and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the orange juice and place it in the basket",
+            "actor_text": "pick up the orange juice and place it in the basket",
+            "target": "orange juice",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "c9ff7556a317ce22cffbee2dc113d0b218c8c5fb986f10af419a3ceaf88e1d5a": {
+      "registry": {
+        "instruction": "pick up the salad dressing and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the salad dressing and place it in the basket",
+            "actor_text": "pick up the salad dressing and place it in the basket",
+            "target": "salad dressing",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    },
+    "546ce1b904a8f09c6e0861321c76b186b671a63fbaede2ebc3c0cbc23209763b": {
+      "registry": {
+        "instruction": "pick up the tomato sauce and place it in the basket",
+        "goals": [
+          {
+            "goal_ref": "g0",
+            "source_text": "pick up the tomato sauce and place it in the basket",
+            "actor_text": "pick up the tomato sauce and place it in the basket",
+            "target": "tomato sauce",
+            "destination": "basket",
+            "kind": "transport"
+          }
+        ]
+      },
+      "confirmed": true,
+      "reviewer": "Codex",
+      "provenance": "instruction_specification_annotation"
+    }
+  },
+  "identity": "ec058064453e996175bebfca449d427b240d762a08d33c01f383164dc16a8095"
+}

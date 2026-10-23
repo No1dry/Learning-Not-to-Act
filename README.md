@@ -4,14 +4,15 @@
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
 
-2026-10-23：[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)已验收，固定实现为[PR #2 / 5a77f158](https://github.com/No1dry/Learning-Not-to-Act/tree/5a77f158229442d9a9ee95ba828b371dfc4c995a)，代码和独立selector环境已部署。当前实现分支在其基础上增加[017离线批量候选和人工审核管线](docs/offline_pipeline.md)，入口为 `python -m egrs.offline --help`。017请使用Codex审阅交付的增量PR提交；旧5a77f158不含017，PR未自动合并到main。真实数据处理、教师调用、人工确认、训练和新方法评测本轮均为0。
+2026-10-23：[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)已验收，当前含017离线管线的固定实现为[PR #2 / c6840ae6](https://github.com/No1dry/Learning-Not-to-Act/tree/c6840ae6c27429c8a6eb27a4e937927f4f934202)，代码和独立selector环境已部署。PR未自动合并，main暂不含该实现；运行请使用上述固定版本。真实训练、新方法评测均为0。
 
 ## 从这里开始
 
 - [完整方法设计v1](docs/research/2026-10-21_remaining_goal_selector_full_design.md)
 - [016：已验收的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
 - [016最终验收](collaboration/reviews/016_round2.md)
-- [017完整离线入口、文件和逐阶段命令](docs/offline_pipeline.md)
+- [017离线管线验收](collaboration/reviews/017_round1.md)
+- [017阶段总结](docs/stage_summaries/2026-10-23_offline_pipeline_acceptance.md)
 - [软件与部署阶段总结](docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)
 - [015设计审阅裁决](collaboration/reviews/015_round1.md)
 - [当前协作状态](collaboration/STATUS.md)
@@ -42,4 +43,4 @@ X两份原文保持原字节和署名。原PR #11并未因迁入而自动合并�
 
 ## 当前下一步
 
-017软件与定向CPU/fake测试由X交付，下一步由X／控制器交付原PR #2增量，外部协作Codex审阅并准备隔离部署；不自动合并PR或运行真实阶段。用户随后分别启动真实数据准备、候选推理、人工确认、训练和模型评测。工具记录实际确认/修正数与UI观察时间，不承诺55—80人时或候选节省时长；软件通过不代表真实标签覆盖或研究效果已经验证。
+016/017软件与部署已完成，X无需继续返修。Codex准备实际数据来源、标签/资源选择和完整运行命令；真实标签、人力与预算仍需确认，不默认承诺55—80人时。真实数据准备、标注推理、训练和模型评测均由用户亲自启动，不先扩benchmark或训练FINISH。
