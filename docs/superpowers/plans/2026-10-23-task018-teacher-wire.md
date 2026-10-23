@@ -42,7 +42,7 @@
 - [x] Run affected `tests/test_teacher_wire.py` and `tests/test_offline_pipeline.py`; no whole-repository or unrelated runtime tests. Shared contracts/student code are unchanged.
 - [x] Document exact CPU diagnostic and new-run commands, separate protocol/prompt versions, original397-record baseline from task evidence (not rerun), no empirical quality claim, and all real work count0 for X.
 - [x] Commit, generate full incremental review package, obtain one fresh independent review, and address concrete blocking findings using RED/GREEN (two diagnostic P2 findings, 55/55 affected tests pass).
-- [ ] Deliver original PR2 and verify final tree equality; fixed remote SHA and handoff recorded in the PR.
+- [x] Deliver original PR2 and verify tree equality: remote `545453f07c103533fde517019205e3641057805d` matches local `1f00dbb55dcfde1c4a8bb535fceb0dc541231968` (tree `70b2b9dc3d221cb6a29e32604292587734cadac4`). Final checklist-only commit is verified again and pinned in the PR handoff.
 
 ## Decisions
 
