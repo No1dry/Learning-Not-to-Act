@@ -1,0 +1,205 @@
+{
+  "format": "codex.task023.production-input-compatibility-review.v1",
+  "implementation_commit": "9c0429d590f40bcef83570c85ced1ee0fc10b8dc",
+  "cpu_fake": {
+    "passed": 53,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 12.93
+  },
+  "changed_git_blobs_verified": 17,
+  "core_input": {
+    "identity_scope": "production",
+    "manifest_identity": "318c572532ac3f489d6da59e51039466579664501c69bed1fa113be3345549b4",
+    "backend_sha256_matches_manifest": true,
+    "core_revision": "c6dc98de0c54517c976057598b60f4cedf7fa3e5",
+    "allow_reference": true,
+    "actual_core_directory_basename": "LIBERO-Remain-reference-c6dc98d",
+    "code_required_basename": "LIBERO-core-c6-reference",
+    "literal_basename_check_would_reject": true,
+    "selected_binding_checks": [
+      {
+        "source_id": "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5#demo_0",
+        "source_planned_equal": false,
+        "request_source_equal": true,
+        "request_registry_equal": true,
+        "request_native_config_equal": true,
+        "source_split": "train",
+        "manifest_split": "train",
+        "source_result_status": "complete",
+        "registry_confirmed": true,
+        "registry_reviewer_present": true
+      },
+      {
+        "source_id": "libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.hdf5#demo_0",
+        "source_planned_equal": false,
+        "request_source_equal": true,
+        "request_registry_equal": true,
+        "request_native_config_equal": true,
+        "source_split": "train",
+        "manifest_split": "train",
+        "source_result_status": "complete",
+        "registry_confirmed": true,
+        "registry_reviewer_present": true
+      }
+    ],
+    "basis": "Read existing sealed JSON only; no HDF/image/native/simulation operation."
+  },
+  "inventory_and_binding_proof": [
+    {
+      "source_keys": [
+        "sample_id",
+        "source_id",
+        "file",
+        "episode",
+        "group_ids",
+        "task_group",
+        "ancestry_known",
+        "instruction",
+        "instruction_id",
+        "instruction_origin",
+        "instruction_mapping",
+        "T",
+        "orientation",
+        "split"
+      ],
+      "planned_keys": [
+        "sample_id",
+        "source_id",
+        "file",
+        "episode",
+        "group_ids",
+        "task_group",
+        "ancestry_known"
+      ],
+      "source_only": {
+        "instruction": "open the middle drawer of the cabinet",
+        "instruction_id": "8f9e871db6fa37f3b24930bdf26b95202bff2487d3bcaa05065c0ed31a7c002b",
+        "instruction_origin": "data.attrs.problem_info.language_instruction",
+        "instruction_mapping": null,
+        "T": 138,
+        "orientation": "opengl",
+        "split": "train"
+      },
+      "planned_only": {},
+      "changed_shared": {}
+    },
+    {
+      "selected_measurement_and_png_metadata": [
+        {
+          "source_id": "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5#demo_0",
+          "probe_list_matches": true,
+          "orientation_matches": true,
+          "image_convention_matches": true,
+          "image_binding_checks": [
+            {
+              "frame": 0,
+              "camera": "agentview",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 0,
+              "camera": "wrist",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 66,
+              "camera": "agentview",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 66,
+              "camera": "wrist",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 129,
+              "camera": "agentview",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 129,
+              "camera": "wrist",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            }
+          ]
+        },
+        {
+          "source_id": "libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.hdf5#demo_0",
+          "probe_list_matches": true,
+          "orientation_matches": true,
+          "image_convention_matches": true,
+          "image_binding_checks": [
+            {
+              "frame": 0,
+              "camera": "agentview",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 0,
+              "camera": "wrist",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 72,
+              "camera": "agentview",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 72,
+              "camera": "wrist",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 139,
+              "camera": "agentview",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            },
+            {
+              "frame": 139,
+              "camera": "wrist",
+              "unique_bindings": true,
+              "descriptors_equal": true,
+              "hash_binding_equal": true,
+              "hdf_pixel_equality_recorded": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "no_real_diagnostic_or_hdf_image_or_simulation_started": true
+}
