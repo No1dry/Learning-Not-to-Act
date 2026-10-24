@@ -50,10 +50,20 @@ with historical code identity
 These remain historical evidence. A separate current source-byte identity locks
 the absolute bootstrap and diagnostic worker before native construction, even
 when the old method package appears in module paths or the working directory.
-Production retains the fixed `LIBERO-core-c6-reference` checkout at
-`c6dc98de0c54517c976057598b60f4cedf7fa3e5`, together with all existing
-metadata/BDDL, asset, module and version locks. Synthetic fixtures require the
+Production retains the fixed complete reference core revision
+`c6dc98de0c54517c976057598b60f4cedf7fa3e5` with `allow_reference=true`,
+together with all existing metadata/BDDL, asset, module and version locks.
+The checkout directory spelling is not its identity: the sealed original path
+is consumed unchanged, and core activation retains its Git revision and clean
+checkout checks. Synthetic fixtures require the
 existing explicit, distinct synthetic backend scope and are marked in output.
+
+Each selected source must have exactly one planned record and one verified
+source descriptor. Their seven planned identity fields (`sample_id`, `source_id`,
+`file`, `episode`, `group_ids`, `task_group`, `ancestry_known`) must all be present
+and equal. Verified source extensions such as instruction provenance, `T`,
+orientation and split remain bound to the full original request and the existing
+registry, image and completion checks.
 
 Only consumed text artifacts and the twelve selected original PNG descriptors
 and hashes are checked. The command does not rescan the other frozen images,
