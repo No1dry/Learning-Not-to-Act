@@ -124,7 +124,7 @@ def process_source(request, *, adapter_factory=None, emit=None):
             result['inspection']=deepcopy(error.inspection); event('inspection',result['inspection'])
         for item in getattr(error,'audit',[]):
             result['audit'].append(deepcopy(item)); event('audit',item)
-        failure={'stage':'frame' if frame is not None else 'source','frame':frame,
+        failure={'stage':'frame' if frame is not None else getattr(error,'failure_stage','source'),'frame':frame,
                  'error_type':type(error).__name__,'reason':str(error)[:2000]}
         result['errors'].append(failure); event('error',failure)
         result['status']='partial' if result['frames'] else 'failed'

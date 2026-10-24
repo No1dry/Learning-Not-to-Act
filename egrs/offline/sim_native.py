@@ -16,6 +16,7 @@ import xml.etree.ElementTree as ET
 
 import numpy as np
 
+from .sim_metadata import resolve_bddl_metadata, resolve_installed_bddl, validate_libero_source
 from .sim_alignment import choose_alignment, frame_operation, visible_bbox, EQUIVALENCE_MAX_ATOL
 from .sim_contract import entity_aliases, mapping_for, validate_native_mapping, validate_frame_facts
 
@@ -52,8 +53,18 @@ def json_object(value):
 
 class SourceEpisode:
     """Inspect exactly one designated episode; read numeric rows only on demand."""
-    def __init__(self, root, source):
+    def __init__(self, root, source, *, emit=None):
         self.file = None
+        self.inspection = {'source_id':source.get('source_id'),'episode':source.get('episode'),
+                           'fields':{},'cameras':{}}
+        stage='source.open'
+        def snapshot():
+            if emit is not None: emit('inspection',deepcopy(self.inspection))
+        def phase(name):
+            nonlocal stage
+            stage='source.'+name
+            self.inspection['stage']=stage
+            snapshot()
         try:
             import h5py
             root = Path(root).resolve(strict=True)
@@ -65,42 +76,85 @@ class SourceEpisode:
                 raise ValueError('designated episode required')
             self.file = h5py.File(path, 'r')
             data = self.file['data']; self.ep = data[episode]
+            self.inspection.update(data_keys=sorted(data.keys()),episode_keys=sorted(self.ep.keys()),
+                data_attr_keys=sorted(data.attrs.keys()),episode_attr_keys=sorted(self.ep.attrs.keys()))
+            for prefix,attrs,keys in [('data.attrs',data.attrs,('env_args','bddl_file_content','bddl_file_name',
+                        'macros_image_convention','problem_info')),('episode.attrs',self.ep.attrs,('model_file','num_samples'))]:
+                for key in keys:
+                    self.inspection['fields'][prefix+'.'+key]={'status':'present' if key in attrs else 'missing'}
+            snapshot()
+            phase('attribute_summaries')
+            self.inspection['data_attrs']=self._attrs(data.attrs)
+            self.inspection['episode_attrs']=self._attrs(self.ep.attrs)
+            phase('env_args')
             self.env_args = json_object(data.attrs['env_args'])
+            self.inspection['env_args_sha256']=sha256(text_attr(data.attrs['env_args']))
+            self.inspection['env_args_keys']=sorted(self.env_args)
+            kwargs=self.env_args.get('env_kwargs')
+            for key in ('bddl_file','problem_name','env_kwargs'):
+                self.inspection['fields']['env_args.'+key]={'status':'present' if key in self.env_args else 'missing'}
+            if isinstance(kwargs,dict):
+                self.inspection['env_kwargs_keys']=sorted(kwargs)
+                for key in ('bddl_file_name','robots','controller_configs','control_freq','camera_names',
+                            'camera_heights','camera_widths','camera_depths','camera_segmentations'):
+                    self.inspection['fields']['env_args.env_kwargs.'+key]={'status':'present' if key in kwargs else 'missing'}
+            phase('model_file')
             self.xml = text_attr(self.ep.attrs['model_file'])
-            self.bddl = text_attr(data.attrs['bddl_file_content'])
-            self.bddl_name = text_attr(data.attrs['bddl_file_name'])
+            self.inspection['xml_sha256']=sha256(self.xml)
+            phase('bddl_metadata')
+            self.bddl = text_attr(data.attrs['bddl_file_content']) if 'bddl_file_content' in data.attrs else None
+            self.bddl_name = text_attr(data.attrs['bddl_file_name']) if 'bddl_file_name' in data.attrs else None
+            self.bddl_attrs={} if self.bddl_name is None else {'bddl_file_name':self.bddl_name}
+            self.inspection['source_embedded_bddl_present']=self.bddl is not None
+            if self.bddl is not None: self.inspection['bddl_sha256']=sha256(self.bddl)
+            phase('image_convention')
             self.orientation = text_attr(data.attrs['macros_image_convention'])
             if self.orientation not in ('opengl','opencv') or self.orientation != source['orientation']:
                 raise ValueError('unknown or changed source image convention')
-            problem = json_object(data.attrs['problem_info'])
-            if problem.get('language_instruction') != source['instruction']:
-                raise ValueError('source instruction metadata disagrees with inventory')
+            self.inspection['image_convention']=self.orientation
+            self.inspection['image_convention_origin']='data.attrs.macros_image_convention'
+            phase('instruction')
+            problem = json_object(data.attrs['problem_info']) if 'problem_info' in data.attrs else {}
+            if 'language_instruction' in problem:
+                if text_attr(problem['language_instruction']) != source['instruction']:
+                    raise ValueError('source instruction metadata disagrees with inventory')
+                provenance={'origin':'data.attrs.problem_info.language_instruction'}
+            else:
+                mapping=source.get('instruction_mapping')
+                if (source.get('instruction_origin')!='explicit_human_mapping' or not isinstance(mapping,dict)
+                        or mapping.get('instruction')!=source['instruction'] or not mapping.get('reviewer') or not mapping.get('basis')):
+                    raise ValueError('missing source instruction: explicit frozen instruction mapping required')
+                provenance={'origin':'explicit_human_mapping','mapping':deepcopy(mapping)}
+            self.inspection['instruction_provenance']=provenance
+            phase('num_samples')
             self.T = source['T']
             if type(self.T) is not int or self.T < 1:
                 raise ValueError('invalid source T')
-            if int(self.ep.attrs['num_samples']) != self.T:
-                raise ValueError('num_samples differs from original RGB length')
-            self.inspection = {'source_id':source['source_id'], 'episode':episode,
-                'data_keys':sorted(data.keys()), 'episode_keys':sorted(self.ep.keys()),
-                'data_attrs':self._attrs(data.attrs), 'episode_attrs':self._attrs(self.ep.attrs),
-                'xml_sha256':sha256(self.xml), 'bddl_sha256':sha256(self.bddl),
-                'env_args_sha256':sha256(text_attr(data.attrs['env_args'])),
-                'image_convention':self.orientation, 'cameras':{}}
+            if 'num_samples' in self.ep.attrs:
+                count=self.ep.attrs['num_samples']
+                if not isinstance(count,(int,np.integer)) or isinstance(count,(bool,np.bool_)) or int(count)!=self.T:
+                    raise ValueError('num_samples differs from original RGB length')
             for name in ('states','actions'):
+                phase(name)
                 array = self.ep[name]
                 if len(array.shape)!=2 or array.shape[0]!=self.T or not array.shape[1] or array.dtype.kind not in 'fiu':
                     raise ValueError(name+' must be numeric [T,D] matching original cameras')
                 self.inspection[name] = {'shape':list(array.shape),'dtype':str(array.dtype)}
             for camera, (_, key) in CAMERAS.items():
+                phase('camera.'+camera)
                 array = self.ep['obs'][key]
                 if len(array.shape)!=4 or array.shape[0]!=self.T or array.shape[-1]!=3 or array.dtype!=np.uint8 or min(array.shape)<=0:
                     raise ValueError('original camera shape/dtype mismatch')
                 self.inspection['cameras'][camera] = {'shape':list(array.shape),'dtype':str(array.dtype)}
+            phase('complete')
         except Exception as error:
+            self.inspection['failure']={'stage':stage,'error_type':type(error).__name__}
+            snapshot()
             self.close()
-            if isinstance(error, (KeyError, TypeError, OSError, UnicodeError)):
-                raise ValueError('source inspection gap: '+str(error)) from error
-            raise
+            wrapped=ValueError('source inspection gap at '+stage+': '+str(error))
+            wrapped.inspection=deepcopy(self.inspection)
+            wrapped.failure_stage=stage
+            raise wrapped from error
 
     @staticmethod
     def _attrs(attrs):
@@ -251,7 +305,7 @@ def validate_config(config):
     allowed = {'core','bddl_root','asset_roots','versions','module_sha256','probe_count',
                'rgb_threshold','min_visible_pixels','max_reset_attempts','replay_state_atol','seed',
                'surface_inset_m','surface_normal_z_min','surface_neighbor_m','surface_vertical_margin_m',
-               'table_vertical_margin_m','max_physics_substeps'}
+               'table_vertical_margin_m','max_physics_substeps','libero_source'}
     if not isinstance(config,dict) or set(config)-allowed:
         raise ValueError('unknown native configuration keys')
     required = {'core','bddl_root','versions','module_sha256'}
@@ -281,6 +335,7 @@ def validate_config(config):
     for name, digest in result['module_sha256'].items():
         if not isinstance(name,str) or not isinstance(digest,str) or len(digest)!=64 or any(c not in '0123456789abcdef' for c in digest):
             raise ValueError('invalid native source hash')
+    if 'libero_source' in result: validate_libero_source(result['libero_source'])
     return result
 
 
@@ -299,7 +354,7 @@ class NativeAdapter:
         self.image_bindings = {}
         try:
             self._stage('source_inspection')
-            self.episode = SourceEpisode(request['source_root'],request['source'])
+            self.episode = SourceEpisode(request['source_root'],request['source'],emit=self._inspection_event)
             self.inspection = deepcopy(self.episode.inspection)
             if self._emit is not None: self._emit('inspection',self.inspection)
             self._stage('source_inspection','complete')
@@ -307,13 +362,28 @@ class NativeAdapter:
             self._initialize()
             self._stage('native_initialize','complete')
         except Exception as error:
-            error.inspection=deepcopy(getattr(self,'inspection',None))
+            report=getattr(error,'inspection',None) or getattr(self,'inspection',None)
+            if report is not None:
+                report=deepcopy(report)
+                report.setdefault('failure',{'stage':getattr(self,'_current_stage','source_inspection'),
+                                             'error_type':type(error).__name__})
+                error.inspection=report
+                error.failure_stage=report['failure']['stage']
+                self._inspection_event('inspection',report)
             error.audit=deepcopy(self.audit)
             try: self.close()
             except Exception as close_error: error.audit.append({'close_error':str(close_error)[:1000]})
             raise
 
+    def _inspection_event(self, kind, data):
+        self.inspection=deepcopy(data)
+        if self._emit is not None: self._emit(kind,deepcopy(data))
+
     def _stage(self, name, phase='begin'):
+        self._current_stage=name
+        if getattr(self,'inspection',None) is not None:
+            self.inspection['stage']=name
+            if self._emit is not None: self._emit('inspection',deepcopy(self.inspection))
         if self._emit is not None: self._emit('stage',{'stage':name,'phase':phase})
 
     def _initialize(self):
@@ -343,6 +413,7 @@ class NativeAdapter:
             digest = sha256(path.read_bytes())
             if digest != expected: raise ValueError('native source lock mismatch: '+name)
             self.inspection['modules'][name] = {'path':str(path),'sha256':digest}
+        self._stage('saved_native_settings')
         args = self.episode.env_args
         if not isinstance(args.get('problem_name'),str) or not isinstance(args.get('env_kwargs'),dict):
             raise ValueError('saved env_args problem_name/env_kwargs required')
@@ -351,17 +422,23 @@ class NativeAdapter:
         if set(kwargs)-parameters:
             raise ValueError('unsupported saved native kwargs: '+repr(sorted(set(kwargs)-parameters)))
         self._validate_kwargs(kwargs)
-        root = Path(self.config['bddl_root']).resolve(strict=True)
-        # Inventory suite + exact saved basename; never scan/fuzzy match a task.
-        suite = Path(self.request['source']['file']).parts[0]
-        basename = self.episode.bddl_name.replace('\\','/').split('/')[-1]
-        path = (root/suite/basename).resolve(strict=True)
-        if not path.is_relative_to(root) or sha256(path.read_bytes())!=sha256(self.episode.bddl):
-            raise ValueError('saved and installed BDDL differ')
-        for value in (args.get('bddl_file'), kwargs.get('bddl_file_name')):
-            if not isinstance(value,str) or value.replace('\\','/').split('/')[-1]!=basename:
-                raise ValueError('ambiguous saved BDDL paths')
-        self.inspection['installed_bddl'] = {'path':str(path),'sha256':sha256(path.read_bytes())}
+        self._stage('bddl_resolution')
+        suite = self.request['source']['file'].replace('\\','/').split('/')[0]
+        try:
+            metadata=resolve_bddl_metadata(args,self.episode.bddl_attrs,suite=suite)
+        except ValueError as error:
+            self.inspection['bddl_identifier_fields']=getattr(error,'metadata_fields',{})
+            raise
+        self.inspection['bddl_identifier_fields']=metadata['fields']
+        try:
+            path,provenance=resolve_installed_bddl(self.config['bddl_root'],metadata,
+                embedded=self.episode.bddl,runtime_identity=self.config.get('libero_source'))
+        except ValueError as error:
+            if hasattr(error,'bddl_provenance'):
+                self.inspection['bddl_provenance']=error.bddl_provenance
+            raise
+        self.inspection['bddl_provenance']=provenance
+        self.inspection['installed_bddl']=provenance['installed']
         overrides = {'bddl_file_name':str(path),'has_renderer':False,'has_offscreen_renderer':True,
                      'use_camera_obs':True,'camera_segmentations':None}
         self.inspection['operational_overrides'] = {key:{'saved':kwargs.get(key),'runtime':value} for key,value in overrides.items()}
@@ -374,6 +451,8 @@ class NativeAdapter:
         self._verify_xml_topology(self.episode.xml, processed)
         if self._emit is not None: self._emit('inspection',self.inspection)
         self._stage('native_construct')
+        if sha256(path.read_bytes())!=provenance['installed']['sha256']:
+            raise ValueError('installed BDDL changed before native construction')
         self.env = task(**kwargs)
         self._stage('native_seed')
         self.env.seed(self.config['seed'])
