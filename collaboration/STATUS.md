@@ -146,3 +146,11 @@
 200来源/3200查询处理100%、0运行错误；2429可监督（75.91%），train1958（76.48%）、dev471（73.59%）。原160/40划分、阈值0.03、原生谓词保持；复用旧14来源/165监督，余186来源按逐帧/视角/字段共识补标；旧结果不覆盖。原报告ready=false仍保留其全字段完备语义，不阻止可靠非空训练/验证子集。
 
 3B固定快照上传校验100%；60种真实processor组合和一次CUDA前向/反向通过，288有限LoRA梯度、7372800可训练参数、峰值显存17.72GB；优化器更新0、诊断权重未保存。训练准备100%；正式训练、改进后方法评测0%，下一步直接用户启动正式selector训练，无新增MVP或检查门槛。见[阶段总结](../docs/stage_summaries/2026-10-24_consensus_labels_and_training_readiness.md)。原始证据与失败均保留，本轮无删除/清理。
+
+## 2026-10-24：正式selector训练完成，025评测入口交X（最新）
+
+用户024训练100%完成：3 epochs/369 optimizer steps，每轮train1958/dev471，三个checkpoint均完整。Dev token-mean loss为0.2074258→0.1753629→0.1675368，按dev选择checkpoint-3；三项adapter文件hash与保存声明一致。训练下降不等于任务成功率提升，方法评测仍0%。
+
+Codex训练期间尚未完成评测对接准备，遗漏已明确记录；固定core批处理当前只接受顶层OFT，并非改一条配置就可直接执行完整方法。[025详细任务](tasks/025_oft_selector_batch_evaluation.md)已实际交X：只补方法侧OFT＋selector所需100条编排，复用冻结core、旧10状态与原指标/视频/底座，不先做全模型014框架、不重做状态、不增加MVP或rollout。X实现/定向CPU-fake，Codex审查部署及conda/python命令，用户启动正式评测。没有启动新模型推理、仿真或eval；旧训练、checkpoint和失败记录全部保留。
+
+[训练阶段总结](../docs/stage_summaries/2026-10-24_selector_training_results.md)。024准备范围关闭保持，025开放；本轮无清理/删除。
