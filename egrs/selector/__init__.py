@@ -10,6 +10,8 @@ class QwenSelector:
         self.config = resolve_config(config)
         self._checkpoint = checkpoint_identity(self.config)
         self._model = self._processor = None
+        self._visual_schema = None
+        self._tokenizer_enforcer_data = None
         self._closed = False
         self._set_input_audit([], [])
 
@@ -28,12 +30,14 @@ class QwenSelector:
             "generated_tokens": None,
             "raw_output": None,
             "parsing": None,
+            "structured_decoding": None,
         }
 
     @property
     def metadata(self):
         from .prompt import REGISTRY_PROMPT_VERSION,REGISTRY_PROMPT_SHA256
-        return {"selector": "qwen2.5-vl", **self.config, "output_protocol": "egrs.selector-wire.v1", "registry_prompt_version":REGISTRY_PROMPT_VERSION,"registry_prompt_sha256":REGISTRY_PROMPT_SHA256, "checkpoint_identity": self._checkpoint, "model_loaded": self._model is not None, "adapter_loaded": self._model is not None and bool(self.config.get("adapter")), "trained_claim": False}
+        from .structured import VERSION,DEPENDENCY
+        return {"selector": "qwen2.5-vl", **self.config, "output_protocol": "egrs.selector-wire.v1", "registry_prompt_version":REGISTRY_PROMPT_VERSION,"registry_prompt_sha256":REGISTRY_PROMPT_SHA256, "visual_decoding":VERSION,"decoding_dependency":DEPENDENCY, "checkpoint_identity": self._checkpoint, "model_loaded": self._model is not None, "adapter_loaded": self._model is not None and bool(self.config.get("adapter")), "trained_claim": False}
 
     def _load(self):
         if self._closed:
@@ -54,8 +58,16 @@ class QwenSelector:
         # retain what is known even if model generation or JSON validation fails.
         self._last_input_audit.update(image_count=len(images), final_prompt_tokens=int(inputs["input_ids"].shape[1]))
         inputs = move_batch(inputs, self.config["device"])
+        generation_kwargs = {}
+        if self._visual_schema is not None:
+            from .structured import build_visual_prefix,schema_hash,VERSION,DEPENDENCY
+            prefix,self._tokenizer_enforcer_data = build_visual_prefix(
+                self._processor.tokenizer,self._visual_schema,self._tokenizer_enforcer_data)
+            generation_kwargs['prefix_allowed_tokens_fn'] = prefix
+            self._last_input_audit['structured_decoding'] = dict(
+                version=VERSION,dependency=DEPENDENCY,schema_sha256=schema_hash(self._visual_schema))
         with torch.inference_mode():
-            generated = self._model.generate(**inputs, do_sample=False, max_new_tokens=self.config["max_new_tokens"])
+            generated = self._model.generate(**inputs, do_sample=False, max_new_tokens=self.config["max_new_tokens"],**generation_kwargs)
         self._last_input_audit["generated_tokens"] = int(generated.shape[1] - inputs["input_ids"].shape[1])
         answer = self._processor.tokenizer.decode(generated[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True)
         from egrs.offline.parsing import decode_json_output
@@ -107,6 +119,8 @@ class QwenSelector:
             self._set_input_audit(supplied, [shot["snapshot_id"] for shot in bounded["sensor"]])
             try:
                 images = load_images(bounded)
+                from .structured import prediction_schema
+                self._visual_schema = prediction_schema(bounded['context']['registry'],bounded['context']['query_id'],bounded['sensor'])
                 answer = self._generate(build_messages(bounded), images)
                 # Injected generators may not expose tokenizer counts; a
                 # successful call still establishes which images it received.
@@ -119,6 +133,8 @@ class QwenSelector:
                 oldest = bounded["sensor"].pop(0)["query_id"]
                 for field in ("history", "commands"):
                     bounded["context"][field] = [x for x in bounded["context"][field] if x.get("query_id") != oldest]
+            finally:
+                self._visual_schema = None
         context = bounded["context"]
         return self._validate_generated(validate_prediction, answer, context["registry"], context["query_id"], bounded["sensor"])
 
@@ -129,6 +145,7 @@ class QwenSelector:
 
     def close(self):
         self._model = self._processor = None
+        self._tokenizer_enforcer_data = None
         self._closed = True
 
 

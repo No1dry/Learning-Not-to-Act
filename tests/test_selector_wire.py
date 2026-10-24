@@ -13,6 +13,8 @@ def selector(monkeypatch, outputs):
     import torch
     from egrs.selector import QwenSelector
     from egrs.selector import encoding
+    from egrs.selector import structured
+    monkeypatch.setattr(structured,'build_visual_prefix',lambda *a:(lambda *a:[],object()))
     rows=iter(outputs)
     class Tokenizer:
         def decode(self,*args,**kwargs):return next(rows)
