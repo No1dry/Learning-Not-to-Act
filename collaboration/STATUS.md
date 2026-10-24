@@ -80,3 +80,11 @@
 [020](tasks/020_sim_source_metadata_compatibility.md)软件范围accepted/closed；[裁决](reviews/020_round1.md)，固定PR实现 `dc4dfa97d131fcdf8c1cc116e18d529a9d4d0efb`，未自动merge。Codex独立148/148受影响CPU/fake通过（100%，4.55秒），16变更blob吻合；新目录部署、代码字节一致及配置准备均100%。固定官方LIBERO的20个BDDL文件逐一SHA-256核对并配置，未读取原始HDF、恢复/渲染或启动作业。
 
 用户下一步直接在020新目录启动label-sim；不重建RGB/窗口/规格、不另加真实元信息预读或GPU预检。X当前无需返修。019旧失败保留（200来源全失败，3200查询processed/supervised均0%）；本次真实标注、训练与新方法eval仍0%。见[阶段总结](../docs/stage_summaries/2026-10-24_source_metadata_compatibility_acceptance.md)。完成后Codex再审coverage并提供独立导出命令。
+
+## 2026-10-24：020真实作业结束，标注core部署错误已另行纠正（最新状态）
+
+用户启动020后，200/200来源（100%）通过元信息入口，但均因 `benchmark.remaining_goals.finish.xml_assets` 缺失而在core_activation失败；3200查询processed/supervised均0%，无可用监督。最终manifest `766fcd5a13a1f05bb56ffde90222f369b0a4d3f98df3277d1a030bac6d6439d9`，作业已自行结束，Codex未停止。上文将部署准备等同可运行的判断不成立；515e87d裁剪core不包含该标注助手，属Codex配置核对遗漏。
+
+已隔离部署配置原本支持的完整annotation reference core c6dc98d，020r2新配置/新输出就绪（100%）；方法代码仍dc4dfa97，不改旧环境/原eval core及任何旧输出。实际worker解释器8个辅助函数可导入，固定Git身份/干净状态及3项传输SHA通过，无原始HDF读取或仿真/模型工作。X无需因部署失配返修。
+
+用户下一步亲自启动020r2真实标注；Codex不代启或追加。真实native/XML/图像对应、可监督比例仍未证实，训练与方法eval仍0%。详见[更正记录](reviews/020_deployment_correction.md)和[阶段总结](../docs/stage_summaries/2026-10-24_annotation_core_deployment_correction.md)。019与020旧失败均保留。
