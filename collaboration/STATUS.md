@@ -180,3 +180,9 @@ Codex直接实现[PR #5](https://github.com/No1dry/Learning-Not-to-Act/pull/5)@5
 Codex实现[PR #6](https://github.com/No1dry/Learning-Not-to-Act/pull/6)@a236454a，仅明确registry原字段并加两个通用非benchmark示例；原validator、视觉prompt、权重、checkpoint、评分保持，无自动重试/语义回填。55项定向CPU/fake通过（100%，37未选），新027目录及三环境方法包部署100%，不改依赖/core。固定processor文本预算检查与CLI dry-run不包含模型生成或仿真。
 
 真实修订效果仍开放，未宣称解决：下一步用户启动027独立文本调用，Codex读取新audit后决定恢复正式eval。X无需返修；训练100%、方法eval完成0%，旧100计划/80可用/20缺来源保持，原025/026失败均保留。见[阶段记录](../docs/stage_summaries/2026-10-24_registry_field_prompt_revision.md)。未自动merge或清理。
+
+## 2026-10-24：027用户真实文本拆解通过，直接交接正式评测（最新）
+
+用户027调用已成功，Codex读取registry与audit确认：同3B/checkpoint-3真实加载，image_count=0、prompt609/generated95 tokens、bare_json，wrapper/JSON/schema全部passed、error=null。原指令/原文片段逐字保留，两个actor_text正确为分别放alphabet soup和tomato sauce入basket；026已见文本故障在此调用中解决，不外推其他任务或视觉/执行成功率。
+
+代码仍PR #6@a236454a，原测试与部署证据复用，不再增加模型预检/重训/状态回放，X无需返修。027正式配置已上传、新输出路径隔离，完整conda/venv/python命令已交用户。下一步用户启动正式方法eval；Codex读取交回结果。准备/训练100%，方法评测完成0%；同旧基线80可用/100计划/20缺来源保持，双视角视频和原指标不变。未代启实验/自动merge/清理。见[真实通过及评测交接](../docs/stage_summaries/2026-10-24_registry_verified_evaluation_handoff.md)。
