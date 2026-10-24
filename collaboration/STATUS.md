@@ -138,3 +138,11 @@
 用户已确认保留0.03/原谓词、改为逐帧逐视角逐字段共识。[024需求](tasks/024_frame_view_field_consensus_labels.md)已交X：匹配共同视角+全部可信候选字段一致+原可见/物理证书，否则UNKNOWN；不伪造物理唯一对齐/不改RGB或输入，不用relation广播grasp/release。验证后复用旧165及旧唯一对齐来源，未知来源才补算，新旧结果/代码身份分别记录。
 
 024实现和真实补标尚未开始，训练/eval未启动；原165/5.16%和dev0保留。X实施/CPU-fake，Codex审查部署，用户启动补标，不额外GPU预检或模型MVP。见[诊断结果与决策总结](../docs/stage_summaries/2026-10-24_alignment_diagnostic_results_and_labeling_revision.md)。未启动后续作业或清理资料。
+
+## 2026-10-24：024由Codex接管，补标与训练准备已完成（最新）
+
+用户明确授权本次Codex自己修改并运行排障直到可训练，覆盖旧X实现/用户独占启动限制。Codex实现[PR #3](https://github.com/No1dry/Learning-Not-to-Act/pull/3)@ed779093，71项定向CPU/fake通过；PR #2/#3未自动合并。024本次实现、补标、导出及训练就绪范围accepted/closed，不再要求X返修。
+
+200来源/3200查询处理100%、0运行错误；2429可监督（75.91%），train1958（76.48%）、dev471（73.59%）。原160/40划分、阈值0.03、原生谓词保持；复用旧14来源/165监督，余186来源按逐帧/视角/字段共识补标；旧结果不覆盖。原报告ready=false仍保留其全字段完备语义，不阻止可靠非空训练/验证子集。
+
+3B固定快照上传校验100%；60种真实processor组合和一次CUDA前向/反向通过，288有限LoRA梯度、7372800可训练参数、峰值显存17.72GB；优化器更新0、诊断权重未保存。训练准备100%；正式训练、改进后方法评测0%，下一步直接用户启动正式selector训练，无新增MVP或检查门槛。见[阶段总结](../docs/stage_summaries/2026-10-24_consensus_labels_and_training_readiness.md)。原始证据与失败均保留，本轮无删除/清理。

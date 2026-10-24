@@ -1,5 +1,7 @@
 # 方法研究协作入口
 
+2026-10-24本轮024例外：用户授权Codex直接实现并运行到训练就绪，现已完成；正式训练尚未开始，下一执行者为用户，X无需重复返修。详见[最新STATUS](STATUS.md)与[阶段总结](../docs/stage_summaries/2026-10-24_consensus_labels_and_training_readiness.md)。
+
 本目录服务 `No1dry/Learning-Not-to-Act`，不再把方法任务交到benchmark仓库。先读[STATUS](STATUS.md)与根目录[AGENTS](../AGENTS.md)。
 
 - 用户：研究方向、资源和预算；亲自启动全部真实实验。
