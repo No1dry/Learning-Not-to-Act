@@ -59,7 +59,8 @@ class Adapter:
     def __init__(self, request, *, emit):
         self.request = request
         self.inspection = {'synthetic': True, 'xml_sha256': 'a'*64,
-            'bddl_provenance':{'mode':'metadata_resolved_installed_bddl','source_identifiers':'metadata-audit-secret'}}
+            'bddl_provenance':{'mode':'metadata_resolved_installed_bddl','source_identifiers':'metadata-audit-secret'},
+            'xml_assets':{'source_xml':'xml-audit-secret','resolver_version':'egrs.sim.historical-xml-assets.v1'}}
         self.audit = [{'native_name': 'annotation-side-secret'}]
         emit('stage', {'stage': 'native_initialize', 'phase': 'begin'})
         emit('inspection', self.inspection)
@@ -110,8 +111,10 @@ def test_mixed_run_preserves_originals_fixed_split_and_exports_real_tokens(tmp_p
     assert train[0]['source_id'] == 'synthetic0' and dev[0]['source_id'] == 'synthetic1'
     assert 'metadata-audit-secret' in (output/'audit.jsonl').read_text()
     assert 'metadata-audit-secret' not in json.dumps(annotated)
+    assert 'xml-audit-secret' in (output/'audit.jsonl').read_text()
+    assert 'xml-audit-secret' not in json.dumps(annotated)
     text = json.dumps(train + dev)
-    assert all(x not in text for x in ('native_truth', 'offline-secret', 'annotation-side-secret', 'alignment', 'physical_truth', 'metadata-audit-secret', 'bddl_provenance'))
+    assert all(x not in text for x in ('native_truth', 'offline-secret', 'annotation-side-secret', 'alignment', 'physical_truth', 'metadata-audit-secret', 'bddl_provenance', 'xml-audit-secret', 'historical-xml-assets'))
     from egrs.selector.encoding import encode_sample
     encoded = encode_sample(train[0], FakeProcessor(), max_length=30000)
     learned = ''.join(chr(x-1) for x in encoded['labels'][0].tolist() if x != -100)
@@ -388,3 +391,16 @@ def test_export_accepts_original_boolean_attestation_and_retains_optional_eviden
     assert report['usable'] and report['exclusion_attestation']==before
     assert read(tmp_path/'export/export-manifest.json')['attestation']==before
     assert attestation==before
+
+
+def test_controller_adds_verified_dataset_identity_only_to_operational_request(tmp_path):
+    from egrs.offline.sim import _inputs
+    inv,wins,regs,config=fixture(tmp_path)
+    original=copy.deepcopy((inv,wins,regs))
+    _,requests,samples,_=_inputs(inv,wins,regs,config)
+    for sid,req in requests.items():
+        assert req['dataset_identity']=={'dataset':'synthetic/task019','revision':'synthetic-v1'}
+        assert req['source']==next(s for s in inv['sources'] if s['source_id']==sid)
+        assert 'dataset_identity' not in req['source']
+    assert (inv,wins,regs)==original
+    assert 'dataset_identity' not in json.dumps(samples)

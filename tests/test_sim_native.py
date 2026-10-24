@@ -349,7 +349,7 @@ def test_real_launch_binds_method_before_native_with_stale_cwd(tmp_path,monkeypa
 @pytest.mark.parametrize('camera_order', [['agentview','robot0_eye_in_hand'],['robot0_eye_in_hand','agentview']])
 @pytest.mark.parametrize('metadata_case',['embedded','missing_body','sole_argument','sole_kwargs','sole_attribute',
     'conflict','suite_conflict','body_mismatch','missing_controller','bad_controller','missing_camera','bad_camera',
-    'mutation','native_failure','missing_lock'])
+    'mutation','native_failure','missing_lock','historical','historical_cream','historical_bad_digest','historical_xml_missing','historical_cream_wrong_atom'])
 def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_source_xml(tmp_path,monkeypatch,camera_order,metadata_case):
     """Fake only native/core boundaries; exercise the concrete adapter constructor."""
     import sys
@@ -378,8 +378,27 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
         data.attrs['env_args']=json.dumps(args)
         del data['demo_0/obs/agentview_rgb']
         data['demo_0/obs'].create_dataset('agentview_rgb',data=np.zeros((3,6,8,3),dtype=np.uint8))
+    mapped=metadata_case.startswith('historical')
+    canonical='task.bddl'; mapped_registry=registry(); source_name='libero_goal/synthetic.hdf5'
+    if mapped:
+        from tests.test_sim_metadata import historical_fixture
+        alias_args,alias_attrs,context=historical_fixture(3 if metadata_case.startswith('historical_cream') else 1)
+        canonical=alias_attrs['bddl_file_name'].split('/')[-1]; mapped_registry=context['registry']
+        source_name=context['source']['file']
+        source_path=tmp_path/'libero_goal/synthetic.hdf5'
+        with h5py.File(source_path,'r+') as source_file:
+            data=source_file['data']; args=json.loads(data.attrs['env_args'])
+            args['bddl_file']=alias_args['bddl_file']; args['env_kwargs']['bddl_file_name']=alias_args['env_kwargs']['bddl_file_name']
+            data.attrs['env_args']=json.dumps(args); data.attrs['bddl_file_name']=alias_attrs['bddl_file_name']
+            data.attrs['problem_info']=json.dumps({'language_instruction':mapped_registry['instruction']})
+            mac='/Users/yifengz/workspace/libero-dev/chiliocosm/assets/'
+            xml='<mujoco><asset><texture file="'+mac+'scenes/../textures/light-gray-floor-tile.png"/></asset><worldbody/></mujoco>'
+            if metadata_case=='historical_xml_missing':
+                xml='<mujoco><!-- '+'source xml filler '*200+' --><asset><texture file="'+mac+'missing.png"/></asset></mujoco>'
+            data['demo_0'].attrs['model_file']=xml
+        source_path.rename(tmp_path/source_name)
     bddl=tmp_path/'bddl/libero_goal'; bddl.mkdir(parents=True)
-    (bddl/'task.bddl').write_text('(synthetic bddl)')
+    (bddl/canonical).write_text('(synthetic bddl)')
     module_file=tmp_path/'native_source.py'; module_file.write_text('# synthetic native source\n')
     events=[]
     model=SimpleNamespace(get_xml=lambda:'<mujoco><worldbody/></mujoco>')
@@ -404,20 +423,33 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
     module('benchmark.remaining_goals.libero_env',restore_raw_state=lambda *a:None,fresh_observation=lambda *a:None)
     module('benchmark.remaining_goals.finish.environment',_release=lambda *a:None,
            _verify_demo_native_references=lambda e:{'checked':True},_layout=lambda m:{'synthetic':True})
-    module('benchmark.remaining_goals.finish.xml_assets',resolve_xml=lambda xml,**kw:(xml,{'synthetic':True}))
+    if not mapped:
+        import egrs.offline.sim_xml_assets as source_xml
+        monkeypatch.setattr(source_xml,'resolve_source_xml',lambda xml,**kw:(xml,{'synthetic':True}))
     module('libero.libero.envs',TASK_MAPPING={'synthetic':task})
     module('libero.libero.envs.bddl_base_domain',BDDLBaseDomain=Base)
     module('libero.libero.envs.predicates.base_predicates')
     module('robosuite.environments.robot_env')
     module('mujoco',mjtObj=SimpleNamespace(mjOBJ_GEOM=5))
-    req=request(); req['source_root']=str(tmp_path); req['source']['file']='libero_goal/synthetic.hdf5'
+    req=request(); req['source_root']=str(tmp_path); req['source']['file']=source_name
+    if mapped:
+        req['source'].update(context['source']); req['registry']=mapped_registry
+        req['dataset_identity']=context['dataset_identity']
+        assets=tmp_path/'assets'; (assets/'textures').mkdir(parents=True)
+        (assets/'textures/light-gray-floor-tile.png').write_bytes(b'synthetic floor')
+        if metadata_case.startswith('historical_cream'):
+            env.parsed_problem={'goal_state':[['on','cream_cheese_1','akita_black_bowl_1']]}
+            env.object_states_dict={'cream_cheese_1':None,'akita_black_bowl_1':None}
+            if metadata_case=='historical_cream_wrong_atom': env.parsed_problem['goal_state'][0][0]='in'
     req['config']={'core':{},'bddl_root':str(tmp_path/'bddl'),
         'versions':{k:'synthetic' for k in ('numpy','h5py','robosuite','mujoco')},
         'module_sha256':{k:native().sha256(module_file.read_bytes()) for k in
             ('libero.libero.envs.bddl_base_domain','libero.libero.envs.predicates.base_predicates','robosuite.environments.robot_env')}}
     if metadata_case not in ('embedded','missing_lock'):
         req['config']['libero_source']={'revision':'a'*40,
-            'bddl_sha256':{'libero_goal/task.bddl':native().sha256(b'(synthetic bddl)')}}
+            'bddl_sha256':{'libero_goal/'+canonical:native().sha256(b'(synthetic bddl)')}}
+    if mapped: req['config']['asset_roots']={'libero':str(assets)}
+    if metadata_case=='historical_bad_digest': req['config']['libero_source']['bddl_sha256']['libero_goal/'+canonical]='0'*64
     if metadata_case=='native_failure':
         env.reset_from_xml_string=lambda xml:(_ for _ in ()).throw(ValueError('synthetic compile failure'))
     stages=[]
@@ -428,7 +460,9 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
     failures={'conflict':'bddl_resolution','suite_conflict':'bddl_resolution','body_mismatch':'bddl_resolution',
               'missing_lock':'bddl_resolution','missing_controller':'saved_native_settings',
               'bad_controller':'saved_native_settings','missing_camera':'saved_native_settings',
-              'bad_camera':'saved_native_settings','mutation':'native_construct','native_failure':'source_xml_compile'}
+              'bad_camera':'saved_native_settings','mutation':'native_construct','native_failure':'source_xml_compile',
+              'historical_bad_digest':'bddl_resolution','historical_xml_missing':'source_xml_assets',
+              'historical_cream_wrong_atom':'native_reference_validation'}
     if metadata_case in failures:
         worker=importlib.import_module('egrs.offline.sim_worker')
         result=worker.process_source(req,emit=emit)
@@ -437,7 +471,11 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
         assert result['inspection']['failure']['stage']==failures[metadata_case]
         assert result['inspection']['xml_sha256']
         assert any(e['type']=='inspection' and e['data'].get('xml_sha256') for e in stages)
-        if metadata_case!='native_failure': assert not events
+        if metadata_case=='historical_xml_missing':
+            error=result['errors'][0]['reason']
+            assert '1 unresolved' in error and 'missing' in error and 'source xml filler' not in error
+            assert result['inspection']['xml_assets']['source_xml']==xml
+        if metadata_case not in ('native_failure','historical_cream_wrong_atom'): assert not events
         else: assert events[-1]==('close',)
         return
     adapter=native().NativeAdapter(req)
@@ -452,8 +490,16 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
         assert kwargs['camera_heights']==[dimensions[n][0] for n in camera_order]
         assert kwargs['camera_widths']==[dimensions[n][1] for n in camera_order]
         assert events[2]==('reset',{'max_attempts':3})
-        assert events[3]==('xml','<mujoco><worldbody/></mujoco>')
-        assert adapter.inspection['goal_mapping'][0]['annotation_only'] is True
+        if mapped:
+            report=adapter.inspection['xml_assets']
+            assert report['source_xml']==xml and report['status']=='resolved'
+            assert events[3][0]=='xml' and str((assets/'textures/light-gray-floor-tile.png').resolve()).replace('\\','/') in events[3][1]
+            assert provenance['source_identifiers']['name_compatibility']['dataset_identity']==context['dataset_identity']
+            assert provenance['historical_source_byte_equality']=='unverified'
+            if metadata_case=='historical_cream':
+                assert adapter.inspection['goal_mapping'][0]['atom']==['on','cream_cheese_1','akita_black_bowl_1']
+        else: assert events[3]==('xml','<mujoco><worldbody/></mujoco>')
+        if metadata_case!='historical_cream': assert adapter.inspection['goal_mapping'][0]['annotation_only'] is True
     finally: adapter.close()
 
 
@@ -658,3 +704,23 @@ def test_metadata_partial_inspection_enumerates_nested_source_fields(tmp_path):
     assert fields['env_args.bddl_file']['status']=='missing'
     assert fields['env_args.env_kwargs.controller_configs']['status']=='missing'
     assert fields['env_args.env_kwargs.bddl_file_name']['status']=='present'
+
+
+def test_worker_accepts_optional_operational_dataset_identity_and_keeps_source_unchanged():
+    worker=importlib.import_module('egrs.offline.sim_worker')
+    req=request(); original=copy.deepcopy(req['source'])
+    req['dataset_identity']={'dataset':'synthetic/task021','revision':'synthetic-v1'}
+    validated=worker.validate_request(req)
+    assert validated['dataset_identity']==req['dataset_identity']
+    assert validated['source']==original and 'dataset_identity' not in original
+    result=worker.process_source(req,adapter_factory=FakeAdapter)
+    assert result['status']=='partial' and len(result['frames'])==1
+
+
+@pytest.mark.parametrize('identity',[None,{},{'dataset':'a'},{'dataset':'a','revision':''},
+    {'dataset':'','revision':'b'},{'dataset':1,'revision':'b'},
+    {'dataset':'a','revision':'b','extra':'c'}])
+def test_worker_rejects_malformed_optional_dataset_identity(identity):
+    worker=importlib.import_module('egrs.offline.sim_worker')
+    req=request(); req['dataset_identity']=identity
+    with pytest.raises(ValueError): worker.validate_request(req)
