@@ -11,7 +11,19 @@ def build_answer(sample, frame_facts, *, frame):
     evidence box must contain all named visible components (not projected or
     hidden geometry). Supports are independently gated for each emitted field.
     """
+    if frame_facts.get('format') == 'egrs.sim.frame-consensus.v1':
+        from .sim_consensus import build_consensus_answer
+        return build_consensus_answer(sample, frame_facts, frame=frame)
     facts=validate_frame_facts(frame_facts)
+    return _build_answer_core(sample, facts, frame=frame, evidence_authorized=facts['alignment']['accepted'])
+
+
+def _build_answer_core(sample, facts, *, frame, evidence_authorized):
+    """Shared field construction; callers first validate their distinct evidence proof.
+
+    This does not assert unique physical alignment. The consensus caller may
+    authorize an individual camera's evidence without changing alignment.accepted.
+    """
     if facts['source_id'] != sample['source_id'] or facts['frame'] != frame:
         raise ValueError('source/frame binding mismatch')
     context=sample['payload']['context']; registry=context['registry']; query=context['query_id']
@@ -40,7 +52,7 @@ def build_answer(sample, frame_facts, *, frame):
              'relation':'UNKNOWN','interaction':'UNKNOWN',
              'release':'NOT_APPLICABLE' if m['kind']=='mechanism' else 'UNKNOWN','evidence':[]}
         eligible=[]
-        if facts['alignment']['accepted'] and f['entity_ref'] is not None:
+        if evidence_authorized and f['entity_ref'] is not None:
             for e in f['evidence']:
                 if e['camera'] not in cameras:
                     raise ValueError('evidence camera binding mismatch')

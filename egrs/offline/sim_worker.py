@@ -28,8 +28,11 @@ MAX_LINE_BYTES=16*1024*1024
 def validate_request(request):
     json.dumps(request,allow_nan=False)
     expected={'format','request_id','source_root','source','registry','frames','config'}
-    if not isinstance(request,dict) or set(request)-{'dataset_identity'}!=expected or request['format']!=REQUEST_FORMAT:
+    if not isinstance(request,dict) or set(request)-{'dataset_identity','annotation_protocol'}!=expected or request['format']!=REQUEST_FORMAT:
         raise ValueError('invalid simulator source request')
+    if 'annotation_protocol' in request:
+        from .sim_consensus import PROTOCOL
+        if request['annotation_protocol']!=PROTOCOL:raise ValueError('unsupported annotation protocol')
     if 'dataset_identity' in request: validate_dataset_identity(request['dataset_identity'])
     for key in ('request_id','source_root'):
         if not isinstance(request[key],str) or not request[key]: raise ValueError('missing '+key)
@@ -75,8 +78,12 @@ def process_source(request, *, adapter_factory=None, emit=None):
     """
     request=validate_request(request)
     if adapter_factory is None:
-        from .sim_native import NativeAdapter
-        adapter_factory=NativeAdapter
+        if request.get('annotation_protocol'):
+            from .sim_consensus_native import ConsensusAdapter
+            adapter_factory=ConsensusAdapter
+        else:
+            from .sim_native import NativeAdapter
+            adapter_factory=NativeAdapter
     result={'format':RESPONSE_FORMAT,'request_id':request['request_id'],
             'source_id':request['source']['source_id'],'inspection':None,'alignment':None,
             'frames':[],'audit':[],'errors':[],'status':'failed'}
@@ -112,6 +119,8 @@ def process_source(request, *, adapter_factory=None, emit=None):
             frame=item['frame']
             facts,audit=adapter.frame(frame,result['alignment'])
             facts=validate_frame_facts(facts)
+            if facts.get('T',request['source']['T'])!=request['source']['T']:
+                raise ValueError('consensus state count differs from source')
             if facts['source_id']!=result['source_id'] or facts['frame']!=frame:
                 raise ValueError('adapter frame/source response binding differs')
             result['frames'].append(facts)
@@ -120,7 +129,9 @@ def process_source(request, *, adapter_factory=None, emit=None):
             # This is processed-frame progress; controller computes supervised-query counts.
             event('progress',{'processed_frames':len(result['frames']),'planned_frames':len(request['frames']),
                               'processed_percent':100*len(result['frames'])/len(request['frames'])})
-        result['status']='complete'
+        for failure in getattr(adapter,'execution_errors',[]):
+            result['errors'].append(deepcopy(failure));event('error',failure)
+        result['status']='partial' if result['errors'] else 'complete'
     except Exception as error:
         if getattr(error,'inspection',None) is not None:
             result['inspection']=deepcopy(error.inspection); event('inspection',result['inspection'])
