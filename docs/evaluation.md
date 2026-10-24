@@ -59,5 +59,15 @@ success. No automatic retry, baseline substitution, source replacement, existing
 directory overwrite or hidden resume occurs. New commands are user-started; do
 not restart completed episodes without explicit new authorization.
 
+Historical deployment contains 80 accepted sources, not 100 executed episodes:
+frypan_stove9 and cabinet_close_top_bowl are missing their old replay files.
+The default run refuses incomplete source availability. With an explicit
+`--allow-missing-sources`, the same available sources can be evaluated without
+blocking on unrelated source gaps. The plan/summary denominator remains 100,
+the 20 unavailable entries stay missing (not failures), and completion reports
+`completed_with_missing_sources` at 80%. This neither creates replacement states
+nor authorizes new preparation/replay. Comparisons must show the shared available
+80-source cohort as well as the planned denominator, not claim 100 rollouts.
+
 Only affected CPU/fake tests are required for this delivery. Fake model/source
 integration results are not real task success or physical source certification.

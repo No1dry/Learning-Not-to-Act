@@ -218,6 +218,26 @@ def test_changed_actor_statistics_rejected_before_any_environment(setup,tmp_path
     assert ev.inspect(tmp_path/'run')['counts']['classification_counts']['missing']==100
 
 
+def test_explicit_partial_source_scope_keeps_denominator_without_replaying(setup,tmp_path,monkeypatch):
+    from benchmark.remaining_goals.headless import planning
+    baseline=planning.dry_plan(None)
+    missing=baseline['tasks'][1]
+    baseline['tasks'][1]=dict(task_id=missing['task_id'],suite=missing['suite'],status='preparation_error',
+        error='synthetic missing old replay',episodes=[])
+    baseline['ready_episodes']=90
+    baseline['plan_sha256']=ev.digest({k:v for k,v in baseline.items() if k!='plan_sha256'})
+    monkeypatch.setattr(planning,'dry_plan',lambda _:deepcopy(baseline))
+    parts,made,_=components(monkeypatch)
+    with pytest.raises(ValueError,match='allow-missing'):ev.run(setup,tmp_path/'strict',components=parts)
+    assert not made
+    result=ev.run(setup,tmp_path/'partial',components=parts,allow_missing_sources=True)
+    assert result['status']=='completed_with_missing_sources' and len(made)==9
+    summary=ev.inspect(tmp_path/'partial')
+    assert summary['counts']['expected']==100 and summary['counts']['successes']==90
+    assert summary['counts']['classification_counts']['missing']==10
+    assert ev.read(tmp_path/'partial/progress.json')['completed_percent']==90
+
+
 def test_missing_video_keeps_original_raw_and_stops(setup,tmp_path,monkeypatch):
     parts,_,_=components(monkeypatch)
     original=parts['recorder']

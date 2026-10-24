@@ -407,16 +407,18 @@ def save_summary(output, summary):
         for row in rows:writer.writerow({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list)) else v for k,v in row.items()})
 
 
-def run(config_path, output, *, components=None):
+def run(config_path, output, *, components=None, allow_missing_sources=False):
     value = validate_plan(plan(config_path))
     from .policy import method_source_hash
     if method_source_hash()!=value['identity']['method_source_sha256']:raise ValueError('method code changed')
-    if value['ready_episodes']!=100:raise ValueError('reuse the accepted 100 mask10 sources; see file-only plan')
+    if value['ready_episodes']!=100 and not allow_missing_sources:
+        raise ValueError('not all 100 sources are available; inspect plan and explicitly --allow-missing-sources to retain gaps')
+    if not value['ready_episodes']:raise ValueError('no accepted mask10 sources available')
     output=Path(output).resolve()
     output.mkdir(parents=True,exist_ok=False)  # No hidden retry/resume or overwrite.
     write(output/'plan.json',value)
     batch=dict(format=BATCH,identity_sha256=value['identity_sha256'],plan_sha256=value['plan_sha256'],
-               status='running',tasks={},error=None)
+               status='running',tasks={},error=None,allow_missing_sources=allow_missing_sources)
     write(output/'batch.json',batch)
     progress=Progress(output);progress.update(phase='starting')
     components=components or _components()
@@ -428,12 +430,18 @@ def run(config_path, output, *, components=None):
         if not shared:shared.append(actual)
     try:
         for source in value['tasks']:
+            if source['status']!='ready':
+                batch['tasks'][source['task_id']]=dict(status='preparation_error',
+                    error=source.get('error','source not available'),model_queries=0)
+                write(output/'batch.json',batch)
+                progress.update(task=source['task_id'],episode=None,query=0,phase='source_unavailable')
+                continue
             metadata=_task(value,source,output,batch,progress,components,bind_actor)
             batch['tasks'][source['task_id']]={k:metadata[k] for k in ('status','error','cleanup_errors')}
             write(output/'batch.json',batch)
             if metadata['status']!='completed':
                 raise RuntimeError('technical pause; preserve evidence, do not automatically retry: '+str(metadata['error']))
-        batch['status']='completed'
+        batch['status']='completed' if value['ready_episodes']==100 else 'completed_with_missing_sources'
     except BaseException as error:
         batch.update(status='technical_pause',error=type(error).__name__+': '+str(error))
         raise
@@ -451,6 +459,7 @@ def main(argv=None):
     p.add_argument('--config',required=True);p.add_argument('--output')
     r=commands.add_parser('run',help='user-started real fixed 100-episode evaluation')
     r.add_argument('--config',required=True);r.add_argument('--output',required=True)
+    r.add_argument('--allow-missing-sources',action='store_true',help='explicitly run only accepted sources, retaining the fixed 100 denominator and source gaps')
     i=commands.add_parser('inspect',help='offline verification/summary of archived artifacts')
     i.add_argument('--run',required=True);i.add_argument('--output')
     args=parser.parse_args(argv)
@@ -463,7 +472,7 @@ def main(argv=None):
             models_loaded=False,simulation_created=False,identity_sha256=value['identity_sha256']),indent=2))
         return 0 if value['ready_episodes']==100 else 2
     if args.command=='run':
-        run(args.config,args.output)
+        run(args.config,args.output,allow_missing_sources=args.allow_missing_sources)
         return 0
     summary=inspect(args.run)
     if args.output:
