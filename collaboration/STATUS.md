@@ -119,3 +119,19 @@ X准备与实现100%；定向选择238项：234通过（98.32%）、4因Windows 
 021原范围accepted/closed保持，旧020r2的134个失败事件及缺少最终manifest的事实保留，不声明全量结束或导出ready。历史字节、真实native/物理对应和监督覆盖仍待验证；不改旧输出、原数据、RGB/窗口/规格或160/40分组。
 
 下一执行者：Codex审查固定remote实现及PR最终交付HEAD后，准备新的方法目录/配置/输出并提供完整命令，复用c6及已有数据；用户亲自启动真实标注。不新增GPU预检、全库或多平台门槛，不自动串行追加后续阶段。
+
+## 2026-10-24：022补表已验收部署，可直接由用户启动标注（最新）
+
+[022裁决](reviews/022_round1.md)：固定PR HEAD `fb7399b434a74fb66796d709fbd88d9b44c4cfa9`，独立238/238定向CPU/fake通过（100%，无skip），13变更blob吻合；新目录部署100%，X无需返修。旧audit/request文本中的14/14类已见任务名称均可解析，此前4个Object冲突已清除；另6种Object明确预期兼容，尚非真实字段验证。
+
+实际worker的8个助手、源码字节及3项传输hash核验通过；复用完整c6标注reference、旧XML证据及原200来源/3200查询，不新增MVP/真实元信息预读/GPU预检。没有启动HDF处理、恢复/渲染、模型、训练或eval。旧结果与缺manifest状态保持，PR #2未自动merge。
+
+下一步直接**用户启动022新版label-sim**；真实标注覆盖、训练和新方法eval仍0%。Codex审查实际输出后再给独立导出/训练命令，可靠子集不要求完美ready。见[阶段总结](../docs/stage_summaries/2026-10-24_object_name_coverage_acceptance.md)。
+
+## 2026-10-24：022真实标注100%完成，023对齐失败取证（最新）
+
+用户022作业已结束：200来源/3200查询100%处理、无运行错误；可监督165（5.16%），train165（6.45%）、dev0。ready=false、usable=true不能冒称原训练/验证方案ready。原165条、3200全部分母与原160/40划分保持。
+
+只读旧audit分析：2990查询（93.44%）因对齐未解；14来源获唯一next_state接受，81为双候选probe通过但等价认证失败（其中21还在额外帧有RGB失败）、3三候选歧义、102无候选通过（含全部100 Object）。不能直接调阈值或认定全是图像错误。
+
+[023工单](tasks/023_bounded_alignment_diagnostics.md)已交X，固定2条旧train来源、各3个既有probe做原图/重建图与状态分量诊断；不做全量重跑、VLA、标签/阈值变更或训练。X实现/CPU-fake，Codex审查部署，用户启动实际恢复/渲染。诊断结果出来后才作修正规则决定。见[阶段总结](../docs/stage_summaries/2026-10-24_sim_annotation_result_and_alignment_diagnosis.md)。本次Codex没有启动真实作业，旧失败与资料不清理。
