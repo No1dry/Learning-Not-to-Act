@@ -151,3 +151,12 @@ X准备与实现100%；定向选择238项：234通过（98.32%）、4因Windows 
 固定PR HEAD `9c0429d590f40bcef83570c85ced1ee0fc10b8dc`，Codex独立53/53定向CPU/fake通过（100%，无skip），17变更blob吻合。但封存生产JSON明确证明两个误拒绝：固定Git版本被额外要求特定目录basename；planned与已验证sources的不同schema被强制全字典相等。[023首轮审查](reviews/023_round1.md)needs-fix，仅这两项；具体实现要求已追加[023工单](tasks/023_bounded_alignment_diagnostics.md)，不扩范围或重跑全库。
 
 尚未验收部署或启动真实诊断；53项通过不冒称生产入口通过。原2来源/probe/预算、标签/阈值/160:40划分及旧结果保持。X小修/CPU；Codex复核只读输入后部署给命令；用户亲自启动。用户当前无需实验或训练。
+
+
+## 2026-10-24：023两项生产入口修复已由X交付，待Codex复核（最新）
+
+[023第二轮回复](responses/023_round2.md)记录固定remote修复实现 `7f26b6ed30f0c35681cec6aec924880ec1eed00e`，完整Git tree与本地受测实现一致。删除core目录basename限制，保留固定c6 revision、严格allow_reference、历史身份及原激活锁；planned与source分别唯一并逐项核对七个必有计划字段，保留完整request及registry/T/PNG/相机/split绑定。未重封生产输入、重命名依赖目录或重做prepare；首轮回复与审查原文保留，PR #2未合并。
+
+准备/实现100%；受影响诊断模块89/89 CPU/synthetic/fake通过（100%，45.79秒，0跳过、0失败）。production分支的合成fixture覆盖合法异名目录，真实基础/扩展schema与错误版本/计划身份/记录唯一性/扩展request绑定负例；内部定向与最终审查通过，不代替Codex生产输入核验。没有重跑全库、完整XML或GPU检查。
+
+本轮真实诊断恢复/渲染、训练和方法评测均0%，没有读取真实HDF/图像、加载仿真/模型或启停作业。两例/原probe、18恢复/6旧动作/36比较/72直接渲染、阈值/标签/160:40划分与旧022结果均保持；内部渲染另计并受原预算约束。下一执行者：Codex只读复核现有生产文本和选中绑定后隔离部署、提供完整命令；用户亲自启动两来源诊断，之后Codex据实测取证作研究决策。
