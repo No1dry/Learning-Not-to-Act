@@ -58,7 +58,8 @@ def fixture(tmp_path):
 class Adapter:
     def __init__(self, request, *, emit):
         self.request = request
-        self.inspection = {'synthetic': True, 'xml_sha256': 'a'*64}
+        self.inspection = {'synthetic': True, 'xml_sha256': 'a'*64,
+            'bddl_provenance':{'mode':'metadata_resolved_installed_bddl','source_identifiers':'metadata-audit-secret'}}
         self.audit = [{'native_name': 'annotation-side-secret'}]
         emit('stage', {'stage': 'native_initialize', 'phase': 'begin'})
         emit('inspection', self.inspection)
@@ -107,8 +108,10 @@ def test_mixed_run_preserves_originals_fixed_split_and_exports_real_tokens(tmp_p
     assert report['splits'] == {'train':1, 'dev':1}
     train, dev = rows(tmp_path/'export/train.jsonl'), rows(tmp_path/'export/dev.jsonl')
     assert train[0]['source_id'] == 'synthetic0' and dev[0]['source_id'] == 'synthetic1'
+    assert 'metadata-audit-secret' in (output/'audit.jsonl').read_text()
+    assert 'metadata-audit-secret' not in json.dumps(annotated)
     text = json.dumps(train + dev)
-    assert all(x not in text for x in ('native_truth', 'offline-secret', 'annotation-side-secret', 'alignment', 'physical_truth'))
+    assert all(x not in text for x in ('native_truth', 'offline-secret', 'annotation-side-secret', 'alignment', 'physical_truth', 'metadata-audit-secret', 'bddl_provenance'))
     from egrs.selector.encoding import encode_sample
     encoded = encode_sample(train[0], FakeProcessor(), max_length=30000)
     learned = ''.join(chr(x-1) for x in encoded['labels'][0].tolist() if x != -100)

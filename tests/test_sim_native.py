@@ -64,7 +64,7 @@ def test_source_inspects_only_designated_episode_and_records_hashes(tmp_path):
         assert episode.state(1).shape == (12,)
 
 
-@pytest.mark.parametrize('missing',['xml','env_args','states','actions','bddl'])
+@pytest.mark.parametrize('missing',['xml','env_args','states','actions'])
 def test_missing_required_source_data_is_gap_not_demo_guess(tmp_path, missing):
     make_source(tmp_path,missing=missing)
     with pytest.raises(ValueError):
@@ -347,7 +347,10 @@ def test_real_launch_binds_method_before_native_with_stale_cwd(tmp_path,monkeypa
 
 
 @pytest.mark.parametrize('camera_order', [['agentview','robot0_eye_in_hand'],['robot0_eye_in_hand','agentview']])
-def test_native_constructor_keeps_saved_controller_and_restores_exact_source_xml(tmp_path,monkeypatch,camera_order):
+@pytest.mark.parametrize('metadata_case',['embedded','missing_body','sole_argument','sole_kwargs','sole_attribute',
+    'conflict','suite_conflict','body_mismatch','missing_controller','bad_controller','missing_camera','bad_camera',
+    'mutation','native_failure','missing_lock'])
+def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_source_xml(tmp_path,monkeypatch,camera_order,metadata_case):
     """Fake only native/core boundaries; exercise the concrete adapter constructor."""
     import sys
     import types
@@ -360,6 +363,18 @@ def test_native_constructor_keeps_saved_controller_and_restores_exact_source_xml
         args['env_kwargs']['camera_names']=camera_order
         args['env_kwargs']['camera_heights']=[dimensions[n][0] for n in camera_order]
         args['env_kwargs']['camera_widths']=[dimensions[n][1] for n in camera_order]
+        if metadata_case!='embedded': del data.attrs['bddl_file_content']
+        if metadata_case in ('sole_argument','sole_kwargs'):
+            del data.attrs['bddl_file_name']
+        if metadata_case in ('sole_kwargs','sole_attribute'): del args['bddl_file']
+        if metadata_case in ('sole_argument','sole_attribute'): del args['env_kwargs']['bddl_file_name']
+        if metadata_case=='conflict': args['bddl_file']='other.bddl'
+        if metadata_case=='suite_conflict': args['bddl_file']='old/libero_object/task.bddl'
+        if metadata_case=='body_mismatch': data.attrs['bddl_file_content']='(wrong body)'
+        if metadata_case=='missing_controller': del args['env_kwargs']['controller_configs']
+        if metadata_case=='bad_controller': args['env_kwargs']['controller_configs']='OSC_POSE'
+        if metadata_case=='missing_camera': del args['env_kwargs']['camera_names']
+        if metadata_case=='bad_camera': args['env_kwargs']['camera_heights']=[999,999]
         data.attrs['env_args']=json.dumps(args)
         del data['demo_0/obs/agentview_rgb']
         data['demo_0/obs'].create_dataset('agentview_rgb',data=np.zeros((3,6,8,3),dtype=np.uint8))
@@ -400,8 +415,36 @@ def test_native_constructor_keeps_saved_controller_and_restores_exact_source_xml
         'versions':{k:'synthetic' for k in ('numpy','h5py','robosuite','mujoco')},
         'module_sha256':{k:native().sha256(module_file.read_bytes()) for k in
             ('libero.libero.envs.bddl_base_domain','libero.libero.envs.predicates.base_predicates','robosuite.environments.robot_env')}}
+    if metadata_case not in ('embedded','missing_lock'):
+        req['config']['libero_source']={'revision':'a'*40,
+            'bddl_sha256':{'libero_goal/task.bddl':native().sha256(b'(synthetic bddl)')}}
+    if metadata_case=='native_failure':
+        env.reset_from_xml_string=lambda xml:(_ for _ in ()).throw(ValueError('synthetic compile failure'))
+    stages=[]
+    def emit(event):
+        stages.append(event)
+        if metadata_case=='mutation' and event['type']=='stage' and event['data']['stage']=='native_construct':
+            (bddl/'task.bddl').write_bytes(b'(mutated)')
+    failures={'conflict':'bddl_resolution','suite_conflict':'bddl_resolution','body_mismatch':'bddl_resolution',
+              'missing_lock':'bddl_resolution','missing_controller':'saved_native_settings',
+              'bad_controller':'saved_native_settings','missing_camera':'saved_native_settings',
+              'bad_camera':'saved_native_settings','mutation':'native_construct','native_failure':'source_xml_compile'}
+    if metadata_case in failures:
+        worker=importlib.import_module('egrs.offline.sim_worker')
+        result=worker.process_source(req,emit=emit)
+        assert result['status']=='failed' and result['frames']==[]
+        assert result['errors'][0]['stage']==failures[metadata_case]
+        assert result['inspection']['failure']['stage']==failures[metadata_case]
+        assert result['inspection']['xml_sha256']
+        assert any(e['type']=='inspection' and e['data'].get('xml_sha256') for e in stages)
+        if metadata_case!='native_failure': assert not events
+        else: assert events[-1]==('close',)
+        return
     adapter=native().NativeAdapter(req)
     try:
+        provenance=adapter.inspection['bddl_provenance']
+        assert provenance['source_embedded_bddl_present']==(metadata_case=='embedded')
+        if metadata_case!='embedded': assert 'bddl_sha256' not in adapter.inspection
         kwargs=events[0][1]
         assert kwargs['controller_configs']=={'type':'OSC_POSE'}
         assert kwargs['robots']==['Panda'] and kwargs['camera_segmentations'] is None
@@ -533,7 +576,85 @@ def test_initial_inspection_survives_native_startup_before_constructor_returns(t
     events=[]
     with pytest.raises(worker.WorkerFailure) as error:
         worker.run_isolated(req,python=sys.executable,timeout_seconds=1.5,on_event=events.append)
-    inspection=next(e['data'] for e in events if e['type']=='inspection')
+    inspection=next(e['data'] for e in events if e['type']=='inspection' and e['data'].get('xml_sha256'))
     assert inspection['source_id']=='synthetic-source' and len(inspection['xml_sha256'])==64
     assert any(e['type']=='stage' and e['data']['stage']=='native_initialize' for e in events)
     assert error.value.events==events
+
+
+@pytest.mark.parametrize('missing', ['bddl', 'env_args', 'states'])
+def test_metadata_partial_inspection_survives_missing_fields(tmp_path, missing):
+    make_source(tmp_path, missing=missing)
+    events=[]
+    if missing=='bddl':
+        with native().SourceEpisode(tmp_path,descriptor(),emit=lambda kind,data:events.append(data)) as episode:
+            assert episode.bddl is None
+            assert 'bddl_sha256' not in episode.inspection
+            assert episode.inspection['fields']['data.attrs.bddl_file_content']['status']=='missing'
+    else:
+        with pytest.raises(ValueError) as caught:
+            native().SourceEpisode(tmp_path,descriptor(),emit=lambda kind,data:events.append(data))
+        report=caught.value.inspection
+        assert report['data_attrs']['bddl_file_content']['sha256']
+        assert report['failure']['stage']==('source.env_args' if missing=='env_args' else 'source.states')
+    assert events and events[0]['data_attr_keys']
+    assert '<mujoco>' not in json.dumps(events)
+
+
+def test_metadata_optional_source_fields_and_explicit_mapping(tmp_path):
+    make_source(tmp_path,missing='bddl')
+    with h5py.File(tmp_path/'synthetic.hdf5','r+') as f:
+        del f['data'].attrs['bddl_file_name']
+        del f['data'].attrs['problem_info']
+        del f['data/demo_0'].attrs['num_samples']
+    source=descriptor()
+    source.update(instruction_origin='explicit_human_mapping',instruction_mapping={
+        'instruction':source['instruction'],'reviewer':'synthetic','basis':'synthetic text mapping'})
+    with native().SourceEpisode(tmp_path,source) as episode:
+        assert episode.inspection['instruction_provenance']['origin']=='explicit_human_mapping'
+        assert episode.inspection['fields']['episode.attrs.num_samples']['status']=='missing'
+
+
+@pytest.mark.parametrize('change,stage',[('bad_json','source.env_args'),('empty_body','source.bddl_metadata'),
+    ('wrong_instruction','source.instruction'),('missing_instruction','source.instruction'),
+    ('missing_orientation','source.image_convention'),('wrong_orientation','source.image_convention'),
+    ('bad_count','source.num_samples'),('bad_shape','source.states')])
+def test_metadata_worker_preserves_partial_inspection_before_native(tmp_path,change,stage):
+    make_source(tmp_path)
+    with h5py.File(tmp_path/'synthetic.hdf5','r+') as f:
+        data=f['data']
+        if change=='bad_json': data.attrs['env_args']='{"env_kwargs":{},"env_kwargs":{}}'
+        if change=='empty_body': data.attrs['bddl_file_content']=''
+        if change=='wrong_instruction': data.attrs['problem_info']='{"language_instruction":"wrong task"}'
+        if change=='missing_instruction': del data.attrs['problem_info']
+        if change=='missing_orientation': del data.attrs['macros_image_convention']
+        if change=='wrong_orientation': data.attrs['macros_image_convention']='opencv'
+        if change=='bad_count': data['demo_0'].attrs['num_samples']=3.5
+        if change=='bad_shape':
+            del data['demo_0/states']; data['demo_0'].create_dataset('states',data=np.zeros((2,12)))
+    req=request(); req['source_root']=str(tmp_path)
+    req['config']={'core':{},'bddl_root':str(tmp_path),
+        'versions':{n:'synthetic' for n in ('numpy','h5py','robosuite','mujoco')},
+        'module_sha256':{n:'0'*64 for n in ('libero.libero.envs.bddl_base_domain',
+            'libero.libero.envs.predicates.base_predicates','robosuite.environments.robot_env')}}
+    events=[]
+    result=importlib.import_module('egrs.offline.sim_worker').process_source(req,emit=events.append)
+    assert result['inspection']['failure']['stage']==stage
+    assert result['errors'][0]['stage']==stage
+    assert result['inspection']['episode_attrs']['model_file']['sha256']
+    assert result['frames']==[]
+    assert not any(e['type']=='stage' and e['data']['stage']=='native_initialize' for e in events)
+
+
+
+def test_metadata_partial_inspection_enumerates_nested_source_fields(tmp_path):
+    make_source(tmp_path,missing='xml')
+    with h5py.File(tmp_path/'synthetic.hdf5','r+') as f:
+        args=json.loads(f['data'].attrs['env_args'])
+        del args['bddl_file']; del args['env_kwargs']['controller_configs']
+        f['data'].attrs['env_args']=json.dumps(args)
+    with pytest.raises(ValueError) as caught: native().SourceEpisode(tmp_path,descriptor())
+    fields=caught.value.inspection['fields']
+    assert fields['env_args.bddl_file']['status']=='missing'
+    assert fields['env_args.env_kwargs.controller_configs']['status']=='missing'
+    assert fields['env_args.env_kwargs.bddl_file_name']['status']=='present'
