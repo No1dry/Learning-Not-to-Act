@@ -122,3 +122,11 @@
 固定PR HEAD `9c0429d590f40bcef83570c85ced1ee0fc10b8dc`，Codex独立53/53定向CPU/fake通过（100%，无skip），17变更blob吻合。但封存生产JSON明确证明两个误拒绝：固定Git版本被额外要求特定目录basename；planned与已验证sources的不同schema被强制全字典相等。[023首轮审查](reviews/023_round1.md)needs-fix，仅这两项；具体实现要求已追加[023工单](tasks/023_bounded_alignment_diagnostics.md)，不扩范围或重跑全库。
 
 尚未验收部署或启动真实诊断；53项通过不冒称生产入口通过。原2来源/probe/预算、标签/阈值/160:40划分及旧结果保持。X小修/CPU；Codex复核只读输入后部署给命令；用户亲自启动。用户当前无需实验或训练。
+
+## 2026-10-24：023第二轮验收部署，等待用户启动两来源诊断（最新）
+
+[023第二轮裁决](reviews/023_round2.md)accepted/closed（软件范围），固定HEAD `fc1b49906b8b4e5b3bf9994c139ac3f61ec7b391`，X无需返修；独立89/89定向CPU/fake通过（100%，无skip），8变更blob一致。目录名误拒绝和planned/source schema误拒绝已解，其他身份/绑定/预算不变。
+
+代码/会话隔离部署100%，实际封存生产输入只读解析通过（2来源/6 probe/12 PNG），没有创建诊断输出、读取原始HDF、worker或仿真启动、恢复/渲染、模型/标签生成。旧输入identity与新诊断实现identity分别保留。PR未自动merge。
+
+用户下一步启动独立diagnose-alignment；真实诊断0%，训练/方法eval0%。上限18恢复/6旧动作/36比较/72直接render（内部初始化/restore渲染另计受原预算），不重跑200来源/改阈值标签/自动训练。见[阶段总结](../docs/stage_summaries/2026-10-24_alignment_diagnostic_software_acceptance.md)。旧165条监督、dev0、资料和失败均保留。
