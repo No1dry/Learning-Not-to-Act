@@ -19,6 +19,7 @@ from .sim_diagnostic_worker import (BUDGET, CAMERAS, CASES, REQUEST_FORMAT, Diag
 HISTORICAL_MANIFEST = '318c572532ac3f489d6da59e51039466579664501c69bed1fa113be3345549b4'
 HISTORICAL_CODE = 'b63e47c9c690937b528f5c03616db51b1f44b78971dd284f5d013241634d5a06'
 REFERENCE_REVISION = 'c6dc98de0c54517c976057598b60f4cedf7fa3e5'
+PLANNED_IDENTITY = ('sample_id','source_id','file','episode','group_ids','task_group','ancestry_known')
 CONSUMED = ('inventory.json','registries.json','backend-config.json','requests.jsonl',
             'image-bindings.json','audit.jsonl')
 
@@ -46,19 +47,20 @@ def _historical_inputs(path, output):
     if config['identity_scope']=='production':
         if manifest['identity']!=HISTORICAL_MANIFEST or manifest.get('code',{}).get('identity')!=HISTORICAL_CODE:
             raise ValueError('production input differs from task023 historical evidence')
-        if (native['core']['revision']!=REFERENCE_REVISION or native['core'].get('allow_reference') is not True
-                or Path(native['core']['root']).name!='LIBERO-core-c6-reference'):
+        if native['core']['revision']!=REFERENCE_REVISION or native['core'].get('allow_reference') is not True:
             raise ValueError('task023 requires unchanged fixed complete c6 reference core')
     images=read(root/'image-bindings.json')
     if images.get('format')!='egrs.sim.images.v1': raise ValueError('invalid historical image bindings')
     requests=_jsonl(root/'requests.jsonl'); audits=_jsonl(root/'audit.jsonl')
     selected=[]
     for sid,probes in CASES.items():
-        sources=[s for s in inventory['sources'] if s['source_id']==sid]
-        planned=[s for s in inventory['planned_sources'] if s['source_id']==sid]
+        sources=[s for s in inventory['sources'] if s.get('source_id')==sid]
+        planned=[s for s in inventory['planned_sources'] if s.get('source_id')==sid]
         matches=[r for r in requests if r['source']['source_id']==sid]
         results=[r for r in manifest.get('source_results',[]) if r['source_id']==sid]
-        if (len(sources)!=1 or planned!=sources or len(matches)!=1 or len(results)!=1
+        if (len(sources)!=1 or len(planned)!=1
+                or any(k not in sources[0] or k not in planned[0] or sources[0][k]!=planned[0][k] for k in PLANNED_IDENTITY)
+                or len(matches)!=1 or len(results)!=1
                 or results[0].get('status')!='complete' or inventory['source_splits'].get(sid)!='train'
                 or sources[0].get('split')!='train'):
             raise ValueError('fixed completed original train source required')
