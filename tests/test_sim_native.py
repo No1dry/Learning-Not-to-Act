@@ -349,7 +349,8 @@ def test_real_launch_binds_method_before_native_with_stale_cwd(tmp_path,monkeypa
 @pytest.mark.parametrize('camera_order', [['agentview','robot0_eye_in_hand'],['robot0_eye_in_hand','agentview']])
 @pytest.mark.parametrize('metadata_case',['embedded','missing_body','sole_argument','sole_kwargs','sole_attribute',
     'conflict','suite_conflict','body_mismatch','missing_controller','bad_controller','missing_camera','bad_camera',
-    'mutation','native_failure','missing_lock','historical','historical_cream','historical_bad_digest','historical_xml_missing','historical_cream_wrong_atom'])
+    'mutation','native_failure','missing_lock','historical','historical_cream','historical_bad_digest','historical_xml_missing','historical_cream_wrong_atom',
+    *['object_'+str(i) for i in range(10)],'object_wrong_atom','object_bad_digest'])
 def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_source_xml(tmp_path,monkeypatch,camera_order,metadata_case):
     """Fake only native/core boundaries; exercise the concrete adapter constructor."""
     import sys
@@ -378,11 +379,17 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
         data.attrs['env_args']=json.dumps(args)
         del data['demo_0/obs/agentview_rgb']
         data['demo_0/obs'].create_dataset('agentview_rgb',data=np.zeros((3,6,8,3),dtype=np.uint8))
-    mapped=metadata_case.startswith('historical')
+    object_case=metadata_case.startswith('object_')
+    mapped=metadata_case.startswith('historical') or object_case
+    suite='libero_object' if object_case else 'libero_goal'
     canonical='task.bddl'; mapped_registry=registry(); source_name='libero_goal/synthetic.hdf5'
     if mapped:
-        from tests.test_sim_metadata import historical_fixture
-        alias_args,alias_attrs,context=historical_fixture(3 if metadata_case.startswith('historical_cream') else 1)
+        from tests.test_sim_metadata import historical_fixture,object_historical_fixture
+        if object_case:
+            index=int(metadata_case.split('_')[1]) if metadata_case.split('_')[1].isdigit() else 0
+            alias_args,alias_attrs,context=object_historical_fixture(index)
+        else:
+            alias_args,alias_attrs,context=historical_fixture(3 if metadata_case.startswith('historical_cream') else 1)
         canonical=alias_attrs['bddl_file_name'].split('/')[-1]; mapped_registry=context['registry']
         source_name=context['source']['file']
         source_path=tmp_path/'libero_goal/synthetic.hdf5'
@@ -396,8 +403,9 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
             if metadata_case=='historical_xml_missing':
                 xml='<mujoco><!-- '+'source xml filler '*200+' --><asset><texture file="'+mac+'missing.png"/></asset></mujoco>'
             data['demo_0'].attrs['model_file']=xml
+        (tmp_path/suite).mkdir(exist_ok=True)
         source_path.rename(tmp_path/source_name)
-    bddl=tmp_path/'bddl/libero_goal'; bddl.mkdir(parents=True)
+    bddl=tmp_path/'bddl'/suite; bddl.mkdir(parents=True)
     (bddl/canonical).write_text('(synthetic bddl)')
     module_file=tmp_path/'native_source.py'; module_file.write_text('# synthetic native source\n')
     events=[]
@@ -423,7 +431,7 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
     module('benchmark.remaining_goals.libero_env',restore_raw_state=lambda *a:None,fresh_observation=lambda *a:None)
     module('benchmark.remaining_goals.finish.environment',_release=lambda *a:None,
            _verify_demo_native_references=lambda e:{'checked':True},_layout=lambda m:{'synthetic':True})
-    if not mapped:
+    if not mapped or object_case:
         import egrs.offline.sim_xml_assets as source_xml
         monkeypatch.setattr(source_xml,'resolve_source_xml',lambda xml,**kw:(xml,{'synthetic':True}))
     module('libero.libero.envs',TASK_MAPPING={'synthetic':task})
@@ -437,6 +445,12 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
         req['dataset_identity']=context['dataset_identity']
         assets=tmp_path/'assets'; (assets/'textures').mkdir(parents=True)
         (assets/'textures/light-gray-floor-tile.png').write_bytes(b'synthetic floor')
+        if object_case:
+            native_target=('alphabet_soup_1','bbq_sauce_1','butter_1','chocolate_pudding_1',
+                'cream_cheese_1','ketchup_1','milk_1','orange_juice_1','salad_dressing_1','tomato_sauce_1')[index]
+            env.parsed_problem={'goal_state':[['in',native_target,'basket_1_contain_region']]}
+            env.object_states_dict={native_target:None,'basket_1_contain_region':None}
+            if metadata_case=='object_wrong_atom': env.parsed_problem['goal_state'][0][0]='on'
         if metadata_case.startswith('historical_cream'):
             env.parsed_problem={'goal_state':[['on','cream_cheese_1','akita_black_bowl_1']]}
             env.object_states_dict={'cream_cheese_1':None,'akita_black_bowl_1':None}
@@ -447,9 +461,9 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
             ('libero.libero.envs.bddl_base_domain','libero.libero.envs.predicates.base_predicates','robosuite.environments.robot_env')}}
     if metadata_case not in ('embedded','missing_lock'):
         req['config']['libero_source']={'revision':'a'*40,
-            'bddl_sha256':{'libero_goal/'+canonical:native().sha256(b'(synthetic bddl)')}}
+            'bddl_sha256':{suite+'/'+canonical:native().sha256(b'(synthetic bddl)')}}
     if mapped: req['config']['asset_roots']={'libero':str(assets)}
-    if metadata_case=='historical_bad_digest': req['config']['libero_source']['bddl_sha256']['libero_goal/'+canonical]='0'*64
+    if metadata_case in ('historical_bad_digest','object_bad_digest'): req['config']['libero_source']['bddl_sha256'][suite+'/'+canonical]='0'*64
     if metadata_case=='native_failure':
         env.reset_from_xml_string=lambda xml:(_ for _ in ()).throw(ValueError('synthetic compile failure'))
     stages=[]
@@ -462,7 +476,8 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
               'bad_controller':'saved_native_settings','missing_camera':'saved_native_settings',
               'bad_camera':'saved_native_settings','mutation':'native_construct','native_failure':'source_xml_compile',
               'historical_bad_digest':'bddl_resolution','historical_xml_missing':'source_xml_assets',
-              'historical_cream_wrong_atom':'native_reference_validation'}
+              'historical_cream_wrong_atom':'native_reference_validation',
+              'object_bad_digest':'bddl_resolution','object_wrong_atom':'native_reference_validation'}
     if metadata_case in failures:
         worker=importlib.import_module('egrs.offline.sim_worker')
         result=worker.process_source(req,emit=emit)
@@ -475,7 +490,14 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
             error=result['errors'][0]['reason']
             assert '1 unresolved' in error and 'missing' in error and 'source xml filler' not in error
             assert result['inspection']['xml_assets']['source_xml']==xml
-        if metadata_case not in ('native_failure','historical_cream_wrong_atom'): assert not events
+        if metadata_case=='object_bad_digest':
+            provenance=result['inspection']['bddl_provenance']
+            assert provenance['source_identifiers']['basename']==canonical
+            assert provenance['source_identifiers']['name_compatibility']['suite']=='libero_object'
+            assert provenance['installed']['sha256']==native().sha256(b'(synthetic bddl)')
+            assert provenance['libero_source']['expected_bddl_sha256']=='0'*64
+            assert provenance['identity_check']=='failed'
+        if metadata_case not in ('native_failure','historical_cream_wrong_atom','object_wrong_atom'): assert not events
         else: assert events[-1]==('close',)
         return
     adapter=native().NativeAdapter(req)
@@ -492,14 +514,20 @@ def test_metadata_native_constructor_keeps_saved_controller_and_restores_exact_s
         assert events[2]==('reset',{'max_attempts':3})
         if mapped:
             report=adapter.inspection['xml_assets']
-            assert report['source_xml']==xml and report['status']=='resolved'
-            assert events[3][0]=='xml' and str((assets/'textures/light-gray-floor-tile.png').resolve()).replace('\\','/') in events[3][1]
+            if object_case:
+                assert report=={'synthetic':True} and events[3]==('xml',xml)
+            else:
+                assert report['source_xml']==xml and report['status']=='resolved'
+                assert events[3][0]=='xml' and str((assets/'textures/light-gray-floor-tile.png').resolve()).replace('\\','/') in events[3][1]
             assert provenance['source_identifiers']['name_compatibility']['dataset_identity']==context['dataset_identity']
             assert provenance['historical_source_byte_equality']=='unverified'
             if metadata_case=='historical_cream':
                 assert adapter.inspection['goal_mapping'][0]['atom']==['on','cream_cheese_1','akita_black_bowl_1']
         else: assert events[3]==('xml','<mujoco><worldbody/></mujoco>')
-        if metadata_case!='historical_cream': assert adapter.inspection['goal_mapping'][0]['annotation_only'] is True
+        if object_case:
+            assert adapter.inspection['goal_mapping'][0]['atom']==['in',native_target,'basket_1_contain_region']
+            assert adapter.inspection['goal_mapping'][0]['annotation_only'] is False
+        elif metadata_case!='historical_cream': assert adapter.inspection['goal_mapping'][0]['annotation_only'] is True
     finally: adapter.close()
 
 

@@ -58,8 +58,12 @@ def fixture(tmp_path):
 class Adapter:
     def __init__(self, request, *, emit):
         self.request = request
+        from tests.test_sim_metadata import object_historical_fixture
+        from egrs.offline.sim_metadata import resolve_bddl_metadata
+        args,attrs,ctx=object_historical_fixture(4)
+        identifiers=resolve_bddl_metadata(args,attrs,**ctx)
         self.inspection = {'synthetic': True, 'xml_sha256': 'a'*64,
-            'bddl_provenance':{'mode':'metadata_resolved_installed_bddl','source_identifiers':'metadata-audit-secret'},
+            'bddl_provenance':{'mode':'metadata_resolved_installed_bddl','marker':'metadata-audit-secret','source_identifiers':identifiers},
             'xml_assets':{'source_xml':'xml-audit-secret','resolver_version':'egrs.sim.historical-xml-assets.v1'}}
         self.audit = [{'native_name': 'annotation-side-secret'}]
         emit('stage', {'stage': 'native_initialize', 'phase': 'begin'})
@@ -113,14 +117,26 @@ def test_mixed_run_preserves_originals_fixed_split_and_exports_real_tokens(tmp_p
     assert 'metadata-audit-secret' not in json.dumps(annotated)
     assert 'xml-audit-secret' in (output/'audit.jsonl').read_text()
     assert 'xml-audit-secret' not in json.dumps(annotated)
+    audit_text=(output/'audit.jsonl').read_text()
+    events=rows(output/'events.jsonl')
+    compatibility=next(e['data']['bddl_provenance']['source_identifiers']['name_compatibility']
+        for e in events if e['type']=='inspection' and 'bddl_provenance' in e['data'])
+    assert compatibility['observed_in_prior_events'] is False
+    assert compatibility['evidence_status']=='anticipated_unobserved'
+    audit_markers=('name_compatibility','observed_in_prior_events','evidence_status','anticipated_unobserved',
+        'historical-bddl-names.v2','022_object_name_evidence.json','pick_the_cream_cheese_and_place_it_in_the_basket.bddl')
+    for marker in audit_markers:
+        assert marker in audit_text
+        assert marker not in json.dumps(annotated)
     text = json.dumps(train + dev)
-    assert all(x not in text for x in ('native_truth', 'offline-secret', 'annotation-side-secret', 'alignment', 'physical_truth', 'metadata-audit-secret', 'bddl_provenance', 'xml-audit-secret', 'historical-xml-assets'))
+    assert all(x not in text for x in ('native_truth', 'offline-secret', 'annotation-side-secret', 'alignment', 'physical_truth', 'metadata-audit-secret', 'bddl_provenance', 'xml-audit-secret', 'historical-xml-assets')+audit_markers)
     from egrs.selector.encoding import encode_sample
     encoded = encode_sample(train[0], FakeProcessor(), max_length=30000)
     learned = ''.join(chr(x-1) for x in encoded['labels'][0].tolist() if x != -100)
     assert 'SAT' in learned and 'UNSAT' in learned and 'UNKNOWN' not in learned
     prompt = ''.join(chr(x-1) for x in encoded['input_ids'][0].tolist()).split('assistant:')[0]
     assert 'sim_supervised' not in prompt and 'native_truth' not in prompt
+    assert all(marker not in prompt for marker in audit_markers)
     with pytest.raises(FileExistsError): export_sim(output/'manifest.json',wins,ATTEST,tmp_path/'export')
 
 
