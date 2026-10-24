@@ -32,7 +32,8 @@ class QwenSelector:
 
     @property
     def metadata(self):
-        return {"selector": "qwen2.5-vl", **self.config, "output_protocol": "egrs.selector-wire.v1", "checkpoint_identity": self._checkpoint, "model_loaded": self._model is not None, "adapter_loaded": self._model is not None and bool(self.config.get("adapter")), "trained_claim": False}
+        from .prompt import REGISTRY_PROMPT_VERSION,REGISTRY_PROMPT_SHA256
+        return {"selector": "qwen2.5-vl", **self.config, "output_protocol": "egrs.selector-wire.v1", "registry_prompt_version":REGISTRY_PROMPT_VERSION,"registry_prompt_sha256":REGISTRY_PROMPT_SHA256, "checkpoint_identity": self._checkpoint, "model_loaded": self._model is not None, "adapter_loaded": self._model is not None and bool(self.config.get("adapter")), "trained_claim": False}
 
     def _load(self):
         if self._closed:
