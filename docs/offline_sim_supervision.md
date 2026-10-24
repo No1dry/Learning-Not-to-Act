@@ -87,6 +87,30 @@ BDDL只支持三个明确标识：`data.attrs.bddl_file_name`、`env_args.bddl_f
 
 CPU/fake fixture仅假设上述受支持字段形状：合成HDF、小型数组/文本、fake原生边界。它们覆盖缺正文/可选文件名/num_samples、单一及一致标识、冲突/非法路径、hash锁/正文不等、构造前文件变化、指令/设置缺失或矛盾、partial inspection与audit隔离；不证明本批真实其余字段或native兼容。没有为本次修复新增真实元信息读取门槛；实际剩余差异由用户获准运行的精确失败阶段披露。
 
+## 021：历史来源名称与 XML 资源适配
+
+021是对020逐字名称规则的显式版本化修订；旧019、020、020r2产物和失败解释保持原样。[运行样例](../collaboration/tasks/021_runtime_compatibility_examples.json)来自既有用户作业事件，不是新增HDF读取。
+
+`egrs.sim.historical-bddl-names.v1`仅支持以下5行；不做词语替换、模糊匹配或全局drawer/cabinet、in/on互换：
+
+| 旧basename | canonical basename |
+|---|---|
+| `open_the_middle_layer_of_the_drawer.bddl` | `open_the_middle_drawer_of_the_cabinet.bddl` |
+| `open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl` | `open_the_top_drawer_and_put_the_bowl_inside.bddl` |
+| `put_the_bowl_on_the_top_of_the_drawer.bddl` | `put_the_bowl_on_top_of_the_cabinet.bddl` |
+| `put_the_cream_cheese_on_the_bowl.bddl` | `put_the_cream_cheese_in_the_bowl.bddl` |
+| `put_the_wine_bottle_on_the_top_of_the_drawer.bddl` | `put_the_wine_bottle_on_top_of_the_cabinet.bddl` |
+
+映射必须绑定固定dataset/revision、`libero_goal`、catalog内源文件/task_group、`demo_0..9`及对应source_id、准确的原instruction和既有`mapping_for(registry)`。控制器只在已验证inventory后生成可选操作字段`dataset_identity={dataset,revision}`；它与原source descriptor分开，不写入冻结样本。没有别名的旧请求仍受支持。仅env_args及env_kwargs中实际存在的标识可被归一；data.attrs必须明确为该行canonical，缺失或全部使用旧名仍拒绝。审计保留原值、basename、逐字段missing/validated/normalized/conflicting/malformed状态、规则/证据路径和来源绑定。
+
+当前canonical BDDL仍通过原安装文件hash锁、构造前复核及独立native目标映射；cream-cheese继续使用原生`on`原子。缺少历史正文时，`historical_source_byte_equality=unverified`保持不变，名称表不证明历史物理或字节相同。
+
+`egrs.sim.historical-xml-assets.v1`只在方法侧将直接asset mesh/texture/hfield的file属性内精确前缀`/Users/yifengz/workspace/libero-dev/chiliocosm/assets/`转为固定core已支持的home前缀。suffix保持原样交给core，之后才由其执行有界`.`/`..`归一、根歧义、文件存在、symlink包含关系和文件hash检查；不改core常量、不搜索basename、不下载资产。原home/官方根继续由core处理；根外遍历、未知/歧义根、缺文件和其他XML外部依赖仍失败。
+
+`inspection.xml_assets`记录真正`source_xml`和`source_xml_sha256`、`intermediate_xml_sha256`、最终`processed_xml_sha256`，并将core报告明确放在`intermediate_core_report`；其original指中间文本。顶层按引用occurrence保留真实原值、中间值、归一suffix、所用rule和目标文件hash，重复引用不会覆盖。错误消息仅摘要未解数量及少量原因，完整审计留在events/audit；名称/XML诊断均不进入student样本、history或prompt。原XML拓扑、相机、state/RGB和可观察性门槛照常执行。
+
+CPU验证仅使用合成文本、临时资产和合成HDF、fake原生边界；XML用例运行真实固定core纯资源逻辑。Windows缺少symlink权限时相应用例明确skip，不能声称已在该平台执行symlink逃逸验证。当前资产hash只说明安装字节；历史作者资产字节、真实native兼容及物理对应仍未证实，须由用户另行启动真实作业。
+
 ## 分别启动标注与导出
 
 在固定部署checkout运行，每次输出使用新目录；已有目录拒绝覆盖。以下交给用户的命令未在实施阶段执行：
