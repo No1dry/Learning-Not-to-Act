@@ -186,3 +186,13 @@ Codex实现[PR #6](https://github.com/No1dry/Learning-Not-to-Act/pull/6)@a236454
 用户027调用已成功，Codex读取registry与audit确认：同3B/checkpoint-3真实加载，image_count=0、prompt609/generated95 tokens、bare_json，wrapper/JSON/schema全部passed、error=null。原指令/原文片段逐字保留，两个actor_text正确为分别放alphabet soup和tomato sauce入basket；026已见文本故障在此调用中解决，不外推其他任务或视觉/执行成功率。
 
 代码仍PR #6@a236454a，原测试与部署证据复用，不再增加模型预检/重训/状态回放，X无需返修。027正式配置已上传、新输出路径隔离，完整conda/venv/python命令已交用户。下一步用户启动正式方法eval；Codex读取交回结果。准备/训练100%，方法评测完成0%；同旧基线80可用/100计划/20缺来源保持，双视角视频和原指标不变。未代启实验/自动merge/清理。见[真实通过及评测交接](../docs/stage_summaries/2026-10-24_registry_verified_evaluation_handoff.md)。
+
+## 2026-10-25：027视觉失败已处理；028由Codex真实验证并部署（最新）
+
+027正式尝试在首个视觉查询因两个evidence缺失暂停，0动作/0%完成。用户明确要求Codex直接修复并亲自运行必要验证，本次覆盖旧用户独占启动限制，但不授权完整评测或重训。
+
+[PR #7](https://github.com/No1dry/Learning-Not-to-Act/pull/7)最终db74ad40，34项CPU/fake通过；v3四类输入/六次真实视觉调用100%通过原严格契约，最终v4同失败输入665 tokens逐字等于v3。640步等价贪心快路径、25步原掩码，筛选3.60秒，不据冷启动185.31/187.60秒宣称端到端加速。原prompt/权重/计分不改，但推理协议明确版本化为证据先行、无支持只能UNKNOWN、最多3区域/8位小数/自生成ID绑定；不是后改JSON或模型内在置信度证明。
+
+真实OFT已在完整调度中返回并通过core校验的8×7动作，selector复用刚实测记录；没有仿真/执行。诊断脚本随后NumPy断言报错的failed报告仍保留，独立sidecar复核确认动作返回边界通过，不冒称整个脚本exit0或保存动作逐值。所有001—006诊断及旧失败保留，未清理/自动merge。
+
+代码/三环境部署和正式配置准备100%；软件接口范围验收，不再交用户诊断。必须保留负面观察：首个mask10中g0已满足仍被判UNSAT，策略选择g0，不能称方法有效。正式方法评测完成0%，未代启；下一步用户直接按已交完整命令启动同80可用/100计划/20缺来源的评测，Codex分析结果。完整运行与识别准确率仍未证明，见[详细阶段记录](../docs/stage_summaries/2026-10-25_visual_wire_verification_and_handoff.md)。
