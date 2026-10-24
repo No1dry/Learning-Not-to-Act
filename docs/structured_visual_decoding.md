@@ -27,6 +27,16 @@ earlier generated ID and an available snapshot, rather than guessing an ID or
 borrowing truth. Null association generates UNKNOWN claims and an empty evidence
 list; MATCHED still requires generated evidence. No decoded answer is rewritten.
 
+The v2 real call produced complete JSON (448 tokens), but asserted RELEASED
+without any region declaring release support. The original validator rejected
+it and that raw failure remains unchanged. V3 therefore generates the model's
+own evidence before its state values. For a field lacking declared regional
+support, only UNKNOWN is allowed during generation (mechanism release remains
+NOT_APPLICABLE); supported fields still have all original state alternatives.
+This is a disclosed conservative inference rule, not proof of model-intrinsic
+confidence and not a post-hoc edit. No support tag, bbox or physical state is
+inserted after decoding. The unchanged validator remains the final guard.
+
 The original training/prediction prompts, checkpoint-3, base/adapter weights,
 goal-memory rules, frozen OFT and evaluator metrics are unchanged. This is a
 versioned inference change, not a new trained checkpoint. Registry generation

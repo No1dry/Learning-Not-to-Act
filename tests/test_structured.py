@@ -8,6 +8,9 @@ from tests.test_data_training import example
 
 
 def accepted(schema,value):
+    value=copy.deepcopy(value)
+    for index,row in enumerate(value['goals']):
+        value['goals'][index]={k:row[k] for k in ('goal_ref','entity_ref','association','evidence','role','relation','release','interaction') if k in row}
     parser=visual_parser(schema)
     for char in json.dumps(value,separators=(',',':')):
         if char not in parser.get_allowed_characters():return False
@@ -56,3 +59,15 @@ def test_v2_binds_own_ids_and_bounds_decimal_repetition():
     assert not accepted(schema,bad)
     wrong=copy.deepcopy(sample['answer']);wrong['goals'][0]['evidence'][0]['snapshot_id']='q999'
     assert not accepted(schema,wrong)
+
+
+def test_evidence_first_never_adds_support_or_promotes_unsupported_claim():
+    sample=example();ctx=sample['payload']['context']
+    schema=prediction_schema(ctx['registry'],ctx['query_id'],sample['payload']['sensor'])
+    answer=copy.deepcopy(sample['answer'])
+    answer['goals'][0]['evidence'][0]['supports'].remove('release')
+    assert not accepted(schema,answer)
+    answer['goals'][0]['release']='UNKNOWN'
+    assert accepted(schema,answer)
+    assert validate_prediction(answer,ctx['registry'],ctx['query_id'],sample['payload']['sensor'])==answer
+    assert 'release' not in answer['goals'][0]['evidence'][0]['supports']

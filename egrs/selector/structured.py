@@ -3,7 +3,7 @@ from copy import deepcopy
 import hashlib
 import json
 
-VERSION = 'egrs.visual-canonical-json.v2'
+VERSION = 'egrs.visual-evidence-first.v3'
 DEPENDENCY = 'lm-format-enforcer==0.11.3'
 MAX_REGIONS = 3
 
@@ -139,15 +139,18 @@ def visual_parser(schema):
         regions=props['evidence']['items']['anyOf']
         available=[r['properties']['query_id']['enum'][0] for r in regions]
         mechanism=props['release']['enum']==['NOT_APPLICABLE']
+        def supported(ctx,field_name):
+            return any(field_name in item['supports'] and item['bbox'] is not None
+                for item in ctx['evidence'])
         return Fields([
             literal('{"goal_ref":'+js(ref)+',"entity_ref":'),
             field(lambda ctx:typed(props['entity_ref']),'entity'),
             literal(',"association":'),field(lambda ctx:typed(enum('MATCHED' if ctx['entity'] is not None else 'UNKNOWN'))),
-            literal(',"role":'),field(lambda ctx:typed(props['role'] if ctx['entity'] is not None else enum('UNKNOWN'))),
-            literal(',"relation":'),field(lambda ctx:typed(props['relation'] if ctx['entity'] is not None else enum('UNKNOWN'))),
-            literal(',"release":'),field(lambda ctx:typed(props['release'] if mechanism or ctx['entity'] is not None else enum('UNKNOWN'))),
-            literal(',"interaction":'),field(lambda ctx:typed(props['interaction'] if ctx['entity'] is not None else enum('UNKNOWN'))),
-            literal(',"evidence":'),field(lambda ctx:evidence(ref,ctx['entity'],available)),literal('}')])
+            literal(',"evidence":'),field(lambda ctx:evidence(ref,ctx['entity'],available),'evidence'),
+            literal(',"role":'),field(lambda ctx:typed(props['role'] if supported(ctx,'role') else enum('UNKNOWN'))),
+            literal(',"relation":'),field(lambda ctx:typed(props['relation'] if supported(ctx,'relation') else enum('UNKNOWN'))),
+            literal(',"release":'),field(lambda ctx:typed(props['release'] if mechanism or supported(ctx,'release') else enum('UNKNOWN'))),
+            literal(',"interaction":'),field(lambda ctx:typed(props['interaction'] if supported(ctx,'interaction') else enum('UNKNOWN'))),literal('}')])
 
     parts=[StringParser('{"query_id":'+js(schema['properties']['query_id']['enum'][0])+',"goals":[')]
     for index,goal in enumerate(schema['properties']['goals']['items']['anyOf']):
