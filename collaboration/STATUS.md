@@ -154,3 +154,11 @@
 Codex训练期间尚未完成评测对接准备，遗漏已明确记录；固定core批处理当前只接受顶层OFT，并非改一条配置就可直接执行完整方法。[025详细任务](tasks/025_oft_selector_batch_evaluation.md)已实际交X：只补方法侧OFT＋selector所需100条编排，复用冻结core、旧10状态与原指标/视频/底座，不先做全模型014框架、不重做状态、不增加MVP或rollout。X实现/定向CPU-fake，Codex审查部署及conda/python命令，用户启动正式评测。没有启动新模型推理、仿真或eval；旧训练、checkpoint和失败记录全部保留。
 
 [训练阶段总结](../docs/stage_summaries/2026-10-24_selector_training_results.md)。024准备范围关闭保持，025开放；本轮无清理/删除。
+
+## 2026-10-24：025由Codex直接实现并部署；纠正旧基线覆盖（最新）
+
+用户新授权不再等X。Codex已完成[PR #4](https://github.com/No1dry/Learning-Not-to-Act/pull/4)，v2实现79fdcf34、后续仅文档提交80b70c0；28/28定向CPU/fake通过（214.37秒），原core/测量/计分不变。controller/OFT/selector三环境只更新方法包并补原LIBERO路径，源码身份和传输SHA一致，未改依赖或自动merge。
+
+必须纠正：原100是计划，旧baseline实际只有80条执行；frypan_stove9、cabinet_close_top_bowl共20条缺旧回放文件。新文件计划同为80/100，models_loaded=false、simulation_created=false。严格默认不放行缺来源；用户显式--allow-missing-sources后可直接比较相同80条，100分母保留，20缺失不算失败、不换初态、不自动补状态。完成会显示completed_with_missing_sources和80%，不是跑满100。
+
+025软件/部署范围accepted，X无需实现或返修；20条来源缺口仍开放，整体100实际执行目标未完成。训练100%、方法评测0%；用户下一步按本地完整conda/venv/python命令启动同80来源的正式比较，控制台实时显示百分比/task/episode/query。若要求实际100，另需恢复原证据或明确授权准备。见[部署与覆盖总结](../docs/stage_summaries/2026-10-24_method_evaluation_entry_deployment.md)。旧日志、来源、训练checkpoint、初版80计划与失败记录均保留，无删除。

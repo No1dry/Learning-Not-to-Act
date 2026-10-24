@@ -1,5 +1,8 @@
 # 025：接入已训练selector，直接运行冻结100条mask10评测
 
+> 最新：用户改为Codex直接实现，X无需重复实现。025软件已完成并部署，见[PR #4](https://github.com/No1dry/Learning-Not-to-Act/pull/4)和[阶段总结](../../docs/stage_summaries/2026-10-24_method_evaluation_entry_deployment.md)。已核实原基线仅实际80/100，20条旧回放文件缺失；显式允许同80来源、保留100分母的实现已完成。20条数据证据缺口仍开放，不伪造完整100就绪。下文最初分工/100预期保留为历史，不再要求X实现。
+
+
 ## 目标和分工
 
 训练已经完成，不再处理训练数据、重训或新增MVP。X只补齐方法仓库的实际批量评测入口，Codex审查部署并给出完整conda/python命令，用户启动唯一正式100条评测。不要启动任何真实模型、仿真或额外rollout。
