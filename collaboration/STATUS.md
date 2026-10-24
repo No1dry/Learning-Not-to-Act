@@ -108,3 +108,14 @@ X准备与实现100%；受影响247项CPU/fake为242通过（97.98%）、5因Win
 [021裁决](reviews/021_round1.md)：固定PR HEAD3444ec74，独立247/247受影响CPU/fake通过（100%，无skip）；20变更blob吻合，代码/配置隔离部署100%，未自动merge。只读旧audit/request的CPU解析中，10类Goal名称通过、5份已有XML的495引用全部解析成功，无HDF/图像读取或仿真/模型工作；真实对应/标签仍未证实。
 
 旧020r2后续4类Object历史名称尚未被原工单列入，当前仍gap，范围遗漏由Codex负责。021原软件范围accepted/closed，不倒改旧失败；新[022补表任务](tasks/022_object_historical_name_coverage.md)交X，4个已观测及6个预期条目分开标明，不扩任务/预算、不放宽目标/对应规则。不是要求所有未知字段完美才使用可靠子集；为避免已知来源错误/重复渲染，建议完成小补表后再由用户启动全量。新版真实标注、训练和方法eval仍0%。见[阶段总结](../docs/stage_summaries/2026-10-24_historical_source_compatibility_acceptance.md)。
+
+
+## 2026-10-24：022由X实现并交付，待Codex审查（最新）
+
+[022首轮回复](responses/022_round1.md)已记录固定remote实现 `4e945eb978a76db7b09977f119fdc30f4e0963fb`，完整Git tree与本地受测实现一致；PR #2未合并。`egrs.sim.historical-bddl-names.v2`保留原5条Goal，新增固定Object十条准确历史名称，并显式绑定suite、文件和完整冻结指令。4条已有事件观察与6条预期兼容分别记录证据状态；不把预期项称为已观察或物理验证。原canonical明确来源、dataset/revision、任务/episode、registry、BDDL hash及native目标检查保持，诊断不进入student/history。
+
+X准备与实现100%；定向选择238项：234通过（98.32%）、4因Windows symlink权限跳过（1.68%）、0失败；实际执行234项全部通过。native/pipeline另有52项未选择，未重跑完整XML模块或全库。任务级与最终增量两轮内部独立审查无返修项，不代替Codex验收。没有真实HDF/图像读取、仿真加载、恢复/渲染、模型调用或作业启停；本轮真实标注、训练与方法评测均0%。
+
+021原范围accepted/closed保持，旧020r2的134个失败事件及缺少最终manifest的事实保留，不声明全量结束或导出ready。历史字节、真实native/物理对应和监督覆盖仍待验证；不改旧输出、原数据、RGB/窗口/规格或160/40分组。
+
+下一执行者：Codex审查固定remote实现及PR最终交付HEAD后，准备新的方法目录/配置/输出并提供完整命令，复用c6及已有数据；用户亲自启动真实标注。不新增GPU预检、全库或多平台门槛，不自动串行追加后续阶段。
