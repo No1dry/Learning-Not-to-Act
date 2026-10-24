@@ -26,6 +26,10 @@
     },
     "versions": {},
     "module_sha256": {},
+    "libero_source": {
+      "revision": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "bddl_sha256": {}
+    },
     "probe_count": 3,
     "rgb_threshold": 0.03,
     "min_visible_pixels": 16,
