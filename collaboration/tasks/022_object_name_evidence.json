@@ -1,0 +1,209 @@
+{
+  "format": "codex.task022.object-name-evidence.v1",
+  "source": "Prior user-run 020r2 events and CPU parser reproduction; no new HDF read or simulation",
+  "rows": [
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_alphabet_soup_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_alphabet_soup_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": true
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_bbq_sauce_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_bbq_sauce_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": true
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_butter_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_butter_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_butter_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": true
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_chocolate_pudding_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": true
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_cream_cheese_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_cream_cheese_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_cream_cheese_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": false
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_ketchup_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_ketchup_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_ketchup_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": false
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_milk_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_milk_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_milk_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": false
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_orange_juice_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_orange_juice_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_orange_juice_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": false
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_salad_dressing_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_salad_dressing_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_salad_dressing_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": false
+    },
+    {
+      "suite": "libero_object",
+      "file": "pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo.hdf5",
+      "canonical": "pick_up_the_tomato_sauce_and_place_it_in_the_basket.bddl",
+      "legacy": "pick_the_tomato_sauce_and_place_it_in_the_basket.bddl",
+      "observed_in_prior_events": false
+    }
+  ],
+  "observed_task_count": 4,
+  "anticipated_unobserved_task_count": 6,
+  "cpu_diagnostics": {
+    "format": "codex.task021.existing-audit-cpu-check.v1",
+    "identity": "cdbcd96d5756cf304add55fa84d65431e5200dcad325f44ce79ae6ef44ac30f5",
+    "code_files": 46,
+    "metadata": [
+      {
+        "task": "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5",
+        "status": "passed",
+        "basename": "open_the_middle_drawer_of_the_cabinet.bddl",
+        "rule": "egrs.sim.historical-bddl-names.v1"
+      },
+      {
+        "task": "libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5",
+        "status": "passed",
+        "basename": "open_the_top_drawer_and_put_the_bowl_inside.bddl",
+        "rule": "egrs.sim.historical-bddl-names.v1"
+      },
+      {
+        "task": "libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5",
+        "status": "passed",
+        "basename": "push_the_plate_to_the_front_of_the_stove.bddl",
+        "rule": null
+      },
+      {
+        "task": "libero_goal/put_the_bowl_on_the_plate_demo.hdf5",
+        "status": "passed",
+        "basename": "put_the_bowl_on_the_plate.bddl",
+        "rule": null
+      },
+      {
+        "task": "libero_goal/put_the_bowl_on_the_stove_demo.hdf5",
+        "status": "passed",
+        "basename": "put_the_bowl_on_the_stove.bddl",
+        "rule": null
+      },
+      {
+        "task": "libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5",
+        "status": "passed",
+        "basename": "put_the_bowl_on_top_of_the_cabinet.bddl",
+        "rule": "egrs.sim.historical-bddl-names.v1"
+      },
+      {
+        "task": "libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5",
+        "status": "passed",
+        "basename": "put_the_cream_cheese_in_the_bowl.bddl",
+        "rule": "egrs.sim.historical-bddl-names.v1"
+      },
+      {
+        "task": "libero_goal/put_the_wine_bottle_on_the_rack_demo.hdf5",
+        "status": "passed",
+        "basename": "put_the_wine_bottle_on_the_rack.bddl",
+        "rule": null
+      },
+      {
+        "task": "libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5",
+        "status": "passed",
+        "basename": "put_the_wine_bottle_on_top_of_the_cabinet.bddl",
+        "rule": "egrs.sim.historical-bddl-names.v1"
+      },
+      {
+        "task": "libero_goal/turn_on_the_stove_demo.hdf5",
+        "status": "passed",
+        "basename": "turn_on_the_stove.bddl",
+        "rule": null
+      },
+      {
+        "task": "libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.hdf5",
+        "status": "gap",
+        "reason": "BDDL identifier conflict"
+      },
+      {
+        "task": "libero_object/pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo.hdf5",
+        "status": "gap",
+        "reason": "BDDL identifier conflict"
+      },
+      {
+        "task": "libero_object/pick_up_the_butter_and_place_it_in_the_basket_demo.hdf5",
+        "status": "gap",
+        "reason": "BDDL identifier conflict"
+      },
+      {
+        "task": "libero_object/pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo.hdf5",
+        "status": "gap",
+        "reason": "BDDL identifier conflict"
+      }
+    ],
+    "assets": [
+      {
+        "task": "libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5",
+        "resolved": true,
+        "references": 99,
+        "mappings": 99,
+        "error_count": 0,
+        "error_examples": []
+      },
+      {
+        "task": "libero_goal/put_the_bowl_on_the_plate_demo.hdf5",
+        "resolved": true,
+        "references": 99,
+        "mappings": 99,
+        "error_count": 0,
+        "error_examples": []
+      },
+      {
+        "task": "libero_goal/put_the_bowl_on_the_stove_demo.hdf5",
+        "resolved": true,
+        "references": 99,
+        "mappings": 99,
+        "error_count": 0,
+        "error_examples": []
+      },
+      {
+        "task": "libero_goal/put_the_wine_bottle_on_the_rack_demo.hdf5",
+        "resolved": true,
+        "references": 99,
+        "mappings": 99,
+        "error_count": 0,
+        "error_examples": []
+      },
+      {
+        "task": "libero_goal/turn_on_the_stove_demo.hdf5",
+        "resolved": true,
+        "references": 99,
+        "mappings": 99,
+        "error_count": 0,
+        "error_examples": []
+      }
+    ],
+    "native_modules_loaded": [],
+    "input_basis": "Previously generated audit and request texts plus existing asset file bytes; no HDF or images read, no state restore, rendering, models or labels generated."
+  }
+}
