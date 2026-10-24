@@ -1,7 +1,7 @@
 """Versioned teacher guidance; shared student messages and contracts are unchanged."""
 import json
 
-from egrs.selector.prompt import build_messages, PREDICTION_SCHEMA, REGISTRY_SCHEMA
+from egrs.selector.prompt import build_messages, PREDICTION_SCHEMA, REGISTRY_SCHEMA, REGISTRY_PROMPT_SHA256
 from .common import digest
 
 PROMPT_VERSION = 'egrs.offline-teacher-guidance.v2'
@@ -24,7 +24,7 @@ Examples assume one transport goal g0 and query1. They are NOT current observati
 Unknown example: ''' + json.dumps(PREDICTION_EXAMPLES[0], separators=(',', ':')) + '''
 Evidence example, ONLY if the region visibly supports all listed claims: ''' + json.dumps(PREDICTION_EXAMPLES[1], separators=(',', ':'))
 
-PROMPT_SHA256 = digest([REGISTRY_SCHEMA, PREDICTION_SCHEMA, PROMPT_VERSION, PREDICTION_GUIDANCE])
+PROMPT_SHA256 = digest([REGISTRY_SCHEMA, REGISTRY_PROMPT_SHA256, PREDICTION_SCHEMA, PROMPT_VERSION, PREDICTION_GUIDANCE])
 
 
 def build_teacher_messages(payload=None, *, instruction=None):
