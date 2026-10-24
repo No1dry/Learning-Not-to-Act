@@ -2,10 +2,12 @@
 from copy import deepcopy
 import hashlib
 import json
+from time import perf_counter
 
 VERSION = 'egrs.visual-evidence-first.v3'
 DEPENDENCY = 'lm-format-enforcer==0.11.3'
 MAX_REGIONS = 3
+ALGORITHM = 'greedy-validity-fast-path.v1'
 
 
 def obj(properties):
@@ -168,3 +170,73 @@ def build_visual_prefix(tokenizer, schema, cached_tokenizer_data=None):
         def __getattr__(self,name):return getattr(tokenizer,name)
     data = cached_tokenizer_data or build_token_enforcer_tokenizer_data(CachedSpecialTokens())
     return build_transformers_prefix_allowed_tokens_fn(data,visual_parser(schema)),data
+
+
+class GreedyGrammarFilter:
+    """Exact masked-argmax result without scanning the vocab on legal winners.
+
+    Validity is checked on the contextual decoded suffix, not guessed token
+    pieces. On an illegal winner the original LMFE token set is fully masked.
+    This algorithm is only valid for the explicitly greedy, single-beam call.
+    """
+    def __init__(self,tokenizer,parser,tokenizer_data,prompt_length):
+        self.tokenizer,self.root,self.parser=tokenizer,parser,parser
+        self.data,self.prompt_length=tokenizer_data,prompt_length
+        self.text=''
+        self.special=frozenset(tokenizer.all_special_ids)
+        self.stats=dict(algorithm=ALGORITHM,fast_steps=0,filtered_steps=0,filter_seconds=0.)
+
+    @staticmethod
+    def consume(parser,text):
+        for char in text:
+            if char not in parser.get_allowed_characters():raise ValueError('outside grammar')
+            parser=parser.add_character(char)
+        return parser
+
+    def decode(self,ids):
+        return self.tokenizer.decode(ids,skip_special_tokens=False,clean_up_tokenization_spaces=False)
+
+    def __call__(self,input_ids,scores):
+        import torch
+        from lmformatenforcer import TokenEnforcer
+        started=perf_counter()
+        if input_ids.shape[0]!=1 or scores.shape[0]!=1:
+            raise ValueError('greedy grammar filter requires a single sequence/beam')
+        suffix=input_ids[0,self.prompt_length:].tolist()
+        actual=self.decode(suffix)
+        self.parser=self.consume(self.parser,actual[len(self.text):]) if actual.startswith(self.text) else self.consume(self.root,actual)
+        self.text=actual
+        winner=int(torch.argmax(scores[0]).item())
+        legal=False
+        if winner==self.tokenizer.eos_token_id:
+            legal=self.parser.can_end()
+        elif 0<=winner<self.data.vocab_size and winner not in self.special:
+            proposed=self.decode(suffix+[winner])
+            try:
+                if proposed.startswith(actual):self.consume(self.parser,proposed[len(actual):])
+                else:self.consume(self.root,proposed)
+                legal=True
+            except ValueError:pass
+        if legal:
+            self.stats['fast_steps']+=1
+            result=scores
+        else:
+            enforcer=TokenEnforcer(self.data,self.parser)
+            allowed=enforcer.get_allowed_tokens(input_ids[0].tolist()).allowed_tokens
+            if not allowed:raise ValueError('no valid grammar continuation')
+            mask=torch.full_like(scores,float('-inf'))
+            mask[0,allowed]=0
+            result=scores+mask
+            self.stats['filtered_steps']+=1
+        self.stats['filter_seconds']+=perf_counter()-started
+        return result
+
+
+def build_visual_filter(tokenizer,schema,prompt_length,cached_tokenizer_data=None):
+    from lmformatenforcer.integrations.transformers import build_token_enforcer_tokenizer_data
+    class CachedSpecialTokens:
+        all_special_ids=frozenset(tokenizer.all_special_ids)
+        def __len__(self):return len(tokenizer)
+        def __getattr__(self,name):return getattr(tokenizer,name)
+    data=cached_tokenizer_data or build_token_enforcer_tokenizer_data(CachedSpecialTokens())
+    return GreedyGrammarFilter(tokenizer,visual_parser(schema),data,prompt_length),data

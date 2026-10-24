@@ -14,7 +14,7 @@ def selector(monkeypatch, outputs):
     from egrs.selector import QwenSelector
     from egrs.selector import encoding
     from egrs.selector import structured
-    monkeypatch.setattr(structured,'build_visual_prefix',lambda *a:(lambda *a:[],object()))
+    monkeypatch.setattr(structured,'build_visual_filter',lambda *a:(lambda *a:[],object()))
     rows=iter(outputs)
     class Tokenizer:
         def decode(self,*args,**kwargs):return next(rows)

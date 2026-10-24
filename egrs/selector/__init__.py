@@ -59,15 +59,19 @@ class QwenSelector:
         self._last_input_audit.update(image_count=len(images), final_prompt_tokens=int(inputs["input_ids"].shape[1]))
         inputs = move_batch(inputs, self.config["device"])
         generation_kwargs = {}
+        visual_filter = None
         if self._visual_schema is not None:
-            from .structured import build_visual_prefix,schema_hash,VERSION,DEPENDENCY
-            prefix,self._tokenizer_enforcer_data = build_visual_prefix(
-                self._processor.tokenizer,self._visual_schema,self._tokenizer_enforcer_data)
-            generation_kwargs['prefix_allowed_tokens_fn'] = prefix
+            from .structured import build_visual_filter,schema_hash,VERSION,DEPENDENCY
+            visual_filter,self._tokenizer_enforcer_data = build_visual_filter(
+                self._processor.tokenizer,self._visual_schema,int(inputs['input_ids'].shape[1]),self._tokenizer_enforcer_data)
+            generation_kwargs['logits_processor'] = [visual_filter]
+            generation_kwargs['num_beams'] = 1
             self._last_input_audit['structured_decoding'] = dict(
                 version=VERSION,dependency=DEPENDENCY,schema_sha256=schema_hash(self._visual_schema))
         with torch.inference_mode():
             generated = self._model.generate(**inputs, do_sample=False, max_new_tokens=self.config["max_new_tokens"],**generation_kwargs)
+        if visual_filter is not None:
+            self._last_input_audit['structured_decoding'].update(getattr(visual_filter,'stats',{}))
         self._last_input_audit["generated_tokens"] = int(generated.shape[1] - inputs["input_ids"].shape[1])
         answer = self._processor.tokenizer.decode(generated[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True)
         from egrs.offline.parsing import decode_json_output

@@ -37,6 +37,17 @@ This is a disclosed conservative inference rule, not proof of model-intrinsic
 confidence and not a post-hoc edit. No support tag, bbox or physical state is
 inserted after decoding. The unchanged validator remains the final guard.
 
+V4 changes only the implementation of greedy token filtering, not the grammar.
+For explicitly single-beam greedy generation, an already-legal highest-logit
+token is the same winner as after full vocabulary masking. Such tokens use a
+direct contextual-suffix grammar check; illegal winners use the original full
+LMFE token mask. Sampling and multiple beams are not used. The raw winner,
+allowed output language and semantic rules are unchanged; fast/filtered step
+counts and filter wall time are audited. CPU comparisons test exact argmax
+equivalence, and a real same-input comparison must confirm output equivalence
+before deployment. This avoids repeatedly enumerating a large tokenizer trie
+for tokens that are already legal.
+
 The original training/prediction prompts, checkpoint-3, base/adapter weights,
 goal-memory rules, frozen OFT and evaluator metrics are unchanged. This is a
 versioned inference change, not a new trained checkpoint. Registry generation
