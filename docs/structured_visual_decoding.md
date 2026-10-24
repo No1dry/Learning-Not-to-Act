@@ -16,6 +16,17 @@ The original semantic validator remains unchanged. In particular a JSON-valid
 not prove visual correctness, field agreement or task success. Raw output,
 constraint version/dependency/schema hash and all failures remain audited.
 
+The first real v1 attempt added the keys but produced long decimals and repeated
+evidence until reaching the unchanged 1024-token limit. It was retained as a
+failure, not repaired into an answer. The v2 grammar uses compact fixed field
+order, exactly one row per input goal, up to three evidence regions per goal,
+and normalized coordinate literals with at most eight decimal digits. This is
+a versioned output-budget restriction, not a claim that all previous 12-region
+outputs are representable. Entity/query cross-references echo the model's own
+earlier generated ID and an available snapshot, rather than guessing an ID or
+borrowing truth. Null association generates UNKNOWN claims and an empty evidence
+list; MATCHED still requires generated evidence. No decoded answer is rewritten.
+
 The original training/prediction prompts, checkpoint-3, base/adapter weights,
 goal-memory rules, frozen OFT and evaluator metrics are unchanged. This is a
 versioned inference change, not a new trained checkpoint. Registry generation
