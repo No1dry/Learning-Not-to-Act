@@ -1,5 +1,7 @@
 # 现有观测的离线仿真监督
 
+Task023 的独立、有界对齐诊断见 [alignment_diagnostics.md](alignment_diagnostics.md)。该入口只写诊断侧车，不产生标签或启动后续作业。
+
 019提供两个独立入口：`label-sim`在隔离LIBERO worker中读取指定旧来源、恢复状态并渲染标注证据；`export-sim`校验封存产物后，通过既有selector数据构建器导出可用子集。两个入口都不启动teacher、特征抽取、训练、eval、下载或后续任务。真实标注及后续模型作业由用户分别启动；必要渲染可能使用GPU。
 
 固定范围：20任务、200来源（160 train / 40 dev）、1200窗口、3200查询、21目标。生产配置固定dataset `yifengzhu-hf/LIBERO-datasets`、revision `147fa5eb607bb696dd922c3518084a90954cd2f3`、inventory `3f550e7736ba5428dad789a307e2c18b32f25ec51dcc763e1fb8e65db563bb33`、windows `bb453b047946179eb1ec68eb4c9ab884f9b2564b5173e849836a5caa56988cdd`、registries `ec058064453e996175bebfca449d427b240d762a08d33c01f383164dc16a8095`。原RGB、窗口、来源划分、别名、ancestry披露、registry、提示预算及history规则保持不变；旧候选和结果保留在原目录。
