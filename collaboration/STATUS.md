@@ -130,3 +130,11 @@
 代码/会话隔离部署100%，实际封存生产输入只读解析通过（2来源/6 probe/12 PNG），没有创建诊断输出、读取原始HDF、worker或仿真启动、恢复/渲染、模型/标签生成。旧输入identity与新诊断实现identity分别保留。PR未自动merge。
 
 用户下一步启动独立diagnose-alignment；真实诊断0%，训练/方法eval0%。上限18恢复/6旧动作/36比较/72直接render（内部初始化/restore渲染另计受原预算），不重跑200来源/改阈值标签/自动训练。见[阶段总结](../docs/stage_summaries/2026-10-24_alignment_diagnostic_software_acceptance.md)。旧165条监督、dev0、资料和失败均保留。
+
+## 2026-10-24：023诊断100%完成；用户确认024共识标注修订（最新）
+
+用户运行023已complete：2来源/6probe/36比较无错，manifest `6f60f37329f1c4f4d0ab1926ca8022e71d48b11a2d534daadb40493dbdd841e7`。Codex核验产物并看4张面板：6/6 probe的三候选目标原子一致；重放误差以qvel为主但qpos也不同，不能说纯噪声。篮子agentview的前景0.03154—0.03223超门槛，wrist0.00620—0.01198通过，不能简单归咎背景或全局错位。仅两条train案例，不外推全量正确。
+
+用户已确认保留0.03/原谓词、改为逐帧逐视角逐字段共识。[024需求](tasks/024_frame_view_field_consensus_labels.md)已交X：匹配共同视角+全部可信候选字段一致+原可见/物理证书，否则UNKNOWN；不伪造物理唯一对齐/不改RGB或输入，不用relation广播grasp/release。验证后复用旧165及旧唯一对齐来源，未知来源才补算，新旧结果/代码身份分别记录。
+
+024实现和真实补标尚未开始，训练/eval未启动；原165/5.16%和dev0保留。X实施/CPU-fake，Codex审查部署，用户启动补标，不额外GPU预检或模型MVP。见[诊断结果与决策总结](../docs/stage_summaries/2026-10-24_alignment_diagnostic_results_and_labeling_revision.md)。未启动后续作业或清理资料。
