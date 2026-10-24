@@ -42,6 +42,12 @@ def main(argv=None):
     build.add_argument('--session', required=True)
     build.add_argument('--attestation', required=True)
     build.add_argument('--output', required=True)
+    label_sim = commands.add_parser('label-sim', help='explicit isolated simulator annotation; never starts a teacher or training')
+    for option in ('inventory', 'windows', 'registries', 'backend-config', 'output'):
+        label_sim.add_argument('--' + option, required=True)
+    export_sim = commands.add_parser('export-sim', help='verify immutable annotations and export existing fixed train/dev split')
+    for option in ('annotations', 'windows', 'attestation', 'output'):
+        export_sim.add_argument('--' + option, required=True)
     args = parser.parse_args(argv)
     from .common import read
     if args.command == 'plan':
@@ -57,6 +63,13 @@ def main(argv=None):
     elif args.command == 'prepare':
         from .windows import prepare
         result = prepare(read(args.inventory), read(args.registries), args.output)
+    elif args.command == 'label-sim':
+        from .sim import label_sim
+        result = label_sim(read(args.inventory), read(args.windows), read(args.registries),
+                           read(args.backend_config), args.output)
+    elif args.command == 'export-sim':
+        from .sim import export_sim
+        result = export_sim(args.annotations, read(args.windows), read(args.attestation), args.output)
     elif args.command in {'registry-candidates', 'candidates'}:
         from .teacher import OfflineTeacher
         from .candidates import registry_candidates, candidates
