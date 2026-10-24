@@ -1,0 +1,629 @@
+{
+  "format": "egrs.sim.goal-map.v1",
+  "basis": "Native LIBERO BDDL source reconnaissance; runtime BDDL/name agreement required",
+  "instructions": [
+    {
+      "instruction": "open the middle drawer of the cabinet",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "mechanism",
+          "target": "middle drawer",
+          "destination": null,
+          "atom": [
+            "open",
+            "wooden_cabinet_1_middle_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "active_part",
+            "reference"
+          ],
+          "identity_components": [
+            "active_part"
+          ],
+          "interaction_components": [
+            "active_part",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible active part or refreshed indicator and fixed reference."
+        }
+      ]
+    },
+    {
+      "instruction": "open the top drawer and put the bowl inside",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "mechanism",
+          "target": "top drawer",
+          "destination": null,
+          "atom": [
+            "open",
+            "wooden_cabinet_1_top_region"
+          ],
+          "annotation_only": true,
+          "relation_components": [
+            "active_part",
+            "reference"
+          ],
+          "identity_components": [
+            "active_part"
+          ],
+          "interaction_components": [
+            "active_part",
+            "hand"
+          ],
+          "basis": "instruction Open subgoal; native top-region open predicate; absent from final BDDL goal",
+          "evidence_requirement": "Visible active part or refreshed indicator and fixed reference."
+        },
+        {
+          "goal_ref": "g1",
+          "kind": "transport",
+          "target": "bowl",
+          "destination": "top drawer",
+          "atom": [
+            "in",
+            "akita_black_bowl_1",
+            "wooden_cabinet_1_top_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "push the plate to the front of the stove",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "plate",
+          "destination": "front of the stove",
+          "atom": [
+            "on",
+            "plate_1",
+            "main_table_stove_front_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination",
+            "reference"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible plate, local table surface at native stove-front region, and stove landmark; whole-table mask is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "put the bowl on the plate",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "bowl",
+          "destination": "plate",
+          "atom": [
+            "on",
+            "akita_black_bowl_1",
+            "plate_1"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "put the bowl on the stove",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "bowl",
+          "destination": "stove",
+          "atom": [
+            "on",
+            "akita_black_bowl_1",
+            "flat_stove_1_cook_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "put the bowl on top of the cabinet",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "bowl",
+          "destination": "top of the cabinet",
+          "atom": [
+            "on",
+            "akita_black_bowl_1",
+            "wooden_cabinet_1_top_side"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "put the cream cheese in the bowl",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "cream cheese",
+          "destination": "bowl",
+          "atom": [
+            "on",
+            "cream_cheese_1",
+            "akita_black_bowl_1"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "put the wine bottle on the rack",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "wine bottle",
+          "destination": "rack",
+          "atom": [
+            "on",
+            "wine_bottle_1",
+            "wine_rack_1_top_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "put the wine bottle on top of the cabinet",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "wine bottle",
+          "destination": "top of the cabinet",
+          "atom": [
+            "on",
+            "wine_bottle_1",
+            "wooden_cabinet_1_top_side"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "turn on the stove",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "mechanism",
+          "target": "stove",
+          "destination": null,
+          "atom": [
+            "turnon",
+            "flat_stove_1"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "active_part",
+            "reference"
+          ],
+          "identity_components": [
+            "active_part"
+          ],
+          "interaction_components": [
+            "active_part",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible active part or refreshed indicator and fixed reference."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the alphabet soup and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "alphabet soup",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "alphabet_soup_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the bbq sauce and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "bbq sauce",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "bbq_sauce_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the butter and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "butter",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "butter_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the chocolate pudding and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "chocolate pudding",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "chocolate_pudding_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the cream cheese and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "cream cheese",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "cream_cheese_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the ketchup and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "ketchup",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "ketchup_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the milk and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "milk",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "milk_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the orange juice and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "orange juice",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "orange_juice_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the salad dressing and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "salad dressing",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "salad_dressing_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    },
+    {
+      "instruction": "pick up the tomato sauce and place it in the basket",
+      "goals": [
+        {
+          "goal_ref": "g0",
+          "kind": "transport",
+          "target": "tomato sauce",
+          "destination": "basket",
+          "atom": [
+            "in",
+            "tomato_sauce_1",
+            "basket_1_contain_region"
+          ],
+          "annotation_only": false,
+          "relation_components": [
+            "target",
+            "destination"
+          ],
+          "identity_components": [
+            "target"
+          ],
+          "interaction_components": [
+            "target",
+            "hand"
+          ],
+          "basis": "native BDDL atom",
+          "evidence_requirement": "Visible target and relevant destination surface/rim/interior or region footprint; exterior or whole-parent visibility alone is insufficient."
+        }
+      ]
+    }
+  ]
+}
