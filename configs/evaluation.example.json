@@ -1,0 +1,13 @@
+{
+  "format": "egrs.evaluation.config.v1",
+  "core": {
+    "root": "/path/to/clean/eval-core",
+    "revision": "515e87d9b93ab838428791273a0f3020d6f56e9c"
+  },
+  "baseline_batch": "/path/to/existing/mask10-batch.json",
+  "baseline_run": "/path/to/existing/baseline-run",
+  "selector_config": "selector.json",
+  "selector_python": "/path/to/selector/env/bin/python",
+  "checkpoint": "/path/to/selector-run/checkpoint-3",
+  "checkpoint_state_sha256": "9ee11b8c28e9dbecd2f48b81762ea46bbe1eb38310ea0f0878b13ff241632867"
+}
