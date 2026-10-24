@@ -67,3 +67,10 @@
 [019](tasks/019_sim_supervised_annotations.md)软件范围accepted/closed，固定实现`b38526d5`；[裁决](reviews/019_round1.md)。Codex独立156/156受影响CPU/fake通过（100%，5.66秒），28变更文件blob吻合；新目录源码/配置部署100%，X当前无需返修。复用原环境、core515e87d及原3200查询，不新增GPU预检或重建数据。
 
 用户下一步启动真实label-sim。Codex/X尚未读取真实HDF、恢复状态、渲染、调用模型或训练；实际对应/覆盖待该作业验证。partial/UNKNOWN诚实保留，看processed与supervised比例；有可靠子集可导出，不以完美ready阻塞。见[阶段总结](../docs/stage_summaries/2026-10-24_sim_annotation_software_acceptance.md)。不自动merge或串行启动后续阶段。
+
+
+## 2026-10-24：019真实标注已结束，元信息入口失败（最新状态）
+
+用户已启动并完成首次019真实作业，但200/200来源均在读取缺失的 `bddl_file_content` 属性时失败；3200查询processed=0、supervised=0（均0%），最终ready=false、usable=false。尚未进入状态恢复或图像对齐，不将UNKNOWN占位误称对应失败或模型失败。manifest identity：`2cd2df5f78b7148b1f490f31c56ce5b55df6bad15c6131dc88172b756bc7b82d`。
+
+019既有软件测试证据保留，但不能代表本批真实元信息兼容成功。[020明确兼容性修复](tasks/020_sim_source_metadata_compatibility.md)已交X，状态open：支持明确来源标识解析固定本地BDDL，诚实区分内嵌原件与安装版本解析，不伪造历史字节一致性，不放宽任务/原图对应核验。旧失败数据不覆盖；X只修改与CPU/fake验证，Codex审查部署，用户再启动真实标注。当前没有可训练的仿真监督标签，训练和新方法评测仍0%。
