@@ -172,3 +172,11 @@ Codex直接实现[PR #5](https://github.com/No1dry/Learning-Not-to-Act/pull/5)@5
 026代码/审计部署已完成，但真实故障原因仍开放，不宣称已彻底解决。用户下一步启动单次同指令/checkpoint-3的3B文本调用，取新raw/schema；不加载OFT、不创建仿真、不执行策略动作。Codex读取后再决定后续，X无需修改；PR未自动merge。旧失败目录、原100计划/80可用及20缺证据范围保持，不覆盖或删除。
 
 [故障与026记录](../docs/stage_summaries/2026-10-24_selector_registry_parse_failure.md)。
+
+## 2026-10-24：026真实schema错误已定位，027字段提示已部署（最新）
+
+用户026单次同checkpoint-3文本调用已保存原文：image_count=0、prompt132/generated159 tokens。完整JSON围栏正常解析；instruction和source_text被大写/加句号改写，两个actor_text错误地为the person。并非只需忽略大小写；不把文本拆解失败视为视觉SFT或动作失败。
+
+Codex实现[PR #6](https://github.com/No1dry/Learning-Not-to-Act/pull/6)@a236454a，仅明确registry原字段并加两个通用非benchmark示例；原validator、视觉prompt、权重、checkpoint、评分保持，无自动重试/语义回填。55项定向CPU/fake通过（100%，37未选），新027目录及三环境方法包部署100%，不改依赖/core。固定processor文本预算检查与CLI dry-run不包含模型生成或仿真。
+
+真实修订效果仍开放，未宣称解决：下一步用户启动027独立文本调用，Codex读取新audit后决定恢复正式eval。X无需返修；训练100%、方法eval完成0%，旧100计划/80可用/20缺来源保持，原025/026失败均保留。见[阶段记录](../docs/stage_summaries/2026-10-24_registry_field_prompt_revision.md)。未自动merge或清理。
