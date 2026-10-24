@@ -26,11 +26,13 @@ class QwenSelector:
             "image_count": None,
             "final_prompt_tokens": None,
             "generated_tokens": None,
+            "raw_output": None,
+            "parsing": None,
         }
 
     @property
     def metadata(self):
-        return {"selector": "qwen2.5-vl", **self.config, "checkpoint_identity": self._checkpoint, "model_loaded": self._model is not None, "adapter_loaded": self._model is not None and bool(self.config.get("adapter")), "trained_claim": False}
+        return {"selector": "qwen2.5-vl", **self.config, "output_protocol": "egrs.selector-wire.v1", "checkpoint_identity": self._checkpoint, "model_loaded": self._model is not None, "adapter_loaded": self._model is not None and bool(self.config.get("adapter")), "trained_claim": False}
 
     def _load(self):
         if self._closed:
@@ -55,10 +57,31 @@ class QwenSelector:
             generated = self._model.generate(**inputs, do_sample=False, max_new_tokens=self.config["max_new_tokens"])
         self._last_input_audit["generated_tokens"] = int(generated.shape[1] - inputs["input_ids"].shape[1])
         answer = self._processor.tokenizer.decode(generated[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True)
+        from egrs.offline.parsing import decode_json_output
+        decoded = decode_json_output(answer, protocol="egrs.selector-wire.v1")
+        self._last_input_audit.update(raw_output=answer,
+            parsing={key:value for key,value in decoded.items() if key != 'value'})
+        if decoded['failure_stage'] is not None:
+            raise ValueError("selector generated invalid JSON at " + decoded['failure_stage'] +
+                ": " + decoded['error'] + "; raw retained, no semantic repair/retry")
+        return decoded['value']
+
+    def _validate_generated(self, validator, *args):
         try:
-            return json.loads(answer)
-        except json.JSONDecodeError as exc:
-            raise ValueError("selector generated invalid JSON; no repair/retry") from exc
+            result = validator(*args)
+        except Exception as error:
+            audit = self._last_input_audit.get('parsing')
+            if audit is not None:
+                from egrs.offline.parsing import schema_category
+                message = type(error).__name__ + ': ' + str(error)
+                audit['stages']['schema'] = 'failed'
+                audit['errors']['schema'] = message
+                audit.update(failure_stage='schema',error=message,
+                             schema_category=schema_category(str(error)))
+            raise
+        audit = self._last_input_audit.get('parsing')
+        if audit is not None: audit['stages']['schema'] = 'passed'
+        return result
 
     def registry(self, instruction):
         self._set_input_audit([], [])
@@ -67,7 +90,7 @@ class QwenSelector:
         answer = self._generate(build_messages(instruction=instruction), [])
         if self._last_input_audit["image_count"] is None:
             self._last_input_audit["image_count"] = 0
-        return validate_registry(answer, instruction)
+        return self._validate_generated(validate_registry, answer, instruction)
 
     def predict(self, payload):
         supplied = [shot["snapshot_id"] for shot in payload.get("sensor", []) if isinstance(shot, dict) and "snapshot_id" in shot] if isinstance(payload, dict) and isinstance(payload.get("sensor"), list) else []
@@ -96,7 +119,7 @@ class QwenSelector:
                 for field in ("history", "commands"):
                     bounded["context"][field] = [x for x in bounded["context"][field] if x.get("query_id") != oldest]
         context = bounded["context"]
-        return validate_prediction(answer, context["registry"], context["query_id"], bounded["sensor"])
+        return self._validate_generated(validate_prediction, answer, context["registry"], context["query_id"], bounded["sensor"])
 
     def reset(self):
         if self._closed:

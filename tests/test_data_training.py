@@ -485,13 +485,13 @@ def test_selector_input_audit_reports_actual_image_limit_trimming_and_no_stale_r
     selector = QwenSelector({"device": "cpu", "max_images": 2})
     selector._generate = lambda messages, images: sample["answer"]
     selector.predict(sample["payload"])
-    assert selector.last_input_audit == {"supplied_snapshot_ids": ["q1", "q2", "q3"], "snapshot_ids": ["q3"], "dropped_snapshot_ids": ["q1", "q2"], "image_count": 2, "final_prompt_tokens": None, "generated_tokens": None}
+    assert selector.last_input_audit == {"supplied_snapshot_ids": ["q1", "q2", "q3"], "snapshot_ids": ["q3"], "dropped_snapshot_ids": ["q1", "q2"], "image_count": 2, "final_prompt_tokens": None, "generated_tokens": None, "raw_output": None, "parsing": None}
     audit = selector.last_input_audit
     audit["snapshot_ids"].clear()
     assert selector.last_input_audit["snapshot_ids"] == ["q3"]
     selector._generate = lambda messages, images: sample["payload"]["context"]["registry"]
     selector.registry("put bowl in drawer")
-    assert selector.last_input_audit == {"supplied_snapshot_ids": [], "snapshot_ids": [], "dropped_snapshot_ids": [], "image_count": 0, "final_prompt_tokens": None, "generated_tokens": None}
+    assert selector.last_input_audit == {"supplied_snapshot_ids": [], "snapshot_ids": [], "dropped_snapshot_ids": [], "image_count": 0, "final_prompt_tokens": None, "generated_tokens": None, "raw_output": None, "parsing": None}
 
 
 def test_selector_input_audit_captures_length_trimming_and_failed_attempt():

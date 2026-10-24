@@ -33,13 +33,18 @@ def schema_category(message):
     return 'other_schema'
 
 
-def parse_teacher_output(raw, *, instruction=None, payload=None):
-    """Return separate wrapper/JSON/schema results, keeping the input untouched."""
-    result = dict(empty_parse_audit(), answer=None)
+def decode_json_output(raw, *, protocol=PARSE_PROTOCOL):
+    """Syntax only: one bare JSON value or one exact complete outer JSON fence.
+
+    No substring extraction, prose stripping, field repair, coercion or retries.
+    Online and offline consumers apply the same authoritative schemas afterward.
+    """
+    result = dict(empty_parse_audit(), value=None)
+    result['protocol'] = protocol
     stage = 'wrapper'
     try:
         if not isinstance(raw, str):
-            raise ValueError('teacher raw must be text')
+            raise ValueError('generated raw must be text')
         text = raw.strip()
         fenced = _FENCE.fullmatch(text)
         if fenced:
@@ -53,8 +58,25 @@ def parse_teacher_output(raw, *, instruction=None, payload=None):
             result['strategy'] = 'bare_json'
         result['stages'][stage] = 'passed'
         stage = 'json'
-        parsed = json.loads(text)
+        result['value'] = json.loads(text)
         result['stages'][stage] = 'passed'
+    except Exception as exc:
+        error = f'{type(exc).__name__}: {exc}'
+        result['stages'][stage] = 'failed'
+        result['errors'][stage] = error
+        result['failure_stage'] = stage
+        result['error'] = error
+    return result
+
+
+def parse_teacher_output(raw, *, instruction=None, payload=None):
+    """Return separate wrapper/JSON/schema results, keeping the input untouched."""
+    result = decode_json_output(raw)
+    parsed = result.pop('value')
+    result['answer'] = None
+    if result['failure_stage'] is not None:
+        return result
+    try:
         stage = 'schema'
         from egrs.contracts import validate_registry, validate_prediction
         if instruction is not None and payload is None:
