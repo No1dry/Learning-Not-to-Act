@@ -393,7 +393,7 @@ class NativeAdapter:
         from benchmark.remaining_goals.libero_compat import apply_libero_compat, reset_scene
         from benchmark.remaining_goals.libero_env import restore_raw_state, fresh_observation
         from benchmark.remaining_goals.finish.environment import _release, _verify_demo_native_references, _layout
-        from benchmark.remaining_goals.finish.xml_assets import resolve_xml
+        from .sim_xml_assets import resolve_source_xml
         self._stage('runtime_version_locks')
         versions = {name:importlib.metadata.version(name) for name in self.config['versions']}
         if versions != self.config['versions']:
@@ -425,7 +425,9 @@ class NativeAdapter:
         self._stage('bddl_resolution')
         suite = self.request['source']['file'].replace('\\','/').split('/')[0]
         try:
-            metadata=resolve_bddl_metadata(args,self.episode.bddl_attrs,suite=suite)
+            metadata=resolve_bddl_metadata(args,self.episode.bddl_attrs,suite=suite,
+                source=self.request['source'],dataset_identity=self.request.get('dataset_identity'),
+                registry=self.request['registry'])
         except ValueError as error:
             self.inspection['bddl_identifier_fields']=getattr(error,'metadata_fields',{})
             raise
@@ -445,9 +447,12 @@ class NativeAdapter:
         kwargs.update(overrides)
         task = TASK_MAPPING[args['problem_name'].lower()]
         self._stage('source_xml_assets')
-        processed, asset_report = resolve_xml(self.episode.xml, roots=self.config.get('asset_roots'))
+        processed, asset_report = resolve_source_xml(self.episode.xml, roots=self.config.get('asset_roots'))
         self.inspection['xml_assets'] = asset_report
-        if processed is None: raise ValueError('source XML asset resolution failed: '+repr(asset_report))
+        if processed is None:
+            errors=asset_report['errors']
+            reasons='; '.join(str(item.get('error','unresolved reference'))[:250] for item in errors[:3])
+            raise ValueError(f'source_xml_assets: {len(errors)} unresolved references: '+reasons)
         self._verify_xml_topology(self.episode.xml, processed)
         if self._emit is not None: self._emit('inspection',self.inspection)
         self._stage('native_construct')

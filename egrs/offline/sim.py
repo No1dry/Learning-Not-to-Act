@@ -176,6 +176,7 @@ def _inputs(inventory, windows, registries, config, *, require_worker_runtime=Tr
         if sid not in requests:
             requests[sid] = dict(format='egrs.sim.request.v1', request_id='source-' + digest(sid),
                 source_root=str(Path(inventory['root']).resolve()), source=deepcopy(source), registry=deepcopy(registry),
+                dataset_identity=dict(dataset=inventory['dataset'], revision=inventory['revision']),
                 frames=[], config=deepcopy(native))
     for sid, request in requests.items():
         request['frames'] = [dict(frame=f, images=images[(sid, f)]) for s, f in sorted(images) if s == sid]

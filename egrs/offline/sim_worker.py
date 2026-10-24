@@ -17,6 +17,7 @@ import time
 
 from .sim_contract import mapping_for, validate_frame_facts
 from .sim_identity import code_identity
+from .sim_metadata import validate_dataset_identity
 
 REQUEST_FORMAT='egrs.sim.request.v1'
 RESPONSE_FORMAT='egrs.sim.response.v1'
@@ -27,8 +28,9 @@ MAX_LINE_BYTES=16*1024*1024
 def validate_request(request):
     json.dumps(request,allow_nan=False)
     expected={'format','request_id','source_root','source','registry','frames','config'}
-    if not isinstance(request,dict) or set(request)!=expected or request['format']!=REQUEST_FORMAT:
+    if not isinstance(request,dict) or set(request)-{'dataset_identity'}!=expected or request['format']!=REQUEST_FORMAT:
         raise ValueError('invalid simulator source request')
+    if 'dataset_identity' in request: validate_dataset_identity(request['dataset_identity'])
     for key in ('request_id','source_root'):
         if not isinstance(request[key],str) or not request[key]: raise ValueError('missing '+key)
     source=request['source']
