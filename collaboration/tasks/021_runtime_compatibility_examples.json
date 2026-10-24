@@ -1,0 +1,139 @@
+{
+  "format": "codex.task021.runtime-compatibility-evidence.v1",
+  "implementation": "dc4dfa97d131fcdf8c1cc116e18d529a9d4d0efb",
+  "snapshot_only": true,
+  "source_results": {
+    "failed": 82
+  },
+  "stage_errors": {
+    "bddl_resolution": 42,
+    "source_xml_assets": 40
+  },
+  "last_source": "libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5#demo_2",
+  "conflicts": {
+    "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5": {
+      "source_id": "libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5#demo_0",
+      "fields": {
+        "data.attrs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "libero/libero/bddl_files/libero_goal/open_the_middle_drawer_of_the_cabinet.bddl",
+          "basename": "open_the_middle_drawer_of_the_cabinet.bddl"
+        },
+        "env_args.bddl_file": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/open_the_middle_layer_of_the_drawer.bddl",
+          "basename": "open_the_middle_layer_of_the_drawer.bddl"
+        },
+        "env_args.env_kwargs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/open_the_middle_layer_of_the_drawer.bddl",
+          "basename": "open_the_middle_layer_of_the_drawer.bddl"
+        }
+      }
+    },
+    "libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5": {
+      "source_id": "libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5#demo_0",
+      "fields": {
+        "data.attrs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "libero/libero/bddl_files/libero_goal/open_the_top_drawer_and_put_the_bowl_inside.bddl",
+          "basename": "open_the_top_drawer_and_put_the_bowl_inside.bddl"
+        },
+        "env_args.bddl_file": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl",
+          "basename": "open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl"
+        },
+        "env_args.env_kwargs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl",
+          "basename": "open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl"
+        }
+      }
+    },
+    "libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5": {
+      "source_id": "libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5#demo_0",
+      "fields": {
+        "data.attrs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "libero/libero/bddl_files/libero_goal/put_the_bowl_on_top_of_the_cabinet.bddl",
+          "basename": "put_the_bowl_on_top_of_the_cabinet.bddl"
+        },
+        "env_args.bddl_file": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/put_the_bowl_on_the_top_of_the_drawer.bddl",
+          "basename": "put_the_bowl_on_the_top_of_the_drawer.bddl"
+        },
+        "env_args.env_kwargs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/put_the_bowl_on_the_top_of_the_drawer.bddl",
+          "basename": "put_the_bowl_on_the_top_of_the_drawer.bddl"
+        }
+      }
+    },
+    "libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5": {
+      "source_id": "libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5#demo_0",
+      "fields": {
+        "data.attrs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "libero/libero/bddl_files/libero_goal/put_the_cream_cheese_in_the_bowl.bddl",
+          "basename": "put_the_cream_cheese_in_the_bowl.bddl"
+        },
+        "env_args.bddl_file": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/put_the_cream_cheese_on_the_bowl.bddl",
+          "basename": "put_the_cream_cheese_on_the_bowl.bddl"
+        },
+        "env_args.env_kwargs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/put_the_cream_cheese_on_the_bowl.bddl",
+          "basename": "put_the_cream_cheese_on_the_bowl.bddl"
+        }
+      }
+    },
+    "libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5": {
+      "source_id": "libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5#demo_0",
+      "fields": {
+        "data.attrs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "libero/libero/bddl_files/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet.bddl",
+          "basename": "put_the_wine_bottle_on_top_of_the_cabinet.bddl"
+        },
+        "env_args.bddl_file": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/put_the_wine_bottle_on_the_top_of_the_drawer.bddl",
+          "basename": "put_the_wine_bottle_on_the_top_of_the_drawer.bddl"
+        },
+        "env_args.env_kwargs.bddl_file_name": {
+          "status": "conflicting",
+          "value": "chiliocosm/bddl_files/libero_goal/put_the_wine_bottle_on_the_top_of_the_drawer.bddl",
+          "basename": "put_the_wine_bottle_on_the_top_of_the_drawer.bddl"
+        }
+      }
+    }
+  },
+  "asset_error_count": 32,
+  "asset_examples": [
+    {
+      "original": "/Users/yifengz/workspace/libero-dev/chiliocosm/assets/scenes/../textures/light-gray-floor-tile.png",
+      "error": "ValueError: unknown asset root; no fallback to original path"
+    },
+    {
+      "original": "/Users/yifengz/workspace/libero-dev/chiliocosm/assets/scenes/../textures/martin_novak_wood_table.png",
+      "error": "ValueError: unknown asset root; no fallback to original path"
+    },
+    {
+      "original": "/Users/yifengz/workspace/libero-dev/chiliocosm/assets/scenes/../textures/light-gray-plaster.png",
+      "error": "ValueError: unknown asset root; no fallback to original path"
+    },
+    {
+      "original": "/Users/yifengz/workspace/libero-dev/chiliocosm/assets/stable_scanned_objects/akita_black_bowl/texture.png",
+      "error": "ValueError: unknown asset root; no fallback to original path"
+    },
+    {
+      "original": "/Users/yifengz/workspace/libero-dev/chiliocosm/assets/stable_hope_objects/cream_cheese/texture_map.png",
+      "error": "ValueError: unknown asset root; no fallback to original path"
+    }
+  ],
+  "source": "Existing user-run 020r2 events only; no new HDF processing or simulation."
+}

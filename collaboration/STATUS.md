@@ -88,3 +88,9 @@
 已隔离部署配置原本支持的完整annotation reference core c6dc98d，020r2新配置/新输出就绪（100%）；方法代码仍dc4dfa97，不改旧环境/原eval core及任何旧输出。实际worker解释器8个辅助函数可导入，固定Git身份/干净状态及3项传输SHA通过，无原始HDF读取或仿真/模型工作。X无需因部署失配返修。
 
 用户下一步亲自启动020r2真实标注；Codex不代启或追加。真实native/XML/图像对应、可监督比例仍未证实，训练与方法eval仍0%。详见[更正记录](reviews/020_deployment_correction.md)和[阶段总结](../docs/stage_summaries/2026-10-24_annotation_core_deployment_correction.md)。019与020旧失败均保留。
+
+## 2026-10-24：020r2已运行，历史命名/资源前缀兼容阻塞（最新）
+
+用户启动020r2后，缺模块已解决；已观察82/200来源返回失败（41%尝试快照），42条为BDDL历史名称差异、40条为Mac历史XML资产根未识别；processed/supervised均0%，不属于物理对应或模型结果。快照不是全量完成率。Codex仅建议用户停止，未代停/重启，不假定已停止。
+
+[021工单](tasks/021_historical_source_names_and_xml_assets.md)已交X，附已有events提取的真实字段/路径样例：5对准确历史名称映射采用版本化来源适配，未知/跨任务冲突继续拒绝；方法侧支持精确历史Mac前缀的有界asset解析，不改固定core、原数据、谓词或对应阈值。只做相关CPU/fake，不新增GPU预检。X实现；Codex审查部署；用户启动后续真实标注。旧019/020/020r2失败与分母保持。
