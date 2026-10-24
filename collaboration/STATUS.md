@@ -61,3 +61,9 @@
 018软件验收保持accepted，暂不要求继续修解析。用户已确认改用已有仿真轨迹生成离线监督，来源、帧对应和可观察性有明确边界。正式[019工单](tasks/019_sim_supervised_annotations.md)已交接X；**尚未启动真实状态恢复、渲染、新教师、训练或eval**。原图/窗口/规格/分组和旧结果保留。见[本轮结果、图像核查与决策依据](../docs/stage_summaries/2026-10-24_teacher_candidate_quality_review.md)。
 
 下一执行者：X实现019并CPU/fake验证；Codex审查部署；用户启动真实标注。018软件已闭环，不继续因模型标注质量反修解析；RGB、窗口、文本规格和160/40分组不重建。
+
+## 2026-10-24：019软件已验收、配置部署完成
+
+[019](tasks/019_sim_supervised_annotations.md)软件范围accepted/closed，固定实现`b38526d5`；[裁决](reviews/019_round1.md)。Codex独立156/156受影响CPU/fake通过（100%，5.66秒），28变更文件blob吻合；新目录源码/配置部署100%，X当前无需返修。复用原环境、core515e87d及原3200查询，不新增GPU预检或重建数据。
+
+用户下一步启动真实label-sim。Codex/X尚未读取真实HDF、恢复状态、渲染、调用模型或训练；实际对应/覆盖待该作业验证。partial/UNKNOWN诚实保留，看processed与supervised比例；有可靠子集可导出，不以完美ready阻塞。见[阶段总结](../docs/stage_summaries/2026-10-24_sim_annotation_software_acceptance.md)。不自动merge或串行启动后续阶段。
