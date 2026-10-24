@@ -93,6 +93,9 @@ def validate_frame_facts(value):
     sidecar, never in selector payloads. entityN is a source-stable sensor alias.
     Worker retains alias->native bindings and physical diagnostics in audit only.
     """
+    if value.get('format') == 'egrs.sim.frame-consensus.v1':
+        from .sim_consensus import validate_consensus_fact
+        return validate_consensus_fact(value)
     json.dumps(value, allow_nan=False)
     keys(value, {'format','source_id','frame','alignment','goals'}, 'frame facts')
     if value['format'] != FRAME_FORMAT or not isinstance(value['source_id'],str) or not value['source_id']:

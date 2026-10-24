@@ -13,6 +13,10 @@ def main(argv=None):
     alignment = commands.add_parser('diagnose-alignment', help='explicit bounded task023 native diagnostic; no labels or follow-on stages')
     alignment.add_argument('--manifest', required=True)
     alignment.add_argument('--output', required=True)
+    consensus = commands.add_parser('label-consensus', help='versioned field consensus; reuse verified old labels, no model/training')
+    consensus.add_argument('--parent', required=True)
+    consensus.add_argument('--windows', required=True)
+    consensus.add_argument('--output', required=True)
     inventory = commands.add_parser('inventory', help='inspect local approved files; freeze all source splits')
     inventory.add_argument('--root', required=True)
     inventory.add_argument('--instruction-map')
@@ -62,6 +66,9 @@ def main(argv=None):
     elif args.command == 'diagnose-alignment':
         from .sim_diagnostics import diagnose_alignment
         result = diagnose_alignment(args.manifest, args.output)
+    elif args.command == 'label-consensus':
+        from .sim_consensus import label_consensus
+        result=label_consensus(args.parent,read(args.windows),args.output)
     elif args.command == 'inventory':
         from .inventory import inventory
         result = inventory(args.root, instruction_map=read(args.instruction_map) if args.instruction_map else None,

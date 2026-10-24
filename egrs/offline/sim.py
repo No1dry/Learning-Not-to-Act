@@ -11,6 +11,7 @@ import json
 import math
 from pathlib import Path
 import sys
+import time
 
 from egrs.data import ATTESTATION_KEYS, validate_sample, write_json, build_dataset
 from .common import digest, new_output, read, seal, verify
@@ -41,7 +42,7 @@ def sha256_file(path):
 
 
 def _backend(config):
-    if (not isinstance(config, dict) or set(config) - {'format', 'identity_scope', 'synthetic_basis', 'expected', 'worker', 'native'}
+    if (not isinstance(config, dict) or set(config) - {'format', 'identity_scope', 'synthetic_basis', 'expected', 'worker', 'native','annotation_protocol'}
             or config.get('format') != 'egrs.sim.backend.v1'):
         raise ValueError('invalid simulator backend configuration')
     scope = config.get('identity_scope')
@@ -49,6 +50,9 @@ def _backend(config):
         raise ValueError('explicit production or synthetic expected identities required')
     if scope == 'production' and config['expected'] != REAL_IDENTITIES:
         raise ValueError('production frozen identities cannot change')
+    if 'annotation_protocol' in config:
+        from .sim_consensus import PROTOCOL
+        if config['annotation_protocol']!=PROTOCOL:raise ValueError('unsupported annotation protocol')
     if scope == 'synthetic' and (not config.get('synthetic_basis') or config['expected']['dataset'] == REAL_IDENTITIES['dataset']):
         raise ValueError('synthetic fixtures require a distinct dataset and explicit basis')
     worker = config.get('worker', {})
@@ -179,6 +183,7 @@ def _inputs(inventory, windows, registries, config, *, require_worker_runtime=Tr
                 dataset_identity=dict(dataset=inventory['dataset'], revision=inventory['revision']),
                 frames=[], config=deepcopy(native))
     for sid, request in requests.items():
+        if config.get('annotation_protocol'):request['annotation_protocol']=config['annotation_protocol']
         request['frames'] = [dict(frame=f, images=images[(sid, f)]) for s, f in sorted(images) if s == sid]
         validate_request(request)
     if config['identity_scope'] == 'production':
@@ -262,7 +267,7 @@ def _write_progress(path, value):
     temporary.replace(path)
 
 
-def label_sim(inventory, windows, registries, backend_config, output, *, worker_runner=None):
+def label_sim(inventory, windows, registries, backend_config, output, *, worker_runner=None, parent=None):
     """Validate the whole frozen workload before launching one worker per source."""
     worker, requests, samples, bindings = _inputs(inventory, windows, registries, backend_config)
     implementation = code_identity()
@@ -271,6 +276,12 @@ def label_sim(inventory, windows, registries, backend_config, output, *, worker_
     write_json(output/'inventory.json', inventory); write_json(output/'registries.json', registries)
     write_json(output/'backend-config.json', backend_config)
     write_json(output/'image-bindings.json', _image_lock(requests))
+    parent_reference=None
+    if parent is not None:
+        parent_reference=dict(format='egrs.sim.parent-reuse.v1',path=parent['path'],
+            identity=parent['manifest']['identity'],code=parent['manifest']['code'],
+            reused_sources=sorted(parent['cached']),supervised_queries=parent['supervised'])
+        write_json(output/'parent-reference.json',parent_reference)
     annotations, details, source_results = {}, {}, []
     by_frame = defaultdict(list)
     for sample in samples: by_frame[bindings[sample['sample_id']]].append(sample)
@@ -279,13 +290,18 @@ def label_sim(inventory, windows, registries, backend_config, output, *, worker_
     def append(name, value):
         streams[name].write(json.dumps(value, ensure_ascii=False, allow_nan=False, separators=(',', ':')) + '\n')
         streams[name].flush()
-    def progress():
+    last_progress=[0.,None]
+    def progress(force=False):
+        first_frame=bool(annotations) and last_progress[1] is not None and last_progress[1]['total']['processed']==0
+        if not force and not first_frame and time.monotonic()-last_progress[0]<3 and last_progress[1] is not None:
+            return last_progress[1]
         value = dict(format='egrs.sim.progress.v1', coverage=_coverage(samples, annotations, details, inventory, windows))
         _write_progress(output/'progress.json', value)
         total = value['coverage']['total']
         print(json.dumps({'sim_progress': {k: total[k] for k in (
             'planned','processed','processed_percent','supervised','supervised_percent','gap','unknown')}},
             ensure_ascii=False), file=sys.stderr, flush=True)
+        last_progress[:]=[time.monotonic(),value['coverage']]
         return value['coverage']
     def annotate(fact, processed):
         sid, frame = fact['source_id'], fact['frame']
@@ -298,11 +314,23 @@ def label_sim(inventory, windows, registries, backend_config, output, *, worker_
             append('audit.jsonl', dict(type='query_coverage', sample_id=sample['sample_id'],
                 source_id=sid, frame=frame, processed=processed, gaps=result['gaps'],
                 supervised_state_query=result['supervised_state_query'],
-                history_available=bool(sample['payload']['context']['history'])))
+                history_available=bool(sample['payload']['context']['history']),
+                **({'field_certificate':result['certificate']} if 'certificate' in result else {})))
     try:
-        progress()
+        progress(force=True)
         for sid, request in requests.items():
             append('requests.jsonl', request)
+            if parent is not None and sid in parent['cached']:
+                old=parent['cached'][sid]
+                for item in request['frames']:
+                    fact=deepcopy(old[item['frame']])
+                    append('events.jsonl',dict(format='egrs.sim.reused-frame.v1',source_id=sid,
+                        parent_identity=parent['manifest']['identity'],parent_code=parent['manifest']['code']['identity'],data=fact))
+                    annotate(fact,True)
+                source_results.append(dict(source_id=sid,status='complete',origin='verified_parent_reuse',
+                    native_worker_started=False,planned_frames=len(request['frames']),processed_frames=len(old),errors=[]))
+                progress(force=True)
+                continue
             events, received, result_event, protocol_errors = [], {}, [], []
             def on_event(event):
                 append('events.jsonl', event)  # Retain even a rejected protocol record.
@@ -321,6 +349,8 @@ def label_sim(inventory, windows, registries, backend_config, output, *, worker_
                         raise ValueError('invalid initialization stage event')
                     if kind == 'frame':
                         fact = validate_frame_facts(data)
+                        if fact.get('T',request['source']['T'])!=request['source']['T']:
+                            raise ValueError('source state count changed in frame certificate')
                         if fact['source_id'] != sid or fact['frame'] not in {f['frame'] for f in request['frames']} or fact['frame'] in received:
                             raise ValueError('unsolicited, duplicate or misbound frame fact')
                         # Build all query labels before admitting this fact.
@@ -353,9 +383,9 @@ def label_sim(inventory, windows, registries, backend_config, output, *, worker_
                 raise
             for item in request['frames']:
                 if item['frame'] not in received: annotate(_unknown(sid, item['frame'], request['registry']), False)
-            source_results.append(dict(source_id=sid, status=response['status'], planned_frames=len(request['frames']),
+            source_results.append(dict(source_id=sid, status=response['status'], origin='native_computation', planned_frames=len(request['frames']),
                                        processed_frames=len(received), errors=response.get('errors', [])))
-            progress()
+            progress(force=True)
     finally:
         for stream in streams.values(): stream.close()
     with (output/'annotations.jsonl').open('x', encoding='utf-8') as stream:
@@ -367,11 +397,15 @@ def label_sim(inventory, windows, registries, backend_config, output, *, worker_
              and all(r['status'] == 'complete' for r in source_results))
     if code_identity() != implementation:
         raise ValueError('annotation implementation identity changed during labeling')
-    manifest = seal(dict(format='egrs.sim.annotations.v1', inputs=deepcopy(backend_config['expected']),
+    files=set(ARTIFACT_FILES)
+    if parent_reference is not None:files.add('parent-reference.json')
+    manifest = seal(dict(format='egrs.sim.annotations.v2' if parent_reference else 'egrs.sim.annotations.v1', inputs=deepcopy(backend_config['expected']),
         config_identity=digest(backend_config), mapping_identity=digest(load_goal_map()), code=implementation,
         source_splits=deepcopy(inventory['source_splits']), source_results=source_results, coverage=coverage,
         ready=ready, usable=coverage['total']['supervised'] > 0,
-        files={name: sha256_file(output/name) for name in sorted(ARTIFACT_FILES)}))
+        **({'annotation_protocol':backend_config['annotation_protocol'],'parent':parent_reference,
+            'reuse_summary':dict(sources=len(parent['cached']),supervised_queries=parent['supervised'],native_sources=len(requests)-len(parent['cached']))} if parent_reference else {}),
+        files={name: sha256_file(output/name) for name in sorted(files)}))
     write_json(output/'manifest.json', manifest)
     return manifest
 
@@ -383,14 +417,27 @@ def _jsonl(path):
 def export_sim(annotations, windows, attestation, output):
     """Verify sealed artifacts and original samples; export usable subset only."""
     path = Path(annotations).resolve(strict=True)
-    manifest = verify(read(path), 'egrs.sim.annotations.v1'); root = path.parent
-    if set(manifest.get('files', {})) != ARTIFACT_FILES: raise ValueError('incomplete sealed artifact file set')
+    manifest = verify(read(path)); root = path.parent
+    if manifest.get('format') not in {'egrs.sim.annotations.v1','egrs.sim.annotations.v2'}:raise ValueError('unsupported annotations')
+    consensus=manifest['format']=='egrs.sim.annotations.v2'
+    expected_files=ARTIFACT_FILES|({'parent-reference.json'} if consensus else set())
+    if set(manifest.get('files', {})) != expected_files: raise ValueError('incomplete sealed artifact file set')
     for name, checksum in manifest['files'].items():
         if sha256_file(root/name) != checksum: raise ValueError('artifact file hash mismatch: ' + name)
     if manifest['code'] != code_identity() or manifest['mapping_identity'] != digest(load_goal_map()):
         raise ValueError('annotation/export implementation or mapping identity changed')
     inventory, registries, config = read(root/'inventory.json'), read(root/'registries.json'), read(root/'backend-config.json')
     _, requests, originals, bindings = _inputs(inventory, windows, registries, config, require_worker_runtime=False)
+    parent=None
+    if consensus:
+        from .sim_consensus import load_parent,PROTOCOL
+        reference=read(root/'parent-reference.json')
+        if reference!=manifest.get('parent') or manifest.get('annotation_protocol')!=PROTOCOL:
+            raise ValueError('parent/protocol metadata changed')
+        parent=load_parent(reference['path'],windows)
+        if (parent['manifest']['identity']!=reference['identity'] or parent['manifest']['code']!=reference['code']
+                or sorted(parent['cached'])!=reference['reused_sources'] or parent['supervised']!=reference['supervised_queries']):
+            raise ValueError('unverified parent reuse')
     if (manifest['inputs'] != config['expected'] or manifest['config_identity'] != digest(config)
             or manifest['source_splits'] != inventory['source_splits']):
         raise ValueError('sealed input/config/fixed split binding mismatch')
@@ -408,8 +455,19 @@ def export_sim(annotations, windows, attestation, output):
     # Recompute labels from retained frame events rather than trusting coverage claims.
     facts, details, reconstructed = {}, {}, {}
     for event in _jsonl(root/'events.jsonl'):
+        if consensus and event.get('format')=='egrs.sim.reused-frame.v1':
+            fact=validate_frame_facts(event['data']);sid=fact['source_id'];frame=fact['frame'];key=(sid,frame)
+            if (key in facts or sid not in parent['cached'] or fact!=parent['cached'][sid].get(frame)
+                    or event.get('source_id')!=sid or event.get('parent_identity')!=parent['manifest']['identity']
+                    or event.get('parent_code')!=parent['manifest']['code']['identity']):
+                raise ValueError('reused frame differs from sealed parent')
+            facts[key]=fact
         if event.get('format') == EVENT_FORMAT and event.get('type') == 'frame':
             fact = validate_frame_facts(event['data']); key = (fact['source_id'], fact['frame'])
+            if consensus:
+                from .sim_consensus import FORMAT
+                if fact['format']!=FORMAT or fact['source_id'] in parent['cached'] or fact['T']!=requests[fact['source_id']]['source']['T']:
+                    raise ValueError('new fact does not match consensus source protocol')
             if key in facts or fact['source_id'] not in requests or fact['frame'] not in {x['frame'] for x in requests[fact['source_id']]['frames']}:
                 raise ValueError('duplicate/unsolicited audit frame')
             facts[key] = fact
