@@ -116,3 +116,9 @@
 只读旧audit分析：2990查询（93.44%）因对齐未解；14来源获唯一next_state接受，81为双候选probe通过但等价认证失败（其中21还在额外帧有RGB失败）、3三候选歧义、102无候选通过（含全部100 Object）。不能直接调阈值或认定全是图像错误。
 
 [023工单](tasks/023_bounded_alignment_diagnostics.md)已交X，固定2条旧train来源、各3个既有probe做原图/重建图与状态分量诊断；不做全量重跑、VLA、标签/阈值变更或训练。X实现/CPU-fake，Codex审查部署，用户启动实际恢复/渲染。诊断结果出来后才作修正规则决定。见[阶段总结](../docs/stage_summaries/2026-10-24_sim_annotation_result_and_alignment_diagnosis.md)。本次Codex没有启动真实作业，旧失败与资料不清理。
+
+## 2026-10-24：023首轮交付已审，生产入口两处小修（最新）
+
+固定PR HEAD `9c0429d590f40bcef83570c85ced1ee0fc10b8dc`，Codex独立53/53定向CPU/fake通过（100%，无skip），17变更blob吻合。但封存生产JSON明确证明两个误拒绝：固定Git版本被额外要求特定目录basename；planned与已验证sources的不同schema被强制全字典相等。[023首轮审查](reviews/023_round1.md)needs-fix，仅这两项；具体实现要求已追加[023工单](tasks/023_bounded_alignment_diagnostics.md)，不扩范围或重跑全库。
+
+尚未验收部署或启动真实诊断；53项通过不冒称生产入口通过。原2来源/probe/预算、标签/阈值/160:40划分及旧结果保持。X小修/CPU；Codex复核只读输入后部署给命令；用户亲自启动。用户当前无需实验或训练。

@@ -56,3 +56,13 @@
 X在 `collaboration/responses/023_round1.md` 交付最终remote SHA、定向测试、诊断入口与运行参数/保守预算、尚未验证项。不要提前实现“提高阈值、直接取next_state、放宽等价证书、整轨放行、重划dev或多候选共识标签”；这些要看诊断图和分组误差后由Codex再作版本化研究决策。
 
 下一步操作和执行者：X实现/CPU-fake；Codex审查并部署、提供一次完整命令；用户启动两来源诊断；Codex看原图/重建图与结构化误差，再决定具体修正，随后才考虑全量补标或训练。
+
+
+## 2026-10-24首轮审查补充：只修两处确定的生产入口错误
+
+[023首轮审查](../reviews/023_round1.md)针对固定HEAD `9c0429d590f40bcef83570c85ced1ee0fc10b8dc` 提出两项needs-fix，53/53定向CPU/fake通过不代表生产输入通过；详细封存JSON证据见[这里](023_production_input_compatibility.json)。
+
+1. `sim_diagnostics._historical_inputs` 不得锁死core目录basename为LIBERO-core-c6-reference。封存配置使用另一目录名，但同一固定c6 revision、allow_reference=true、文件hash正确。删掉目录名字面要求，保留版本及身份保护；勿改旧manifest、重命名/复制旧目录来绕过，也勿改成另一硬编码名字。补一个实际进入production分支的合法异名fixture，错误版本/标志仍拒绝。
+2. `planned == sources` 不符合本批inventory：planned只有sample_id/source_id/file/episode/group_ids/task_group/ancestry_known七项计划身份；sources还有instruction/T/orientation/split等验证扩展。要求各自唯一，按这7项计划schema投影匹配，保留source与旧request/registry/PNG/T/split的完整其他绑定。把测试中planned_sources=deepcopy(sources)改为真实基础/扩展两种结构，补正确扩展通过及错file/episode/group/缺失重复计划拒绝的CPU负例。
+
+这两项是直接导致原获准manifest无法开诊断的明确错误，不是偏好返修。其他范围不扩大：固定2来源3probe、18次恢复/6旧动作/36比较/72直接render、原数据/阈值/标签/划分、无模型都不变。X只小修和定向CPU/fake；Codex修后只读核对现有生产文本/选中绑定，再部署给用户命令；不得自行读真实HDF/恢复/渲染或启动实验。请在023_round2回复最终remote SHA及受影响测试，无须重新全库验证。
