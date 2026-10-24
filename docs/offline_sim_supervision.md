@@ -16,7 +16,30 @@ worker需要现代`mujoco`绑定、兼容LIBERO/robosuite、Pillow、NumPy、h5p
 import hashlib
 import importlib.metadata
 import json
+import subprocess
 from pathlib import Path
+
+# Select an explicit pinned native LIBERO checkout, separate from eval core.
+libero_root = Path('/absolute/path/to/LIBERO').resolve(strict=True)
+libero_revision = '8f1084e3132a39270c3a13ebe37270a43ece2a01'
+git = '/absolute/path/to/git'
+def git_read(*args):
+    return subprocess.check_output([git, '-C', str(libero_root), *args])
+if git_read('rev-parse', 'HEAD').decode().strip() != libero_revision:
+    raise ValueError('selected native LIBERO revision differs')
+# Exact approved paths only; do not search for alternatives or inspect HDF.
+catalog = json.loads(Path('/absolute/path/to/method/data/catalog.json').read_text(encoding='utf-8'))
+bddl_hashes = {}
+for entry in catalog['files']:
+    if not entry['file'].endswith('_demo.hdf5'):
+        raise ValueError('unexpected catalog filename')
+    basename = entry['file'][:-len('_demo.hdf5')] + '.bddl'
+    key = entry['suite'] + '/' + basename
+    relative = 'libero/libero/bddl_files/' + key
+    installed = (libero_root / relative).read_bytes()
+    if installed != git_read('show', libero_revision + ':' + relative):
+        raise ValueError('installed BDDL differs from pinned revision: ' + key)
+    bddl_hashes[key] = hashlib.sha256(installed).hexdigest()
 
 sources = {
     'libero.libero.envs.bddl_base_domain':
@@ -32,14 +55,37 @@ print(json.dumps({
                  for name in ('numpy', 'h5py', 'robosuite', 'mujoco')},
     'module_sha256': {name: hashlib.sha256(path.read_bytes()).hexdigest()
                       for name, path in resolved.items()},
+    'libero_source': {'revision': libero_revision, 'bddl_sha256': bddl_hashes},
+    'libero_revision_basis_for_review': 'explicit checkout HEAD plus exact git-show BDDL byte comparison',
     'resolved_sources_for_review': {name: str(path)
                                   for name, path in resolved.items()},
 }, indent=2))
 ```
 
-将`versions`、`module_sha256`原样复制进`native`，单独保留`resolved_sources_for_review`为准备依据。LIBERO源码checkout无需伪造distribution版本，必需模块按字节锁定；允许增加其他distribution/源码锁。真实作业内核对已导入模块路径/hash及安装版本，写入独立audit。采集成功不能代替环境兼容与对齐验证。
+将`versions`、`module_sha256`、`libero_source`原样复制进`native`，单独保留`resolved_sources_for_review`和`libero_revision_basis_for_review`为准备依据。脚本适用于显式git checkout；若部署使用源码归档，部署者先以已审阅的固定revision树记录逐文件校验归档字节并保留依据，再填写同样的digest映射，不能仅根据目录名宣称版本已验证。LIBERO源码checkout无需伪造distribution版本，必需模块按字节锁定；允许增加其他distribution/源码锁。真实作业内核对已导入模块路径/hash及安装版本，写入独立audit。采集成功不能代替环境兼容与对齐验证。
 
 `asset_roots`只接受`libero`、`robosuite`获准前缀。worker在对应根目录内解析源XML资源并审计文件hash；不下载缺失asset，也不宣称与无法访问的历史路径字节相同。缺失资源使该来源失败。
+
+## 020：可选元信息与BDDL来源模式
+
+本次真实证据仅确认019运行缺失`data.attrs.bddl_file_content`；此前成功读取过`env_args`和指定episode的`model_file`。尚未读取的其他属性是否存在仍未知。019的200/200来源失败（100%）、3200查询processed=0/supervised=0（均0%）、ready=false/usable=false保持原记录；UNKNOWN是入口失败占位，不能据此判断图像不对应或模型失败。
+
+020先记录可用键、属性类型/字节摘要、缺失字段，再分阶段解析。构造期间同步输出inspection，后续解析、维度检查、native初始化失败保留partial inspection与具体failure stage。XML正文、状态数组和谓词不进入诊断的模型输入；inspection和路径/来源详情仅在离线events/audit，导出不加入payload、history或prompt。
+
+BDDL只支持三个明确标识：`data.attrs.bddl_file_name`、`env_args.bddl_file`、`env_args.env_kwargs.bddl_file_name`。至少一个存在且有效；所有实际存在的标识必须有完全相同的basename，路径中显式已知suite必须等于冻结inventory suite。支持旧POSIX绝对路径、Windows驱动器/反斜线路径及basename；旧机器路径无需存在。解析唯一的`bddl_root / suite / exact-basename.bddl`，拒绝大小写改写、URL、遍历、错误后缀、suite别名/跨suite或根外symlink，不扫描候选、不用demonstration文件名覆盖冲突。
+
+| 来源模式（`egrs.sim.bddl_provenance.v1`） | 要求与诚实披露 |
+|---|---|
+| `source_embedded_bddl` | 保留来源正文摘要，与实际文件字节SHA-256严格相同；旧配置可不含`libero_source`。提供该锁时仍校验选中文件。 |
+| `metadata_resolved_installed_bddl` | 正文缺失；必须配置`native.libero_source`。`source_embedded_bddl_present=false`、`historical_source_byte_equality=unverified`；没有伪造的source正文或source-body digest。记录每个标识的字段/状态、解析文件路径/hash、部署声明的LIBERO revision和预采集的期望hash。 |
+
+`libero_source`结构为`{"revision":"<40 lowercase hex>","bddl_sha256":{"<suite>/<exact basename.bddl>":"<64 lowercase hex>"}}`。示例revision为原生LIBERO `8f1084e3132a39270c3a13ebe37270a43ece2a01`，不同于annotation reference core `c6dc98de0c54517c976057598b60f4cedf7fa3e5`。**示例空digest映射不能直接运行缺正文来源，必须先采集填写**。运行时核对指定文件的预期hash和已有native模块锁，并在native构造前再次核对文件未变；revision记录为部署来源声明，`revision_verified_at_runtime=false`，不冒称运行时执行过git版本认证。上面的标准库采集脚本只读固定catalog路径的源码字节和git对象，无HDF、图像或native导入；部署者保存其版本建立依据。
+
+`bddl_file_name`和`num_samples`可缺失；后者存在时仍须为整数并等于冻结T及所有原数组首维。没有源`problem_info.language_instruction`时，只接受inventory已经冻结的`instruction_origin=explicit_human_mapping`及同一instruction、reviewer、basis映射，并记录来源；现有source instruction存在时仍严格比对inventory。官方BDDL语言可能用“top layer of drawer”而benchmark instruction用“top drawer”，因此不新增字面语言等同要求，任务语义继续由既有native目标原子/对象映射核验。
+
+相机约定、机器人、控制器、camera尺寸/顺序和频率仍需具体源证据；缺失或矛盾产生明确gap，不补默认值。原XML拓扑/编译名称、源状态布局、原RGB逐像素绑定、时序对应阈值、可观察性与输入白名单保持原规则。缺正文兼容不代表可跳过这些门槛。
+
+CPU/fake fixture仅假设上述受支持字段形状：合成HDF、小型数组/文本、fake原生边界。它们覆盖缺正文/可选文件名/num_samples、单一及一致标识、冲突/非法路径、hash锁/正文不等、构造前文件变化、指令/设置缺失或矛盾、partial inspection与audit隔离；不证明本批真实其余字段或native兼容。没有为本次修复新增真实元信息读取门槛；实际剩余差异由用户获准运行的精确失败阶段披露。
 
 ## 分别启动标注与导出
 
