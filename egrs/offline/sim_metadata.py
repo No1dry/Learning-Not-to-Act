@@ -31,31 +31,81 @@ def _identifier(value, suite):
     return value,basename
 
 
-NAME_RULE_VERSION = 'egrs.sim.historical-bddl-names.v1'
+NAME_RULE_VERSION = 'egrs.sim.historical-bddl-names.v2'
 NAME_EVIDENCE = 'collaboration/tasks/021_runtime_compatibility_examples.json'
 # Explicit source-bound evidence rows. Instructions are frozen identities, not
 # inferred language substitutions or permission to change native goal atoms.
 _HISTORICAL_NAMES = (
-    ('open_the_middle_layer_of_the_drawer.bddl',
+    ('libero_goal', 'open_the_middle_layer_of_the_drawer.bddl',
      'open_the_middle_drawer_of_the_cabinet.bddl',
      'open_the_middle_drawer_of_the_cabinet_demo.hdf5',
-     'open the middle drawer of the cabinet'),
-    ('open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl',
+     'open the middle drawer of the cabinet', NAME_EVIDENCE, True),
+    ('libero_goal', 'open_the_top_layer_of_the_drawer_and_put_the_bowl_inside.bddl',
      'open_the_top_drawer_and_put_the_bowl_inside.bddl',
      'open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5',
-     'open the top drawer and put the bowl inside'),
-    ('put_the_bowl_on_the_top_of_the_drawer.bddl',
+     'open the top drawer and put the bowl inside', NAME_EVIDENCE, True),
+    ('libero_goal', 'put_the_bowl_on_the_top_of_the_drawer.bddl',
      'put_the_bowl_on_top_of_the_cabinet.bddl',
      'put_the_bowl_on_top_of_the_cabinet_demo.hdf5',
-     'put the bowl on top of the cabinet'),
-    ('put_the_cream_cheese_on_the_bowl.bddl',
+     'put the bowl on top of the cabinet', NAME_EVIDENCE, True),
+    ('libero_goal', 'put_the_cream_cheese_on_the_bowl.bddl',
      'put_the_cream_cheese_in_the_bowl.bddl',
      'put_the_cream_cheese_in_the_bowl_demo.hdf5',
-     'put the cream cheese in the bowl'),
-    ('put_the_wine_bottle_on_the_top_of_the_drawer.bddl',
+     'put the cream cheese in the bowl', NAME_EVIDENCE, True),
+    ('libero_goal', 'put_the_wine_bottle_on_the_top_of_the_drawer.bddl',
      'put_the_wine_bottle_on_top_of_the_cabinet.bddl',
      'put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5',
-     'put the wine bottle on top of the cabinet'),
+     'put the wine bottle on top of the cabinet', NAME_EVIDENCE, True),
+    ('libero_object', 'pick_the_alphabet_soup_and_place_it_in_the_basket.bddl',
+     'pick_up_the_alphabet_soup_and_place_it_in_the_basket.bddl',
+     'pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the alphabet soup and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', True),
+    ('libero_object', 'pick_the_bbq_sauce_and_place_it_in_the_basket.bddl',
+     'pick_up_the_bbq_sauce_and_place_it_in_the_basket.bddl',
+     'pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the bbq sauce and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', True),
+    ('libero_object', 'pick_the_butter_and_place_it_in_the_basket.bddl',
+     'pick_up_the_butter_and_place_it_in_the_basket.bddl',
+     'pick_up_the_butter_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the butter and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', True),
+    ('libero_object', 'pick_the_chocolate_pudding_and_place_it_in_the_basket.bddl',
+     'pick_up_the_chocolate_pudding_and_place_it_in_the_basket.bddl',
+     'pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the chocolate pudding and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', True),
+    ('libero_object', 'pick_the_cream_cheese_and_place_it_in_the_basket.bddl',
+     'pick_up_the_cream_cheese_and_place_it_in_the_basket.bddl',
+     'pick_up_the_cream_cheese_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the cream cheese and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', False),
+    ('libero_object', 'pick_the_ketchup_and_place_it_in_the_basket.bddl',
+     'pick_up_the_ketchup_and_place_it_in_the_basket.bddl',
+     'pick_up_the_ketchup_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the ketchup and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', False),
+    ('libero_object', 'pick_the_milk_and_place_it_in_the_basket.bddl',
+     'pick_up_the_milk_and_place_it_in_the_basket.bddl',
+     'pick_up_the_milk_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the milk and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', False),
+    ('libero_object', 'pick_the_orange_juice_and_place_it_in_the_basket.bddl',
+     'pick_up_the_orange_juice_and_place_it_in_the_basket.bddl',
+     'pick_up_the_orange_juice_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the orange juice and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', False),
+    ('libero_object', 'pick_the_salad_dressing_and_place_it_in_the_basket.bddl',
+     'pick_up_the_salad_dressing_and_place_it_in_the_basket.bddl',
+     'pick_up_the_salad_dressing_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the salad dressing and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', False),
+    ('libero_object', 'pick_the_tomato_sauce_and_place_it_in_the_basket.bddl',
+     'pick_up_the_tomato_sauce_and_place_it_in_the_basket.bddl',
+     'pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo.hdf5',
+     'pick up the tomato sauce and place it in the basket',
+     'collaboration/tasks/022_object_name_evidence.json', False),
 )
 
 
@@ -68,12 +118,12 @@ def validate_dataset_identity(identity):
 
 def _historical_binding(fields, *, suite, source, dataset_identity, registry):
     rows=[row for row in _HISTORICAL_NAMES
-          if any(field.get('basename')==row[0] for field in fields.values())]
+          if any(field.get('basename')==row[1] for field in fields.values())]
     if not rows:
         return None
-    if len(rows)!=1 or suite!='libero_goal':
+    if len(rows)!=1 or suite!=rows[0][0]:
         raise ValueError('historical BDDL name task/suite conflict')
-    old,canonical,filename,instruction=rows[0]
+    _,old,canonical,filename,instruction,evidence,observed=rows[0]
     from .inventory import DATASET, REVISION, catalog
     from .sim_contract import mapping_for
     if validate_dataset_identity(dataset_identity)!={'dataset':DATASET,'revision':REVISION}:
@@ -101,7 +151,9 @@ def _historical_binding(fields, *, suite, source, dataset_identity, registry):
                 raise ValueError('historical BDDL data attribute must be canonical')
             field.update(status='normalized',normalized_basename=canonical,
                          normalization_rule=NAME_RULE_VERSION)
-    return {'version':NAME_RULE_VERSION,'evidence_source':NAME_EVIDENCE,
+    return {'version':NAME_RULE_VERSION,'evidence_source':evidence,
+            'observed_in_prior_events':observed,
+            'evidence_status':'observed_in_prior_events' if observed else 'anticipated_unobserved',
             'dataset_identity':deepcopy(dataset_identity),'suite':suite,'source_file':relative,
             'task_group':source['task_group'],'source_id':source['source_id'],
             'episode':source['episode'],'instruction':instruction,
@@ -134,7 +186,7 @@ def resolve_bddl_metadata(env_args, data_attrs, *, suite, source=None, dataset_i
                 fields[field]['status']='malformed'
                 raise
             fields[field].update(value=value,basename=basename,status='validated')
-        # Detect observed old names even when every present field has the same
+        # Detect listed old names even when every present field has the same
         # old basename: uniqueness cannot bypass the explicit canonical field.
         compatibility=_historical_binding(fields,suite=suite,source=source,
             dataset_identity=dataset_identity,registry=registry)
