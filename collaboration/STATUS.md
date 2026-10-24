@@ -94,3 +94,9 @@
 用户启动020r2后，缺模块已解决；已观察82/200来源返回失败（41%尝试快照），42条为BDDL历史名称差异、40条为Mac历史XML资产根未识别；processed/supervised均0%，不属于物理对应或模型结果。快照不是全量完成率。Codex仅建议用户停止，未代停/重启，不假定已停止。
 
 [021工单](tasks/021_historical_source_names_and_xml_assets.md)已交X，附已有events提取的真实字段/路径样例：5对准确历史名称映射采用版本化来源适配，未知/跨任务冲突继续拒绝；方法侧支持精确历史Mac前缀的有界asset解析，不改固定core、原数据、谓词或对应阈值。只做相关CPU/fake，不新增GPU预检。X实现；Codex审查部署；用户启动后续真实标注。旧019/020/020r2失败与分母保持。
+
+## 2026-10-24：021按原工单范围验收部署；022补充Object名称（最新）
+
+[021裁决](reviews/021_round1.md)：固定PR HEAD3444ec74，独立247/247受影响CPU/fake通过（100%，无skip）；20变更blob吻合，代码/配置隔离部署100%，未自动merge。只读旧audit/request的CPU解析中，10类Goal名称通过、5份已有XML的495引用全部解析成功，无HDF/图像读取或仿真/模型工作；真实对应/标签仍未证实。
+
+旧020r2后续4类Object历史名称尚未被原工单列入，当前仍gap，范围遗漏由Codex负责。021原软件范围accepted/closed，不倒改旧失败；新[022补表任务](tasks/022_object_historical_name_coverage.md)交X，4个已观测及6个预期条目分开标明，不扩任务/预算、不放宽目标/对应规则。不是要求所有未知字段完美才使用可靠子集；为避免已知来源错误/重复渲染，建议完成小补表后再由用户启动全量。新版真实标注、训练和方法eval仍0%。见[阶段总结](../docs/stage_summaries/2026-10-24_historical_source_compatibility_acceptance.md)。

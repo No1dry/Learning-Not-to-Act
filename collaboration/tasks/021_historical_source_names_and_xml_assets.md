@@ -1,6 +1,6 @@
 # 021：兼容本批轨迹实际出现的历史BDDL名称和Mac XML资源前缀
 
-状态：open。2026-10-24，Codex交X。修复范围是离线标注来源适配，不改模型、评分或原始数据。
+状态：accepted/closed（原工单软件范围），见[021裁决](../reviews/021_round1.md)；Object名称补充另见[022](022_object_historical_name_coverage.md)。2026-10-24，Codex交X。修复范围是离线标注来源适配，不改模型、评分或原始数据。
 
 ## 运行证据
 
