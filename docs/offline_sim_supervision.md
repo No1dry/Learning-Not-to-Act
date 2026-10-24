@@ -111,6 +111,12 @@ CPU/fake fixture仅假设上述受支持字段形状：合成HDF、小型数组/
 
 CPU验证仅使用合成文本、临时资产和合成HDF、fake原生边界；XML用例运行真实固定core纯资源逻辑。Windows缺少symlink权限时相应用例明确skip，不能声称已在该平台执行symlink逃逸验证。当前资产hash只说明安装字节；历史作者资产字节、真实native兼容及物理对应仍未证实，须由用户另行启动真实作业。
 
+## 022: Exact Object historical-name expansion
+
+`egrs.sim.historical-bddl-names.v2` retains all five Goal rows from 021 and adds the ten independent `libero_object` rows in the [022 evidence table](../collaboration/tasks/022_object_name_evidence.json). Alphabet soup, bbq sauce, butter and chocolate pudding have prior-event evidence. Cream cheese, ketchup, milk, orange juice, salad dressing and tomato sauce are anticipated compatibility cases, unobserved in prior events. Each new resolution records `observed_in_prior_events` and `evidence_status` (`observed_in_prior_events` or `anticipated_unobserved`). Goal rows retain the 021 evidence source and `true`; Object rows use the 022 evidence source and their individual boolean. The 021 v1 description above remains historical documentation; existing artifacts are not rewritten.
+
+Complete literal instructions agree with the frozen goal map and registry. Runtime lookup uses the exact table, with no global `pick` replacement. Dataset/revision, suite, source file/task_group, episode/source_id, catalog, original instruction, strict registry, explicit canonical data attribute, native goals and canonical hash locks remain binding. Audit keeps raw/canonical fields, version and evidence status. Name compatibility does not establish historical byte equality or physical correspondence and cannot itself generate SAT labels. Compatibility diagnostics stay in worker inspection/events/audit and outside frozen samples, history and model prompts. Existing XML, RGB/state alignment and observability rules continue unchanged.
+
 ## 分别启动标注与导出
 
 在固定部署checkout运行，每次输出使用新目录；已有目录拒绝覆盖。以下交给用户的命令未在实施阶段执行：
