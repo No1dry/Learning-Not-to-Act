@@ -170,7 +170,7 @@ class WorkerFailure(RuntimeError):
 
 
 def run_isolated(request, *, python, module_paths=(), timeout_seconds=600, on_event=None,
-                 expected_code_identity=None):
+                 expected_code_identity=None, mode='annotation'):
     """One interpreter/source; callback receives validated events as they arrive.
 
     Timeout applies to the entire source (including native initialization). Kill
@@ -180,7 +180,12 @@ def run_isolated(request, *, python, module_paths=(), timeout_seconds=600, on_ev
     Private expected_code_identity binds the controller's manifest snapshot;
     standalone callers default to this package's current source identity.
     """
-    request=validate_request(request)
+    if mode not in {'annotation','alignment_diagnostic'}: raise ValueError('unsupported closed worker mode')
+    trace=None
+    if mode=='alignment_diagnostic':
+        from .sim_diagnostic_worker import validate_diagnostic_request, DiagnosticTrace
+        request=validate_diagnostic_request(request); trace=DiagnosticTrace(request)
+    else: request=validate_request(request)
     if type(timeout_seconds) not in (int,float) or not 0<timeout_seconds<=86400:
         raise ValueError('bounded positive source timeout required')
     env=os.environ.copy()
@@ -189,7 +194,9 @@ def run_isolated(request, *, python, module_paths=(), timeout_seconds=600, on_ev
     env['PYTHONUNBUFFERED']='1'
     if expected_code_identity is None: expected_code_identity=code_identity()['identity']
     bootstrap=Path(__file__).resolve().with_name('sim_bootstrap.py')
-    process=subprocess.Popen([str(python),'-B',str(bootstrap),expected_code_identity],stdin=subprocess.PIPE,
+    argv=[str(python),'-B',str(bootstrap),expected_code_identity]
+    if mode!='annotation': argv.append(mode)
+    process=subprocess.Popen(argv,stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,encoding='utf-8',env=env)
     events=[]; diagnostics=[]; inbox=queue.Queue(maxsize=256)
     def read_stdout():
@@ -219,6 +226,12 @@ def run_isolated(request, *, python, module_paths=(), timeout_seconds=600, on_ev
             if line is None: break
             if len(line.encode('utf-8'))>MAX_LINE_BYTES: raise ValueError('worker response exceeds bound')
             event=json.loads(line)
+            if trace is not None:
+                trace.accept(event)
+                events.append(event)
+                if on_event is not None: on_event(deepcopy(event))
+                if event['type']=='result': result=event['data']
+                continue
             if (not isinstance(event,dict) or set(event)!={'format','request_id','source_id','sequence','type','data'}
                 or event['format']!=EVENT_FORMAT or event['request_id']!=request['request_id']
                 or event['source_id']!=request['source']['source_id'] or event['sequence']!=len(events)
@@ -235,10 +248,15 @@ def run_isolated(request, *, python, module_paths=(), timeout_seconds=600, on_ev
         readers[1].join(timeout=1)  # Retain startup diagnostics before building WorkerFailure.
         if process.returncode!=0 or result is None:
             raise RuntimeError('worker exited without a complete protocol result')
-        if result.get('format')!=RESPONSE_FORMAT or result.get('request_id')!=request['request_id'] or result.get('source_id')!=request['source']['source_id']:
+        if trace is None and (result.get('format')!=RESPONSE_FORMAT or result.get('request_id')!=request['request_id'] or result.get('source_id')!=request['source']['source_id']):
             raise ValueError('worker result binding mismatch')
         return result
     except Exception as error:
+        # Startup rejection may close stdin before the full diagnostic request
+        # is written. Reap first so stderr reaches its reader before snapshotting.
+        if process.poll() is None: process.kill()
+        process.wait()
+        readers[1].join(timeout=1)
         raise WorkerFailure(str(error),deepcopy(events),''.join(diagnostics)) from error
     finally:
         if process.poll() is None: process.kill()

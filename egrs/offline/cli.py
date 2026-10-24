@@ -10,6 +10,9 @@ def main(argv=None):
     diagnostic = commands.add_parser('diagnose', help='CPU-only analysis of existing raw outputs; no images or model calls')
     diagnostic.add_argument('--input', required=True, help='candidate/registry manifest JSON or candidate journal JSONL')
     diagnostic.add_argument('--output', required=True, help='new directory for derived report; originals stay unchanged')
+    alignment = commands.add_parser('diagnose-alignment', help='explicit bounded task023 native diagnostic; no labels or follow-on stages')
+    alignment.add_argument('--manifest', required=True)
+    alignment.add_argument('--output', required=True)
     inventory = commands.add_parser('inventory', help='inspect local approved files; freeze all source splits')
     inventory.add_argument('--root', required=True)
     inventory.add_argument('--instruction-map')
@@ -56,6 +59,9 @@ def main(argv=None):
     elif args.command == 'diagnose':
         from .diagnostics import diagnose
         result = diagnose(args.input, args.output)
+    elif args.command == 'diagnose-alignment':
+        from .sim_diagnostics import diagnose_alignment
+        result = diagnose_alignment(args.manifest, args.output)
     elif args.command == 'inventory':
         from .inventory import inventory
         result = inventory(args.root, instruction_map=read(args.instruction_map) if args.instruction_map else None,
@@ -99,6 +105,6 @@ def main(argv=None):
         from .review import build_reviewed
         result = build_reviewed(read(args.manifest), read(args.session), args.output, attestation=read(args.attestation))
     # Large manifests remain on disk; stdout is a compact stage receipt.
-    receipt = result if args.command == 'plan' else {key: result[key] for key in ('format', 'identity', 'counts', 'calls', 'ready', 'splits', 'review_html') if key in result}
+    receipt = result if args.command == 'plan' else {key: result[key] for key in ('format', 'identity', 'status', 'counts', 'calls', 'ready', 'splits', 'review_html') if key in result}
     print(json.dumps(receipt, ensure_ascii=False, indent=2))
-    return 0
+    return int(args.command == 'diagnose-alignment' and result.get('status') in {'partial','failed'})
