@@ -8,6 +8,8 @@
 
 ## 从这里开始
 
+019新增独立仿真监督标注与固定划分导出入口，待Codex审查；见[运行配置、操作预算与覆盖限制](docs/offline_sim_supervision.md)和[019交付回复](collaboration/responses/019_round1.md)。真实标注/训练/eval仍由用户分别启动。
+
 018教师输出修复已在本实现分支交付，待Codex验收；旧固定`c6840ae6`不包含本次修复。见[018回复](collaboration/responses/018_round1.md)和[仅CPU诊断／新运行命令](docs/teacher_wire_diagnostics.md)。不重新生成已完成的来源、窗口、图像或文本规格。
 
 - [完整方法设计v1](docs/research/2026-10-21_remaining_goal_selector_full_design.md)
