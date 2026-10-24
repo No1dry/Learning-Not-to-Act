@@ -1,0 +1,42 @@
+{
+  "format": "egrs.sim.backend.v1",
+  "identity_scope": "production",
+  "expected": {
+    "dataset": "yifengzhu-hf/LIBERO-datasets",
+    "revision": "147fa5eb607bb696dd922c3518084a90954cd2f3",
+    "inventory": "3f550e7736ba5428dad789a307e2c18b32f25ec51dcc763e1fb8e65db563bb33",
+    "windows": "bb453b047946179eb1ec68eb4c9ab884f9b2564b5173e849836a5caa56988cdd",
+    "registries": "ec058064453e996175bebfca449d427b240d762a08d33c01f383164dc16a8095"
+  },
+  "worker": {
+    "python": "/absolute/path/to/annotation-python",
+    "module_paths": ["/absolute/path/to/LIBERO", "/absolute/path/to/native-library-root"],
+    "timeout_seconds": 600
+  },
+  "native": {
+    "core": {
+      "root": "/absolute/path/to/pinned-LIBERO-core",
+      "revision": "c6dc98de0c54517c976057598b60f4cedf7fa3e5",
+      "allow_reference": true
+    },
+    "bddl_root": "/absolute/path/to/LIBERO/libero/libero/bddl_files",
+    "asset_roots": {
+      "libero": "/absolute/path/to/LIBERO/libero/libero/assets",
+      "robosuite": "/absolute/path/to/robosuite/models/assets"
+    },
+    "versions": {},
+    "module_sha256": {},
+    "probe_count": 3,
+    "rgb_threshold": 0.03,
+    "min_visible_pixels": 16,
+    "max_reset_attempts": 3,
+    "max_physics_substeps": 100,
+    "replay_state_atol": 0.000001,
+    "seed": 0,
+    "surface_inset_m": 0.002,
+    "surface_normal_z_min": 0.7,
+    "surface_neighbor_m": 0.03,
+    "surface_vertical_margin_m": 0.005,
+    "table_vertical_margin_m": 0.025
+  }
+}
