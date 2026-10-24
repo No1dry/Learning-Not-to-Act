@@ -70,7 +70,7 @@ def export_annotations(records):
         item.setdefault("answer", None)
         item.setdefault("provenance", {})
         samples.append(item)
-    return {"format": "egrs.annotations.v1", "provenance_values": ["human", "reviewed_candidate", "weak"], "samples": samples}
+    return {"format": "egrs.annotations.v1", "provenance_values": ["human", "reviewed_candidate", "sim_supervised", "weak"], "samples": samples}
 
 
 def import_annotations(records, package):
@@ -170,7 +170,11 @@ def build_dataset(records, output, *, attestation, seed=0, fixed_source_splits=N
         from egrs.selector.supervision import serialize_with_spans
         _, all_fields = serialize_with_spans(record["answer"])
         report["unsupervised_fields"] += len(set(all_fields) - fields)
-        if not fields:
+        # Identity/box-only simulator rows do not constitute state supervision.
+        sim_only = bool(record.get("provenance")) and set(record["provenance"].values()) <= {"sim_supervised", "weak"}
+        state_fields = {f"/goals/{i}/{field}" for i in range(len(record["answer"]["goals"]))
+                        for field in ("relation", "interaction", "release")}
+        if not fields or (sim_only and not fields & state_fields):
             report["gaps"].append({"sample_id": record["sample_id"], "reason": "no confirmed supervised fields"})
             continue
         item = {key: copy.deepcopy(record[key]) for key in ("sample_id", "source_id", "window_id", "payload", "answer", "provenance")}
