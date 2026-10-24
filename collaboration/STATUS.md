@@ -135,3 +135,14 @@ X准备与实现100%；定向选择238项：234通过（98.32%）、4因Windows 
 只读旧audit分析：2990查询（93.44%）因对齐未解；14来源获唯一next_state接受，81为双候选probe通过但等价认证失败（其中21还在额外帧有RGB失败）、3三候选歧义、102无候选通过（含全部100 Object）。不能直接调阈值或认定全是图像错误。
 
 [023工单](tasks/023_bounded_alignment_diagnostics.md)已交X，固定2条旧train来源、各3个既有probe做原图/重建图与状态分量诊断；不做全量重跑、VLA、标签/阈值变更或训练。X实现/CPU-fake，Codex审查部署，用户启动实际恢复/渲染。诊断结果出来后才作修正规则决定。见[阶段总结](../docs/stage_summaries/2026-10-24_sim_annotation_result_and_alignment_diagnosis.md)。本次Codex没有启动真实作业，旧失败与资料不清理。
+
+
+## 2026-10-24：023由X实现并交付，待Codex审查（最新）
+
+[023首轮回复](responses/023_round1.md)记录固定remote实现 `77ffdaa8db5a463164fb3b67222c5835ed18024d`，完整Git tree与本地受测实现一致；PR #2未合并。新增独立 `diagnose-alignment --manifest ... --output ...`，仅对指定两条旧train来源的三个既有probe运行三原候选，保存原/候选RGB、x1差异、前景mask、对照PNG、分区残差、API命名状态分量误差及独立native原子审计。
+
+准备/实现100%；53项定向CPU/synthetic/fake测试全部通过（100%），0跳过、0失败（诊断43、原传输/启动/CLI回归10）。任务级和最终增量两轮独立内部审查无遗留问题，不替代Codex验收。18恢复/6动作/36比较/72直接渲染上限保持，内部初始化/restore/refresh渲染另计并受原source timeout和reset/substep预算约束；当前代码与旧manifest/code身份分开，原绑定和锁保持，部分失败留痕且CLI返回非零。
+
+本轮真实诊断恢复/渲染、训练与方法评测均0%；没有读取真实HDF/图像、加载仿真/模型、启停或重跑真实作业。旧022的200来源/3200查询、165可监督条目、全部分母、dev0与原160/40划分保留。不改阈值、对齐裁决、标签或源数据，不生成训练样本或自动接export/train/eval；两例诊断尚不能说明全量修复或偏差成因。
+
+下一执行者：Codex审查固定实现与PR最终交付HEAD，隔离部署并提供一次完整命令；用户启动两来源诊断；Codex查看原图/重建图、分组状态误差和原子审计后再决定版本化修正规则。运行细节见[诊断指南](../docs/alignment_diagnostics.md)。
