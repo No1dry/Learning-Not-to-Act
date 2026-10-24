@@ -1,0 +1,15 @@
+# 025首条真实启动技术暂停；026输出接收与原文审计
+
+2026-10-24用户启动025，首条basket_s000_10在instruction-only registry阶段出现JSONDecodeError，随后technical_pause。selector生成159 tokens，image_count=0；原raw结果显示n_steps=0、executed_actions=[]、policy_queries=1。完成进度0%，已尝试1条；不能称未启动评测，也不能将技术错误当作研究问题中的任务失败。
+
+原OFT已完成加载、嵌套资产/归一化身份核验，环境完成初始化并进入首query；前面的TensorFlow/cuDNN/Gym等信息不是导致本次暂停的异常链。未执行VLA策略动作；不据此否认reset内部操作。训练checkpoint不变，不因该错误直接推断学习效果或要求重训。
+
+旧QwenSelector直接json.loads生成文本，没有保存原文。原进程已退出，旧159-token解码文本无法从现有记录恢复；不能编造“就是代码围栏”或按猜测修语义字段。旧raw、sidecar、视频及console保留，本地复制了raw作为故障证据。
+
+Codex已直接实现026接收层：共用已有严格whole-output parser，只接收裸JSON或一个完整外层json/无类型代码围栏；有额外说明、多块或截断继续拒绝。原registry/prediction schema、prompt、采样、权重与benchmark计分不改。每次生成的原文及wrapper/json/schema阶段写入input_audit，失败RPC/sidecar不再丢原文；独立infer新增--audit-output，在成功/失败时都保存审计，不覆盖旧文件、不自动重试。
+
+47项定向CPU/fake通过（1.23秒，39未选择），验证格式接收、语义错误仍拒绝、原文准确保留、单次调用、RPC失败帧和CLI审计。代码隔离部署026-codex-v1，三解释器方法源码身份均为57479ba32468a6cd79dc9894817016f140514b03e3a7eaa8a6d2fa05228fb185；source包SHA为01f816362092040b9d640695dff9bbabf7c47891d930961a8b8a1ca583019d53，wheel为a8b61751cc12dbd37aa85678e50df0e7b4466da57ff889214f2c40ccb5a8ebfa。SHA传输核对和文件级inference dry-run通过，model_loaded=false、images_loaded=false。没有新增真实模型调用、仿真、重试或评测。
+
+已准备用户启动的单次同指令、同checkpoint-3文本取证命令，不加载OFT、不创建仿真或执行策略动作。真实故障是否仅格式封装仍未确定，026整体排障未闭环；需读取新raw/schema，不能以CPU测试替代。若内容本身不合registry，保留证据再决定，不暗中换成任务真值表、换模型或放宽语义。新调用不保证逐bit重现旧丢失文本。
+
+025的100计划/80可用来源及20条旧回放缺口不变。当前旧评测technical_pause，完成0%；没有恢复、合并新旧分数或删除任何结果。下一步操作和执行者：用户执行文本命令，Codex读取原文与解析阶段后继续处理；真实运行仍由用户启动。

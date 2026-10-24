@@ -162,3 +162,13 @@ Codex训练期间尚未完成评测对接准备，遗漏已明确记录；固定
 必须纠正：原100是计划，旧baseline实际只有80条执行；frypan_stove9、cabinet_close_top_bowl共20条缺旧回放文件。新文件计划同为80/100，models_loaded=false、simulation_created=false。严格默认不放行缺来源；用户显式--allow-missing-sources后可直接比较相同80条，100分母保留，20缺失不算失败、不换初态、不自动补状态。完成会显示completed_with_missing_sources和80%，不是跑满100。
 
 025软件/部署范围accepted，X无需实现或返修；20条来源缺口仍开放，整体100实际执行目标未完成。训练100%、方法评测0%；用户下一步按本地完整conda/venv/python命令启动同80来源的正式比较，控制台实时显示百分比/task/episode/query。若要求实际100，另需恢复原证据或明确授权准备。见[部署与覆盖总结](../docs/stage_summaries/2026-10-24_method_evaluation_entry_deployment.md)。旧日志、来源、训练checkpoint、初版80计划与失败记录均保留，无删除。
+
+## 2026-10-24：025真实首条在registry解析暂停，026已部署原文审计（最新）
+
+用户已启动025，并非未启动：首条basket_s000_10在文本registry生成159 tokens后json.loads失败；visual input0，n_steps0、executed_actions=[]，完成0%。OFT加载/原资产核验及环境初始化已通过，前置TF/cuDNN消息不是这次暂停的异常链；技术错误不能当作任务失败或方法效果。原进程已退出、生成原文未保存，无法断言仅Markdown围栏。
+
+Codex直接实现[PR #5](https://github.com/No1dry/Learning-Not-to-Act/pull/5)@51c69d3b，共享已有严格完整外层JSON解码，保留原schema/prompt/权重/计分；新增raw_output与wrapper/json/schema审计，失败RPC及独立infer --audit-output也能保存。不语义修复、不自动重试、不用任务真值替代。47项定向CPU/fake通过、39未选；三环境部署和文件级dry-run通过，没有新增真实模型/仿真调用。
+
+026代码/审计部署已完成，但真实故障原因仍开放，不宣称已彻底解决。用户下一步启动单次同指令/checkpoint-3的3B文本调用，取新raw/schema；不加载OFT、不创建仿真、不执行策略动作。Codex读取后再决定后续，X无需修改；PR未自动merge。旧失败目录、原100计划/80可用及20缺证据范围保持，不覆盖或删除。
+
+[故障与026记录](../docs/stage_summaries/2026-10-24_selector_registry_parse_failure.md)。
