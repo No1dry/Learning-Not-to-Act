@@ -3,11 +3,29 @@ from copy import deepcopy
 import hashlib
 import json
 from time import perf_counter
+from functools import lru_cache
 
-VERSION = 'egrs.visual-evidence-first.v3'
+VERSION = 'egrs.visual-evidence-first.v4'
 DEPENDENCY = 'lm-format-enforcer==0.11.3'
 MAX_REGIONS = 3
 ALGORITHM = 'greedy-validity-fast-path.v1'
+SUPPORTS = ('entity','role','relation','release','interaction')
+
+
+@lru_cache(maxsize=1)
+def unique_supports_parser():
+    """Generate any nonempty permutation/subset, never a repeated support tag."""
+    from lmformatenforcer.characterlevelparser import StringParser,SequenceParser,UnionParser
+    @lru_cache(maxsize=None)
+    def tail(remaining):
+        options=[]
+        for label in remaining:
+            rest=tuple(x for x in remaining if x!=label)
+            endings=[StringParser(']')]
+            if rest:endings.append(SequenceParser([StringParser(','),tail(rest)]))
+            options.append(SequenceParser([StringParser(json.dumps(label)),UnionParser(endings)]))
+        return UnionParser(options)
+    return SequenceParser([StringParser('['),tail(SUPPORTS)])
 
 
 def obj(properties):
@@ -37,7 +55,7 @@ def prediction_schema(registry, query_id, snapshots):
                 camera=enum('agentview','wrist'),
                 bbox=dict(type='array', items=dict(type='number',minimum=0,maximum=1),minItems=4,maxItems=4),
                 coordinate_system=enum('normalized_xyxy'),
-                supports=dict(type='array', items=enum('entity','role','relation','release','interaction'),minItems=1,maxItems=5))))
+                supports=dict(type='array', items=enum(*SUPPORTS),minItems=1,maxItems=5,uniqueItems=True))))
         release = enum('NOT_APPLICABLE') if goal['kind']=='mechanism' else enum('RELEASED','NOT_RELEASED','UNKNOWN')
         choices.append(obj(dict(goal_ref=enum(ref),
             entity_ref=dict(anyOf=[deepcopy(identifier),dict(type='null')]),
@@ -125,7 +143,7 @@ def visual_parser(schema):
                 field(lambda ctx:typed(enum('agentview','wrist'))),
                 literal(',"bbox":'),field(lambda ctx:box()),
                 literal(',"coordinate_system":"normalized_xyxy","supports":'),
-                field(lambda ctx:typed(dict(type='array',items=enum('entity','role','relation','release','interaction'),minItems=1,maxItems=5))),
+                field(lambda ctx:unique_supports_parser()),
                 literal('}')])
         alternatives=[]
         for count in range(1,MAX_REGIONS+1):

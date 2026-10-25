@@ -168,13 +168,21 @@ class Progress:
         self.output = Path(output)
         self.value = dict(format='egrs.evaluation.progress.v1', expected=100, attempted=0,
                           completed=0, completed_percent=0., task=None, episode=None, query=0)
+        self.value.update(successes=0,live_success_percent=None,inherited_completed=0,completed_this_run=0)
 
     def update(self, **changes):
         self.value.update(changes)
         self.value['completed_percent'] = self.value['completed']
+        self.value['live_success_percent'] = (100.*self.value['successes']/self.value['completed']
+            if self.value['completed'] else None)
         self.value['updated_at_utc'] = datetime.now(timezone.utc).isoformat()
         write(self.output/'progress.json', self.value)
         print(json.dumps({'evaluation_progress': self.value}, ensure_ascii=False), flush=True)
+        if self.value.get('phase') in {'starting','episode_complete','technical_pause','completed','completed_with_missing_sources'}:
+            rate=self.value['live_success_percent']
+            label='N/A' if rate is None else f'{rate:.2f}%'
+            print(f"[SR/live completed] {label} ({self.value['successes']}/{self.value['completed']}); "
+                  f"inherited={self.value['inherited_completed']}, new={self.value['completed_this_run']}",flush=True)
 
 
 class QueryProgress:
@@ -202,7 +210,7 @@ def _components():
                 evidence=HeadlessEvidence, episode=run_episode)
 
 
-def _task(plan_value, source, output, batch, progress, components, bind_actor):
+def _task(plan_value, source, output, batch, progress, components, bind_actor,skip_episode_ids=()):
     from benchmark.remaining_goals.headless.planning import HORIZON, CONFIRMATION, CHUNK
     from benchmark.remaining_goals.headless.workflow import _archive_mask10_source
     from benchmark.remaining_goals.headless.evidence import validate_evidence
@@ -214,6 +222,7 @@ def _task(plan_value, source, output, batch, progress, components, bind_actor):
     metadata = dict(format=TASK, run_id=uuid.uuid4().hex, status='running', source_plan=source,
         batch_identity_sha256=plan_value['identity_sha256'], method_config=config,
         model_runtime=None, identity=None, results=[], error=None, cleanup_errors=[])
+    metadata['inherited_episode_ids']=[e['episode_id'] for e in source['episodes'] if e['episode_id'] in skip_episode_ids]
     task_file = directory/'task_run.json'
     write(task_file, metadata)
     policy = env = None
@@ -226,6 +235,9 @@ def _task(plan_value, source, output, batch, progress, components, bind_actor):
             with target.open('xb') as stream: stream.write(raw)
         if 'source_acceptance' in source: _archive_mask10_source(directory, source)
         else: raise ValueError('formal method evaluation requires accepted mask10 sources')
+        if all(e['episode_id'] in skip_episode_ids for e in source['episodes']):
+            metadata['status']='completed'
+            return metadata
         progress.update(task=source['task_id'], episode=None, query=0, phase='policy_initialize')
         policy = components['policy'](config)
         metadata['model_runtime'] = deepcopy(policy.metadata)
@@ -237,8 +249,11 @@ def _task(plan_value, source, output, batch, progress, components, bind_actor):
         progress.update(phase='environment_initialize')
         env = components['environment'](environment)
         wrapped = QueryProgress(policy, progress)
+        method_index=0
         for index, episode in enumerate(source['episodes'], 1):
             name = episode['episode_id']
+            if name in skip_episode_ids:continue
+            method_index+=1
             progress.update(episode=name, query=0, phase='episode_start',
                             attempted=progress.value['attempted']+1)
             identity = dict(protocol_version='remaining-headless-goal-endpoint-v1',
@@ -270,7 +285,7 @@ def _task(plan_value, source, output, batch, progress, components, bind_actor):
             raw_path = f'raw/{name}.json'
             write(directory/raw_path, result)
             reference = dict(episode_id=name, path=raw_path, sha256=file_sha(directory/raw_path),
-                identity=identity, sidecar=f'method/episode-{index:06d}.jsonl', verified=False,
+                identity=identity, sidecar=f'method/episode-{method_index:06d}.jsonl', verified=False,
                 error=None)
             metadata['results'].append(reference)
             write(task_file, metadata)
@@ -286,7 +301,11 @@ def _task(plan_value, source, output, batch, progress, components, bind_actor):
             write(task_file, metadata)
             if result.get('interrupted'): raise KeyboardInterrupt('interrupted episode retained')
             if result['status'] != 'completed': raise RuntimeError('technical episode failure: '+str(result.get('error')))
-            progress.update(completed=progress.value['completed']+1, phase='episode_complete')
+            from benchmark.remaining_goals.headless.metrics import score_episode
+            scored=score_episode(episode,result)
+            progress.update(completed=progress.value['completed']+1,
+                completed_this_run=progress.value['completed_this_run']+1,
+                successes=progress.value['successes']+int(scored['classification']=='success'),phase='episode_complete')
         metadata['status'] = 'completed'
     except BaseException as error:
         metadata.update(status='technical_pause', error=type(error).__name__+': '+str(error))
@@ -367,12 +386,19 @@ def inspect(output):
     if (batch['format'] != BATCH or batch['identity_sha256'] != value['identity_sha256']
             or batch['plan_sha256'] != value['plan_sha256']): raise ValueError('batch/plan changed')
     results, issues, task_execution = [], [], {}
+    inherited={}
+    if batch.get('continuation') is not None:
+        from .continuation import validate as validate_continuation
+        _,inherited=validate_continuation(batch['continuation'],value)
+        results.extend(inherited.values())
     actor_id = value['identity']['baseline_actor_identity']
     for source in value['tasks']:
         directory = output/'tasks'/source['task_id']
         if not directory.exists(): continue
         try:
             metadata, rows, errors = _validate_task(value,source,directory)
+            if metadata.get('inherited_episode_ids',[])!=[e['episode_id'] for e in source.get('episodes',[]) if e['episode_id'] in inherited]:
+                raise ValueError('task inherited IDs differ from continuation manifest')
             if metadata['model_runtime'] is not None:
                 actual = verify_runtime(value, metadata['method_config'], metadata['model_runtime'])
                 if actor_id is not None and actual != actor_id: raise ValueError('actor assets differ across suites')
@@ -387,6 +413,9 @@ def inspect(output):
         unverified_task_artifacts=issues,identity_sha256=value['identity_sha256'],
         selector_checkpoint=value['identity']['selector_checkpoint'],
         notice=summary['notice']+' This is full EGRS + frozen OFT, not a baseline rerun.')
+    if batch.get('continuation') is not None:
+        summary['continuation']=batch['continuation']
+        summary['notice']+=' Explicit continuation: completed outcomes from the disclosed prior code version are retained; failed technical attempts remain historical, not completed task outcomes.'
     return summary
 
 
@@ -399,6 +428,8 @@ def save_summary(output, summary):
         '# EGRS + frozen OFT: fixed mask10 evaluation',1)
     report+='\n## Execution and artifact diagnostics\n\n'+json.dumps(
         {k:summary[k] for k in ('task_execution','unverified_task_artifacts')},ensure_ascii=False,indent=2)+'\n'
+    if summary.get('continuation'):
+        report+='\n## Explicit continuation lineage\n\n'+json.dumps(summary['continuation'],ensure_ascii=False,indent=2)+'\n'
     (output/'report.md').write_text(report,encoding='utf-8')
     rows = summary['episodes']
     with (output/'episodes.csv').open('w',newline='',encoding='utf-8') as stream:
@@ -407,20 +438,29 @@ def save_summary(output, summary):
         for row in rows:writer.writerow({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list)) else v for k,v in row.items()})
 
 
-def run(config_path, output, *, components=None, allow_missing_sources=False):
+def run(config_path, output, *, components=None, allow_missing_sources=False,continue_from=None):
     value = validate_plan(plan(config_path))
     from .policy import method_source_hash
     if method_source_hash()!=value['identity']['method_source_sha256']:raise ValueError('method code changed')
     if value['ready_episodes']!=100 and not allow_missing_sources:
         raise ValueError('not all 100 sources are available; inspect plan and explicitly --allow-missing-sources to retain gaps')
     if not value['ready_episodes']:raise ValueError('no accepted mask10 sources available')
+    continuation=None;inherited={}
+    if continue_from:
+        from .continuation import collect
+        continuation,inherited=collect(continue_from,value)
     output=Path(output).resolve()
     output.mkdir(parents=True,exist_ok=False)  # No hidden retry/resume or overwrite.
     write(output/'plan.json',value)
     batch=dict(format=BATCH,identity_sha256=value['identity_sha256'],plan_sha256=value['plan_sha256'],
                status='running',tasks={},error=None,allow_missing_sources=allow_missing_sources)
+    if continuation is not None:batch['continuation']=continuation
     write(output/'batch.json',batch)
-    progress=Progress(output);progress.update(phase='starting')
+    progress=Progress(output)
+    from benchmark.remaining_goals.headless.metrics import score_episode
+    expected_by_id={e['episode_id']:e for e in value['expected']}
+    prior_successes=sum(score_episode(expected_by_id[k],r)['classification']=='success' for k,r in inherited.items())
+    progress.update(phase='starting',completed=len(inherited),inherited_completed=len(inherited),successes=prior_successes)
     components=components or _components()
     shared=[]
     def bind_actor(actual):
@@ -436,7 +476,7 @@ def run(config_path, output, *, components=None, allow_missing_sources=False):
                 write(output/'batch.json',batch)
                 progress.update(task=source['task_id'],episode=None,query=0,phase='source_unavailable')
                 continue
-            metadata=_task(value,source,output,batch,progress,components,bind_actor)
+            metadata=_task(value,source,output,batch,progress,components,bind_actor,set(inherited))
             batch['tasks'][source['task_id']]={k:metadata[k] for k in ('status','error','cleanup_errors')}
             write(output/'batch.json',batch)
             if metadata['status']!='completed':
@@ -448,7 +488,12 @@ def run(config_path, output, *, components=None, allow_missing_sources=False):
     finally:
         write(output/'batch.json',batch)
         progress.update(phase=batch['status'])
-        save_summary(output,inspect(output))
+        summary=inspect(output)
+        save_summary(output,summary)
+        counts=summary['counts'];valid=counts['valid_execution_coverage']['numerator']
+        observed=f"{100.*counts['successes']/valid:.2f}%" if valid else 'N/A'
+        print(f"[SR/verified summary] status={batch['status']}; completed-subset SR={observed} "
+              f"({counts['successes']}/{valid}); planned-{counts['expected']} SR={counts['success_percent']:.2f}%",flush=True)
     return batch
 
 
@@ -460,6 +505,7 @@ def main(argv=None):
     r=commands.add_parser('run',help='user-started real fixed 100-episode evaluation')
     r.add_argument('--config',required=True);r.add_argument('--output',required=True)
     r.add_argument('--allow-missing-sources',action='store_true',help='explicitly run only accepted sources, retaining the fixed 100 denominator and source gaps')
+    r.add_argument('--continue-from',help='explicit closed prior run; verify and retain every completed outcome without rerunning it')
     i=commands.add_parser('inspect',help='offline verification/summary of archived artifacts')
     i.add_argument('--run',required=True);i.add_argument('--output')
     args=parser.parse_args(argv)
@@ -472,7 +518,7 @@ def main(argv=None):
             models_loaded=False,simulation_created=False,identity_sha256=value['identity_sha256']),indent=2))
         return 0 if value['ready_episodes']==100 else 2
     if args.command=='run':
-        run(args.config,args.output,allow_missing_sources=args.allow_missing_sources)
+        run(args.config,args.output,allow_missing_sources=args.allow_missing_sources,continue_from=args.continue_from)
         return 0
     summary=inspect(args.run)
     if args.output:
