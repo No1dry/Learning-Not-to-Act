@@ -196,3 +196,13 @@ Codex实现[PR #6](https://github.com/No1dry/Learning-Not-to-Act/pull/6)@a236454
 真实OFT已在完整调度中返回并通过core校验的8×7动作，selector复用刚实测记录；没有仿真/执行。诊断脚本随后NumPy断言报错的failed报告仍保留，独立sidecar复核确认动作返回边界通过，不冒称整个脚本exit0或保存动作逐值。所有001—006诊断及旧失败保留，未清理/自动merge。
 
 代码/三环境部署和正式配置准备100%；软件接口范围验收，不再交用户诊断。必须保留负面观察：首个mask10中g0已满足仍被判UNSAT，策略选择g0，不能称方法有效。正式方法评测完成0%，未代启；下一步用户直接按已交完整命令启动同80可用/100计划/20缺来源的评测，Codex分析结果。完整运行与识别准确率仍未证明，见[详细阶段记录](../docs/stage_summaries/2026-10-25_visual_wire_verification_and_handoff.md)。
+
+## 2026-10-25：028第3条因重复supports暂停，029修复/续跑已验收部署（最新）
+
+028已完成basket s000/s001两条，均模型失败，SR0%，2/80=2.5%；s002 q3技术错误是supports重复entity，不能记模型失败。该生成约束遗漏由Codex负责；旧3条attempt及所有数据保留。
+
+用户要求下一步，Codex直接完成[PR #8](https://github.com/No1dry/Learning-Not-to-Act/pull/8)@5af83dcb：无放回标签语法保留325种合法有序子集，不事后去重、不改validator/权重/评分。原q1/q2/q3保存图像+模型历史重建失败请求，6图/2766输入tokens，真实生成666 tokens、原严格校验通过；无仿真/动作。36项受影响CPU/fake通过（100%，42.50秒）。
+
+新增显式--continue-from：验证旧raw/sidecar/video及固定来源/模型配置，继承全部已完成结果（含失败），只跑剩余；新目录/版本lineage单列，不假装旧2条是029执行，不改旧技术失败。控制台已补[SR/live completed]及最终双口径SR。三环境部署100%，服务器文件级预检passed（模型/仿真未创建），明确2继承/78剩余/下一条s002。selector五文件与真实诊断一致，复用证据、不为评测入口改动再跑GPU。
+
+029软件修复/部署范围accepted；新78条尚未启动（0%），总已完成仍2.5%。下一步用户按已交完整conda/python新命令启动剩余78条；Codex分析结果，X无返修。旧2条不重跑、第三条明确从原初态重试，不中段恢复、不自动启动整批/merge/清理。见[修复与续跑总结](../docs/stage_summaries/2026-10-25_unique_supports_and_explicit_continuation.md)。
