@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-01最新优先级：先补00能力对照，同时修复两项缺失任务
+
+用户希望先测对应原始00的SR，再开始030增强，并提出同时修复原两个准备缺口。已实际交接[benchmark源库031](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/031_normal00_control_and_missing_two_tasks.md)，本库[031指针](tasks/031_normal00_and_missing_two_benchmark_handoff.md)仅用于定位，不复制评分或制备实现。
+
+X实现00独立入口与selected-mask10有界修复；Codex审查部署/给命令，用户启动真实阶段。先已有8任务00共80条，不被两任务修复拖住。若全部恢复，00共100条、10复用旧80并补20条，新模型目标120条；尚未启动、不得自动追加。原20缺失不是模型失败。
+
+本次只读原审计：场景9来源4在150步中仅step142腕部7像素差1超旧6像素限；黑碗来源5仅step7 qvel[12]绝对值0.163608超0.01。真实成因和修复有效性尚未确认；没有新sim/回放/模型或改阈值。旧raw/失败/80条结果保留。
+
+030数据增强方案可继续一次审阅，但真实训练排在本轮能力对照/补齐结果审查后。030的数据范围和GPU预算仍待确认；不将写方案视作数据已ready或实验授权。实现代码在benchmark源库，不自动改纯导出的Eval库或合并旧PR。
+
+---
+
 ## 2026-10-31最新：030数据增强方案已提出，等待一次集中审阅
 
 用户要求将数据增强想法写成具体方案。Codex已提交[030方案](../docs/experiment_plans/2026-10-31_progress_aware_data_augmentation_v1.md)与[给X的审阅任务](tasks/030_progress_aware_augmentation_plan_review.md)。当前仅完成方案/文档交接，不代表用户已经批准新数据范围、GPU预算或代码实现。
