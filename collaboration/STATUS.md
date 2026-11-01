@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-01：031首批00已验收部署，可由用户启动
+
+[benchmark 031 R1](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/031_round1.md)：固定a23a8116首批00路径accepted，独立190项定向CPU/fake通过，服务器纯文件来源80/80 ready。没有新仿真/回放/模型/训练/评测；用户下一步启动八任务80条00，030训练暂不启动。
+
+另有一处明确P2：原库存ready且operations为空时，依赖丢失后普通制备continue可能自动重建。已将完整fake复现和最小小修实际提交benchmark工单；X只修这一处，不阻塞首批00，不新增GPU验收。修复前不使用该制备continue组合。两个00阶段保留相同冻结评测源码，制备小修另部署、不热改当前目录、不因此重跑80。
+
+缺两任务仍待真实制备及结果审查，不冒称已恢复100条。分工保持X实现、Codex审查部署、用户启动，PR未自动merge，旧数据/失败/交流保留。
+
+---
+
 ## 2026-11-01最新优先级：先补00能力对照，同时修复两项缺失任务
 
 用户希望先测对应原始00的SR，再开始030增强，并提出同时修复原两个准备缺口。已实际交接[benchmark源库031](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/031_normal00_control_and_missing_two_tasks.md)，本库[031指针](tasks/031_normal00_and_missing_two_benchmark_handoff.md)仅用于定位，不复制评分或制备实现。
