@@ -1,0 +1,14 @@
+{
+  "name": "progress_aug",
+  "view_weights": {"RAW": 0.5, "PROGRESS": 0.25, "ATOMIC": 0.25},
+  "photometric_probability": 0.5,
+  "seed": 7,
+  "updates": 1000,
+  "save_every": 250,
+  "learning_rate": 0.00002,
+  "warmup_updates": 50,
+  "gradient_accumulation": 16,
+  "microbatch": 1,
+  "precision": "bf16",
+  "gradient_checkpointing": true
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "source_id": "<COMPOUND_SOURCE_ID>",
+    "file_sha256": "<MATCH_SOURCE_SHA256>",
+    "alignment_id": "<MATCH_SOURCE_ALIGNMENT_ID>",
+    "provenance": "reviewed_local_evidence",
+    "reviewer": "<ACTUAL_REVIEWER_OR_VERIFIED_PRODUCER_IDENTITY>",
+    "basis": "<ACTUAL_LOCAL_STATE_ALIGNMENT_AND_ACTION_OWNERSHIP_REVIEW>",
+    "active_goals": [],
+    "stages": [],
+    "atomic_segments": []
+  }
+]
