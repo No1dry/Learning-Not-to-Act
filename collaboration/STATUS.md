@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-02：033 R5软件accepted并部署，用户启动仅微波炉准备
+
+[benchmark R6审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round6.md)接受固定942db12f（实现fc2dd617）：独立45项定向CPU/fake通过，0skip、3.10秒；新工件可被未改06817e61 reader读取/归档，缺第二回放被拒绝。不重跑旧全组。四姿态真实碰撞几何重算，原24/400及全部物理/评分/v6门槛保留，首0真ready才派发剩9。
+
+隔离代码LIBERO-Remain-task033-r5-942db12f，输出根task033_r5_942db12f。服务器仅文件复验旧20原引用/证书、两个输入SHA和固定真实XML，22.09秒；无native/model，microwave_repair尚未创建。[完整用户python命令](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/experiment_plans/2026-11-02_task033_r5_server_commands.md)可直接启动，无需再等X确认。
+
+真实初态仍20/30=66.67%ready、微波炉待补10，不能声称已物理修好。用户选择齐30后一次评30，不部分20、不allow-missing或自动串联。九任务10模型覆盖仍60/90，00完整78/90；原20/旧六/00不重跑。033整体open，X本轮无返修，训练030未启动；不自动merge或清理。
+
+---
+
 ## 2026-11-02：真实R3来源20/30通过；用户决定齐30再评
 
 用户完成来源补建，新三10初态20ready/10failed=66.67%：抽屉/双壶各10ready，微波炉10构造失败，不是VLA 0%成功率。实际原记录240候选/96,000保存样本均400 HOLD未达连续20低速帧，最长13；微波炉共96,800控制调用，无150构造/paired回放通过。X后续a8958bf5仅确认R4文档，未改已冻结06817e61实现；不重复测试或部署。
