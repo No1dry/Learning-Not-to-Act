@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-02：九任务00收齐86.67%；10来源仅余RGB接入收尾
+
+用户完成新三30条00：26成功/4失败、30全部completed；与旧六60合并，正式九任务00为78/90=86.67%，覆盖100%，UNKNOWN/技术/工件/模型身份异常均0。新增抽屉90%、双壶80%、微波炉90%。[完整结果](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_task033_nine_normal00_complete.md)及30原视频已本地归档，不重跑00。当前10只旧六60已评，新30尚未启；总记录覆盖150/180=83.33%，不是全九10 SR。
+
+[PR14 R2审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round3.md)：独立280 CPU/fake通过，原venv软链接复现1 passed；抽屉/微波炉/续跑/解释器software accepted，不返修这两项。RGB当前仍提案，无真实25 ready声明。
+
+Codex完整原审计新增step15有10像素差1，9像素提案仍会拒绝该来源。已作任务无关v6裁决：同状态、相机/来源与非RGB原规则通过时，uint8最大通道差≤1，变化面积只作诊断；原v4/旧失败不改。[033 R3最后接入任务](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/033_round3_rgb_profile_implementation.md)已交X，优先复用完整已存证据，缺回放仍用户补，不能伪造。
+
+待X完成v6全链后Codex一次隔离部署/给必要补建命令，避免用户重复跑已知旧面积门槛。当前不用再跑00或部分10，也不自动启动真实仿真、模型、训练或合并。方法库不复制评分；030数据/预算仍另行确认，旧90不恢复，资料不清理。
+
+---
+
 ## 2026-11-02真实制备：先跑已就绪00，10缺口交X独立修
 
 用户运行033制备后，新三任务00为30/30 ready（100%），Codex已纯文件配置并验证selected30/ready30，用户可直接启动30条00模型评测。10仅双壶index1/3/4/5/6共5/30 ready（16.67%），其余25是来源制备失败，不是模型失败。
