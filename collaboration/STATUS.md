@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-02：真实R3来源20/30通过；用户决定齐30再评
+
+用户完成来源补建，新三10初态20ready/10failed=66.67%：抽屉/双壶各10ready，微波炉10构造失败，不是VLA 0%成功率。实际原记录240候选/96,000保存样本均400 HOLD未达连续20低速帧，最长13；微波炉共96,800控制调用，无150构造/paired回放通过。X后续a8958bf5仅确认R4文档，未改已冻结06817e61实现；不重复测试或部署。
+
+[033 R5](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round5.md)与[微波炉窄修复工单](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/033_round5_microwave_candidate_construction.md)已发布：仅A几何/姿态候选，保持门槛/24及400上限，避免同方案十次盲重跑；旧20、00、旧六不动。用户明确等待微波炉修好后一次评30，不启动部分20或allow-missing。Codex文件配置/盘点ready20，不是模型/仿真启动。
+
+九任务10模型覆盖仍60/90=66.67%，新三0/30；00仍78/90=86.67%、覆盖100%。033仍open，训练030未启动，数据/预算待确认；无自动真实作业、merge或清理。
+
+---
+
 ## 2026-11-02：033 R3已验收部署，用户可启动必要22来源准备
 
 benchmark [033 R4审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round4.md)接受固定06817e61（实现65e0509d），独立53项CPU/fake通过；R2物理修复沿用，不返工。隔离部署代码LIBERO-Remain-task033-r3-06817e61；实际服务器纯文件plan exit0、无blocked/reuse问题，原5＋完整原记录派生3＝新三10来源8/30=26.67%就绪。其余22来源为20物理补建＋双壶7只paired300回放＋9必要构造/回放。
