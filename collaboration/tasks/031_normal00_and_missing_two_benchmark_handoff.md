@@ -1,5 +1,7 @@
 # 031｜先补00对照，并修复原两个缺失任务
 
+> **2026-11-02更新：** 用户已取消旧两个LIBERO-90任务的未执行补建/补测，改为[033九个LIBERO-10](033_libero10_nine_compound_tasks.md)。不要再启动本文件旧031指令；已有结果/R2验收保留，下文是历史安排。
+
 日期：2026-11-01。状态：open，benchmark实现交接；X为下一执行者。
 
 **权威工单在benchmark源库：[LIBERO-Remain任务031](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/031_normal00_control_and_missing_two_tasks.md)。** 原始只读数值见同目录031_known_source_gaps.json。
