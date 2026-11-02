@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-02：033运行路线软件accepted，用户可启动新三任务制备
+
+[benchmark PR #13](https://github.com/No1dry/LIBERO-Remain/pull/13)固定aedfe169，Codex独立187项CPU/fake通过。新九任务软件与本机已冻结runtime路线accepted，源码隔离部署及文件准备完成；[033 R1](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round1.md)与[阶段记录](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_task033_review_and_file_deployment.md)给出范围和证据。
+
+有一个便利配置工具会解引用venv解释器的P2，新增CPU复现失败并已交X最小修复；本机逐字节复用已跑通runtime，正确venv路径不变，用户不必等工具补丁。未热改a23或旧环境，PR未自动merge。
+
+旧六00/10各60记录已实际只读复用，来源与模型身份issues均=[]。当前九任务记录覆盖66.67%，不是新来源ready或成功率；官方达成00=86.67%、10=53.33%，合规10=35.00%另列。新三任务来源还未真实准备，新60条模型0%。用户下一步启动来源构造/回放，Codex读取后给新增模型命令；X小修不作为新门槛。
+
+当前方法库不复制benchmark实现；030训练数据/预算仍待确认，未自主启动仿真/模型/训练、停止作业或清理资料。
+
+---
+
 ## 2026-11-02用户范围替换：九个LIBERO-10，取消旧90补建
 
 用户明确批准官方LIBERO-10全部九个复合任务（ID 0,1,2,3,4,6,7,8,9），四个90退出当前默认范围，原数据/代码保留。见[本库033交接](tasks/033_libero10_nine_compound_tasks.md)与[benchmark完整033](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/033_libero10_nine_compound_tasks.md)。旧两缺90任务准备/补测取消，不再启动此前031命令，也不伪称物理修复成功。
