@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-02：R5真实首源失败；用户确认A位姿稳定修订，已交X
+
+R5新几何/姿态首0的24候选仍400 HOLD未达20低速帧，本轮最长3，实际9680控制调用（约221秒）；其余9正确未派发。新三来源仍20/30=66.67%ready，新增模型0/30，没有VLA失败分数。原R6软件验收保留，但不代表物理修复成功。
+
+[033 R7审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round7.md)：保存的末150采样点中，24候选杯子位移跨度约0.111mm/姿态0.086°，native10/Open保持，却各118/150=78.67%瞬时速度超0.01；不是正式150步/151观测证书，缺完整state/接触不能离线造ready。继续只改摆放或加等待缺乏依据。
+
+用户已明确同意[版本化A位姿稳定工单](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/033_round7_pose_stability_revision.md)：A杯子完整150步位置≤5mm、姿态≤1°，A速度诊断，非A速度/原谓词/穿透/机器人/观测及paired回放保留；物理stability_profile与RGB v6分开。旧失败/raw/20ready不改。X现可实现+必要CPU/fake，Codex审查部署，用户启动真实补建；新规则尚未实现/部署。
+
+仍齐30后一次评30，不部分20/allow-missing，不重跑00/旧六，不按模型成败选来源；正式10模型覆盖60/90，00完整78/90。033open、030训练未启，无自动真实作业/merge/清理。
+
+---
+
 ## 2026-11-02：033 R5软件accepted并部署，用户启动仅微波炉准备
 
 [benchmark R6审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round6.md)接受固定942db12f（实现fc2dd617）：独立45项定向CPU/fake通过，0skip、3.10秒；新工件可被未改06817e61 reader读取/归档，缺第二回放被拒绝。不重跑旧全组。四姿态真实碰撞几何重算，原24/400及全部物理/评分/v6门槛保留，首0真ready才派发剩9。
