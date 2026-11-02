@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-02真实制备：先跑已就绪00，10缺口交X独立修
+
+用户运行033制备后，新三任务00为30/30 ready（100%），Codex已纯文件配置并验证selected30/ready30，用户可直接启动30条00模型评测。10仅双壶index1/3/4/5/6共5/30 ready（16.67%），其余25是来源制备失败，不是模型失败。
+
+[benchmark R2结果](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round2.md)与[实际修复任务](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/033_round2_source_construction_fixes.md)已交X：抽屉In容积90°坐标系被旧支撑假设拒绝、微波炉杯子角速度未稳定、双壶细小RGB比较/重置差异。旧00、旧六和五条有效10全部复用，不热改aedfe169或改旧失败为通过。
+
+下一步用户跑00模型，X修10构造/观测兼容性，Codex随后审查给仅补25来源命令。新三模型本次读取时尚未启动，Codex只读原报告/配置，未运行真实仿真/回放/模型/训练。030预算与数据仍另行确认，不因准备问题增设训练前置或恢复90范围。
+
+---
+
 ## 2026-11-02：033运行路线软件accepted，用户可启动新三任务制备
 
 [benchmark PR #13](https://github.com/No1dry/LIBERO-Remain/pull/13)固定aedfe169，Codex独立187项CPU/fake通过。新九任务软件与本机已冻结runtime路线accepted，源码隔离部署及文件准备完成；[033 R1](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round1.md)与[阶段记录](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_task033_review_and_file_deployment.md)给出范围和证据。
