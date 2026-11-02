@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-02：030 v2直接交实现；正式SR采用二元口径
+
+用户决定正式合规结果只有成功/不成功：九任务mask10基线24.44%（22/90），不成功75.56%（68/90）。旧22 success/67 failure/1 unknown原证据保持；释放未确认的已完成记录在新二元报告记0，不剔除、不伪造违规。原unknown仅作diagnostics，技术错误/缺失作为运行不完整，不能冒充模型失败。benchmark[034](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/034_binary_compliant_success_reporting.md)实现单一报告映射，不重跑或改变物理判据。
+
+[030 v2方案](../docs/experiment_plans/2026-11-02_progress_aware_data_augmentation_v2.md)与[实现工单](tasks/030_v2_progress_augmentation_implementation.md)已交X，直接写代码/必要CPU-fake，不再先等一轮纯方案审阅。当前main未见030_round1交付，不冒称X已审阅。旧v1/旧审阅任务保留为历史并明确被v2替代。
+
+路线：正常完整任务数据＋进度均衡＋真实原子段指令重标注＋轻微photometric，直接对OFT语言attention作动作L1 LoRA适配；在线完整原指令/RGB/proprio，无selector/新头/记忆/FINISH。复用既有200来源/160:40，候选新增九任务各最多20普通演示=180；两次1000更新、A90条+C固定36条=126新增eval。**这些真实数据/下载/GPU预算仍待用户确认；本轮仅代码实现与CPU/fake交接。** 不把同任务适配冒称未见组合泛化，不将正常后缀冒充编辑初态动作覆盖，正式90状态/模型轨迹禁止进训练。
+
+代码交付后Codex一次集中审查、隔离部署并给完整conda/python命令，用户确认后启动；不追加MVP、全库测试、FINISH、旧selector或额外基线，不要求所有增强字段完美覆盖。034报告小改与030开发并行，不让它成为训练代码开发前置。实现/新增数据导出/训练/新模型eval尚未开始；033已完成基线范围保持closed，无自动作业/merge/清理，待删=[]。
+
+---
+
+以下状态段落为此前历史；与本节冲突的旧当前范围、预算和UNKNOWN主结果口径，以本节及v2/034为准。
+
 ## 2026-11-02：九任务00/10完整基线已结束，进入030九任务方案收敛
 
 [完整基线结果](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_nine_task_baseline_complete.md)和[033 R10](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round10.md)已发布。00/10各90条、总180记录覆盖100%，技术错误/缺失/工件/模型身份异常0。新三30条10全部completed，旧六60复用；同口径官方目标达成00=86.67%（78/90）、10=40.00%（36/90），下降46.67个百分点。10合规确认24.44%（22/90），67失败、1UNKNOWN；不把UNKNOWN改为成功/失败。
