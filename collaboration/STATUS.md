@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-02：R7位姿稳定软件accepted并隔离部署，用户启动必要补建
+
+[benchmark R8审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round8.md)接受固定d8541ef4（实现c8c50e63）。独立95项本轮CPU/fake通过，0skip、10.01秒；复用X既有153项受影响原回归，不重跑历史大组。A完整150步/151观测位姿准入，qvel只诊断、非A0.01及其他物理/观察/paired回放保持，stability v7与RGB v6分开；旧v4/v6/证书、旧失败保留。
+
+已隔离部署LIBERO-Remain-task033-r7-d8541ef4，输出根task033_r7_d8541ef4。实际服务器纯文件复验原20及证书、三个输入SHA/R5真实20/1/9、固定XML，23.56秒；归档和五个源码SHA一致。没有仿真/模型/训练，microwave_repair输出尚未创建。[完整用户python命令](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/experiment_plans/2026-11-02_task033_r7_server_commands.md)可直接启动，不需等X再确认。
+
+真实初态仍20/30=66.67%ready、新三模型0/30，不能声称v7物理已通过。0真ready才派发剩9，齐30后一次评30；不部分20/allow-missing、不重跑00/旧六/旧20。正式10模型覆盖60/90，00完整78/90保留。X本轮无返修、033open，030训练未启，无自动真实作业/merge/清理。
+
+---
+
 ## 2026-11-02：R5真实首源失败；用户确认A位姿稳定修订，已交X
 
 R5新几何/姿态首0的24候选仍400 HOLD未达20低速帧，本轮最长3，实际9680控制调用（约221秒）；其余9正确未派发。新三来源仍20/30=66.67%ready，新增模型0/30，没有VLA失败分数。原R6软件验收保留，但不代表物理修复成功。
