@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-02：80条00完成，R2制备软件已接受
+
+[benchmark阶段结果](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_task031_normal00_eighty_results.md)：80/80完成（100%），确认合规成功43.75%、明确失败36.25%、待定20.00%、技术错误0；旧同八任务10合规26.25%。六主轨00确认58.33%、10为35.00%；两个迁移任务00/10均0。保留16条UNKNOWN，不称它们模型失败；两个缺任务尚未评测，不记0%。
+
+[R2软件审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/031_round2.md)accepted，42项CPU/fake及原R1复现通过，不再要求X返修。制备源码隔离部署，文件盘点00可复用18/20（90%），10有18个候选、均仍待独立回放及2个构造。用户下一步启动真实制备，Codex随后读取结果再提供补20条00/20条10命令。评测固定a23，不重跑已完成80条00或旧80条10。
+
+现有篮子任务出现清楚落差，支持推进增强设计；不等待额外全库/全mask检查，也不按模型成败挑任务。030数据范围与训练预算仍待确认，本次没有启动训练或任何真实作业，没有自动merge/清理。
+
+---
+
 ## 2026-11-01：031首批00已验收部署，可由用户启动
 
 [benchmark 031 R1](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/031_round1.md)：固定a23a8116首批00路径accepted，独立190项定向CPU/fake通过，服务器纯文件来源80/80 ready。没有新仿真/回放/模型/训练/评测；用户下一步启动八任务80条00，030训练暂不启动。
