@@ -1,5 +1,13 @@
 # 方法研究当前状态
 
+## 2026-11-02：033 R3已验收部署，用户可启动必要22来源准备
+
+benchmark [033 R4审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round4.md)接受固定06817e61（实现65e0509d），独立53项CPU/fake通过；R2物理修复沿用，不返工。隔离部署代码LIBERO-Remain-task033-r3-06817e61；实际服务器纯文件plan exit0、无blocked/reuse问题，原5＋完整原记录派生3＝新三10来源8/30=26.67%就绪。其余22来源为20物理补建＋双壶7只paired300回放＋9必要构造/回放。
+
+[用户启动命令](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/experiment_plans/2026-11-02_task033_r3_server_commands.md)已给；Codex没有运行native或模型，不自动串联eval。九任务00仍78/90=86.67%、覆盖100%；10模型记录仍60/90=66.67%，新三30未开始。X本轮无返修，033整体open，未merge/清理。训练030的数据与预算仍待确认，本轮不增加方法实现或启动训练。
+
+---
+
 ## 2026-11-02：九任务00收齐86.67%；10来源仅余RGB接入收尾
 
 用户完成新三30条00：26成功/4失败、30全部completed；与旧六60合并，正式九任务00为78/90=86.67%，覆盖100%，UNKNOWN/技术/工件/模型身份异常均0。新增抽屉90%、双壶80%、微波炉90%。[完整结果](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_task033_nine_normal00_complete.md)及30原视频已本地归档，不重跑00。当前10只旧六60已评，新30尚未启；总记录覆盖150/180=83.33%，不是全九10 SR。
