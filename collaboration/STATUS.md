@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-02：X提交030 v2代码（待审）
+
+[PR9](https://github.com/No1dry/Learning-Not-to-Act/pull/9)，实现`46dac7c7`；
+[回复030 v2](responses/030_v2_round1.md)与[完整命令](../docs/augmentation_commands.md)。
+数据索引导出、RAW/增强OFT LoRA续训、A90/C36普通adapter评测和034公共报告接口已实现。
+方法定向CPU/fake49/49通过（100%，0skip），034独立12/12通过；原core d8541ef4和旧数据/判据不改。
+034依赖固定`d2afce4e`，见[benchmark PR15](https://github.com/No1dry/LIBERO-Remain/pull/15)，不自动merge。
+
+真实导出/训练/新评测均0%；实际来源/映射、可信增强证据和环境路径待部署，24GB未实测。
+局部恢复仅交付显式provider接口，未内置新物理标注器；无增强证据不能冒称Aug已就绪。
+下一步Codex审查/部署并集中补齐输入，用户另行确认后启动；不重跑90基线。
+
+---
+
 ## 2026-11-02：030 v2直接交实现；正式SR采用二元口径
 
 用户决定正式合规结果只有成功/不成功：九任务mask10基线24.44%（22/90），不成功75.56%（68/90）。旧22 success/67 failure/1 unknown原证据保持；释放未确认的已完成记录在新二元报告记0，不剔除、不伪造违规。原unknown仅作diagnostics，技术错误/缺失作为运行不完整，不能冒充模型失败。benchmark[034](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/034_binary_compliant_success_reporting.md)实现单一报告映射，不重跑或改变物理判据。
