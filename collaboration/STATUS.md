@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-02：九任务00/10完整基线已结束，进入030九任务方案收敛
+
+[完整基线结果](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-02_nine_task_baseline_complete.md)和[033 R10](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round10.md)已发布。00/10各90条、总180记录覆盖100%，技术错误/缺失/工件/模型身份异常0。新三30条10全部completed，旧六60复用；同口径官方目标达成00=86.67%（78/90）、10=40.00%（36/90），下降46.67个百分点。10合规确认24.44%（22/90），67失败、1UNKNOWN；不把UNKNOWN改为成功/失败。
+
+新增三项官方13.33%（4/30）、合规3.33%（1/30）；抽屉/微波炉均0%、双壶合规10%。九项完整保留，高分双杯100%与汤罐奶酪90%不删除。新30原视频全部取回并SHA核验；唯一UNKNOWN双壶3号目标在348步达成、到520释放仍未知，不为单条不确定追加实验或改评分。
+
+033仅基线准备/执行/本轮结果审查范围closed，研究/030仍open。下一步Codex更新030为当前九任务版本，明确数据/有效动作覆盖、普通续训对照与预算，用户确认后交X实现。旧030 v1含8任务/旧90/80条与32子集，不能照旧预算直接执行。正常演示后缀不等于外部完成A且机器人初始位姿；正式90评测状态/轨迹禁止进训练。
+
+不再扩benchmark、重复基线或加FINISH/probe；不复活旧selector为前提。当前无训练/导出/采集授权，X无本轮基线代码待办，用户暂不用启动新实验。无自动真实作业/merge/清理，未合并PR所需交流保留，待删=[]。
+
+---
+
 ## 2026-11-02：R7位姿稳定软件accepted并隔离部署，用户启动必要补建
 
 [benchmark R8审查](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/033_round8.md)接受固定d8541ef4（实现c8c50e63）。独立95项本轮CPU/fake通过，0skip、10.01秒；复用X既有153项受影响原回归，不重跑历史大组。A完整150步/151观测位姿准入，qvel只诊断、非A0.01及其他物理/观察/paired回放保持，stability v7与RGB v6分开；旧v4/v6/证书、旧失败保留。
