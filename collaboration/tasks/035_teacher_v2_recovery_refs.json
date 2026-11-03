@@ -1,0 +1,1298 @@
+{
+  "format": "task035-recovery-evidence-v1",
+  "approval_date": "2026-11-03",
+  "approval": "user explicitly approved teacher v2 plus at most73 normal replays and438 new10 attempts; user starts every real job",
+  "base_method_revision": "eecd25f59c43757509b639ef0c8a995547499a16",
+  "teacher_policy": "table-drop-unknown-diagnostic-v2",
+  "original_seed_manifest": {
+    "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/trajectory035-564c91c9/seeds.json",
+    "sha256": "9b3ea9f56ad23b4da7a53f1eff04525b570b9fad7f22caefd28ee804acf4093b",
+    "parent_count": 180
+  },
+  "original_generation_config": {
+    "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/trajectory035-564c91c9/generate.json",
+    "sha256": "ddbd43d93592fda89ee0a620b7c132116d9d524cbf8675fe15371b8c4063cff5"
+  },
+  "legacy_run_root": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002",
+  "legacy_reports": {
+    "generation_report_sha256": "859f86de35cc0da0d70698f004acf9d5b4b0fd6beb1fb2fbe0ce4c32b4a1c800",
+    "export_report_sha256": "93dec62e84b53cae5471e11eae78f2897f9dfa5ff123ae866171e0a9394b2060"
+  },
+  "candidate_analysis": {
+    "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated002-readonly-analysis-v1.json",
+    "sha256": "0e8e302d05cac1fd307a309f4a022d4a9887342110570ba3424066c106466768"
+  },
+  "reused_export_sources": {
+    "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/export/sources.json",
+    "sha256": "e1cfd07111f2fac37e27dc824635d05f391b45efc2fb35c4d15851f08e501e43"
+  },
+  "reused_file_references": {
+    "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated002-reuse-file-references-v1.json",
+    "sha256": "0e3a9f98246a884b9546a24ea1c718a49fd89545b014d210fc000b696fd77056"
+  },
+  "new_budget": {
+    "max_normal_replays": 73,
+    "max_robot_starts": 219,
+    "max_10_attempts": 438,
+    "horizon_per_attempt": 520,
+    "max_control_steps": 265720,
+    "initialization_wall_time_included": false
+  },
+  "unchanged_training_and_eval": {
+    "training_runs": 1,
+    "updates": 1000,
+    "loss_weights": {
+      "10": 0.7,
+      "normal": 0.3
+    },
+    "eval_10": 90,
+    "eval_00": 90
+  },
+  "candidate_split": {
+    "dev": 20,
+    "train": 53
+  },
+  "candidates": [
+    {
+      "artifact_source": "source-000",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_0",
+      "task_key": "basket",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-000/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "3866069534920d9d835ddc73d4e42e78649d250b0df23d5988b4538cff1a6802",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-000/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "38ae8de11e52d0883c46ec3b14e8abade89914e4f9cde7eb3f9aff116dfd23a6",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-002",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-002/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "6a4f83f74ab13e19cd43a13809c61e4fb681aa8eb0b6aad6b45cdac93907ab38",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-002/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "ded90e2fe361f3bdc5663c250e1ebd2a7551e8602f2e3f5103d8ab3bb215aa43",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-004",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_4",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-004/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "85b2aff38ac099466f422ff5502bbe9e9d23515412bf441fb882fccb084edf34",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-004/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "6c4fd1598d96c6dd4cc5061a24889d5dc7b61677ae2e831b7f5d14cb4c3b23d5",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-005",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_5",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-005/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "03f53d4fbd92cfed9bedbde1993d5aee116a9a9f12a7200297235d6702fec27e",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-005/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "1794eb7e7f30e01a3eab55ac8101a49fca7874356f9e9a0bd0085f0164027249",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-006",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_6",
+      "task_key": "basket",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-006/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f2adea5bbbf1282d77e5f671c33a9087ca3db5ab8abf9fb7d1cba4f9c71b8689",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-006/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "57f0dc2bf576fbd5b158870c2e6e331292117b721a87dfe835e0d3ff1367a122",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-008",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_8",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-008/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "008bdafa6a4c2cf1e4d5b338216c2f239e2bcc978c7cda2f5fc59a264d910ec4",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-008/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "788667d87ab4c81859721150d141a8fb200846bda8045c026c80026828273cfe",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-009",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_9",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-009/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "fc899a145b469e0450e7b6eaf7d28456531319da0fc8cece95aa55ffd815e30a",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-009/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "38ab3af119fe2f7288ab12efb31c3642688c845d5d76a76749969ec0e404716b",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-010",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_10",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-010/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f29821829b28fe16e8cf7bf8c2708b23825203057f544a7d890ed31affa17b6c",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-010/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "418adb242b5ef52eaa8be7c641a5d4e96e08ebbc4e888c791efb77f35bff3d7c",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-011",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_11",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-011/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "3b494e730b248143a5597fb1b3fa0941eb958ae20f50a2c2d63691a747c019dc",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-011/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "6ca37f41821f9c837a576978e6dcf3550f57406729e22e53a38484659bff6652",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-012",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_12",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-012/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "b473e934b11f6e82b7cfb76092e7e531c547a3e5a1f04087dffcbdd0c8c45eeb",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-012/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "8810b1a96aa3126bd83b50505d9c47958db685941a8b8f1d4777a1ca8b4e7530",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-015",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_15",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-015/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "04039f52ccd5630e80d6df9a05205a4c2a0f53a42a1633d19e08cf8577e98d16",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-015/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "9ce4948d16bc3d8cb6192c39ae5b5a971a6984dd971fe5da101678503a70b13c",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-016",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_16",
+      "task_key": "basket",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-016/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "e02edaea38821563f8e0e208427887bcbc6a93994f93c9c33dae9c6b128a4b1a",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-016/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "a9d47854f5e7c541ec04cf9867122a289f3e0a1d6bc8bb643e3cf8071d38c4ce",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-017",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_17",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-017/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "123fe1a86425666a7348ef9caed6efdc955095a56a2db805eff13c11ef606259",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-017/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "22a69de4b9d026148ad1e0aa2bc8010bbe1fc4e0e305c536c11719e8a8062ddc",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-018",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_18",
+      "task_key": "basket",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-018/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f6811e6c47326ac396a612c2112d36c7922711b8921b2398c0186a40c4e613d0",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-018/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "ec6a8991f2d4dc2b56f38b5e669f2d76ca9b963316710f85058c971f7f6f474e",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-020",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_0",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-020/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "427bd1875ce10dd521daf0ad8c32eb868f820b13edb7540643f950919e53d749",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-020/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "1c81c8484f267d417d0fa21b3c41c77af3e25f3c79d3386c559457e7ddb51652",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-021",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_1",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-021/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "7f38fc463f8252ea9b00df7a517711e5ed6dc404f5c1e1f418d22f2b7bdfe599",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-021/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "287f7aa12f682f39326d3ef2b940398b5d982cce45dc04339e4d2d1001b8ceab",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-022",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_2",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-022/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "e06af9d977cc805eaa851b0064cb76a0711f77f055779bf246107ed2bd5052f6",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-022/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "8de8df0197e0b943b9af2975ba8e7514693172019718ac8a6698b648534b5ebd",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-023",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_3",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-023/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "0833012c44326d053aeee4e80abc4e087794281380370a03b7837210c6ddc439",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-023/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "633de75149abc11a366d538ffcc62869ba5e3fdf014479330acfb3857b6d2031",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-024",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_4",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-024/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "07669e432fceb5a0eda783e92d714c7f4c7e5d2c147efed09107b84993b40566",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-024/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "c2e2b4e07783296e45a3d37a641c3b986f8e9d8bad082797f322aeced91674d2",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-025",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_5",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-025/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "5b23560c21ba00462eac6d19035a6c216b890f5cd244246d0694d29fb6f1bc0c",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-025/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "6043628966c1dbab9fdfb06c2e1de51efbb0cfd9541e3141d54eba664864edaf",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-026",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_6",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-026/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "3966d3f68e20a3854c19d2941f87dbab9e0dd540c7c100815378cee404b7da7b",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-026/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "34a109943567a7b6f35303b7bdc8a9c6d609f724bdfed56fce0bb7b6c5d162ec",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-027",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_7",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-027/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f3c40a4d0a1effcddf31c75a348533de5a65ece022869b2dd8d7141c4139e2bc",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-027/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "c0631125057616df4bbab26bdfec37ba6d7d23e815382e8693c5bf0c629aad2d",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-028",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_8",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-028/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f9b161d55ff98fbfd9e742ea58b7004a438fb93d5cbbfe376e71207d4ad07d19",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-028/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "e372d0fc65ec800b902a77dc36509d4602861483fe02ad700ab5d596e5eb2079",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-029",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_9",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-029/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "2b30843f010e9e868102c163841158a284e9d0a06712f191e06bfe77075fec6b",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-029/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "79c9c26eb70969d3ab661191d4ee72ba25ff0406f87d0d98fdef054396a551aa",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-030",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_10",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-030/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "36db7a0fca2f3ee04d7c0f39d720957c46f047dae0686269fe3fd6bafc1ec889",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-030/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "b8833d065dbb16a885fcad86bf331be03279a37972bbe4719e500c2084eccea5",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-031",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_11",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-031/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "c41653b87a4daf2a01fc1d56f430a8ce6408b08d121cec86a41ade6f8ea9f1b9",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-031/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "310f38bbbda5ae352d6e45bdbb0445d8478da208c64d74977ccf34aef2af9e3c",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-032",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_12",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-032/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "59fbc2edce112d7f6407395758ba355346d5f64e3c0fb84b9783f1cbc21d65c6",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-032/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "191360593f4b391da66acfd670e0eac4ec4c8ae030f2a8a6d8e15ecd8328ce58",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-033",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_13",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-033/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "890c4465803968762c810c3dc927eadba0870f586fed309dd8d6bd268c7e67d1",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-033/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "b6fc92117dfb23610c89936d31f27e3e3e7834c699385890479e62bd37bf1e23",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-035",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_15",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-035/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "16de0f189f5036ab561db36857e579fbd754e4096e6fe455a2bd01808e278514",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-035/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "4f84bed9c8d8f97bfd0bdfa9c2ef9356c46d816c9d3f99ba1348db8cb3e4d04d",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-036",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_16",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-036/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "0969c3fb042f4ba90f150c9d5c679c8ffb14b30bcce169e7855cffc0afb01760",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-036/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "83281d5b9b9a09c5441dbc0edf555951819e4ed6e7f6ae1da74f822a04bb0eaf",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-037",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_17",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-037/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "a5248c2b6506ca100fe71deb95935b5d7dcf4800b4fa82a16625cd4c686d1fb4",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-037/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "099e209ba2634a80fbfbf73c130e4e5c92e04483bd48b9506922b19942e92d1e",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-038",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_18",
+      "task_key": "basket_cheese_butter",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-038/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "c365abbb8d9ce126e0a8cb0b973fc5adfaf473cb4f9b66d195bc609e919e0408",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-038/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "aee53b31b50b47aa2ecaa4642cdca88640645561b2d3b49840e2923c5926b72f",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-039",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_demo.hdf5#demo_19",
+      "task_key": "basket_cheese_butter",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-039/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "91cb428e0e6b9884377891aa1529b97011557728b5675d29a190b2d2f5fd831a",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-039/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "1bb4c37d9ac0ff4567984cfe4e0147242743b542e808711bcdfc6f720a946443",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-060",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-060/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "d33213acfe78049f4b432123bd9d572d5f3b11290e611973ab1a7baf4df1be30",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-060/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "a66f4be0af4adec562a8e4a369cf892b7ea018afe87122b241e41f3055c0ef36",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-061",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_1",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-061/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "54f5fb6ce65a39b01427b82447bb36d5f562d4f1e1f6dd5f35d2bebf74bb2e74",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-061/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "d22845a68199eaa94c7cdb416ad32e755c932e8f5b4c9aaf866818fe1e811947",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-062",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_2",
+      "task_key": "bowl_drawer_close",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-062/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "a03e4e8afeaf4ba22d9f576df087a864ad880e3a5345b2879e5c7e115a42e2cb",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-062/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "66b8a76083897541c724b7a917eda3c0a550069e9c7e2c1f426ea12af94749c8",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-063",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_3",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-063/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "9c728f595a80e440f98ff65fe972909ca1741977333086fd0a7460c327fd0f02",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-063/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "c1b89a6b7a410ea8d9bf607e8a666c0bf73f1fa28fae5526c14500159f4daf27",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-064",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_4",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-064/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "ca991fd9d60bdd834cd787942c9b13cbfe16c70d36331c15b4de5ee0fc480b04",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-064/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "86716eecc67251a1485e47e250e1c966513dfec8ba24a7914e2149f2fd1d2443",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-065",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_5",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-065/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "ad3642ebe271d2baab0f918bdef87d2e7a43c55114daa6c2ff6459d0df33beb2",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-065/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "ec81f9a0aadfeb00f2b41e28736b1fdb6d9f80443c1a8c4a0487d3afa1b7d6ef",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-067",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_7",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-067/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "0a1bdd63d4cb321898de98ce68320f378681a426786c370c2c0e8402ea1bb41b",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-067/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "b77f85731a17d18cc43a2a650a87b90a175d5321a1241a20d48cbfcecbdab328",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-068",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_8",
+      "task_key": "bowl_drawer_close",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-068/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "4e7aa32d768dc94e385b82080afa7c372af9a2ab0746a46ce1eef6977350fd07",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-068/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "1872bc1465fb876b364f0874ebecb6be28845b892f3d803480193e12bcf5897f",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-069",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_9",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-069/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "0283389bc3b239931598f49bf191e87974d57f711fab3d0953adb932dc86735f",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-069/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "b1ba8d14548839b6f89d90548bafb7407cf9aec2f365b44cbacf467626611457",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-070",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_10",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-070/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "590169d085f161c434aa394b74aecccc06486d992af72de3bd25a2c90d4e074f",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-070/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "292c6b326c2cc9129e5d559d76f6feabe4dd15423723061fe7bea0d86824bac4",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-071",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_11",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-071/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "d635324e84609be1a4867b84ac0cc548d4a04394eb0e4db1251396f509e8193c",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-071/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "abbdbf8cd83105f7345dbeda58aefec499572fc405f13d9cdd950a12484114e9",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-072",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_12",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-072/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "54c7409db613786da8f27ba0879ea382a47be84a664541f93cedf32e5131dd1e",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-072/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "82ce055d999f1654634a1fa1f862afb280c080fba2119fcc230db3f81eb14912",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-075",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_15",
+      "task_key": "bowl_drawer_close",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-075/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "51efcdd438833da0c7536aa29661a6e6ffa9f9118d280e4b800a1ca5d44e2b3b",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-075/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "6e1b830d9b26c48d065ee957d53b5769dc8be1739504536f1e64e8ad01c64114",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-076",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_16",
+      "task_key": "bowl_drawer_close",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-076/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "810c1af09294e4b42128bfd89c0b9ba46306b17decce90a2c8d3ac6bc8656290",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-076/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "dcc16d1887f57ef1d391f4e97896fb58fdeea4c688fab6686e1a1d1125f93f40",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-077",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_17",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-077/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "b0c1804b4d428ca756db9cd553d02cc2ab3b3de408a6a301cf8f1a02e270d8a5",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-077/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "7f33a2e446c35429ec9e252fa96818ec785a84a938856ed1b5a51a19d5d39b49",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-078",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_18",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-078/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "8769de502b90c68d0417ec18727f24dee1fd319f40ad447d8693c4d44f54feb1",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-078/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "19f23a4094c460601ee314609f491ecaf64f23d88bf25620c101d5c9fa7b4a1f",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-079",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_19",
+      "task_key": "bowl_drawer_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-079/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "48f32e7a9c1652398c1202a9f3f9b94c227963d875f3d91aa4872338b13796b8",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-079/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "923b7d12fe509fce7684b0a90221b8dc142040cc721881a433b430b93d8352c8",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-120",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_0",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-120/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "183c74fc1bed4048322686484bcbee08092a2949a41ca23368299495a6216597",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-120/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "764e4f3c537002b2ede7f0855fc1b5db6973750e168018a447cd89576c90dd2b",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-121",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_1",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-121/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f7b3228a3fd6d1325755da43ba2ff8c69d0bfe11a877becc450415d64e8a7db5",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-121/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "703427f10b07db24657278770bffcf87560c4f77c2ee46e578072238a826786a",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-124",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_4",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-124/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "06a5b77dd3055d61a927c63c5ba3328eb3af7c23284099e331985f8981656f59",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-124/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "b302d4161dbe667025eaba78a75d3eb41c096f47442a6e516aff2be626a14b90",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-125",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_5",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-125/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "9a3a33690b9255e2b8a1e30ebc8925f101951e20ad9ae9225741cecbf7c08015",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-125/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "c026cbd23eccb6c059e0938461b6acae553d2c22e8d40dbd8f069942a8e91b11",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-126",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_6",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-126/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "dc929895f43bcbb4ab1bcdca145bb3cd50757d3ba410612812c9a3ec33af20c7",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-126/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "ecae244884da2df7fe296fb769f83b625321687629fa3166b3af6cf1d2d896fd",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-127",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_7",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-127/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "870e863f591b74fe7d6469df44374032f2bcb2e55c359493945706df34fa30b5",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-127/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "ec8326ec02e4e62681959e0b69bcbdb855383a9dcea97c8723424f1b6afb7ecf",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-128",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_8",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-128/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "2a04aa4245f5a660fb75f5017ba0b5dc179c79b3ef5a942527252052c61de90e",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-128/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "8e85b111a57aff07ced8106d47f0be45197c2a657baabe509bedf1ceb620331d",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-129",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_9",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-129/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "fb956da8e51e06bbe5c5c49e75d502f0238083eefd38559177635281371f67ed",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-129/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "5bc535657c53fe50142190740365e04bdf3a556f51f105d4e426e2558060a1a7",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-131",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_11",
+      "task_key": "basket_soup_cheese",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-131/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "0bb77ec9eca3fcb554c382871bc3799ac9bde6dd50621b0e96e0ede08ceed976",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-131/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "524a98a0f93b780bf833d491e7c942366975898f026fddd4565279792159aff9",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-132",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_12",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-132/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "21faea576d8337af6b9b9f2946a7e0cb9db709166e17fc0e4a86f868a322d82b",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-132/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "bad9f26e6dc9f6dbe5314ed1acd5a761401ba4c35327ac3da3b7ff18468c3fff",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-133",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_13",
+      "task_key": "basket_soup_cheese",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-133/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "81fe0900934fec9ef6a65b46b6bbdfc8c11c6c9f97be36e1f8e830d5a3c6ab36",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-133/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "554c37f437e4250af1475e0ceab22e6f989eb370a9122346de5d00ec33e3f84c",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-134",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_14",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-134/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "28efcb83e90ce781e550e13126cccdb60ed4ce9f773b4ab24fe0636fdfa4fe11",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-134/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "e82fbf5193be480fd4e4eed42e50f417bb4a530e847bfd74e1134714f146bdab",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-135",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_15",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-135/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "5e7f627a6de144bae9f80b31f4228625b4f905a2081ab51ca23b4dc9f39cc16e",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-135/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "69d5e883ffa2b30643c74ba48cda6915f4c48a326a1b30becdba589ca5014b20",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-136",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_16",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-136/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "460c1e7a54ce860e0009e2953becd4b6b303856bf1d8ba24ca00b327883fa37f",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-136/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "738a5314df74d70ebf8421ad799407e756c2ffadefc21fb23115210f923ad10b",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-138",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_18",
+      "task_key": "basket_soup_cheese",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-138/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "c29f882c42a6f652342dee476454de76c921237c88da691fe5da653712462a27",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-138/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "85eefa38c4499da88586a95276b7e20b045a3326fb821c211da85161c698458a",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-139",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_demo.hdf5#demo_19",
+      "task_key": "basket_soup_cheese",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-139/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "4f9fd93cdb4e48e6ea9ef14fcb054728d2c0a0368e6c5beb292be52766d9e76f",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-139/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "4d80c449c8d459a6c4b3e66eeed4966fe325d27f2a3ab909a022c1988e0b98d2",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-160",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_0",
+      "task_key": "mug_microwave_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-160/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "029d748a90d611a9c4cc6901704ffb9e75ef6d7fe46ca8b3165d08d29240bbe6",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-160/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "6bc195a2cb2c0f036ec0ef0afe29c61e6cf3e071ed2652abe671e51bd15679ab",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-161",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_1",
+      "task_key": "mug_microwave_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-161/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "526e20c26c90c995801f41e4641196e69f45ad5088bc4df5792693592e22a864",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-161/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "32a1145e0d2493c6b635884a9a676461c4a79c091f5bcb2d599ce03d65ed7376",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-162",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_2",
+      "task_key": "mug_microwave_close",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-162/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "cfbb0a9e6ddf8088ec04a210f3e05b77745862e0a0fba19c4ea07ad6348414be",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-162/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "02e53b9fdf5973a4545fdca9fa475e582fd9a8a475111550a51efcfc4a606463",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-165",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_5",
+      "task_key": "mug_microwave_close",
+      "split": "dev",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-165/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "c83aae6995c9e633b86e225cf9b8a645e1cfb78e5b94f2059b01251d470f0488",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-165/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "454b62f24d56a93e3ff1e1508106d697a1b9b92e377406ec2ab67f6619ab2052",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-167",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_7",
+      "task_key": "mug_microwave_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-167/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "e6c0e98a19894b5e0637133d7eca245fb68bce7b4fb8a943821dc42bfac14070",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-167/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "ec6c39a5cb238c4245ecdbc74f78765511674ba27fec4feb2861199cac124922",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-171",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_11",
+      "task_key": "mug_microwave_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-171/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "f3814d6635abdcea39ffad2cd77ddd1ee3657cbb07ecb87be12c2c834adeafff",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-171/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "6ecaf6a37698bd8549fc3d610649dbf458b49b08de2575aed0bb9ec1a3728470",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    },
+    {
+      "artifact_source": "source-175",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_demo.hdf5#demo_15",
+      "task_key": "mug_microwave_close",
+      "split": "train",
+      "qualification_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-175/normal_vnormal_a0/qualification.json",
+      "qualification_sha256": "255e26e9586d6a117141062b74905acbab641146322be3daf2c79310fb62d0f6",
+      "metadata_file": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035/generated-002/artifacts/source-175/normal_vnormal_a0/metadata.json",
+      "metadata_sha256": "8f4ee9128bebe1556065069d7bfa3d9962419364f504ba540950253e41e3015f",
+      "legacy_qualified": false,
+      "candidate_only_pending_v2_and_new_recording": true,
+      "rgb_training_hdf_exists": false
+    }
+  ],
+  "reused_sources": [
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__normal__vnormal__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "normal",
+      "length": 298,
+      "file_sha256": "47fa22210fbc9f5e5ddfcebea218105a2c7c6036eb83bcc8a1e891c4993e0366",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-082/normal_vnormal_a0/trajectory.hdf5",
+          "bytes": 9161246,
+          "sha256": "47fa22210fbc9f5e5ddfcebea218105a2c7c6036eb83bcc8a1e891c4993e0366"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-082/normal_vnormal_a0/audit.json",
+          "bytes": 15014910,
+          "sha256": "1a152161e3f0c527ccc5fe39e5c934f2deef2d111cbb0b1440b8bb3c7906cb51"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-082/normal_vnormal_a0/qualification.json",
+          "bytes": 44876,
+          "sha256": "bf01b291b089cf7f0504bd1d09e318b9a29dba9b1820caef9b4cd1a6f68bf9e5"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-082/normal_vnormal_a0/lineage.json",
+          "bytes": 314347,
+          "sha256": "ea4ba8859b76a741e010bc8fef14c3b3a2dc9231cb651435271b6810563a6646"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-082/normal_vnormal_a0/journal.jsonl",
+          "bytes": 15204909,
+          "sha256": "68568cf77e0bce5d00a38ef9ff6ee3d126a6d3dce8f126b0d0976cf563d2aeda"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v0__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "10",
+      "length": 142,
+      "file_sha256": "460d31135f2754bded7fefa1af95539ff56f392bc4c426b78b10c669c543c595",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-082/10_v0_a0/trajectory.hdf5",
+          "bytes": 4223056,
+          "sha256": "460d31135f2754bded7fefa1af95539ff56f392bc4c426b78b10c669c543c595"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-082/10_v0_a0/audit.json",
+          "bytes": 7409245,
+          "sha256": "6df1f54c0df39399bd6fe3472c803f9392b4aaa78710a84e4e7ead8bc027e43e"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-082/10_v0_a0/qualification.json",
+          "bytes": 44085,
+          "sha256": "7e7ff8097dec9542fc060c5312d9d0da1c8b34ca8c806a952fd710a117933f51"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-082/10_v0_a0/lineage.json",
+          "bytes": 313865,
+          "sha256": "a4a01609f3494106c3c901b84eecf0cd5eebc2d45d2afe33a307513dd329380f"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-082/10_v0_a0/journal.jsonl",
+          "bytes": 7553825,
+          "sha256": "c5bb300d65ce2c2225e01934e7e476b6b00443a96d23b0f1aaefc70f731ac86f"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v1__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "10",
+      "length": 141,
+      "file_sha256": "b7b9aa3e656a89d5f3623ed6a0285b02add21bbcd0d07326eaab488f940b01b6",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-082/10_v1_a0/trajectory.hdf5",
+          "bytes": 4217425,
+          "sha256": "b7b9aa3e656a89d5f3623ed6a0285b02add21bbcd0d07326eaab488f940b01b6"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-082/10_v1_a0/audit.json",
+          "bytes": 7386403,
+          "sha256": "a4d5eb6169e1379553666cb90c38ec11140ecef68608afba048672601bd83903"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-082/10_v1_a0/qualification.json",
+          "bytes": 44077,
+          "sha256": "05c70b6cebb428596a307fabfdb4861deb0c1258a5ef34b1e82faef8268bd601"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-082/10_v1_a0/lineage.json",
+          "bytes": 313867,
+          "sha256": "1c3c8702945219e738556b40676fdd14d7ed50a4e7984bf2b1f12a7ea5fdf464"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-082/10_v1_a0/journal.jsonl",
+          "bytes": 7530115,
+          "sha256": "b8062fb3823dabbf879647fad3764d505da8412bedca86de4b672390cf8f73d7"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v2__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "10",
+      "length": 142,
+      "file_sha256": "00a01cca759ef65216c2c0491666748d7ec45cee6662f8f50e38492fc285fdbb",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-082/10_v2_a0/trajectory.hdf5",
+          "bytes": 4244486,
+          "sha256": "00a01cca759ef65216c2c0491666748d7ec45cee6662f8f50e38492fc285fdbb"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-082/10_v2_a0/audit.json",
+          "bytes": 7409067,
+          "sha256": "6520509bbbcaee27e99d7c8492ec70a3a79ed649d00323b9d9b0b7c54ecddc44"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-082/10_v2_a0/qualification.json",
+          "bytes": 44057,
+          "sha256": "47ecf622afc6073b495d474d4c934b65dd8ab73214fc50c2740f6d7f41326699"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-082/10_v2_a0/lineage.json",
+          "bytes": 313857,
+          "sha256": "0fec52087e8209092f4adfb3322248453db5c6879e794885b79da6dcba550489"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-082/10_v2_a0/journal.jsonl",
+          "bytes": 7553766,
+          "sha256": "294c9589c410ac46e12f94839a2dd63542a9ce798a669cda6144ce828f65d364"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18__normal__vnormal__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "normal",
+      "length": 266,
+      "file_sha256": "2c96c3efc7fbdbcd9630ff3b0e8a3f17bfe0012011e665f1fe3702686b2272da",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-098/normal_vnormal_a0/trajectory.hdf5",
+          "bytes": 8237188,
+          "sha256": "2c96c3efc7fbdbcd9630ff3b0e8a3f17bfe0012011e665f1fe3702686b2272da"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-098/normal_vnormal_a0/audit.json",
+          "bytes": 13709808,
+          "sha256": "425cf63f6364fb56e9ab531b229ecb35c0fccda7ad8d90e7a5bebce422d1b002"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-098/normal_vnormal_a0/qualification.json",
+          "bytes": 44746,
+          "sha256": "7881b997de0af838d0130b689f6d09534113b8269a942f4b976be378d76400cc"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-098/normal_vnormal_a0/lineage.json",
+          "bytes": 314406,
+          "sha256": "c0feb8d1b0d53ce5635774123914716e9166d2fd1bab926d9b96fb321aad6181"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-098/normal_vnormal_a0/journal.jsonl",
+          "bytes": 13881181,
+          "sha256": "5a9369a2059321e854563ba49c26ba777d30301f74d0ae688ed8c9717652083a"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18__10__v0__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "10",
+      "length": 157,
+      "file_sha256": "95e881b7d505e622104611fc7d4fd176a761f4107db614a47bad75edf02d8a94",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-098/10_v0_a0/trajectory.hdf5",
+          "bytes": 4692360,
+          "sha256": "95e881b7d505e622104611fc7d4fd176a761f4107db614a47bad75edf02d8a94"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-098/10_v0_a0/audit.json",
+          "bytes": 8294065,
+          "sha256": "cb9986cd181085b7b8ef6322b0ad85b9807346e7b740246a51f5f172c5eb6731"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-098/10_v0_a0/qualification.json",
+          "bytes": 44169,
+          "sha256": "5b1230bc94428b4423a6a8cf3d9569358f27b7d7887eae46a7909b2031608bc8"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-098/10_v0_a0/lineage.json",
+          "bytes": 313951,
+          "sha256": "c310b4cd68690eb838913b55944bf5b4902d92d2adeb26c2b9e0e60edc513b91"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-098/10_v0_a0/journal.jsonl",
+          "bytes": 8453324,
+          "sha256": "18e6f67f4fd96a9b0fee28d55ab0ad6bdceef2f857e51a38b69b663dea13de02"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18__10__v1__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "10",
+      "length": 156,
+      "file_sha256": "a6813b981cf25ae050a1f5ffb57aaaf4f890d8a35cbf2804704405ac4a7365dc",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-098/10_v1_a0/trajectory.hdf5",
+          "bytes": 4661022,
+          "sha256": "a6813b981cf25ae050a1f5ffb57aaaf4f890d8a35cbf2804704405ac4a7365dc"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-098/10_v1_a0/audit.json",
+          "bytes": 8204983,
+          "sha256": "64db2b309325ab3cbfb773681b07ccd35a2f7788188ae9bb9ecc97f4e6c969f2"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-098/10_v1_a0/qualification.json",
+          "bytes": 44149,
+          "sha256": "703dbdecc29c98edc225b8ac919d70d389e521899ec95437834e994f5fce3a86"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-098/10_v1_a0/lineage.json",
+          "bytes": 313934,
+          "sha256": "a7f29417ff9e929706c8fb7924df8d6301889404f1ca905ea19c857ede158916"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-098/10_v1_a0/journal.jsonl",
+          "bytes": 8363100,
+          "sha256": "5205cdcf58785b6a53d22c244f1ec6a49375d580c3300b1ac90a278d965aad2b"
+        }
+      }
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18__10__v2__a0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_18",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "domain": "10",
+      "length": 157,
+      "file_sha256": "35727e4af49ec75084cffef1df2ca868aab93bae6caf497845c6cd432f8f4c2a",
+      "files": {
+        "file": {
+          "relative_path": "artifacts/source-098/10_v2_a0/trajectory.hdf5",
+          "bytes": 4687707,
+          "sha256": "35727e4af49ec75084cffef1df2ca868aab93bae6caf497845c6cd432f8f4c2a"
+        },
+        "audit_path": {
+          "relative_path": "artifacts/source-098/10_v2_a0/audit.json",
+          "bytes": 8251790,
+          "sha256": "6b027a6e429e5ff6de3cbc21395a70e503a31d5659b63efaeee3d5b44f8d9e36"
+        },
+        "qualification_path": {
+          "relative_path": "artifacts/source-098/10_v2_a0/qualification.json",
+          "bytes": 44167,
+          "sha256": "19630e561c5c3a5d6eed330065935661b7dddd730093f67e6cb6bbba980da533"
+        },
+        "lineage_path": {
+          "relative_path": "artifacts/source-098/10_v2_a0/lineage.json",
+          "bytes": 313940,
+          "sha256": "b5a5d2e4cbc19ca82eb521add6394621a99633dd1db19d931d7a2a4d9fbad354"
+        },
+        "journal_path": {
+          "relative_path": "artifacts/source-098/10_v2_a0/journal.jsonl",
+          "bytes": 8411038,
+          "sha256": "e42e745ecc296afd30aa7de225a63513428d2b940843ff331d117b049bcbbe13"
+        }
+      }
+    }
+  ],
+  "note": "Candidates are not relabeled successes. New qualified RGB/actions require user-started generation. Reused eight are byte-bound v1-qualified artifacts, not new physical attempts.",
+  "identity": "aca3ceecb8879c2ead0b843fc03baa5f018ddd901abb12fb7bf3bdd233b1bc28"
+}
