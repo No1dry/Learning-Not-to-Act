@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-03：X提交035 R2解释器路径最小修复，等待验收
+
+[PR10](https://github.com/No1dry/Learning-Not-to-Act/pull/10)增量实现 `e56e3e7031e96308c3e723734944b45166c2f0f7`，见[035 R2回复](responses/035_round2.md)。仅native Python改为expanduser＋基于配置目录的abspath，保留venv入口；其余resolve、版本锁和生成/训练/评分主体不改。
+
+实现100%；本机受影响CLI测试6 passed、2 skipped（0.40秒）。两项真实文件symlink因Windows WinError1314无权限未执行，另两项模拟解引用的fake回归完成红绿验证；不能把真实symlink写成已通过。原失败/skip证据保留，没有扩大测试或改环境。
+
+下一步Codex在支持软链机器补验两项CPU/fake、做一次实际配置JSON路径核对并隔离部署，复用9个HDF/180清单/原锁，给generated-002命令，由用户亲自启动。generated-001全部180初始化失败及旧日志保留，当前合格两域仍0，不能开始混训。本轮X真实作业0，无自动merge/清理，待删=[]。
+
+---
+
 ## 2026-11-03：035首轮180初始化错误，已定位venv解释器被resolve，X仅修路径
 
 用户已结束generated-001：来源处理180/180=100%，初始化技术错误180/180=100%，全部annotation library version lock mismatch；合格10=0、normal=0，无法进入混训。这不是物理重放成功率或模型SR，不把处理100%当成数据ready。[R2审查](reviews/035_round2.md)、[失败阶段总结](../docs/stage_summaries/2026-11-03_task035_initialization_failure.md)。
