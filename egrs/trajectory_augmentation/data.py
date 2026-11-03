@@ -130,7 +130,7 @@ def inspect_generated(path,source):
         validate_executed_actions(actions,m)
 
 
-def export_generated(parents,attempts,data_root,output):
+def export_generated(parents,attempts,data_root,output,*,generation_context=None):
     """Index qualified real transitions, retaining every failed attempt in audit."""
     output=Path(output)
     if output.exists():raise FileExistsError('new035 export directory required')
@@ -177,6 +177,7 @@ def export_generated(parents,attempts,data_root,output):
     for bucket in details.values():bucket['parent_sources']=len(bucket['parent_sources'])
     windows=''.join(json.dumps(r,ensure_ascii=False,allow_nan=False)+'\n' for r in rows)
     source_manifest={'format':DATA_KIND,'data_root':str(root),'sources':sources,'parents':deepcopy(parents)}
+    if generation_context is not None:source_manifest['generation_context']=deepcopy(generation_context)
     source_manifest['identity']=identity(source_manifest)
     report={'data_kind':DATA_KIND,'parent_sources':len(parents),'parent_groups':len({p['source_group'] for p in parents}),
         'attempts':len(attempts),'qualified_trajectories':len(sources),'failed_attempts':sum(failed.values()),
@@ -187,6 +188,7 @@ def export_generated(parents,attempts,data_root,output):
         'unknown_ancestry_parent_sources':sum(p['physical_ancestry']=='unknown' for p in parents),
         'sources_identity':source_manifest['identity'],'windows_sha256':hashlib.sha256(windows.encode()).hexdigest(),
         'coverage_claim':'same-task generated expert data; unknown demo/init ancestry remains unknown; no unseen-task claim'}
+    if generation_context is not None:report['generation_context']=deepcopy(generation_context)
     report['identity']=identity(report)
     output.mkdir(parents=True)
     for name,value in [('sources.json',source_manifest),('report.json',report),('attempts.json',attempts)]:

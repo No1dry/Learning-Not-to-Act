@@ -1,5 +1,7 @@
 # Learning Not to Act
 
+2026-11-03 教师v2恢复入口：按批准引用复用旧8条，仅重建固定73来源，见[配置与完整命令](docs/trajectory_teacher_v2_recovery.md)。正式评分、原分组与训练配方保持；当前交付仅软件和CPU/fake。
+
 2026-11-03 当前候选实现：035 机器人起点变换的完整10轨迹生成、7:3混训，以及同一adapter的固定10/00各90条评测。
 见[生成与混训完整命令](docs/trajectory_augmentation.md)、[双条件评测](docs/trajectory_augmentation_evaluation.md)
 和[035交付回复](collaboration/responses/035_round1.md)。复用已验收030主体，独立035分支/PR；当前仅交软件与CPU/fake结果，真实生成、训练与评测尚未启动。

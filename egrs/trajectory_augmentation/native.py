@@ -10,6 +10,15 @@ import sys
 import types
 import numpy as np
 
+TEACHER_V1='strict-event-unknown-v1'
+TEACHER_V2='table-drop-unknown-diagnostic-v2'
+
+
+def teacher_policy(config):
+    policy=config.get('teacher_policy',TEACHER_V1)
+    if policy not in (TEACHER_V1,TEACHER_V2):raise ValueError('unsupported teacher policy')
+    return policy
+
 
 def robot_layout(env):
     """Resolve scalar arm/finger coordinates from actual compiled named joints."""
@@ -32,8 +41,9 @@ def robot_layout(env):
         'arm_joints':list(robot.robot_model.joints),'gripper_joints':list(robot.gripper.joints)}
 
 
-def qualify_frames(frames,domain,semantics):
+def qualify_frames(frames,domain,semantics,*,teacher_policy=TEACHER_V1):
     """Use core endpoints/events; normal never has a fabricated mask00 initial."""
+    if teacher_policy not in (TEACHER_V1,TEACHER_V2):raise ValueError('unsupported teacher policy')
     from benchmark.remaining_goals.headless.schema import analyze_trace
     trace=[{'step':i,**deepcopy(f['facts'])} for i,f in enumerate(frames)]
     analysis=analyze_trace(trace,protocol='nine-mask10' if domain=='10' else 'nine-normal00',task_semantics=semantics)
@@ -46,7 +56,11 @@ def qualify_frames(frames,domain,semantics):
     if not confirmation['frames'] or confirmation['frames'][-1]['completion_streak']<5:
         reasons.append('release_or_continuous_confirmation_unproven')
     if analysis['confirmed_events']:reasons.append('confirmed_core_violation')
-    if analysis['event_unknown']:reasons.append('core_violation_evidence_unknown')
+    diagnostics=([deepcopy(e) for e in analysis['event_unknown'] if e['event']=='table_drop']
+                 if teacher_policy==TEACHER_V2 else [])
+    blocking_unknown=[e for e in analysis['event_unknown']
+                      if teacher_policy==TEACHER_V1 or e['event']!='table_drop']
+    if blocking_unknown:reasons.append('core_violation_evidence_unknown')
     if domain=='10':
         from benchmark.remaining_goals.nine_catalog import initial_constraints_match
         if not frames or frames[0]['facts']['goals']!=[True,False] or not initial_constraints_match(frames[0]['facts']):
@@ -57,6 +71,7 @@ def qualify_frames(frames,domain,semantics):
         'core_analysis':{k:v for k,v in analysis.items() if k!='frames'},
         'core_release_confirmation_streak':confirmation['frames'][-1]['completion_streak'] if frames else 0,
         'domain':domain,'initial_facts':frames[0]['facts'] if frames else None,
+        'teacher_policy':teacher_policy,'diagnostic_events':diagnostics,
         'normal_initial_preservation_applicable':False if domain=='normal' else None}
 
 
@@ -88,6 +103,7 @@ class NativeSession:
         from egrs.augmentation.dependencies import activate_core
         from egrs.augmentation.progress_native import inspect_dependency,_runtime
         self.session=None;self.source=deepcopy(source);self.config=deepcopy(config)
+        teacher_policy(config)
         validate_original_stats(source,config)
         root=Path(data_root).resolve(strict=True);file=(root/source['file']).resolve(strict=True)
         if not file.is_relative_to(root) or file_sha256(file)!=source['file_sha256']:
@@ -207,7 +223,8 @@ class NativeSession:
         self.env.done=False
         self.env.step(action)
 
-    def qualify(self,frames,domain):return qualify_frames(frames,domain,self.semantics)
+    def qualify(self,frames,domain):
+        return qualify_frames(frames,domain,self.semantics,teacher_policy=teacher_policy(self.config))
 
     def close(self):
         if self.session is not None:self.session.close();self.session=None
@@ -217,7 +234,8 @@ def worker(request_path):
     from .generation import generate_session,write_json,initialization_failure
     request=json.loads(Path(request_path).read_text(encoding='utf-8'))
     source=request['source'];directory=Path(request['output_dir']);session=None
-    initialization_failure(source,directory,'native_initialization_interrupted')
+    policy=teacher_policy(request['config'])
+    initialization_failure(source,directory,'native_initialization_interrupted',teacher_policy=policy)
     try:
         session=NativeSession(source,request['config'],request['data_root'])
         result=generate_session(session,source,request['config'],directory)
@@ -227,7 +245,7 @@ def worker(request_path):
         # source. Preserve the concrete failure even if no state was available.
         saved=[json.loads(p.read_text(encoding='utf-8')) for p in sorted(directory.glob('*/metadata.json'))]
         if not saved or (len(saved)==1 and saved[0].get('failure_reason')=='native_initialization_interrupted'):
-            saved=[initialization_failure(source,directory,reason)]
+            saved=[initialization_failure(source,directory,reason,teacher_policy=policy)]
         result={'source_id':source['source_id'],'attempts':saved,'gaps':['native_initialization_or_execution_failure'],'error':reason}
     finally:
         if session is not None:session.close()

@@ -9,6 +9,7 @@ import numpy as np
 
 from .control import (ActionProjector, controller_target, target_action, interpolate_pose,
                       pose_error, rewind_state)
+from .native import TEACHER_V1,TEACHER_V2,teacher_policy
 
 DEFAULT_RECIPE={'name':'robot_rewind_v1','seed':7,'variants':3,'bridge_attempts':2,'horizon':520,
     'joint_perturbation_rad':.05,'position_tolerance_m':.005,'rotation_tolerance_deg':3.,
@@ -28,19 +29,21 @@ def write_json(path,value):
     temporary.replace(path)
 
 
-def initialization_failure(source,directory,reason):
+def initialization_failure(source,directory,reason,*,teacher_policy=TEACHER_V1):
     """Durable denominator entry even when native construction never returns."""
     folder=Path(directory)/'normal_vnormal_a0';folder.mkdir(parents=True,exist_ok=True)
     meta={'source_id':source['source_id']+'__normal__vnormal__a0','parent_demo_id':source['parent_demo_id'],
         'task_key':source['task_key'],'split':source['split'],'domain':'normal','provenance':'ordinary_reexecuted',
         'variant':'normal','attempt':0,'status':'rejected','qualified':False,'failure_reason':reason,'file':None,
-        'qualification':{'accepted':False,'qualified':False,'failure_reason':reason},
+        'teacher_policy':teacher_policy,
+        'qualification':{'accepted':False,'qualified':False,'failure_reason':reason,
+                         'teacher_policy':teacher_policy,'diagnostic_events':[]},
         'parent_file_sha256':source['file_sha256'],'instruction':source['instruction'],
         'episode':'data/demo_0','length':0,'mapping':source['mapping'],'audit_path':'normal_vnormal_a0/audit.json',
         'qualification_path':'normal_vnormal_a0/qualification.json','lineage_path':'normal_vnormal_a0/lineage.json'}
     write_json(folder/'audit.json',{'steps':[],'frames':[],'error':reason})
     write_json(folder/'qualification.json',meta['qualification'])
-    write_json(folder/'lineage.json',{'source':source})
+    write_json(folder/'lineage.json',{'source':source,'teacher_policy':teacher_policy,'diagnostic_events':[]})
     write_json(folder/'metadata.json',meta)
     return meta
 
@@ -64,6 +67,7 @@ def _guard(frame,phase):
 class Attempt:
     def __init__(self, session, source, config, directory, domain, variant, number):
         self.session=session;self.source=source;self.config=config;self.directory=Path(directory)
+        self.teacher_policy=teacher_policy(config)
         self.domain=domain;self.variant=variant;self.number=number
         self.recipe={**DEFAULT_RECIPE,**config.get('recipe',{})}
         self.frames=[];self.actions=[];self.targets=[];self.steps=[];self.confirmation=[]
@@ -149,6 +153,11 @@ class Attempt:
 
     def persist(self,qualification):
         from egrs.augmentation.data import file_sha256,identity
+        qualification=deepcopy(qualification)
+        if qualification.get('teacher_policy',self.teacher_policy)!=self.teacher_policy:
+            raise ValueError('qualification teacher policy differs from requested policy')
+        qualification.update(teacher_policy=self.teacher_policy,
+                             diagnostic_events=qualification.get('diagnostic_events',[]))
         sid=f"{self.source['source_id']}__{self.domain}__v{self.variant}__a{self.number}"
         folder=self.directory/(self.domain+f'_v{self.variant}_a{self.number}')
         folder.mkdir(parents=True,exist_ok=True)
@@ -160,6 +169,7 @@ class Attempt:
             'variant':self.variant,'attempt':self.number,'status':'completed' if qualification['qualified'] else 'rejected',
             'qualified':bool(qualification['qualified']),'failure_reason':qualification.get('failure_reason'),
             'qualification':{'accepted':bool(qualification['qualified']),**qualification},
+            'teacher_policy':self.teacher_policy,
             'file':None,'episode':'data/demo_0','length':len(self.actions),'mapping':mapping,
             'instruction':self.source['instruction'],'parent_file_sha256':self.source['file_sha256'],
             'recipe':deepcopy(self.recipe),'recipe_identity':identity(self.recipe),
@@ -173,10 +183,15 @@ class Attempt:
             'rewind':self.rewind,'handoff':self.handoff,'error':self.error}
         write_json(folder/'audit.json',audit);write_json(folder/'qualification.json',qualification)
         write_json(folder/'lineage.json',{'source':self.source,'native':self.session.inspection,
+            'teacher_policy':self.teacher_policy,'diagnostic_events':qualification['diagnostic_events'],
             'stats_sha256':self.config.get('stats_sha256'),'unnorm_key':self.config.get('unnorm_key'),
             'actual_initial_state':self.frames[0]['state'] if self.frames else None,
             'actual_initial_facts':self.frames[0]['facts'] if self.frames else None})
-        if qualification['qualified']:
+        # v2 retains only completed observed transitions, even for rejected
+        # teachers. Outgoing actions without their next observation stay audit-only.
+        if (qualification['qualified'] or self.teacher_policy==TEACHER_V2) and self.actions:
+            if len(self.frames)!=len(self.actions)+1 or len(self.targets)!=len(self.actions):
+                raise ValueError('completed prefix must have T+1 observations and T actions/targets')
             import h5py
             file=folder/'trajectory.hdf5'
             with h5py.File(file,'w') as h:
@@ -187,6 +202,8 @@ class Attempt:
                 bind=mapping['instruction_binding'];text=self.source['instruction']
                 h.require_group(bind['group']).attrs[bind['attribute']]=text if bind['json_key'] is None else json.dumps({bind['json_key']:text})
                 g.attrs['provenance']=meta['provenance'];g.attrs['parent_demo_id']=meta['parent_demo_id']
+                g.attrs['teacher_policy']=self.teacher_policy
+                g.attrs['qualified']=bool(qualification['qualified'])
                 g.create_dataset('controller_goal_pos',data=[t['position'] for t in self.targets])
                 g.create_dataset('controller_goal_ori',data=[t['rotation'] for t in self.targets])
             meta.update(file=relative(file),file_sha256=file_sha256(file))
@@ -267,6 +284,7 @@ def generate_source(source,config,data_root,output_dir):
         except Exception as e:
             # Recover every attempt already persisted before a worker crash.
             attempts=[json.loads(p.read_text(encoding='utf-8')) for p in sorted(directory.glob('*/metadata.json'))]
-            if not attempts:attempts=[initialization_failure(source,directory,type(e).__name__+': '+str(e))]
+            if not attempts:attempts=[initialization_failure(source,directory,type(e).__name__+': '+str(e),
+                                                           teacher_policy=teacher_policy(config))]
             result={'source_id':source['source_id'],'attempts':attempts,'error':type(e).__name__+': '+str(e),'gaps':['native_worker_failure']}
             write_json(response,result);return result
