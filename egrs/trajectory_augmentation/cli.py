@@ -2,6 +2,7 @@
 import argparse
 from copy import deepcopy
 import json
+import os
 from pathlib import Path
 
 from egrs.augmentation.data import identity,file_sha256,read_json,load_scope,_require,_hex
@@ -29,8 +30,10 @@ def build_plan(config_path):
     for key in ('manifest','benchmark_root','stats_path'):cfg[key]=_resolve(path.parent,cfg[key])
     # Use the already delivered030 path resolution schema, without constructing its backend.
     native=cfg['native_backend'];_require(native.get('kind')=='native','035 requires the concrete native generator')
-    for key in ('historical_root','python'):
-        if key in native:native[key]=_resolve(path.parent,native[key])
+    if 'historical_root' in native:native['historical_root']=_resolve(path.parent,native['historical_root'])
+    if 'python' in native:
+        # Keep the venv entry point: resolving its symlink selects the base environment.
+        native['python']=os.path.abspath(path.parent/Path(native['python']).expanduser())
     if 'module_paths' in native:native['module_paths']=[_resolve(path.parent,p) for p in native['module_paths']]
     legacy=native.get('native',{})
     for obj,key in ((legacy,'bddl_root'),(legacy.get('core',{}),'root')):

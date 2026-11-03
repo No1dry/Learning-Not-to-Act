@@ -2,6 +2,8 @@
 import copy
 import json
 from pathlib import Path
+import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -42,6 +44,56 @@ def test_plan_only_metadata_full_budget_and_no_hdf_or_native(tmp_path,monkeypatc
     out=tmp_path/'plan.json'
     main(['plan','--config',str(path),'--output',str(out)])
     assert read_json(out)['identity']==plan['identity']
+
+
+@pytest.mark.parametrize('python_form',['absolute','relative'])
+@pytest.mark.parametrize('link_mode',['real_symlink','simulated_resolve'])
+def test_native_python_venv_path_survives_plan_request_and_launch(tmp_path,monkeypatch,python_form,link_mode):
+    from egrs.trajectory_augmentation.cli import build_plan
+    from egrs.trajectory_augmentation.generation import generate_source
+    path,_=prepared(tmp_path)
+    interpreter=tmp_path/'venv'/'bin'/'python'
+    interpreter.parent.mkdir(parents=True)
+    if link_mode=='real_symlink':
+        try:
+            interpreter.symlink_to(sys.executable)
+        except (OSError,NotImplementedError) as error:
+            pytest.skip(f'real file symlink unavailable: {error}')
+        assert interpreter.is_symlink() and interpreter.is_file()
+    else:
+        # Independent fake coverage on hosts without file-symlink permission;
+        # this must not be reported as a passing real-symlink test.
+        interpreter.touch()
+        resolve=Path.resolve
+        base_interpreter=Path(sys.executable).resolve()
+        def resolve_link(candidate,*args,**kwargs):
+            return base_interpreter if candidate==interpreter else resolve(candidate,*args,**kwargs)
+        monkeypatch.setattr(Path,'resolve',resolve_link)
+    assert interpreter.resolve()!=interpreter
+    cfg=read_json(path)
+    cfg['native_backend']['python']=str(interpreter) if python_form=='absolute' else 'venv/bin/python'
+    versions={'numpy':'1.24.4','mujoco':'2.3.7'}
+    cfg['native_backend']['native']={'versions':versions}
+    path.write_text(json.dumps(cfg),encoding='utf-8')
+
+    plan=build_plan(path)
+    assert plan['config']['native_backend']['python']==str(interpreter)
+    assert plan['config']['native_backend']['native']['versions']==versions
+    calls=[]
+    def fake_run(command,**kwargs):
+        calls.append(command)
+        request_path=Path(command[-1])
+        request=read_json(request_path)
+        assert request['config']['native_backend']['python']==str(interpreter)
+        assert request['config']['native_backend']['native']['versions']==versions
+        (request_path.parent/'result.json').write_text(json.dumps({
+            'source_id':request['source']['source_id'],'attempts':[],'error':None}),encoding='utf-8')
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr('egrs.trajectory_augmentation.generation.subprocess.run',fake_run)
+    result=generate_source(plan['sources'][0],plan['config'],plan['data_root'],tmp_path/'fake-worker')
+    assert result['error'] is None
+    assert len(calls)==1 and calls[0][0]==str(interpreter)
+    assert calls[0][1:4]==['-m','egrs.trajectory_augmentation.native','--request']
 
 
 def test_generate_fake_source_path_indexes_actual_outputs_and_keeps_gaps(tmp_path):
