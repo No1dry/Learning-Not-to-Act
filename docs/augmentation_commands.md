@@ -55,13 +55,17 @@ python -u -m egrs.augmentation.export \
   --output <new-export-directory>
 ```
 
-`--evidence` 可省略，不可信/缺失增强证据回退 RAW并报告。需局部恢复时，同一入口可加
-`--evidence-provider <hash-pinned-local-provider.json>`，仅传显式阶段/边界局部窗口；
-本轮没有内置一套新的仿真标注器，不能把插件接口称为已完成真实物理标注。
+`--evidence` 可省略，不可信/缺失增强证据回退 RAW并报告。R2 已实现独立子进程中的原生局部
+PROGRESS producer；同一入口增加 `--progress-config <bound-progress-config.json>` 即可执行。
+先生成元数据计划、固定依赖/环境配置、同次导出与复用旧证据命令见
+[augmentation_progress.md](augmentation_progress.md)。此路径只恢复预先声明的稀疏锚点；
+本轮交付只验证 CPU/fake 软件路径，真实局部恢复仍由用户启动。
+旧 `--evidence-provider` 自定义插件入口继续保留。
 PROGRESS/ATOMIC均为空时，增强训练会在加载模型前报错，普通续训仍可使用合格RAW。
 不要求每项都有增强段，不全量重建旧200来源视觉标注。
 
-产物：`sources.json`、`windows.jsonl`、`evidence.json`、`report.json`。
+产物：`sources.json`、`windows.jsonl`、`evidence.json`、`report.json`；显式使用
+`--progress-config` 时另存 `progress_report.json`（原生初始化审计、逐锚点对应/事实/排除原因）。
 图片按索引从原HDF读取；有效尾 mask、字段/归一化映射、来源 SHA、split、排除原因和实际覆盖均保存。
 完整轨迹先分组，所有视图继承组；正式评测初态、模型轨迹/分数与错误动作不进入训练。
 

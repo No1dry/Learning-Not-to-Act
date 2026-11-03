@@ -65,9 +65,15 @@ def _text(value):
     return isinstance(value,str) and bool(value.strip())
 
 
-def _field(path):
+def _field(path, role=None):
     _require(_text(path) and not path.startswith('/') and '..' not in path.split('/'),
              'HDF field must be an explicit relative path')
+    if role=='proprio':
+        # Exact current robot sensors, plus the existing synthetic packed alias.
+        # In particular, ee_states is not permission to read world/robot states.
+        allowed={'obs/ee_pos','obs/ee_ori','obs/ee_states','obs/gripper_states','proprio'}
+        _require(path in allowed, 'forbidden HDF proprio input outside whitelist')
+        return
     # This is an input whitelist, not a promise that unknown physical ancestry was resolved.
     forbidden = ('state','predicate','contact','reward','success','mask','segmentation','object_pose',
                  'goal_truth','future','eval','completion','progress')
@@ -97,8 +103,10 @@ def validate_mapping(mapping):
     _require(isinstance(mapping['image_transforms'],list) and len(mapping['image_transforms'])==2
              and all(t in {'identity','rotate_180'} for t in mapping['image_transforms']), 'explicit camera orientation required')
     _require(isinstance(mapping['proprio'],list) and bool(mapping['proprio']),'proprio field order required')
-    for field in mapping['images']+mapping['proprio']+[mapping['action']]:
+    for field in mapping['images']+[mapping['action']]:
         _field(field)
+    for field in mapping['proprio']:
+        _field(field,role='proprio')
     _require(mapping['axis_order']==['x','y','z','rx','ry','rz','gripper'], 'explicit official action axis order required')
     _require(len(mapping['axis_sign'])==7 and all(v in (-1,1) for v in mapping['axis_sign']), 'explicit action signs required')
     grip=mapping['gripper']
@@ -238,15 +246,44 @@ def _evidence_rows(source,evidence,excluded):
     """Reject candidates lacking reviewed action ownership. Never infer a boundary."""
     sid=source['source_id']; m=source['mapping']; T=source['length']
     try:
-        _require(source['domain']=='compound','single/base sources cannot claim compound progress')
+        produced = evidence.get('format') == 'egrs.augmentation.progress-evidence.v1'
+        _require(source['domain']=='compound' or produced,'single/base sources need produced native multi-goal anchors')
         _require(evidence.get('file_sha256')==source['file_sha256'] and evidence.get('alignment_id')==m['alignment_id'],
                  'evidence source/time alignment mismatch')
         _require(evidence.get('provenance') in {'reviewed_local_evidence','verified_local_sim_evidence'}
                  and _text(evidence.get('reviewer')) and _text(evidence.get('basis')), 'untrusted evidence provenance')
-        _require(evidence.get('active_goals')==source['active_goals'],'evidence goal binding mismatch')
-    except ValueError as exc:
+        if source['domain']=='compound':
+            _require(evidence.get('active_goals')==source['active_goals'],'evidence goal binding mismatch')
+        if produced:
+            _require(evidence.get('source_identity')==identity(source),'produced anchor source binding differs')
+            _require(len(evidence.get('active_goals',[]))>=2,'single-goal evidence cannot claim compound progress')
+            binding=evidence['binding']
+            _require(binding['active_goals']==evidence['active_goals'],'produced anchor goal inventory differs')
+            _require(isinstance(evidence.get('progress_anchors'),list),'produced anchors must be a list')
+            if source['domain']=='compound':
+                for field in ('official_task_name','active_goals','invariant_predicates'):
+                    _require(binding.get(field)==source[field],'produced binding differs from fixed source '+field)
+    except (ValueError,KeyError,TypeError) as exc:
         excluded.append({'source_id':sid,'reason':str(exc)});return []
-    ref=identity(evidence);result=[];goals={g['id'] for g in source['active_goals']}
+    ref=identity(evidence);result=[];goals={g['id'] for g in evidence['active_goals']}
+    if produced:
+        from .progress import validate_anchor
+        seen=set()
+        for anchor in evidence.get('progress_anchors',[]):
+            try:
+                t=anchor['t']
+                _require(t not in seen,'duplicate produced progress anchor')
+                seen.add(t)
+                pending=validate_anchor(source,binding,t,anchor['result'])
+                _require(anchor['pending_goals']==pending,'produced pending goal facts differ')
+                if not pending:continue
+                # One current-anchor index only. Full instruction permits the
+                # original chunk to cross the next stage; only episode end masks.
+                result.append(next(_rows(source,t,T,'PROGRESS',source['instruction'],
+                    evidence_ref=ref,progress_stage='pending:'+','.join(sorted(pending)))))
+            except (ValueError,KeyError,TypeError) as exc:
+                excluded.append({'source_id':sid,'view':'PROGRESS','reason':str(exc),'anchor':anchor})
+        return result
     for kind,segments in [('PROGRESS',evidence.get('stages',[])),('ATOMIC',evidence.get('atomic_segments',[]))]:
         if not isinstance(segments,list) or any(not isinstance(s,dict) for s in segments):
             excluded.append({'source_id':sid,'view':kind,'reason':'malformed evidence segment list'})
@@ -282,7 +319,7 @@ def resolve_local_evidence(config,sources,data_root):
 
     This interface does not certify a producer's physics. Its module/dependencies and
     alignment/review procedures must be trusted by the operator before execution.
-    No builtin simulator backend or full-trajectory relabeling is provided.
+    This legacy hook is separate from the built-in sparse native producer.
     """
     import importlib.util
     required={'module','module_sha256','callable','producer','trust_basis','requests'}
@@ -328,18 +365,44 @@ def resolve_local_evidence(config,sources,data_root):
     return result
 
 
-def export_dataset(manifest,inventory,output,*,evidence=None,evidence_provider=None):
+def export_dataset(manifest,inventory,output,*,evidence=None,evidence_provider=None,progress_config=None):
     """One real-data entry, called only when the user starts the authorized export.
 
-    Local reviewed evidence is optional. A separately pinned local-window producer
-    can run in this same user-started export; no builtin simulator is loaded.
+    Local reviewed evidence is optional. Explicit progress_config runs the built-in
+    sparse producer; ordinary RAW export never constructs the native backend.
     """
     import h5py
+    output=Path(output)
+    if output.exists():raise FileExistsError('new export output required before any evidence production')
     sources=validate_manifest(manifest,inventory)
     root=Path(manifest['data_root']).resolve();rows=[];excluded=[];hashes={}
+    # Check ordinary input identity/field shapes before invoking any backend.
+    for source in sources:
+        path=(root/source['file']).resolve()
+        _require(path.is_relative_to(root),'HDF path escapes data_root')
+        if path not in hashes:hashes[path]=file_sha256(path)
+        _require(hashes[path]==source['file_sha256'],'source HDF hash mismatch')
+        with h5py.File(path,'r') as hdf:inspect_source(hdf,source)
     evidence=copy.deepcopy(evidence or [])
     if evidence_provider is not None:
         evidence.extend(resolve_local_evidence(evidence_provider,sources,root))
+    progress_report=None
+    if progress_config is not None:
+        from .progress import produce_progress
+        produced,progress_report=produce_progress(progress_config,sources,root)
+        # Existing trusted atomic ownership may coexist with new native anchors.
+        # Preserve it as a separate evidence record; never infer ownership.
+        for row in produced:
+            old=next((e for e in evidence if e.get('source_id')==row['source_id']),None)
+            if old is not None:
+                reviewed=old
+                while reviewed and reviewed.get('format')=='egrs.augmentation.progress-evidence.v1':
+                    reviewed=reviewed.get('prior_reviewed_evidence')
+                if reviewed is not None:
+                    row['prior_reviewed_evidence']=copy.deepcopy(reviewed)
+                row['prior_evidence_identity']=identity(old)
+                evidence.remove(old)
+            evidence.append(row)
     _require(isinstance(evidence,list),'evidence must be an array')
     by_id={e['source_id']:e for e in evidence}
     _require(len(by_id)==len(evidence),'duplicate source evidence')
@@ -350,9 +413,12 @@ def export_dataset(manifest,inventory,output,*,evidence=None,evidence_provider=N
         _require(path.is_relative_to(root),'HDF path escapes data_root')
         if path not in hashes:hashes[path]=file_sha256(path)
         _require(hashes[path]==source['file_sha256'],'source HDF hash mismatch')
-        with h5py.File(path,'r') as hdf:inspect_source(hdf,source)
         rows.extend(_rows(source,0,source['length'],'RAW',source['instruction']))
         extra=_evidence_rows(source,by_id[source['source_id']],excluded) if source['source_id'] in by_id else []
+        if source['source_id'] in by_id and by_id[source['source_id']].get('prior_reviewed_evidence'):
+            prior=copy.deepcopy(by_id[source['source_id']]['prior_reviewed_evidence'])
+            prior['stages']=[] # PROGRESS now uses verified anchors only.
+            extra.extend(_evidence_rows(source,prior,excluded))
         rows.extend(extra)
         if not extra:fallback.append(source['source_id'])
     counts={view:{'windows':0,'valid_actions':0} for view in VIEWS}
@@ -385,12 +451,17 @@ def export_dataset(manifest,inventory,output,*,evidence=None,evidence_provider=N
             'evidence_identity':identity({'evidence':evidence}),
             'local_evidence_provider':evidence_provider,
             'recovery_backend':'external_hash_pinned_local_window_provider' if evidence_provider else 'trusted_local_evidence_or_RAW'}
+    if progress_report is not None:
+        report['progress_production']={k:progress_report[k] for k in
+            ('accepted_anchors','terminal_anchors','excluded_anchors','produced_atomic_segments','identity')}
+        report['recovery_backend']='builtin_sparse_progress_v1'
     output=Path(output);output.mkdir(parents=True,exist_ok=False)
     def write(name,value):
         (output/name).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
     source_map={'format':'egrs.augmentation.index.v1','data_root':str(root),
                 'sources':{s['source_id']:s for s in sources},'manifest_identity':identity(manifest)}
     write('sources.json',source_map);write('report.json',report);write('evidence.json',evidence)
+    if progress_report is not None:write('progress_report.json',progress_report)
     (output/'windows.jsonl').write_text(''.join(json.dumps(r,ensure_ascii=False,allow_nan=False)+'\n' for r in rows),encoding='utf-8')
     return report
 
