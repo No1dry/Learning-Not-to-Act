@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-03：教师v2恢复软件accepted并部署，用户直接启动003
+
+PR10固定44b6ca02（实现20647cce），[R5审查](reviews/035_round5.md)accepted/closed限v2恢复软件及隔离文件部署，X本任务无返修；[软件阶段总结](../docs/stage_summaries/2026-11-03_task035_teacher_v2_software_accepted.md)。研究实际数据和方法效果仍open。
+
+Codex六个受影响CPU/fake文件68/68通过（100%、0skip、3.21秒），含真实symlink、v1/v2资格、失败前缀、180原分组→73、旧8字节复用、fake导出/预算和日志；没有全库或真实仿真/模型。仅table_drop未知留诊断，确认违规/其他关键未知/完成释放/A保护/正式评分/训练配方不改。
+
+独立code/task035-v2-44b6ca02与configs/trajectory035-v2-44b6ca02/recovery.json已部署，归档SHA0a00690c/配置27946331/批准refs e13bc97c均核对。实际build_recovery_plan只读JSON与文件字节身份，73/53train20dev、旧8/2父源、73普通/438次10上限与原venv入口一致，simulation_created/model_loaded=false。无需用户重复plan、安装包或新物理预检。
+
+**下一执行者用户：按[003完整普通命令](../docs/experiment_plans/2026-11-03_task035_teacher_v2_generation003_server_commands.md)直接启动恢复**。新入口recovery recover，新输出data/trajectory035/generated-003，日志generate-003.log。零重放复用旧8，只新执行73候选，不重跑全部180/基线或重下数据；实际合格量不保证。
+
+003尚未启动，当前仍旧2normal/6个10且dev空，训练/新模型eval0；结束后Codex按recovery_report的new_execution/reused/pools/training_ready给原1000更新混训命令。旧001/002失败与资格、原split和90/90测试保持。精确refs JSON是运行时批准输入，不是可清理交流文件，须保留。评测实时SR小增量非阻断open，无自动merge/清理，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：用户已批准教师v2与73来源恢复，直接交X实现
 
 用户明确同意：table_drop未知仅诊断，已确认违规/完成释放等原条件不变；旧002已有2normal/6个10共8条合格HDF零重放复用，只重建73候选（53train/20dev），新增上限73普通重放＋438次10尝试。原一组1000更新/7:3混训和同adapter10/00各90预算保持，仍由用户启动全部真实作业。

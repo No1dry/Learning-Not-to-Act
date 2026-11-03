@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-03：教师v2恢复软件accepted，用户启动003
+
+PR10@44b6ca02/实现20647cce经Codex R5验收，68/68受影响CPU/fake含真实symlink通过；隔离部署code/task035-v2-44b6ca02与新recovery.json，实际73/旧8文件引用核对通过。X本任务无返修；用户按docs/experiment_plans/2026-11-03_task035_teacher_v2_generation003_server_commands.md直接启动generated-003，无需再plan/pip或物理预检。预算73普通/438次10、旧8零重放复用，原评分/split/锁/训练配方保持。Codex/X没有真实作业；003数据/训练仍待用户运行，研究open。refs JSON是运行时批准输入，不可作普通交流清理。以下旧“X待实现”仅历史，以最新STATUS/R5为准。
+
 ## 2026-11-03：教师v2与73来源恢复已获批，X直接实现
 
 用户已同意table_drop未知仅诊断、其他违规/完成/释放/A保护条件不变，复用002旧8条合格HDF并重建73候选（53train/20dev），新增上限73普通重放＋438次10尝试，原1000更新/90+90评测预算不变。X直接按collaboration/tasks/035_teacher_v2_recovery.md和精确refs JSON实现＋CPU/fake，不先等方案；R3验收保持，不改旧v1/正式评分/split或重下数据。Codex审查部署/命令，用户亲自启动generated-003；当前没有新真实作业。最新STATUS/批准总结为准，下方旧“待用户批准”仅历史。
