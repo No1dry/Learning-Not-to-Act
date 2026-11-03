@@ -1,5 +1,41 @@
 # 方法研究当前状态
 
+## 2026-11-03：用户已批准教师v2与73来源恢复，直接交X实现
+
+用户明确同意：table_drop未知仅诊断，已确认违规/完成释放等原条件不变；旧002已有2normal/6个10共8条合格HDF零重放复用，只重建73候选（53train/20dev），新增上限73普通重放＋438次10尝试。原一组1000更新/7:3混训和同adapter10/00各90预算保持，仍由用户启动全部真实作业。
+
+**下一执行者X：按[完整直接实现任务](tasks/035_teacher_v2_recovery.md)实现＋精简CPU/fake，不必再先交方案。** [精确候选/复用引用](tasks/035_teacher_v2_recovery_refs.json)已备好：73个ID和原资格/metadata SHA；旧8条HDF/资格/审计等引用SHA。原180先验证/分组再选73，不重分组、不把候选改成成功，不复制train到dev；失败观测保留但不进训练。
+
+版本化策略不改正式benchmark/原90状态/评分，也不改原native版本锁/动作投影/桥接/A保护/释放/H520；不增加释放尾动作、截断示范或新来源。R3解释器修复验收保持，原001/002失败/原始数据保留，不重下数据或重跑所有180/基线。[批准阶段总结](../docs/stage_summaries/2026-11-03_task035_teacher_v2_approved.md)；原分析已标明本次批准，旧“待用户确认”仅历史。
+
+实际可用数据仍2normal/6个10、仅dual_mugs/train，dev空；v2尚未实现，新增真实生成/训练/新模型eval0。X交付后Codex审查/隔离部署/完整命令，用户启动新输出generated-003，不自动执行。评测日志小增量非阻断，无自动merge或清理，待删=[]。下方为历史。
+
+---
+
+## 2026-11-03：002真实生成结束，技术错误0；数据未可训，v2恢复提案待用户确认
+
+用户已结束generated-002，来源处理100%（180/180）、技术错误0%；normal合格1.11%（2/180），两个父来源产生的6次10尝试全合格=100%，但仅dual_mugs/train、任务覆盖1/9=11.11%，dev两域0。不是1080次10已执行，也不是模型评测SR。当前不发空池训练命令，R3解释器修复验收保持。[R4裁决](reviews/035_round4.md)、[阶段总结](../docs/stage_summaries/2026-11-03_task035_generated002_data_bottleneck.md)。
+
+180份既有资格只读分析：120/180=66.67%含事件未知，61,098逐帧未知全为table_drop；73/180=40.56%仅因此失败、完整任务和释放/连续确认已通过，无已确认违规。固定benchmark主评分已将table_drop通道仅诊断，而现教师硬拒它；这是Codex筛选设计瓶颈，不要求X为忠实实现返修。[详细分析和v2提案](../docs/research/2026-11-03_task035_generated002_filter_analysis.md)。
+
+拟仅将教师table_drop未知转诊断，确认违规/其他关键未知/完成释放/A保护和正式评分不变；旧8条合格HDF零重放复用，另只恢复73候选（53train/20dev、五任务），不重跑全部180。原rejected没保存RGB，不能改JSON就冒称已有训练数据。原split/9文件/原状态与两基线保持，旧事实不覆写。
+
+**下一执行者用户：确认v2与新增上限73次normal重放＋438次10尝试**（不保证产量），训练一组1000/评测90+90预算不变。已发确认问题，目前未收到批准，未向X下达实现或启动新增真实作业；批准后Codex交精确清单/详细任务，X实现、Codex审查部署/命令、用户启动。训练/新模型eval0。无自动merge或清理，待删=[]。下方为历史。
+
+---
+
+## 2026-11-03：035 R2路径修复已验收部署，用户直接启动generated-002
+
+PR10固定HEAD eecd25f5（实现e56e3e70），[R3裁决](reviews/035_round3.md)accepted/closed限解释器软链路径修复及部署；[阶段总结](../docs/stage_summaries/2026-11-03_task035_interpreter_fix_accepted.md)。X本修复无返修；原R2路径阻断关闭，035研究仍open。
+
+Codex独立受影响CLI CPU/fake8/8通过（100%、0skip、0.35秒），包含X在Windows无法执行的两项真实symlink及plan/request/fake subprocess全链拼写。只有一个生产文件的5增2删，其他版本锁/算法/数据/计分不改。归档SHA01ec27eb与CLI SHA5c892731本地/服务器一致，独立目录code/task035-eecd25f5已部署；实际配置纯JSON计划一次核对，解释器保留原oft_worker/bin/python，180父来源/最大1080次10尝试不变，未创建仿真/模型或升级环境。
+
+**下一执行者用户：按[002完整命令](../docs/experiment_plans/2026-11-03_task035_generation_retry002_server_commands.md)直接启动正式轨迹生成**。继续复用9个HDF/180清单/train136-dev44和原configs/trajectory035-564c91c9/generate.json，输出换data/trajectory035/generated-002，日志generate-002.log。不再执行旧001命令，不重下载、不等X、不追加MVP或真实预检。
+
+原001的180条初始化错误及normal=0、10=0保持，未覆盖/改分；002未启动，有效数据/训练/新模型eval仍0，修复软件不代表实际资格通过。生成报告交回后Codex给混训命令。原10/00基线24.44%/86.67%不重跑，实验仍用户启动。评测实时SR/去重复读子项为非阻断open，不卡本次生成/混训。无自动merge或清理，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：X提交035 R2解释器路径最小修复，等待验收
 
 [PR10](https://github.com/No1dry/Learning-Not-to-Act/pull/10)增量实现 `e56e3e7031e96308c3e723734944b45166c2f0f7`，见[035 R2回复](responses/035_round2.md)。仅native Python改为expanduser＋基于配置目录的abspath，保留venv入口；其余resolve、版本锁和生成/训练/评分主体不改。
