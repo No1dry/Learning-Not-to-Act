@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-03：030 PR9已审，只修真实proprio及进度证据生产；034软件通过
+
+X交付PR9固定9a62732b（实现46dac7c7），[030 R1](reviews/030_v2_round1.md)限定changes_requested两处：[集中工单](tasks/030_v2_round2_production_data_path.md)。一是state子串禁令误拒真实合法obs/gripper_states与ee_states（服务器仅HDF字段/shape/attrs取证，未读轨迹内容/仿真）；二是增强只交外部插件，尚无实际可信进度生产路径。训练、adapter、普通评测主体保留，不整套返工、不因偏好加检查。
+
+Codex独立49个不同CPU/fake用例均获通过：初次48通过/1因测试硬编码同级034目录且mock依赖导入失败，显式提供已交报告包后仅该项通过；原失败XML保留。不是原命令49/49，也不要求X改目录风格。034独立12项通过（0skip、0.79秒），[benchmark R1](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/reviews/034_round1.md)accepted软件并隔离部署，无返修。真实原90条二元报告纯文件派生已启动、此时未结束，不是新模型评测。
+
+首轮可用实际可靠PROGRESS锚点，ATOMIC不足按既定RAW回退并报比例；不强迫九任务技能段全标完、不全量重建旧视觉标注。X交两处增量和受影响CPU/fake即可，Codex继续真实文件映射/部署/完整命令。旧2429 selector query不能冒充本轮动作段。
+
+基线完成100%、二元合规24.44%（22/90）、不成功75.56%（68/90）不变；正式训练/新模型评测0%。新增数据及两次1000更新/A90+C36真实预算仍待确认；用户暂不启动。无自主真实实验、merge或清理，待删=[]。
+
+---
+
 ## 2026-11-02：030 v2直接交实现；正式SR采用二元口径
 
 用户决定正式合规结果只有成功/不成功：九任务mask10基线24.44%（22/90），不成功75.56%（68/90）。旧22 success/67 failure/1 unknown原证据保持；释放未确认的已完成记录在新二元报告记0，不剔除、不伪造违规。原unknown仅作diagnostics，技术错误/缺失作为运行不完整，不能冒充模型失败。benchmark[034](https://github.com/No1dry/LIBERO-Remain/blob/main/collaboration/tasks/034_binary_compliant_success_reporting.md)实现单一报告映射，不重跑或改变物理判据。
