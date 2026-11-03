@@ -1,5 +1,13 @@
 # Learning Not to Act
 
+2026-11-02 当前实现：030 v2 进度感知数据增强与 OFT 语言 attention LoRA 续训，
+含数据索引导出、普通/增强两组训练和 A90/C36 普通 adapter 评测入口。
+见[完整命令与依赖](docs/augmentation_commands.md)、[数据映射与证据](docs/augmentation_data.md)
+及[030 v2 回复](collaboration/responses/030_v2_round1.md)。
+本轮仅 CPU/fake 软件交付，未启动真实导出/训练/评测；034 二元报告独立复用。
+以下 selector 内容保留为历史路线，不是030的前置依赖。
+
+
 独立的方法研究仓库：研究外部过程提前完成部分任务后，如何让冻结VLA基于当前观测确定剩余目标，并在保留已有成果的同时完成任务。
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
