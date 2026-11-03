@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-03：035 R2路径修复已验收部署，用户直接启动generated-002
+
+PR10固定HEAD eecd25f5（实现e56e3e70），[R3裁决](reviews/035_round3.md)accepted/closed限解释器软链路径修复及部署；[阶段总结](../docs/stage_summaries/2026-11-03_task035_interpreter_fix_accepted.md)。X本修复无返修；原R2路径阻断关闭，035研究仍open。
+
+Codex独立受影响CLI CPU/fake8/8通过（100%、0skip、0.35秒），包含X在Windows无法执行的两项真实symlink及plan/request/fake subprocess全链拼写。只有一个生产文件的5增2删，其他版本锁/算法/数据/计分不改。归档SHA01ec27eb与CLI SHA5c892731本地/服务器一致，独立目录code/task035-eecd25f5已部署；实际配置纯JSON计划一次核对，解释器保留原oft_worker/bin/python，180父来源/最大1080次10尝试不变，未创建仿真/模型或升级环境。
+
+**下一执行者用户：按[002完整命令](../docs/experiment_plans/2026-11-03_task035_generation_retry002_server_commands.md)直接启动正式轨迹生成**。继续复用9个HDF/180清单/train136-dev44和原configs/trajectory035-564c91c9/generate.json，输出换data/trajectory035/generated-002，日志generate-002.log。不再执行旧001命令，不重下载、不等X、不追加MVP或真实预检。
+
+原001的180条初始化错误及normal=0、10=0保持，未覆盖/改分；002未启动，有效数据/训练/新模型eval仍0，修复软件不代表实际资格通过。生成报告交回后Codex给混训命令。原10/00基线24.44%/86.67%不重跑，实验仍用户启动。评测实时SR/去重复读子项为非阻断open，不卡本次生成/混训。无自动merge或清理，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：035首轮180初始化错误，已定位venv解释器被resolve，X仅修路径
 
 用户已结束generated-001：来源处理180/180=100%，初始化技术错误180/180=100%，全部annotation library version lock mismatch；合格10=0、normal=0，无法进入混训。这不是物理重放成功率或模型SR，不把处理100%当成数据ready。[R2审查](reviews/035_round2.md)、[失败阶段总结](../docs/stage_summaries/2026-11-03_task035_initialization_failure.md)。

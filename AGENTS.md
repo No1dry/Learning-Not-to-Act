@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-03：035 R2解释器修复accepted，用户启动002
+
+PR10@eecd25f5（实现e56e3e70）已通过Codex R3：CLI解释器不解引用symlink，8/8受影响CPU/fake含真实软链通过；隔离部署code/task035-eecd25f5并完成一次真实配置纯JSON路径核对。X本修复无返修；原001失败/数据/锁不改，用户按docs/experiment_plans/2026-11-03_task035_generation_retry002_server_commands.md启动generated-002。Codex/X没有启动真实作业，不重下载或新增预检；研究仍open，评测实时报告子项非阻断并行。以最新STATUS/R3为准，下方旧“当前”仅属历史。
+
 ## 2026-11-03最新035主体验收
 
 PR10@564c91c9已通过Codex R1主体软件审查并隔离文件部署：生成器、7:3混训与同adapter10/00计分主体accepted；实际数据/生成率/训练/SR尚未验证。X仅并行处理collaboration/tasks/035_evaluation_live_reporting_followup.md的非阻断日志/去重复读增量，不返工主体或旧030。用户已同意035最多180种子重放、1080次10尝试、一组1000更新及180新eval预算，授权Codex本地下载/上传种子并准备配置/完整命令。Codex只准备文件，不启动任何真实作业，仍由用户亲自启动。不得据软件通过宣称生成成功、自动运行真实仿真/模型或合并PR。以最新STATUS/review为准，原优先级不变；下方旧待确认段落仅为此前历史。
