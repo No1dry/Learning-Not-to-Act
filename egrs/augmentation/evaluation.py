@@ -60,7 +60,9 @@ class AdapterPolicy:
 
     def predict(self, observation, instruction):
         # Same keys as the accepted core; ignores additional evaluator fields.
-        obs = {key: deepcopy(observation[key]) for key in ("images", "proprio") if key in observation}
+        keys = ("images", "proprio", "agentview_image", "robot0_eye_in_hand_image",
+                "robot0_eef_pos", "robot0_eef_quat", "robot0_gripper_qpos")
+        obs = {key: deepcopy(observation[key]) for key in keys if key in observation}
         return self.base.predict(obs, instruction)
 
     def reset(self):

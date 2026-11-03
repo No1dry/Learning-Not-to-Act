@@ -11,7 +11,7 @@ import torch
 from torch import nn
 
 from .adapter_identity import (OFT_REVISION, BASE_SOURCE, LINEAGE_KEYS, TARGET,
-                               sha256, _lineage, read_adapter_identity)
+                               sha256, _lineage, read_adapter_identity, validate_recipe_identity)
 
 def language_targets(model):
     targets = sorted(name for name, module in model.named_modules()
@@ -70,9 +70,17 @@ def adapter_state(model):
             if name.endswith(('.lora_A', '.lora_B'))}
 
 
-def save_adapter(policy, directory, group):
-    if group not in {'raw_control', 'progress_aug'}:
+def save_adapter(policy, directory, group, metadata=None):
+    if group not in {'raw_control', 'progress_aug', 'robot_rewind_mix'}:
         raise ValueError('Adapter group must be raw_control or progress_aug')
+    if group == 'robot_rewind_mix':
+        if not isinstance(metadata, dict) or set(metadata) != {
+            'recipe', 'data_kind', 'update', 'final_update', 'export_identity'}:
+            raise ValueError('task035 adapter requires exact recipe metadata fields')
+        recipe_identity = dict(metadata or {}, schema_version='task035-oft-adapter-v1', group=group)
+        validate_recipe_identity(recipe_identity)
+    elif metadata is not None:
+        raise ValueError('task030 adapter identity does not accept recipe metadata')
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
     state = adapter_state(policy.model)
@@ -85,6 +93,8 @@ def save_adapter(policy, directory, group):
         'target_modules': sorted(n.rsplit('.', 1)[0] for n in state if n.endswith('.lora_A')),
         'trainable_parameters': {n: list(v.shape) for n, v in sorted(state.items())},
         'adapter_sha256': sha256(path)}
+    if group == 'robot_rewind_mix':
+        identity.update(recipe_identity)
     (directory / 'identity.json').write_text(json.dumps(identity, sort_keys=True, indent=2), encoding='utf-8')
     return identity
 

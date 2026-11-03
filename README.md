@@ -1,5 +1,9 @@
 # Learning Not to Act
 
+2026-11-03 当前候选实现：035 机器人起点变换的完整10轨迹生成、7:3混训，以及同一adapter的固定10/00各90条评测。
+见[生成与混训完整命令](docs/trajectory_augmentation.md)、[双条件评测](docs/trajectory_augmentation_evaluation.md)
+和[035交付回复](collaboration/responses/035_round1.md)。复用已验收030主体，独立035分支/PR；当前仅交软件与CPU/fake结果，真实生成、训练与评测尚未启动。
+
 2026-11-02 当前实现：030 v2 进度感知数据增强与 OFT 语言 attention LoRA 续训，
 含数据索引导出、普通/增强两组训练和 A90/C36 普通 adapter 评测入口。
 见[完整命令与依赖](docs/augmentation_commands.md)、[数据映射与证据](docs/augmentation_data.md)

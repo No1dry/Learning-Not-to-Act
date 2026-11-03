@@ -100,9 +100,10 @@ def photometric(images, rng, probability=.5):
         brightness)).enhance(contrast)).copy() for image in images]
 
 
-def save_training_state(directory, policy, optimizer, scheduler, sampler, update, best_dev, config):
+def save_training_state(directory, policy, optimizer, scheduler, sampler, update, best_dev, config,
+                        adapter_metadata=None):
     directory = Path(directory)
-    identity = save_adapter(policy, directory, group=config['name'])
+    identity = save_adapter(policy, directory, group=config['name'], metadata=adapter_metadata)
     state = {'update': update, 'best_dev': best_dev, 'config': config,
         'optimizer': optimizer.state_dict(), 'scheduler': scheduler.state_dict(),
         'sampler': sampler.state_dict(), 'python_rng': random.getstate(),
@@ -124,6 +125,12 @@ def load_training_state(directory, policy, optimizer, scheduler, sampler, config
     state = torch.load(directory / 'training_state.pt', map_location='cpu', weights_only=False)
     if state['config'] != config:
         raise ValueError('Resume configuration or exported dataset identity changed')
+    if identity['group'] != config['name']:
+        raise ValueError('Resume adapter recipe differs from training configuration')
+    if identity['group'] == 'robot_rewind_mix' and (
+        identity['update'] != state['update'] or identity['export_identity'] != config.get('export_identity')
+        or identity['recipe'] != config.get('name') or identity['data_kind'] != config.get('data_kind')):
+        raise ValueError('Resume task035 adapter recipe/update/export identity changed')
     restore_adapter_weights(policy.model, directory, identity)
     optimizer.load_state_dict(state['optimizer'])
     scheduler.load_state_dict(state['scheduler'])
@@ -209,7 +216,7 @@ def run(args):
         policy.close()
 
 
-def _run_loaded(args, config, train, dev, sampler, output, policy):
+def _run_loaded(args, config, train, dev, sampler, output, policy, recipe=None):
     # Binding compares the export's declared original normalization to actual loaded stats.
     train.validate_normalization(policy.model.norm_stats, policy.cfg.unnorm_key,
                                  policy.metadata['dataset_statistics_sha256'])
@@ -239,38 +246,54 @@ def _run_loaded(args, config, train, dev, sampler, output, policy):
             policy.proprio_projector.eval()
             optimizer.zero_grad(set_to_none=True)
             loss_total = 0.
-            items = [train[sampler.draw()] for _ in range(config['gradient_accumulation'])]
+            if recipe is None:
+                items = [train[sampler.draw()] for _ in range(config['gradient_accumulation'])]
+            else:
+                items, batch_scales, batch_metrics = recipe.batch(train, sampler)
             # Normalize over the complete effective batch's real action scalars;
             # shorter boundary chunks cannot gain extra weight via microbatch means.
             counts = [int(np.asarray(item['action_mask']).sum()) * 7 for item in items]
             denominator = sum(counts)
             if not denominator:
                 raise ValueError('Effective training batch has no valid action scalars')
-            for item, count in zip(items, counts):
+            if recipe is None:
+                batch_scales = [count / denominator for count in counts]
+            for item, scale in zip(items, batch_scales):
                 images = photometric(item['images'], random, config['photometric_probability'])
                 with torch.autocast('cuda', dtype=torch.bfloat16):
                     prediction = training_prediction(policy, item, images)
                     target = torch.as_tensor(item['actions'], device=prediction.device).unsqueeze(0)
                     mask = torch.as_tensor(item['action_mask'], device=prediction.device).unsqueeze(0)
                     loss = masked_l1(prediction, target, mask)
-                (loss * (count / denominator)).backward()
-                loss_total += loss.detach().item() * count / denominator
+                (loss * scale).backward()
+                loss_total += loss.detach().item() * scale
             optimizer.step()
             scheduler.step()
             update += 1
             metrics = {'update': update, 'completion_percent': 100 * update / config['updates'],
                 'loss': loss_total, 'learning_rate': scheduler.get_last_lr()[0], 'elapsed_seconds': time.monotonic() - started}
             if update % config['save_every'] == 0 or update == config['updates']:
-                dev_l1 = evaluate_dev(policy, dev)
-                selected = dev_l1 < best_dev
+                dev_metrics = recipe.evaluate_dev(policy, dev) if recipe else None
+                dev_l1 = dev_metrics['weighted_l1'] if recipe else evaluate_dev(policy, dev)
+                selected = update == config['updates'] if recipe else dev_l1 < best_dev
                 best_dev = min(best_dev, dev_l1)
                 directory = output / f'update-{update:06d}'
-                save_training_state(directory, policy, optimizer, scheduler, sampler, update, best_dev, run_config)
-                metrics.update(dev_raw_l1=dev_l1, best_dev_raw_l1=best_dev, selected=selected)
-                if selected:
+                save_training_state(directory, policy, optimizer, scheduler, sampler, update, best_dev, run_config,
+                                    adapter_metadata=recipe.adapter_metadata(update, run_config) if recipe else None)
+                if recipe:
+                    metrics.update(dev=dev_metrics, selected=selected)
+                    if selected:
+                        (output / 'selected_checkpoint.json').write_text(json.dumps({'checkpoint': directory.name,
+                            'update': update, 'selection': 'fixed terminal update',
+                            'recipe': config['name']}, indent=2), encoding='utf-8')
+                else:
+                    metrics.update(dev_raw_l1=dev_l1, best_dev_raw_l1=best_dev, selected=selected)
+                if selected and recipe is None:
                     (output / 'best_checkpoint.json').write_text(json.dumps({'checkpoint': directory.name,
                         'update': update, 'dev_raw_l1': dev_l1, 'selection': 'minimum valid-scalar L1 on shared RAW dev'}, indent=2), encoding='utf-8')
             metrics['sampling'] = sampler.report()
+            if recipe:
+                metrics['batch'] = batch_metrics
             print(json.dumps(metrics), flush=True)
             log.write(json.dumps(metrics) + '\n')
             log.flush()

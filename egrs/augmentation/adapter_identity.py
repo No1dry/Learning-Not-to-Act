@@ -10,6 +10,24 @@ BASE_SOURCE = {'repository': 'moojink/openvla-7b-oft-finetuned-libero-spatial-ob
 LINEAGE_KEYS = ('repo_commit', 'checkpoint_source', 'dataset_statistics_sha256',
                 'normalization_statistics_sha256', 'component_checkpoint_sha256', 'unnorm_key')
 TARGET = re.compile(r'language_model\.model\.layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)$')
+GENERATED_DATA_KIND = 'task035-generated-trajectories-v1'
+
+
+def validate_recipe_identity(identity):
+    """035 identities bind the generated export and concrete update; 030 stays v1."""
+    digest = lambda value: isinstance(value, str) and re.fullmatch(r'[0-9a-f]{64}', value)
+    exports = identity.get('export_identity', {})
+    if (identity.get('schema_version') != 'task035-oft-adapter-v1'
+        or identity.get('group') != 'robot_rewind_mix'
+        or identity.get('recipe') != 'robot_rewind_mix'
+        or identity.get('data_kind') != GENERATED_DATA_KIND
+        or identity.get('final_update') != 1000
+        or type(identity.get('update')) is not int
+        or not 1 <= identity['update'] <= 1000
+        or not isinstance(exports, dict)
+        or set(exports) != {'sources.json', 'windows.jsonl', 'report.json'}
+        or not all(digest(value) for value in exports.values())):
+        raise ValueError('Invalid task035 recipe, update or generated export identity')
 
 
 def sha256(path):
@@ -32,8 +50,13 @@ def _lineage(policy):
 def read_adapter_identity(directory):
     directory = Path(directory)
     identity = json.loads((directory / 'identity.json').read_text(encoding='utf-8'))
-    if (identity.get('schema_version') != 'task030-oft-adapter-v1'
-        or identity.get('group') not in {'raw_control', 'progress_aug'}
+    if identity.get('schema_version') == 'task035-oft-adapter-v1':
+        validate_recipe_identity(identity)
+        valid_recipe = True
+    else:
+        valid_recipe = (identity.get('schema_version') == 'task030-oft-adapter-v1'
+                        and identity.get('group') in {'raw_control', 'progress_aug'})
+    if (not valid_recipe
         or identity.get('implementation') != 'native-linear-lora'
         or (identity.get('rank'), identity.get('alpha'), identity.get('dropout')) != (16, 32, 0)
         or identity.get('base_lineage', {}).get('repo_commit') != OFT_REVISION
