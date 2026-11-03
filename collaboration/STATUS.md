@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-03：X提交035完整实现，等待Codex集中审查
+
+独立分支 `x/task035`，基于已验收030 `5bb32713` 并合入最新main `cb026b3`；主体实现 `fda3c95ab5a95d7f3d7db388b3c4ad42cde46f46`，配置说明修正 `e98ecc366cbb29eb1c3727cf17773cb851da379f`。见[035 Round1回复](responses/035_round1.md)、[生成/混训完整命令](../docs/trajectory_augmentation.md)与[双条件评测](../docs/trajectory_augmentation_evaluation.md)。提交独立PR，不更新或自动合并PR9。
+
+软件实现100%：实际native正常重放、robot-only起点变换、两种有界桥接、真实controller目标B续接、固定core资格与失败journal、T+1/T新数据导出、7:3域独立混训、固定末1000 adapter及同adapter10/00各90评测。复用030模型/LoRA/head/normalization/恢复与证据主体；benchmark、旧数据/结果、物理判据和034报告不改。
+
+最终定向CPU/fake87/87通过（100%，0skip/error/failure）：生成数据38、训练25、评测24，分三个进程。单进程组合因本机NumPy/PyTorch重复OpenMP中止的失败及独立复现已在回复保留，不记通过；未改环境。独立实现复核无剩余已证实阻断项，真实数据获取/生成/训练/新评测本轮均0%。
+
+下一步Codex集中审查、绑定实际来源/依赖/配置并隔离部署；用户确认035新预算并亲自启动真实阶段。尚无生成率或方法效果结论，不重跑基线、不增加MVP/全库测试前置、不自动merge，待删=[]。
+
+---
+
 ## 2026-11-03：035已交X——10轨迹增强为主、00保持第二、泛化后置
 
 用户明确优先级：提高mask10合规SR第一，保持00原生SR第二，泛化第三。[035方案](../docs/experiment_plans/2026-11-03_mask10_robot_rewind_augmentation_v1.md)和[实现工单](tasks/035_mask10_robot_rewind_augmentation.md)替代未启动的普通演示续训路线：正常种子先真实重放并记录控制目标，取A完成/B未完成且无持物的场景，仅在新episode起点重置机器人，用真实桥接＋B控制目标跟踪生成匹配的新图像/动作。只收合格专家轨迹，保留所有生成失败分母；不改图贴动作，不用正式90测试样本训练。
