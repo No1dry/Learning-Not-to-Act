@@ -1,5 +1,20 @@
 # 方法研究当前状态
 
+## 2026-11-03：X提交030 R2增量，等待Codex审查/部署
+
+[PR9](https://github.com/No1dry/Learning-Not-to-Act/pull/9)增量实现`dd61b5b603a064f30ca5e22d649f378a863477a3`，
+见[回复030 R2](responses/030_v2_round2.md)及[生产入口指南](../docs/augmentation_progress.md)。
+合法ee/gripper proprio字段按角色精确放行；新增元数据稀疏计划、隔离固定原生组件的PROGRESS producer、
+同次export与原证据复用。只标记可靠当前锚点，完整指令/原chunk8/episode尾mask，ATOMIC不足按原约定RAW回退。
+已有训练/adapter/评测主体与034保持，不改判据/基线/冻结部署。
+
+本轮实现100%，相关CPU/fake84/84通过（100%，0skip，14.58秒）；含真实已验收SourceEpisode读取合成HDF的RPC测试，
+不代表实际物理恢复或真实数据就绪。独立窄审查问题已修。真实数据准备/恢复/训练/新评测本轮均0%。
+下一步Codex审查、隔离部署并绑定实际manifest/旧封存runtime与对应证据，用户决定预算并亲自启动真实阶段。
+不要求全部技能段标完；无自主作业、清理或自动merge，034无需返修。
+
+---
+
 ## 2026-11-03：030 PR9已审，只修真实proprio及进度证据生产；034软件通过
 
 X交付PR9固定9a62732b（实现46dac7c7），[030 R1](reviews/030_v2_round1.md)限定changes_requested两处：[集中工单](tasks/030_v2_round2_production_data_path.md)。一是state子串禁令误拒真实合法obs/gripper_states与ee_states（服务器仅HDF字段/shape/attrs取证，未读轨迹内容/仿真）；二是增强只交外部插件，尚无实际可信进度生产路径。训练、adapter、普通评测主体保留，不整套返工、不因偏好加检查。
