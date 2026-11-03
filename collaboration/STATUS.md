@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-03：030 R2软件accepted并部署，进入Codex数据准备；034真实报告完成
+
+PR9固定5bb32713（实现dd61b5b6），[R2裁决](reviews/030_v2_round2.md)accepted/closed限约定软件与隔离文件部署；[软件阶段总结](../docs/stage_summaries/2026-11-03_augmentation_software_acceptance.md)。两处阻断已解：合法eef/夹爪proprio精确放行；已交真实可调用的隔离native生产路径，一锚点一条完整指令PROGRESS/chunk8，不插值阶段或伪造ATOMIC。X本轮无返修，不再增加纯审阅或重复训练/评测回归。
+
+Codex独立84/84受影响CPU/fake通过（100%、0skip、10.42秒），实际恢复边界fake，未读取真实轨迹生成标签。源包SHA fb7b6441本地/服务器一致，独立新目录部署；历史native15、执行core97、034包6共118文件字节锁通过。无pip升级、旧目录热改、模型/仿真或真实数据作业。
+
+034实际原90条只读二元派生已结束并取回：90/90=100%，22成功、68不成功，正式SR24.44%，完整性错误0、未解决作业0。两文件SHA与服务器一致，原未知释放留diagnostics，不是第三结果，没有episode重跑。[实际报告闭环](https://github.com/No1dry/LIBERO-Remain/blob/main/docs/stage_summaries/2026-11-03_binary_report_complete.md)。下方旧“仍在读文件”仅为此前快照。
+
+下一步执行者Codex：绑定实际普通HDF、字段/动作时序/normalization/相机与旧backend配置，给准确普通conda/python命令；不用用户手填200记录。不要求九项全部ATOMIC完备；实际增强比例如实报告。**新增九任务最多180普通来源/下载、真实局部导出、两次1000更新及A90+C36=126新eval仍是候选，正在请求用户确认；不自动启动。** 软件完成不代表正式数据/PROGRESS已ready，训练/新模型eval0%。
+
+PR未自动合并，软件交流因未合并依赖继续保留；研究实验未闭环，无清理，待删=[]。
+
+---
+
 ## 2026-11-03：030 PR9已审，只修真实proprio及进度证据生产；034软件通过
 
 X交付PR9固定9a62732b（实现46dac7c7），[030 R1](reviews/030_v2_round1.md)限定changes_requested两处：[集中工单](tasks/030_v2_round2_production_data_path.md)。一是state子串禁令误拒真实合法obs/gripper_states与ee_states（服务器仅HDF字段/shape/attrs取证，未读轨迹内容/仿真）；二是增强只交外部插件，尚无实际可信进度生产路径。训练、adapter、普通评测主体保留，不整套返工、不因偏好加检查。
