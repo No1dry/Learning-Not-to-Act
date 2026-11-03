@@ -1,5 +1,39 @@
 # 方法研究当前状态
 
+## 2026-11-03：035首轮180初始化错误，已定位venv解释器被resolve，X仅修路径
+
+用户已结束generated-001：来源处理180/180=100%，初始化技术错误180/180=100%，全部annotation library version lock mismatch；合格10=0、normal=0，无法进入混训。这不是物理重放成功率或模型SR，不把处理100%当成数据ready。[R2审查](reviews/035_round2.md)、[失败阶段总结](../docs/stage_summaries/2026-11-03_task035_initialization_failure.md)。
+
+根因实际请求已证实：正确配置的.../.runtime/oft_worker/bin/python经035 cli.build_plan的Path.resolve变成/root/anaconda3/envs/peft-openvla/bin/python3.10，失去venv语义。正确worker版本与原锁完全相符；被调用base是numpy1.26.0/mujoco3.4.0而非1.24.4/2.3.7。这是Codex R1审查遗漏，不以修改版本锁/升级环境/重下载处理。
+
+**下一执行者X：按[最小修复工单](tasks/035_round2_preserve_native_python.md)只修解释器拼写保留＋symlink plan到subprocess的精简CPU/fake**。其余035/030软件验收保持、不返工主体、不增加MVP/全库或真实预检。Codex验收隔离部署后给新输出generated-002命令，仍由用户启动。180清单/9原文件/划分复用，原001全部失败记录保留，不覆盖、不伪造成功；真实物理重放/10桥接尚未开始，不自动扩大预算。训练、新模型eval均0%。原评测实时SR小增量为非阻断并行；无自动merge/清理，待删=[]。下方为历史。
+
+---
+
+## 2026-11-03：035文件准备100%，用户可直接启动正式轨迹生成
+
+九任务9/9原始HDF共12,790,079,988字节已下载、上传并核验固定LFS SHA；180条普通种子清单/六配置已准备并逐文件核验传输，父分组train136/dev44。最后微波炉分段续传后完整SHA通过，旧网络失败/部分文件保留，不改写旧日志。[文件阶段总结](../docs/stage_summaries/2026-11-03_task035_data_files_ready.md)。
+
+**下一执行者用户：按[完整conda/python命令](../docs/experiment_plans/2026-11-03_task035_generation_server_commands.md)启动正式生成**，不再等X、不增加MVP或仿真预检。固定代码task035-564c91c9，配置trajectory035-564c91c9，输出data/trajectory035/generated-001。最多180普通重放＋1080次10尝试，不保证成功量；已有原始文件和清单不等于已生成合格10训练轨迹。Codex未启动真实作业，生成/训练/新模型eval均0%。
+
+仅HDF属性/shape用于文件绑定，原动作统计/相机/控制器/九任务谓词不变；真实输出将重放并记录新鲜状态—动作。父组未知demo/init物理祖源仍unknown，正式90测试状态/模型轨迹不进训练。生成报告交回后Codex给1000更新7:3混训命令；同adapter10/00各90及原24.44%/86.67%基线保持，不重跑基线。X非阻断实时SR/读取效率小增量仍open，不阻塞生成/训练；无自动merge或清理，待删=[]。下方为历史。
+
+---
+
+## 2026-11-03：035主体软件accepted并隔离部署，用户已同意预算与文件准备；日志小增量并行
+
+PR10固定564c91c9（主体fda3c95a、超时示例e98ecc36），[035 R1](reviews/035_round1.md)accepted限真实生成器/7:3混训/同adapter双条件计分主体与文件部署；[软件阶段总结](../docs/stage_summaries/2026-11-03_task035_software_acceptance.md)。X不返工主体、030验收保持，当前不宣称实际数据非空或SR提高。
+
+Codex分组三组CPU/fake：生成初次37通过/1因缺同级历史依赖目录失败，补链接后该项单独通过；训练25、评测24通过，87个不同用例均获通过证据、0skip，初次XML保留。没有对真实native/7B做预检。只读实际原统计JSON确认action mask六真一假/proprio默认全真；源归档SHA5da2b238本地/服务器一致，独立新目录部署，15+97+6=118依赖文件锁匹配，无环境升级/热改/仿真/模型。
+
+仅有[评测实时报告小增量](tasks/035_evaluation_live_reporting_followup.md)为non-blocking/open：当前126单元最多128次从头reader，控制台只报condition/task/status；建议X补两条件完成百分比/live SR、循环只验新任务、最终一次完整复验。评分/源/模型不改，不做真实profile，不阻塞数据生成或混训；PR10未自动merge。
+
+当前下一执行者Codex：本地下载并上传九任务种子，绑定原控制器/统计/相机、旧native与00/10来源配置，给普通conda/python完整命令。用户已明确同意035预算及文件准备：最多180种子重放＋1080新10尝试、一组1000更新及同adapter10/00各90；**只授权Codex准备/搬运文件，所有真实作业仍由用户亲自启动**。不用旧380普通来源/两轮训练/126评测的旧问答替代本轮许可。种子文件正在准备，真实生成/训练/新模型eval均0%。
+
+主目标10优先、00保持第二、泛化后置；原10合规24.44%和00原生86.67%两基线不重跑。无FINISH/selector/benchmark扩张、自动merge或清理，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：X提交035完整实现，等待Codex集中审查
 
 独立分支 `x/task035`，基于已验收030 `5bb32713` 并合入最新main `cb026b3`；主体实现 `fda3c95ab5a95d7f3d7db388b3c4ad42cde46f46`，配置说明修正 `e98ecc366cbb29eb1c3727cf17773cb851da379f`。见[035 Round1回复](responses/035_round1.md)、[生成/混训完整命令](../docs/trajectory_augmentation.md)与[双条件评测](../docs/trajectory_augmentation_evaluation.md)。提交独立PR，不更新或自动合并PR9。
