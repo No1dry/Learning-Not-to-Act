@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-03：002结果与v2提案待用户批准
+
+002来源处理180/180完成、技术错误0，只有2normal和6条10合格且全在dual_mugs/train，dev两域0，暂不训练。R3解释器修复验收保持。已只读确认73来源仅被table_drop未知硬拒；教师v2改该项为诊断、复用旧8条并重建73候选/最多438次10尝试的提案及新增预算待用户确认，尚未向X下达实现，不启动任何新作业、不改正式评分或旧结果。以最新STATUS/R4和docs/research/2026-11-03_task035_generated002_filter_analysis.md为准，下方旧“直接启动002”是已执行历史。
+
 ## 2026-11-03：035 R2解释器修复accepted，用户启动002
 
 PR10@eecd25f5（实现e56e3e70）已通过Codex R3：CLI解释器不解引用symlink，8/8受影响CPU/fake含真实软链通过；隔离部署code/task035-eecd25f5并完成一次真实配置纯JSON路径核对。X本修复无返修；原001失败/数据/锁不改，用户按docs/experiment_plans/2026-11-03_task035_generation_retry002_server_commands.md启动generated-002。Codex/X没有启动真实作业，不重下载或新增预检；研究仍open，评测实时报告子项非阻断并行。以最新STATUS/R3为准，下方旧“当前”仅属历史。
