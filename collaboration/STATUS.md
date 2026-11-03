@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-03：035首轮180初始化错误，已定位venv解释器被resolve，X仅修路径
+
+用户已结束generated-001：来源处理180/180=100%，初始化技术错误180/180=100%，全部annotation library version lock mismatch；合格10=0、normal=0，无法进入混训。这不是物理重放成功率或模型SR，不把处理100%当成数据ready。[R2审查](reviews/035_round2.md)、[失败阶段总结](../docs/stage_summaries/2026-11-03_task035_initialization_failure.md)。
+
+根因实际请求已证实：正确配置的.../.runtime/oft_worker/bin/python经035 cli.build_plan的Path.resolve变成/root/anaconda3/envs/peft-openvla/bin/python3.10，失去venv语义。正确worker版本与原锁完全相符；被调用base是numpy1.26.0/mujoco3.4.0而非1.24.4/2.3.7。这是Codex R1审查遗漏，不以修改版本锁/升级环境/重下载处理。
+
+**下一执行者X：按[最小修复工单](tasks/035_round2_preserve_native_python.md)只修解释器拼写保留＋symlink plan到subprocess的精简CPU/fake**。其余035/030软件验收保持、不返工主体、不增加MVP/全库或真实预检。Codex验收隔离部署后给新输出generated-002命令，仍由用户启动。180清单/9原文件/划分复用，原001全部失败记录保留，不覆盖、不伪造成功；真实物理重放/10桥接尚未开始，不自动扩大预算。训练、新模型eval均0%。原评测实时SR小增量为非阻断并行；无自动merge/清理，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：035文件准备100%，用户可直接启动正式轨迹生成
 
 九任务9/9原始HDF共12,790,079,988字节已下载、上传并核验固定LFS SHA；180条普通种子清单/六配置已准备并逐文件核验传输，父分组train136/dev44。最后微波炉分段续传后完整SHA通过，旧网络失败/部分文件保留，不改写旧日志。[文件阶段总结](../docs/stage_summaries/2026-11-03_task035_data_files_ready.md)。
