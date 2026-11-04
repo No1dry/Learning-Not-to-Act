@@ -157,7 +157,7 @@ def test_reports_keep_034_binary10_and_official00_distinct(tmp_path, core):
 
 
 @pytest.mark.parametrize("protocol", ["mask10", "normal00-control", "nine-mask10", "nine-normal00"])
-@pytest.mark.parametrize('reader_version',['v1','v2'])
+@pytest.mark.parametrize('reader_version',['v1','v2','v3'])
 def test_original_readers_verify_archive_actions_observations_and_video(tmp_path, monkeypatch, core, protocol,reader_version):
     from egrs.trajectory_augmentation import evaluation as ev
     from benchmark.remaining_goals.headless import workflow, planning
@@ -208,15 +208,19 @@ def test_original_readers_verify_archive_actions_observations_and_video(tmp_path
     assert metadata["status"] == "completed", metadata["error"]
     item = {"source": source, "scoped": scoped}
     kwargs={}
-    if reader_version=='v2':
+    if reader_version in ('v2','v3'):
         from egrs.trajectory_augmentation import environment_dispatch as dispatch
         binding={'implementation':'fake-reader-boundary','expected_environment':source['environment_config']['environment']}
-        plan.update(schema_version=ev.SCHEMA_V2,environment_dispatch={'identity':'d'*64})
+        plan.update(schema_version=ev.SCHEMA_V3 if reader_version=='v3' else ev.SCHEMA_V2,
+                    environment_dispatch={'identity':'d'*64})
         item['environment_binding']=binding
         monkeypatch.setattr(dispatch,'binding_for',lambda *a:deepcopy(binding))
         record={'schema_version':'task035-environment-dispatch-record-v1','plan_sha256':plan['plan_sha256'],
             'source_plan_sha256':source['source_plan_sha256'],'binding':binding,
             'status':'constructed','actual_environment':binding['expected_environment']}
+        if reader_version=='v3':
+            plan['proxy_coordination']=dispatch.coordination_identity()
+            record['proxy_coordination']=plan['proxy_coordination']
         (target/'environment_dispatch.json').write_text(json.dumps(record))
         kwargs['environment_record_sha256']=ev._file_sha(target/'environment_dispatch.json')
     _, results = ev._read_task(target, item, plan,**kwargs)

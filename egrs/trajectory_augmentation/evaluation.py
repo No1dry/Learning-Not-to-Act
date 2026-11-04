@@ -15,6 +15,7 @@ from egrs.augmentation.evaluation import _hash, _read, check_method_identity
 
 SCHEMA = "task035-dual-condition-eval-v1"
 SCHEMA_V2 = "task035-dual-condition-eval-v2"
+SCHEMA_V3 = "task035-dual-condition-eval-v3"
 FACTORY = "egrs.augmentation.evaluation:make_policy"
 GROUP = "robot_rewind_mix"
 IDENTITY_FIELDS = ("episode_id", "task_id", "suite", "initial_state_index", "initial_mask", "policy_seed", "evaluation_track")
@@ -71,9 +72,9 @@ def build_plan(config_path):
     cfg = _read(path)
     allowed = {"schema_version", "group", "benchmark_root", "reporting_root", "base_runtime", "adapter",
                "legacy_sources_10", "legacy_sources_00", "new_sources_10", "new_sources_00"}
-    dispatched = cfg.get("schema_version") == SCHEMA_V2
+    dispatched = cfg.get("schema_version") in (SCHEMA_V2, SCHEMA_V3)
     if dispatched: allowed.add("environment_dispatch")
-    if set(cfg) != allowed or cfg["schema_version"] not in (SCHEMA, SCHEMA_V2) or cfg["group"] != GROUP:
+    if set(cfg) != allowed or cfg["schema_version"] not in (SCHEMA, SCHEMA_V2, SCHEMA_V3) or cfg["group"] != GROUP:
         raise ValueError("explicit035 same-adapter dual-condition configuration required")
     def resolve(value):
         p = Path(value).expanduser()
@@ -122,6 +123,9 @@ def build_plan(config_path):
         plan['environment_dispatch'] = describe_dispatch(cfg['environment_dispatch']['legacy_root'], cfg['benchmark_root'])
         for item in tasks:
             item['environment_binding'] = binding_for(item['source']['environment_config']['environment'], plan['environment_dispatch'])
+    if cfg['schema_version'] == SCHEMA_V3:
+        from .environment_dispatch import coordination_identity
+        plan['proxy_coordination'] = coordination_identity()
     _validate_population(plan)
     plan["plan_sha256"] = _hash(plan)
     return plan
@@ -144,6 +148,8 @@ def _verify_environment_record(directory, item, plan, digest, metadata):
             or record.get('source_plan_sha256') != item['source']['source_plan_sha256']
             or record.get('binding') != binding or item['environment_binding'] != binding):
         raise ValueError('environment dispatch source/implementation binding differs')
+    if plan.get('schema_version') == SCHEMA_V3 and record.get('proxy_coordination') != plan['proxy_coordination']:
+        raise ValueError('environment proxy coordination lineage differs')
     if record.get('status') == 'constructed':
         if record.get('actual_environment') != binding['expected_environment']:
             raise ValueError('environment dispatch actual identity differs')
@@ -155,14 +161,15 @@ def _verify_environment_record(directory, item, plan, digest, metadata):
 def _run_dispatched_task(directory, item, plan, bind_model, policy):
     """Reuse core runner bytecode with a local environment factory binding."""
     from benchmark.remaining_goals.headless import workflow
-    from .environment_dispatch import make_environment, binding_for
+    from .environment_dispatch import make_environment, binding_for, coordination_identity
     directory = Path(directory)
     binding = binding_for(item['source']['environment_config']['environment'], plan['environment_dispatch'])
     if binding != item['environment_binding']:
         raise ValueError('environment dispatch changed after planning')
     record = {'schema_version': 'task035-environment-dispatch-record-v1', 'plan_sha256': plan['plan_sha256'],
         'source_plan_sha256': item['source']['source_plan_sha256'], 'binding': binding,
-        'status': 'not_started', 'actual_environment': None, 'error': None}
+        'status': 'not_started', 'actual_environment': None, 'error': None,
+        'proxy_coordination': coordination_identity()}
     def save():
         path = directory / 'environment_dispatch.json'
         workflow.write_json(path, record, update=path.exists())
@@ -196,7 +203,7 @@ def _read_task(directory, item, plan, model_identity=None, *, environment_record
     metadata, results = workflow._read_task(directory, scoped=item["scoped"], batch_identity=plan["plan_sha256"],
         runtime=plan["base_runtime"], sources=[item["source"]], model_identity=model_identity)
     check_method_identity(metadata, plan["adapter_identity"])
-    if plan.get('schema_version') == SCHEMA_V2:
+    if plan.get('schema_version') in (SCHEMA_V2, SCHEMA_V3):
         _verify_environment_record(directory, item, plan, environment_record_sha256, metadata)
     return metadata, results
 
@@ -228,20 +235,41 @@ def make_report(records, identity, issues=None):
 def inspect_run(directory):
     directory = Path(directory).resolve()
     plan, batch = _read(directory / "plan.json"), _read(directory / "batch.json")
-    if (plan.get("schema_version") not in (SCHEMA, SCHEMA_V2) or plan.get("plan_sha256") != _hash({k: v for k, v in plan.items() if k != "plan_sha256"})
+    if (plan.get("schema_version") not in (SCHEMA, SCHEMA_V2, SCHEMA_V3) or plan.get("plan_sha256") != _hash({k: v for k, v in plan.items() if k != "plan_sha256"})
             or batch.get("schema_version") != plan['schema_version'] or batch.get("plan_sha256") != plan["plan_sha256"]):
         raise ValueError("frozen035 plan/batch identity differs")
     activate_core(plan["config"]["benchmark_root"])
     activate_reporting(plan["config"]["reporting_root"])
     _validate_population(plan)
-    if plan['schema_version'] == SCHEMA_V2:
+    if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3):
         from .environment_dispatch import validate_dispatch
         validate_dispatch(plan['environment_dispatch'])
     from benchmark.remaining_goals.headless import workflow, planning
     from benchmark.remaining_goals.headless.offline_scoring import score_verified_result
     records, issues = {"10": {}, "00": {}}, {"10": [], "00": []}
     environment_records = []
+    inherited_keys = set()
+    if plan['schema_version'] == SCHEMA_V3:
+        from .environment_dispatch import coordination_identity
+        from .continuation import verify_continuation
+        if plan.get('proxy_coordination') != coordination_identity():
+            raise ValueError('frozen proxy coordination method identity differs')
+        if 'continuation' not in plan:
+            raise ValueError('v3 continuation lineage required')
+        inherited = verify_continuation(plan['continuation'], plan)
+        inherited_keys = set(inherited['inherited_task_keys'])
+        for key in inherited_keys:
+            if batch.get('tasks', {}).get(key, {}).get('status') != 'inherited':
+                raise ValueError('inherited task ledger differs')
+        records = deepcopy(inherited['records'])
+        environment_records.extend(deepcopy(inherited['environment_records']))
+        if batch.get('loaded_base_identity') != inherited['loaded_base_identity']:
+            raise ValueError('continued loaded base identity differs from parent')
     for item in plan["tasks"]:
+        if item['key'] in inherited_keys:
+            if (directory / 'tasks' / item['key']).exists():
+                raise ValueError('inherited episodes must not be executed again')
+            continue
         target = directory / "tasks" / item["key"]
         if not target.exists():
             state = batch.get("tasks", {}).get(item["key"])
@@ -252,9 +280,9 @@ def inspect_run(directory):
             if "loaded_base_identity" not in batch:
                 raise ValueError("executed task lacks the shared loaded base-model batch identity")
             kwargs = ({'environment_record_sha256': batch.get('tasks', {}).get(item['key'], {}).get('environment_dispatch_sha256')}
-                      if plan['schema_version'] == SCHEMA_V2 else {})
+                      if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3) else {})
             metadata, results = _read_task(target, item, plan, batch.get("loaded_base_identity"), **kwargs)
-            if plan['schema_version'] == SCHEMA_V2:
+            if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3):
                 environment_records.append({'task_id': item['key'], 'condition': item['condition'],
                     'record': _read(target / 'environment_dispatch.json')})
             if metadata.get('status') == 'technical_pause':
@@ -272,9 +300,13 @@ def inspect_run(directory):
             issues[item["condition"]].extend({"episode_id": e["episode_id"], "error": f"{type(error).__name__}: {error}"}
                                             for e in item["source"]["episodes"])
     report = make_report(records, plan["adapter_identity"], issues)
-    if plan['schema_version'] == SCHEMA_V2:
-        report.update(schema_version=SCHEMA_V2, environment_dispatch={
+    if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3):
+        report.update(schema_version=plan['schema_version'], environment_dispatch={
             'identity': plan['environment_dispatch']['identity'], 'verified_task_records': environment_records})
+    if plan['schema_version'] == SCHEMA_V3:
+        report['continuation'] = {'parent': plan['continuation'], 'inherited_episodes': 60,
+            'new_execution_budget': {'10': 30, '00': 90, 'total': 120},
+            'note': 'Inherited successes and failures retain their parent execution/code identities.'}
     return report
 
 
@@ -298,8 +330,25 @@ def _save_report(directory, report):
     (directory / "report.md").write_text(render_report(report), encoding="utf-8")
 
 
-def run(config, output):
+def _continuation_plan(plan, parent):
+    from .continuation import prepare_continuation
+    if plan['schema_version'] != SCHEMA_V3:
+        raise ValueError('--continue-from requires the explicit v3 configuration')
+    plan = deepcopy(plan)
+    plan['continuation'] = prepare_continuation(parent, plan)
+    plan['plan_sha256'] = _hash({k:v for k,v in plan.items() if k != 'plan_sha256'})
+    return plan
+
+
+def run(config, output, *, continue_from=None):
     plan = build_plan(config)
+    inherited = None
+    if plan['schema_version'] == SCHEMA_V3 and continue_from is None:
+        raise ValueError('v3 run requires explicit --continue-from eval003; no implicit full rerun')
+    if continue_from is not None:
+        plan = _continuation_plan(plan, continue_from)
+        inherited = {key: deepcopy(plan['continuation'][key]) for key in
+            ('inherited_task_keys', 'remaining_task_keys', 'loaded_base_identity')}
     from benchmark.remaining_goals.headless import workflow
     from benchmark.remaining_goals.isolated_policy import SubprocessPolicy
     output = Path(output).resolve()
@@ -311,13 +360,22 @@ def run(config, output):
                          if key in {"manifest", "candidate_replay", "initialization", "rgb_certificate"})
     if any(output == p or p in output.parents or output in p.parents for p in protected):
         raise ValueError("new035 output overlaps read-only source/dependency/adapter")
-    if plan['schema_version'] == SCHEMA_V2:
+    if continue_from is not None:
+        parent = Path(plan['continuation']['parent_run'])
+        if output == parent or parent in output.parents or output in parent.parents:
+            raise ValueError('continued output overlaps read-only parent run')
+    if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3):
         legacy_root = Path(plan['config']['environment_dispatch']['legacy_root'])
         if output == legacy_root or legacy_root in output.parents or output in legacy_root.parents:
             raise ValueError('new035 output overlaps legacy environment dependency')
     output.mkdir(parents=True)
     workflow.write_json(output / "plan.json", plan)
     batch = {"schema_version": plan['schema_version'], "plan_sha256": plan["plan_sha256"], "tasks": {}}
+    if inherited is not None:
+        batch['loaded_base_identity'] = inherited['loaded_base_identity']
+        batch['tasks'].update({key: {'status': 'inherited', 'new_execution': False,
+            'parent_continuation_identity': plan['continuation']['identity']}
+            for key in inherited['inherited_task_keys']})
     workflow.write_json(output / "batch.json", batch)
     worker = deepcopy(plan["base_runtime"])
     worker.update(policy_factory=FACTORY, method_adapter=plan["config"]["adapter"])
@@ -331,18 +389,29 @@ def run(config, output):
         policy = SubprocessPolicy(worker)
         check_method_identity({"model_runtime": policy.provenance}, plan["adapter_identity"])
         for item in plan["tasks"]:
+            if inherited is not None and item['key'] in inherited['inherited_task_keys']:
+                continue
             batch["tasks"][item["key"]] = {"status": "running"}
             workflow.write_json(output / "batch.json", batch, update=True)
-            if plan['schema_version'] == SCHEMA_V2:
+            if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3):
                 result = _run_dispatched_task(output / 'tasks' / item['key'], item, plan, bind_model, policy)
             else:
                 result = workflow._run_task(output / "tasks" / item["key"], item["source"], plan["base_runtime"],
                     plan["plan_sha256"], bind_model, scoped=item["scoped"], shared_policy=policy)
             batch["tasks"][item["key"]] = {"status": result["status"], "error": result["error"]}
-            if plan['schema_version'] == SCHEMA_V2:
+            if plan['schema_version'] in (SCHEMA_V2, SCHEMA_V3):
                 batch['tasks'][item['key']]['environment_dispatch_sha256'] = _file_sha(output / 'tasks' / item['key'] / 'environment_dispatch.json')
             workflow.write_json(output / "batch.json", batch, update=True)
-            _save_report(output, inspect_run(output))
+            if inherited is None:
+                _save_report(output, inspect_run(output))
+            else:
+                completed = [t for t in plan['tasks'] if t['key'] not in inherited['inherited_task_keys']
+                    and batch['tasks'].get(t['key'], {}).get('status') == 'completed']
+                progress = {'inherited_completed': 60,
+                    'new_runtime_completed': sum(len(t['source']['episodes']) for t in completed),
+                    'new_execution_budget': {'10': 30, '00': 90, 'total': 120},
+                    'formal_report': 'pending independent parent and child artifact verification'}
+                workflow.write_json(output / 'progress.json', progress, update=(output / 'progress.json').exists())
             print(f"condition={item['condition']} task={item['key']} status={result['status']}", flush=True)
             if result["status"] != "completed":
                 raise RuntimeError("technical interruption retained; remaining episodes not started")
@@ -351,8 +420,9 @@ def run(config, output):
             if policy is not None:
                 policy.close()
         finally:
-            _save_report(output, inspect_run(output))
-    return inspect_run(output)
+            final_report = inspect_run(output)
+            _save_report(output, final_report)
+    return final_report
 
 
 def main(argv=None):
@@ -360,12 +430,14 @@ def main(argv=None):
     sub = parser.add_subparsers(dest="command", required=True)
     for command in ("plan", "run"):
         p = sub.add_parser(command); p.add_argument("--config", required=True); p.add_argument("--out", required=True)
+        p.add_argument('--continue-from', help='Explicit immutable eval003 parent; v3 only')
     p = sub.add_parser("report"); p.add_argument("--run", required=True); p.add_argument("--out", required=True)
     args = parser.parse_args(argv)
     if args.command == "run":
-        run(args.config, args.out)
+        run(args.config, args.out, continue_from=args.continue_from)
     elif args.command == "plan":
         plan = build_plan(args.config)
+        if args.continue_from is not None: plan = _continuation_plan(plan, args.continue_from)
         with Path(args.out).open("x", encoding="utf-8") as stream:
             json.dump(plan, stream, ensure_ascii=False, indent=2, allow_nan=False)
     else:

@@ -4,6 +4,8 @@ Describing/loading implementations reads source bytes only. Native scenes are
 created only by the original environment's later reset, never by this module.
 """
 from copy import deepcopy
+import collections
+from functools import wraps
 import hashlib
 import importlib
 import importlib.util
@@ -24,6 +26,37 @@ COMPAT='d7519cd0817b99b6178370d3e1d64915bf2a14bd6c465a8e76b6c73983517555'
 LEGACY_FILES={'benchmark/remaining_goals/libero_env.py':LEGACY_BRIDGE,
     'benchmark/remaining_goals/libero_compat.py':COMPAT,
     'benchmark/remaining_goals/schema.py':'3b554f4e913b587d59238287c8b2830d2c99598e0688519c0a2db8ae7236ec20'}
+
+
+def coordination_identity():
+    """Method-only transition lineage; never added retroactively to old runs."""
+    result={'protocol':'task035-exact-owned-proxy-reset-v1',
+        'implementation_source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'compat_source_sha256':COMPAT,
+        'strategy':'restore only exact owned proxy types to original collections before original reset'}
+    result['identity']=identity(result)
+    return result
+
+
+def _coordinate_proxy_types(owned_types):
+    """Release only these two stateless shims; foreign bindings stay rejected."""
+    module=sys.modules.get('libero.libero.envs.utils')
+    if module is None:return
+    current=getattr(module,'collections',None)
+    if current is collections:return
+    if type(current) not in owned_types:
+        raise RuntimeError('unexpected LIBERO utils.collections binding; refusing to hide a foreign patch')
+    # Change the LIBERO-local binding, never the stdlib module itself. The
+    # unchanged selected shim will install its own proxy during native reset.
+    module.collections=collections
+
+
+def _owned_proxy_types(dispatch):
+    legacy_class=_legacy_environment(dispatch)
+    namespace=legacy_class.__module__.rsplit('.headless.environment',1)[0]
+    legacy=sys.modules[namespace+'.libero_compat']
+    current=importlib.import_module('benchmark.remaining_goals.libero_compat')
+    return (legacy._CollectionsProxy,current._CollectionsProxy)
 
 
 def _legacy_files(root):
@@ -143,4 +176,15 @@ and rejects a different fingerprint. No expected value is substituted for it.
     env=cls(deepcopy(config))
     if env.identity!=binding['expected_environment']:
         env.close();raise ValueError('actual complete environment identity differs from frozen lock')
+    try:
+        owned_types=_owned_proxy_types(dispatch)
+        _coordinate_proxy_types(owned_types)
+        original_reset=env.reset
+        @wraps(original_reset)
+        def reset(*args,**kwargs):
+            _coordinate_proxy_types(owned_types)
+            return original_reset(*args,**kwargs)
+        env.reset=reset
+    except BaseException:
+        env.close();raise
     return env
