@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-04：X提交双向代理协调＋显式继承60续跑120
+
+[PR10](https://github.com/No1dry/Learning-Not-to-Act/pull/10)实现 `918db35bd67c3b6a9e2cfb189528eff6352cb028`，见[Round1回复](responses/035_proxy_transition_resume_round1.md)及[完整配置/命令](../docs/trajectory_proxy_transition_resume.md)。已fetch并合入main `a98453d`。软件实现100%，最终受影响CPU/fake63/63通过（100%，0skip，47.16秒），独立窄审查已收口。
+
+两已锁proxy精确类型在原reset前受控协调，双向/重复通过、陌生对象/子类仍拒，原指纹/core/初态/权重/评分不改。v3 run必须显式continue-from固定父003；父自己的原reader/完整工件核验继承全部60成功和失败，原0步技术attempt单列，只有剩余120进入单policy队列。继承与新代码lineage分开，不改父raw身份；公开report/最终summary重新验证父/新工件，无缓存正式分数。
+
+实际进度仍003的60/180=33.33%，本轮X新真实续跑0。下一步Codex审查/隔离部署/纯文件继承核对并交新eval004命令，用户只跑剩余120。旧60、001/002/003错误与数据/源码/权重保留，不重训/重建/重跑基线或新增GPU预检；无自动merge/清理，待删=[]。50%仍仅旧六任务阶段值，完整效果open。
+
+---
+
 ## 2026-11-04：003完成60条，首新任务遇代理切换冲突；只续跑剩余120交X
 
 [R10](reviews/035_round10.md)：总进度60/180=33.33%，10完成60/90=66.67%、合规30/60=50.00%，00未开始。全部60成功/失败及视频/raw保留，不重跑。首bowl_drawer_close_s000_10在reset链因两版_CollectionsProxy类身份不同而拒绝既有旧实例，n_steps0；不是模型失败或显存。Codex用固定原compat源码＋合成共享utils纯CPU精确重现，无真实场景/模型。R9单版身份/测试保持，但漏连续切换，运行兼容子项open。
