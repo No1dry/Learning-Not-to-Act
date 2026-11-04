@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-04：003数据可训，用户直接启动1000更新
+
+003已由用户完成：normal75/10轨迹221，train/dev四池非空、技术错误0，R6允许原一组1000更新7:3混训，不追加生成、MVP或GPU预试。代码task035-v2-44b6ca02、数据generated-003/export、输出runs/trajectory035-mix-001；用原OFT worker venv和已准备的独立干净external/openvla-oft-task035-e4287e94（原dirty目录保留，同一固定commit/权重）。后续同adapter评测也用该干净副本，旧runtime与基线保持。X可并行既有评测日志效率小增量，无生成/训练返修；Codex不启动训练/仿真/模型。最新STATUS/R6与2026-11-04混训命令为准，下方旧“003未启动/数据未就绪”仅历史。
+
 ## 2026-11-03：教师v2恢复软件accepted，用户启动003
 
 PR10@44b6ca02/实现20647cce经Codex R5验收，68/68受影响CPU/fake含真实symlink通过；隔离部署code/task035-v2-44b6ca02与新recovery.json，实际73/旧8文件引用核对通过。X本任务无返修；用户按docs/experiment_plans/2026-11-03_task035_teacher_v2_generation003_server_commands.md直接启动generated-003，无需再plan/pip或物理预检。预算73普通/438次10、旧8零重放复用，原评分/split/锁/训练配方保持。Codex/X没有真实作业；003数据/训练仍待用户运行，研究open。refs JSON是运行时批准输入，不可作普通交流清理。以下旧“X待实现”仅历史，以最新STATUS/R5为准。

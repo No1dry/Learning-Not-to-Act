@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-04：003数据恢复完成，直接进入一组1000更新混训
+
+[R6结果审查](reviews/035_round6.md)：003来源73/73=100%，技术错误0。新增normal73/73=100%，实际新10尝试220、合格215=97.73%，5失败保留；零重放复用旧8后合格296轨迹（normal75/10轨迹221）。这不是模型SR，也不是296独立父示范。[数据阶段总结](../docs/stage_summaries/2026-11-04_task035_generated003_training_ready.md)。
+
+四池已非空、training_ready=true：train10=161轨迹/22640窗口/54父组，train normal=55/14570/55，dev10=60/8044/20，dev normal=20/5332/20。原分组保持，训练覆盖6/9任务，stove/mug_pudding/two_pots无本批样本，正式仍九任务，不以补齐覆盖追加数据或延迟训练。
+
+**下一执行者用户：按[完整普通混训命令](../docs/experiment_plans/2026-11-04_task035_mixed_training_commands.md)直接启动原一组1000更新**，输出runs/trajectory035-mix-001，日志同名.console.log。方法代码仍task035-v2-44b6ca02，数据generated-003/export。7:3独立域损失、有效batch16（12+4）、bf16、lr2e-5、语言q/k/v/o LoRA r16，其余参数冻结；固定末1000权重，不加试训/新生成或原始模型评测。
+
+原external/openvla-oft有旧本地Python改动，现训练loader会拒绝；旧目录完整保留，已用本地Git对象准备独立干净external/openvla-oft-task035-e4287e94，仍同固定e4287e94和原SOG10权重。只读diff/AST确认变化只在视频驱动/旧路径附加及不使用的finetune脚本，实际模型加载/观测准备函数不变，其余三个推理helper字节相同；hash差异据实记录。训练及后续同adapter评测用此干净副本，旧runtime/基线不改不重跑。无包升级、模型加载或GPU预跑。
+
+训练/新模型eval目前0，003生成100%不意味着SR已提高。用户交回训练产物后Codex给原10/00各90评测命令（各比24.44%/86.67%），不以正式测试选权重。X生成代码无返修，可并行既有[非阻断评测实时SR/去重复读任务](tasks/035_evaluation_live_reporting_followup.md)，不修改训练/评分或启动真实作业。研究open，运行时refs保护不清理，无自动merge，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：教师v2恢复软件accepted并部署，用户直接启动003
 
 PR10固定44b6ca02（实现20647cce），[R5审查](reviews/035_round5.md)accepted/closed限v2恢复软件及隔离文件部署，X本任务无返修；[软件阶段总结](../docs/stage_summaries/2026-11-03_task035_teacher_v2_software_accepted.md)。研究实际数据和方法效果仍open。
