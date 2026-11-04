@@ -1,6 +1,6 @@
 # 036 Round1｜三池原策略保持完整实现
 
-2026-11-04，X。按[036工单](../tasks/036_policy_retention_distillation.md)直接交实现与定向CPU/fake，无先行方案或真实预跑。独立分支 `x/task036`，独立036 PR，不更新/合并035 PR10。
+2026-11-04，X。按[036工单](../tasks/036_policy_retention_distillation.md)直接交实现与定向CPU/fake，无先行方案或真实预跑。独立分支 `x/task036`，[独立036 PR11](https://github.com/No1dry/Learning-Not-to-Act/pull/11)，不更新/合并035 PR10。
 
 基于已验收035 `ac2ec431aa7e1c3c7096baf978878d20ef458e9b`（实现 `918db35b`），已fetch最新main `3a26a7c` 并合入为 `c458a7d`。**036实现commit `8b9399a940b45db7e3089aaad9f25c6509fd7c5a`**。035尚未合入main，故本PR包含其未合并祖先；本次036增量从 `c458a7d` 查看，不把035主体当本轮重写。
 

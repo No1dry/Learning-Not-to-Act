@@ -2,7 +2,7 @@
 
 ## 2026-11-04：X提交036三池原策略保持完整实现，独立PR待审
 
-独立分支 `x/task036`，基于已验收035 `ac2ec431` 并合入main `3a26a7c`；实现 `8b9399a940b45db7e3089aaad9f25c6509fd7c5a`，见[036 Round1](responses/036_round1.md)与[完整配置/命令](../docs/retention036.md)。包含未合并035依赖，不改035 PR或自动merge。
+独立[PR11](https://github.com/No1dry/Learning-Not-to-Act/pull/11)/分支 `x/task036`，基于已验收035 `ac2ec431` 并合入main `3a26a7c`；实现 `8b9399a940b45db7e3089aaad9f25c6509fd7c5a`，见[036 Round1](responses/036_round1.md)与[完整配置/命令](../docs/retention036.md)。包含未合并035依赖，不改035 PR或自动merge。
 
 软件100%：三池索引保留原split；12ten/4fresh-ref/4raw-ref与.50/.25/.25有效标量损失；同一冻结底座旁路native LoRA参考、逐module模式恢复、9024持久预算及原目录resume；036严格adapter和全新180单policy评测、最终一次reader核验/百分比/cleanup警告分列已接通。原数据、评分、初态、035权重/结果与003/004保持。
 
