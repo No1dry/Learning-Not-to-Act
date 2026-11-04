@@ -1,5 +1,53 @@
 # 方法研究当前状态
 
+## 2026-11-04：eval001首场景前暂停，双bridge兼容交X修复
+
+[R8实际错误](reviews/035_round8.md)：用户已启动，SOG10/最终adapter加载完成，但10_basket在environment_initialize因环境指纹不匹配退出，attempts/results空，完成0/180=0%；不是模型失败/SR=0。Codex未代启/停止/重跑。
+
+唯一环境锁差异是bridge文件：旧六120条绑定fa85ae08/27939e2d，新三60条绑定3a515ddd/e7d58f35；实际LIBERO源码/资产/版本/20Hz/compat均一致。当前d8541ef4只带新bridge，方法入口漏了分派。这是Codex审查遗漏，R7训练和纯文件核对事实保持，但“运行就绪/直接启动180”撤回。
+
+下一执行者X：[最小方法侧分派任务](tasks/035_legacy_environment_dispatch.md)，使用真实旧/新实现与严格锁，不绕过/伪造fingerprint、不改core/评分/状态/权重、不重训或重建。受影响CPU/fake/只读身份后Codex审查隔离部署给eval002命令，用户启动原180，不加MVP/真实预检或预算。旧001/错误保留，旧命令页暂停。训练100%，新模型eval0%，方法效果open/兼容修复open，实时SR仍非阻断open。[阶段记录](../docs/stage_summaries/2026-11-04_task035_eval001_environment_dispatch_failure.md)。无merge/清理，待删=[]；下方可开跑指示已被本节替代。
+
+---
+
+## 2026-11-04：混训完成，180条正式评测已部署待用户启动
+
+[R7核对](reviews/035_round7.md)通过：训练1000/1000，四checkpoint齐全、固定末1000，adapter/续接状态/导出/原组件/统计/源码身份均匹配。训练均值下降59.00%，250→1000的10 dev下降7.48%、normal上升1.43%；不是SR，覆盖仍6/9。[阶段总结](../docs/stage_summaries/2026-11-04_task035_mixed_training_complete_eval_handoff.md)。
+
+下一执行者用户：[完整正式命令](../docs/experiment_plans/2026-11-04_task035_dual_condition_evaluation_commands.md)，同一adapter10/00各90，新输出runs/trajectory035-eval-001。准备/训练100%，新模型评测0%；无MVP/重训/初态重建/基线重跑。代码仍task035-v2-44b6ca02，两个环境已无依赖部署方法包、7个关键文件/factory核对通过。
+
+configs/trajectory035-eval-001文件计划180/180通过、126调用，无模型/仿真。首次00空模板误引报错保留，仅修为已构建preparation/normal00/sources.json；新runtime仅repo_path指向训练同一干净OFT副本，旧脏目录/runtime/基线保留。全视频/原始query/actions、原端点与10二元合规/00官方评分保持，各对24.44%/86.67%。X实时SR/去重复读仍非阻断open、不伪造交付/不热改。研究效果仍open，无自动merge/清理，待删=[]。下方训练未开始等为历史。
+
+---
+
+## 2026-11-04：003数据恢复完成，直接进入一组1000更新混训
+
+[R6结果审查](reviews/035_round6.md)：003来源73/73=100%，技术错误0。新增normal73/73=100%，实际新10尝试220、合格215=97.73%，5失败保留；零重放复用旧8后合格296轨迹（normal75/10轨迹221）。这不是模型SR，也不是296独立父示范。[数据阶段总结](../docs/stage_summaries/2026-11-04_task035_generated003_training_ready.md)。
+
+四池已非空、training_ready=true：train10=161轨迹/22640窗口/54父组，train normal=55/14570/55，dev10=60/8044/20，dev normal=20/5332/20。原分组保持，训练覆盖6/9任务，stove/mug_pudding/two_pots无本批样本，正式仍九任务，不以补齐覆盖追加数据或延迟训练。
+
+**下一执行者用户：按[完整普通混训命令](../docs/experiment_plans/2026-11-04_task035_mixed_training_commands.md)直接启动原一组1000更新**，输出runs/trajectory035-mix-001，日志同名.console.log。方法代码仍task035-v2-44b6ca02，数据generated-003/export。7:3独立域损失、有效batch16（12+4）、bf16、lr2e-5、语言q/k/v/o LoRA r16，其余参数冻结；固定末1000权重，不加试训/新生成或原始模型评测。
+
+原external/openvla-oft有旧本地Python改动，现训练loader会拒绝；旧目录完整保留，已用本地Git对象准备独立干净external/openvla-oft-task035-e4287e94，仍同固定e4287e94和原SOG10权重。只读diff/AST确认变化只在视频驱动/旧路径附加及不使用的finetune脚本，实际模型加载/观测准备函数不变，其余三个推理helper字节相同；hash差异据实记录。训练及后续同adapter评测用此干净副本，旧runtime/基线不改不重跑。无包升级、模型加载或GPU预跑。
+
+训练/新模型eval目前0，003生成100%不意味着SR已提高。用户交回训练产物后Codex给原10/00各90评测命令（各比24.44%/86.67%），不以正式测试选权重。X生成代码无返修，可并行既有[非阻断评测实时SR/去重复读任务](tasks/035_evaluation_live_reporting_followup.md)，不修改训练/评分或启动真实作业。研究open，运行时refs保护不清理，无自动merge，待删=[]。下方为历史。
+
+---
+
+## 2026-11-03：教师v2恢复软件accepted并部署，用户直接启动003
+
+PR10固定44b6ca02（实现20647cce），[R5审查](reviews/035_round5.md)accepted/closed限v2恢复软件及隔离文件部署，X本任务无返修；[软件阶段总结](../docs/stage_summaries/2026-11-03_task035_teacher_v2_software_accepted.md)。研究实际数据和方法效果仍open。
+
+Codex六个受影响CPU/fake文件68/68通过（100%、0skip、3.21秒），含真实symlink、v1/v2资格、失败前缀、180原分组→73、旧8字节复用、fake导出/预算和日志；没有全库或真实仿真/模型。仅table_drop未知留诊断，确认违规/其他关键未知/完成释放/A保护/正式评分/训练配方不改。
+
+独立code/task035-v2-44b6ca02与configs/trajectory035-v2-44b6ca02/recovery.json已部署，归档SHA0a00690c/配置27946331/批准refs e13bc97c均核对。实际build_recovery_plan只读JSON与文件字节身份，73/53train20dev、旧8/2父源、73普通/438次10上限与原venv入口一致，simulation_created/model_loaded=false。无需用户重复plan、安装包或新物理预检。
+
+**下一执行者用户：按[003完整普通命令](../docs/experiment_plans/2026-11-03_task035_teacher_v2_generation003_server_commands.md)直接启动恢复**。新入口recovery recover，新输出data/trajectory035/generated-003，日志generate-003.log。零重放复用旧8，只新执行73候选，不重跑全部180/基线或重下数据；实际合格量不保证。
+
+003尚未启动，当前仍旧2normal/6个10且dev空，训练/新模型eval0；结束后Codex按recovery_report的new_execution/reused/pools/training_ready给原1000更新混训命令。旧001/002失败与资格、原split和90/90测试保持。精确refs JSON是运行时批准输入，不是可清理交流文件，须保留。评测实时SR小增量非阻断open，无自动merge/清理，待删=[]。下方为历史。
+
+---
+
 ## 2026-11-03：X提交教师v2与精确73恢复实现，等待审查
 
 [PR10](https://github.com/No1dry/Learning-Not-to-Act/pull/10)增量实现 `20647cce386dfe2a3f768a029f909fa32350aa60`，见[教师v2 Round1](responses/035_teacher_v2_round1.md)及[完整配置/命令](../docs/trajectory_teacher_v2_recovery.md)。已合入最新main `5448e8a`。软件实现100%；v2仅table_drop未知诊断，原v1/正式评分/版本锁/划分/训练配方保持。
