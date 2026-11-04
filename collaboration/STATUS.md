@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-04：混训完成，180条正式评测已部署待用户启动
+
+[R7核对](reviews/035_round7.md)通过：训练1000/1000，四checkpoint齐全、固定末1000，adapter/续接状态/导出/原组件/统计/源码身份均匹配。训练均值下降59.00%，250→1000的10 dev下降7.48%、normal上升1.43%；不是SR，覆盖仍6/9。[阶段总结](../docs/stage_summaries/2026-11-04_task035_mixed_training_complete_eval_handoff.md)。
+
+下一执行者用户：[完整正式命令](../docs/experiment_plans/2026-11-04_task035_dual_condition_evaluation_commands.md)，同一adapter10/00各90，新输出runs/trajectory035-eval-001。准备/训练100%，新模型评测0%；无MVP/重训/初态重建/基线重跑。代码仍task035-v2-44b6ca02，两个环境已无依赖部署方法包、7个关键文件/factory核对通过。
+
+configs/trajectory035-eval-001文件计划180/180通过、126调用，无模型/仿真。首次00空模板误引报错保留，仅修为已构建preparation/normal00/sources.json；新runtime仅repo_path指向训练同一干净OFT副本，旧脏目录/runtime/基线保留。全视频/原始query/actions、原端点与10二元合规/00官方评分保持，各对24.44%/86.67%。X实时SR/去重复读仍非阻断open、不伪造交付/不热改。研究效果仍open，无自动merge/清理，待删=[]。下方训练未开始等为历史。
+
+---
+
 ## 2026-11-04：003数据恢复完成，直接进入一组1000更新混训
 
 [R6结果审查](reviews/035_round6.md)：003来源73/73=100%，技术错误0。新增normal73/73=100%，实际新10尝试220、合格215=97.73%，5失败保留；零重放复用旧8后合格296轨迹（normal75/10轨迹221）。这不是模型SR，也不是296独立父示范。[数据阶段总结](../docs/stage_summaries/2026-11-04_task035_generated003_training_ready.md)。
