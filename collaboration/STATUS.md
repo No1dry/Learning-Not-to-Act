@@ -1,5 +1,13 @@
 # 方法研究当前状态
 
+## 2026-11-04：003完成60条，首新任务遇代理切换冲突；只续跑剩余120交X
+
+[R10](reviews/035_round10.md)：总进度60/180=33.33%，10完成60/90=66.67%、合规30/60=50.00%，00未开始。全部60成功/失败及视频/raw保留，不重跑。首bowl_drawer_close_s000_10在reset链因两版_CollectionsProxy类身份不同而拒绝既有旧实例，n_steps0；不是模型失败或显存。Codex用固定原compat源码＋合成共享utils纯CPU精确重现，无真实场景/模型。R9单版身份/测试保持，但漏连续切换，运行兼容子项open。
+
+下一执行者X：[最小代理协调＋显式续跑任务](tasks/035_proxy_transition_and_resume.md)，严格原锁/陌生补丁拒绝，不改core/评分/状态/权重；双向切换CPU/fake并按父003原reader完整继承60，只新执行120（10剩30/00全90），新输出eval004，旧技术attempt与代码lineage保留。不能重跑60或把技术错误当失败。Codex验收部署后给用户命令，不自动真实作业，不加GPU/物理预检/MVP、重训/状态重建或基线重跑。旧002/003启动命令暂停。[阶段记录](../docs/stage_summaries/2026-11-04_task035_eval003_partial60_proxy_transition_failure.md)。训练100%、全量效果仍open；50%六任务阶段值不直接比全九基线。实时SR非阻断open，无merge/删除，待删=[]。
+
+---
+
 ## 2026-11-04：双bridge修复accepted并部署，用户直接启动eval002
 
 [R9](reviews/035_round9.md)接受PR10@fb16a672（实现1387de38）限兼容软件/隔离部署/只读身份：Codex受影响CPU/fake34/34=100%、0skip、9.76秒。服务器实际源码/资产/包版本/compat的原旧/新完整身份2/2匹配，120旧/60新绑定正确；没有环境实例/场景/reset/step或模型加载。原001错误保持，不改分或冒称真实轨迹已通过。[阶段总结](../docs/stage_summaries/2026-11-04_task035_dispatch_accepted_eval002_handoff.md)。
