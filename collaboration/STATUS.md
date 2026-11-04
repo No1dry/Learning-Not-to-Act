@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-04：X提交035双bridge严格分派，等待审查部署
+
+[PR10](https://github.com/No1dry/Learning-Not-to-Act/pull/10)实现 `1387de381126176312a08d4c2b967c948d2fc541`，见[环境分派Round1](responses/035_environment_dispatch_round1.md)与[新配置/命令](../docs/trajectory_environment_dispatch.md)。已fetch并合入main `3d39670`，旧记录保留。兼容软件实现100%，受影响CPU/fake34/34通过（100%，0skip，28.37秒），独立窄审查无已证实剩余阻断。
+
+旧六120条用实际ac130177三文件锁/旧bridge，新三60条继续d8541ef4原97文件；完整来源锁选择、原环境独立重算与完整actual identity严格比较。旧文件私有命名空间、原headless/runner/评分复用，标准benchmark及冻结目录不改。v2 plan与sidecar/batch/reader绑定实际实现，旧v1的001初始化错误/0结果仍可读，不回填SR=0。
+
+原训练100%/权重/原初态/评分保持，新真实评测仍0/180，本轮X真实作业0。下一步Codex审查、只读身份/配置核对并隔离部署，给新eval002完整命令；用户启动原180，不追加MVP/预算或重训。001和错误保留，无自动merge/清理，待删=[]。实时SR并行项仍非阻断，方法效果未闭环。
+
+---
+
 ## 2026-11-04：eval001首场景前暂停，双bridge兼容交X修复
 
 [R8实际错误](reviews/035_round8.md)：用户已启动，SOG10/最终adapter加载完成，但10_basket在environment_initialize因环境指纹不匹配退出，attempts/results空，完成0/180=0%；不是模型失败/SR=0。Codex未代启/停止/重跑。
