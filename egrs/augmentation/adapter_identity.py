@@ -11,6 +11,40 @@ LINEAGE_KEYS = ('repo_commit', 'checkpoint_source', 'dataset_statistics_sha256',
                 'normalization_statistics_sha256', 'component_checkpoint_sha256', 'unnorm_key')
 TARGET = re.compile(r'language_model\.model\.layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)$')
 GENERATED_DATA_KIND = 'task035-generated-trajectories-v1'
+RETENTION_STATS_SHA='6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3'
+RETENTION_RECIPE={'pool_weights':{'ten':.5,'fresh':.25,'raw':.25},
+    'pool_samples':{'ten':12,'fresh':4,'raw':4},'prefix':'max(1,ceil(T_obs/3))',
+    'reference_prefix_samples':{'fresh':2,'raw':2},'gradient_accumulation':20,'seed':7,'updates':1000}
+
+
+def validate_retention_recipe_identity(identity):
+    """Independent036 identity; planning must stay free of model imports."""
+    digest=lambda value:isinstance(value,str) and re.fullmatch(r'[0-9a-f]{64}',value)
+    exports=identity.get('export_identity',{});calls=identity.get('reference_calls',{})
+    update=identity.get('update')
+    if (identity.get('schema_version')!='task036-oft-adapter-v1'
+            or identity.get('group')!='policy_retention_distillation'
+            or identity.get('recipe')!='policy_retention_distillation'
+            or identity.get('data_kind')!='task036-retention-data-v1'
+            or type(update) is not int or not 1<=update<=1000 or identity.get('final_update')!=1000
+            or not isinstance(exports,dict) or set(exports)!={'sources.json','rows.jsonl','report.json'}
+            or not all(digest(v) for v in exports.values())
+            or identity.get('reference_view')!='shared_frozen_base_without_added_lora'
+            or identity.get('reference_base')!=BASE_SOURCE
+            or identity.get('training_recipe')!=RETENTION_RECIPE
+            or not isinstance(calls,dict) or set(calls)!={'train','dev','total','budget'}
+            or type(calls.get('train')) is not int or not 8*update<=calls['train']<=8000
+            or type(calls.get('dev')) is not int or not 0<=calls['dev']<=1024
+            or type(calls.get('total')) is not int or calls['total']!=calls['train']+calls['dev']
+            or type(calls.get('budget')) is not int or calls['budget']!=9024
+            or calls['total']>9024):
+        raise ValueError('Invalid task036 recipe, reference, budget or export identity')
+
+
+def validate_retention_lineage(lineage):
+    if (lineage.get('unnorm_key')!='libero_10_no_noops'
+            or lineage.get('dataset_statistics_sha256')!=RETENTION_STATS_SHA):
+        raise ValueError('task036 requires original SOG10 statistics and normalization key')
 
 
 def validate_recipe_identity(identity):
@@ -52,6 +86,10 @@ def read_adapter_identity(directory):
     identity = json.loads((directory / 'identity.json').read_text(encoding='utf-8'))
     if identity.get('schema_version') == 'task035-oft-adapter-v1':
         validate_recipe_identity(identity)
+        valid_recipe = True
+    elif identity.get('schema_version') == 'task036-oft-adapter-v1':
+        validate_retention_recipe_identity(identity)
+        validate_retention_lineage(identity.get('base_lineage',{}))
         valid_recipe = True
     else:
         valid_recipe = (identity.get('schema_version') == 'task030-oft-adapter-v1'

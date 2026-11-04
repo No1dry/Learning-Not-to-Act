@@ -11,7 +11,8 @@ import torch
 from torch import nn
 
 from .adapter_identity import (OFT_REVISION, BASE_SOURCE, LINEAGE_KEYS, TARGET,
-                               sha256, _lineage, read_adapter_identity, validate_recipe_identity)
+                               sha256, _lineage, read_adapter_identity, validate_recipe_identity,
+                               validate_retention_recipe_identity,validate_retention_lineage)
 
 def language_targets(model):
     targets = sorted(name for name, module in model.named_modules()
@@ -31,6 +32,7 @@ class LoRALinear(nn.Module):
         super().__init__()
         self.base_layer = base
         self.rank, self.alpha = rank, alpha
+        self.enabled = True
         self.lora_A = nn.Parameter(torch.empty(rank, base.in_features, device=base.weight.device,
                                                 dtype=torch.float32))
         self.lora_B = nn.Parameter(torch.zeros(base.out_features, rank, device=base.weight.device,
@@ -47,6 +49,7 @@ class LoRALinear(nn.Module):
         return self.base_layer.bias
 
     def forward(self, value):
+        if not self.enabled:return self.base_layer(value)
         delta = torch.nn.functional.linear(torch.nn.functional.linear(value.float(), self.lora_A), self.lora_B)
         return self.base_layer(value) + delta.to(value.dtype) * (self.alpha / self.rank)
 
@@ -71,7 +74,7 @@ def adapter_state(model):
 
 
 def save_adapter(policy, directory, group, metadata=None):
-    if group not in {'raw_control', 'progress_aug', 'robot_rewind_mix'}:
+    if group not in {'raw_control', 'progress_aug', 'robot_rewind_mix', 'policy_retention_distillation'}:
         raise ValueError('Adapter group must be raw_control or progress_aug')
     if group == 'robot_rewind_mix':
         if not isinstance(metadata, dict) or set(metadata) != {
@@ -79,6 +82,14 @@ def save_adapter(policy, directory, group, metadata=None):
             raise ValueError('task035 adapter requires exact recipe metadata fields')
         recipe_identity = dict(metadata or {}, schema_version='task035-oft-adapter-v1', group=group)
         validate_recipe_identity(recipe_identity)
+    elif group == 'policy_retention_distillation':
+        fields={'recipe','data_kind','update','final_update','export_identity','reference_view',
+                'reference_base','training_recipe','reference_calls'}
+        if not isinstance(metadata,dict) or set(metadata)!=fields:
+            raise ValueError('task036 adapter requires exact recipe/reference metadata fields')
+        recipe_identity=dict(metadata,schema_version='task036-oft-adapter-v1',group=group)
+        validate_retention_recipe_identity(recipe_identity)
+        validate_retention_lineage(_lineage(policy))
     elif metadata is not None:
         raise ValueError('task030 adapter identity does not accept recipe metadata')
     directory = Path(directory)
@@ -93,7 +104,7 @@ def save_adapter(policy, directory, group, metadata=None):
         'target_modules': sorted(n.rsplit('.', 1)[0] for n in state if n.endswith('.lora_A')),
         'trainable_parameters': {n: list(v.shape) for n, v in sorted(state.items())},
         'adapter_sha256': sha256(path)}
-    if group == 'robot_rewind_mix':
+    if group in {'robot_rewind_mix','policy_retention_distillation'}:
         identity.update(recipe_identity)
     (directory / 'identity.json').write_text(json.dumps(identity, sort_keys=True, indent=2), encoding='utf-8')
     return identity
@@ -110,6 +121,8 @@ def restore_adapter_weights(model, directory, identity=None):
             if list(value.shape) != identity['trainable_parameters'][name] or name not in params or params[name].shape != value.shape:
                 raise ValueError('Adapter tensor shape mismatch')
             params[name].copy_(value)
+    for module in model.modules():
+        if isinstance(module,LoRALinear):module.enabled=True
 
 
 def attach_trained_adapter(policy, directory):

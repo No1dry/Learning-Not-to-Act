@@ -28,12 +28,12 @@ def validate_adapter(identity):
         raise ValueError("evaluation requires the exact035 final1000 robot_rewind_mix adapter")
 
 
-def _validate_population(plan):
+def _validate_population(plan, *, adapter_validator=None, group=None):
     from benchmark.remaining_goals.headless.nine_planning import expected_episodes
     from benchmark.remaining_goals.nine_catalog import REUSE_TASKS
     from benchmark.remaining_goals.headless.planning import canonical_hash
-    validate_adapter(plan["adapter_identity"])
-    if plan["config"]["group"] != GROUP:
+    (validate_adapter if adapter_validator is None else adapter_validator)(plan["adapter_identity"])
+    if plan["config"]["group"] != (GROUP if group is None else group):
         raise ValueError("035 evaluation group identity differs")
     for bits, protocol in (("10", "nine-mask10"), ("00", "nine-normal00")):
         expected = expected_episodes(protocol)
