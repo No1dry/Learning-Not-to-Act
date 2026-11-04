@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-04：003保留60条，只续跑120；代理切换修复交X
+
+003已完成60/180=33.33%，10合规30/60=50%，00未开始；首新增抽屉0步因私有/标准_CollectionsProxy类型不相认而失败，CPU已精确复现。旧60成功和失败全部保留不重跑。X按collaboration/tasks/035_proxy_transition_and_resume.md只修受控代理共享状态＋显式--continue-from父003，原reader核验继承60、仅新执行120（10的30＋00的90），不改原身份/评分/core/状态/权重，不重训/重建/基线或新GPU/MVP。Codex审查隔离部署后用户启动新eval004，旧命令暂停。R9单版身份/测试保持，连续切换与续跑open；50%仅六任务阶段值。最新STATUS/R10优先，旧“直接启动180”已被本节替代，无自动实验/清理。
+
+## 2026-11-04：双bridge修复验收部署完成，用户启动eval002
+
+R9 accepted PR10@fb16a672（实现1387de38）：34/34定向CPU/fake通过，服务器原旧/新环境完整身份2/2只读匹配、120/60绑定正确（无实例/场景/reset/step/模型）。新code/task035-dispatch-fb16a672和configs/trajectory035-eval-002已部署，用户直接按docs/experiment_plans/2026-11-04_task035_dispatch_evaluation002_commands.md启动同一固定末1000的原10/00各90，新输出runs/trajectory035-eval-002，不重复plan/pip/MVP/GPU预跑/训练/生成/基线。准备/训练100%、新eval0；旧001错误/原输入/端点/评分/权重/运行refs保持，严格真实双bridge、不绕过身份或改core。X兼容修复无需返修，实时SR小项仍非阻断open、不热改。Codex只部署/命令/结果分析，用户启动监督；最新STATUS/R9优先，下方旧R8待修与001命令为历史。
+
 ## 2026-11-04：eval001已失败，旧开跑指示暂停
 
 用户真实启动后模型/adapter加载，但首环境初始化因bridge fingerprint不同暂停，0/180且无动作，不记模型失败。旧六120需fa85ae08旧bridge，新三60需3a515ddd新bridge；R7运行就绪结论撤回、训练验收保持。X按collaboration/tasks/035_legacy_environment_dispatch.md仅实现方法侧严格双版本分派，不绕过/伪造身份、不改core/状态/评分或重训，不跑真实作业；Codex审查隔离部署后给eval002命令，仍用户启动原180，不加GPU/物理预检/MVP或预算。旧001/日志/原权重保留，训练100%/评测0，修复与效果open。最新STATUS/R8优先，下方旧“直接启动001”已暂停。

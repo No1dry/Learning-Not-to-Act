@@ -1,5 +1,23 @@
 # 方法研究当前状态
 
+## 2026-11-04：003完成60条，首新任务遇代理切换冲突；只续跑剩余120交X
+
+[R10](reviews/035_round10.md)：总进度60/180=33.33%，10完成60/90=66.67%、合规30/60=50.00%，00未开始。全部60成功/失败及视频/raw保留，不重跑。首bowl_drawer_close_s000_10在reset链因两版_CollectionsProxy类身份不同而拒绝既有旧实例，n_steps0；不是模型失败或显存。Codex用固定原compat源码＋合成共享utils纯CPU精确重现，无真实场景/模型。R9单版身份/测试保持，但漏连续切换，运行兼容子项open。
+
+下一执行者X：[最小代理协调＋显式续跑任务](tasks/035_proxy_transition_and_resume.md)，严格原锁/陌生补丁拒绝，不改core/评分/状态/权重；双向切换CPU/fake并按父003原reader完整继承60，只新执行120（10剩30/00全90），新输出eval004，旧技术attempt与代码lineage保留。不能重跑60或把技术错误当失败。Codex验收部署后给用户命令，不自动真实作业，不加GPU/物理预检/MVP、重训/状态重建或基线重跑。旧002/003启动命令暂停。[阶段记录](../docs/stage_summaries/2026-11-04_task035_eval003_partial60_proxy_transition_failure.md)。训练100%、全量效果仍open；50%六任务阶段值不直接比全九基线。实时SR非阻断open，无merge/删除，待删=[]。
+
+---
+
+## 2026-11-04：双bridge修复accepted并部署，用户直接启动eval002
+
+[R9](reviews/035_round9.md)接受PR10@fb16a672（实现1387de38）限兼容软件/隔离部署/只读身份：Codex受影响CPU/fake34/34=100%、0skip、9.76秒。服务器实际源码/资产/包版本/compat的原旧/新完整身份2/2匹配，120旧/60新绑定正确；没有环境实例/场景/reset/step或模型加载。原001错误保持，不改分或冒称真实轨迹已通过。[阶段总结](../docs/stage_summaries/2026-11-04_task035_dispatch_accepted_eval002_handoff.md)。
+
+下一执行者用户：[eval002完整普通命令](../docs/experiment_plans/2026-11-04_task035_dispatch_evaluation002_commands.md)，直接原10/00各90，无需plan/pip/MVP/GPU预跑/重训/重建状态/重跑基线。准备/训练100%、新模型eval0，新输出runs/trajectory035-eval-002未创建。新代码task035-dispatch-fb16a672、新配置trajectory035-eval-002已部署，两环境方法包无依赖更新、5个必要模块匹配；adapter仍固定末1000，base runtime与001相同，原输入/端点/评分/全视频/证据不变。
+
+使用实际原旧bridge与compat依赖/私有命名空间、当前core测量与原runner局部factory，严格原身份不绕过、不修改冻结core；v2 sidecar与reader绑定实际实现，v1旧失败仍可读。X本兼容任务accepted/closed，无返修；实时SR/去重复读仍非阻断open、不伪闭环或热改。研究效果仍open。旧001/代码/配置/训练/运行refs完整保留，无自动merge/清理，待删=[]。下方R8待修/旧001开跑均为历史。
+
+---
+
 ## 2026-11-04：X提交035双bridge严格分派，等待审查部署
 
 [PR10](https://github.com/No1dry/Learning-Not-to-Act/pull/10)实现 `1387de381126176312a08d4c2b967c948d2fc541`，见[环境分派Round1](responses/035_environment_dispatch_round1.md)与[新配置/命令](../docs/trajectory_environment_dispatch.md)。已fetch并合入main `3d39670`，旧记录保留。兼容软件实现100%，受影响CPU/fake34/34通过（100%，0skip，28.37秒），独立窄审查无已证实剩余阻断。
