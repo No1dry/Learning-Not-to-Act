@@ -1,0 +1,16 @@
+{
+  "format": "task035-seeds-v1",
+  "dataset": "yifengzhu-hf/LIBERO-datasets",
+  "revision": "147fa5eb607bb696dd922c3518084a90954cd2f3",
+  "data_root": "/absolute/path/to/ordinary-expert-demos",
+  "split_seed": 7,
+  "max_demos_per_task": 20,
+  "sources": [],
+  "exclusion_attestation": {
+    "eval_initial_states_excluded": true,
+    "eval_trajectories_excluded": true,
+    "edited_states_excluded": true,
+    "model_actions_excluded": true,
+    "known_eval_overlap_excluded": true
+  }
+}

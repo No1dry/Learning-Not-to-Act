@@ -1,0 +1,11 @@
+{
+  "revision": "d2afce4eb074b777364daddea2c08bd70731865f",
+  "files": {
+    "libero_remain_reporting/__init__.py": "583f46ba18591fcdee7a86140ab202c94a0cb58ab0c514f5b7e3ebfdac7df3a4",
+    "libero_remain_reporting/__main__.py": "7af1ca82306deca5891282cc903578c0c7dbe54edc05fa2ddee287a58669c31b",
+    "libero_remain_reporting/_worker.py": "5f2cf86c5646bf352f4844b81005d5cfb666d4a507676f6e15ad7f909c4dfc3b",
+    "libero_remain_reporting/loader.py": "16a8c204b950f324d98e3b631b1e8638d82fc0f5c787e64c2333bd15bab0cede",
+    "libero_remain_reporting/report.py": "068c4753345ee194c016d9ac427933b1544a1ba804455316504c3a5be8ae19b0",
+    "libero_remain_reporting/accepted_core.json": "3bbd6756357b88754171ff9f3007856517ea048977033d2e96b72c8782122119"
+  }
+}

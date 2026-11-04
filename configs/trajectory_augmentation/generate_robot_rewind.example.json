@@ -1,0 +1,94 @@
+{
+  "format": "task035-generation-config-v1",
+  "manifest": "/absolute/path/to/bound-035-seeds.json",
+  "benchmark_root": "/absolute/path/to/accepted-core-d8541ef4",
+  "stats_path": "/absolute/path/to/original-SOG10/dataset_statistics.json",
+  "stats_sha256": "<ACTUAL_ORIGINAL_STATISTICS_SHA256>",
+  "unnorm_key": "libero_10",
+  "recipe": {
+    "name": "robot_rewind_v1",
+    "seed": 7,
+    "variants": 3,
+    "bridge_attempts": 2,
+    "horizon": 520,
+    "joint_perturbation_rad": 0.05,
+    "position_tolerance_m": 0.005,
+    "rotation_tolerance_deg": 3.0,
+    "bridge_stage_steps": 40,
+    "lift_m": 0.1
+  },
+  "native_backend": {
+    "kind": "native",
+    "historical_root": "/absolute/path/to/Learning-Not-to-Act-at-fc1b49906b8b4e5b3bf9994c139ac3f61ec7b391",
+    "python": "/absolute/path/to/annotation-env/bin/python",
+    "module_paths": [
+      "/absolute/path/to/LIBERO",
+      "/absolute/path/to/native-library-root"
+    ],
+    "source_timeout_seconds": 7200,
+    "native": {
+      "core": {
+        "root": "/absolute/path/to/LIBERO-core-at-c6dc98de0c54517c976057598b60f4cedf7fa3e5",
+        "revision": "c6dc98de0c54517c976057598b60f4cedf7fa3e5",
+        "allow_reference": true
+      },
+      "bddl_root": "/absolute/path/to/LIBERO/libero/libero/bddl_files",
+      "asset_roots": {
+        "libero": "/absolute/path/to/LIBERO/libero/libero/assets",
+        "robosuite": "/absolute/path/to/robosuite/models/assets"
+      },
+      "versions": {},
+      "module_sha256": {},
+      "libero_source": {
+        "revision": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+        "bddl_sha256": {}
+      },
+      "probe_count": 3,
+      "rgb_threshold": 0.03,
+      "min_visible_pixels": 16,
+      "max_reset_attempts": 3,
+      "max_physics_substeps": 100,
+      "replay_state_atol": 1e-06,
+      "seed": 0,
+      "surface_inset_m": 0.002,
+      "surface_normal_z_min": 0.7,
+      "surface_neighbor_m": 0.03,
+      "surface_vertical_margin_m": 0.005,
+      "table_vertical_margin_m": 0.025
+    }
+  },
+  "bindings": {
+    "basket": {
+      "official_task_name": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "active_goals": [
+        {
+          "id": "A",
+          "predicate": [
+            "in",
+            "alphabet_soup_1",
+            "basket_1_contain_region"
+          ]
+        },
+        {
+          "id": "B",
+          "predicate": [
+            "in",
+            "tomato_sauce_1",
+            "basket_1_contain_region"
+          ]
+        }
+      ],
+      "invariant_predicates": [],
+      "state_field": "states",
+      "state_alignment_basis": "<REPLACE_WITH_EXISTING_SOURCE_BOUND_STATE_RGB_ACTION_ALIGNMENT_EVIDENCE_REFERENCE>",
+      "orientation": "opengl",
+      "alignment": {
+        "rule": "same_state",
+        "orientation": "identity",
+        "state_offset": 0,
+        "observation_offset": 0,
+        "action_offset": 0
+      }
+    }
+  }
+}
