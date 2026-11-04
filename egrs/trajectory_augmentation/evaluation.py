@@ -8,11 +8,13 @@ import argparse
 from copy import deepcopy
 import json
 from pathlib import Path
+from types import FunctionType
 
 from egrs.augmentation.dependencies import activate_core, activate_reporting
 from egrs.augmentation.evaluation import _hash, _read, check_method_identity
 
 SCHEMA = "task035-dual-condition-eval-v1"
+SCHEMA_V2 = "task035-dual-condition-eval-v2"
 FACTORY = "egrs.augmentation.evaluation:make_policy"
 GROUP = "robot_rewind_mix"
 IDENTITY_FIELDS = ("episode_id", "task_id", "suite", "initial_state_index", "initial_mask", "policy_seed", "evaluation_track")
@@ -69,12 +71,14 @@ def build_plan(config_path):
     cfg = _read(path)
     allowed = {"schema_version", "group", "benchmark_root", "reporting_root", "base_runtime", "adapter",
                "legacy_sources_10", "legacy_sources_00", "new_sources_10", "new_sources_00"}
-    if set(cfg) != allowed or cfg["schema_version"] != SCHEMA or cfg["group"] != GROUP:
+    dispatched = cfg.get("schema_version") == SCHEMA_V2
+    if dispatched: allowed.add("environment_dispatch")
+    if set(cfg) != allowed or cfg["schema_version"] not in (SCHEMA, SCHEMA_V2) or cfg["group"] != GROUP:
         raise ValueError("explicit035 same-adapter dual-condition configuration required")
     def resolve(value):
         p = Path(value).expanduser()
         return str((path.parent / p).resolve() if not p.is_absolute() else p.resolve())
-    for key in allowed - {"schema_version", "group", "legacy_sources_10"}:
+    for key in allowed - {"schema_version", "group", "legacy_sources_10", "environment_dispatch"}:
         cfg[key] = resolve(cfg[key])
     core_ref = activate_core(cfg["benchmark_root"])
     report_ref = activate_reporting(cfg["reporting_root"])
@@ -105,22 +109,95 @@ def build_plan(config_path):
             origins = old00 if task in REUSE_TASKS else new
             source = scoped_sources.resolve_source(original_protocol, task, index, origins.get((task, index)))
             tasks.append({"key": ep["episode_id"], "condition": bits, "scoped": True, "source": source})
-    plan = {"schema_version": SCHEMA, "config": cfg, "base_runtime": runtime, "adapter_identity": identity,
+    plan = {"schema_version": cfg["schema_version"], "config": cfg, "base_runtime": runtime, "adapter_identity": identity,
             "core_revision": core_ref, "reporting_revision": report_ref, "expected": expected, "tasks": tasks,
             "simulation_created": False, "weights_loaded": False,
             "budget": {"10": 90, "00": 90, "total": 180, "policy_seed": 7, "max_chunk_steps": 8, "horizon": 520,
                        "video": "all", "raw_queries_actions": "all"}}
+    if dispatched:
+        from .environment_dispatch import describe_dispatch, binding_for
+        if set(cfg['environment_dispatch']) != {'legacy_root'}:
+            raise ValueError('explicit legacy environment dependency root required')
+        cfg['environment_dispatch']['legacy_root'] = resolve(cfg['environment_dispatch']['legacy_root'])
+        plan['environment_dispatch'] = describe_dispatch(cfg['environment_dispatch']['legacy_root'], cfg['benchmark_root'])
+        for item in tasks:
+            item['environment_binding'] = binding_for(item['source']['environment_config']['environment'], plan['environment_dispatch'])
     _validate_population(plan)
     plan["plan_sha256"] = _hash(plan)
     return plan
 
 
-def _read_task(directory, item, plan, model_identity=None):
+def _file_sha(path):
+    from egrs.augmentation.data import file_sha256
+    return file_sha256(path)
+
+
+def _verify_environment_record(directory, item, plan, digest, metadata):
+    from .environment_dispatch import binding_for
+    path = Path(directory) / 'environment_dispatch.json'
+    if not digest or _file_sha(path) != digest:
+        raise ValueError('environment dispatch record bytes differ')
+    record = _read(path)
+    binding = binding_for(item['source']['environment_config']['environment'], plan['environment_dispatch'])
+    if (record.get('schema_version') != 'task035-environment-dispatch-record-v1'
+            or record.get('plan_sha256') != plan['plan_sha256']
+            or record.get('source_plan_sha256') != item['source']['source_plan_sha256']
+            or record.get('binding') != binding or item['environment_binding'] != binding):
+        raise ValueError('environment dispatch source/implementation binding differs')
+    if record.get('status') == 'constructed':
+        if record.get('actual_environment') != binding['expected_environment']:
+            raise ValueError('environment dispatch actual identity differs')
+    elif (metadata.get('status') != 'technical_pause' or metadata.get('results')
+          or record.get('actual_environment') is not None or record.get('status') not in {'not_started', 'failed'}):
+        raise ValueError('environment dispatch lacks completed identity or technical initialization failure')
+
+
+def _run_dispatched_task(directory, item, plan, bind_model, policy):
+    """Reuse core runner bytecode with a local environment factory binding."""
+    from benchmark.remaining_goals.headless import workflow
+    from .environment_dispatch import make_environment, binding_for
+    directory = Path(directory)
+    binding = binding_for(item['source']['environment_config']['environment'], plan['environment_dispatch'])
+    if binding != item['environment_binding']:
+        raise ValueError('environment dispatch changed after planning')
+    record = {'schema_version': 'task035-environment-dispatch-record-v1', 'plan_sha256': plan['plan_sha256'],
+        'source_plan_sha256': item['source']['source_plan_sha256'], 'binding': binding,
+        'status': 'not_started', 'actual_environment': None, 'error': None}
+    def save():
+        path = directory / 'environment_dispatch.json'
+        workflow.write_json(path, record, update=path.exists())
+    def factory(config):
+        if config['environment'] != binding['expected_environment']:
+            raise ValueError('environment dispatch runtime source lock differs')
+        record['status'] = 'requested'; save()
+        try:
+            env = make_environment(config, plan['environment_dispatch'])
+            record.update(status='constructed', actual_environment=deepcopy(env.identity),
+                actual_class_mro=[{'module': c.__module__, 'class': c.__qualname__} for c in type(env).__mro__])
+            save()
+            return env
+        except BaseException as error:
+            record.update(status='failed', error=f'{type(error).__name__}: {error}'); save()
+            raise
+    original = workflow._run_task
+    runner = FunctionType(original.__code__, {**original.__globals__, 'make_environment': factory},
+                          original.__name__, original.__defaults__, original.__closure__)
+    runner.__kwdefaults__ = original.__kwdefaults__
+    try:
+        return runner(directory, item['source'], plan['base_runtime'], plan['plan_sha256'], bind_model,
+                      scoped=item['scoped'], shared_policy=policy)
+    finally:
+        if directory.is_dir(): save()
+
+
+def _read_task(directory, item, plan, model_identity=None, *, environment_record_sha256=None):
     """Exact original readers verify archives, source, observations, actions/video."""
     from benchmark.remaining_goals.headless import workflow
     metadata, results = workflow._read_task(directory, scoped=item["scoped"], batch_identity=plan["plan_sha256"],
         runtime=plan["base_runtime"], sources=[item["source"]], model_identity=model_identity)
     check_method_identity(metadata, plan["adapter_identity"])
+    if plan.get('schema_version') == SCHEMA_V2:
+        _verify_environment_record(directory, item, plan, environment_record_sha256, metadata)
     return metadata, results
 
 
@@ -151,15 +228,19 @@ def make_report(records, identity, issues=None):
 def inspect_run(directory):
     directory = Path(directory).resolve()
     plan, batch = _read(directory / "plan.json"), _read(directory / "batch.json")
-    if (plan.get("schema_version") != SCHEMA or plan.get("plan_sha256") != _hash({k: v for k, v in plan.items() if k != "plan_sha256"})
-            or batch.get("schema_version") != SCHEMA or batch.get("plan_sha256") != plan["plan_sha256"]):
+    if (plan.get("schema_version") not in (SCHEMA, SCHEMA_V2) or plan.get("plan_sha256") != _hash({k: v for k, v in plan.items() if k != "plan_sha256"})
+            or batch.get("schema_version") != plan['schema_version'] or batch.get("plan_sha256") != plan["plan_sha256"]):
         raise ValueError("frozen035 plan/batch identity differs")
     activate_core(plan["config"]["benchmark_root"])
     activate_reporting(plan["config"]["reporting_root"])
     _validate_population(plan)
+    if plan['schema_version'] == SCHEMA_V2:
+        from .environment_dispatch import validate_dispatch
+        validate_dispatch(plan['environment_dispatch'])
     from benchmark.remaining_goals.headless import workflow, planning
     from benchmark.remaining_goals.headless.offline_scoring import score_verified_result
     records, issues = {"10": {}, "00": {}}, {"10": [], "00": []}
+    environment_records = []
     for item in plan["tasks"]:
         target = directory / "tasks" / item["key"]
         if not target.exists():
@@ -170,7 +251,15 @@ def inspect_run(directory):
         try:
             if "loaded_base_identity" not in batch:
                 raise ValueError("executed task lacks the shared loaded base-model batch identity")
-            metadata, results = _read_task(target, item, plan, batch.get("loaded_base_identity"))
+            kwargs = ({'environment_record_sha256': batch.get('tasks', {}).get(item['key'], {}).get('environment_dispatch_sha256')}
+                      if plan['schema_version'] == SCHEMA_V2 else {})
+            metadata, results = _read_task(target, item, plan, batch.get("loaded_base_identity"), **kwargs)
+            if plan['schema_version'] == SCHEMA_V2:
+                environment_records.append({'task_id': item['key'], 'condition': item['condition'],
+                    'record': _read(target / 'environment_dispatch.json')})
+            if metadata.get('status') == 'technical_pause':
+                issues[item['condition']].extend({'episode_id': name, 'phase': metadata.get('phase'),
+                    'error': metadata.get('error'), 'status': 'technical_pause'} for name in metadata.get('missing', []))
             episodes = {e["episode_id"]: e for e in item["source"]["episodes"]}
             for raw in results:
                 name = raw["episode_id"]
@@ -182,7 +271,11 @@ def inspect_run(directory):
         except (OSError, ValueError, KeyError, TypeError) as error:
             issues[item["condition"]].extend({"episode_id": e["episode_id"], "error": f"{type(error).__name__}: {error}"}
                                             for e in item["source"]["episodes"])
-    return make_report(records, plan["adapter_identity"], issues)
+    report = make_report(records, plan["adapter_identity"], issues)
+    if plan['schema_version'] == SCHEMA_V2:
+        report.update(schema_version=SCHEMA_V2, environment_dispatch={
+            'identity': plan['environment_dispatch']['identity'], 'verified_task_records': environment_records})
+    return report
 
 
 def render_report(report):
@@ -218,9 +311,13 @@ def run(config, output):
                          if key in {"manifest", "candidate_replay", "initialization", "rgb_certificate"})
     if any(output == p or p in output.parents or output in p.parents for p in protected):
         raise ValueError("new035 output overlaps read-only source/dependency/adapter")
+    if plan['schema_version'] == SCHEMA_V2:
+        legacy_root = Path(plan['config']['environment_dispatch']['legacy_root'])
+        if output == legacy_root or legacy_root in output.parents or output in legacy_root.parents:
+            raise ValueError('new035 output overlaps legacy environment dependency')
     output.mkdir(parents=True)
     workflow.write_json(output / "plan.json", plan)
-    batch = {"schema_version": SCHEMA, "plan_sha256": plan["plan_sha256"], "tasks": {}}
+    batch = {"schema_version": plan['schema_version'], "plan_sha256": plan["plan_sha256"], "tasks": {}}
     workflow.write_json(output / "batch.json", batch)
     worker = deepcopy(plan["base_runtime"])
     worker.update(policy_factory=FACTORY, method_adapter=plan["config"]["adapter"])
@@ -236,9 +333,14 @@ def run(config, output):
         for item in plan["tasks"]:
             batch["tasks"][item["key"]] = {"status": "running"}
             workflow.write_json(output / "batch.json", batch, update=True)
-            result = workflow._run_task(output / "tasks" / item["key"], item["source"], plan["base_runtime"],
-                plan["plan_sha256"], bind_model, scoped=item["scoped"], shared_policy=policy)
+            if plan['schema_version'] == SCHEMA_V2:
+                result = _run_dispatched_task(output / 'tasks' / item['key'], item, plan, bind_model, policy)
+            else:
+                result = workflow._run_task(output / "tasks" / item["key"], item["source"], plan["base_runtime"],
+                    plan["plan_sha256"], bind_model, scoped=item["scoped"], shared_policy=policy)
             batch["tasks"][item["key"]] = {"status": result["status"], "error": result["error"]}
+            if plan['schema_version'] == SCHEMA_V2:
+                batch['tasks'][item['key']]['environment_dispatch_sha256'] = _file_sha(output / 'tasks' / item['key'] / 'environment_dispatch.json')
             workflow.write_json(output / "batch.json", batch, update=True)
             _save_report(output, inspect_run(output))
             print(f"condition={item['condition']} task={item['key']} status={result['status']}", flush=True)

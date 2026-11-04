@@ -157,7 +157,8 @@ def test_reports_keep_034_binary10_and_official00_distinct(tmp_path, core):
 
 
 @pytest.mark.parametrize("protocol", ["mask10", "normal00-control", "nine-mask10", "nine-normal00"])
-def test_original_readers_verify_archive_actions_observations_and_video(tmp_path, monkeypatch, core, protocol):
+@pytest.mark.parametrize('reader_version',['v1','v2'])
+def test_original_readers_verify_archive_actions_observations_and_video(tmp_path, monkeypatch, core, protocol,reader_version):
     from egrs.trajectory_augmentation import evaluation as ev
     from benchmark.remaining_goals.headless import workflow, planning
     from tests.test_headless_workflow import configuration, execution
@@ -206,7 +207,19 @@ def test_original_readers_verify_archive_actions_observations_and_video(tmp_path
     metadata = workflow._run_task(target, source, runtime, plan["plan_sha256"], lambda identity: None, scoped=scoped, shared_policy=policy)
     assert metadata["status"] == "completed", metadata["error"]
     item = {"source": source, "scoped": scoped}
-    _, results = ev._read_task(target, item, plan)
+    kwargs={}
+    if reader_version=='v2':
+        from egrs.trajectory_augmentation import environment_dispatch as dispatch
+        binding={'implementation':'fake-reader-boundary','expected_environment':source['environment_config']['environment']}
+        plan.update(schema_version=ev.SCHEMA_V2,environment_dispatch={'identity':'d'*64})
+        item['environment_binding']=binding
+        monkeypatch.setattr(dispatch,'binding_for',lambda *a:deepcopy(binding))
+        record={'schema_version':'task035-environment-dispatch-record-v1','plan_sha256':plan['plan_sha256'],
+            'source_plan_sha256':source['source_plan_sha256'],'binding':binding,
+            'status':'constructed','actual_environment':binding['expected_environment']}
+        (target/'environment_dispatch.json').write_text(json.dumps(record))
+        kwargs['environment_record_sha256']=ev._file_sha(target/'environment_dispatch.json')
+    _, results = ev._read_task(target, item, plan,**kwargs)
     assert len(results) == (10 if protocol == "mask10" else 1)
     assert all(r["queries"] and r["executed_actions"] and r["video"]["status"] == "saved" for r in results)
     assert tree_hash(tmp_path / "original") == before
@@ -217,11 +230,11 @@ def test_original_readers_verify_archive_actions_observations_and_video(tmp_path
         assert results[0]["trace"][-1]["released"] is False
         assert results[0]["goal_regression"] is None
     with pytest.raises(ValueError, match="adapter"):
-        ev._read_task(target, item, {**plan, "adapter_identity": {**adapter(), "adapter_sha256": "b" * 64}})
+        ev._read_task(target, item, {**plan, "adapter_identity": {**adapter(), "adapter_sha256": "b" * 64}},**kwargs)
     video = target / results[0]["video"]["path"]
     video.write_bytes(video.read_bytes() + b"tampered")
     with pytest.raises(ValueError, match="video"):
-        ev._read_task(target, item, plan)
+        ev._read_task(target, item, plan,**kwargs)
 
 
 def test_adapter_preserves_native_oft_camera_and_robot_sensor_inputs(core):
