@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-04：eval001首场景前暂停，双bridge兼容交X修复
+
+[R8实际错误](reviews/035_round8.md)：用户已启动，SOG10/最终adapter加载完成，但10_basket在environment_initialize因环境指纹不匹配退出，attempts/results空，完成0/180=0%；不是模型失败/SR=0。Codex未代启/停止/重跑。
+
+唯一环境锁差异是bridge文件：旧六120条绑定fa85ae08/27939e2d，新三60条绑定3a515ddd/e7d58f35；实际LIBERO源码/资产/版本/20Hz/compat均一致。当前d8541ef4只带新bridge，方法入口漏了分派。这是Codex审查遗漏，R7训练和纯文件核对事实保持，但“运行就绪/直接启动180”撤回。
+
+下一执行者X：[最小方法侧分派任务](tasks/035_legacy_environment_dispatch.md)，使用真实旧/新实现与严格锁，不绕过/伪造fingerprint、不改core/评分/状态/权重、不重训或重建。受影响CPU/fake/只读身份后Codex审查隔离部署给eval002命令，用户启动原180，不加MVP/真实预检或预算。旧001/错误保留，旧命令页暂停。训练100%，新模型eval0%，方法效果open/兼容修复open，实时SR仍非阻断open。[阶段记录](../docs/stage_summaries/2026-11-04_task035_eval001_environment_dispatch_failure.md)。无merge/清理，待删=[]；下方可开跑指示已被本节替代。
+
+---
+
 ## 2026-11-04：混训完成，180条正式评测已部署待用户启动
 
 [R7核对](reviews/035_round7.md)通过：训练1000/1000，四checkpoint齐全、固定末1000，adapter/续接状态/导出/原组件/统计/源码身份均匹配。训练均值下降59.00%，250→1000的10 dev下降7.48%、normal上升1.43%；不是SR，覆盖仍6/9。[阶段总结](../docs/stage_summaries/2026-11-04_task035_mixed_training_complete_eval_handoff.md)。

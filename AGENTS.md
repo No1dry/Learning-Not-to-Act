@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-04：eval001已失败，旧开跑指示暂停
+
+用户真实启动后模型/adapter加载，但首环境初始化因bridge fingerprint不同暂停，0/180且无动作，不记模型失败。旧六120需fa85ae08旧bridge，新三60需3a515ddd新bridge；R7运行就绪结论撤回、训练验收保持。X按collaboration/tasks/035_legacy_environment_dispatch.md仅实现方法侧严格双版本分派，不绕过/伪造身份、不改core/状态/评分或重训，不跑真实作业；Codex审查隔离部署后给eval002命令，仍用户启动原180，不加GPU/物理预检/MVP或预算。旧001/日志/原权重保留，训练100%/评测0，修复与效果open。最新STATUS/R8优先，下方旧“直接启动001”已暂停。
+
 ## 2026-11-04：混训完成，用户下一步启动180条正式评测
 
 1000/1000与固定末update-001000身份核对通过，准备/训练100%、新模型eval0。R7已部署configs/trajectory035-eval-001及两环境必要方法包，纯文件计划180/180通过（无模型/仿真）；用户直接按docs/experiment_plans/2026-11-04_task035_dual_condition_evaluation_commands.md启动10/00各90，输出runs/trajectory035-eval-001，不另训练/生成/MVP/GPU预检/基线重跑。代码仍task035-v2-44b6ca02；新00引用实际preparation/normal00/sources.json，旧模板误引失败保留。新runtime仅repo_path改为训练同一干净OFT副本，旧脏目录/runtime保留。覆盖仍6/9、离线loss不当作SR；X实时SR小增量非阻断open，不伪闭环或热改。Codex只部署/命令/结果分析，用户启动监督。最新STATUS/R7/阶段总结为准，下方旧训练未启动为历史。
