@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-05：036软件/部署/索引完成，035结果权重视频保留，用户可直接训练
+
+[R1](reviews/036_round1.md)accepted/closed限PR11@205d6530（实现8b9399a9）的软件/隔离部署/文件准备，X无需返修。新036 CPU/fake52/52=100%通过，另49旧受影响用例通过；19旧bridge/proxy fixture因本地快照无Git历史setup error保留，不计通过，复用同版本R11证据不追加门槛。[036阶段总结](../docs/stage_summaries/2026-11-05_task036_software_accepted_training_ready.md)。
+
+新code/task036-205d6530及configs/retention036-205d6530已部署，8文件SHA匹配；仅元数据index已完成：ten161/60、fresh55/20、raw136/44，原180唯一父组/原split，共101680观测行，data/retention036/index-001。没有模型加载/教师/训练/仿真，真实训练/eval0%；未升级包或改旧环境editable映射，命令从新目录执行。
+
+**下一执行者用户：按[036普通完整训练命令](../docs/experiment_plans/2026-11-05_task036_training_commands.md)直接启动已批准的一组1000更新。** 无需再index/plan/pip/MVP；固定末1000，参考≤9024含dev，后续新模型10/00各90，Codex待实际训练产物给评测命令。新模型不能继承035分数，原输入/端点/评分/双bridge不变，eval一个VLA。
+
+035180已完成100%，10合规54.44%（+30pp）、00官方73.33%（-13.33pp）；[九任务统计及保留总结](../docs/stage_summaries/2026-11-05_task035_results_weights_videos_preserved.md)。最终1000完整adapter＋身份＋续训状态/训练配置指标、现成报告和18段原视频已本地SHA归档，服务器全部中间checkpoint和003/004全工件保留；非180视频/全部中间权重本地全备份。close-15/pending旧提示保留不倒改、不重计分。准备100%不等于036效果，10第一/00第二/泛化第三保持。无自动真实作业/merge/清理，待删=[]；下方036待实现属历史。
+
+---
+
 ## 2026-11-04：036原策略保持方案及预算已批准，直接交X实现
 
 用户明确同意036：复用现有10增强，加入九任务普通观测的原策略动作蒸馏；零新增仿真生成、一组1000更新、参考前向≤9024含验证、同新模型10/00各90，真实作业仍由用户启动。[研究方案](../docs/research/2026-11-04_task036_retention_plan.md)、[批准/交接总结](../docs/stage_summaries/2026-11-04_task036_retention_decision_and_budget.md)。
