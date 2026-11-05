@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-05：037研究设计已交一次集中审阅，不是实现/实验许可
+
+用户要求推进ICML导向设计，现有增强保留。[主研究设计](../docs/research/2026-11-05_icml_intervention_residual_learning_design.md)、[理论草稿](../docs/research/2026-11-05_goal_completion_intervention_theory.md)、[阶段交接](../docs/stage_summaries/2026-11-05_task037_intervention_research_design_handoff.md)已整理。候选主张为目标完成干预一致性＋成果保护，非仅“多生成10再微调/加progress head”，不宣称首次/录用/已证zero-shot。原035/036分数、权重、数据与角色规则不改。
+
+**下一执行者X：按[037一次集中设计审阅工单](tasks/037_intervention_learning_design_review.md)给近邻重合、理论假设、OFT56-token单前向/梯度、role/pair实际字段与实验报价结论；不改实现/启动任何真实作业。** 首选同VLA内角色概率接action-hidden残差，无独立Qwen/子指令/真值gate/FINISH；旧EGRS不重启。只审具体科学/接口问题，不排队MVP/全库/平台门槛或重建旧状态。
+
+037编号用于本次设计；原1000→3000续训仍未批准。三组3000/参考81216/新540模型episode仅候选报价，不得自动运行；同数据BC/角色无pair/完整一致性需匹配数据与长度，现有基线复用，主指标仍10合规/00官方。X审阅待完成，新实现/实验0%，设计交付100%。Codex一次取舍后请用户确认预算再交实现；无自动merge/清理，待删=[]。下方036“暂无X任务”仅历史，036实现无需返修结论保持。
+
+---
+
 ## 2026-11-05：036正式报告100%完成，10为50.00%、00为82.22%
 
 [036最终结果/阶段总结](../docs/stage_summaries/2026-11-05_task036_final_results_retention_tradeoff.md)：模型180/180、最终核验/报告均100%，进程结束、software_exit=success。10合规45/90=50.00%（对原+25.56pp、对035-4.44pp）；00官方74/90=82.22%（对原-4.44pp、对035+8.89pp）。两类完整性/兼容问题0，00信号覆盖100%，执行/清理/ledger错误均null。
