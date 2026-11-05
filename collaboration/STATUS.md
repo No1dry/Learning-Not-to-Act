@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-05：036训练100%完成，用户直接启动新180正式评测
+
+[训练完成与评测交接总结](../docs/stage_summaries/2026-11-05_task036_training_complete_evaluation_handoff.md)：1000连续更新、四checkpoint及固定末1000齐全；参考8000train＋1024dev=9024/9024，最终身份/索引/训练状态SHA相符，控制台无错误标记，进程已结束。最终adapter b110901c（不是03521b982e5），9个完整训练/最终权重/续训工件已本地SHA备份，原全部文件保留。weighted训练均值下降53.59%，dev10下降16.95%，参考偏差非零，均非SR，不声称00已恢复。
+
+**下一执行者用户：按[036正式评测完整命令](../docs/experiment_plans/2026-11-05_task036_dual_condition_evaluation_commands.md)直接启动原10/00各90。** 准备/训练100%，新模型评测0%；configs/retention036-eval-001已部署，纯文件plan180/180通过（无模型/仿真），新run未创建，无需再pip/plan/MVP/重训或状态重建。两个原venv方法包无依赖映射至已验收036，core cwd导入来源正确；没升级依赖或改冻结core。新模型全部180新执行，不继承035分数，原来源/端点/评分/seed7/chunk8/H520/全视频保持。时点GPU空闲约81GB。
+
+Codex未代启/停止/追加真实作业；用户交回结果后比较原模型与035、取视频。X当前无需返修；035及036全部中间权重/结果/旧失败和运行refs保持，003/004不得清理。不因离线loss选择别的checkpoint或称研究效果完成，无merge/删除，待删=[]。下方“036训练0%/待启动训练”仅为历史。
+
+---
+
 ## 2026-11-05：036软件/部署/索引完成，035结果权重视频保留，用户可直接训练
 
 [R1](reviews/036_round1.md)accepted/closed限PR11@205d6530（实现8b9399a9）的软件/隔离部署/文件准备，X无需返修。新036 CPU/fake52/52=100%通过，另49旧受影响用例通过；19旧bridge/proxy fixture因本地快照无Git历史setup error保留，不计通过，复用同版本R11证据不追加门槛。[036阶段总结](../docs/stage_summaries/2026-11-05_task036_software_accepted_training_ready.md)。
