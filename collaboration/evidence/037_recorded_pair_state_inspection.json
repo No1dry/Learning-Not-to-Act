@@ -1,0 +1,137 @@
+{
+  "format": "task037-recorded-pair-state-inspection-v1",
+  "records": [
+    {
+      "task_key": "basket",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2",
+      "normal_source_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2__normal__vnormal__a0",
+      "ten_source_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2__10__v0__a0",
+      "normal_frame": 158,
+      "ten_frame": 0,
+      "state_lengths": [
+        123,
+        123
+      ],
+      "robot_modified_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "excluded_global_time_index": 0,
+      "recorded_nonrobot_max_absolute_difference": 0.0,
+      "recorded_nonrobot_exact_equal": true,
+      "recorded_robot_max_absolute_difference": 0.4992063188835369,
+      "active_goal_values": [
+        [
+          true,
+          false
+        ],
+        [
+          true,
+          false
+        ]
+      ],
+      "construction_nonrobot_hashes_equal": true,
+      "outgoing_action_indices": [
+        158,
+        0
+      ],
+      "claim": "Two sampled recorded-state comparisons, not dataset-wide coverage or observability proof."
+    },
+    {
+      "task_key": "bowl_drawer_close",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0",
+      "normal_source_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0__normal__vnormal__a0",
+      "ten_source_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0__10__v0__a0",
+      "normal_frame": 187,
+      "ten_frame": 0,
+      "state_lengths": [
+        51,
+        51
+      ],
+      "robot_modified_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "excluded_global_time_index": 0,
+      "recorded_nonrobot_max_absolute_difference": 0.0,
+      "recorded_nonrobot_exact_equal": true,
+      "recorded_robot_max_absolute_difference": 1.7045433339155651,
+      "active_goal_values": [
+        [
+          true,
+          false
+        ],
+        [
+          true,
+          false
+        ]
+      ],
+      "construction_nonrobot_hashes_equal": true,
+      "outgoing_action_indices": [
+        187,
+        0
+      ],
+      "claim": "Two sampled recorded-state comparisons, not dataset-wide coverage or observability proof."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "export/sources.json",
+      "sha256": "481de2710314051f78d4d64e9f5ec25cecdbc5504feb60d3bb7e52d68a9be084"
+    },
+    {
+      "path": "artifacts/source-001/normal_vnormal_a0/audit.json",
+      "sha256": "dd674c912c646d83313cfadcad0b3cda21e1cee7fb10a4cede1bc6b3e177b2c0"
+    },
+    {
+      "path": "artifacts/source-001/10_v0_a0/audit.json",
+      "sha256": "c66a8dfd1e4c7121a6eea639d963c58534c587c36bb4a345b4418136529d28b3"
+    },
+    {
+      "path": "artifacts/source-033/normal_vnormal_a0/audit.json",
+      "sha256": "bfeaca4c022dabe36427413a8d1c212c2675a831256a6379df4f597b998288d7"
+    },
+    {
+      "path": "artifacts/source-033/10_v0_a0/audit.json",
+      "sha256": "825275b04de2b7cc48a31945054a2088cbd04c72568dde77ee39b2332e6f858e"
+    }
+  ],
+  "source_reads": "existing JSON only",
+  "image_pixels_read": false,
+  "model_called": false,
+  "simulation_created": false,
+  "supervision_sidecar_generated": false,
+  "all_pair_count_computed": false
+}

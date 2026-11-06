@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-06：037-v2收敛，038直接交X实现，真实预算未批
+
+Codex的037-v2规格采用单VLA连续任务上下文z＋action-hidden零输出残差、完成数量0/1/2辅助锚：同世界rewind pair只交换z，动作按各自H/proprio/真实动作重算，不对齐动作；不是完整role/实例分解、hard保护/stop或新识别/SR/zero-shot保证。MIR/Invariance Co-training/ReViP等近邻已引用，新颖性/效果open。两个现成JSON实际帧的只读检查证明basket158/0与drawer187/0非robot记录坐标差0、robot不同/目标同为true,false；来源SHA在collaboration/evidence/037_recorded_pair_state_inspection.json，非全量覆盖/新标签/图像或实验。Task038已交collaboration/tasks/038_task_control_factorization.md，X直接实现＋受影响CPU/fake/新PR，不再泛审；原037review closed/X无需返修，PR12不自动merge。038按accepted036依赖接线，一次新文件索引、train/eval共享predict、全部新增模块严格保存恢复与原策略旁路、C0/C1同架构/数据/标签/顺序。建议两组1000共2000、reference18048/student49120、模型360的真实预算尚未批准；用户当前不启动，Codex/X不真实标注/模型/仿真/训练或eval，不部署。规格交接100%、038实现/真实数据准备/训练/eval0%；下一X实现、Codex验收部署、用户批准预算亲启。原三3000和036续训仍未批，035/036证据、权重与Eval发布不改不删。阶段2026-11-06_task037_v2_and_task038_handoff.md精确commit读回SHA备份/manifest；无自动merge/删除。下方“下一Codex凝练/暂无X工单”已过时。
+
 ## 2026-11-06：037首审完成，原候选不直接实施
 
 PR12@e9f162a7仅X审阅文档，Codex reviews/037_round1.md接受该交付/范围closed、X无需返修或重复综述，未自动merge。037方法与新颖性open：剩余化已有先例、完整role标签下pair仅待验证正则，潜态与观测后验/硬软保护区别需修订；旧设计理论已加裁决提示，不做首创/成功率保证。现成5源audit/lineage和三池metadata小摘录已给collaboration/evidence/037_existing_metadata_samples.json，无RGB像素/新标签/模型/仿真或重做资格。normal handoff与10初态是同目标事实，不可误作完成翻转；active/official谓词顺序需正确映射。Codex后续收敛视觉任务状态与机器人执行阶段解耦的候选主张/监督/预算，仍需近邻差异，不因改名假称新颖；X先等实现工单、用户暂不启动。三组3000/参考81216/模型540及续训均未批，037新实现/标注/训练/eval0，035/036全部原证据保留。最新STATUS/R1/2026-11-06阶段记录优先，无自动merge/清理。

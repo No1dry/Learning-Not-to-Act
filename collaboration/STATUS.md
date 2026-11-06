@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-06：037-v2规格定稿，038交X实现；真实预算待批准
+
+[037-v2](../docs/research/2026-11-06_task037_v2_task_control_factorization.md)决定保留增强与原策略保持，训练连续任务上下文z：同世界/不同机器人起点时语义尽量保持，交换z后仍按接收端H/proprio/真实动作重算控制。不对齐两端动作，不需完整NEED/PRESERVE实例标注；0/1/2完成计数只作辅助锚，不硬路由/FINISH。MIR、Invariance Co-training、ReViP等近邻已明确，不把不变性/新名字当已证创新，方法效果与新颖性仍open。
+
+Codex只读两个原JSON配对的**实际记录状态**，basket normal158/ten0、drawer normal187/ten0，非robot坐标差均0、robot确有变化、目标均true,false；[来源/SHA证据](evidence/037_recorded_pair_state_inspection.json)。无图像像素、模型、仿真、新标签sidecar或全量pair统计，不把两例外推全部。
+
+**下一执行者X：直接按[038实现工单](tasks/038_task_control_factorization.md)改代码与定向CPU/fake，新PR与responses/038_round1.md，不再先写泛审。** 原037审阅accepted/closed保持，PR12不自动merge。038从accepted036实现依赖接续，单VLA共享train/eval forward、全部新增模块保存/原策略旁路、一次文件标签/pair索引、C0/C1对照及完整普通命令模板；不得跑真实标签/模型/训练/eval或服务器作业。
+
+候选两组各1000=2000更新，原参考≤18048、学生≤49120，新模型10/00各90×2=360；零新仿真生成、基线重跑/状态重建，固定末1000/原九任务评分。**预算尚未批准**，用户当前不启动；这不是原三组3000或036续训许可。规格/交接100%，038代码/数据准备/训练/eval0%。阶段[总结](../docs/stage_summaries/2026-11-06_task037_v2_and_task038_handoff.md)和关键文件精确commit本地SHA备份，旧证据全保留，无部署/自动merge/删除，待删=[]。下方037待Codex收敛已由本节替代。
+
+---
+
 ## 2026-11-06：037审阅accepted，原方法需修订，不开三组训练
 
 [X原稿PR12固定e9f162a7](https://github.com/No1dry/Learning-Not-to-Act/blob/e9f162a7c57819d40c44b3f8d5b9fffc2cb3e457/collaboration/responses/037_round1.md)仅文档；[Codex R1裁决](reviews/037_round1.md)接受审阅交付100%，范围closed、X无需返修/再写综述，PR未自动合并。**037方法/新颖性仍open，原稿不直接实施，三组3000/81216参考/540模型episode及续训均未获批准。** [阶段记录](../docs/stage_summaries/2026-11-06_task037_design_review_decision.md)。
