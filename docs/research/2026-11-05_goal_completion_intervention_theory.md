@@ -1,5 +1,7 @@
 # 037理论草稿：完成干预的可识别性与一致性
 
+> **2026-11-06勘误/定位**：见[Codex037 R1裁决](../../collaboration/reviews/037_round1.md)及[X原稿](https://github.com/No1dry/Learning-Not-to-Act/blob/e9f162a7c57819d40c44b3f8d5b9fffc2cb3e457/collaboration/responses/037_round1.md)。本10等价域须P=C且G=P⊔R，并满足硬保护；soft gate无此保证。C/D是潜态/合法可辨识域的条件性关系，不能直接当当前RGB后验等变或成功率定理。完整角色标签下pair在零误差时冗余、单独可塌缩，A的构造不证明pair必要；D固定L1与真实允许的逐步观测，不能把JS或“存在有利观测”直接代入。以下基础草稿保留，不当首创新理论或实施许可。
+
 2026-11-05，Codex。性质：有限模型中的构造、条件性命题及证明草图，供审阅。不是已有VLA成功率定理，不声称这些基础数学工具首创，也不以此证明ICML新颖性。实质研究需把假设与生成配对/表示/实验接起来。[主设计](2026-11-05_icml_intervention_residual_learning_design.md)。
 
 ## A. 普通演示不足以区分目标判断和流程捷径：一个构造

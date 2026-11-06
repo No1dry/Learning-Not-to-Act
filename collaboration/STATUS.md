@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-06：037审阅accepted，原方法需修订，不开三组训练
+
+[X原稿PR12固定e9f162a7](https://github.com/No1dry/Learning-Not-to-Act/blob/e9f162a7c57819d40c44b3f8d5b9fffc2cb3e457/collaboration/responses/037_round1.md)仅文档；[Codex R1裁决](reviews/037_round1.md)接受审阅交付100%，范围closed、X无需返修/再写综述，PR未自动合并。**037方法/新颖性仍open，原稿不直接实施，三组3000/81216参考/540模型episode及续训均未获批准。** [阶段记录](../docs/stage_summaries/2026-11-06_task037_design_review_decision.md)。
+
+采纳LTL剩余化先例、完整角色监督下pair是待验证正则、潜态/观测后验区别及硬/软保护边界；原设计/理论已有裁决提示，不包装为新识别定理或SR保证。OFT实际predict/保存/参考接线和双同类实例/静态D/K规格需明确，不能靠小头自动成立。
+
+Codex已从已有文件摘取[脱敏metadata证据](evidence/037_existing_metadata_samples.json)，5记录的audit/lineage都在，三池索引各一行；无RGB像素/新标签/仿真/模型。normal handoff与10初态同为A真/B假，不是NEED→PRESERVE翻转；抽屉active/官方谓词顺序必须映射。未统计全量role/pair，不撤销035资格或重做状态。
+
+下一执行者Codex：优先收敛“任务语义状态与机器人执行阶段解耦”的037-v2候选及监督/预算，差异仍需论证，不让X重复泛审或先改代码。用户暂不新启动，新实现/标注/训练/eval0%；035/036分数/权重/历史及Eval九任务发布均保持，无merge/清理，待删=[]。下方037待X首审已过时。
+
+---
+
 ## 2026-11-05：037研究设计已交一次集中审阅，不是实现/实验许可
 
 用户要求推进ICML导向设计，现有增强保留。[主研究设计](../docs/research/2026-11-05_icml_intervention_residual_learning_design.md)、[理论草稿](../docs/research/2026-11-05_goal_completion_intervention_theory.md)、[阶段交接](../docs/stage_summaries/2026-11-05_task037_intervention_research_design_handoff.md)已整理。候选主张为目标完成干预一致性＋成果保护，非仅“多生成10再微调/加progress head”，不宣称首次/录用/已证zero-shot。原035/036分数、权重、数据与角色规则不改。
