@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-06：038软件accepted并部署，用户批准两组正式预算
+
+PR13@5a6452ab（038实现b5849e4e）经R1验收软件/CPU-fake/部署closed、X无需返修、不自动merge。130独立受影响用例最终通过，首次18因兄弟依赖路径缺失的setup error保留，仅复用固定现成core/reporting映射重跑18通过；未全库/真模型/物理。新code/task038-5a6452ab、configs/task038-5a6452ab已上传，19源/4配置SHA一致，两个原venv editable映射更新指向038，core cwd来源正确，不升级依赖/改旧代码或数据。用户本轮明确批准一次文件索引、C0/C1各1000共2000、reference≤18048/student≤49120、两模型10/00各90共360，零新仿真/基线重跑/状态重建；真实作业仍只用户启动，Codex/X不代启停。代码部署100%，真实index/标签/训练/eval0，配对覆盖/效果/新颖性open，旧三3000/036续训仍未批。用户按docs/experiment_plans/2026-11-06_task038_index_training_commands.md一次index正常后直接C0，完成后C1，不额外人工/MVP门槛；训练后Codex看产物给末1000评测命令。实际eval配置已填但adapter尚不存在，未生成真实plan。R1/2026-11-06_task038_accepted_deployed_budget_approved.md和机器证据精确commit读回SHA备份，X原稿/测试证据按PR head保留署名；原035/036和037/PR12所有证据不改删，无自动merge/清理。下方未批/未交付/不部署是此前阶段。
+
 ## 2026-11-06：037-v2收敛，038直接交X实现，真实预算未批
 
 Codex的037-v2规格采用单VLA连续任务上下文z＋action-hidden零输出残差、完成数量0/1/2辅助锚：同世界rewind pair只交换z，动作按各自H/proprio/真实动作重算，不对齐动作；不是完整role/实例分解、hard保护/stop或新识别/SR/zero-shot保证。MIR/Invariance Co-training/ReViP等近邻已引用，新颖性/效果open。两个现成JSON实际帧的只读检查证明basket158/0与drawer187/0非robot记录坐标差0、robot不同/目标同为true,false；来源SHA在collaboration/evidence/037_recorded_pair_state_inspection.json，非全量覆盖/新标签/图像或实验。Task038已交collaboration/tasks/038_task_control_factorization.md，X直接实现＋受影响CPU/fake/新PR，不再泛审；原037review closed/X无需返修，PR12不自动merge。038按accepted036依赖接线，一次新文件索引、train/eval共享predict、全部新增模块严格保存恢复与原策略旁路、C0/C1同架构/数据/标签/顺序。建议两组1000共2000、reference18048/student49120、模型360的真实预算尚未批准；用户当前不启动，Codex/X不真实标注/模型/仿真/训练或eval，不部署。规格交接100%、038实现/真实数据准备/训练/eval0%；下一X实现、Codex验收部署、用户批准预算亲启。原三3000和036续训仍未批，035/036证据、权重与Eval发布不改不删。阶段2026-11-06_task037_v2_and_task038_handoff.md精确commit读回SHA备份/manifest；无自动merge/删除。下方“下一Codex凝练/暂无X工单”已过时。

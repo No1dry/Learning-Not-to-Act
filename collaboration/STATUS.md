@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-06：038 accepted/已部署，正式两组预算获批，下一用户直接启动
+
+[R1裁决](reviews/038_round1.md)接受PR13@5a6452ab（实现b5849e4e）软件/受影响CPU-fake/部署范围closed，X无需返修，未自动merge。130独立用例最终通过：首次112＋18因缺本地core/reporting路径的setup error，复用固定现成依赖映射后只补跑18通过，原错误XML保留不计初次通过；无全库/真实模型或物理检查。共享OFT train/eval forward、两端独立动作/只换z、双向梯度、所有新增模块保存/参考旁路、原10/00评分与旧036回归符合要求。
+
+**用户已明确批准**一次文件索引、两组各1000共2000、reference≤18048/student≤49120/新模型共360（各组10/00各90）、零新仿真生成。只授权文件准备和用户启动，不授权Codex/X代跑；旧三组3000/036续训仍未批。
+
+新code/task038-5a6452ab与configs/task038-5a6452ab已上传，19源/4配置SHA匹配，两个原venv方法包映射到新副本且core cwd来源正确，无依赖升级/旧目录改动；旧runtime逐字复制、正式来源不变。[机器证据](evidence/038_codex_acceptance.json)。eval配置模板已填，实际权重尚未产生，未生成/假称最终eval plan通过。
+
+**下一执行者用户：按[完整常用命令](../docs/experiment_plans/2026-11-06_task038_index_training_commands.md)一次index正常后直接C0，完成后C1，不再等额外人工预检/MVP，不同时开两组。** Codex未启动真实标签、tokenizer/模型/教师、仿真、训练/eval；代码部署100%、真实index/训练/eval0%，配对覆盖/SR/新颖性仍open。训练完交回，Codex读取产物给固定末1000的360评测命令；X暂无改动任务。
+
+[阶段总结](../docs/stage_summaries/2026-11-06_task038_accepted_deployed_budget_approved.md)及关键记录精确commit读回SHA本地备份，X原回复/测试按原head署名保留。035/036所有分数/权重/视频/原始数据与失败、037/PR12保留，无自动merge/清理，待删=[]。下方038待交付/预算未批已过时。
+
+---
+
 ## 2026-11-06：037-v2规格定稿，038交X实现；真实预算待批准
 
 [037-v2](../docs/research/2026-11-06_task037_v2_task_control_factorization.md)决定保留增强与原策略保持，训练连续任务上下文z：同世界/不同机器人起点时语义尽量保持，交换z后仍按接收端H/proprio/真实动作重算控制。不对齐两端动作，不需完整NEED/PRESERVE实例标注；0/1/2完成计数只作辅助锚，不硬路由/FINISH。MIR、Invariance Co-training、ReViP等近邻已明确，不把不变性/新名字当已证创新，方法效果与新颖性仍open。
