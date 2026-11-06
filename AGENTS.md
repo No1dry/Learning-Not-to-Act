@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-07：038 C0/C1末1000完成，下一用户正式360评测
+
+R2接受真实训练完成文件产物，X无需返修、R1软件accepted保持；C0/C1各1000，固定末权重SHA f3f4c876/3f3873a4，adapter/完整训练状态字节hash及arm/index/base/配置一致、最终sampling记录相同。参考各9024/student各24528，合计18048/49056未超预算；进程已结束/尾日志无Traceback。真实索引221pairs全部有效（161train/60dev）、101680行，50661计数标签/raw51019无标签，六10增强/九普通与正式来源保持。24个两末adapter/续训状态/identity/metrics/配置预算/实际eval配置runtime/索引小记录已本地SHA保留，所有原服务器工件/中间checkpoint/console及035/036/003/失败不改删。训练及评测文件准备100%，模型eval0；C1 dev10 L1仅相对低.78%，不能代替SR或选择别的测试checkpoint。用户按docs/experiment_plans/2026-11-07_task038_dual_model_evaluation_commands.md直接C0、正式报告/进程结束后C1，各10/00各90共360，不并行；本次不另跑plan/MVP/物理/全量来源重复预检，正式入口自己绑定权重与原输入建plan，不假称真实eval已通过。Codex只读/备份/命令、用户启动所有真实作业，X无修改；结果交回Codex统计/取视频。不新训/生成/重测基线，旧三3000/036续训未批。R2/机器证据/阶段2026-11-07_task038_training_complete_evaluation_handoff.md精确commit读回SHA本地备份及manifest更新，无自动merge/清理/启停作业。下方训练未启/索引未就绪属历史。
+
 ## 2026-11-06：038软件accepted并部署，用户批准两组正式预算
 
 PR13@5a6452ab（038实现b5849e4e）经R1验收软件/CPU-fake/部署closed、X无需返修、不自动merge。130独立受影响用例最终通过，首次18因兄弟依赖路径缺失的setup error保留，仅复用固定现成core/reporting映射重跑18通过；未全库/真模型/物理。新code/task038-5a6452ab、configs/task038-5a6452ab已上传，19源/4配置SHA一致，两个原venv editable映射更新指向038，core cwd来源正确，不升级依赖/改旧代码或数据。用户本轮明确批准一次文件索引、C0/C1各1000共2000、reference≤18048/student≤49120、两模型10/00各90共360，零新仿真/基线重跑/状态重建；真实作业仍只用户启动，Codex/X不代启停。代码部署100%，真实index/标签/训练/eval0，配对覆盖/效果/新颖性open，旧三3000/036续训仍未批。用户按docs/experiment_plans/2026-11-06_task038_index_training_commands.md一次index正常后直接C0，完成后C1，不额外人工/MVP门槛；训练后Codex看产物给末1000评测命令。实际eval配置已填但adapter尚不存在，未生成真实plan。R1/2026-11-06_task038_accepted_deployed_budget_approved.md和机器证据精确commit读回SHA备份，X原稿/测试证据按PR head保留署名；原035/036和037/PR12所有证据不改删，无自动merge/清理。下方未批/未交付/不部署是此前阶段。

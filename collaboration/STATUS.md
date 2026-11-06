@@ -1,5 +1,19 @@
 # 方法研究当前状态
 
+## 2026-11-07：038两组训练100%，用户直接启动正式360评测
+
+[R2训练产物核对](reviews/038_round2.md)接受两组实际末1000/文件范围，X无需返修，R1软件accepted保持，效果/新颖性open。C0/C1各1000连续完成、固定末1000，reference各9024、student各24528，共18048/49056，未超已批上限；身份arm/index/原base/配方一致，最终sampling记录相同，adapter及完整training_state字节SHA匹配，两个权重不同。C0 SHA f3f4c876，C1 3f3873a4；未发现038训练/eval进程，末尾无Traceback标记。
+
+一次真实索引已由用户完成：221/221pairs有效（train161/dev60）、101680行，有计数标签50661/raw无标签51019，六任务10增强/九任务普通来源与评价人口保持。dev10 L1 C0 .129851/C1 .128834，只是相对约.78%差，不是SR/新颖性/泛化结论；不换测试checkpoint。
+
+两末adapter/identity/完整续训状态、metrics/配置/选择/预算/实际runtime及索引小记录24文件本地SHA保留，[机器证据](evidence/038_training_complete.json)，原服务器所有中间checkpoint/console/035036/003与失败不改不删。代码/评测文件准备与训练100%，正式模型eval0%。
+
+**下一执行者用户：按[完整常用命令](../docs/experiment_plans/2026-11-07_task038_dual_model_evaluation_commands.md)直接依次C0、C1，各10合规90＋00官方90，总360新episode。** 原eval配置已绑定各自末1000；本次复用旧来源/初态证据，不另扫全量/跑plan/MVP/物理预检，正式入口自己建plan绑定实际模型后执行，不伪称本次真实plan/eval已通过。H520/chunk8/seed7/全视频/原评分/双bridge保持，教师仅训练；执行100%后等同进程生成正式summary/退出再开第二组，不另启report。
+
+Codex只读取/备份产物并提供命令，不自动启动、停止或追加真实作业；X暂无改动，结果交回后Codex统计百分比/配对差异与视频。原三组3000/036续训依旧未批，基线直接复用不重测。[阶段总结](../docs/stage_summaries/2026-11-07_task038_training_complete_evaluation_handoff.md)和关键记录精确commit本地SHA归档/manifest更新，PR13不自动merge，无删除，待删=[]。下方038训练0/待索引已过时。
+
+---
+
 ## 2026-11-06：038 accepted/已部署，正式两组预算获批，下一用户直接启动
 
 [R1裁决](reviews/038_round1.md)接受PR13@5a6452ab（实现b5849e4e）软件/受影响CPU-fake/部署范围closed，X无需返修，未自动merge。130独立用例最终通过：首次112＋18因缺本地core/reporting路径的setup error，复用固定现成依赖映射后只补跑18通过，原错误XML保留不计初次通过；无全库/真实模型或物理检查。共享OFT train/eval forward、两端独立动作/只换z、双向梯度、所有新增模块保存/参考旁路、原10/00评分与旧036回归符合要求。

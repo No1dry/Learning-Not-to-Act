@@ -1,0 +1,322 @@
+{
+  "format": "task038-training-completed-evaluation-handoff-v1",
+  "date": "2026-11-07",
+  "reviewed_pr_head": "5a6452ab73ee31cd1afbe1cdc08e88e2d963ac04",
+  "implementation": "b5849e4e4f7f56b888922e1267870126f5368ccf",
+  "arms": {
+    "c0": {
+      "update": 1000,
+      "completion_percent": 100.0,
+      "adapter_sha256": "f3f4c876f29cca0478e0d37148a0d3f60bbf265cbe1fb91ea0452cd417f3120b",
+      "index_identity": "5b2e1ac33fad212acab4c815f7d7157d9fdc535fea87a99694d6f801b8834578",
+      "reference_calls": {
+        "train": 8000,
+        "dev": 1024,
+        "total": 9024,
+        "budget": 9024
+      },
+      "student_calls": {
+        "train": 22000,
+        "dev": 2528,
+        "total": 24528,
+        "budget": 24560
+      },
+      "selected_checkpoint": {
+        "checkpoint": "update-001000",
+        "update": 1000,
+        "selection": "fixed terminal update",
+        "arm": "c0",
+        "recipe": "task_control_factorization"
+      },
+      "dev": {
+        "pool_l1": {
+          "ten": 0.12985064317932515,
+          "fresh": 0.017788229693126465,
+          "raw": 0.016573821726654257
+        },
+        "weighted_l1": 0.07351583444460777,
+        "ordinary_observations": 512,
+        "pair_count": 60,
+        "paired_diagnostics": {
+          "self": 0.09863088025401036,
+          "swap": 0.09850409993280967,
+          "align": 0.0014138483456918038,
+          "z_zero_action_delta_l1": 0.011208506487309932,
+          "z_distance_l2": 7.627035633722941
+        },
+        "count_class_coverage": {
+          "0": 103,
+          "1": 384,
+          "2": 17
+        },
+        "count_accuracy_by_class": {
+          "0": 0.9902912621359223,
+          "1": 0.9635416666666666,
+          "2": 0.8235294117647058
+        },
+        "count_accuracy": 0.9642857142857143,
+        "reference_time_bins": {
+          "fresh": {
+            "prefix": 64,
+            "all": 64
+          },
+          "raw": {
+            "prefix": 64,
+            "all": 64
+          }
+        }
+      },
+      "final_artifacts": [
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c0-train-001/update-001000/adapter.pt",
+          "bytes": 84280858,
+          "sha256": "f3f4c876f29cca0478e0d37148a0d3f60bbf265cbe1fb91ea0452cd417f3120b"
+        },
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c0-train-001/update-001000/identity.json",
+          "bytes": 89094,
+          "sha256": "354f6f19d757f2e9038bbc673901350ba69cc41b1c0d2456a0e656527df89b0e"
+        },
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c0-train-001/update-001000/training_state.pt",
+          "bytes": 168679628,
+          "sha256": "6acf80cc57bff666db8e15737608c84f7246d2bb89b998487d62d11baea0c227"
+        },
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c0-train-001/update-001000/training_state.sha256",
+          "bytes": 65,
+          "sha256": "9c023a226c4ca5b6a30eb500b6dbb57d2adc9e1a625b0efe960c60ff9867ef23"
+        }
+      ],
+      "sampling_record_sha256": "1939fe76e3a6c60f1790acf950d545720c6eca8e6a9a5359a0e2e91223511626"
+    },
+    "c1": {
+      "update": 1000,
+      "completion_percent": 100.0,
+      "adapter_sha256": "3f3873a435623af0d374e2ea5f5153429f6619ff06b0ec7062eea4cf23cef6c2",
+      "index_identity": "5b2e1ac33fad212acab4c815f7d7157d9fdc535fea87a99694d6f801b8834578",
+      "reference_calls": {
+        "train": 8000,
+        "dev": 1024,
+        "total": 9024,
+        "budget": 9024
+      },
+      "student_calls": {
+        "train": 22000,
+        "dev": 2528,
+        "total": 24528,
+        "budget": 24560
+      },
+      "selected_checkpoint": {
+        "checkpoint": "update-001000",
+        "update": 1000,
+        "selection": "fixed terminal update",
+        "arm": "c1",
+        "recipe": "task_control_factorization"
+      },
+      "dev": {
+        "pool_l1": {
+          "ten": 0.1288339424949441,
+          "fresh": 0.018014832923654467,
+          "raw": 0.016869038468160267
+        },
+        "weighted_l1": 0.07313793909542574,
+        "ordinary_observations": 512,
+        "pair_count": 60,
+        "paired_diagnostics": {
+          "self": 0.09978664387017488,
+          "swap": 0.09870285543923576,
+          "align": 0.0013105917001666966,
+          "z_zero_action_delta_l1": 0.012204569407428305,
+          "z_distance_l2": 7.525346000989278
+        },
+        "count_class_coverage": {
+          "0": 103,
+          "1": 384,
+          "2": 17
+        },
+        "count_accuracy_by_class": {
+          "0": 0.9902912621359223,
+          "1": 0.9661458333333334,
+          "2": 0.6470588235294118
+        },
+        "count_accuracy": 0.9603174603174603,
+        "reference_time_bins": {
+          "fresh": {
+            "prefix": 64,
+            "all": 64
+          },
+          "raw": {
+            "prefix": 64,
+            "all": 64
+          }
+        }
+      },
+      "final_artifacts": [
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-train-001/update-001000/adapter.pt",
+          "bytes": 84280858,
+          "sha256": "3f3873a435623af0d374e2ea5f5153429f6619ff06b0ec7062eea4cf23cef6c2"
+        },
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-train-001/update-001000/identity.json",
+          "bytes": 89094,
+          "sha256": "230a1dbcc0b4b6f09b83627e37d30e3201510646f0fc28a89685857651dc559b"
+        },
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-train-001/update-001000/training_state.pt",
+          "bytes": 168679628,
+          "sha256": "72316e0d7e2cb3b24650152419b33cb6044cc90155c978d559de0568562baf41"
+        },
+        {
+          "path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-train-001/update-001000/training_state.sha256",
+          "bytes": 65,
+          "sha256": "bd02e1b9a79926354f9964ab73e4e7ff617a27699b4fff31591ca5cb2e9db2ea"
+        }
+      ],
+      "sampling_record_sha256": "1939fe76e3a6c60f1790acf950d545720c6eca8e6a9a5359a0e2e91223511626"
+    }
+  },
+  "same_configuration_except_arm": true,
+  "same_base_index_and_final_sampling_record": true,
+  "adapter_and_training_state_byte_hashes_verified": true,
+  "training_processes_remaining": 0,
+  "traceback_in_either_console_tail": false,
+  "index_report": {
+    "data_kind": "task038-task-control-data-v1",
+    "sources_identity": "5b2e1ac33fad212acab4c815f7d7157d9fdc535fea87a99694d6f801b8834578",
+    "available": true,
+    "status": "available",
+    "rows": 101680,
+    "pairs": {
+      "candidates": 221,
+      "valid": 221,
+      "reasons": {},
+      "by_task_split": {
+        "basket|train": {
+          "candidates": 32,
+          "valid": 32,
+          "reasons": {}
+        },
+        "basket|dev": {
+          "candidates": 9,
+          "valid": 9,
+          "reasons": {}
+        },
+        "basket_cheese_butter|train": {
+          "candidates": 33,
+          "valid": 33,
+          "reasons": {}
+        },
+        "basket_cheese_butter|dev": {
+          "candidates": 24,
+          "valid": 24,
+          "reasons": {}
+        },
+        "stove|train": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "stove|dev": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "bowl_drawer_close|train": {
+          "candidates": 36,
+          "valid": 36,
+          "reasons": {}
+        },
+        "bowl_drawer_close|dev": {
+          "candidates": 12,
+          "valid": 12,
+          "reasons": {}
+        },
+        "dual_mugs|train": {
+          "candidates": 6,
+          "valid": 6,
+          "reasons": {}
+        },
+        "dual_mugs|dev": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "mug_pudding|train": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "mug_pudding|dev": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "basket_soup_cheese|train": {
+          "candidates": 39,
+          "valid": 39,
+          "reasons": {}
+        },
+        "basket_soup_cheese|dev": {
+          "candidates": 9,
+          "valid": 9,
+          "reasons": {}
+        },
+        "two_pots|train": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "two_pots|dev": {
+          "candidates": 0,
+          "valid": 0,
+          "reasons": {}
+        },
+        "mug_microwave_close|train": {
+          "candidates": 15,
+          "valid": 15,
+          "reasons": {}
+        },
+        "mug_microwave_close|dev": {
+          "candidates": 6,
+          "valid": 6,
+          "reasons": {}
+        }
+      }
+    },
+    "labels": {
+      "available": 50661,
+      "missing": 51019
+    },
+    "labels_sha256": "3ee28cd8fc32f66ff4db91b045c05910c24dd04da6493606841b05efd80cc006",
+    "pairs_sha256": "15a8e67c3dd0755f4782bccb7c7b8b1aece78dccfc7e7f76194fba1e89e8146d",
+    "image_pixels_read": false,
+    "model_loaded": false,
+    "simulation_created": false,
+    "confirmation_frames_exported": false,
+    "identity": "c936c038aae28dd46e105c74460fa835efc00488767a25e43a8501a61b2eaafa"
+  },
+  "preservation": {
+    "archive_relative_to_workspace": "research_archive/Learning-Not-to-Act/task038_training_complete_2026-11-07",
+    "verified_files": 24,
+    "manifest_sha256": "7e4ea966881194645197f8ecb0bf0c15aac8144a8c2577856c6339bcdc5c9b5f",
+    "both_final_adapters_and_full_resume_states": true,
+    "old_server_checkpoints_and_console_preserved": true
+  },
+  "evaluation": {
+    "config_directory": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task038-5a6452ab",
+    "per_arm": {
+      "10": 90,
+      "00": 90
+    },
+    "total_new_episodes": 360,
+    "actual_eval_plan_built_in_this_turn": false,
+    "new_model_episodes_started": 0,
+    "original_states_and_scoring_reused": true
+  },
+  "model_loaded": false,
+  "simulation_created": false,
+  "training_or_eval_started_by_codex": false,
+  "deletions": []
+}
