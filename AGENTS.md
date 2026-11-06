@@ -1,5 +1,29 @@
 # 方法研究协作规则
 
+## 2026-11-06：037-v2收敛，038直接交X实现，真实预算未批
+
+Codex的037-v2规格采用单VLA连续任务上下文z＋action-hidden零输出残差、完成数量0/1/2辅助锚：同世界rewind pair只交换z，动作按各自H/proprio/真实动作重算，不对齐动作；不是完整role/实例分解、hard保护/stop或新识别/SR/zero-shot保证。MIR/Invariance Co-training/ReViP等近邻已引用，新颖性/效果open。两个现成JSON实际帧的只读检查证明basket158/0与drawer187/0非robot记录坐标差0、robot不同/目标同为true,false；来源SHA在collaboration/evidence/037_recorded_pair_state_inspection.json，非全量覆盖/新标签/图像或实验。Task038已交collaboration/tasks/038_task_control_factorization.md，X直接实现＋受影响CPU/fake/新PR，不再泛审；原037review closed/X无需返修，PR12不自动merge。038按accepted036依赖接线，一次新文件索引、train/eval共享predict、全部新增模块严格保存恢复与原策略旁路、C0/C1同架构/数据/标签/顺序。建议两组1000共2000、reference18048/student49120、模型360的真实预算尚未批准；用户当前不启动，Codex/X不真实标注/模型/仿真/训练或eval，不部署。规格交接100%、038实现/真实数据准备/训练/eval0%；下一X实现、Codex验收部署、用户批准预算亲启。原三3000和036续训仍未批，035/036证据、权重与Eval发布不改不删。阶段2026-11-06_task037_v2_and_task038_handoff.md精确commit读回SHA备份/manifest；无自动merge/删除。下方“下一Codex凝练/暂无X工单”已过时。
+
+## 2026-11-06：037首审完成，原候选不直接实施
+
+PR12@e9f162a7仅X审阅文档，Codex reviews/037_round1.md接受该交付/范围closed、X无需返修或重复综述，未自动merge。037方法与新颖性open：剩余化已有先例、完整role标签下pair仅待验证正则，潜态与观测后验/硬软保护区别需修订；旧设计理论已加裁决提示，不做首创/成功率保证。现成5源audit/lineage和三池metadata小摘录已给collaboration/evidence/037_existing_metadata_samples.json，无RGB像素/新标签/模型/仿真或重做资格。normal handoff与10初态是同目标事实，不可误作完成翻转；active/official谓词顺序需正确映射。Codex后续收敛视觉任务状态与机器人执行阶段解耦的候选主张/监督/预算，仍需近邻差异，不因改名假称新颖；X先等实现工单、用户暂不启动。三组3000/参考81216/模型540及续训均未批，037新实现/标注/训练/eval0，035/036全部原证据保留。最新STATUS/R1/2026-11-06阶段记录优先，无自动merge/清理。
+
+## 2026-11-05：037仅研究设计审阅，新增预算未批准
+
+用户要求下一步细化ICML研究设计；037候选“外部完成干预一致的剩余目标/成果保护学习”已交collaboration/tasks/037_intervention_learning_design_review.md，X只做一次集中近邻/理论/接口/数据字段/实验报价审阅，在responses/037_round1.md回复，不改实现或启动真实模型/数据/仿真。主设计与理论草稿在docs/research/2026-11-05_*，均非首创/成功率/zero-shot保证；基础数学假设与实际配对差异明确保留。增强/035/036数据分数权重全保留，旧EGRS不重启，首选同VLA内预测角色实际接动作，无真值gate/外部Qwen/FINISH。037编号不代表批准1000→3000续训或三组3000/参考81216/模型540候选预算；新实现/实验0，X审阅open。Codex收到后一次取舍，用户确认预算才交实现/部署/用户启动。无MVP/全库/平台/状态重建门槛，无自动merge/清理；最新STATUS与037设计交接为准。
+
+## 2026-11-05：036正式180结果完成，后续方案尚未批准
+
+036模型执行/最终报告100%、正常退出：10二元合规50.00%=45/90（原24.44%、03554.44%），00官方82.22%=74/90（原86.67%、03573.33%）；两类完整性/兼容0、00信号100%、所有运行/清理/ledger错误null。配对035：10新增6丢10，00新增18丢10；两篮子10显著数值下降，双杯/白杯布丁有恢复，但不称双升或原能力全保持。用户优先级10第一保持，035仍当前10最高，036为另一折中。五报告/日志与8段配对原视频已本地SHA归档，权重b110901c/plan a1bdfded匹配原准备，原report顶层Task035只是复用展示，不改分/返修/重跑。未启动任何新report/核验/模型/仿真，036权重及完整续训状态、所有服务器工件和035003/004保留。最新STATUS/2026-11-05_task036_final_results_retention_tradeoff.md优先，下方等待报告属历史。Codex可提出下一轮建议，但尚无037预算/交X实现许可，不自动追加训练/评测，X当前无需返修，不merge/清理。
+
+## 2026-11-05：036训练完成，下一用户启动新180评测
+
+0361000连续更新/末1000及四checkpoint齐全，参考9024/9024未超，最终身份/数据/训练状态SHA一致，无日志错误标记、进程结束。adapter b110901c与035不同，9个最终权重/续训状态/日志配置工件已本地SHA备份，原中间权重/索引/035结果及003/004不删。训练/评测准备100%、真实新模型eval0。configs/retention036-eval-001及纯文件180计划已准备，无模型/仿真；两个原venv方法包无依赖指向已验收code/task036-205d6530，防worker剥离PYTHONPATH后导入旧reader，无依赖升级/core修改。用户按docs/experiment_plans/2026-11-05_task036_dual_condition_evaluation_commands.md直接启动新10/00各90，无continue-from/继承035分数、无需pip/plan/MVP/重训/重建状态。固定末1000/原来源/评分/端点/全视频保持。Codex只准备/结果审查，未启停真实作业，X无需返修；loss不是SR，00保持及10提高仍待实测。最新STATUS/训练完成总结优先，下方训练0%属历史，无自动merge/清理。
+
+## 2026-11-05：036已验收部署，用户直接训练；035权重结果保留
+
+R1 accepted PR11@205d6530（实现8b9399a9），新03652/52CPU/fake通过，X无需返修、不自动merge。19旧fixture缺Git历史的setup error保留不计通过，复用未改变的R11依赖证据，不为工程完备性加门槛。code/task036-205d6530与新配置/仅元数据观测索引data/retention036/index-001已部署，原三池/180父split/101680行，8源码配方SHA匹配；未运行模型/教师/训练/仿真、未升级依赖或修改旧环境editable映射。准备100%、真实训练/评测0%。下一用户按docs/experiment_plans/2026-11-05_task036_training_commands.md直接从新代码目录启动一组1000更新，无需再index/plan/pip/MVP；参考≤9024含dev/固定末1000/后续新模型各90预算不变。Codex只结果审查/文件部署/命令，用户全部真实作业。035正式54.44%/73.33%及旧close警告不改；最终adapter/身份/完整续训状态/训练配置指标/报告/18原视频已本地SHA备份，服务器全部中间权重和003/004父子工件保留，不伪称全180视频本地备份，不删运行refs。最新STATUS/R1/036及035保留阶段总结优先，下方036待实现属历史，无自动清理。
+
 ## 2026-11-04：036预算已获批准，X直接实现
 
 用户同意036零新仿真、复用10增强＋普通观测原策略动作蒸馏、一组1000更新/参考≤9024含dev/新模型10与00各90。X按collaboration/tasks/036_policy_retention_distillation.md直接实现及定向CPU/fake，新开036 PR，继承已验收035 ac2ec431实现但不自动merge；无需再先交方案/MVP。原SOG10新LoRA、12ten/4fresh-ref/4raw-ref、.50/.25/.25池归一化损失，原split/统计/端点/评分保持。参考为同底座旁路新增native LoRA，逐模块模式恢复且不污染学生checkpointing；仅训练/dev，eval单一VLA，不引入FINISH/规划器/真值路由。raw只是同一行普通观测，不冒称fresh动作时序/物理资格。当前036软件/训练/新模型eval未完成，预算和文件准备授权不是代跑权限。Codex审查/新文件准备部署/常用完整命令，用户亲自启动全部真实作业。035正式结果54.44%/73.33%与原失败/close警告/003和004父子工件不改不重跑，新模型180不能继承旧分数。最新STATUS/036工单与阶段总结优先，下方035待方案属历史；无自动清理。

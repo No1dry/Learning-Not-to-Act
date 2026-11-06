@@ -1,0 +1,3595 @@
+{
+  "format": "task037-existing-metadata-projections-v1",
+  "sampled_source_records": [
+    {
+      "source": {
+        "source_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2__normal__vnormal__a0",
+        "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2",
+        "source_group": "300f647c25e994de8d9b04a02b5eaf10eb7e53a1c341eb148847c30dd8283abc",
+        "split": "train",
+        "task_key": "basket",
+        "domain": "normal",
+        "variant": "normal",
+        "file": "artifacts/source-001/normal_vnormal_a0/trajectory.hdf5",
+        "file_sha256": "490a64190faaa5fdf3e92813eecf0129afdc64062d5ffd2a0d126bea4569c1e5",
+        "audit_path": "artifacts/source-001/normal_vnormal_a0/audit.json",
+        "lineage_path": "artifacts/source-001/normal_vnormal_a0/lineage.json",
+        "length": 255,
+        "teacher_policy": "table-drop-unknown-diagnostic-v2"
+      },
+      "mapping": {
+        "action": "actions",
+        "action_dim": 7,
+        "action_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "q01": [
+            -0.6348214149475098,
+            -0.7741071581840515,
+            -0.7633928656578064,
+            -0.09749999642372131,
+            -0.14819999992847435,
+            -0.2742857038974762,
+            0.0
+          ],
+          "q99": [
+            0.7714285850524902,
+            0.8464285731315613,
+            0.9375,
+            0.13928571343421936,
+            0.15964286029338837,
+            0.3246428668498993,
+            1.0
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "action_offset": 0,
+        "alignment_basis": "fresh observation before executed action; T+1/T",
+        "alignment_id": "task035-live-transitions-v1",
+        "axis_order": [
+          "x",
+          "y",
+          "z",
+          "rx",
+          "ry",
+          "rz",
+          "gripper"
+        ],
+        "axis_sign": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True",
+        "gripper": {
+          "index": 6,
+          "input_closed": 1,
+          "input_open": -1,
+          "kind": "affine",
+          "output_closed": 0,
+          "output_open": 1
+        },
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "instruction_binding": {
+          "attribute": "problem_info",
+          "group": "data",
+          "json_key": "language_instruction"
+        },
+        "observation_offset": 0,
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_dim": 8,
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        }
+      },
+      "audit_present": true,
+      "lineage_present": true,
+      "actual_initial_facts": {
+        "event_candidates": {
+          "table_drop": {
+            "basket_1": false,
+            "butter_1": false,
+            "cream_cheese_1": false,
+            "ketchup_1": null,
+            "milk_1": null,
+            "orange_juice_1": null
+          },
+          "wrong_grasp": {
+            "butter_1": false,
+            "cream_cheese_1": false,
+            "ketchup_1": false,
+            "milk_1": false,
+            "orange_juice_1": false
+          },
+          "wrong_placement": {
+            "butter_1": false,
+            "cream_cheese_1": false,
+            "ketchup_1": false,
+            "milk_1": false,
+            "orange_juice_1": false
+          }
+        },
+        "goals": [
+          false,
+          false
+        ],
+        "invariant_values": [],
+        "official_goal_values": [
+          false,
+          false
+        ],
+        "official_success": false,
+        "released": true,
+        "required_open_values": [],
+        "available_keys": [
+          "event_candidates",
+          "event_evidence",
+          "goals",
+          "invariant_values",
+          "objects",
+          "official_goal_values",
+          "official_success",
+          "released",
+          "required_open_values",
+          "tcp"
+        ],
+        "objects": {
+          "alphabet_soup_1": {
+            "position": [
+              -0.121094498420977,
+              -0.1356793222268011,
+              0.4751648626212499
+            ],
+            "released": true,
+            "role": "target"
+          },
+          "basket_1": {
+            "position": [
+              -0.00045536224102265865,
+              0.2670301342987755,
+              0.4321919610888971
+            ],
+            "released": true,
+            "role": "container"
+          },
+          "butter_1": {
+            "position": [
+              0.05705843660339394,
+              0.04936939888169101,
+              0.44546984280974117
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "cream_cheese_1": {
+            "position": [
+              0.1062208000725211,
+              -0.2187662099818593,
+              0.44569584300064613
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "ketchup_1": {
+            "position": [
+              -0.26000889073472705,
+              -0.16139490238243448,
+              0.6312454499278823
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "milk_1": {
+            "position": [
+              0.03276621025492526,
+              -0.10025237829553188,
+              0.5897144010070282
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "orange_juice_1": {
+            "position": [
+              -0.0006201547300660631,
+              -0.23215085319137113,
+              0.5897167696579936
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "tomato_sauce_1": {
+            "position": [
+              -0.09458379021234625,
+              0.0648923061781345,
+              0.47516914741370325
+            ],
+            "released": true,
+            "role": "target"
+          }
+        }
+      },
+      "frame_count": 256,
+      "step_count": 259,
+      "confirmation_frame_count": 4,
+      "phase_counts": {
+        "confirmation_hold": 4,
+        "source_replay": 255
+      },
+      "audit_error": null,
+      "rewind": null,
+      "handoff": null,
+      "selected_frames": [
+        {
+          "index": 0,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "basket_1": false,
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": null,
+                "milk_1": null,
+                "orange_juice_1": null
+              },
+              "wrong_grasp": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_placement": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              }
+            },
+            "goals": [
+              false,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              false,
+              false
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "alphabet_soup_1": {
+                "position": [
+                  -0.121094498420977,
+                  -0.1356793222268011,
+                  0.4751648626212499
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "basket_1": {
+                "position": [
+                  -0.00045536224102265865,
+                  0.2670301342987755,
+                  0.4321919610888971
+                ],
+                "released": true,
+                "role": "container"
+              },
+              "butter_1": {
+                "position": [
+                  0.05705843660339394,
+                  0.04936939888169101,
+                  0.44546984280974117
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "cream_cheese_1": {
+                "position": [
+                  0.1062208000725211,
+                  -0.2187662099818593,
+                  0.44569584300064613
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "ketchup_1": {
+                "position": [
+                  -0.26000889073472705,
+                  -0.16139490238243448,
+                  0.6312454499278823
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "milk_1": {
+                "position": [
+                  0.03276621025492526,
+                  -0.10025237829553188,
+                  0.5897144010070282
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "orange_juice_1": {
+                "position": [
+                  -0.0006201547300660631,
+                  -0.23215085319137113,
+                  0.5897167696579936
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "tomato_sauce_1": {
+                "position": [
+                  -0.09458379021234625,
+                  0.0648923061781345,
+                  0.47516914741370325
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": false,
+          "held_free": false,
+          "state_length": 123,
+          "state_sha256": "36bd5cb68c6dc3d0aa04af94726f4694bb8615786582c0ea5f613d1f07a8b7f0"
+        },
+        {
+          "index": 255,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "basket_1": false,
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": null,
+                "milk_1": null,
+                "orange_juice_1": null
+              },
+              "wrong_grasp": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_placement": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              }
+            },
+            "goals": [
+              true,
+              true
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              true
+            ],
+            "official_success": true,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "alphabet_soup_1": {
+                "position": [
+                  0.016377417104724436,
+                  0.2496917146017375,
+                  0.48521108461048923
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "basket_1": {
+                "position": [
+                  8.704877376691682e-05,
+                  0.2483063407724502,
+                  0.43219198762938293
+                ],
+                "released": true,
+                "role": "container"
+              },
+              "butter_1": {
+                "position": [
+                  0.05705843660339053,
+                  0.04936939888168937,
+                  0.4454698430399999
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "cream_cheese_1": {
+                "position": [
+                  0.1062208000725211,
+                  -0.2187662099818593,
+                  0.44569584303999993
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "ketchup_1": {
+                "position": [
+                  -0.260001987915515,
+                  -0.16139193823040915,
+                  0.5091798429054034
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "milk_1": {
+                "position": [
+                  0.032765981324813225,
+                  -0.10025114718549201,
+                  0.5065098430140661
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "orange_juice_1": {
+                "position": [
+                  -0.0006207844641409343,
+                  -0.23215400348121817,
+                  0.5065098430251667
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "tomato_sauce_1": {
+                "position": [
+                  0.002907440519719751,
+                  0.21830601267106112,
+                  0.549576723410955
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 123,
+          "state_sha256": "10a7060ddfcfeaf0f7a938114b6898181cf291e9d0985c79f39c2bc95caf2400"
+        }
+      ]
+    },
+    {
+      "source": {
+        "source_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2__10__v0__a0",
+        "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_2",
+        "source_group": "300f647c25e994de8d9b04a02b5eaf10eb7e53a1c341eb148847c30dd8283abc",
+        "split": "train",
+        "task_key": "basket",
+        "domain": "10",
+        "variant": 0,
+        "file": "artifacts/source-001/10_v0_a0/trajectory.hdf5",
+        "file_sha256": "258fa2ff7c9ef3618a729eb0d230a1951211e9e939a22c0ef569905d870aac1e",
+        "audit_path": "artifacts/source-001/10_v0_a0/audit.json",
+        "lineage_path": "artifacts/source-001/10_v0_a0/lineage.json",
+        "length": 139,
+        "teacher_policy": "table-drop-unknown-diagnostic-v2"
+      },
+      "mapping": {
+        "action": "actions",
+        "action_dim": 7,
+        "action_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "q01": [
+            -0.6348214149475098,
+            -0.7741071581840515,
+            -0.7633928656578064,
+            -0.09749999642372131,
+            -0.14819999992847435,
+            -0.2742857038974762,
+            0.0
+          ],
+          "q99": [
+            0.7714285850524902,
+            0.8464285731315613,
+            0.9375,
+            0.13928571343421936,
+            0.15964286029338837,
+            0.3246428668498993,
+            1.0
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "action_offset": 0,
+        "alignment_basis": "fresh observation before executed action; T+1/T",
+        "alignment_id": "task035-live-transitions-v1",
+        "axis_order": [
+          "x",
+          "y",
+          "z",
+          "rx",
+          "ry",
+          "rz",
+          "gripper"
+        ],
+        "axis_sign": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True",
+        "gripper": {
+          "index": 6,
+          "input_closed": 1,
+          "input_open": -1,
+          "kind": "affine",
+          "output_closed": 0,
+          "output_open": 1
+        },
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "instruction_binding": {
+          "attribute": "problem_info",
+          "group": "data",
+          "json_key": "language_instruction"
+        },
+        "observation_offset": 0,
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_dim": 8,
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        }
+      },
+      "audit_present": true,
+      "lineage_present": true,
+      "actual_initial_facts": {
+        "event_candidates": {
+          "table_drop": {
+            "basket_1": false,
+            "butter_1": false,
+            "cream_cheese_1": false,
+            "ketchup_1": false,
+            "milk_1": false,
+            "orange_juice_1": false
+          },
+          "wrong_grasp": {
+            "butter_1": false,
+            "cream_cheese_1": false,
+            "ketchup_1": false,
+            "milk_1": false,
+            "orange_juice_1": false
+          },
+          "wrong_placement": {
+            "butter_1": false,
+            "cream_cheese_1": false,
+            "ketchup_1": false,
+            "milk_1": false,
+            "orange_juice_1": false
+          }
+        },
+        "goals": [
+          true,
+          false
+        ],
+        "invariant_values": [],
+        "official_goal_values": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": true,
+        "required_open_values": [],
+        "available_keys": [
+          "event_candidates",
+          "event_evidence",
+          "goals",
+          "invariant_values",
+          "objects",
+          "official_goal_values",
+          "official_success",
+          "released",
+          "required_open_values",
+          "tcp"
+        ],
+        "objects": {
+          "alphabet_soup_1": {
+            "position": [
+              0.007430814467536361,
+              0.2636591004807923,
+              0.48500005467170126
+            ],
+            "released": true,
+            "role": "target"
+          },
+          "basket_1": {
+            "position": [
+              -0.008387206676426576,
+              0.26146648633227704,
+              0.43219200738396973
+            ],
+            "released": true,
+            "role": "container"
+          },
+          "butter_1": {
+            "position": [
+              0.05705843660339053,
+              0.04936939888168937,
+              0.4454698430399999
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "cream_cheese_1": {
+            "position": [
+              0.1062208000725211,
+              -0.2187662099818593,
+              0.44569584303999993
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "ketchup_1": {
+            "position": [
+              -0.260001987915515,
+              -0.16139193823040915,
+              0.5091798429054034
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "milk_1": {
+            "position": [
+              0.03276598132483005,
+              -0.10025114718552566,
+              0.5065098430140661
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "orange_juice_1": {
+            "position": [
+              -0.0006207844641325209,
+              -0.23215400348121817,
+              0.5065098430251667
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "tomato_sauce_1": {
+            "position": [
+              -0.09458379004953785,
+              0.0648923062553238,
+              0.4751691476732469
+            ],
+            "released": true,
+            "role": "target"
+          }
+        }
+      },
+      "frame_count": 140,
+      "step_count": 143,
+      "confirmation_frame_count": 4,
+      "phase_counts": {
+        "bridge": 42,
+        "confirmation_hold": 4,
+        "continuation": 97
+      },
+      "audit_error": null,
+      "rewind": {
+        "initial_state_sha256": "02130e693c56979614b726c83a4941dab460f4ce8d8f679050c09f3d64d44c9e",
+        "layout": {
+          "arm_joints": [
+            "robot0_joint1",
+            "robot0_joint2",
+            "robot0_joint3",
+            "robot0_joint4",
+            "robot0_joint5",
+            "robot0_joint6",
+            "robot0_joint7"
+          ],
+          "arm_limits": [
+            [
+              -2.8973,
+              2.8973
+            ],
+            [
+              -1.7628,
+              1.7628
+            ],
+            [
+              -2.8973,
+              2.8973
+            ],
+            [
+              -3.0718,
+              -0.0698
+            ],
+            [
+              -2.8973,
+              2.8973
+            ],
+            [
+              -0.0175,
+              3.7525
+            ],
+            [
+              -2.8973,
+              2.8973
+            ]
+          ],
+          "arm_qpos": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "arm_qvel": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "gripper_joints": [
+            "gripper0_finger_joint1",
+            "gripper0_finger_joint2"
+          ],
+          "gripper_open": [
+            0.04,
+            -0.04
+          ],
+          "gripper_qpos": [
+            7,
+            8
+          ],
+          "gripper_qvel": [
+            7,
+            8
+          ],
+          "nq": 65,
+          "nv": 57
+        },
+        "modified_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          8,
+          9,
+          73,
+          74
+        ],
+        "nonrobot_after_sha256": "aad2557b7da82b83a16fddf7de53602a9faa9a828efb0655b37ce7bf2d2b0da0",
+        "nonrobot_before_sha256": "aad2557b7da82b83a16fddf7de53602a9faa9a828efb0655b37ce7bf2d2b0da0",
+        "perturbation_rad": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "handoff": {
+        "normal_state_index": 158,
+        "selection": "nearest nominal initial controlled site; earliest tie"
+      },
+      "selected_frames": [
+        {
+          "index": 0,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "basket_1": false,
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_grasp": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_placement": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              }
+            },
+            "goals": [
+              true,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              false
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "alphabet_soup_1": {
+                "position": [
+                  0.007430814467536361,
+                  0.2636591004807923,
+                  0.48500005467170126
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "basket_1": {
+                "position": [
+                  -0.008387206676426576,
+                  0.26146648633227704,
+                  0.43219200738396973
+                ],
+                "released": true,
+                "role": "container"
+              },
+              "butter_1": {
+                "position": [
+                  0.05705843660339053,
+                  0.04936939888168937,
+                  0.4454698430399999
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "cream_cheese_1": {
+                "position": [
+                  0.1062208000725211,
+                  -0.2187662099818593,
+                  0.44569584303999993
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "ketchup_1": {
+                "position": [
+                  -0.260001987915515,
+                  -0.16139193823040915,
+                  0.5091798429054034
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "milk_1": {
+                "position": [
+                  0.03276598132483005,
+                  -0.10025114718552566,
+                  0.5065098430140661
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "orange_juice_1": {
+                "position": [
+                  -0.0006207844641325209,
+                  -0.23215400348121817,
+                  0.5065098430251667
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "tomato_sauce_1": {
+                "position": [
+                  -0.09458379004953785,
+                  0.0648923062553238,
+                  0.4751691476732469
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 123,
+          "state_sha256": "96cdefff47d614a7bdb267ad5339819d223f1c7f1ca7b836db0e774b3a283d76"
+        },
+        {
+          "index": 42,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "basket_1": false,
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_grasp": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_placement": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              }
+            },
+            "goals": [
+              true,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              false
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "alphabet_soup_1": {
+                "position": [
+                  0.007430814467598246,
+                  0.263659100480734,
+                  0.48500005467170126
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "basket_1": {
+                "position": [
+                  -0.008387206676426576,
+                  0.26146648633227704,
+                  0.43219200738396973
+                ],
+                "released": true,
+                "role": "container"
+              },
+              "butter_1": {
+                "position": [
+                  0.05705843660339053,
+                  0.04936939888168937,
+                  0.4454698430399999
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "cream_cheese_1": {
+                "position": [
+                  0.1062208000725211,
+                  -0.2187662099818593,
+                  0.44569584303999993
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "ketchup_1": {
+                "position": [
+                  -0.260001987915515,
+                  -0.16139193823040915,
+                  0.5091798429054034
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "milk_1": {
+                "position": [
+                  0.032765981324822765,
+                  -0.10025114718551109,
+                  0.5065098430140661
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "orange_juice_1": {
+                "position": [
+                  -0.0006207844641361638,
+                  -0.23215400348121817,
+                  0.5065098430251667
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "tomato_sauce_1": {
+                "position": [
+                  -0.09458379004953785,
+                  0.0648923062553238,
+                  0.4751691476732469
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 123,
+          "state_sha256": "a0b819baa14df7cb0a2e7945688378ab219b4c138bd36d094fbcdd22f3282304"
+        },
+        {
+          "index": 139,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "basket_1": false,
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_grasp": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              },
+              "wrong_placement": {
+                "butter_1": false,
+                "cream_cheese_1": false,
+                "ketchup_1": false,
+                "milk_1": false,
+                "orange_juice_1": false
+              }
+            },
+            "goals": [
+              true,
+              true
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              true
+            ],
+            "official_success": true,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "alphabet_soup_1": {
+                "position": [
+                  0.017826159719709602,
+                  0.26061757614344894,
+                  0.48428484130459365
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "basket_1": {
+                "position": [
+                  -3.88702556009648e-06,
+                  0.24855519012782312,
+                  0.4321919877722231
+                ],
+                "released": true,
+                "role": "container"
+              },
+              "butter_1": {
+                "position": [
+                  0.05705843660339053,
+                  0.04936939888168937,
+                  0.4454698430399999
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "cream_cheese_1": {
+                "position": [
+                  0.1062208000725211,
+                  -0.2187662099818593,
+                  0.44569584303999993
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "ketchup_1": {
+                "position": [
+                  -0.260001987915515,
+                  -0.16139193823040915,
+                  0.5091798429054034
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "milk_1": {
+                "position": [
+                  0.03276598132480594,
+                  -0.10025114718547744,
+                  0.5065098430140661
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "orange_juice_1": {
+                "position": [
+                  -0.0006207844641445772,
+                  -0.23215400348121817,
+                  0.5065098430251667
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "tomato_sauce_1": {
+                "position": [
+                  -0.0006374588963313011,
+                  0.2253077694259327,
+                  0.5460993300319832
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 123,
+          "state_sha256": "08f5f9c8aa3d09cf65bba13e2093de63eb960e1508fab1baa353f0425fe2e38e"
+        }
+      ],
+      "normal_handoff_frame": {
+        "index": 158,
+        "facts": {
+          "event_candidates": {
+            "table_drop": {
+              "basket_1": false,
+              "butter_1": false,
+              "cream_cheese_1": false,
+              "ketchup_1": null,
+              "milk_1": null,
+              "orange_juice_1": null
+            },
+            "wrong_grasp": {
+              "butter_1": false,
+              "cream_cheese_1": false,
+              "ketchup_1": false,
+              "milk_1": false,
+              "orange_juice_1": false
+            },
+            "wrong_placement": {
+              "butter_1": false,
+              "cream_cheese_1": false,
+              "ketchup_1": false,
+              "milk_1": false,
+              "orange_juice_1": false
+            }
+          },
+          "goals": [
+            true,
+            false
+          ],
+          "invariant_values": [],
+          "official_goal_values": [
+            true,
+            false
+          ],
+          "official_success": false,
+          "released": true,
+          "required_open_values": [],
+          "available_keys": [
+            "event_candidates",
+            "event_evidence",
+            "goals",
+            "invariant_values",
+            "objects",
+            "official_goal_values",
+            "official_success",
+            "released",
+            "required_open_values",
+            "tcp"
+          ],
+          "objects": {
+            "alphabet_soup_1": {
+              "position": [
+                0.007430814467536361,
+                0.2636591004807923,
+                0.48500005467170126
+              ],
+              "released": true,
+              "role": "target"
+            },
+            "basket_1": {
+              "position": [
+                -0.008387206676426576,
+                0.26146648633227704,
+                0.43219200738396973
+              ],
+              "released": true,
+              "role": "container"
+            },
+            "butter_1": {
+              "position": [
+                0.05705843660339053,
+                0.04936939888168937,
+                0.4454698430399999
+              ],
+              "released": true,
+              "role": "distractor"
+            },
+            "cream_cheese_1": {
+              "position": [
+                0.1062208000725211,
+                -0.2187662099818593,
+                0.44569584303999993
+              ],
+              "released": true,
+              "role": "distractor"
+            },
+            "ketchup_1": {
+              "position": [
+                -0.260001987915515,
+                -0.16139193823040915,
+                0.5091798429054034
+              ],
+              "released": true,
+              "role": "distractor"
+            },
+            "milk_1": {
+              "position": [
+                0.03276598132483005,
+                -0.10025114718552566,
+                0.5065098430140661
+              ],
+              "released": true,
+              "role": "distractor"
+            },
+            "orange_juice_1": {
+              "position": [
+                -0.0006207844641325209,
+                -0.23215400348121817,
+                0.5065098430251667
+              ],
+              "released": true,
+              "role": "distractor"
+            },
+            "tomato_sauce_1": {
+              "position": [
+                -0.09458379004953785,
+                0.0648923062553238,
+                0.4751691476732469
+              ],
+              "released": true,
+              "role": "target"
+            }
+          }
+        },
+        "frame_keys": [
+          "a_regrasp",
+          "a_released",
+          "facts",
+          "hand_open",
+          "held_free",
+          "penetration",
+          "position",
+          "rotation",
+          "state"
+        ],
+        "a_regrasp": false,
+        "a_released": true,
+        "hand_open": true,
+        "held_free": false,
+        "state_length": 123,
+        "state_sha256": "e65dd6dd5c5334545a1dff9f9adb2b13acc04ec6b90f9ce83c1eebe41f3983c5"
+      }
+    },
+    {
+      "source": {
+        "source_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0__normal__vnormal__a0",
+        "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0",
+        "source_group": "00a6a4791b3e4d92ab313cf3ab2f08826d0d0d70164b78f17283ba1d374e6ba1",
+        "split": "train",
+        "task_key": "bowl_drawer_close",
+        "domain": "normal",
+        "variant": "normal",
+        "file": "artifacts/source-033/normal_vnormal_a0/trajectory.hdf5",
+        "file_sha256": "cd8eb9a1e8b51d927894d8bce5c89cb9bf913d112846676eda3967818f03f61b",
+        "audit_path": "artifacts/source-033/normal_vnormal_a0/audit.json",
+        "lineage_path": "artifacts/source-033/normal_vnormal_a0/lineage.json",
+        "length": 261,
+        "teacher_policy": "table-drop-unknown-diagnostic-v2"
+      },
+      "mapping": {
+        "action": "actions",
+        "action_dim": 7,
+        "action_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "q01": [
+            -0.6348214149475098,
+            -0.7741071581840515,
+            -0.7633928656578064,
+            -0.09749999642372131,
+            -0.14819999992847435,
+            -0.2742857038974762,
+            0.0
+          ],
+          "q99": [
+            0.7714285850524902,
+            0.8464285731315613,
+            0.9375,
+            0.13928571343421936,
+            0.15964286029338837,
+            0.3246428668498993,
+            1.0
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "action_offset": 0,
+        "alignment_basis": "fresh observation before executed action; T+1/T",
+        "alignment_id": "task035-live-transitions-v1",
+        "axis_order": [
+          "x",
+          "y",
+          "z",
+          "rx",
+          "ry",
+          "rz",
+          "gripper"
+        ],
+        "axis_sign": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True",
+        "gripper": {
+          "index": 6,
+          "input_closed": 1,
+          "input_open": -1,
+          "kind": "affine",
+          "output_closed": 0,
+          "output_open": 1
+        },
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "instruction_binding": {
+          "attribute": "problem_info",
+          "group": "data",
+          "json_key": "language_instruction"
+        },
+        "observation_offset": 0,
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_dim": 8,
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        }
+      },
+      "audit_present": true,
+      "lineage_present": true,
+      "actual_initial_facts": {
+        "event_candidates": {
+          "table_drop": {
+            "wine_bottle_1": null
+          },
+          "wrong_grasp": {
+            "wine_bottle_1": false
+          },
+          "wrong_placement": {
+            "wine_bottle_1": false
+          }
+        },
+        "goals": [
+          false,
+          false
+        ],
+        "invariant_values": [],
+        "official_goal_values": [
+          false,
+          false
+        ],
+        "official_success": false,
+        "released": true,
+        "required_open_values": [
+          true
+        ],
+        "available_keys": [
+          "event_candidates",
+          "event_evidence",
+          "goals",
+          "invariant_values",
+          "objects",
+          "official_goal_values",
+          "official_success",
+          "released",
+          "required_open_values",
+          "tcp"
+        ],
+        "objects": {
+          "akita_black_bowl_1": {
+            "position": [
+              0.048489849900451125,
+              -0.0284342336025973,
+              0.8981585151399347
+            ],
+            "released": true,
+            "role": "target"
+          },
+          "white_cabinet_1": {
+            "position": null,
+            "released": null,
+            "role": "container"
+          },
+          "wine_bottle_1": {
+            "position": [
+              -0.12960069121063902,
+              0.03337007127123426,
+              0.8986907289178425
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "wine_rack_1": {
+            "position": null,
+            "released": null,
+            "role": "fixture"
+          }
+        }
+      },
+      "frame_count": 262,
+      "step_count": 265,
+      "confirmation_frame_count": 4,
+      "phase_counts": {
+        "confirmation_hold": 4,
+        "source_replay": 261
+      },
+      "audit_error": null,
+      "rewind": null,
+      "handoff": null,
+      "selected_frames": [
+        {
+          "index": 0,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "wine_bottle_1": null
+              },
+              "wrong_grasp": {
+                "wine_bottle_1": false
+              },
+              "wrong_placement": {
+                "wine_bottle_1": false
+              }
+            },
+            "goals": [
+              false,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              false,
+              false
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [
+              true
+            ],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "akita_black_bowl_1": {
+                "position": [
+                  0.048489849900451125,
+                  -0.0284342336025973,
+                  0.8981585151399347
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "white_cabinet_1": {
+                "position": null,
+                "released": null,
+                "role": "container"
+              },
+              "wine_bottle_1": {
+                "position": [
+                  -0.12960069121063902,
+                  0.03337007127123426,
+                  0.8986907289178425
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "wine_rack_1": {
+                "position": null,
+                "released": null,
+                "role": "fixture"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": false,
+          "held_free": false,
+          "state_length": 51,
+          "state_sha256": "0f0dd39bb72d4f0c963bd7fede9e35ca65e916e0fa648abb71835cd07c739e6c"
+        },
+        {
+          "index": 261,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "wine_bottle_1": null
+              },
+              "wrong_grasp": {
+                "wine_bottle_1": false
+              },
+              "wrong_placement": {
+                "wine_bottle_1": false
+              }
+            },
+            "goals": [
+              true,
+              true
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              true
+            ],
+            "official_success": true,
+            "released": true,
+            "required_open_values": [
+              false
+            ],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "akita_black_bowl_1": {
+                "position": [
+                  -0.005355408713956686,
+                  0.2905559290935751,
+                  0.9242399683665214
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "white_cabinet_1": {
+                "position": null,
+                "released": null,
+                "role": "container"
+              },
+              "wine_bottle_1": {
+                "position": [
+                  -0.1296006892533535,
+                  0.033370059379173866,
+                  0.8988609548804802
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "wine_rack_1": {
+                "position": null,
+                "released": null,
+                "role": "fixture"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 51,
+          "state_sha256": "1e19b198680d01a66bd811fb58b4d603c0419c158b778478d1a36b2f97944a14"
+        }
+      ]
+    },
+    {
+      "source": {
+        "source_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0__10__v0__a0",
+        "parent_demo_id": "libero_10/KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_demo.hdf5#demo_0",
+        "source_group": "00a6a4791b3e4d92ab313cf3ab2f08826d0d0d70164b78f17283ba1d374e6ba1",
+        "split": "train",
+        "task_key": "bowl_drawer_close",
+        "domain": "10",
+        "variant": 0,
+        "file": "artifacts/source-033/10_v0_a0/trajectory.hdf5",
+        "file_sha256": "ff3f7fcab12621b253b73ca3b7a57d5f7ace389e535cc6590f6c5d3c05b7cde5",
+        "audit_path": "artifacts/source-033/10_v0_a0/audit.json",
+        "lineage_path": "artifacts/source-033/10_v0_a0/lineage.json",
+        "length": 122,
+        "teacher_policy": "table-drop-unknown-diagnostic-v2"
+      },
+      "mapping": {
+        "action": "actions",
+        "action_dim": 7,
+        "action_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "q01": [
+            -0.6348214149475098,
+            -0.7741071581840515,
+            -0.7633928656578064,
+            -0.09749999642372131,
+            -0.14819999992847435,
+            -0.2742857038974762,
+            0.0
+          ],
+          "q99": [
+            0.7714285850524902,
+            0.8464285731315613,
+            0.9375,
+            0.13928571343421936,
+            0.15964286029338837,
+            0.3246428668498993,
+            1.0
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "action_offset": 0,
+        "alignment_basis": "fresh observation before executed action; T+1/T",
+        "alignment_id": "task035-live-transitions-v1",
+        "axis_order": [
+          "x",
+          "y",
+          "z",
+          "rx",
+          "ry",
+          "rz",
+          "gripper"
+        ],
+        "axis_sign": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True",
+        "gripper": {
+          "index": 6,
+          "input_closed": 1,
+          "input_open": -1,
+          "kind": "affine",
+          "output_closed": 0,
+          "output_open": 1
+        },
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "instruction_binding": {
+          "attribute": "problem_info",
+          "group": "data",
+          "json_key": "language_instruction"
+        },
+        "observation_offset": 0,
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_dim": 8,
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        }
+      },
+      "audit_present": true,
+      "lineage_present": true,
+      "actual_initial_facts": {
+        "event_candidates": {
+          "table_drop": {
+            "wine_bottle_1": null
+          },
+          "wrong_grasp": {
+            "wine_bottle_1": false
+          },
+          "wrong_placement": {
+            "wine_bottle_1": false
+          }
+        },
+        "goals": [
+          true,
+          false
+        ],
+        "invariant_values": [],
+        "official_goal_values": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": true,
+        "required_open_values": [
+          true
+        ],
+        "available_keys": [
+          "event_candidates",
+          "event_evidence",
+          "goals",
+          "invariant_values",
+          "objects",
+          "official_goal_values",
+          "official_success",
+          "released",
+          "required_open_values",
+          "tcp"
+        ],
+        "objects": {
+          "akita_black_bowl_1": {
+            "position": [
+              -0.005355376147660907,
+              0.1320034075954942,
+              0.9242399683664922
+            ],
+            "released": true,
+            "role": "target"
+          },
+          "white_cabinet_1": {
+            "position": null,
+            "released": null,
+            "role": "container"
+          },
+          "wine_bottle_1": {
+            "position": [
+              -0.1296006892533535,
+              0.033370059379173866,
+              0.8988609548804802
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "wine_rack_1": {
+            "position": null,
+            "released": null,
+            "role": "fixture"
+          }
+        }
+      },
+      "frame_count": 123,
+      "step_count": 126,
+      "confirmation_frame_count": 4,
+      "phase_counts": {
+        "bridge": 48,
+        "confirmation_hold": 4,
+        "continuation": 74
+      },
+      "audit_error": null,
+      "rewind": {
+        "initial_state_sha256": "47bb027d3864d7368155396f7f9d6f944a3d988d209071142ceb9f70d6575791",
+        "layout": {
+          "arm_joints": [
+            "robot0_joint1",
+            "robot0_joint2",
+            "robot0_joint3",
+            "robot0_joint4",
+            "robot0_joint5",
+            "robot0_joint6",
+            "robot0_joint7"
+          ],
+          "arm_limits": [
+            [
+              -2.8973,
+              2.8973
+            ],
+            [
+              -1.7628,
+              1.7628
+            ],
+            [
+              -2.8973,
+              2.8973
+            ],
+            [
+              -3.0718,
+              -0.0698
+            ],
+            [
+              -2.8973,
+              2.8973
+            ],
+            [
+              -0.0175,
+              3.7525
+            ],
+            [
+              -2.8973,
+              2.8973
+            ]
+          ],
+          "arm_qpos": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "arm_qvel": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "gripper_joints": [
+            "gripper0_finger_joint1",
+            "gripper0_finger_joint2"
+          ],
+          "gripper_open": [
+            0.04,
+            -0.04
+          ],
+          "gripper_qpos": [
+            7,
+            8
+          ],
+          "gripper_qvel": [
+            7,
+            8
+          ],
+          "nq": 26,
+          "nv": 24
+        },
+        "modified_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          8,
+          9,
+          34,
+          35
+        ],
+        "nonrobot_after_sha256": "96930e9b2269184628a72a7dddeafec79e7c18783d313150f045f3e30783a443",
+        "nonrobot_before_sha256": "96930e9b2269184628a72a7dddeafec79e7c18783d313150f045f3e30783a443",
+        "perturbation_rad": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "handoff": {
+        "normal_state_index": 187,
+        "selection": "nearest nominal initial controlled site; earliest tie"
+      },
+      "selected_frames": [
+        {
+          "index": 0,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "wine_bottle_1": null
+              },
+              "wrong_grasp": {
+                "wine_bottle_1": false
+              },
+              "wrong_placement": {
+                "wine_bottle_1": false
+              }
+            },
+            "goals": [
+              true,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              false,
+              true
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [
+              true
+            ],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "akita_black_bowl_1": {
+                "position": [
+                  -0.005355376147660907,
+                  0.1320034075954942,
+                  0.9242399683664922
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "white_cabinet_1": {
+                "position": null,
+                "released": null,
+                "role": "container"
+              },
+              "wine_bottle_1": {
+                "position": [
+                  -0.1296006892533535,
+                  0.033370059379173866,
+                  0.8988609548804802
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "wine_rack_1": {
+                "position": null,
+                "released": null,
+                "role": "fixture"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 51,
+          "state_sha256": "2a16eb52be3d5a11afeafc473c84bbfb813f710c53d16a8a14397c9c4ee9a8f9"
+        },
+        {
+          "index": 48,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "wine_bottle_1": null
+              },
+              "wrong_grasp": {
+                "wine_bottle_1": false
+              },
+              "wrong_placement": {
+                "wine_bottle_1": false
+              }
+            },
+            "goals": [
+              true,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              false,
+              true
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [
+              true
+            ],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "akita_black_bowl_1": {
+                "position": [
+                  -0.005355376147664485,
+                  0.13200397880084128,
+                  0.9242399683665142
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "white_cabinet_1": {
+                "position": null,
+                "released": null,
+                "role": "container"
+              },
+              "wine_bottle_1": {
+                "position": [
+                  -0.1296006892533535,
+                  0.033370059379173866,
+                  0.8988609548804802
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "wine_rack_1": {
+                "position": null,
+                "released": null,
+                "role": "fixture"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 51,
+          "state_sha256": "721c8ea6663f6b050d50cb43fd6063bd967e2372bac234dcc1c18be92576e2d0"
+        },
+        {
+          "index": 122,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "wine_bottle_1": null
+              },
+              "wrong_grasp": {
+                "wine_bottle_1": false
+              },
+              "wrong_placement": {
+                "wine_bottle_1": false
+              }
+            },
+            "goals": [
+              true,
+              true
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              true
+            ],
+            "official_success": true,
+            "released": true,
+            "required_open_values": [
+              false
+            ],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "akita_black_bowl_1": {
+                "position": [
+                  -0.00535509549163863,
+                  0.2906182913211229,
+                  0.924239968366528
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "white_cabinet_1": {
+                "position": null,
+                "released": null,
+                "role": "container"
+              },
+              "wine_bottle_1": {
+                "position": [
+                  -0.1296006892533535,
+                  0.033370059379173866,
+                  0.8988609548804802
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "wine_rack_1": {
+                "position": null,
+                "released": null,
+                "role": "fixture"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 51,
+          "state_sha256": "9ddc8ab115ad7e7e31bb738c4e2b2742b24dacb5bd3a6846c90c13a3c6c60a75"
+        }
+      ],
+      "normal_handoff_frame": {
+        "index": 187,
+        "facts": {
+          "event_candidates": {
+            "table_drop": {
+              "wine_bottle_1": null
+            },
+            "wrong_grasp": {
+              "wine_bottle_1": false
+            },
+            "wrong_placement": {
+              "wine_bottle_1": false
+            }
+          },
+          "goals": [
+            true,
+            false
+          ],
+          "invariant_values": [],
+          "official_goal_values": [
+            false,
+            true
+          ],
+          "official_success": false,
+          "released": true,
+          "required_open_values": [
+            true
+          ],
+          "available_keys": [
+            "event_candidates",
+            "event_evidence",
+            "goals",
+            "invariant_values",
+            "objects",
+            "official_goal_values",
+            "official_success",
+            "released",
+            "required_open_values",
+            "tcp"
+          ],
+          "objects": {
+            "akita_black_bowl_1": {
+              "position": [
+                -0.005355376147660907,
+                0.1320034075954942,
+                0.9242399683664922
+              ],
+              "released": true,
+              "role": "target"
+            },
+            "white_cabinet_1": {
+              "position": null,
+              "released": null,
+              "role": "container"
+            },
+            "wine_bottle_1": {
+              "position": [
+                -0.1296006892533535,
+                0.033370059379173866,
+                0.8988609548804802
+              ],
+              "released": true,
+              "role": "distractor"
+            },
+            "wine_rack_1": {
+              "position": null,
+              "released": null,
+              "role": "fixture"
+            }
+          }
+        },
+        "frame_keys": [
+          "a_regrasp",
+          "a_released",
+          "facts",
+          "hand_open",
+          "held_free",
+          "penetration",
+          "position",
+          "rotation",
+          "state"
+        ],
+        "a_regrasp": false,
+        "a_released": true,
+        "hand_open": true,
+        "held_free": false,
+        "state_length": 51,
+        "state_sha256": "0373667db186cd4c48861cc8dac5cfebcced3d118414fdfaa0e6a560c02fce36"
+      }
+    },
+    {
+      "source": {
+        "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__normal__vnormal__a0",
+        "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+        "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+        "split": "train",
+        "task_key": "dual_mugs",
+        "domain": "normal",
+        "variant": "normal",
+        "file": "reused/generated002/artifacts/source-082/normal_vnormal_a0/trajectory.hdf5",
+        "file_sha256": "47fa22210fbc9f5e5ddfcebea218105a2c7c6036eb83bcc8a1e891c4993e0366",
+        "audit_path": "reused/generated002/artifacts/source-082/normal_vnormal_a0/audit.json",
+        "lineage_path": "reused/generated002/artifacts/source-082/normal_vnormal_a0/lineage.json",
+        "length": 298,
+        "teacher_policy": "strict-event-unknown-v1"
+      },
+      "mapping": {
+        "action": "actions",
+        "action_dim": 7,
+        "action_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "q01": [
+            -0.6348214149475098,
+            -0.7741071581840515,
+            -0.7633928656578064,
+            -0.09749999642372131,
+            -0.14819999992847435,
+            -0.2742857038974762,
+            0.0
+          ],
+          "q99": [
+            0.7714285850524902,
+            0.8464285731315613,
+            0.9375,
+            0.13928571343421936,
+            0.15964286029338837,
+            0.3246428668498993,
+            1.0
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "action_offset": 0,
+        "alignment_basis": "fresh observation before executed action; T+1/T",
+        "alignment_id": "task035-live-transitions-v1",
+        "axis_order": [
+          "x",
+          "y",
+          "z",
+          "rx",
+          "ry",
+          "rz",
+          "gripper"
+        ],
+        "axis_sign": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True",
+        "gripper": {
+          "index": 6,
+          "input_closed": 1,
+          "input_open": -1,
+          "kind": "affine",
+          "output_closed": 0,
+          "output_open": 1
+        },
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "instruction_binding": {
+          "attribute": "problem_info",
+          "group": "data",
+          "json_key": "language_instruction"
+        },
+        "observation_offset": 0,
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_dim": 8,
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        }
+      },
+      "audit_present": true,
+      "lineage_present": true,
+      "actual_initial_facts": {
+        "event_candidates": {
+          "table_drop": {
+            "plate_1": false,
+            "plate_2": false,
+            "red_coffee_mug_1": false
+          },
+          "wrong_grasp": {
+            "red_coffee_mug_1": false
+          },
+          "wrong_placement": {
+            "red_coffee_mug_1": false
+          }
+        },
+        "goals": [
+          false,
+          false
+        ],
+        "invariant_values": [],
+        "official_goal_values": [
+          false,
+          false
+        ],
+        "official_success": false,
+        "released": true,
+        "required_open_values": [],
+        "available_keys": [
+          "event_candidates",
+          "event_evidence",
+          "goals",
+          "invariant_values",
+          "objects",
+          "official_goal_values",
+          "official_success",
+          "released",
+          "required_open_values",
+          "tcp"
+        ],
+        "objects": {
+          "plate_1": {
+            "position": [
+              0.022636741117413723,
+              -0.31666939007721445,
+              0.4392727869250624
+            ],
+            "released": true,
+            "role": "support"
+          },
+          "plate_2": {
+            "position": [
+              0.004070835419881399,
+              0.32265371977235446,
+              0.4392727869250624
+            ],
+            "released": true,
+            "role": "support"
+          },
+          "porcelain_mug_1": {
+            "position": [
+              -0.07949656815269442,
+              -0.16804682927381306,
+              0.4343699488393418
+            ],
+            "released": true,
+            "role": "target"
+          },
+          "red_coffee_mug_1": {
+            "position": [
+              -0.21084102404846888,
+              0.007368977936226822,
+              0.4385989872647111
+            ],
+            "released": true,
+            "role": "distractor"
+          },
+          "white_yellow_mug_1": {
+            "position": [
+              -0.06505540363944838,
+              0.08339422707592127,
+              0.43685696889004044
+            ],
+            "released": true,
+            "role": "target"
+          }
+        }
+      },
+      "frame_count": 299,
+      "step_count": 302,
+      "confirmation_frame_count": 4,
+      "phase_counts": {
+        "confirmation_hold": 4,
+        "source_replay": 298
+      },
+      "audit_error": null,
+      "rewind": null,
+      "handoff": null,
+      "selected_frames": [
+        {
+          "index": 0,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "plate_1": false,
+                "plate_2": false,
+                "red_coffee_mug_1": false
+              },
+              "wrong_grasp": {
+                "red_coffee_mug_1": false
+              },
+              "wrong_placement": {
+                "red_coffee_mug_1": false
+              }
+            },
+            "goals": [
+              false,
+              false
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              false,
+              false
+            ],
+            "official_success": false,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "plate_1": {
+                "position": [
+                  0.022636741117413723,
+                  -0.31666939007721445,
+                  0.4392727869250624
+                ],
+                "released": true,
+                "role": "support"
+              },
+              "plate_2": {
+                "position": [
+                  0.004070835419881399,
+                  0.32265371977235446,
+                  0.4392727869250624
+                ],
+                "released": true,
+                "role": "support"
+              },
+              "porcelain_mug_1": {
+                "position": [
+                  -0.07949656815269442,
+                  -0.16804682927381306,
+                  0.4343699488393418
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "red_coffee_mug_1": {
+                "position": [
+                  -0.21084102404846888,
+                  0.007368977936226822,
+                  0.4385989872647111
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "white_yellow_mug_1": {
+                "position": [
+                  -0.06505540363944838,
+                  0.08339422707592127,
+                  0.43685696889004044
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": false,
+          "held_free": false,
+          "state_length": 84,
+          "state_sha256": "fc86f98fbd333e2d490c377bbdb1a5220ba526a1dcf8e31669edff76c08e660f"
+        },
+        {
+          "index": 298,
+          "facts": {
+            "event_candidates": {
+              "table_drop": {
+                "plate_1": false,
+                "plate_2": false,
+                "red_coffee_mug_1": false
+              },
+              "wrong_grasp": {
+                "red_coffee_mug_1": false
+              },
+              "wrong_placement": {
+                "red_coffee_mug_1": false
+              }
+            },
+            "goals": [
+              true,
+              true
+            ],
+            "invariant_values": [],
+            "official_goal_values": [
+              true,
+              true
+            ],
+            "official_success": true,
+            "released": true,
+            "required_open_values": [],
+            "available_keys": [
+              "event_candidates",
+              "event_evidence",
+              "goals",
+              "invariant_values",
+              "objects",
+              "official_goal_values",
+              "official_success",
+              "released",
+              "required_open_values",
+              "tcp"
+            ],
+            "objects": {
+              "plate_1": {
+                "position": [
+                  0.024152695258453892,
+                  -0.3208028939995121,
+                  0.43927252374995956
+                ],
+                "released": true,
+                "role": "support"
+              },
+              "plate_2": {
+                "position": [
+                  0.004113078041950091,
+                  0.32265424235462187,
+                  0.43927249892332076
+                ],
+                "released": true,
+                "role": "support"
+              },
+              "porcelain_mug_1": {
+                "position": [
+                  0.028892483704541266,
+                  -0.29578589126528165,
+                  0.4431044640859482
+                ],
+                "released": true,
+                "role": "target"
+              },
+              "red_coffee_mug_1": {
+                "position": [
+                  -0.21084102404834398,
+                  0.007368977933583451,
+                  0.4385990130739337
+                ],
+                "released": true,
+                "role": "distractor"
+              },
+              "white_yellow_mug_1": {
+                "position": [
+                  0.013257485749171091,
+                  0.30840385174762047,
+                  0.4449229599535278
+                ],
+                "released": true,
+                "role": "target"
+              }
+            }
+          },
+          "frame_keys": [
+            "a_regrasp",
+            "a_released",
+            "facts",
+            "hand_open",
+            "held_free",
+            "penetration",
+            "position",
+            "rotation",
+            "state"
+          ],
+          "a_regrasp": false,
+          "a_released": true,
+          "hand_open": true,
+          "held_free": false,
+          "state_length": 84,
+          "state_sha256": "b8623e631e0051fb95d35f529e7336c4659961fd40e5664b7d181b15300e2d77"
+        }
+      ]
+    }
+  ],
+  "reused_source_found": true,
+  "unknown_example": {
+    "source_path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-001/normal_vnormal_a0/audit.json",
+    "frame_index": 0,
+    "facts_path": "event_candidates",
+    "examples": [
+      {
+        "event": "table_drop",
+        "entity": "ketchup_1",
+        "value": null
+      },
+      {
+        "event": "table_drop",
+        "entity": "milk_1",
+        "value": null
+      },
+      {
+        "event": "table_drop",
+        "entity": "orange_juice_1",
+        "value": null
+      }
+    ]
+  },
+  "retention_sample_rows": {
+    "fresh": {
+      "source_id": "fresh|libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__normal__vnormal__a0",
+      "pool": "fresh",
+      "task_key": "dual_mugs",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+      "variant": "normal",
+      "split": "train",
+      "instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "observation_index": 0,
+      "observation_count": 299,
+      "prefix": true
+    },
+    "ten": {
+      "source_id": "ten|libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v0__a0",
+      "task_key": "dual_mugs",
+      "split": "train",
+      "view": "GENERATED",
+      "start": 0,
+      "stop": 8,
+      "instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "domain": "10",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+      "variant": 0,
+      "pool": "ten",
+      "observation_index": 0,
+      "observation_count": 143,
+      "prefix": true,
+      "original_row": {
+        "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v0__a0",
+        "task_key": "dual_mugs",
+        "split": "train",
+        "view": "GENERATED",
+        "start": 0,
+        "stop": 8,
+        "instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+        "action_mask": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "domain": "10",
+        "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+        "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+        "variant": 0
+      }
+    },
+    "raw": {
+      "source_id": "raw|libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_0",
+      "pool": "raw",
+      "task_key": "basket",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_0",
+      "source_group": "35589f6056cdc34593a7aef6b8014505d68fc102284462d6d887faff5a4b4667",
+      "variant": "recorded",
+      "split": "dev",
+      "instruction": "put both the alphabet soup and the tomato sauce in the basket",
+      "observation_index": 0,
+      "observation_count": 388,
+      "prefix": true
+    }
+  },
+  "retention_source_examples": {
+    "fresh": {
+      "source_id": "fresh|libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__normal__vnormal__a0",
+      "pool": "fresh",
+      "root_key": "generated",
+      "file": "reused/generated002/artifacts/source-082/normal_vnormal_a0/trajectory.hdf5",
+      "file_sha256": "47fa22210fbc9f5e5ddfcebea218105a2c7c6036eb83bcc8a1e891c4993e0366",
+      "episode": "data/demo_0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+      "split": "train",
+      "task_key": "dual_mugs",
+      "instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "physical_ancestry": "unknown",
+      "variant": "normal",
+      "observation_count": 299,
+      "observation_mapping": {
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True"
+      },
+      "provenance": "ordinary_reexecuted",
+      "observation_basis": "current observation from existing qualified fresh T+1/T execution"
+    },
+    "ten": {
+      "source_id": "ten|libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v0__a0",
+      "pool": "ten",
+      "root_key": "generated",
+      "file": "reused/generated002/artifacts/source-082/10_v0_a0/trajectory.hdf5",
+      "file_sha256": "460d31135f2754bded7fefa1af95539ff56f392bc4c426b78b10c669c543c595",
+      "episode": "data/demo_0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+      "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+      "split": "train",
+      "task_key": "dual_mugs",
+      "instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "physical_ancestry": "unknown",
+      "variant": 0,
+      "observation_count": 143,
+      "observation_mapping": {
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+        },
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True"
+      },
+      "provenance": "counterfactual_generated_from_demo",
+      "observation_basis": "current observation from existing qualified fresh T+1/T execution",
+      "original_source": {
+        "audit_path": "reused/generated002/artifacts/source-082/10_v0_a0/audit.json",
+        "domain": "10",
+        "episode": "data/demo_0",
+        "file": "reused/generated002/artifacts/source-082/10_v0_a0/trajectory.hdf5",
+        "file_sha256": "460d31135f2754bded7fefa1af95539ff56f392bc4c426b78b10c669c543c595",
+        "length": 142,
+        "lineage_path": "reused/generated002/artifacts/source-082/10_v0_a0/lineage.json",
+        "mapping": {
+          "action": "actions",
+          "action_dim": 7,
+          "action_normalization": {
+            "kind": "bounds_q99",
+            "mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            "q01": [
+              -0.6348214149475098,
+              -0.7741071581840515,
+              -0.7633928656578064,
+              -0.09749999642372131,
+              -0.14819999992847435,
+              -0.2742857038974762,
+              0.0
+            ],
+            "q99": [
+              0.7714285850524902,
+              0.8464285731315613,
+              0.9375,
+              0.13928571343421936,
+              0.15964286029338837,
+              0.3246428668498993,
+              1.0
+            ],
+            "stats_id": "libero_10_no_noops",
+            "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+          },
+          "action_offset": 0,
+          "alignment_basis": "fresh observation before executed action; T+1/T",
+          "alignment_id": "task035-live-transitions-v1",
+          "axis_order": [
+            "x",
+            "y",
+            "z",
+            "rx",
+            "ry",
+            "rz",
+            "gripper"
+          ],
+          "axis_sign": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True",
+          "gripper": {
+            "index": 6,
+            "input_closed": 1,
+            "input_open": -1,
+            "kind": "affine",
+            "output_closed": 0,
+            "output_open": 1
+          },
+          "image_transforms": [
+            "rotate_180",
+            "rotate_180"
+          ],
+          "images": [
+            "obs/agentview_rgb",
+            "obs/eye_in_hand_rgb"
+          ],
+          "instruction_binding": {
+            "attribute": "problem_info",
+            "group": "data",
+            "json_key": "language_instruction"
+          },
+          "observation_offset": 0,
+          "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+          "proprio": [
+            "obs/ee_states",
+            "obs/gripper_states"
+          ],
+          "proprio_dim": 8,
+          "proprio_normalization": {
+            "kind": "bounds_q99",
+            "mask": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "q01": [
+              -0.3899900782108307,
+              -0.2838300323486328,
+              0.44795057058334353,
+              1.8810229921340942,
+              -2.886677579879761,
+              -1.1599004411697387,
+              0.002066459748893976,
+              -0.04001387819647789
+            ],
+            "q99": [
+              0.1530261474847791,
+              0.32915401458740223,
+              1.2546923208236693,
+              3.303542451858519,
+              2.7496529006957933,
+              0.6893712210655194,
+              0.040048558115959164,
+              -0.0017598449345678235
+            ],
+            "stats_id": "libero_10_no_noops",
+            "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
+          }
+        },
+        "parent_demo_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2",
+        "source_id": "libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_demo.hdf5#demo_2__10__v0__a0",
+        "split": "train",
+        "task_key": "dual_mugs",
+        "variant": 0,
+        "source_group": "24bdb837a1b71950aeb3ea2b7c86a72723307c6ccbb42823de68c54c949b70d2",
+        "teacher_policy": "strict-event-unknown-v1"
+      },
+      "omitted_original_source_fields": [
+        "attempt",
+        "attempt_steps",
+        "failure_reason",
+        "instruction",
+        "journal_path",
+        "parent_file_sha256",
+        "provenance",
+        "qualification",
+        "qualification_path",
+        "qualified",
+        "recipe",
+        "recipe_identity",
+        "status",
+        "physical_ancestry",
+        "reused_from_generated002"
+      ]
+    },
+    "raw": {
+      "source_id": "raw|libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_0",
+      "pool": "raw",
+      "root_key": "raw",
+      "file": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5",
+      "file_sha256": "3173ebc709b064683956b757ae8737909457d730aa305b23c5735292e59066af",
+      "episode": "data/demo_0",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo.hdf5#demo_0",
+      "source_group": "35589f6056cdc34593a7aef6b8014505d68fc102284462d6d887faff5a4b4667",
+      "split": "dev",
+      "task_key": "basket",
+      "instruction": "put both the alphabet soup and the tomato sauce in the basket",
+      "physical_ancestry": "unknown",
+      "variant": "recorded",
+      "observation_count": 388,
+      "observation_mapping": {
+        "images": [
+          "obs/agentview_rgb",
+          "obs/eye_in_hand_rgb"
+        ],
+        "image_transforms": [
+          "rotate_180",
+          "rotate_180"
+        ],
+        "proprio": [
+          "obs/ee_states",
+          "obs/gripper_states"
+        ],
+        "proprio_normalization": {
+          "kind": "bounds_q99",
+          "stats_id": "libero_10_no_noops",
+          "stats_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3",
+          "q01": [
+            -0.3899900782108307,
+            -0.2838300323486328,
+            0.44795057058334353,
+            1.8810229921340942,
+            -2.886677579879761,
+            -1.1599004411697387,
+            0.002066459748893976,
+            -0.04001387819647789
+          ],
+          "q99": [
+            0.1530261474847791,
+            0.32915401458740223,
+            1.2546923208236693,
+            3.303542451858519,
+            2.7496529006957933,
+            0.6893712210655194,
+            0.040048558115959164,
+            -0.0017598449345678235
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "processor_id": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10@638918f3d1c2e43a39a8a20772bdb8b91835e4b7:original-processor",
+        "crop": "openvla-oft@e4287e94541f459edc4feabc4e181f537cd569a8:prepare_images_for_vla:center_crop=True"
+      },
+      "provenance": "official_recorded_observation",
+      "observation_basis": "same-row recorded observations only; no action timing or physical qualification claim"
+    }
+  },
+  "source_files": [
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/export/sources.json",
+      "sha256": "481de2710314051f78d4d64e9f5ec25cecdbc5504feb60d3bb7e52d68a9be084"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-001/normal_vnormal_a0/audit.json",
+      "sha256": "dd674c912c646d83313cfadcad0b3cda21e1cee7fb10a4cede1bc6b3e177b2c0"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-001/normal_vnormal_a0/lineage.json",
+      "sha256": "2ff343988b76f20dbd739aea5efd4ffaa9fea1d841d11b550f195e944e17e6d8"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-001/10_v0_a0/audit.json",
+      "sha256": "c66a8dfd1e4c7121a6eea639d963c58534c587c36bb4a345b4418136529d28b3"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-001/10_v0_a0/lineage.json",
+      "sha256": "382c936354627c604d8dc543cefaf8fa4d88f3e11150bd667f1f39ca56220dd5"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-033/normal_vnormal_a0/audit.json",
+      "sha256": "bfeaca4c022dabe36427413a8d1c212c2675a831256a6379df4f597b998288d7"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-033/normal_vnormal_a0/lineage.json",
+      "sha256": "2752d2da9c46da6026c10681fd8ca4e9044f4de9ac44b3fe6a85f553d20cb481"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-033/10_v0_a0/audit.json",
+      "sha256": "825275b04de2b7cc48a31945054a2088cbd04c72568dde77ee39b2332e6f858e"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/artifacts/source-033/10_v0_a0/lineage.json",
+      "sha256": "d23fb11fab37ec78ef5b75abb99f2e3b79c6ceaf190ba5ea27541783b62d905d"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/reused/generated002/artifacts/source-082/normal_vnormal_a0/audit.json",
+      "sha256": "1a152161e3f0c527ccc5fe39e5c934f2deef2d111cbb0b1440b8bb3c7906cb51"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/trajectory035/generated-003/reused/generated002/artifacts/source-082/normal_vnormal_a0/lineage.json",
+      "sha256": "ea4ba8859b76a741e010bc8fef14c3b3a2dc9231cb651435271b6810563a6646"
+    },
+    {
+      "path": "<EGRS_ROOT>/data/retention036/index-001/sources.json",
+      "sha256": "981f4f75fef3117513e41bac4b71226c5a870eae854657b7ded495a73a00d371"
+    }
+  ],
+  "labels_generated": false,
+  "all_pair_count_computed": false,
+  "model_called": false,
+  "simulation_created": false,
+  "claim": "Small field-availability samples only, not a dataset-wide role/pair certificate; all truth here is offline evidence, never policy input.",
+  "sample_projection_note": "Selected facts/paths/keys only; original full files remain on server and their SHA references are retained. No role or pair labels were generated."
+}
