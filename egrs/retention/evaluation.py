@@ -7,6 +7,7 @@ import argparse
 from copy import deepcopy
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 from egrs.augmentation.dependencies import activate_core,activate_reporting
 from egrs.augmentation.evaluation import _read,_hash,check_method_identity
@@ -24,23 +25,36 @@ def validate_adapter(value):
         raise ValueError('036 evaluation requires the fixed final1000 retention adapter')
 
 
-def build_plan(config_path):
+def _contract(value=None):
+    """Explicit internal extension; the public036 CLI keeps its exact defaults."""
+    if value is not None:
+        return value
+    return SimpleNamespace(schema=SCHEMA,group=GROUP,factory=FACTORY,label='036',
+        extra_fields=set(),read_adapter=None,validate_adapter=validate_adapter,
+        check_config=lambda cfg,adapter:None,plan_extra=lambda cfg:{},
+        check_plan=lambda plan:None,worker_extra=lambda plan:{},make_report=make_report,
+        save_report=previous._save_report)
+
+
+def build_plan(config_path,*,contract=None):
     from egrs.augmentation.adapter_identity import read_adapter_identity
     from egrs.trajectory_augmentation.environment_dispatch import describe_dispatch,binding_for,coordination_identity
-    path=Path(config_path).resolve();cfg=_read(path)
+    spec=_contract(contract);path=Path(config_path).resolve();cfg=_read(path)
     fields={'schema_version','group','benchmark_root','reporting_root','base_runtime','adapter',
-        'legacy_sources_10','legacy_sources_00','new_sources_10','new_sources_00','environment_dispatch'}
-    if set(cfg)!=fields or cfg['schema_version']!=SCHEMA or cfg['group']!=GROUP:
+        'legacy_sources_10','legacy_sources_00','new_sources_10','new_sources_00','environment_dispatch'}|spec.extra_fields
+    if set(cfg)!=fields or cfg['schema_version']!=spec.schema or cfg['group']!=spec.group:
         raise ValueError('explicit036 new-model evaluation configuration required; no continuation or inherited results')
     def resolve(value):
         p=Path(value).expanduser();return str((path.parent/p).resolve())
-    for key in fields-{'schema_version','group','legacy_sources_10','environment_dispatch'}:cfg[key]=resolve(cfg[key])
+    for key in fields-{'schema_version','group','legacy_sources_10','environment_dispatch'}-spec.extra_fields:cfg[key]=resolve(cfg[key])
     if set(cfg['environment_dispatch'])!={'legacy_root'}:raise ValueError('explicit legacy dependency required')
     cfg['environment_dispatch']['legacy_root']=resolve(cfg['environment_dispatch']['legacy_root'])
     core_ref=activate_core(cfg['benchmark_root']);report_ref=activate_reporting(cfg['reporting_root'])
     from benchmark.remaining_goals.headless import planning,nine_planning,scoped_planning,scoped_sources
     from benchmark.remaining_goals.nine_catalog import REUSE_TASKS
-    runtime=nine_planning.load_runtime(cfg['base_runtime']);adapter=read_adapter_identity(cfg['adapter']);validate_adapter(adapter)
+    runtime=nine_planning.load_runtime(cfg['base_runtime'])
+    adapter=(read_adapter_identity if spec.read_adapter is None else spec.read_adapter)(cfg['adapter'])
+    spec.validate_adapter(adapter);spec.check_config(cfg,adapter)
     if set(cfg['legacy_sources_10'])!=set(REUSE_TASKS):raise ValueError('original six legacy sources required')
     tasks=[]
     for task in REUSE_TASKS:
@@ -60,13 +74,14 @@ def build_plan(config_path):
             tasks.append({'key':episode['episode_id'],'condition':bits,'scoped':True,'source':source})
     dispatch=describe_dispatch(cfg['environment_dispatch']['legacy_root'],cfg['benchmark_root'])
     for item in tasks:item['environment_binding']=binding_for(item['source']['environment_config']['environment'],dispatch)
-    plan={'schema_version':SCHEMA,'config':cfg,'base_runtime':runtime,'adapter_identity':adapter,
+    plan={'schema_version':spec.schema,'config':cfg,'base_runtime':runtime,'adapter_identity':adapter,
         'core_revision':core_ref,'reporting_revision':report_ref,'tasks':tasks,'expected':expected,
         'environment_dispatch':dispatch,'proxy_coordination':coordination_identity(),
         'simulation_created':False,'weights_loaded':False,
         'budget':{'10':90,'00':90,'total':180,'policy_seed':7,'max_chunk_steps':8,'horizon':520,
             'video':'all','raw_queries_actions':'all'},'new_model_execution_only':True}
-    previous._validate_population(plan,adapter_validator=validate_adapter,group=GROUP)
+    plan.update(spec.plan_extra(cfg));spec.check_plan(plan)
+    previous._validate_population(plan,adapter_validator=spec.validate_adapter,group=spec.group)
     plan['plan_sha256']=_hash(plan)
     return plan
 
@@ -94,16 +109,17 @@ def make_report(records,adapter,issues=None):
     return report
 
 
-def inspect_run(directory,*,progress=None):
+def inspect_run(directory,*,progress=None,contract=None):
     from egrs.trajectory_augmentation.environment_dispatch import validate_dispatch,coordination_identity
-    directory=Path(directory).resolve();plan=_read(directory/'plan.json');batch=_read(directory/'batch.json')
-    if (plan.get('schema_version')!=SCHEMA or batch.get('schema_version')!=SCHEMA
+    spec=_contract(contract);directory=Path(directory).resolve();plan=_read(directory/'plan.json');batch=_read(directory/'batch.json')
+    if (plan.get('schema_version')!=spec.schema or batch.get('schema_version')!=spec.schema
         or plan.get('plan_sha256')!=_hash({k:v for k,v in plan.items() if k!='plan_sha256'})
         or batch.get('plan_sha256')!=plan['plan_sha256'] or not plan.get('new_model_execution_only')
         or 'continuation' in plan or any(v.get('status')=='inherited' for v in batch['tasks'].values())):
         raise ValueError('036 frozen plan/batch identity differs or attempts inherited model results')
     activate_core(plan['config']['benchmark_root']);activate_reporting(plan['config']['reporting_root'])
-    previous._validate_population(plan,adapter_validator=validate_adapter,group=GROUP)
+    spec.check_config(plan['config'],plan['adapter_identity']);spec.check_plan(plan)
+    previous._validate_population(plan,adapter_validator=spec.validate_adapter,group=spec.group)
     validate_dispatch(plan['environment_dispatch'])
     if plan['proxy_coordination']!=coordination_identity():raise ValueError('036 coordination source differs')
     from benchmark.remaining_goals.headless import workflow,planning
@@ -137,7 +153,7 @@ def inspect_run(directory,*,progress=None):
         checked+=len(item['source']['episodes'])
         message={'phase':'verification','checked':checked,'expected':180,'percent':100*checked/180}
         if progress is not None:progress(message)
-    report=make_report(records,plan['adapter_identity'],issues)
+    report=spec.make_report(records,plan['adapter_identity'],issues)
     report['environment_dispatch']={'identity':plan['environment_dispatch']['identity'],'verified_task_records':environments}
     report['model_completed']=sum(sum(row['primary'].get('execution_status')=='completed' for row in pool.values()) for pool in records.values())
     report['formal_complete']=all(report['conditions'][bits]['formal_SR'] is not None for bits in ('10','00'))
@@ -148,8 +164,10 @@ def _execute_task(folder,item,plan,bind,policy):
     return previous._run_dispatched_task(folder,item,plan,bind,policy)
 
 
-def run(config,output):
-    plan=build_plan(config);output=Path(output).resolve()
+def run(config,output,*,contract=None):
+    spec=_contract(contract)
+    plan=build_plan(config) if contract is None else build_plan(config,contract=contract)
+    output=Path(output).resolve()
     if output.exists():raise FileExistsError('036 requires a new output; no old model results may be reused')
     protected=[Path(plan['config'][k]) for k in ('benchmark_root','reporting_root','base_runtime','adapter',
         'legacy_sources_00','new_sources_10','new_sources_00')]+[Path(plan['config']['environment_dispatch']['legacy_root'])]
@@ -159,7 +177,7 @@ def run(config,output):
     from benchmark.remaining_goals.headless import workflow,planning
     from benchmark.remaining_goals.isolated_policy import SubprocessPolicy
     output.mkdir(parents=True);workflow.write_json(output/'plan.json',plan)
-    batch={'schema_version':SCHEMA,'plan_sha256':plan['plan_sha256'],'tasks':{}}
+    batch={'schema_version':spec.schema,'plan_sha256':plan['plan_sha256'],'tasks':{}}
     workflow.write_json(output/'batch.json',batch)
     completed={'10':set(),'00':set()}
     def log(value):
@@ -168,7 +186,8 @@ def run(config,output):
     def bind(actual):
         if batch.get('loaded_base_identity',actual)!=actual:raise ValueError('036 actual loaded base components changed')
         batch['loaded_base_identity']=actual;workflow.write_json(output/'batch.json',batch,update=True)
-    worker=dict(deepcopy(plan['base_runtime']),policy_factory=FACTORY,method_adapter=plan['config']['adapter'])
+    worker=dict(deepcopy(plan['base_runtime']),policy_factory=spec.factory,
+        method_adapter=plan['config']['adapter'],**spec.worker_extra(plan))
     policy=None;execution_error=None;cleanup_error=None;ledger_error=None;report=None
     try:
         policy=SubprocessPolicy(worker);check_method_identity({'model_runtime':policy.provenance},plan['adapter_identity'])
@@ -190,7 +209,7 @@ def run(config,output):
             log({'phase':'execution','model_completed':n,'expected':180,'percent':100*n/180,
                 'conditions':{bits:{'completed':len(completed[bits]),'expected':90,'percent':100*len(completed[bits])/90}
                     for bits in ('10','00')},'formal_SR':'pending final artifact verification'})
-            print(f'036 model {n}/180 ({100*n/180:.2f}%)',flush=True)
+            print(f'{spec.label} model {n}/180 ({100*n/180:.2f}%)',flush=True)
             if result['status']!='completed':raise RuntimeError(result['error'] or '036 technical pause')
     except BaseException as error:execution_error=error
     finally:
@@ -202,19 +221,20 @@ def run(config,output):
         try:workflow.write_json(output/'batch.json',batch,update=True)
         except BaseException as error:ledger_error=error
         try:
-            report=inspect_run(output,progress=log)
+            report=(inspect_run(output,progress=log) if contract is None
+                else inspect_run(output,progress=log,contract=contract))
             report.update(execution_error=batch['execution_error'],cleanup_warning=batch['cleanup_warning'],
                 ledger_warning=None if ledger_error is None else f'{type(ledger_error).__name__}: {ledger_error}',
                 software_exit='execution_error' if execution_error is not None else 'ledger_error' if ledger_error is not None else
                     'cleanup_warning' if cleanup_error is not None else
                     'success' if report['formal_complete'] else 'verification_incomplete')
-            previous._save_report(output,report)
+            spec.save_report(output,report)
             log({'phase':'final','status':'completed' if report['formal_complete'] else 'incomplete',
                 'model_completed':report['model_completed'],'expected':180,'percent':100*report['model_completed']/180,
                 'cleanup_warning':report['cleanup_warning'],'software_exit':report['software_exit']})
             for bits in ('10','00'):
                 value=report['conditions'][bits]['formal_SR']
-                print(f"036 condition={bits} formal_SR="+(f"{value['percent']:.2f}% ({value['numerator']}/90)" if value else 'N/A'),flush=True)
+                print(f"{spec.label} condition={bits} formal_SR="+(f"{value['percent']:.2f}% ({value['numerator']}/90)" if value else 'N/A'),flush=True)
         except BaseException as verification_error:
             diagnostics={'error':f'{type(verification_error).__name__}: {verification_error}',
                 'execution_error':batch['execution_error'],'cleanup_warning':batch['cleanup_warning'],
