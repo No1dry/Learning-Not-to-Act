@@ -1,0 +1,22 @@
+{
+  "accepted_revision": "fc1b49906b8b4e5b3bf9994c139ac3f61ec7b391",
+  "review": "collaboration/reviews/023_round2.md",
+  "files": {
+    "egrs/__init__.py": "bb0c34b6586148a036ebfb532e3f9b54570987697ee5629a7a9bd27bfd6a9a9e",
+    "egrs/core.py": "bd3e5cb89bf42daf3461800701a1d1196ab84f7fb53e50fdee6f9dc5a5405f88",
+    "egrs/contracts.py": "668472a599173821a96f28846ee1fb78b29400f962e7956bcae8dd22dd6f5770",
+    "egrs/data.py": "8d54a45b6a3571d6c22653616726c886b825ec5aea02aeecc1fe99eefa114673",
+    "egrs/offline/__init__.py": "cfe877da9118c01f0d7038a2a4bebaf409826247257e6b8c4e4a7cee0d0c3343",
+    "egrs/offline/common.py": "062aad31208504bd7a80ee22d4183d66296afdf0e5acbd4453c6e1ca7c588c32",
+    "egrs/offline/inventory.py": "4ffb9fd8f83aa5f0c87d54ffcaae41b5e0231199418526b851dc2d567606c238",
+    "egrs/offline/sim_native.py": "438cd79b5a457a9ddf35a434a79da4513a473ea6adb89c1f47fd12a0d5e291d3",
+    "egrs/offline/sim_metadata.py": "14c858ed3289e4fcfc4b6c86c5e2ff54722a8f532c700ef6d6e85b9da6870b81",
+    "egrs/offline/sim_alignment.py": "ddc43177f066e826021954b80e160c9482aef8fe5098fd1c9974994ffcd96ff9",
+    "egrs/offline/sim_contract.py": "ac8218407948365f0ebdecbda9b1895ce284e44e96eeb4fdc00d55156f729595",
+    "egrs/offline/sim_xml_assets.py": "f728ac7ae82f386c039bc0adb8273d6c9f2fba77cd25806bc415ba15a258f146",
+    "egrs/offline/sim_labels.py": "b91bd9d8088dd01484020750d6064436d1f672dbabb083e85c2908797c120d7b",
+    "egrs/offline/assets/sim_goal_map.json": "8e5afeed8049bdc97891a5de17b6f6c4105ca083420484005421f477abc4a9b3",
+    "data/catalog.json": "5cfc77c9eebc422a32584dd2c1accb351a29df8ace050aceb1ef48d2e2608158"
+  },
+  "hash_basis": "accepted Git blob bytes; normalize checkout CRLF to LF"
+}

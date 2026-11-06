@@ -1,0 +1,29 @@
+{
+  "format": "task038-cpu-fake-verification-v1",
+  "date": "2026-11-06",
+  "base_implementation": "205d6530e1ba389f74166a2e9520a3db7ae0edbf",
+  "spec_main": "62718bc",
+  "scope": "affected Task038 CPU synthetic files/tiny networks and reused data/evaluation regressions only",
+  "result": {"passed": 130, "failed": 0, "errors": 0, "skipped": 0, "pytest_seconds": 27.89},
+  "new_task_tests": 90,
+  "reused_legacy_regressions": 40,
+  "interpreter": "C:/ProgramData/anaconda3/python.exe",
+  "environment": {"torch": "2.12.0+cu130", "pytest": "7.4.4", "h5py": "3.11.0", "device_used": "CPU"},
+  "command": "python -m pytest tests/test_task_control_cli.py tests/test_task_control_evaluation.py tests/test_task_control_index.py tests/test_task_control_model.py tests/test_task_control_reference.py tests/test_task_control_training.py tests/test_retention_data.py tests/test_trajectory_data.py tests/test_retention_evaluation.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t38/final02 --junitxml=../../.release-tools/t38/final.xml",
+  "junit": "038_cpu_fake.junit.xml",
+  "verification": [
+    "recorded state/layout equality and non-equality, active/official predicate order, T+1/T, own endpoint action masks and no confirmation export",
+    "drawer/microwave required-open evidence: fixed predicates, both legacy/explicit semantics, missing/empty/nonbool/false rejection without removing BC sources",
+    "actual multimodal token mapping, one fake backbone invocation, original 8x7 head, no metadata model inputs",
+    "shared current-frame train/eval prediction, zero/nonzero residual, full expected module/LoRA gradients, frozen base no gradients",
+    "same C0/C1 observation sequence, exact objective coefficients and class means, two-way cached-z swap with own targets",
+    "reference bypass of every added branch and exact module/checkpoint/cache mode restoration",
+    "strict whole adapter tensor identity, optimizer/scheduler/RNG/samplers and durable budgets; uninterrupted and resumed tiny runs agree",
+    "two fake 180-episode plans/executions, original binary10 and official00 reporting, shared policy factory and old-run preservation"
+  ],
+  "review": {"critical": 0, "important_found": 1, "important_fixed": 1, "scoped_rereview": "accepted"},
+  "test_boundary_note": "An earlier combined run hit WinError5 in the unchanged pinned core atomic JSON os.replace, then its remaining .tmp caused FileExistsError. That failed XML remains in local verification artifacts. New fake orchestration tests isolate that filesystem primitive using exclusive-new/direct-update writes; production core is unchanged. Original core reader/video and legacy036 regressions still run in the final passing set. This is not Windows atomic-write certification.",
+  "not_run": ["real sidecar production", "real tokenizer/model/teacher load", "image feature extraction", "native simulation", "real generation", "real training", "real model evaluation", "server deployment", "full repository/platform suite"],
+  "real_budget_approved": false,
+  "preservation": "035/036 artifacts, adapters, scores, original failures, raw and PR12 unchanged; no deletion or automatic merge"
+}

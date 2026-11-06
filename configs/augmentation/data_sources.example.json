@@ -1,0 +1,14 @@
+{
+  "format": "egrs.augmentation.sources.v1",
+  "dataset": "yifengzhu-hf/LIBERO-datasets",
+  "revision": "147fa5eb607bb696dd922c3518084a90954cd2f3",
+  "data_root": "<LOCAL_EXISTING_HDF_ROOT>",
+  "compound_limit_per_task": 20,
+  "exclusion_attestation": {
+    "eval_initial_states_excluded": false,
+    "eval_trajectories_excluded": false,
+    "edited_states_excluded": false,
+    "model_actions_excluded": false
+  },
+  "sources": []
+}

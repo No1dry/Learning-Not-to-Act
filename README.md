@@ -1,5 +1,23 @@
 # Learning Not to Act
 
+2026-11-06：Task038实现037-v2的单VLA任务上下文/控制重算，新增文件索引、C0/C1训练恢复和共享预测评测入口。见[使用与完整命令模板](docs/task038_usage.md)及[实现工单](collaboration/tasks/038_task_control_factorization.md)。基于已验收036 PR11，真实索引/训练/360条评测预算仍待批准；下方EGRS内容保留作历史，最新范围以[STATUS](collaboration/STATUS.md)为准。
+
+2026-11-04 当前候选实现：036三池原策略保持，复用035数据，以同底座旁路新增LoRA产生普通观测参考动作；新模型10/00各90全新评测。见[配置与完整命令](docs/retention036.md)及[036交付](collaboration/responses/036_round1.md)。当前仅软件与CPU/fake，真实训练/新模型评测未启动。
+
+2026-11-03 教师v2恢复入口：按批准引用复用旧8条，仅重建固定73来源，见[配置与完整命令](docs/trajectory_teacher_v2_recovery.md)。正式评分、原分组与训练配方保持；当前交付仅软件和CPU/fake。
+
+2026-11-03 当前候选实现：035 机器人起点变换的完整10轨迹生成、7:3混训，以及同一adapter的固定10/00各90条评测。
+见[生成与混训完整命令](docs/trajectory_augmentation.md)、[双条件评测](docs/trajectory_augmentation_evaluation.md)
+和[035交付回复](collaboration/responses/035_round1.md)。复用已验收030主体，独立035分支/PR；当前仅交软件与CPU/fake结果，真实生成、训练与评测尚未启动。
+
+2026-11-02 当前实现：030 v2 进度感知数据增强与 OFT 语言 attention LoRA 续训，
+含数据索引导出、普通/增强两组训练和 A90/C36 普通 adapter 评测入口。
+见[完整命令与依赖](docs/augmentation_commands.md)、[数据映射与证据](docs/augmentation_data.md)
+及[030 v2 回复](collaboration/responses/030_v2_round1.md)。
+本轮仅 CPU/fake 软件交付，未启动真实导出/训练/评测；034 二元报告独立复用。
+以下 selector 内容保留为历史路线，不是030的前置依赖。
+
+
 独立的方法研究仓库：研究外部过程提前完成部分任务后，如何让冻结VLA基于当前观测确定剩余目标，并在保留已有成果的同时完成任务。
 
 当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
