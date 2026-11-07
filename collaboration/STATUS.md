@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-07：039软件accepted并部署，用户直接一次生产
+
+[R1](reviews/039_round1.md)接受[PR14](https://github.com/No1dry/Learning-Not-to-Act/pull/14)固定113ded21434a06e2cdc156e5d6283a11c3f15488（实现8a733d03、依赖accepted038 PR13），X无需返修，不自动merge。[阶段总结](../docs/stage_summaries/2026-11-07_task039_accepted_deployed_user_generation.md)、[机器证据](evidence/039_codex_acceptance.json)。本地受影响279个独立CPU/fake最终通过/无遗留失败或skip，含Windows原跳过symlink；初次缺历史fixture及一次Codex链接cwd错误保留，复用旧fc1b4990后只补测1项，不增加真实MVP。
+
+code/task039-113ded21、configs/task039-113ded21文件SHA匹配；原runtime逐字节复制，generation仅引用原035完整180配置/旧003 export/036 index。worker和simulation两原venv方法editable映射指新副本并核对来源，没有依赖升级/旧代码数据修改。5实际配置已填，未来eval绑定039各末1000，尚无真实adapter或新plan。真实收尾/双壶训练初始化置换、固定A/B/V2/旧评分/038网络loss、旧221ten/75normal/180raw引用复用均保持工单，实际数量待生产。
+
+**准备/部署100%，039真实生成/标签或索引生产/训练/评测0%。下一用户按[完整命令](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)直接一次generate；有新增合格train10即直接C0，完成后C1，之后依次正式eval，不再等Codex人工门槛。** 零新增入口拒训，技术错误保留目录/账本交回，不自主删账本/重开生产或改规则/预算。
+
+已批60普通＋360次10、原SOG10两组各1000/参考≤18048/student≤49120、两模型10/00各90共360，不授权Codex/X代跑。Codex本轮仅审查/CPU-fake/文件部署、读回与备份；没有真实物理/模型/标签/训练/eval。旧038/035/036所有权重/分数/原视频/数据/失败保持。039软件范围closed，真实恢复/效果与研究open。关键文档/证据精确commit读回SHA本地备份、manifest更新，X固定原稿保留署名，无清理，待删=[]；下方039实现0/未部署已过时。
+
+---
+
 ## 2026-11-07：039恢复三任务数据方案/预算已批准，X直接实现
 
 用户要求下一步并明确批准039方案/预算与文件准备：[方案](../docs/research/2026-11-07_task039_coverage_recovery_plan.md)、[详细工单](tasks/039_teacher_release_and_coverage_recovery.md)、[决策总结](../docs/stage_summaries/2026-11-07_task039_teacher_coverage_recovery_decision.md)。**下一X直接实现＋受影响CPU/fake/新PR与039回复，不先泛审或跑真实MVP。** Codex验收后独立部署/常用命令，用户亲启所有真实数据/训练/eval；039当前实现/实验0%，未部署/代跑。

@@ -1,5 +1,7 @@
 # Task039：有界教师释放收尾＋双壶初始实例置换，恢复三任务数据
 
+> 2026-11-07更新：[R1](../reviews/039_round1.md)已验收软件与隔离文件部署，X无需返修；真实生产/训练/效果仍待用户运行，按[已填命令](../../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)启动。以下为原需求，历史“待实现/部署”不再优先。
+
 2026-11-07，Codex→X。**新研究数据功能，不是038软件返修**；038 R3已closed，所有结果/权重/旧失败保留。按[039方案](../../docs/research/2026-11-07_task039_coverage_recovery_plan.md)直接实现与定向CPU/fake，不再先写泛审或跑真实MVP。
 
 **用户已在本轮明确批准039方案、预算和文件准备；这不授权X/Codex实际运行。下一X直接实现，不用再等预算问答或重交设计审阅。**
