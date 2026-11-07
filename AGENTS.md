@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-07：038正式360完成，本轮交付closed，研究下一步未授权实验
+
+R3接受C0/C1各180正式报告交付，X无需返修、PR13不自动merge；执行/报告100%，正常退出且所有执行/清理/ledger错误null，无残留进程。C0 10/00=53.33%/83.33%，C1=55.56%/84.44%，受控差+2.22/+1.11pp，10新增4丢2、00新增6丢5；单seed/90条、小差值不证明显著/稳健或新颖性。C1是本批已测微调模型当前最高折中，但00仍低于原86.67%；相对原10 +31.11pp不能全归新pair约束，C0也有同网络/标签/独立pair监督。原plan tasks/expected/base runtime/core/reporting/环境/预算同源、各固定末1000身份匹配；仅读既有报告/plan/视频，无新评分或物理/模型/训练/标签作业。12正式文件和4例8段增益退化配对原视频已本地SHA保留，原全部服务器raw/权重/中间checkpoint/失败及035/036/038完整续训状态不改不删。C1已获10增强六任务81.67%、未获三任务3.33%，后者贡献29/40=72.50%不成功；难度/覆盖混杂，不称补数据必然有效/未见任务zero-shot。wrong_grasp均8、goal_regression5→7，不能总SR小升当全面成果保护。完整九任务表/改变episode/释放未知的旧二元口径解释在2026-11-07_task038_final_results_controlled_pair_learning.md，R3/机器证据/文档精确commit读回SHA备份与manifest更新，无清理。下一Codex提研究取舍，用户暂不新启动，X待明确任务；不自动新训/续训/加seed/生成/改评分/扩benchmark或eval，旧三3000/036续训未批。下方038 eval0/待用户启动均历史，两个run不要重开。
+
 ## 2026-11-07：038 C0/C1末1000完成，下一用户正式360评测
 
 R2接受真实训练完成文件产物，X无需返修、R1软件accepted保持；C0/C1各1000，固定末权重SHA f3f4c876/3f3873a4，adapter/完整训练状态字节hash及arm/index/base/配置一致、最终sampling记录相同。参考各9024/student各24528，合计18048/49056未超预算；进程已结束/尾日志无Traceback。真实索引221pairs全部有效（161train/60dev）、101680行，50661计数标签/raw51019无标签，六10增强/九普通与正式来源保持。24个两末adapter/续训状态/identity/metrics/配置预算/实际eval配置runtime/索引小记录已本地SHA保留，所有原服务器工件/中间checkpoint/console及035/036/003/失败不改删。训练及评测文件准备100%，模型eval0；C1 dev10 L1仅相对低.78%，不能代替SR或选择别的测试checkpoint。用户按docs/experiment_plans/2026-11-07_task038_dual_model_evaluation_commands.md直接C0、正式报告/进程结束后C1，各10/00各90共360，不并行；本次不另跑plan/MVP/物理/全量来源重复预检，正式入口自己绑定权重与原输入建plan，不假称真实eval已通过。Codex只读/备份/命令、用户启动所有真实作业，X无修改；结果交回Codex统计/取视频。不新训/生成/重测基线，旧三3000/036续训未批。R2/机器证据/阶段2026-11-07_task038_training_complete_evaluation_handoff.md精确commit读回SHA本地备份及manifest更新，无自动merge/清理/启停作业。下方训练未启/索引未就绪属历史。
