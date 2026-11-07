@@ -1,0 +1,6 @@
+{
+    "format":  "task039-coverage-recovery-config-v1",
+    "generation_config":  "\u003cunchanged-original035-generation.json\u003e",
+    "old003_export":  "\u003cdeployment-root\u003e/data/trajectory035/generated-003/export",
+    "old_retention_index":  "\u003cdeployment-root\u003e/data/retention036/index-001"
+}

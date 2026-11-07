@@ -1,0 +1,23 @@
+{
+  "name": "policy_retention_distillation",
+  "data_kind": "task036-retention-data-v1",
+  "pool_weights": {"ten": 0.5, "fresh": 0.25, "raw": 0.25},
+  "pool_samples": {"ten": 12, "fresh": 4, "raw": 4},
+  "reference_prefix_samples": {"fresh": 2, "raw": 2},
+  "prefix": "max(1,ceil(T_obs/3))",
+  "photometric_probability": 0.0,
+  "seed": 7,
+  "updates": 1000,
+  "save_every": 250,
+  "learning_rate": 0.00002,
+  "warmup_updates": 50,
+  "gradient_accumulation": 20,
+  "microbatch": 1,
+  "precision": "bf16",
+  "gradient_checkpointing": true,
+  "dev_ten_limit": 256,
+  "dev_reference_per_pool": 128,
+  "dev_prefix_per_pool": 64,
+  "reference_budget": 9024,
+  "checkpoint_selection": "fixed_terminal_update"
+}

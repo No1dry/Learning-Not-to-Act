@@ -25,3 +25,11 @@ videos/
 *.pem
 *.key
 .DS_Store
+.work/
+.pytest-data-*/
+.test-tmp-training*/
+.review-cpu-*/
+.review-*/
+.pytest-*/
+build/
+*.egg-info/

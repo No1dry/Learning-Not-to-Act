@@ -1,0 +1,32 @@
+{
+  "format": "task039-cpu-fake-verification-v1",
+  "date": "2026-11-07",
+  "base_implementation": "5a6452ab73ee31cd1afbe1cdc08e88e2d963ac04",
+  "spec_main": "d919233",
+  "result": {"passed": 277, "failed": 0, "errors": 0, "skipped": 2, "test_processes": 2},
+  "groups": [
+    {"name":"recorder-files", "passed":220, "skipped":2, "pytest_seconds":28.01, "junit":"039_cpu_files.junit.xml", "command":"python -m pytest tests/test_coverage039_teacher.py tests/test_coverage039_permutation.py tests/test_coverage039_generation.py tests/test_coverage039_data.py tests/test_coverage039_io.py tests/test_trajectory_control.py tests/test_trajectory_generation.py tests/test_trajectory_data.py tests/test_trajectory_cli.py tests/test_trajectory_teacher_v2.py tests/test_retention_data.py tests/test_task_control_index.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t39/final-files01 --junitxml=../../.release-tools/t39/final-files.xml"},
+    {"name":"tiny-model-entry", "passed":57, "skipped":0, "pytest_seconds":28.09, "junit":"039_cpu_model.junit.xml", "command":"python -m pytest tests/test_coverage039_entry.py tests/test_coverage039_integration.py tests/test_task_control_training.py tests/test_task_control_reference.py tests/test_task_control_model.py tests/test_task_control_cli.py tests/test_task_control_evaluation.py tests/test_retention_evaluation.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t39/final-model01 --junitxml=../../.release-tools/t39/final-model.xml"}
+  ],
+  "interpreter": "C:/ProgramData/anaconda3/python.exe",
+  "device_used": "CPU",
+  "skips": [
+    "test_native_python_venv_path_survives_plan_request_and_launch[real_symlink-absolute]: Windows real file symlink privilege unavailable",
+    "test_native_python_venv_path_survives_plan_request_and_launch[real_symlink-relative]: Windows real file symlink privilege unavailable"
+  ],
+  "validation": [
+    "Physical teacher open/retreat/hold commands with original V2 qualification, real five-observation release, 40 added/520 total step bounds, no audit-only successful tail",
+    "Actual non-contiguous freejoint qpos7/qvel6 swap, class/dimension/address/quaternion guards, unchanged other coordinates and fixed canonical goals/K",
+    "60 original first20 parents, durable 60/360 slots, failed initialization/interruption denominators, no retry/refund, exact slot/metadata reconciliation",
+    "Old221ten/75normal and original180 raw/group/split reused by SHA references; strict new039 provenance and two-root path guard; dynamic actual coverage",
+    "Single SHA per canonical stable file/context, changed stat rejection, bounded progress and compact sampling logs",
+    "Synthetic executed generation/export -> merge -> both indices -> unchanged038 tiny C0/C1 training/strict adapter identity and final-eval admission contract",
+    "C0/C1 same observations and new index; compact logging leaves all model tensors identical; all original038 affected130 cases retained"
+  ],
+  "independent_review": {"critical":0, "important_found":2, "important_fixed":2, "scoped_rereview":"accepted", "remaining_material":0},
+  "environment_boundary": "An initial in-process fake recorder plus Torch integration hit OMP Error15 from this host's duplicate NumPy MKL/Torch OpenMP libraries. Final validation separates recorder/files and tiny-model processes; the integrated fake recorder uses a NumPy-only subprocess, matching actual worker architecture. No unsafe KMP_DUPLICATE_LIB_OK or dependency changes were used. Earlier failure artifacts are preserved locally.",
+  "real_budget_approved": true,
+  "approved_limits": {"ordinary":60,"ten_attempts":360,"training_updates":2000,"reference":18048,"student":49120,"model_episodes":360},
+  "not_run": ["real recording/generation", "real supervision/index production", "real model/teacher load", "image feature inference", "native simulation", "real training", "real model evaluation", "server deployment", "full repository/platform suite"],
+  "preservation": "No old035/036/038 artifacts, failures, weights, raw, score, formal states or PR dependencies deleted, rewritten or merged. Agents did not start or stop server jobs."
+}
