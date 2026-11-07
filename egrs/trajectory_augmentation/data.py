@@ -130,8 +130,9 @@ def inspect_generated(path,source):
         validate_executed_actions(actions,m)
 
 
-def export_generated(parents,attempts,data_root,output,*,generation_context=None):
+def export_generated(parents,attempts,data_root,output,*,generation_context=None,context=None):
     """Index qualified real transitions, retaining every failed attempt in audit."""
+    hash_file=file_sha256 if context is None else context.sha256
     output=Path(output)
     if output.exists():raise FileExistsError('new035 export directory required')
     root=Path(data_root).resolve();by_parent={s['source_id']:s for s in parents}
@@ -162,7 +163,7 @@ def export_generated(parents,attempts,data_root,output,*,generation_context=None
         _require(a.get('instruction')==p['instruction'],'generated language must be full original instruction')
         _require(_hex(a.get('file_sha256')),'generated file hash required')
         path=(root/a['file']).resolve();_require(path.is_relative_to(root),'generated file escapes data root')
-        _require(file_sha256(path)==a['file_sha256'],'generated file byte identity differs')
+        _require(hash_file(path)==a['file_sha256'],'generated file byte identity differs')
         source=deepcopy(a);source['source_group']=p['source_group'];source['physical_ancestry']=p['physical_ancestry']
         # Targets keep exactly the original normalization/sign/gripper/camera transforms.
         for key in ('images','image_transforms','proprio','action','axis_order','axis_sign','gripper',

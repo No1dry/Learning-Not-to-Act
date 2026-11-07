@@ -151,8 +151,9 @@ class Attempt:
         if not self.actions:qualification.update(qualified=False,failure_reason=self.error or 'empty_trajectory')
         return self.persist(qualification)
 
-    def persist(self,qualification):
+    def persist(self,qualification,*,context=None):
         from egrs.augmentation.data import file_sha256,identity
+        hash_file=file_sha256 if context is None else context.sha256
         qualification=deepcopy(qualification)
         if qualification.get('teacher_policy',self.teacher_policy)!=self.teacher_policy:
             raise ValueError('qualification teacher policy differs from requested policy')
@@ -206,7 +207,7 @@ class Attempt:
                 g.attrs['qualified']=bool(qualification['qualified'])
                 g.create_dataset('controller_goal_pos',data=[t['position'] for t in self.targets])
                 g.create_dataset('controller_goal_ori',data=[t['rotation'] for t in self.targets])
-            meta.update(file=relative(file),file_sha256=file_sha256(file))
+            meta.update(file=relative(file),file_sha256=hash_file(file))
         if self.config.get('save_video') and self.domain=='normal' and self.frames:
             try:
                 import imageio.v2 as imageio

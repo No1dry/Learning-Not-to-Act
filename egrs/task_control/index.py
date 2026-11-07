@@ -5,6 +5,7 @@ pixels, action payloads, a policy, or an environment.
 """
 from collections import Counter
 from copy import deepcopy
+from dataclasses import dataclass
 import hashlib
 import json
 from pathlib import Path
@@ -18,6 +19,16 @@ from egrs.trajectory_augmentation.data import DATA_KIND as GENERATED_KIND
 
 DATA_KIND = 'task038-task-control-data-v1'
 SOURCES_KIND = 'task038-task-control-sources-v1'
+
+
+@dataclass(frozen=True)
+class IndexContract:
+    """Explicit alternate data identity; the038 default stays bound to036."""
+    sources_kind: str
+    identity_kind: str
+    dataset_factory: object
+    metadata: dict
+    progress: object = None
 
 
 def _lines(path):
@@ -188,22 +199,25 @@ def _pair_check(normal, ten, records):
                                      'semantics':deepcopy(n['semantics'])}}
 
 
-def build_index(generated_export, retention_index, output_dir):
+def build_index(generated_export, retention_index, output_dir, *, contract=None, context=None):
     """Seal new labels/pairs without modifying the original035/036 indices."""
     output = Path(output_dir).resolve()
     if output.exists():
         raise FileExistsError('new038 index directory required')
     generated, retention = Path(generated_export).resolve(), Path(retention_index).resolve()
+    hash_file = file_sha256 if context is None else context.sha256
     original = read_json(generated/'sources.json'); old_report = read_json(generated/'report.json')
     _require(original.get('format') == GENERATED_KIND and old_report.get('data_kind') == GENERATED_KIND
              and identity(original) == original.get('identity') == old_report.get('sources_identity')
              and identity(old_report) == old_report.get('identity')
-             and file_sha256(generated/'windows.jsonl') == old_report.get('windows_sha256'),
+             and hash_file(generated/'windows.jsonl') == old_report.get('windows_sha256'),
              'generated035 identity differs')
-    base = RetentionDataset(retention)
+    _require(contract is None or isinstance(contract, IndexContract), 'explicit task-control index contract required')
+    progress = None if contract is None else contract.progress
+    base = RetentionDataset(retention) if contract is None else contract.dataset_factory(retention, context=context)
     inputs = {}
     def bind(path, expected=None):
-        path = Path(path).resolve(); digest = file_sha256(path)
+        path = Path(path).resolve(); digest = hash_file(path)
         _require(expected is None or digest == expected, 'source SHA bytes changed: '+str(path))
         inputs[str(path)] = digest
         return digest
@@ -231,6 +245,8 @@ def build_index(generated_export, retention_index, output_dir):
         _require(group_splits[row['source_group']] == row['split'], 'parent group crosses split')
     source_map = original['sources']; root = Path(original['data_root']).resolve(); records = {}
     for sid, source in source_map.items():
+        if progress is not None:
+            progress.update(phase='recorded_metadata', source=sid, completed=len(records), total=len(source_map))
         p = parents.get(source['parent_demo_id']); domain = source.get('domain')
         _require(p is not None and domain in ('normal','10') and source.get('source_id') == sid
                  and source.get('qualified') is True and source.get('status') == 'completed'
@@ -284,6 +300,8 @@ def build_index(generated_export, retention_index, output_dir):
             basis = rec['semantics']['basis']
         labels.append({'source_id':row['source_id'],'observation_index':row['observation_index'],
                        'split':row['split'],'pool':row['pool'],'count_label':label,'label_basis':basis})
+        if progress is not None:
+            progress.update(phase='count_labels', source=row['source_id'], completed=len(labels), total=len(base.rows))
     normals = {}
     for source in source_map.values():
         if source['domain'] == 'normal':
@@ -317,10 +335,13 @@ def build_index(generated_export, retention_index, output_dir):
     label_bytes = ''.join(_json(row)+'\n' for row in labels).encode('utf-8')
     pair_bytes = ''.join(_json(row)+'\n' for row in pairs).encode('utf-8')
     label_sha, pair_sha = hashlib.sha256(label_bytes).hexdigest(), hashlib.sha256(pair_bytes).hexdigest()
-    manifest = {'format':SOURCES_KIND,'retention_index':str(retention),'generated_export':str(generated),
+    manifest = {'format':SOURCES_KIND if contract is None else contract.sources_kind,'retention_index':str(retention),'generated_export':str(generated),
                 'generated_data_root':str(root),'retention_identity':base.manifest['identity'],
                 'qualified_sources':deepcopy(source_map),'inputs':inputs,
                 'labels_sha256':label_sha,'pairs_sha256':pair_sha}
+    if contract is not None:
+        _require(not set(contract.metadata) & set(manifest), 'task-control contract may not overwrite identity fields')
+        manifest.update(deepcopy(contract.metadata))
     manifest['identity'] = identity(manifest)
     report = {'data_kind':DATA_KIND,'sources_identity':manifest['identity'],'available':bool(pairs),
               'status':'available' if pairs else 'data unavailable: zero valid recorded pairs; training not ready',
@@ -330,12 +351,17 @@ def build_index(generated_export, retention_index, output_dir):
                         'missing':sum(r['count_label'] is None for r in labels)},
               'labels_sha256':label_sha,'pairs_sha256':pair_sha,
               'image_pixels_read':False,'model_loaded':False,'simulation_created':False,'confirmation_frames_exported':False}
+    if contract is not None:
+        _require(not set(contract.metadata) & set(report), 'task-control contract may not overwrite report fields')
+        report.update(deepcopy(contract.metadata))
     report['identity'] = identity(report)
     output.mkdir(parents=True)
     _write(output/'sources.json',manifest); _write(output/'report.json',report)
-    _write(output/'identity.json',{'format':'task038-index-identity-v1','sources_identity':manifest['identity'],
+    _write(output/'identity.json',{'format':'task038-index-identity-v1' if contract is None else contract.identity_kind,'sources_identity':manifest['identity'],
                                  'report_identity':report['identity']})
     (output/'labels.jsonl').write_bytes(label_bytes); (output/'pairs.jsonl').write_bytes(pair_bytes)
+    if progress is not None:
+        progress.finish(phase='sealed_index', completed=len(base.rows), total=len(base.rows), pairs=len(pairs))
     return report
 
 

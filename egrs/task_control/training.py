@@ -176,7 +176,18 @@ def evaluate_dev(policy, dataset, selection, pair_selection, reference_budget, s
                                 for p in ('fresh', 'raw')}}
 
 
-def _run_loaded(args, config, train, dev, policy, *, predict=None, decode=None, reference_predict=None):
+def sampling_log(sampler,*,compact=False):
+    """Keep full038 logs by default;039 logs bounded counters, not huge maps."""
+    if not compact:
+        return sampler.report()
+    return {'pool_draw_counts':dict(sampler.main.counts),
+            'time_bin_draw_counts':dict(sampler.main.bin_counts),
+            'pair_draws':sampler.pair.draws,
+            'detail':'full hierarchy/RNG state retained in each checkpoint'}
+
+
+def _run_loaded(args, config, train, dev, policy, *, predict=None, decode=None, reference_predict=None,
+                compact_logging=False):
     """Private loaded-policy seam permits synthetic CPU tests with short loops."""
     from . import checkpoint
     from .oft import install, prediction, decode as decode_actions
@@ -278,7 +289,8 @@ def _run_loaded(args, config, train, dev, policy, *, predict=None, decode=None, 
                 'count_class_coverage': {str(k): labels.count(k) for k in (0, 1, 2)},
                 'count_missing': labels.count(None), 'elapsed_seconds': elapsed,
                 'eta_seconds': elapsed / max(1, update - start_update) * (config['updates'] - update),
-                'learning_rate': scheduler.get_last_lr()[0], 'batch': batch, 'sampling': sampler.report(),
+                'learning_rate': scheduler.get_last_lr()[0], 'batch': batch,
+                'sampling': sampling_log(sampler,compact=compact_logging),
                 'cuda_memory_allocated': torch.cuda.memory_allocated() if torch.cuda.is_initialized() else 0,
                 'cuda_peak_memory_allocated': torch.cuda.max_memory_allocated() if torch.cuda.is_initialized() else 0}
             if update % config['save_every'] == 0 or update == config['updates']:
@@ -302,7 +314,7 @@ def _run_loaded(args, config, train, dev, policy, *, predict=None, decode=None, 
             'selected_checkpoint': str(output / f'update-{update:06d}')}
 
 
-def run(args):
+def run(args,*,dataset_factory=None,compact_logging=False):
     from .data import TaskControlDataset
     config = json.loads(Path(args.config).read_text(encoding='utf-8'))
     validate_config(config)
@@ -317,8 +329,9 @@ def run(args):
         root = Path(value).resolve()
         if output == root or root in output.parents or output in root.parents:
             raise ValueError('Training output overlaps immutable input/dependency')
-    train = TaskControlDataset(args.index_dir, split='train')
-    dev = TaskControlDataset(args.index_dir, split='dev')
+    factory = TaskControlDataset if dataset_factory is None else dataset_factory
+    train = factory(args.index_dir, split='train')
+    dev = factory(args.index_dir, split='dev')
     if any(dataset.report.get('data_kind') != PRESET['data_kind'] for dataset in (train, dev)):
         raise ValueError('Task038 training requires the versioned task-control data kind')
     TaskControlSampler(train.rows, train.pairs, seed=config['seed'])
@@ -338,6 +351,6 @@ def run(args):
     torch.manual_seed(config['seed'])
     policy = OpenVLAOFTPolicy(runtime)
     try:
-        return _run_loaded(args, config, train, dev, policy)
+        return _run_loaded(args, config, train, dev, policy,compact_logging=compact_logging)
     finally:
         policy.close()
