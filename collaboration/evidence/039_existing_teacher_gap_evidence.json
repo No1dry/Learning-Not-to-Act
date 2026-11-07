@@ -1,0 +1,4157 @@
+{
+  "format": "task039-existing-teacher-gap-evidence.v1",
+  "recorded_on": "2026-11-07",
+  "purpose": "Read-only projections of pre-existing generation reports/audits; not new qualified trajectories or labels.",
+  "scope": {
+    "existing_facts_only": true,
+    "new_labels_generated": false,
+    "image_pixels_read": false,
+    "simulation_created": false,
+    "model_called": false,
+    "old_results_rescored": false
+  },
+  "source_root": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/trajectory035",
+  "old_generation_by_task": {
+    "generated-002": {
+      "mug_pudding": {
+        "parent_sources": 20,
+        "attempts": 20,
+        "by_domain": {
+          "normal": 20
+        },
+        "qualified": {},
+        "failure_reasons": {
+          "release_or_continuous_confirmation_unproven": 16,
+          "native_full_task_unfinished;release_or_continuous_confirmation_unproven": 4
+        }
+      },
+      "stove": {
+        "parent_sources": 20,
+        "attempts": 20,
+        "by_domain": {
+          "normal": 20
+        },
+        "qualified": {},
+        "failure_reasons": {
+          "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown": 17,
+          "native_full_task_unfinished;release_or_continuous_confirmation_unproven;core_violation_evidence_unknown": 3
+        }
+      },
+      "two_pots": {
+        "parent_sources": 20,
+        "attempts": 20,
+        "by_domain": {
+          "normal": 20
+        },
+        "qualified": {},
+        "failure_reasons": {
+          "release_or_continuous_confirmation_unproven": 14,
+          "native_full_task_unfinished;release_or_continuous_confirmation_unproven": 6
+        }
+      }
+    },
+    "generated-003": {
+      "mug_pudding": {
+        "parent_sources": 0,
+        "attempts": 0,
+        "by_domain": {},
+        "qualified": {},
+        "failure_reasons": {}
+      },
+      "stove": {
+        "parent_sources": 0,
+        "attempts": 0,
+        "by_domain": {},
+        "qualified": {},
+        "failure_reasons": {}
+      },
+      "two_pots": {
+        "parent_sources": 0,
+        "attempts": 0,
+        "by_domain": {},
+        "qualified": {},
+        "failure_reasons": {}
+      }
+    }
+  },
+  "old_generation_gaps": {
+    "generated-002": {
+      "stove|normal_replay_unqualified": 20,
+      "mug_pudding|normal_replay_unqualified": 20,
+      "two_pots|normal_replay_unqualified": 20
+    },
+    "generated-003": {}
+  },
+  "ending_summary": {
+    "stove": {
+      "sources": 20,
+      "native_complete": 17,
+      "native_complete_endings": {
+        "{\"hand_open\": false, \"held_free\": false, \"released\": null}": 12,
+        "{\"hand_open\": true, \"held_free\": false, \"released\": null}": 4,
+        "{\"hand_open\": false, \"held_free\": true, \"released\": false}": 1
+      },
+      "native_complete_with_existing_safe_handoff": 17,
+      "native_complete_with_semantic_handoff": 17,
+      "native_complete_source_lengths": [
+        272,
+        279,
+        285,
+        245,
+        272,
+        275,
+        308,
+        255,
+        265,
+        234,
+        219,
+        234,
+        232,
+        295,
+        250,
+        340,
+        242
+      ],
+      "all_confirmation_frames": {
+        "0": 20
+      }
+    },
+    "mug_pudding": {
+      "sources": 20,
+      "native_complete": 16,
+      "native_complete_endings": {
+        "{\"hand_open\": false, \"held_free\": true, \"released\": false}": 13,
+        "{\"hand_open\": false, \"held_free\": false, \"released\": null}": 1,
+        "{\"hand_open\": true, \"held_free\": false, \"released\": null}": 2
+      },
+      "native_complete_with_existing_safe_handoff": 15,
+      "native_complete_with_semantic_handoff": 15,
+      "native_complete_source_lengths": [
+        203,
+        325,
+        253,
+        240,
+        263,
+        227,
+        228,
+        206,
+        301,
+        218,
+        247,
+        278,
+        275,
+        237,
+        284,
+        289
+      ],
+      "all_confirmation_frames": {
+        "0": 20
+      }
+    },
+    "two_pots": {
+      "sources": 20,
+      "native_complete": 14,
+      "native_complete_endings": {
+        "{\"hand_open\": false, \"held_free\": false, \"released\": null}": 5,
+        "{\"hand_open\": true, \"held_free\": false, \"released\": null}": 9
+      },
+      "native_complete_with_existing_safe_handoff": 0,
+      "native_complete_with_semantic_handoff": 2,
+      "native_complete_source_lengths": [
+        457,
+        388,
+        421,
+        378,
+        420,
+        367,
+        373,
+        388,
+        407,
+        377,
+        385,
+        375,
+        403,
+        429
+      ],
+      "all_confirmation_frames": {
+        "0": 20
+      }
+    }
+  },
+  "aggregate": {
+    "ordinary_attempts": 60,
+    "ten_attempts": 0,
+    "qualified_ordinary": 0,
+    "final_native_complete": 47,
+    "final_native_complete_percent": 78.33333333333333,
+    "final_native_complete_and_released_true": 0,
+    "sources_with_confirmation_frames": 0,
+    "two_pots_B_first_sources": 20,
+    "two_pots_B_released_01_windows_sources": 20,
+    "two_pots_B_released_01_frames_min": 76,
+    "two_pots_B_released_01_frames_max": 131
+  },
+  "source_report_files": [
+    {
+      "path": "generated-002/generation_plan.json",
+      "sha256": "cf40b886219a0de203492c951dd72cc1a37069fa7f65a9eed9d92c5e0be6a3f5",
+      "bytes": 1120550
+    },
+    {
+      "path": "generated-002/generation_report.json",
+      "sha256": "859f86de35cc0da0d70698f004acf9d5b4b0fd6beb1fb2fbe0ce4c32b4a1c800",
+      "bytes": 28560049
+    },
+    {
+      "path": "generated-003/recovery_report.json",
+      "sha256": "1ef486a9e6fda9337bfb28c3d18922d3fc5eef3f35e200a4a665df3ef751ced7",
+      "bytes": 50754873
+    }
+  ],
+  "source_audit_root_suffix": "generated-002",
+  "source_audit_files": [
+    {
+      "path": "artifacts/source-040/normal_vnormal_a0/audit.json",
+      "sha256": "49e0119ed3ab762156e28218ef70f3c24e46aec83e12c546d4b8520ed21f9079",
+      "bytes": 7130071
+    },
+    {
+      "path": "artifacts/source-041/normal_vnormal_a0/audit.json",
+      "sha256": "51eaca2c9d41d166d4f7a8f8277734c515b9a8f7de4716ed3c0a23428fa1a6f6",
+      "bytes": 7120042
+    },
+    {
+      "path": "artifacts/source-042/normal_vnormal_a0/audit.json",
+      "sha256": "8579ae51223074a88c4c04936c7df9b88b2386256e2ebf341e0267abeb57e771",
+      "bytes": 7643913
+    },
+    {
+      "path": "artifacts/source-043/normal_vnormal_a0/audit.json",
+      "sha256": "89d1ce42d515911602b77e939e6485d74909752907cf611a4ce1209fdcdb2b5c",
+      "bytes": 7246116
+    },
+    {
+      "path": "artifacts/source-044/normal_vnormal_a0/audit.json",
+      "sha256": "63e9288d9f4c95f489eef7694c04d84b22d0f5aa399d61d7dadcddcff9856bea",
+      "bytes": 6226039
+    },
+    {
+      "path": "artifacts/source-045/normal_vnormal_a0/audit.json",
+      "sha256": "520576109e97fbc4b05a730ad79c74edaca3fc33250ea5d978d3fd210205906d",
+      "bytes": 7774898
+    },
+    {
+      "path": "artifacts/source-046/normal_vnormal_a0/audit.json",
+      "sha256": "f9e91c7c557883f271b2ae1e71ec0a180e62622a831e1e23e2ecb8791dabd01e",
+      "bytes": 8157161
+    },
+    {
+      "path": "artifacts/source-047/normal_vnormal_a0/audit.json",
+      "sha256": "bd08dbf9ac125df7afd7d2306afb61aac77f40a05f6084af8432c6bf47cb4f6a",
+      "bytes": 6933047
+    },
+    {
+      "path": "artifacts/source-048/normal_vnormal_a0/audit.json",
+      "sha256": "db322e85f11c0527b371041e0f74edf63cab48c1c93d5c054163ed74ff79180f",
+      "bytes": 6998613
+    },
+    {
+      "path": "artifacts/source-049/normal_vnormal_a0/audit.json",
+      "sha256": "79a85f2860b375b2686a1a1391e3ce47f7ac0b9b736dcc8f932045e1c6469d91",
+      "bytes": 7624314
+    },
+    {
+      "path": "artifacts/source-050/normal_vnormal_a0/audit.json",
+      "sha256": "2f97de0f336e96fbca25922b5dbe71ec7048f636df1ee69466b615b939820870",
+      "bytes": 6717224
+    },
+    {
+      "path": "artifacts/source-051/normal_vnormal_a0/audit.json",
+      "sha256": "6d64af90e233ccff783bf8deab14048ad583c13f6935163c2cb42bf4a8cefb9b",
+      "bytes": 6738147
+    },
+    {
+      "path": "artifacts/source-052/normal_vnormal_a0/audit.json",
+      "sha256": "ded950fa552c235ccd980df0a929686ffade5a5e28d5cf8e71808837355a9649",
+      "bytes": 5833609
+    },
+    {
+      "path": "artifacts/source-053/normal_vnormal_a0/audit.json",
+      "sha256": "b59e0881ea234c93df9a8133d07537e4e2a16f39e9e16da41c023e13242e7121",
+      "bytes": 5619834
+    },
+    {
+      "path": "artifacts/source-054/normal_vnormal_a0/audit.json",
+      "sha256": "5fba94a5a32e037578a1fa9169e818423d2dbbc0d86d0f6ff2c1e2e46223a97a",
+      "bytes": 5902692
+    },
+    {
+      "path": "artifacts/source-055/normal_vnormal_a0/audit.json",
+      "sha256": "6876876a097eea1500c6767e8b704bb37421a2f3aef59ce8e49ba5740a001324",
+      "bytes": 5975236
+    },
+    {
+      "path": "artifacts/source-056/normal_vnormal_a0/audit.json",
+      "sha256": "4de8dd52bb73bb6d18c9910ff6847995409e546e7310d8d529dd8c18af29aba1",
+      "bytes": 7605880
+    },
+    {
+      "path": "artifacts/source-057/normal_vnormal_a0/audit.json",
+      "sha256": "8f29e0a5d199328b73320c749c43bc8947112c818754d481239c153e367e8dda",
+      "bytes": 6523087
+    },
+    {
+      "path": "artifacts/source-058/normal_vnormal_a0/audit.json",
+      "sha256": "3321e1fc0b1dc68f830bd8167b15a8aaa181820bdf4d537efc4506140e346eaf",
+      "bytes": 8804108
+    },
+    {
+      "path": "artifacts/source-059/normal_vnormal_a0/audit.json",
+      "sha256": "d297c3b2b59f52eaa97dab8c9d1221e1a16362e323e66d183b4262fd181ec0d9",
+      "bytes": 6086386
+    },
+    {
+      "path": "artifacts/source-100/normal_vnormal_a0/audit.json",
+      "sha256": "a7f28f9ee9778d0bf6e9ae5d7ba3433f37490c2b77ae85ddca7d85e3741b2bf9",
+      "bytes": 7175323
+    },
+    {
+      "path": "artifacts/source-101/normal_vnormal_a0/audit.json",
+      "sha256": "d6c59f140ef23d80badf985513d3a52e6de262b89ea77933f1f57b51fd908539",
+      "bytes": 12217886
+    },
+    {
+      "path": "artifacts/source-102/normal_vnormal_a0/audit.json",
+      "sha256": "a0afbf8d3a3cf0c564dedc6ab865959137465b2fe892363c7ade48aadee78fe2",
+      "bytes": 8423731
+    },
+    {
+      "path": "artifacts/source-103/normal_vnormal_a0/audit.json",
+      "sha256": "9808b6adeeec2d4a7a238ae33897e8a3056ce11cd8218ffcf610680765162e27",
+      "bytes": 8141337
+    },
+    {
+      "path": "artifacts/source-104/normal_vnormal_a0/audit.json",
+      "sha256": "b01e07dc237d528ff78d53934c925a25993498f638063385fd81b27dd353abb1",
+      "bytes": 9858318
+    },
+    {
+      "path": "artifacts/source-105/normal_vnormal_a0/audit.json",
+      "sha256": "b40b447cbda7f07d90e5db7e5f5db8bf49ee18f8289d18c99ef1993d386338fe",
+      "bytes": 7944458
+    },
+    {
+      "path": "artifacts/source-106/normal_vnormal_a0/audit.json",
+      "sha256": "7301c317727bb81161ea503cdcff9d13fa0ac85152f69863f7c4e51ecc94d318",
+      "bytes": 8109799
+    },
+    {
+      "path": "artifacts/source-107/normal_vnormal_a0/audit.json",
+      "sha256": "1631617faedcc32624784c04d2ab7be2a55b11be55f0e2032309bf95fe82aace",
+      "bytes": 7488739
+    },
+    {
+      "path": "artifacts/source-108/normal_vnormal_a0/audit.json",
+      "sha256": "72b7bd2e72d8d6bfeb729c6e0c6b248bcd3aff284f0be0c914dd041a63067524",
+      "bytes": 10722116
+    },
+    {
+      "path": "artifacts/source-109/normal_vnormal_a0/audit.json",
+      "sha256": "a93c5ff0048cb595151b56022d78daca3bcedb7feb718c851ed354be8df40146",
+      "bytes": 7672177
+    },
+    {
+      "path": "artifacts/source-110/normal_vnormal_a0/audit.json",
+      "sha256": "d95b27b9e3e2fd01ac5912ff411f74c6740308b1fe6e3b4117716d9b6a1c5b98",
+      "bytes": 7417455
+    },
+    {
+      "path": "artifacts/source-111/normal_vnormal_a0/audit.json",
+      "sha256": "56dcf4279a3ea3b31bdf7beee5fbcf37255133421a6e5652a0d7b136753bd697",
+      "bytes": 8404530
+    },
+    {
+      "path": "artifacts/source-112/normal_vnormal_a0/audit.json",
+      "sha256": "61b0d10579cce66c49999d95eeadb07d9ce45af76842b7e9a44f22c553ec998a",
+      "bytes": 10545639
+    },
+    {
+      "path": "artifacts/source-113/normal_vnormal_a0/audit.json",
+      "sha256": "bd56a0809e4fb23e94ccd325c5c225a45d5a0d01f511d0b95f627479dbe33169",
+      "bytes": 10062987
+    },
+    {
+      "path": "artifacts/source-114/normal_vnormal_a0/audit.json",
+      "sha256": "4c842b0a840ceca9179a5e53dc626222a45d5d0f750eeb8843e67be3e25c7403",
+      "bytes": 8166240
+    },
+    {
+      "path": "artifacts/source-115/normal_vnormal_a0/audit.json",
+      "sha256": "4179d2dd0672f934e0972f4ff9026d24fd9a5b5bc42210868e05bb05861110ff",
+      "bytes": 9871645
+    },
+    {
+      "path": "artifacts/source-116/normal_vnormal_a0/audit.json",
+      "sha256": "9c5c4b47575e488bdb1678bc65d60c6169776af448fd12b15ae0d900b11bb023",
+      "bytes": 11373469
+    },
+    {
+      "path": "artifacts/source-117/normal_vnormal_a0/audit.json",
+      "sha256": "eced37f31fff3e99fa0f66645a8f617f4d89ffc138d1d7c2d11b4df2b4129792",
+      "bytes": 8168476
+    },
+    {
+      "path": "artifacts/source-118/normal_vnormal_a0/audit.json",
+      "sha256": "4aec43a15b06b552c8a2093e8af665c16e2a596d73179ae8cb59c5f7745febde",
+      "bytes": 11341606
+    },
+    {
+      "path": "artifacts/source-119/normal_vnormal_a0/audit.json",
+      "sha256": "583e4488f1ebae78e478bee582b68911b75e35208b7d97871fd97de4243e1a2f",
+      "bytes": 7630758
+    },
+    {
+      "path": "artifacts/source-140/normal_vnormal_a0/audit.json",
+      "sha256": "568e350fce2aa8abd1dabaf25ba25c5e799b275b3560be40664922830d7e3c98",
+      "bytes": 7616003
+    },
+    {
+      "path": "artifacts/source-141/normal_vnormal_a0/audit.json",
+      "sha256": "202d2b643edace6df742bf48c058014985c9d52da7f247f33335afc577e2b5c8",
+      "bytes": 7143032
+    },
+    {
+      "path": "artifacts/source-142/normal_vnormal_a0/audit.json",
+      "sha256": "c4c52b11d6e8b4d506d27529ce4555f2132297eba69fdf1637a2d607e1a7815e",
+      "bytes": 6255531
+    },
+    {
+      "path": "artifacts/source-143/normal_vnormal_a0/audit.json",
+      "sha256": "bc352ca4047333219dad138320858396b9bac4a05185745d2bcb9df861f72b2d",
+      "bytes": 6905936
+    },
+    {
+      "path": "artifacts/source-144/normal_vnormal_a0/audit.json",
+      "sha256": "18e7abf72f5f8675f9e864f5a64ff26e822c500fc0a9cea63241ff8cecf195b0",
+      "bytes": 6865555
+    },
+    {
+      "path": "artifacts/source-145/normal_vnormal_a0/audit.json",
+      "sha256": "f0da0322820b5128f928cd43273e0cfb1b7396d5c3d17c1e83b8aca6fef73701",
+      "bytes": 6122852
+    },
+    {
+      "path": "artifacts/source-146/normal_vnormal_a0/audit.json",
+      "sha256": "1db55d3ad485111bcebfb3c9b449708727702b3535b0a7fc6f86aea91b61b756",
+      "bytes": 6781923
+    },
+    {
+      "path": "artifacts/source-147/normal_vnormal_a0/audit.json",
+      "sha256": "40fd30175564c334b6cefe5535ae20d0ebbe67d5423c94f628ede7025767097a",
+      "bytes": 6042883
+    },
+    {
+      "path": "artifacts/source-148/normal_vnormal_a0/audit.json",
+      "sha256": "6ebbf9d3fc7aa87ee088bf926089c18e1c4b279e5e3996dec7d61777e9be0ab7",
+      "bytes": 6022640
+    },
+    {
+      "path": "artifacts/source-149/normal_vnormal_a0/audit.json",
+      "sha256": "926444772bd7ea7ebb0a17e79466dee570f0beade8c4cb2c354151ec8918e4dd",
+      "bytes": 6185324
+    },
+    {
+      "path": "artifacts/source-150/normal_vnormal_a0/audit.json",
+      "sha256": "5f9c5ce83f8f6c78d3614a357e895e2999321664283c30998197b69408e97962",
+      "bytes": 6311920
+    },
+    {
+      "path": "artifacts/source-151/normal_vnormal_a0/audit.json",
+      "sha256": "0c4bbf397157c8f0a652b6fc8f474202f11c56dd185d141226b6286f18dec75a",
+      "bytes": 6652699
+    },
+    {
+      "path": "artifacts/source-152/normal_vnormal_a0/audit.json",
+      "sha256": "1f684c5db30a25b3b3518b66e284316ce20bcc79ae0444e34413266251531b2e",
+      "bytes": 5827502
+    },
+    {
+      "path": "artifacts/source-153/normal_vnormal_a0/audit.json",
+      "sha256": "022be4b68b303d1e14d90d855fd7715cb5aefb6806925590c3111a29524e76a7",
+      "bytes": 6253732
+    },
+    {
+      "path": "artifacts/source-154/normal_vnormal_a0/audit.json",
+      "sha256": "4102969f6b8a0fe874e844bac477ec50bbbb462abacad2b57bb47669658cfd59",
+      "bytes": 6217130
+    },
+    {
+      "path": "artifacts/source-155/normal_vnormal_a0/audit.json",
+      "sha256": "ecf2ffb3efe1dd950b202cd6aaf0441e7b63e538922b811a96c326737e8473c1",
+      "bytes": 6132755
+    },
+    {
+      "path": "artifacts/source-156/normal_vnormal_a0/audit.json",
+      "sha256": "6d8a621fabb4c122335705a7eae94ce0243faf33368911fa7deb4804f7d5356a",
+      "bytes": 6867597
+    },
+    {
+      "path": "artifacts/source-157/normal_vnormal_a0/audit.json",
+      "sha256": "bbe8d33d2707ee69cf5a420c2f3de307c5ab7df04810356eb39e1d6f338ff156",
+      "bytes": 6636967
+    },
+    {
+      "path": "artifacts/source-158/normal_vnormal_a0/audit.json",
+      "sha256": "c1cfbef81144f57e360594d10f15fde3e0113ec64ea8a5d6d792b08d9d652a58",
+      "bytes": 6508305
+    },
+    {
+      "path": "artifacts/source-159/normal_vnormal_a0/audit.json",
+      "sha256": "9a28da5e91ec27840b73df24e698bc6aec7deda9e90a065c0212ffd5babf9a0c",
+      "bytes": 6950753
+    }
+  ],
+  "ending_records": [
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_0",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_0",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 272,
+      "audit_path": "artifacts/source-040/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 165,
+      "existing_safe_handoff_frames": 86,
+      "first_existing_safe_handoff": 120,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 273
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_1",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_1",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 279,
+      "audit_path": "artifacts/source-041/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 168,
+      "existing_safe_handoff_frames": 83,
+      "first_existing_safe_handoff": 126,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 280
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_2",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_2",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 298,
+      "audit_path": "artifacts/source-042/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 199,
+      "existing_safe_handoff_frames": 84,
+      "first_existing_safe_handoff": 116,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 299
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_3",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_3",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 285,
+      "audit_path": "artifacts/source-043/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 182,
+      "existing_safe_handoff_frames": 89,
+      "first_existing_safe_handoff": 112,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 286
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_4",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_4",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 245,
+      "audit_path": "artifacts/source-044/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 154,
+      "existing_safe_handoff_frames": 78,
+      "first_existing_safe_handoff": 103,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 246
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_5",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_5",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 299,
+      "audit_path": "artifacts/source-045/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": false
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 173,
+      "existing_safe_handoff_frames": 95,
+      "first_existing_safe_handoff": 136,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 300
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_6",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_6",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 306,
+      "audit_path": "artifacts/source-046/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": true,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 213,
+      "existing_safe_handoff_frames": 128,
+      "first_existing_safe_handoff": 114,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 307
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_7",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_7",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 272,
+      "audit_path": "artifacts/source-047/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 166,
+      "existing_safe_handoff_frames": 93,
+      "first_existing_safe_handoff": 108,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 273
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_8",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_8",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 275,
+      "audit_path": "artifacts/source-048/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 181,
+      "existing_safe_handoff_frames": 117,
+      "first_existing_safe_handoff": 101,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 276
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_9",
+      "task_key": "stove",
+      "split": "dev",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_9",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 308,
+      "audit_path": "artifacts/source-049/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 157,
+      "existing_safe_handoff_frames": 77,
+      "first_existing_safe_handoff": 118,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 309
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_10",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_10",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 255,
+      "audit_path": "artifacts/source-050/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 168,
+      "existing_safe_handoff_frames": 100,
+      "first_existing_safe_handoff": 99,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 256
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_11",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_11",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 265,
+      "audit_path": "artifacts/source-051/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": false
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 148,
+      "existing_safe_handoff_frames": 68,
+      "first_existing_safe_handoff": 129,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 266
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_12",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_12",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 234,
+      "audit_path": "artifacts/source-052/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 144,
+      "existing_safe_handoff_frames": 73,
+      "first_existing_safe_handoff": 101,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 235
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_13",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_13",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 219,
+      "audit_path": "artifacts/source-053/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 121,
+      "existing_safe_handoff_frames": 65,
+      "first_existing_safe_handoff": 100,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 220
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_14",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_14",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 234,
+      "audit_path": "artifacts/source-054/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 133,
+      "existing_safe_handoff_frames": 68,
+      "first_existing_safe_handoff": 104,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 235
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_15",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_15",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 232,
+      "audit_path": "artifacts/source-055/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 134,
+      "existing_safe_handoff_frames": 71,
+      "first_existing_safe_handoff": 104,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 233
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_16",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_16",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 295,
+      "audit_path": "artifacts/source-056/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 182,
+      "existing_safe_handoff_frames": 83,
+      "first_existing_safe_handoff": 127,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 296
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_17",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_17",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 250,
+      "audit_path": "artifacts/source-057/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 163,
+      "existing_safe_handoff_frames": 93,
+      "first_existing_safe_handoff": 95,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 251
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_18",
+      "task_key": "stove",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_18",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 340,
+      "audit_path": "artifacts/source-058/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 229,
+      "existing_safe_handoff_frames": 109,
+      "first_existing_safe_handoff": 118,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 341
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_19",
+      "task_key": "stove",
+      "split": "dev",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5#demo_19",
+      "file": "libero_10/KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_demo.hdf5",
+      "file_sha256": "6b30906a52a5741e98ef447d27e7066d6c0be4a5f7acd7ecaf1cb7468aca4aa9",
+      "source_length": 242,
+      "audit_path": "artifacts/source-059/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven;core_violation_evidence_unknown",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chefmate_8_frypan_1": {
+            "role": "distractor",
+            "released": true
+          },
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 150,
+      "existing_safe_handoff_frames": 81,
+      "first_existing_safe_handoff": 102,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {
+        "table_drop": 243
+      },
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_0",
+      "task_key": "mug_pudding",
+      "split": "dev",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_0",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 203,
+      "audit_path": "artifacts/source-100/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 89,
+      "existing_safe_handoff_frames": 42,
+      "first_existing_safe_handoff": 121,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_1",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_1",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 325,
+      "audit_path": "artifacts/source-101/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 166,
+      "existing_safe_handoff_frames": 47,
+      "first_existing_safe_handoff": 177,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_2",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_2",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 253,
+      "audit_path": "artifacts/source-102/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": true
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 117,
+      "existing_safe_handoff_frames": 55,
+      "first_existing_safe_handoff": 151,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_3",
+      "task_key": "mug_pudding",
+      "split": "dev",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_3",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 240,
+      "audit_path": "artifacts/source-103/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": true
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 95,
+      "existing_safe_handoff_frames": 54,
+      "first_existing_safe_handoff": 150,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_4",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_4",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 263,
+      "audit_path": "artifacts/source-104/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 132,
+      "existing_safe_handoff_frames": 48,
+      "first_existing_safe_handoff": 139,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_5",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_5",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 227,
+      "audit_path": "artifacts/source-105/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": true
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 99,
+      "existing_safe_handoff_frames": 44,
+      "first_existing_safe_handoff": 135,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_6",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_6",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 228,
+      "audit_path": "artifacts/source-106/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 100,
+      "existing_safe_handoff_frames": 49,
+      "first_existing_safe_handoff": 136,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_7",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_7",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 206,
+      "audit_path": "artifacts/source-107/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 87,
+      "existing_safe_handoff_frames": 41,
+      "first_existing_safe_handoff": 121,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_8",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_8",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 301,
+      "audit_path": "artifacts/source-108/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_9",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_9",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 218,
+      "audit_path": "artifacts/source-109/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": null
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 97,
+      "existing_safe_handoff_frames": 41,
+      "first_existing_safe_handoff": 136,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_10",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_10",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 207,
+      "audit_path": "artifacts/source-110/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": true
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 102,
+      "existing_safe_handoff_frames": 38,
+      "first_existing_safe_handoff": 120,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_11",
+      "task_key": "mug_pudding",
+      "split": "dev",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_11",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 247,
+      "audit_path": "artifacts/source-111/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": true
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 96,
+      "existing_safe_handoff_frames": 51,
+      "first_existing_safe_handoff": 150,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_12",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_12",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 278,
+      "audit_path": "artifacts/source-112/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 157,
+      "existing_safe_handoff_frames": 59,
+      "first_existing_safe_handoff": 137,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_13",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_13",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 275,
+      "audit_path": "artifacts/source-113/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 119,
+      "existing_safe_handoff_frames": 47,
+      "first_existing_safe_handoff": 171,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_14",
+      "task_key": "mug_pudding",
+      "split": "dev",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_14",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 237,
+      "audit_path": "artifacts/source-114/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": true
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 104,
+      "existing_safe_handoff_frames": 48,
+      "first_existing_safe_handoff": 147,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_15",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_15",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 278,
+      "audit_path": "artifacts/source-115/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": true
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 161,
+      "existing_safe_handoff_frames": 63,
+      "first_existing_safe_handoff": 141,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_16",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_16",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 284,
+      "audit_path": "artifacts/source-116/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": null
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 135,
+      "existing_safe_handoff_frames": 32,
+      "first_existing_safe_handoff": 158,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_17",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_17",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 249,
+      "audit_path": "artifacts/source-117/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": false,
+        "hand_open": false,
+        "held_free": true,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": false
+          },
+          "plate_1": {
+            "role": "support",
+            "released": true
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 11,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_18",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_18",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 289,
+      "audit_path": "artifacts/source-118/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": null
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 167,
+      "existing_safe_handoff_frames": 63,
+      "first_existing_safe_handoff": 131,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_19",
+      "task_key": "mug_pudding",
+      "split": "train",
+      "parent_demo_id": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5#demo_19",
+      "file": "libero_10/LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_demo.hdf5",
+      "file_sha256": "75988131f8f443d68108bbfaacc22dab229ece93f141362524e69a2c49a23516",
+      "source_length": 215,
+      "audit_path": "artifacts/source-119/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          false
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "chocolate_pudding_1": {
+            "role": "target",
+            "released": true
+          },
+          "plate_1": {
+            "role": "support",
+            "released": null
+          },
+          "porcelain_mug_1": {
+            "role": "target",
+            "released": null
+          },
+          "red_coffee_mug_1": {
+            "role": "distractor",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 106,
+      "existing_safe_handoff_frames": 44,
+      "first_existing_safe_handoff": 126,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_0",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_0",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 457,
+      "audit_path": "artifacts/source-140/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_1",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_1",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 439,
+      "audit_path": "artifacts/source-141/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_2",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_2",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 388,
+      "audit_path": "artifacts/source-142/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_3",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_3",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 429,
+      "audit_path": "artifacts/source-143/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_4",
+      "task_key": "two_pots",
+      "split": "dev",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_4",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 421,
+      "audit_path": "artifacts/source-144/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_5",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_5",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 378,
+      "audit_path": "artifacts/source-145/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_6",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_6",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 420,
+      "audit_path": "artifacts/source-146/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_7",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_7",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 367,
+      "audit_path": "artifacts/source-147/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_8",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_8",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 373,
+      "audit_path": "artifacts/source-148/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 1,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_9",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_9",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 383,
+      "audit_path": "artifacts/source-149/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": true,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": true
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_10",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_10",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 388,
+      "audit_path": "artifacts/source-150/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_11",
+      "task_key": "two_pots",
+      "split": "dev",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_11",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 407,
+      "audit_path": "artifacts/source-151/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_12",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_12",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 359,
+      "audit_path": "artifacts/source-152/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_13",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_13",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 377,
+      "audit_path": "artifacts/source-153/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_14",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_14",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 385,
+      "audit_path": "artifacts/source-154/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_15",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_15",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 375,
+      "audit_path": "artifacts/source-155/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 3,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_16",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_16",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 427,
+      "audit_path": "artifacts/source-156/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": true,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": true,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": true
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_17",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_17",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 403,
+      "audit_path": "artifacts/source-157/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": true
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_18",
+      "task_key": "two_pots",
+      "split": "dev",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_18",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 389,
+      "audit_path": "artifacts/source-158/normal_vnormal_a0/audit.json",
+      "failure_reason": "native_full_task_unfinished;release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          false,
+          true
+        ],
+        "official_success": false,
+        "released": null,
+        "hand_open": false,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_19",
+      "task_key": "two_pots",
+      "split": "train",
+      "parent_demo_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_19",
+      "file": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5",
+      "file_sha256": "e329bb21a8ded3457854faf6a23513c90cb4b34f0e40f3f4e9e70451fc9ba504",
+      "source_length": 429,
+      "audit_path": "artifacts/source-159/normal_vnormal_a0/audit.json",
+      "failure_reason": "release_or_continuous_confirmation_unproven",
+      "audit_error": null,
+      "final": {
+        "goals": [
+          true,
+          true
+        ],
+        "official_success": true,
+        "released": null,
+        "hand_open": true,
+        "held_free": false,
+        "a_released": null,
+        "a_regrasp": false,
+        "penetration": false,
+        "objects": {
+          "flat_stove_1": {
+            "role": "support",
+            "released": null
+          },
+          "moka_pot_1": {
+            "role": "target",
+            "released": null
+          },
+          "moka_pot_2": {
+            "role": "target",
+            "released": null
+          }
+        }
+      },
+      "confirmation_frames": 0,
+      "semantic_A_true_B_false_frames": 0,
+      "existing_safe_handoff_frames": 0,
+      "first_existing_safe_handoff": null,
+      "confirmed_event_count": 0,
+      "unknown_event_types": {},
+      "core_release_confirmation_streak": 0
+    }
+  ],
+  "two_pots_recorded_order": [
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_0",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 174,
+        "01": 272
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 174,
+        "01": 272
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 446,
+      "first_B": 174
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_1",
+      "split": "train",
+      "native_complete": false,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "00": 194,
+        "01": 245
+      },
+      "patterns_with_invariants": {
+        "00": 194,
+        "01": 245
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": null,
+      "first_B": 194
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_2",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 197,
+        "01": 180
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 197,
+        "01": 180
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 377,
+      "first_B": 192
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_3",
+      "split": "train",
+      "native_complete": false,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 2,
+        "00": 190,
+        "01": 237
+      },
+      "patterns_with_invariants": {
+        "11": 2,
+        "00": 190,
+        "01": 237
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 408,
+      "first_B": 190
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_4",
+      "split": "dev",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 190,
+        "01": 220
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 190,
+        "01": 220
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 410,
+      "first_B": 190
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_5",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 177,
+        "01": 190
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 177,
+        "01": 190
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 367,
+      "first_B": 177
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_6",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 220,
+        "01": 189
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 220,
+        "01": 189
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 409,
+      "first_B": 220
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_7",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 12,
+        "00": 174,
+        "01": 181
+      },
+      "patterns_with_invariants": {
+        "11": 12,
+        "00": 174,
+        "01": 181
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 355,
+      "first_B": 174
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_8",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "10": 1,
+        "11": 2,
+        "00": 170,
+        "01": 200
+      },
+      "patterns_with_invariants": {
+        "10": 1,
+        "11": 2,
+        "00": 170,
+        "01": 200
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 370,
+      "first_B": 169
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_9",
+      "split": "train",
+      "native_complete": false,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "00": 173,
+        "01": 210
+      },
+      "patterns_with_invariants": {
+        "00": 173,
+        "01": 210
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": null,
+      "first_B": 173
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_10",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 180,
+        "01": 197
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 180,
+        "01": 197
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 377,
+      "first_B": 180
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_11",
+      "split": "dev",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 179,
+        "01": 217
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 179,
+        "01": 217
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 396,
+      "first_B": 178
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_12",
+      "split": "train",
+      "native_complete": false,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "00": 160,
+        "01": 199
+      },
+      "patterns_with_invariants": {
+        "00": 160,
+        "01": 199
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": null,
+      "first_B": 160
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_13",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 23,
+        "00": 159,
+        "01": 195
+      },
+      "patterns_with_invariants": {
+        "11": 23,
+        "00": 159,
+        "01": 195
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 354,
+      "first_B": 157
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_14",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 11,
+        "00": 171,
+        "01": 203
+      },
+      "patterns_with_invariants": {
+        "11": 11,
+        "00": 171,
+        "01": 203
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 374,
+      "first_B": 171
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_15",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "10": 3,
+        "11": 12,
+        "00": 172,
+        "01": 188
+      },
+      "patterns_with_invariants": {
+        "10": 3,
+        "11": 12,
+        "00": 172,
+        "01": 188
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 357,
+      "first_B": 162
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_16",
+      "split": "train",
+      "native_complete": false,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "00": 172,
+        "01": 255
+      },
+      "patterns_with_invariants": {
+        "00": 172,
+        "01": 255
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": null,
+      "first_B": 172
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_17",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 6,
+        "00": 190,
+        "01": 207
+      },
+      "patterns_with_invariants": {
+        "11": 6,
+        "00": 190,
+        "01": 207
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 397,
+      "first_B": 190
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_18",
+      "split": "dev",
+      "native_complete": false,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 2,
+        "00": 182,
+        "01": 205
+      },
+      "patterns_with_invariants": {
+        "11": 2,
+        "00": 182,
+        "01": 205
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 386,
+      "first_B": 182
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_19",
+      "split": "train",
+      "native_complete": true,
+      "initial_invariants": [
+        true
+      ],
+      "final_invariants": [
+        true
+      ],
+      "patterns": {
+        "11": 12,
+        "00": 187,
+        "01": 230
+      },
+      "patterns_with_invariants": {
+        "11": 12,
+        "00": 187,
+        "01": 230
+      },
+      "first_goals": [
+        [
+          false,
+          false
+        ]
+      ],
+      "first_A": 417,
+      "first_B": 187
+    }
+  ],
+  "two_pots_recorded_released_B_windows": [
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_0",
+      "canonical_01_open_free_frames": 144,
+      "canonical_01_completed_pot_released_frames": 130,
+      "first_clearable_frame": 194,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_1",
+      "canonical_01_open_free_frames": 143,
+      "canonical_01_completed_pot_released_frames": 131,
+      "first_clearable_frame": 202,
+      "native_complete": false
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_2",
+      "canonical_01_open_free_frames": 87,
+      "canonical_01_completed_pot_released_frames": 85,
+      "first_clearable_frame": 214,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_3",
+      "canonical_01_open_free_frames": 129,
+      "canonical_01_completed_pot_released_frames": 115,
+      "first_clearable_frame": 204,
+      "native_complete": false
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_4",
+      "canonical_01_open_free_frames": 113,
+      "canonical_01_completed_pot_released_frames": 105,
+      "first_clearable_frame": 207,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_5",
+      "canonical_01_open_free_frames": 97,
+      "canonical_01_completed_pot_released_frames": 87,
+      "first_clearable_frame": 190,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_6",
+      "canonical_01_open_free_frames": 96,
+      "canonical_01_completed_pot_released_frames": 89,
+      "first_clearable_frame": 237,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_7",
+      "canonical_01_open_free_frames": 92,
+      "canonical_01_completed_pot_released_frames": 84,
+      "first_clearable_frame": 190,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_8",
+      "canonical_01_open_free_frames": 97,
+      "canonical_01_completed_pot_released_frames": 90,
+      "first_clearable_frame": 189,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_9",
+      "canonical_01_open_free_frames": 98,
+      "canonical_01_completed_pot_released_frames": 90,
+      "first_clearable_frame": 185,
+      "native_complete": false
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_10",
+      "canonical_01_open_free_frames": 96,
+      "canonical_01_completed_pot_released_frames": 89,
+      "first_clearable_frame": 195,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_11",
+      "canonical_01_open_free_frames": 101,
+      "canonical_01_completed_pot_released_frames": 99,
+      "first_clearable_frame": 200,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_12",
+      "canonical_01_open_free_frames": 105,
+      "canonical_01_completed_pot_released_frames": 94,
+      "first_clearable_frame": 174,
+      "native_complete": false
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_13",
+      "canonical_01_open_free_frames": 101,
+      "canonical_01_completed_pot_released_frames": 96,
+      "first_clearable_frame": 175,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_14",
+      "canonical_01_open_free_frames": 101,
+      "canonical_01_completed_pot_released_frames": 92,
+      "first_clearable_frame": 185,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_15",
+      "canonical_01_open_free_frames": 86,
+      "canonical_01_completed_pot_released_frames": 81,
+      "first_clearable_frame": 182,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_16",
+      "canonical_01_open_free_frames": 86,
+      "canonical_01_completed_pot_released_frames": 80,
+      "first_clearable_frame": 188,
+      "native_complete": false
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_17",
+      "canonical_01_open_free_frames": 102,
+      "canonical_01_completed_pot_released_frames": 88,
+      "first_clearable_frame": 202,
+      "native_complete": true
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_18",
+      "canonical_01_open_free_frames": 89,
+      "canonical_01_completed_pot_released_frames": 76,
+      "first_clearable_frame": 193,
+      "native_complete": false
+    },
+    {
+      "source_id": "libero_10/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5#demo_19",
+      "canonical_01_open_free_frames": 112,
+      "canonical_01_completed_pot_released_frames": 105,
+      "first_clearable_frame": 204,
+      "native_complete": true
+    }
+  ],
+  "local_projection_artifacts": [
+    {
+      "path": "existing_generation_gaps.json",
+      "sha256": "b06174808e00890ebe2d375af48277b571bf48a78d40f94a6ea03d60f2d12dd2",
+      "bytes": 906082
+    },
+    {
+      "path": "existing_endings.json",
+      "sha256": "552d1cdb58d62a71032806a7d97dc0dcf2e3cd2e327a8ab94a839ac99b31be51",
+      "bytes": 113779
+    },
+    {
+      "path": "two_pots_order.json",
+      "sha256": "108cc4acb19c56e83f3630cad8df37b25a27079cd68038f740e1295164838810",
+      "bytes": 10341
+    },
+    {
+      "path": "two_pots_completed_B_release.json",
+      "sha256": "9a9058a415aecc0e4c7839fa6a4a489d04321404850a14f3c0b089eeb32e9841",
+      "bytes": 5234
+    }
+  ],
+  "limits": [
+    "The 47 native-complete endings are not qualified training trajectories; do not rewrite old failures.",
+    "A physical initial-state pot swap and terminal release actions still require actual new user-launched simulation to establish qualified results.",
+    "No inference-time ground-truth routing or benchmark/scoring change is authorized."
+  ],
+  "user_approval": {
+    "decision": "Approved 039 plan, budget, and file preparation",
+    "ordinary_replays_max": 60,
+    "ten_generation_attempts_max": 360,
+    "updates_per_arm": 1000,
+    "arms": [
+      "C0",
+      "C1"
+    ],
+    "reference_observations_max_total": 18048,
+    "student_observations_max_total": 49120,
+    "new_evaluation_episodes_total": 360,
+    "real_jobs_launcher": "user only"
+  }
+}

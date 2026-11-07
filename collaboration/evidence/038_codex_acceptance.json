@@ -1,0 +1,87 @@
+{
+  "pr": 13,
+  "revision": "5a6452ab73ee31cd1afbe1cdc08e88e2d963ac04",
+  "implementation_revision": "b5849e4e4f7f56b888922e1267870126f5368ccf",
+  "code": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task038-5a6452ab",
+  "config": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task038-5a6452ab",
+  "module_sha256": {
+    "egrs/task_control/__init__.py": "2dfc5b3587040f83faeab5d13c829ffbc4aaac24df69ce0e76f0e7e7edbdf7bd",
+    "egrs/task_control/__main__.py": "2ec1a61e32c1b2b96c43cbbde56151abfad9a156caaebda1689768c2860d5e0c",
+    "egrs/task_control/adapter.py": "acbe7f1fcccc725e3a62116d21ba2994f99055a4b9b320b256e90751db6ec41d",
+    "egrs/task_control/checkpoint.py": "748068924b1d5faf981c86fe6f263ff6ffa98ba42816f6e0bffc4d90e32839a0",
+    "egrs/task_control/data.py": "6fa22023770174247575115198aaeba6b24d75f19b7a58294767936e2a14a6b4",
+    "egrs/task_control/evaluation.py": "04094905698151834ca0a8fd85126ccc2aacad10cb5812726b10b26de5ed9535",
+    "egrs/task_control/index.py": "32b0db2adeb395040483afd5d9eb84f632238b148e0aea9ef9243e341b4e92b4",
+    "egrs/task_control/model.py": "43782a48a8fe3ca3d4e5baff419f1c967692b7b0af889704b98f359db5c7bbaa",
+    "egrs/task_control/oft.py": "2720d2ef8239e09979bd9b75d80039344bf7e195cc9894d1aefe6512c72bfbef",
+    "egrs/task_control/policy.py": "887d9549c0d15bb14bcc81eeda4a89c954546819657044f4bc8dea832da9f9d6",
+    "egrs/task_control/reference.py": "3c61142f32804c44392122677f84740d43eaa1624b5df2f8c5212c82ed8409a6",
+    "egrs/task_control/sampling.py": "5e7fff3ded5df21259585d1a67927ece8492356dc6d4f18ac5a79e43e7d52479",
+    "egrs/task_control/training.py": "20ae8fe13390f34a4151d5eedcdf96d838e3370e5f120ddb70420eb7999d373c",
+    "egrs/retention/evaluation.py": "d6718cf58cc0680e9ddb08c3ff915aba93a3f3ba1cdacb97112a1ece7531de40",
+    "pyproject.toml": "f49034805fe47ddbece5bdb7555f52fd6334a8747fa3b56b2e11c64c0836875f",
+    "docs/task038_usage.md": "24edefdfc12b8f2bf364687ed49467d797006a4ad96b283d53ae4aba9ea18171",
+    "configs/task_control/evaluation.c0.example.json": "29d82d6a2577378923f484bd19d6c673e7dd81c6bb750a85e399bad2358aace8",
+    "configs/task_control/evaluation.c1.example.json": "311c4d9b111b14578b1831b88fda50659ab6c72673aa3ad0117388228588dcfb",
+    "configs/task_control/task_control_factorization.json": "2bab929744f3f5136c16b32bdc2734b7343ac0937bec5dcca631097c97f07984"
+  },
+  "config_sha256": {
+    "base-runtime.json": "c5a3287492a568407575669abebd40d7a84026ff735b4703206deff5dee29eb9",
+    "evaluation.c0.json": "e9b2f501d18c9ccb724b5249b01965b0d7b801a426dab6da5243f9b729656f35",
+    "evaluation.c1.json": "241b342443c83d26fceb849278ff4fc5c58c4e1f0b6c9166a732efe9d7b5e561",
+    "session038.sh": "cc371b662a0f299f167fe50de0237be9a2beaf29be2e8b58e7d94790b51387a5"
+  },
+  "package_wiring": [
+    {
+      "environment": "worker",
+      "python_spelling": "/HUBU-AI096/zp/ICML/LIBERO-Remain-normal00-stage02/.runtime/oft_worker/bin/python",
+      "module_origins": {
+        "egrs.task_control.evaluation": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task038-5a6452ab/egrs/task_control/evaluation.py",
+        "egrs.augmentation.adapter_identity": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task038-5a6452ab/egrs/augmentation/adapter_identity.py"
+      }
+    },
+    {
+      "environment": "simulation",
+      "python_spelling": "/HUBU-AI096/zp/ICML/LIBERO-Remain-normal00-stage02/.runtime/remaining_libero/venv/bin/python",
+      "module_origins": {
+        "egrs.task_control.evaluation": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task038-5a6452ab/egrs/task_control/evaluation.py",
+        "egrs.augmentation.adapter_identity": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task038-5a6452ab/egrs/augmentation/adapter_identity.py"
+      }
+    }
+  ],
+  "original_runtime_copied_without_changes": true,
+  "old_evaluation_source_paths_preserved": true,
+  "real_budget_approved": true,
+  "budget": {
+    "arms": 2,
+    "updates_per_arm": 1000,
+    "reference_observations_total": 18048,
+    "student_observations_total": 49120,
+    "new_model_episodes_total": 360,
+    "new_simulation_generation": 0
+  },
+  "index_and_run_exists": {
+    "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/task038/index-001": false,
+    "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c0-train-001": false,
+    "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-train-001": false
+  },
+  "index_generated": false,
+  "model_loaded": false,
+  "real_jobs_started": false,
+  "dependencies_upgraded": false,
+  "old_code_directories_modified": false,
+  "deletions": [],
+  "cpu_fake_review": {
+    "unique_passed_final": 130,
+    "initial_passed": 112,
+    "initial_fixture_setup_errors": 18,
+    "only_affected_fixture_rerun_passed": 18,
+    "outstanding_errors": 0,
+    "note": "Reused existing accepted d8541ef4/cb8aca6a local snapshots via test-only sibling symlinks; no production/test code changed and no full-suite rerun.",
+    "xml_sha256": {
+      "cpu-r1.xml": "6aaa11f70a9d48ee8377e11b95731a0303c4fd845da1b0b3a9de8435ab59f1bd",
+      "cpu-evaluation-r1.xml": "fce5142d79f28e9a44adcf33ca14af95c26961919fb424d0a1acc2c4afd0daca"
+    }
+  },
+  "budget_approval": "User explicitly agreed to two-arm formal comparison and budget in this review turn; user starts all real jobs."
+}
