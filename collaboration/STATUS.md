@@ -1,5 +1,11 @@
 # 方法研究当前状态
 
+## 2026-11-07：039软件与CPU/fake已交付，待Codex验收
+
+X按039直接实现，commit `8a733d039aef69df1323bb34c896ed40895cff12`，保留accepted038 PR13@5a6452ab未merge依赖并合入main工单d919233。新增有界真实释放收尾、双壶仅新normal初态freejoint置换、60/360失败计账、旧221ten/75normal与180 raw引用合并、实际计数新索引/共享哈希进度、同038训练与评测入口。[039回复/命令](responses/039_round1.md)、[详细用法](../docs/task039_usage.md)、[阶段总结](../docs/stage_summaries/2026-11-07_task039_software_delivery.md)。网络/loss、原V2准入、正式bank/评分及035/036/038全部原工件不变。
+
+受影响CPU/fake277通过、0失败/错误、2跳过（Windows真实symlink权限不足；模拟路径回归通过），独立审查两项Important已集中修复并定向复查闭合，证据见[JSON](evidence/039_cpu_fake.json)及两份JUnit。实现/测试交付100%，软件验收pending；真实生成/标签/索引生产、模型/仿真/训练/eval、部署均0%。本轮没有真实作业或自动merge/删除。预算已批准，下一Codex审查隔离部署/填实际路径，用户亲自启动60普通＋360次10、C0/C1各1000与新模型360上限内作业；无新增合格train10则加载模型前拒绝训练，有新增按实际量继续，不加N/MVP。真实覆盖与效果open，旧038 R3closed保持。发布后精确commit远端读回并本地SHA备份；下方039实现0%为本轮交付前历史。
+
 ## 2026-11-07：039恢复三任务数据方案/预算已批准，X直接实现
 
 用户要求下一步并明确批准039方案/预算与文件准备：[方案](../docs/research/2026-11-07_task039_coverage_recovery_plan.md)、[详细工单](tasks/039_teacher_release_and_coverage_recovery.md)、[决策总结](../docs/stage_summaries/2026-11-07_task039_teacher_coverage_recovery_decision.md)。**下一X直接实现＋受影响CPU/fake/新PR与039回复，不先泛审或跑真实MVP。** Codex验收后独立部署/常用命令，用户亲启所有真实数据/训练/eval；039当前实现/实验0%，未部署/代跑。
