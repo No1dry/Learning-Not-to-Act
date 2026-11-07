@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-07：039数据准备100%，用户直接开始C0/C1
+
+[R2](reviews/039_round2.md)接受用户亲启production-001的现成准备完成报告，`training_ready=true`/source_errors0，无错误文件或残留进程，用时3小时31分。数据生成、合并、两索引均100%，训练/模型eval0；Codex只读/复制旧报告，不新开标签、索引、物理/模型或训练。软件R1/PR14@113ded21验收保持，X无需返修，不自动merge。[阶段](../docs/stage_summaries/2026-11-07_task039_preparation_complete_training_ready.md)、[证据](evidence/039_preparation_complete.json)。
+
+实际60普通/99ten尝试，合格30普通（50.00%）、84ten（84.85%），新增ten63train/21dev。开炉36/6、白杯3/9、双壶24/6；白杯训练1父源3变体偏少，但按既定有新增即训练，不改父split/凑N/自动追加预算或承诺SR。合并旧003得到305ten（224/81）、105fresh（78/27）、180raw（136/44），均九任务；130017行、305/305pair有效，计数标签78998/raw无标签51019合原合同。prepare identity b7a9b864，新index b8587565/report64a2d492，六个现成小工件服务器与本地SHA匹配，完整大数据仍保留服务器。
+
+**下一用户直接按[完整命令第二节](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)启动C0；1000正常完成后直接C1，不重跑generate/index或等额外人工预检/MVP。** 同原SOG10新初始化、同新索引/原网络loss/固定末1000，已批reference≤18048/student≤49120/新模型360保持；所有真实作业仍只用户启动。错误保留输出/账本反馈，不自主重开退款。阶段/证据精确commit读回SHA本地备份manifest，无删除。数据准备closed、训练/效果open；下方准备未完成/0%为历史。
+
+---
+
 ## 2026-11-07：039软件accepted并部署，用户直接一次生产
 
 [R1](reviews/039_round1.md)接受[PR14](https://github.com/No1dry/Learning-Not-to-Act/pull/14)固定113ded21434a06e2cdc156e5d6283a11c3f15488（实现8a733d03、依赖accepted038 PR13），X无需返修，不自动merge。[阶段总结](../docs/stage_summaries/2026-11-07_task039_accepted_deployed_user_generation.md)、[机器证据](evidence/039_codex_acceptance.json)。本地受影响279个独立CPU/fake最终通过/无遗留失败或skip，含Windows原跳过symlink；初次缺历史fixture及一次Codex链接cwd错误保留，复用旧fc1b4990后只补测1项，不增加真实MVP。

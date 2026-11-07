@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-07：039真实准备完成100%，下一用户直接C0→C1
+
+039 R2接受production-001现成报告：ready_for_user_training、source_errors0、无preparation_error/残留进程，用时12657秒约3小时31分。60normal/99ten尝试未超60/360，新增30普通/84ten（63train21dev），合并旧003为305ten（224/81）、105fresh（78/27）、180raw（136/44），三池均九任务；130017行、305/305pair有效、计数78998/raw无标签51019符合原合同。新ten开炉36/6、白杯3/9、双壶24/6；白杯仅1训练父源/3变体仍少，不声称覆盖充分或保证SR，不调split/凑N追加。准备identity b7a9b864、task-control b8587565/report64a2d492；真实文件生成完成但训练/eval0，Codex本轮只读/备份既有报告，无新标签/索引/物理/模型。用户按docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md第二节直接C0，完成1000后C1，不重跑generate/index/等额外预检/MVP；原两组预算/末1000/网络loss/评分保持。GPU快照空闲仅读时状态。六小报告/账本原文件服务器到本地SHA核对，阶段与证据精确commit读回备份manifest；所有大HDF/raw/权重/失败不改删，不伪称全数据下载。数据准备closed，训练/效果open，软件R1保持、X无需返修/自动merge。下方准备0/未完成均历史。
+
 ## 2026-11-07：039软件已验收部署，下一用户一次生产→两组训练
 
 039 R1接受PR14@113ded21（实现8a733d03、依赖accepted038 PR13@5a6452ab）限软件/受影响CPU-fake/隔离文件部署，X无需返修，不自动merge。独立279用例最终全通过/0遗留失败或skip；初次缺历史fixture和一次Codex链接cwd错误保留，复用既有fc1b4990后只补测1项通过。新code/task039-113ded21与configs/task039-113ded21源/5实际配置SHA一致，两原worker/simulator venv方法editable指向新副本，core cwd模块来源正确，无依赖升级/旧代码数据修改。真实张手/有界撤离/五帧释放全T+1/T、仅双壶新normal初态freejoint交换、原固定A/B/V2准入/评分/038网络loss保持；旧221ten/75normal/180raw零重放引用复用。预算60普通＋360次10、原SOG10两组各1000/reference≤18048/student≤49120/正式360保持，全部真实作业只用户启动；本次未生成真实index/标签、仿真或模型训练/eval。软件准备100%，真实数据/训练/eval0。用户直接按docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md的常用conda/python启动generate，有新增合格train10即直接C0、正常完成后C1，再依次新两组正式评测，不再等Codex额外预检/MVP/凑N；零新增会在模型前拒训。错误时保留输出/账本，不删除退款重开。039实际覆盖/SR与研究仍open、不冒称补齐已成功，038及035/036全部权重数据失败分数保留。R1/证据/阶段精确commit读回SHA备份、manifest；X原稿按固定head署名保留，无清理。下方039实现0/未部署是历史。

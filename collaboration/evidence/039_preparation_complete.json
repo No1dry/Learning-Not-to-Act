@@ -1,0 +1,209 @@
+{
+  "format": "task039-preparation-complete-review-v1",
+  "date": "2026-11-07",
+  "accepted_scope": "existing_real_preparation_reports_only",
+  "server_root": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/coverage039/production-001",
+  "preparation": {
+    "format": "task039-coverage-preparation-report-v1",
+    "plan_identity": "701e6f29a1ff81073a100e6f24a60026e70eaf1cc9aaea8f6e2c4839f60f5ea7",
+    "generation_export": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/coverage039/production-001/generated/export",
+    "merged_export": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/coverage039/production-001/merged-export",
+    "retention_index": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/coverage039/production-001/indices/retention",
+    "task_control_index": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/data/coverage039/production-001/indices/task_control",
+    "new_qualified_train10": 63,
+    "training_ready": true,
+    "status": "ready_for_user_training",
+    "source_errors": 0,
+    "hash_files": 2086,
+    "hash_bytes": 22285251383,
+    "completion_percent": 100.0,
+    "elapsed_seconds": 12657.297734983265,
+    "training_started": false,
+    "evaluation_started": false,
+    "model_loaded": false,
+    "identity": "b7a9b8646c22510e09ade56e6fb9b9379c5a0323e556fa5069b08eae13350262"
+  },
+  "pool_counts": {
+    "ten": {
+      "train": 224,
+      "dev": 81
+    },
+    "fresh": {
+      "train": 78,
+      "dev": 27
+    },
+    "raw": {
+      "train": 136,
+      "dev": 44
+    }
+  },
+  "task_counts": {
+    "ten": 9,
+    "fresh": 9,
+    "raw": 9
+  },
+  "rows": 130017,
+  "pairs": {
+    "candidates": 305,
+    "valid": 305,
+    "reasons": {},
+    "by_task_split": {
+      "basket|train": {
+        "candidates": 32,
+        "valid": 32,
+        "reasons": {}
+      },
+      "basket|dev": {
+        "candidates": 9,
+        "valid": 9,
+        "reasons": {}
+      },
+      "basket_cheese_butter|train": {
+        "candidates": 33,
+        "valid": 33,
+        "reasons": {}
+      },
+      "basket_cheese_butter|dev": {
+        "candidates": 24,
+        "valid": 24,
+        "reasons": {}
+      },
+      "stove|train": {
+        "candidates": 36,
+        "valid": 36,
+        "reasons": {}
+      },
+      "stove|dev": {
+        "candidates": 6,
+        "valid": 6,
+        "reasons": {}
+      },
+      "bowl_drawer_close|train": {
+        "candidates": 36,
+        "valid": 36,
+        "reasons": {}
+      },
+      "bowl_drawer_close|dev": {
+        "candidates": 12,
+        "valid": 12,
+        "reasons": {}
+      },
+      "dual_mugs|train": {
+        "candidates": 6,
+        "valid": 6,
+        "reasons": {}
+      },
+      "dual_mugs|dev": {
+        "candidates": 0,
+        "valid": 0,
+        "reasons": {}
+      },
+      "mug_pudding|train": {
+        "candidates": 3,
+        "valid": 3,
+        "reasons": {}
+      },
+      "mug_pudding|dev": {
+        "candidates": 9,
+        "valid": 9,
+        "reasons": {}
+      },
+      "basket_soup_cheese|train": {
+        "candidates": 39,
+        "valid": 39,
+        "reasons": {}
+      },
+      "basket_soup_cheese|dev": {
+        "candidates": 9,
+        "valid": 9,
+        "reasons": {}
+      },
+      "two_pots|train": {
+        "candidates": 24,
+        "valid": 24,
+        "reasons": {}
+      },
+      "two_pots|dev": {
+        "candidates": 6,
+        "valid": 6,
+        "reasons": {}
+      },
+      "mug_microwave_close|train": {
+        "candidates": 15,
+        "valid": 15,
+        "reasons": {}
+      },
+      "mug_microwave_close|dev": {
+        "candidates": 6,
+        "valid": 6,
+        "reasons": {}
+      }
+    }
+  },
+  "labels": {
+    "available": 78998,
+    "missing": 51019
+  },
+  "index_sources_identity": "b85875658da033a144d6be1fb0da4726edc20033d4f3b8cf3ed7dfc4a18d377c",
+  "index_report_identity": "64a2d4923dda271ffeb2a67f080c81c40bbdb277bae6351328a779791e1abdaf",
+  "actual_attempts": {
+    "normal_attempts": 60,
+    "ten_attempts": 99
+  },
+  "new_qualified_by_task": {
+    "stove": {
+      "ten_train": 36,
+      "ten_dev": 6,
+      "normal": 15
+    },
+    "mug_pudding": {
+      "ten_train": 3,
+      "ten_dev": 9,
+      "normal": 4
+    },
+    "two_pots": {
+      "ten_train": 24,
+      "ten_dev": 6,
+      "normal": 11
+    }
+  },
+  "interpretation_limit": "White-mug training covers one original parent with 3 variants, not balanced or sufficient coverage; no model SR claim. Raw observations remain unlabeled by original contract.",
+  "downloaded_existing_files_sha256": {
+    "preparation_report.json": {
+      "sha256": "2cd16fbe29273caffbd19e8194816d026cc6560769b086681b35f4084deb22ac",
+      "bytes": 1009
+    },
+    "generated/attempt_ledger.json": {
+      "sha256": "844904f921b765403b2393c4ddb1e68042dd7dcdc89a40bb1205b033f8d3a951",
+      "bytes": 38978
+    },
+    "merged-export/report.json": {
+      "sha256": "0cbe391b9f692fe6b657f2ef4cb1b63d6a77a66baa9c91ead2c492440d1ee510",
+      "bytes": 38253
+    },
+    "indices/retention/report.json": {
+      "sha256": "414832366f9a9407945d62faf6cb15319f4696958f051be619d84a7f71b4b6cd",
+      "bytes": 27142
+    },
+    "indices/task_control/report.json": {
+      "sha256": "c7593d261717b2ab42fdeb0fb12afb3c5474de2554a5b0770c9b69e38e47da89",
+      "bytes": 28287
+    },
+    "indices/task_control/identity.json": {
+      "sha256": "6b7c2e5b2d66304c03071eb9e11dd0fed330399d1ad6b25aec8e19af905dbaf3",
+      "bytes": 223
+    }
+  },
+  "no_remaining_preparation_process": true,
+  "gpu_snapshot": {
+    "name": "NVIDIA A100-SXM4-80GB",
+    "used_MiB": 1,
+    "total_MiB": 81920,
+    "utilization_percent": 0,
+    "scope": "read-time snapshot only"
+  },
+  "training_dirs_exist": false,
+  "new_validation_or_label_job_started": false,
+  "real_jobs_started_by_codex": false,
+  "deletions": []
+}
