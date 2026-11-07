@@ -1,0 +1,48 @@
+{
+  "format": "task039-parallel-launcher-handoff-v1",
+  "date": "2026-11-07",
+  "user_authorization": "One command for both arms; automatic serial handoff or concurrent training explicitly allowed; provide time estimate.",
+  "selected_mode": "two_independent_processes_on_gpu0",
+  "gpu_snapshot": {
+    "name": "NVIDIA A100-SXM4-80GB",
+    "total_MiB": 81920,
+    "used_MiB": 1,
+    "utilization_percent": 0,
+    "scope": "Read-time snapshot, not a future reservation."
+  },
+  "historical_task038": {
+    "c0_elapsed_seconds": 12574.546044249088,
+    "c1_elapsed_seconds": 12963.764288600534,
+    "c0_cuda_peak_allocated_bytes": 16387686912,
+    "c1_cuda_peak_allocated_bytes": 16387683328,
+    "memory_limit": "PyTorch allocated peaks do not include all CUDA context/cache memory.",
+    "serial_training_body_hours": 7.094,
+    "startup_and_input_validation_included": false
+  },
+  "parallel_estimate_hours": [5, 8],
+  "estimate_limit": "Heuristic only. One GPU shares compute; no measured throughput comparison or guarantee of speedup/half-time. Possible benefit is filling CPU/I/O gaps.",
+  "script_repository_path": "docs/experiment_plans/scripts/task039_train_both_parallel.sh",
+  "script_server_path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task039-113ded21/train_both_parallel.sh",
+  "script_sha256": "d5761f4b6aa5802b1602b755928916d77db9e9b36eab9b1eca4e91581222ef0a",
+  "checks": {
+    "bash_syntax_passed": true,
+    "uploaded_script_sha_match": true,
+    "existing_training_outputs_before_handoff": false,
+    "launch_marker_created_by_codex": false,
+    "script_executed_by_codex": false,
+    "real_model_loaded": false,
+    "performance_mvp_started": false
+  },
+  "runtime_guards": [
+    "Use the already-complete preparation report; no new input scan beyond original trainers.",
+    "Reject existing C0/C1 outputs and atomically reserve one launcher directory before model load.",
+    "Separate processes, logs, output/checkpoints and original budgets; wait for both and retain exit statuses.",
+    "No automatic retries, budget refunds, evaluation or termination of the other arm."
+  ],
+  "model_data_loss_seed_or_budget_changed": false,
+  "updates_per_arm": 1000,
+  "reference_budget_total": 18048,
+  "student_budget_total": 49120,
+  "real_jobs_started_by_codex": false,
+  "deletions": []
+}

@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-07：用户要求一键两组，已准备并行启动器，未代跑
+
+用户明确允许串行接力或并行、希望更快一次训C0/C1。Codex按文件/运行命令准备职责上传configs/task039-113ded21/train_both_parallel.sh；只bash语法检查与上传SHA核对，没有执行。A10080GB仅读时空闲，旧038单组PyTorch已分配峰值约16.4GB，选择两独立进程同GPU0并行、有显存余量但不保证加速或时间减半；旧各3h29/3h36、串行约7h6，并行仅按5–8h估计，不跑额外性能MVP。两个独立输出/账本/日志、各1000和原预算/seed/数据/算法保持，无自动eval/重试/退款/杀进程；新原子launch marker与已有输出拒绝防重复。新命令在原039完整命令文档顶端，用户只运行这一条，不再叠加下方旧C0/C1启动命令；两组完成才评测。039准备100%，当前未启训；旧顺序C0→C1为另一种替代，不再强制。阶段与关键文件精确commit读回SHA本地备份/manifest，无实现算法改动/merge/清理，X无修改任务。
+
 ## 2026-11-07：039真实准备完成100%，下一用户直接C0→C1
 
 039 R2接受production-001现成报告：ready_for_user_training、source_errors0、无preparation_error/残留进程，用时12657秒约3小时31分。60normal/99ten尝试未超60/360，新增30普通/84ten（63train21dev），合并旧003为305ten（224/81）、105fresh（78/27）、180raw（136/44），三池均九任务；130017行、305/305pair有效、计数78998/raw无标签51019符合原合同。新ten开炉36/6、白杯3/9、双壶24/6；白杯仅1训练父源/3变体仍少，不声称覆盖充分或保证SR，不调split/凑N追加。准备identity b7a9b864、task-control b8587565/report64a2d492；真实文件生成完成但训练/eval0，Codex本轮只读/备份既有报告，无新标签/索引/物理/模型。用户按docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md第二节直接C0，完成1000后C1，不重跑generate/index/等额外预检/MVP；原两组预算/末1000/网络loss/评分保持。GPU快照空闲仅读时状态。六小报告/账本原文件服务器到本地SHA核对，阶段与证据精确commit读回备份manifest；所有大HDF/raw/权重/失败不改删，不伪称全数据下载。数据准备closed，训练/效果open，软件R1保持、X无需返修/自动merge。下方准备0/未完成均历史。

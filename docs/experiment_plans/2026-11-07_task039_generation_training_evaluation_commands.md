@@ -1,5 +1,29 @@
 # 039：新数据生产，然后两组正式训练和评测
 
+## 最新：一条命令并行训练C0/C1（2026-11-07用户同意）
+
+用户要求一次启动两组、允许并行或自动接力。现有A10080GB空闲，038同配置单组PyTorch已分配峰值约16.4GB，有两组并行余量；实际显存还包含缓存/上下文。选择并行以利用可能的CPU/I/O空档，**单卡计算仍共享，没有实测证据保证并行更快或耗时减半**。旧C0/C1各独跑约3小时29分/3小时36分，串行训练主体合计约7小时6分；本次并行按5–8小时预留，仅估计，GPU竞争可能使每组变慢。没有另跑性能MVP。
+
+启动器已上传到新配置目录，不修改模型/损失/数据/seed/每组1000/预算，只由用户运行：
+
+```bash
+nohup bash /HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task039-113ded21/train_both_parallel.sh >> /HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-train-both-001.console.log 2>&1 & echo "Launcher PID=$!"
+```
+
+脚本自行激活既有Conda＋OFT venv、加载session，两个独立Python进程在GPU0各训一组；独立日志、checkpoint与账本。只确认现成training_ready和拒绝已有训练输出，原trainer仍负责输入校验；原子launch目录防止模型加载前重复点击。失败保留marker/账本/输出，不自动重试/退款，不启动eval或停止另一组。**不要同时再执行下方逐组C0/C1命令。**
+
+同时看两组简洁进度：
+
+```bash
+tail -n 2 -f /HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c0-train-001.console.log /HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c1-train-001.console.log
+```
+
+master日志给两PID/最终exit；每组各自completion_percent，整体训练更新进度为(C0 update＋C1 update)/2000。两组正常完成后才用下方第4节正式评测。已有输出/launch marker时整次拒绝，不因只看到Launcher PID就认为训练一定已启动。
+
+以下第1节为**已完成的数据准备历史命令，不重跑**；第2/3节保留为独立串行启动替代，不与新并行入口同时用。039实际准备完成见[R2](../../collaboration/reviews/039_round2.md)。
+
+---
+
 2026-11-07，Codex。用户已批准039预算；[R1](../../collaboration/reviews/039_round1.md)限软件/CPU-fake与隔离文件部署。**以下真实作业全部由用户启动，本次没有代跑。** 不需要额外pip、plan、真实MVP、旧六任务回放、初态重建或重测基线。
 
 ## 1. 激活既有环境，启动一次数据生产

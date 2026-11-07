@@ -1,5 +1,13 @@
 # 方法研究当前状态
 
+## 2026-11-07：一条命令并行C0/C1，启动器已部署但未执行
+
+用户要求一次训练两组、允许自动接力或并行。Codex准备并上传`configs/task039-113ded21/train_both_parallel.sh`（[源](../docs/experiment_plans/scripts/task039_train_both_parallel.sh)），原039[完整命令顶端](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)给一条nohup及两日志进度。不再要求人工等C0再启动C1；旧逐组命令仅替代方式，不能叠加运行。
+
+A10080GB仅读时空闲；038 C0/C1独跑12574.55/12963.76秒，PyTorch已分配峰值各约16.4GB，两组有并行显存余量。选择并行利用可能的CPU/I/O空档，但单卡算力共享、没有实测保证更快/减半；串行主体约7h6，并行按5–8h预留只是估计，不另跑性能MVP。脚本只bash语法及上传SHA检查，未执行。原子launch marker/已有输出拒绝防重复，两个进程各原1000/seed7/同索引与独立账本/权重/日志，失败不退款重试/杀另一组，不启动eval；模型/损失/预算未改。039准备100%，训练/eval仍0；所有真实作业由用户启动。[阶段](../docs/stage_summaries/2026-11-07_task039_parallel_training_launch_handoff.md)与[证据](evidence/039_parallel_training_launcher.json)已精确commit读回SHA本地备份，未merge/清理。下方强制串行是历史选项。
+
+---
+
 ## 2026-11-07：039数据准备100%，用户直接开始C0/C1
 
 [R2](reviews/039_round2.md)接受用户亲启production-001的现成准备完成报告，`training_ready=true`/source_errors0，无错误文件或残留进程，用时3小时31分。数据生成、合并、两索引均100%，训练/模型eval0；Codex只读/复制旧报告，不新开标签、索引、物理/模型或训练。软件R1/PR14@113ded21验收保持，X无需返修，不自动merge。[阶段](../docs/stage_summaries/2026-11-07_task039_preparation_complete_training_ready.md)、[证据](evidence/039_preparation_complete.json)。
