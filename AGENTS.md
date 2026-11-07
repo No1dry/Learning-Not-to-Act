@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-07：039三任务数据恢复获批，下一X直接实现
+
+用户本轮明确批准039方案/预算与文件准备，任务collaboration/tasks/039_teacher_release_and_coverage_recovery.md已交X直接代码/CPU-fake/新PR，不再泛审或真实MVP。Codex只读旧002/003 JSON与60 audit查明：60normal全被释放/确认等挡住、没有10生成，其中47原生完成但末released无一True、confirmation0；003未重试三任务。双壶20/20先B后A、K初末True，14原生完成都无合格canonical10，但20都存在B先完成后的可释放/空手窗口；证据SHA已上库。新教师只补真实张手/≤0.10m撤离/5帧确认（≤40新增步、H520、全T+1/T导出），双壶仅新训练episode初始化互换两同类壶freejoint位姿/速度，其他状态不动；不换A/B标签/正式bank/评分/释放阈值/V2准入，不unknown→True，无FINISH/外部VLM/推理真值。复用旧221ten/75normal与原180父split，网络/loss保持，数据构建实际计数/version/hashcache去重和可见进度，旧严格入口不放宽/旧物理不重建。预算上限60普通＋360次10尝试，原SOG10新训C0/C1各1000、reference≤18048/student≤49120、正式模型360，非成功数保证/非旧C1续训；有新增合格训练10即按实际数据继续，不凑N/另加MVP，无新增则不浪费同旧数据训练/不自动追加。所有真实生产/标签/训练/eval只用户启动，039代码/实验0%，Codex当前不部署代跑，X交付后Codex验收部署给完整命令。038 R3closed/既有C1 55.56/84.44与035036全部权重结果原始失败保持，旧三3000/036续训未批。039方案/工单/证据/阶段2026-11-07_task039_teacher_coverage_recovery_decision.md精确commit读回SHA本地备份manifest，无自动merge/删文件。下方X暂无任务是此前状态。
+
 ## 2026-11-07：038正式360完成，本轮交付closed，研究下一步未授权实验
 
 R3接受C0/C1各180正式报告交付，X无需返修、PR13不自动merge；执行/报告100%，正常退出且所有执行/清理/ledger错误null，无残留进程。C0 10/00=53.33%/83.33%，C1=55.56%/84.44%，受控差+2.22/+1.11pp，10新增4丢2、00新增6丢5；单seed/90条、小差值不证明显著/稳健或新颖性。C1是本批已测微调模型当前最高折中，但00仍低于原86.67%；相对原10 +31.11pp不能全归新pair约束，C0也有同网络/标签/独立pair监督。原plan tasks/expected/base runtime/core/reporting/环境/预算同源、各固定末1000身份匹配；仅读既有报告/plan/视频，无新评分或物理/模型/训练/标签作业。12正式文件和4例8段增益退化配对原视频已本地SHA保留，原全部服务器raw/权重/中间checkpoint/失败及035/036/038完整续训状态不改不删。C1已获10增强六任务81.67%、未获三任务3.33%，后者贡献29/40=72.50%不成功；难度/覆盖混杂，不称补数据必然有效/未见任务zero-shot。wrong_grasp均8、goal_regression5→7，不能总SR小升当全面成果保护。完整九任务表/改变episode/释放未知的旧二元口径解释在2026-11-07_task038_final_results_controlled_pair_learning.md，R3/机器证据/文档精确commit读回SHA备份与manifest更新，无清理。下一Codex提研究取舍，用户暂不新启动，X待明确任务；不自动新训/续训/加seed/生成/改评分/扩benchmark或eval，旧三3000/036续训未批。下方038 eval0/待用户启动均历史，两个run不要重开。
