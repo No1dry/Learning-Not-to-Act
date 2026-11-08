@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-08：039 C0/C1训练100%，用户直接一条正式360评测
+
+[R3](reviews/039_round3.md)接受两组连续1000/固定末1000/正常exit0、无残留训练进程，X无需返修、PR14@113ded21不自动merge。adapter SHA e9d481030c35/6d340e991860及完整training_state字节核对；同config除arm/index b8587565/base/recipe、最终采样计数一致，未追加逐步时序因果审计。reference共18048/student49120等于预算；北京时间11-07 22:42:59至11-08 03:50:46，总5h7m47s。dev10 L1 .129999882/.130077180约.06%差，非常接近而非SR/新方法有效结论，固定末1000不挑权重。
+
+29份末adapter/完整续训状态/metrics/配置/预算/实际eval配置/索引小记录已本地SHA保留，[证据](evidence/039_training_complete.json)、[阶段](../docs/stage_summaries/2026-11-08_task039_training_complete_evaluation_handoff.md)，manifest06bafa44。所有服务器中间checkpoint/039生产/旧035036038原始数据、权重、视频和失败保持，不伪称全部原数据下载。
+
+**训练/评测文件准备100%，正式模型eval0。下一用户按[完整一条命令](../docs/experiment_plans/2026-11-08_task039_dual_model_evaluation_commands.md)运行新eval_both_sequential.sh：C0完成包括正式报告且exit0后自动C1，各10/00各90共360。** 脚本只bash语法/上传SHA核对，未执行；自激活原simulation venv，模型仍原OFT worker，无需pip/plan/MVP/重建状态/重训/重测基线。原来源/core/reporting/双bridge/评分、H520/chunk8/seed7/全视频保持；run绑定真实末权重建plan，本轮没生成/冒称真实plan通过。已有run/marker拒绝防重复，错误保留且不退款重试或启后续arm。Codex只文件准备/归档，真实评测用户亲启，X无修改。305pair/白杯1训练父源3变体限制保持，不凑N。阶段关键文档精确commit读回SHA本地备份manifest，无清理。训练closed，正式SR/研究open；下方039训练0/待开训均历史。
+
+---
+
 ## 2026-11-07：一条命令并行C0/C1，启动器已部署但未执行
 
 用户要求一次训练两组、允许自动接力或并行。Codex准备并上传`configs/task039-113ded21/train_both_parallel.sh`（[源](../docs/experiment_plans/scripts/task039_train_both_parallel.sh)），原039[完整命令顶端](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)给一条nohup及两日志进度。不再要求人工等C0再启动C1；旧逐组命令仅替代方式，不能叠加运行。

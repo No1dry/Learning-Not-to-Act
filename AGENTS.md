@@ -1,5 +1,11 @@
 # 方法研究协作规则
 
+## 2026-11-08：039两组训练100%，末权重已备份，下一用户一条正式360评测
+
+039 R3接受C0/C1各连续1000/固定末1000/exit0、无残留进程。adapter e9d481030c35/6d340e991860及完整training_state字节SHA核对；同config（除arm）/index b8587565/base_lineage/recipe、最终采样计数一致，不声称逐步因果时序已独立验证。参考各9024/student24560，共18048/49120未超。并行11-07 22:42:59至11-08 03:50:46北京时间，共5h7m47s，主体各4h53。新dev10 L1 .129999882/.130077180近似相同，非SR/有效性或跨数据提升结论，不挑其他权重。29末adapter/完整续训状态/metrics配置预算/实际eval配置/索引小记录已本地SHA备份，manifest06bafa44；所有服务器中间checkpoint/039生产、035036038权重数据失败不改删。
+
+训练与评测文件准备100%，正式eval0。下一用户按docs/experiment_plans/2026-11-08_task039_dual_model_evaluation_commands.md一条nohup启动configs/task039-113ded21/eval_both_sequential.sh，自激活原simulation venv，C0正式summary并正常退出后自动C1，各10/00各90共360，全视频/原H520/chunk8/seed7/九任务来源/core/reporting/双bridge/评分保持。脚本只bash语法/上传SHA通过、未执行，失败停止后续arm不退款重试；原子marker/已有run拒绝防重复。实际末adapter配置已存在，run自己建plan，不另跑plan/MVP/来源物理/全量旧资格、重训/状态或基线。Codex本轮只读/复制/文件准备，全部真实评测仍用户启动；X无需返修、不自动merge。305pair和白杯训练1父源/3变体限制沿R2，不加补数门槛。R3/证据/阶段/命令精确commit读回SHA备份manifest，无删除；训练closed，SR/研究open。下方039未开训/0%为历史，别重开两个已完成训练run。
+
 ## 2026-11-07：用户要求一键两组，已准备并行启动器，未代跑
 
 用户明确允许串行接力或并行、希望更快一次训C0/C1。Codex按文件/运行命令准备职责上传configs/task039-113ded21/train_both_parallel.sh；只bash语法检查与上传SHA核对，没有执行。A10080GB仅读时空闲，旧038单组PyTorch已分配峰值约16.4GB，选择两独立进程同GPU0并行、有显存余量但不保证加速或时间减半；旧各3h29/3h36、串行约7h6，并行仅按5–8h估计，不跑额外性能MVP。两个独立输出/账本/日志、各1000和原预算/seed/数据/算法保持，无自动eval/重试/退款/杀进程；新原子launch marker与已有输出拒绝防重复。新命令在原039完整命令文档顶端，用户只运行这一条，不再叠加下方旧C0/C1启动命令；两组完成才评测。039准备100%，当前未启训；旧顺序C0→C1为另一种替代，不再强制。阶段与关键文件精确commit读回SHA本地备份/manifest，无实现算法改动/merge/清理，X无修改任务。
