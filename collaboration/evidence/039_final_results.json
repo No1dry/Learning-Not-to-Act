@@ -1,0 +1,1495 @@
+{
+  "format": "task039-completed-formal-results-comparison-v1",
+  "preservation_manifest_sha256": "8c3806df5e37128908c26089e1a2d2dc6e644a93819e756ab9cd665cac9282c5",
+  "formal_and_control_files_locally_preserved": 14,
+  "paired_original_videos_locally_preserved": 8,
+  "videos_watched_or_rescored": false,
+  "old_and_new_weight_archives_preserved": true,
+  "deletions": [],
+  "complete": true,
+  "model_execution_percent": 100,
+  "formal_reporting_percent": 100,
+  "episodes_total": 360,
+  "scores": {
+    "038": {
+      "c0": {
+        "10": {
+          "numerator": 48,
+          "denominator": 90,
+          "percent": 53.333333333333336
+        },
+        "00": {
+          "numerator": 75,
+          "denominator": 90,
+          "percent": 83.33333333333333
+        }
+      },
+      "c1": {
+        "10": {
+          "numerator": 50,
+          "denominator": 90,
+          "percent": 55.55555555555556
+        },
+        "00": {
+          "numerator": 76,
+          "denominator": 90,
+          "percent": 84.44444444444444
+        }
+      }
+    },
+    "039": {
+      "c0": {
+        "10": {
+          "numerator": 51,
+          "denominator": 90,
+          "percent": 56.666666666666664
+        },
+        "00": {
+          "numerator": 72,
+          "denominator": 90,
+          "percent": 80.0
+        }
+      },
+      "c1": {
+        "10": {
+          "numerator": 53,
+          "denominator": 90,
+          "percent": 58.888888888888886
+        },
+        "00": {
+          "numerator": 77,
+          "denominator": 90,
+          "percent": 85.55555555555556
+        }
+      }
+    }
+  },
+  "run_metadata": {
+    "c0": {
+      "arm": "c0",
+      "model_completed": 180,
+      "formal_complete": true,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null
+    },
+    "c1": {
+      "arm": "c1",
+      "model_completed": 180,
+      "formal_complete": true,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null
+    }
+  },
+  "adapter_sha256": {
+    "c0": "e9d481030c35011498c9172db9c22c335b5cf4c52397b72309f9208a6fcb4060",
+    "c1": "6d340e99186090bab6739f173ecb118d03eb1bf574ae96d5f1c34241b02d644e"
+  },
+  "source_plan_signatures": {
+    "038": {
+      "c0": {
+        "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+        "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+        "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+        "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+        "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+        "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+        "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+        "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+        "policy_factory": "d8d857b51231e2f7a8932c38267680ae21b4563309025c7cbe29011de84095ca",
+        "source_config": "b67ca7c5f75aa67e06bd4e0bd6cf2fcacb71b1ecef392aca5a72b40b9e0d0070"
+      },
+      "c1": {
+        "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+        "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+        "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+        "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+        "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+        "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+        "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+        "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+        "policy_factory": "d8d857b51231e2f7a8932c38267680ae21b4563309025c7cbe29011de84095ca",
+        "source_config": "b67ca7c5f75aa67e06bd4e0bd6cf2fcacb71b1ecef392aca5a72b40b9e0d0070"
+      }
+    },
+    "039": {
+      "c0": {
+        "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+        "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+        "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+        "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+        "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+        "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+        "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+        "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+        "policy_factory": "d8d857b51231e2f7a8932c38267680ae21b4563309025c7cbe29011de84095ca",
+        "source_config": "b67ca7c5f75aa67e06bd4e0bd6cf2fcacb71b1ecef392aca5a72b40b9e0d0070"
+      },
+      "c1": {
+        "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+        "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+        "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+        "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+        "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+        "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+        "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+        "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+        "policy_factory": "d8d857b51231e2f7a8932c38267680ae21b4563309025c7cbe29011de84095ca",
+        "source_config": "b67ca7c5f75aa67e06bd4e0bd6cf2fcacb71b1ecef392aca5a72b40b9e0d0070"
+      }
+    }
+  },
+  "sources_protocols_runtime_scoring_and_population_matched": true,
+  "paired_039_c1_vs_c0": {
+    "10": {
+      "counts": {
+        "both_success": 48,
+        "gained": 5,
+        "lost": 3,
+        "both_unsuccessful": 34
+      },
+      "episode_ids": {
+        "both_success": [
+          "basket_cheese_butter_s001_10",
+          "basket_cheese_butter_s003_10",
+          "basket_cheese_butter_s005_10",
+          "basket_cheese_butter_s008_10",
+          "basket_s001_10",
+          "basket_s002_10",
+          "basket_s003_10",
+          "basket_s004_10",
+          "basket_s005_10",
+          "basket_s006_10",
+          "basket_s008_10",
+          "basket_soup_cheese_s000_10",
+          "basket_soup_cheese_s001_10",
+          "basket_soup_cheese_s003_10",
+          "basket_soup_cheese_s004_10",
+          "basket_soup_cheese_s005_10",
+          "basket_soup_cheese_s006_10",
+          "basket_soup_cheese_s007_10",
+          "basket_soup_cheese_s008_10",
+          "basket_soup_cheese_s009_10",
+          "bowl_drawer_close_s000_10",
+          "bowl_drawer_close_s001_10",
+          "bowl_drawer_close_s002_10",
+          "bowl_drawer_close_s003_10",
+          "bowl_drawer_close_s004_10",
+          "bowl_drawer_close_s005_10",
+          "bowl_drawer_close_s006_10",
+          "bowl_drawer_close_s007_10",
+          "bowl_drawer_close_s008_10",
+          "bowl_drawer_close_s009_10",
+          "dual_mugs_s000_10",
+          "dual_mugs_s003_10",
+          "dual_mugs_s005_10",
+          "dual_mugs_s007_10",
+          "dual_mugs_s008_10",
+          "dual_mugs_s009_10",
+          "mug_microwave_close_s000_10",
+          "mug_microwave_close_s001_10",
+          "mug_microwave_close_s002_10",
+          "mug_microwave_close_s003_10",
+          "mug_microwave_close_s004_10",
+          "mug_microwave_close_s005_10",
+          "mug_microwave_close_s006_10",
+          "mug_microwave_close_s008_10",
+          "stove_s001_10",
+          "stove_s007_10",
+          "stove_s008_10",
+          "two_pots_s005_10"
+        ],
+        "gained": [
+          "basket_cheese_butter_s004_10",
+          "basket_soup_cheese_s002_10",
+          "dual_mugs_s002_10",
+          "mug_microwave_close_s007_10",
+          "two_pots_s006_10"
+        ],
+        "lost": [
+          "basket_s000_10",
+          "dual_mugs_s004_10",
+          "mug_microwave_close_s009_10"
+        ],
+        "both_unsuccessful": [
+          "basket_cheese_butter_s000_10",
+          "basket_cheese_butter_s002_10",
+          "basket_cheese_butter_s006_10",
+          "basket_cheese_butter_s007_10",
+          "basket_cheese_butter_s009_10",
+          "basket_s007_10",
+          "basket_s009_10",
+          "dual_mugs_s001_10",
+          "dual_mugs_s006_10",
+          "mug_pudding_s000_10",
+          "mug_pudding_s001_10",
+          "mug_pudding_s002_10",
+          "mug_pudding_s003_10",
+          "mug_pudding_s004_10",
+          "mug_pudding_s005_10",
+          "mug_pudding_s006_10",
+          "mug_pudding_s007_10",
+          "mug_pudding_s008_10",
+          "mug_pudding_s009_10",
+          "stove_s000_10",
+          "stove_s002_10",
+          "stove_s003_10",
+          "stove_s004_10",
+          "stove_s005_10",
+          "stove_s006_10",
+          "stove_s009_10",
+          "two_pots_s000_10",
+          "two_pots_s001_10",
+          "two_pots_s002_10",
+          "two_pots_s003_10",
+          "two_pots_s004_10",
+          "two_pots_s007_10",
+          "two_pots_s008_10",
+          "two_pots_s009_10"
+        ]
+      },
+      "delta_percentage_points": 2.2222222222222223
+    },
+    "00": {
+      "counts": {
+        "both_success": 71,
+        "gained": 6,
+        "lost": 1,
+        "both_unsuccessful": 12
+      },
+      "episode_ids": {
+        "both_success": [
+          "basket_cheese_butter_s000_00",
+          "basket_cheese_butter_s001_00",
+          "basket_cheese_butter_s002_00",
+          "basket_cheese_butter_s003_00",
+          "basket_cheese_butter_s004_00",
+          "basket_cheese_butter_s006_00",
+          "basket_cheese_butter_s007_00",
+          "basket_cheese_butter_s009_00",
+          "basket_s000_00",
+          "basket_s002_00",
+          "basket_s003_00",
+          "basket_s005_00",
+          "basket_s007_00",
+          "basket_soup_cheese_s001_00",
+          "basket_soup_cheese_s002_00",
+          "basket_soup_cheese_s003_00",
+          "basket_soup_cheese_s005_00",
+          "basket_soup_cheese_s007_00",
+          "bowl_drawer_close_s000_00",
+          "bowl_drawer_close_s001_00",
+          "bowl_drawer_close_s002_00",
+          "bowl_drawer_close_s003_00",
+          "bowl_drawer_close_s004_00",
+          "bowl_drawer_close_s005_00",
+          "bowl_drawer_close_s006_00",
+          "bowl_drawer_close_s007_00",
+          "bowl_drawer_close_s008_00",
+          "bowl_drawer_close_s009_00",
+          "dual_mugs_s000_00",
+          "dual_mugs_s001_00",
+          "dual_mugs_s002_00",
+          "dual_mugs_s003_00",
+          "dual_mugs_s005_00",
+          "dual_mugs_s006_00",
+          "dual_mugs_s007_00",
+          "dual_mugs_s008_00",
+          "dual_mugs_s009_00",
+          "mug_microwave_close_s000_00",
+          "mug_microwave_close_s002_00",
+          "mug_microwave_close_s003_00",
+          "mug_microwave_close_s004_00",
+          "mug_microwave_close_s005_00",
+          "mug_microwave_close_s006_00",
+          "mug_microwave_close_s007_00",
+          "mug_microwave_close_s008_00",
+          "mug_microwave_close_s009_00",
+          "mug_pudding_s000_00",
+          "mug_pudding_s001_00",
+          "mug_pudding_s002_00",
+          "mug_pudding_s003_00",
+          "mug_pudding_s005_00",
+          "mug_pudding_s007_00",
+          "mug_pudding_s008_00",
+          "mug_pudding_s009_00",
+          "stove_s000_00",
+          "stove_s001_00",
+          "stove_s003_00",
+          "stove_s004_00",
+          "stove_s005_00",
+          "stove_s006_00",
+          "stove_s007_00",
+          "stove_s008_00",
+          "stove_s009_00",
+          "two_pots_s001_00",
+          "two_pots_s002_00",
+          "two_pots_s003_00",
+          "two_pots_s005_00",
+          "two_pots_s006_00",
+          "two_pots_s007_00",
+          "two_pots_s008_00",
+          "two_pots_s009_00"
+        ],
+        "gained": [
+          "basket_s008_00",
+          "mug_pudding_s004_00",
+          "mug_pudding_s006_00",
+          "stove_s002_00",
+          "two_pots_s000_00",
+          "two_pots_s004_00"
+        ],
+        "lost": [
+          "dual_mugs_s004_00"
+        ],
+        "both_unsuccessful": [
+          "basket_cheese_butter_s005_00",
+          "basket_cheese_butter_s008_00",
+          "basket_s001_00",
+          "basket_s004_00",
+          "basket_s006_00",
+          "basket_s009_00",
+          "basket_soup_cheese_s000_00",
+          "basket_soup_cheese_s004_00",
+          "basket_soup_cheese_s006_00",
+          "basket_soup_cheese_s008_00",
+          "basket_soup_cheese_s009_00",
+          "mug_microwave_close_s001_00"
+        ]
+      },
+      "delta_percentage_points": 5.555555555555555
+    }
+  },
+  "paired_039_vs_038": {
+    "c0": {
+      "10": {
+        "counts": {
+          "both_success": 44,
+          "gained": 7,
+          "lost": 4,
+          "both_unsuccessful": 35
+        },
+        "episode_ids": {
+          "both_success": [
+            "basket_cheese_butter_s001_10",
+            "basket_cheese_butter_s003_10",
+            "basket_cheese_butter_s005_10",
+            "basket_cheese_butter_s008_10",
+            "basket_s000_10",
+            "basket_s001_10",
+            "basket_s002_10",
+            "basket_s003_10",
+            "basket_s004_10",
+            "basket_s005_10",
+            "basket_s006_10",
+            "basket_s008_10",
+            "basket_soup_cheese_s000_10",
+            "basket_soup_cheese_s003_10",
+            "basket_soup_cheese_s004_10",
+            "basket_soup_cheese_s005_10",
+            "basket_soup_cheese_s006_10",
+            "basket_soup_cheese_s007_10",
+            "basket_soup_cheese_s008_10",
+            "basket_soup_cheese_s009_10",
+            "bowl_drawer_close_s000_10",
+            "bowl_drawer_close_s001_10",
+            "bowl_drawer_close_s002_10",
+            "bowl_drawer_close_s003_10",
+            "bowl_drawer_close_s004_10",
+            "bowl_drawer_close_s005_10",
+            "bowl_drawer_close_s006_10",
+            "bowl_drawer_close_s007_10",
+            "bowl_drawer_close_s008_10",
+            "bowl_drawer_close_s009_10",
+            "dual_mugs_s000_10",
+            "dual_mugs_s003_10",
+            "dual_mugs_s004_10",
+            "dual_mugs_s005_10",
+            "dual_mugs_s007_10",
+            "dual_mugs_s008_10",
+            "dual_mugs_s009_10",
+            "mug_microwave_close_s000_10",
+            "mug_microwave_close_s001_10",
+            "mug_microwave_close_s002_10",
+            "mug_microwave_close_s005_10",
+            "mug_microwave_close_s006_10",
+            "mug_microwave_close_s008_10",
+            "mug_microwave_close_s009_10"
+          ],
+          "gained": [
+            "basket_soup_cheese_s001_10",
+            "mug_microwave_close_s003_10",
+            "mug_microwave_close_s004_10",
+            "stove_s001_10",
+            "stove_s007_10",
+            "stove_s008_10",
+            "two_pots_s005_10"
+          ],
+          "lost": [
+            "basket_soup_cheese_s002_10",
+            "mug_microwave_close_s007_10",
+            "mug_pudding_s002_10",
+            "mug_pudding_s005_10"
+          ],
+          "both_unsuccessful": [
+            "basket_cheese_butter_s000_10",
+            "basket_cheese_butter_s002_10",
+            "basket_cheese_butter_s004_10",
+            "basket_cheese_butter_s006_10",
+            "basket_cheese_butter_s007_10",
+            "basket_cheese_butter_s009_10",
+            "basket_s007_10",
+            "basket_s009_10",
+            "dual_mugs_s001_10",
+            "dual_mugs_s002_10",
+            "dual_mugs_s006_10",
+            "mug_pudding_s000_10",
+            "mug_pudding_s001_10",
+            "mug_pudding_s003_10",
+            "mug_pudding_s004_10",
+            "mug_pudding_s006_10",
+            "mug_pudding_s007_10",
+            "mug_pudding_s008_10",
+            "mug_pudding_s009_10",
+            "stove_s000_10",
+            "stove_s002_10",
+            "stove_s003_10",
+            "stove_s004_10",
+            "stove_s005_10",
+            "stove_s006_10",
+            "stove_s009_10",
+            "two_pots_s000_10",
+            "two_pots_s001_10",
+            "two_pots_s002_10",
+            "two_pots_s003_10",
+            "two_pots_s004_10",
+            "two_pots_s006_10",
+            "two_pots_s007_10",
+            "two_pots_s008_10",
+            "two_pots_s009_10"
+          ]
+        },
+        "delta_percentage_points": 3.3333333333333335
+      },
+      "00": {
+        "counts": {
+          "both_success": 67,
+          "gained": 5,
+          "lost": 8,
+          "both_unsuccessful": 10
+        },
+        "episode_ids": {
+          "both_success": [
+            "basket_cheese_butter_s000_00",
+            "basket_cheese_butter_s001_00",
+            "basket_cheese_butter_s002_00",
+            "basket_cheese_butter_s003_00",
+            "basket_cheese_butter_s004_00",
+            "basket_cheese_butter_s006_00",
+            "basket_cheese_butter_s007_00",
+            "basket_cheese_butter_s009_00",
+            "basket_s000_00",
+            "basket_s002_00",
+            "basket_s003_00",
+            "basket_s005_00",
+            "basket_s007_00",
+            "basket_soup_cheese_s001_00",
+            "basket_soup_cheese_s002_00",
+            "basket_soup_cheese_s003_00",
+            "basket_soup_cheese_s005_00",
+            "basket_soup_cheese_s007_00",
+            "bowl_drawer_close_s000_00",
+            "bowl_drawer_close_s001_00",
+            "bowl_drawer_close_s003_00",
+            "bowl_drawer_close_s004_00",
+            "bowl_drawer_close_s005_00",
+            "bowl_drawer_close_s006_00",
+            "bowl_drawer_close_s007_00",
+            "bowl_drawer_close_s008_00",
+            "bowl_drawer_close_s009_00",
+            "dual_mugs_s000_00",
+            "dual_mugs_s001_00",
+            "dual_mugs_s002_00",
+            "dual_mugs_s003_00",
+            "dual_mugs_s004_00",
+            "dual_mugs_s005_00",
+            "dual_mugs_s006_00",
+            "dual_mugs_s007_00",
+            "dual_mugs_s008_00",
+            "dual_mugs_s009_00",
+            "mug_microwave_close_s000_00",
+            "mug_microwave_close_s002_00",
+            "mug_microwave_close_s003_00",
+            "mug_microwave_close_s004_00",
+            "mug_microwave_close_s005_00",
+            "mug_microwave_close_s007_00",
+            "mug_microwave_close_s008_00",
+            "mug_microwave_close_s009_00",
+            "mug_pudding_s000_00",
+            "mug_pudding_s001_00",
+            "mug_pudding_s002_00",
+            "mug_pudding_s003_00",
+            "mug_pudding_s005_00",
+            "mug_pudding_s007_00",
+            "mug_pudding_s008_00",
+            "mug_pudding_s009_00",
+            "stove_s000_00",
+            "stove_s001_00",
+            "stove_s003_00",
+            "stove_s004_00",
+            "stove_s005_00",
+            "stove_s007_00",
+            "stove_s008_00",
+            "stove_s009_00",
+            "two_pots_s002_00",
+            "two_pots_s003_00",
+            "two_pots_s005_00",
+            "two_pots_s006_00",
+            "two_pots_s007_00",
+            "two_pots_s009_00"
+          ],
+          "gained": [
+            "bowl_drawer_close_s002_00",
+            "mug_microwave_close_s006_00",
+            "stove_s006_00",
+            "two_pots_s001_00",
+            "two_pots_s008_00"
+          ],
+          "lost": [
+            "basket_cheese_butter_s008_00",
+            "basket_s008_00",
+            "mug_microwave_close_s001_00",
+            "mug_pudding_s004_00",
+            "mug_pudding_s006_00",
+            "stove_s002_00",
+            "two_pots_s000_00",
+            "two_pots_s004_00"
+          ],
+          "both_unsuccessful": [
+            "basket_cheese_butter_s005_00",
+            "basket_s001_00",
+            "basket_s004_00",
+            "basket_s006_00",
+            "basket_s009_00",
+            "basket_soup_cheese_s000_00",
+            "basket_soup_cheese_s004_00",
+            "basket_soup_cheese_s006_00",
+            "basket_soup_cheese_s008_00",
+            "basket_soup_cheese_s009_00"
+          ]
+        },
+        "delta_percentage_points": -3.3333333333333335
+      }
+    },
+    "c1": {
+      "10": {
+        "counts": {
+          "both_success": 46,
+          "gained": 7,
+          "lost": 4,
+          "both_unsuccessful": 33
+        },
+        "episode_ids": {
+          "both_success": [
+            "basket_cheese_butter_s001_10",
+            "basket_cheese_butter_s003_10",
+            "basket_cheese_butter_s005_10",
+            "basket_cheese_butter_s008_10",
+            "basket_s001_10",
+            "basket_s002_10",
+            "basket_s003_10",
+            "basket_s004_10",
+            "basket_s005_10",
+            "basket_s006_10",
+            "basket_s008_10",
+            "basket_soup_cheese_s000_10",
+            "basket_soup_cheese_s001_10",
+            "basket_soup_cheese_s002_10",
+            "basket_soup_cheese_s003_10",
+            "basket_soup_cheese_s004_10",
+            "basket_soup_cheese_s005_10",
+            "basket_soup_cheese_s006_10",
+            "basket_soup_cheese_s007_10",
+            "basket_soup_cheese_s008_10",
+            "basket_soup_cheese_s009_10",
+            "bowl_drawer_close_s000_10",
+            "bowl_drawer_close_s001_10",
+            "bowl_drawer_close_s002_10",
+            "bowl_drawer_close_s003_10",
+            "bowl_drawer_close_s004_10",
+            "bowl_drawer_close_s005_10",
+            "bowl_drawer_close_s006_10",
+            "bowl_drawer_close_s007_10",
+            "bowl_drawer_close_s008_10",
+            "bowl_drawer_close_s009_10",
+            "dual_mugs_s000_10",
+            "dual_mugs_s003_10",
+            "dual_mugs_s005_10",
+            "dual_mugs_s007_10",
+            "dual_mugs_s008_10",
+            "dual_mugs_s009_10",
+            "mug_microwave_close_s000_10",
+            "mug_microwave_close_s001_10",
+            "mug_microwave_close_s002_10",
+            "mug_microwave_close_s003_10",
+            "mug_microwave_close_s004_10",
+            "mug_microwave_close_s005_10",
+            "mug_microwave_close_s006_10",
+            "mug_microwave_close_s007_10",
+            "mug_microwave_close_s008_10"
+          ],
+          "gained": [
+            "basket_cheese_butter_s004_10",
+            "dual_mugs_s002_10",
+            "stove_s001_10",
+            "stove_s007_10",
+            "stove_s008_10",
+            "two_pots_s005_10",
+            "two_pots_s006_10"
+          ],
+          "lost": [
+            "basket_s000_10",
+            "dual_mugs_s004_10",
+            "mug_microwave_close_s009_10",
+            "mug_pudding_s006_10"
+          ],
+          "both_unsuccessful": [
+            "basket_cheese_butter_s000_10",
+            "basket_cheese_butter_s002_10",
+            "basket_cheese_butter_s006_10",
+            "basket_cheese_butter_s007_10",
+            "basket_cheese_butter_s009_10",
+            "basket_s007_10",
+            "basket_s009_10",
+            "dual_mugs_s001_10",
+            "dual_mugs_s006_10",
+            "mug_pudding_s000_10",
+            "mug_pudding_s001_10",
+            "mug_pudding_s002_10",
+            "mug_pudding_s003_10",
+            "mug_pudding_s004_10",
+            "mug_pudding_s005_10",
+            "mug_pudding_s007_10",
+            "mug_pudding_s008_10",
+            "mug_pudding_s009_10",
+            "stove_s000_10",
+            "stove_s002_10",
+            "stove_s003_10",
+            "stove_s004_10",
+            "stove_s005_10",
+            "stove_s006_10",
+            "stove_s009_10",
+            "two_pots_s000_10",
+            "two_pots_s001_10",
+            "two_pots_s002_10",
+            "two_pots_s003_10",
+            "two_pots_s004_10",
+            "two_pots_s007_10",
+            "two_pots_s008_10",
+            "two_pots_s009_10"
+          ]
+        },
+        "delta_percentage_points": 3.3333333333333335
+      },
+      "00": {
+        "counts": {
+          "both_success": 71,
+          "gained": 6,
+          "lost": 5,
+          "both_unsuccessful": 8
+        },
+        "episode_ids": {
+          "both_success": [
+            "basket_cheese_butter_s000_00",
+            "basket_cheese_butter_s002_00",
+            "basket_cheese_butter_s003_00",
+            "basket_cheese_butter_s004_00",
+            "basket_cheese_butter_s006_00",
+            "basket_cheese_butter_s007_00",
+            "basket_cheese_butter_s009_00",
+            "basket_s000_00",
+            "basket_s002_00",
+            "basket_s003_00",
+            "basket_s005_00",
+            "basket_s007_00",
+            "basket_s008_00",
+            "basket_soup_cheese_s001_00",
+            "basket_soup_cheese_s002_00",
+            "basket_soup_cheese_s003_00",
+            "basket_soup_cheese_s005_00",
+            "basket_soup_cheese_s007_00",
+            "bowl_drawer_close_s000_00",
+            "bowl_drawer_close_s001_00",
+            "bowl_drawer_close_s002_00",
+            "bowl_drawer_close_s003_00",
+            "bowl_drawer_close_s004_00",
+            "bowl_drawer_close_s005_00",
+            "bowl_drawer_close_s006_00",
+            "bowl_drawer_close_s007_00",
+            "bowl_drawer_close_s008_00",
+            "bowl_drawer_close_s009_00",
+            "dual_mugs_s000_00",
+            "dual_mugs_s002_00",
+            "dual_mugs_s003_00",
+            "dual_mugs_s005_00",
+            "dual_mugs_s006_00",
+            "dual_mugs_s007_00",
+            "dual_mugs_s008_00",
+            "dual_mugs_s009_00",
+            "mug_microwave_close_s000_00",
+            "mug_microwave_close_s002_00",
+            "mug_microwave_close_s003_00",
+            "mug_microwave_close_s004_00",
+            "mug_microwave_close_s005_00",
+            "mug_microwave_close_s006_00",
+            "mug_microwave_close_s007_00",
+            "mug_microwave_close_s008_00",
+            "mug_microwave_close_s009_00",
+            "mug_pudding_s000_00",
+            "mug_pudding_s001_00",
+            "mug_pudding_s002_00",
+            "mug_pudding_s003_00",
+            "mug_pudding_s004_00",
+            "mug_pudding_s005_00",
+            "mug_pudding_s007_00",
+            "mug_pudding_s008_00",
+            "stove_s000_00",
+            "stove_s001_00",
+            "stove_s003_00",
+            "stove_s004_00",
+            "stove_s005_00",
+            "stove_s006_00",
+            "stove_s007_00",
+            "stove_s008_00",
+            "stove_s009_00",
+            "two_pots_s000_00",
+            "two_pots_s002_00",
+            "two_pots_s003_00",
+            "two_pots_s004_00",
+            "two_pots_s005_00",
+            "two_pots_s006_00",
+            "two_pots_s007_00",
+            "two_pots_s008_00",
+            "two_pots_s009_00"
+          ],
+          "gained": [
+            "basket_cheese_butter_s001_00",
+            "dual_mugs_s001_00",
+            "mug_pudding_s006_00",
+            "mug_pudding_s009_00",
+            "stove_s002_00",
+            "two_pots_s001_00"
+          ],
+          "lost": [
+            "basket_cheese_butter_s008_00",
+            "basket_s001_00",
+            "basket_soup_cheese_s006_00",
+            "dual_mugs_s004_00",
+            "mug_microwave_close_s001_00"
+          ],
+          "both_unsuccessful": [
+            "basket_cheese_butter_s005_00",
+            "basket_s004_00",
+            "basket_s006_00",
+            "basket_s009_00",
+            "basket_soup_cheese_s000_00",
+            "basket_soup_cheese_s004_00",
+            "basket_soup_cheese_s008_00",
+            "basket_soup_cheese_s009_00"
+          ]
+        },
+        "delta_percentage_points": 1.1111111111111112
+      }
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "basket",
+      "label": "汤罐＋番茄酱入篮",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 80,
+            "c1": 80
+          },
+          "039": {
+            "c0": 80,
+            "c1": 70
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 60,
+            "c1": 70
+          },
+          "039": {
+            "c0": 50,
+            "c1": 60
+          }
+        }
+      }
+    },
+    {
+      "task_id": "basket_cheese_butter",
+      "label": "奶酪＋黄油入篮",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 40,
+            "c1": 40
+          },
+          "039": {
+            "c0": 40,
+            "c1": 50
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 90,
+            "c1": 80
+          },
+          "039": {
+            "c0": 80,
+            "c1": 80
+          }
+        }
+      }
+    },
+    {
+      "task_id": "stove",
+      "label": "开炉并放摩卡壶",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 0,
+            "c1": 0
+          },
+          "039": {
+            "c0": 30,
+            "c1": 30
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 90,
+            "c1": 90
+          },
+          "039": {
+            "c0": 90,
+            "c1": 100
+          }
+        }
+      }
+    },
+    {
+      "task_id": "bowl_drawer_close",
+      "label": "黑碗入抽屉并关屉",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 100,
+            "c1": 100
+          },
+          "039": {
+            "c0": 100,
+            "c1": 100
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 90,
+            "c1": 100
+          },
+          "039": {
+            "c0": 100,
+            "c1": 100
+          }
+        }
+      }
+    },
+    {
+      "task_id": "dual_mugs",
+      "label": "两杯分别放左右碟",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 70,
+            "c1": 70
+          },
+          "039": {
+            "c0": 70,
+            "c1": 70
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 100,
+            "c1": 90
+          },
+          "039": {
+            "c0": 100,
+            "c1": 90
+          }
+        }
+      }
+    },
+    {
+      "task_id": "mug_pudding",
+      "label": "白杯上盘、布丁放盘右",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 20,
+            "c1": 10
+          },
+          "039": {
+            "c0": 0,
+            "c1": 0
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 100,
+            "c1": 80
+          },
+          "039": {
+            "c0": 80,
+            "c1": 100
+          }
+        }
+      }
+    },
+    {
+      "task_id": "basket_soup_cheese",
+      "label": "汤罐＋奶酪入篮",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 90,
+            "c1": 100
+          },
+          "039": {
+            "c0": 90,
+            "c1": 100
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 50,
+            "c1": 60
+          },
+          "039": {
+            "c0": 50,
+            "c1": 50
+          }
+        }
+      }
+    },
+    {
+      "task_id": "two_pots",
+      "label": "两个摩卡壶放炉上",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 0,
+            "c1": 0
+          },
+          "039": {
+            "c0": 10,
+            "c1": 20
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 80,
+            "c1": 90
+          },
+          "039": {
+            "c0": 80,
+            "c1": 100
+          }
+        }
+      }
+    },
+    {
+      "task_id": "mug_microwave_close",
+      "label": "杯子入微波炉并关门",
+      "conditions": {
+        "10": {
+          "038": {
+            "c0": 80,
+            "c1": 100
+          },
+          "039": {
+            "c0": 90,
+            "c1": 90
+          }
+        },
+        "00": {
+          "038": {
+            "c0": 90,
+            "c1": 100
+          },
+          "039": {
+            "c0": 90,
+            "c1": 90
+          }
+        }
+      }
+    }
+  ],
+  "recovered_task_slices": {
+    "038": {
+      "c0": {
+        "newly_recovered_three": {
+          "successes": 2,
+          "denominator": 30,
+          "percent": 6.666666666666667
+        },
+        "previous_six": {
+          "successes": 46,
+          "denominator": 60,
+          "percent": 76.66666666666667
+        }
+      },
+      "c1": {
+        "newly_recovered_three": {
+          "successes": 1,
+          "denominator": 30,
+          "percent": 3.3333333333333335
+        },
+        "previous_six": {
+          "successes": 49,
+          "denominator": 60,
+          "percent": 81.66666666666667
+        }
+      }
+    },
+    "039": {
+      "c0": {
+        "newly_recovered_three": {
+          "successes": 4,
+          "denominator": 30,
+          "percent": 13.333333333333334
+        },
+        "previous_six": {
+          "successes": 47,
+          "denominator": 60,
+          "percent": 78.33333333333333
+        }
+      },
+      "c1": {
+        "newly_recovered_three": {
+          "successes": 5,
+          "denominator": 30,
+          "percent": 16.666666666666668
+        },
+        "previous_six": {
+          "successes": 48,
+          "denominator": 60,
+          "percent": 80.0
+        }
+      }
+    }
+  },
+  "unsuccessful_diagnostics": {
+    "c0": {
+      "basket": {
+        "unsuccessful": 2,
+        "official_goals_achieved_among_unsuccessful": 1,
+        "failure_reasons": {
+          "wrong_placement": 2,
+          "wrong_grasp": 2,
+          "goal_not_confirmed_by_horizon": 1
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 1
+        }
+      },
+      "basket_cheese_butter": {
+        "unsuccessful": 6,
+        "official_goals_achieved_among_unsuccessful": 1,
+        "failure_reasons": {
+          "goal_regression": 1,
+          "goal_not_confirmed_by_horizon": 5,
+          "wrong_grasp": 5,
+          "wrong_placement": 3
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 3
+        }
+      },
+      "stove": {
+        "unsuccessful": 7,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 7
+        },
+        "unknown_reasons": {}
+      },
+      "bowl_drawer_close": {
+        "unsuccessful": 0,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {},
+        "unknown_reasons": {}
+      },
+      "dual_mugs": {
+        "unsuccessful": 3,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 3
+        },
+        "unknown_reasons": {}
+      },
+      "mug_pudding": {
+        "unsuccessful": 10,
+        "official_goals_achieved_among_unsuccessful": 3,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 8,
+          "goal_regression": 1
+        },
+        "unknown_reasons": {
+          "completion_release_unknown": 2
+        }
+      },
+      "basket_soup_cheese": {
+        "unsuccessful": 1,
+        "official_goals_achieved_among_unsuccessful": 1,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 1
+        },
+        "unknown_reasons": {}
+      },
+      "two_pots": {
+        "unsuccessful": 9,
+        "official_goals_achieved_among_unsuccessful": 1,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 8,
+          "goal_regression": 2
+        },
+        "unknown_reasons": {
+          "completion_release_unknown": 1
+        }
+      },
+      "mug_microwave_close": {
+        "unsuccessful": 1,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 1
+        },
+        "unknown_reasons": {}
+      }
+    },
+    "c1": {
+      "basket": {
+        "unsuccessful": 3,
+        "official_goals_achieved_among_unsuccessful": 1,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 2,
+          "wrong_placement": 2,
+          "wrong_grasp": 2
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 1
+        }
+      },
+      "basket_cheese_butter": {
+        "unsuccessful": 5,
+        "official_goals_achieved_among_unsuccessful": 2,
+        "failure_reasons": {
+          "goal_regression": 2,
+          "goal_not_confirmed_by_horizon": 3,
+          "wrong_grasp": 5,
+          "wrong_placement": 2
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 1
+        }
+      },
+      "stove": {
+        "unsuccessful": 7,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 7
+        },
+        "unknown_reasons": {}
+      },
+      "bowl_drawer_close": {
+        "unsuccessful": 0,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {},
+        "unknown_reasons": {}
+      },
+      "dual_mugs": {
+        "unsuccessful": 3,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 3
+        },
+        "unknown_reasons": {}
+      },
+      "mug_pudding": {
+        "unsuccessful": 10,
+        "official_goals_achieved_among_unsuccessful": 2,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 8,
+          "goal_regression": 1
+        },
+        "unknown_reasons": {
+          "completion_release_unknown": 2
+        }
+      },
+      "basket_soup_cheese": {
+        "unsuccessful": 0,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {},
+        "unknown_reasons": {}
+      },
+      "two_pots": {
+        "unsuccessful": 8,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 8,
+          "goal_regression": 2
+        },
+        "unknown_reasons": {}
+      },
+      "mug_microwave_close": {
+        "unsuccessful": 1,
+        "official_goals_achieved_among_unsuccessful": 0,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 1
+        },
+        "unknown_reasons": {}
+      }
+    }
+  },
+  "existing_summary_sha256": {
+    "c0": "befa0bc1c0ace91895da40530ce0699ead81cd0d3f51692f348f3436b654fc80",
+    "c1": "77278ee4b8219799af42be93eaf98fd5fbd0f3b7c4a6c8735bf967cd00899861"
+  },
+  "no_new_scoring_physics_labels_model_or_training_jobs": true,
+  "paper_limits": [
+    "Single seed, 90 episodes per condition; no significance/generalization guarantee.",
+    "Data package changes coverage, teacher closure and sampling distribution, not only quantity.",
+    "All nine tasks already appear in ordinary data; this is not unseen-task zero-shot.",
+    "White-mug training uses one parent/3 variants; coverage is small."
+  ],
+  "all_old_artifacts_and_scores_retained": true,
+  "video_selection": [
+    {
+      "comparison": "038_to_039_c1",
+      "condition": "10",
+      "category": "gained",
+      "task_id": "stove",
+      "label": "开炉并放摩卡壶",
+      "episode_id": "stove_s001_10",
+      "variants": [
+        {
+          "stage": "038",
+          "arm": "c1",
+          "episode_id": "stove_s001_10",
+          "task_id": "stove",
+          "initial_state_index": 1,
+          "initial_mask": [
+            true,
+            false
+          ],
+          "success": false,
+          "classification": "failure",
+          "official_goals_achieved": false,
+          "failure_reasons": [
+            "goal_not_confirmed_by_horizon"
+          ],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-goal-endpoint-v1",
+          "n_steps": 520,
+          "path_length_m": 1.0972210682862826,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-eval-001/tasks/10_stove/raw/stove_s001_10.json"
+        },
+        {
+          "stage": "039",
+          "arm": "c1",
+          "episode_id": "stove_s001_10",
+          "task_id": "stove",
+          "initial_state_index": 1,
+          "initial_mask": [
+            true,
+            false
+          ],
+          "success": true,
+          "classification": "success",
+          "official_goals_achieved": true,
+          "failure_reasons": [],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-goal-endpoint-v1",
+          "n_steps": 519,
+          "path_length_m": 0.9983619722658896,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c1-eval-001/tasks/10_stove/raw/stove_s001_10.json"
+        }
+      ]
+    },
+    {
+      "comparison": "038_to_039_c1",
+      "condition": "10",
+      "category": "gained",
+      "task_id": "two_pots",
+      "label": "两个摩卡壶放炉上",
+      "episode_id": "two_pots_s005_10",
+      "variants": [
+        {
+          "stage": "038",
+          "arm": "c1",
+          "episode_id": "two_pots_s005_10",
+          "task_id": "two_pots",
+          "initial_state_index": 5,
+          "initial_mask": [
+            true,
+            false
+          ],
+          "success": false,
+          "classification": "failure",
+          "official_goals_achieved": false,
+          "failure_reasons": [
+            "goal_regression",
+            "goal_not_confirmed_by_horizon"
+          ],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-nine-mask10-v1",
+          "n_steps": 520,
+          "path_length_m": 0.980812838617263,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-eval-001/tasks/two_pots_s005_10/raw/two_pots_s005_10.json"
+        },
+        {
+          "stage": "039",
+          "arm": "c1",
+          "episode_id": "two_pots_s005_10",
+          "task_id": "two_pots",
+          "initial_state_index": 5,
+          "initial_mask": [
+            true,
+            false
+          ],
+          "success": true,
+          "classification": "success",
+          "official_goals_achieved": true,
+          "failure_reasons": [],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-nine-mask10-v1",
+          "n_steps": 247,
+          "path_length_m": 0.7132566008215716,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c1-eval-001/tasks/two_pots_s005_10/raw/two_pots_s005_10.json"
+        }
+      ]
+    },
+    {
+      "comparison": "038_to_039_c1",
+      "condition": "10",
+      "category": "lost",
+      "task_id": "mug_pudding",
+      "label": "白杯上盘、布丁放盘右",
+      "episode_id": "mug_pudding_s006_10",
+      "variants": [
+        {
+          "stage": "038",
+          "arm": "c1",
+          "episode_id": "mug_pudding_s006_10",
+          "task_id": "mug_pudding",
+          "initial_state_index": 6,
+          "initial_mask": [
+            true,
+            false
+          ],
+          "success": true,
+          "classification": "success",
+          "official_goals_achieved": true,
+          "failure_reasons": [],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-goal-endpoint-v1",
+          "n_steps": 354,
+          "path_length_m": 0.7963997918982786,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task038-c1-eval-001/tasks/10_mug_pudding/raw/mug_pudding_s006_10.json"
+        },
+        {
+          "stage": "039",
+          "arm": "c1",
+          "episode_id": "mug_pudding_s006_10",
+          "task_id": "mug_pudding",
+          "initial_state_index": 6,
+          "initial_mask": [
+            true,
+            false
+          ],
+          "success": false,
+          "classification": "failure",
+          "official_goals_achieved": true,
+          "failure_reasons": [
+            "goal_regression"
+          ],
+          "unknown_reasons": [
+            "completion_release_unknown"
+          ],
+          "original_protocol": "remaining-headless-goal-endpoint-v1",
+          "n_steps": 520,
+          "path_length_m": 1.167677465364583,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c1-eval-001/tasks/10_mug_pudding/raw/mug_pudding_s006_10.json"
+        }
+      ]
+    },
+    {
+      "comparison": "039_c0_to_c1",
+      "condition": "00",
+      "category": "gained",
+      "task_id": "mug_pudding",
+      "label": "白杯上盘、布丁放盘右",
+      "episode_id": "mug_pudding_s004_00",
+      "variants": [
+        {
+          "stage": "039",
+          "arm": "c0",
+          "episode_id": "mug_pudding_s004_00",
+          "task_id": "mug_pudding",
+          "initial_state_index": 4,
+          "initial_mask": [
+            false,
+            false
+          ],
+          "success": false,
+          "classification": "failure",
+          "official_goals_achieved": false,
+          "failure_reasons": [
+            "official_goal_never_achieved"
+          ],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-normal00-control-v1",
+          "n_steps": 520,
+          "path_length_m": 1.5713498297246127,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c0-eval-001/tasks/mug_pudding_s004_00/raw/mug_pudding_s004_00.json"
+        },
+        {
+          "stage": "039",
+          "arm": "c1",
+          "episode_id": "mug_pudding_s004_00",
+          "task_id": "mug_pudding",
+          "initial_state_index": 4,
+          "initial_mask": [
+            false,
+            false
+          ],
+          "success": true,
+          "classification": "success",
+          "official_goals_achieved": true,
+          "failure_reasons": [],
+          "unknown_reasons": [],
+          "original_protocol": "remaining-headless-normal00-control-v1",
+          "n_steps": 520,
+          "path_length_m": 1.8618765133892672,
+          "raw_json": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/runs/task039-c1-eval-001/tasks/mug_pudding_s004_00/raw/mug_pudding_s004_00.json"
+        }
+      ]
+    }
+  ]
+}
