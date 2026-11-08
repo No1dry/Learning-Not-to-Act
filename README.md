@@ -1,46 +1,46 @@
 # Learning Not to Act
 
-独立的方法研究仓库：研究外部过程提前完成部分任务后，如何让冻结VLA基于当前观测确定剩余目标，并在保留已有成果的同时完成任务。
+研究外部过程提前完成部分任务后，VLA能否根据当前观测重新确定剩余目标，在保留已有成果的同时完成任务。
 
-当前候选方法：**独立实体/关系选择器＋可撤销证据历史＋冻结VLA语言执行接口**。工作名EGRS仅作设计描述，不表示方法效果或新颖性已经验证。
+## 新接手从这里开始
 
-2026-10-23：[016完整软件实现](collaboration/tasks/016_egrs_full_implementation.md)已验收，当前含017离线管线的固定实现为[PR #2 / c6840ae6](https://github.com/No1dry/Learning-Not-to-Act/tree/c6840ae6c27429c8a6eb27a4e937927f4f934202)，代码和独立selector环境已部署。PR未自动合并，main暂不含该实现；运行请使用上述固定版本。真实训练、新方法评测均为0。
+**[项目主交接文档：截至039，含目标、方法、数据、结果、代码/服务器位置和下一步](docs/handoffs/2026-11-08_project_handoff_after_task039.md)**
 
-## 从这里开始
+配合[最新STATUS](collaboration/STATUS.md)和[AGENTS](AGENTS.md)阅读。主交接文档第0节是一页状态，第11节是下一步只读失败分析，第14节有可转发给新agent的prompt；不需要从旧聊天或早期计划重新推断当前路线。
 
-- [完整方法设计v1](docs/research/2026-10-21_remaining_goal_selector_full_design.md)
-- [016：已验收的完整实现](collaboration/tasks/016_egrs_full_implementation.md)
-- [016最终验收](collaboration/reviews/016_round2.md)
-- [017离线管线验收](collaboration/reviews/017_round1.md)
-- [017阶段总结](docs/stage_summaries/2026-10-23_offline_pipeline_acceptance.md)
-- [软件与部署阶段总结](docs/stage_summaries/2026-10-23_egrs_software_acceptance.md)
-- [015设计审阅裁决](collaboration/reviews/015_round1.md)
-- [当前协作状态](collaboration/STATUS.md)
-- [协作规则](collaboration/README.md)
+## 当前状态：039正式评测已完成
 
-## 三个仓库的边界
+正式benchmark为9个LIBERO-10复合任务，10/00各90条/模型。039的数据准备、C0/C1各1000更新和两模型共360条正式评测已全部完成，两个eval正常退出。
+
+| 模型 | 10合规SR | 00官方SR |
+|---|---:|---:|
+| 原始SOG10 | 24.44% | 86.67% |
+| 038 C1 | 55.56% | 84.44% |
+| 039 C1 | 58.89% | 85.56% |
+
+[039阶段总结/九任务表](docs/stage_summaries/2026-11-08_task039_final_results_coverage_recovery.md)、[机器结果](collaboration/evidence/039_final_results.json)、[R4](collaboration/reviews/039_round4.md)。当前下一步是分析已有白杯/双壶等10失败证据，再确定针对性方法；没有已批准的新一轮实验，不能重复039或自动续训。
+
+## 当前方法和实现位置
+
+当前路线是在OpenVLA-OFT SOG10上进行10真实轨迹增强、普通观测原策略保持，以及单VLA内部任务上下文z/动作残差的C0/C1对照；没有在线外部VLM/选择器或FINISH头。旧EGRS选择器方案是历史，不是现在的默认入口。
+
+**main目前主要承载决策/协作文档，不能只克隆main就假称已拿到运行实现。** 最新已验收代码是未自动合并的[PR14固定head113ded21434a06e2cdc156e5d6283a11c3f15488](https://github.com/No1dry/Learning-Not-to-Act/tree/113ded21434a06e2cdc156e5d6283a11c3f15488)，含accepted038/036等依赖。运行/源码位置及固定core、权重SHA见主交接文档；不要自动merge依赖PR。
+
+## 分工与仓库边界
+
+- 用户亲自启动、运行、监督所有真实模型/仿真/标注/训练/eval。
+- Codex负责研究决策、详细需求、建议式审查、文件准备部署、完整命令和结果归档。
+- X负责实现和受影响CPU/fake测试，经GitHub交付；DeepSeek已退出，历史署名保留。
+- 实际实现需求必须进入`collaboration/tasks/`并给用户短prompt；不以泛审/全库检查/真实MVP拖延研究，不覆盖旧数据或重写旧分数。
 
 | 仓库 | 职责 |
 |---|---|
-| [Learning-Not-to-Act](https://github.com/No1dry/Learning-Not-to-Act) | 方法设计、选择器训练、证据历史、方法wrapper、方法配置与研究协作 |
-| [LIBERO-Remain-Eval](https://github.com/No1dry/LIBERO-Remain-Eval) | 干净mask10 benchmark：任务、状态工具、评测、指标、视频及模型适配 |
-| [LIBERO-Remain](https://github.com/No1dry/LIBERO-Remain) | 原benchmark与历史研究记录；原提交、PR、原始结果仍保留 |
+| [Learning-Not-to-Act](https://github.com/No1dry/Learning-Not-to-Act) | 当前方法、训练/评测接线、研究与X协作 |
+| [LIBERO-Remain](https://github.com/No1dry/LIBERO-Remain) | benchmark定义、冻结core/协议及历史研究记录 |
+| [LIBERO-Remain-Eval](https://github.com/No1dry/LIBERO-Remain-Eval) | 给外部VLA评测的精简分发库；不是无条件通用全90 driver |
 
-本库依赖固定版本的benchmark，不复制并修改一套成功判据。未来运行记录方法版本、eval core版本、底座checkpoint、selector与配置身份。
+## 历史材料
 
-初始eval core参考为 `No1dry/LIBERO-Remain-Eval@515e87d9b93ab838428791273a0f3020d6f56e9c`。其通用episode核心可接策略，但现成批处理仍是OFT参考流程；014通用入口由评测侧推进，不把尚未完成的支持写成已就绪。
+早期016/017选择器/离线管线、015设计、四路线讨论与迁库记录均保留，见[迁移来源](MIGRATION.json)、[早期README事实快照](https://github.com/No1dry/Learning-Not-to-Act/blob/f6e9b8b7668ab1c20505a2b162ccb7d1b8e93aa2/README.md)和各阶段总结。其“当前方法/0%/待启动”属于当时阶段，不覆盖新的STATUS/主交接文档，也不授权重新运行旧命令。X原稿与Git历史不改，不因路线变化抹掉历史证据。
 
-## 已迁入的研究材料
-
-- [原始模型实验结果](docs/research/2026-10-20_baseline_results.md)：结果副本，不改分数。
-- [Codex四路线与组合](docs/research/2026-10-20_codex_method_proposals.md)
-- [X独立候选原稿](collaboration/responses/methods_2026-10-20_round1_independent.md)
-- [X与Codex方案对比](collaboration/responses/methods_2026-10-20_round2_comparison.md)
-
-X两份原文保持原字节和署名。原PR #11并未因迁入而自动合并；独立稿的顺序/来源证据继续指向原固定提交，不能宣称严格盲法。完整设计和015仅修正仓库归属与链接。
-
-迁移来源见[MIGRATION.json](MIGRATION.json)。本库不包含服务器凭证、旧实验大文件、状态包、模型权重或整套benchmark源码。
-
-## 当前下一步
-
-016/017软件与部署已完成，X无需继续返修。Codex准备实际数据来源、标签/资源选择和完整运行命令；真实标签、人力与预算仍需确认，不默认承诺55—80人时。真实数据准备、标注推理、训练和模型评测均由用户亲自启动，不先扩benchmark或训练FINISH。
+本库不提交服务器密码/token、模型权重或原实验大文件。039结果/权重/少量配对原视频已在用户本地归档，精确路径与备份manifest在主交接文档内。
