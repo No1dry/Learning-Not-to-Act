@@ -1,5 +1,11 @@
 # 方法研究协作规则
 
+## 2026-11-11：040真实准备完成，下一用户直接C1训练
+
+040 R2接受production-001现成ready报告，准备100%、source_errors0、原进程结束/无preparation_error，未采集独立shell退出码；46train代表/14dev封存，实际46normal69ten、新65train10/65pair，耗时6100.924秒。新总ten370（289/81）/pair370全有效/143960行；开炉train68父23、白杯12父4、双壶48父16，fresh105/raw180及原dev稳定选择不变。index8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe，报告c87e6eba，六小报告账本服务器/本地SHA一致，大数据/旧权重失败原地保留。
+
+下一用户直接原OFT环境C1 1000/末1000（reference9024/student24560），再正式10/00各90；不重跑generate/index、额外Codex预检/MVP/凑N或基线，不续训039。获取本快照时训练/eval0；Codex本轮仅读取/复制/命令归档，没有新标签/索引/验证器、物理或模型。软件PR15@428c1358保持、X无需返修/不自动merge；新父覆盖不当SR证明，039 58.89%/85.56%和全部旧数据权重失败署名不改删。见040_round2/040_preparation_complete及2026-11-11_task040_preparation_complete_training_ready.md，阶段关键文件精确commit SHA本地manifest备份。数据准备closed/训练效果open；下方待生产/收尾均历史，本条不覆盖未来用户决定。
+
 ## 2026-11-10：040 R1软件accepted且文件已部署，下一用户启动生成
 
 PR15固定428c13585cebac1d6c90fd86a205e914caa2bb8f（实现0f24e9d4）R1接受软件/隔离部署，X无需返修、不自动merge；独立162定向CPU/fake最终全通过，初次11项缺本地固定core/reporting映射的setup error及Codex一次cwd错误保留，复用原快照后仅重跑11项通过，无源码/断言改动。原60egrs生产文件与039一致，新8模块范围保持。新code/config目录名task040-428c1358，70源码依赖/4配置SHA一致，两原venv无依赖升级映射新包并静态核对module origin；原runtime字节保持，eval只改未来末1000 adapter。用户具体路径命令仅聊天/本地私有文档，GitHub放脱敏说明。

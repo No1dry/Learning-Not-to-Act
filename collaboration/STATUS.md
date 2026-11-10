@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-11：040真实准备100%，下一用户直接单C1训练
+
+[R2](reviews/040_round2.md)接受用户亲启production-001现成准备完成：training_ready=true、source_errors0、进程已结束/无preparation_error；未采集独立shell退出码。耗时6100.924秒约1h41m41s，46train代表全部处理、14新dev封存，实际46normal/69ten未超60/360；新增合格65train10/65pair，pair gap0，尝试资格率94.20%非模型SR。开炉train36→68/父12→23，白杯3→12/父1→4，双壶24→48/父8→16；原六保持。新总ten370（289/81）、pair370全有效、143960行，fresh105/raw180及旧dev稳定选择保持，新normal仍仅pair。
+
+新task-control identity8ef04d91、reportc87e6eba，[完整证据](evidence/040_preparation_complete.json)、[阶段](../docs/stage_summaries/2026-11-11_task040_preparation_complete_training_ready.md)。六现成小报告/账本已取回本地且与服务器SHA一致，大HDF/raw/原数据权重失败全部保留，不伪全量备份。本轮仅读取复制/归档，无新标签/索引生产、物理或模型校验，也未启停真实作业。
+
+**准备100%，获取本快照时训练/eval0%。下一用户按[命令第2节](../docs/experiment_plans/2026-11-10_task040_user_generation_training_commands.md)在原OFT环境直接单C1 1000/末1000、reference≤9024/student≤24560，之后正式新180。** 不再生成/index/等额外Codex预检/MVP/凑N或重跑基线；从原SOG10新初始化，不续训039。X无返修，PR15@428c1358软件验收保持、不自动merge。旧039 58.89%/85.56%及全部原证据保留，新覆盖增加不等于SR或独立布局证明。阶段关键文档精确commit本地SHA备份manifest，无清理/改评分；数据准备closed，训练与效果open。下方040待生成/收尾/真实0是历史。
+
+---
+
 ## 2026-11-10：040软件验收部署通过，下一用户直接一次生产
 
 [R1](reviews/040_round1.md)接受PR15固定428c13585cebac1d6c90fd86a205e914caa2bb8f（实现0f24e9d46bfbc33edd001facf19d2c1c40ffc166）软件/CPU-fake与隔离文件部署，X无需返修，不自动merge。独立162项最终全通过，无遗留失败/错误/skip；初次11项因本地固定core/reporting映射缺失setup error，Codex一次cwd链接错误后复用现成原快照，仅重跑11项通过，原日志留存，未改X实现/测试断言或加全库/MVP。原60个egrs生产文件与accepted039字节一致，新8模块只扩040；固定train-only父源/原split、pair-only normal、原dev稳定选择、原C1/保存恢复/180接线和账本清理经审查。[机器证据](evidence/040_codex_acceptance.json)、[阶段](../docs/stage_summaries/2026-11-10_task040_accepted_deployed_user_generation.md)。
