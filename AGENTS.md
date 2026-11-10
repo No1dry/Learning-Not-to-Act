@@ -1,5 +1,11 @@
 # 方法研究协作规则
 
+## 2026-11-10：040 R1软件accepted且文件已部署，下一用户启动生成
+
+PR15固定428c13585cebac1d6c90fd86a205e914caa2bb8f（实现0f24e9d4）R1接受软件/隔离部署，X无需返修、不自动merge；独立162定向CPU/fake最终全通过，初次11项缺本地固定core/reporting映射的setup error及Codex一次cwd错误保留，复用原快照后仅重跑11项通过，无源码/断言改动。原60egrs生产文件与039一致，新8模块范围保持。新code/config目录名task040-428c1358，70源码依赖/4配置SHA一致，两原venv无依赖升级映射新包并静态核对module origin；原runtime字节保持，eval只改未来末1000 adapter。用户具体路径命令仅聊天/本地私有文档，GitHub放脱敏说明。
+
+软件/文件准备100%，040真实metadata/轨迹/标签索引/模型/仿真/训练/eval0%，未建production/train/eval输出或代启停。下一用户按docs/experiment_plans/2026-11-10_task040_user_generation_training_commands.md及本地docs/040_服务器完整运行命令_2026-11-10.md在原OFT环境一次generate，有新增ready后直接C1 1000，不等额外Codex/MVP/凑N，再用户切simulation正式180；旧039命令不重开。60normal/360ten、C1单组1000/9024/24560/10+00各90原预算不变，新normal只pair、原fresh/raw/dev和评分bank不动，无S/C0/续训/seed/基线。旧分数权重数据失败署名全保留，039 58.89%/85.56%不改。见040_round1、040_codex_acceptance和同日accepted_deployed阶段；软件closed/真实数据效果open。文档/固定X原稿精确commit读回SHA本地manifest，无merge/删除/真实作业；本条覆盖下方040未验收/未部署历史，不覆盖未来用户决定。
+
 ## 2026-11-10：用户已批准040预算，下一X直接软件交付
 
 用户“按你推荐的吧，提交工单吧”及后续继续，已批准040三任务demo_20..39固定候选、仅新增train父组生成，普通≤60/ten≤360，一组原SOG10新初始化C1 1000（reference≤9024/student≤24560）、新模型10/00各90共180。详细collaboration/tasks/040_parent_coverage_augmentation.md已下达X直接代码/定向CPU-fake/新PR与040_round1，不再泛审或真实MVP。旧305ten/105fresh/180raw及305pair保留，新ten/pair只追加train；新normal仅生成/pair，不混fresh，旧180 split及全部dev选择稳定键/顺序保持；原039算法/网络loss/任务采样/评分bank不改，无S/C0/续训/新seed/基线。PR14@113ded21未合并，039完成58.89%/85.56%不改。

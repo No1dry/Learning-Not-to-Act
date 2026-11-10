@@ -1,0 +1,116 @@
+{
+  "format": "task040-codex-acceptance-v1",
+  "date": "2026-11-10",
+  "pr": 15,
+  "head": "428c13585cebac1d6c90fd86a205e914caa2bb8f",
+  "implementation_commit": "0f24e9d46bfbc33edd001facf19d2c1c40ffc166",
+  "accepted_base": "113ded21434a06e2cdc156e5d6283a11c3f15488",
+  "decision": "accepted_software_and_isolated_deployment",
+  "tests": {
+    "unique_final_passed": 162,
+    "unresolved_failures": 0,
+    "unresolved_errors": 0,
+    "skipped": 0,
+    "groups": [
+      {
+        "artifact": "cpu-sources-001.junit.xml",
+        "sha256": "d934bbfd910fc4b21dc86f97ea2eeabeacdd58bc8e5b4a1b8265b03a2f680506",
+        "passed": 43,
+        "errors": 0
+      },
+      {
+        "artifact": "cpu-data-001.junit.xml",
+        "sha256": "d58e4f4061a3c0c47720c32285f40ef70570be5b19ea572fc7788b0221a42051",
+        "passed": 77,
+        "errors": 0
+      },
+      {
+        "artifact": "cpu-model-001.junit.xml",
+        "sha256": "c9214986cebe0c1fb77f291322e3552e525c3fab4cd18de14417ca07d714b6d9",
+        "passed": 31,
+        "errors": 11
+      },
+      {
+        "artifact": "cpu-model-core-002.junit.xml",
+        "sha256": "29795105c3e7eb0d8b8a310693ce82a8690337368ee4c45812d26109dc27e7eb",
+        "passed": 0,
+        "errors": 11
+      },
+      {
+        "artifact": "cpu-model-core-003.junit.xml",
+        "sha256": "49367a0dc70733bdba374917fb6a2984151189035aca2ec21b2975d1e868dbd3",
+        "passed": 11,
+        "errors": 0
+      }
+    ],
+    "setup_history": "Initial model group31passed/11errors from absent local pinned core/reporting fixtures. One Codex fixture-link command used wrong cwd and repeated those11setup errors. Reused unchanged existing pinned snapshots, reran only11affected tests, all11passed. Initial artifacts retained; no implementation or assertion changed."
+  },
+  "implementation_review": {
+    "old_egrs_production_files_byte_identical": 60,
+    "new_egrs_modules": [
+      "egrs/coverage040/__init__.py",
+      "egrs/coverage040/__main__.py",
+      "egrs/coverage040/plan.py",
+      "egrs/coverage040/generation.py",
+      "egrs/coverage040/pipeline.py",
+      "egrs/coverage040/index.py",
+      "egrs/coverage040/data.py",
+      "egrs/coverage040/training.py"
+    ],
+    "critical_or_important_findings_remaining": 0,
+    "changes_requested_from_X": false
+  },
+  "deployment": {
+    "source_files_sha_verified": 70,
+    "config_files_sha_verified": 4,
+    "source_archive_sha256": "73c2fca71ec1fc92058ece123e4aa56d20c89b463e52f98e5420d7da41ef3810",
+    "new_code_directory_name": "task040-428c1358",
+    "new_config_directory_name": "task040-428c1358",
+    "training_runtime_original_bytes": true,
+    "evaluation_changed_fields": [
+      "adapter"
+    ],
+    "config_sha256": {
+      "generation.json": "32d63632dcd8d1afdc8b5a6e3af10e8547d918fba8a24f7df10aa41ec6600b45",
+      "base-runtime.json": "c5a3287492a568407575669abebd40d7a84026ff735b4703206deff5dee29eb9",
+      "evaluation.c1.json": "4cb303f68ed89cd8c978bfbe8f45950ea4c26f413e94d6856bbeceafab2f6e3a",
+      "session040.sh": "a7353b89ee96c4429b4c9e206836c39a24a25cc6bd411310cfb0dce0b47505c6"
+    },
+    "environment_mapping_verified": [
+      "existing_oft_worker",
+      "existing_simulation_venv"
+    ],
+    "dependencies_upgraded": false,
+    "old_source_or_data_modified": false,
+    "initial_local_copy_issue": "Original runtime has two final newlines; first local rendering normalized it. Byte guard stopped before server writes. Re-copied original bytes and deployed; no runtime semantic or implementation change."
+  },
+  "approved_budget": {
+    "normal_replays_max": 60,
+    "ten_attempts_max": 360,
+    "training_arms": [
+      "c1"
+    ],
+    "updates": 1000,
+    "reference_calls_including_dev": 9024,
+    "student_calls_including_dev": 24560,
+    "formal_eval_ten": 90,
+    "formal_eval_normal": 90
+  },
+  "status": {
+    "software_and_file_deployment_percent": 100,
+    "real_metadata_or_indices_generated": false,
+    "real_generation_percent": 0,
+    "training_percent": 0,
+    "evaluation_percent": 0,
+    "real_jobs_started": false,
+    "model_loaded": false,
+    "simulation_created": false,
+    "pull_requests_merged": false,
+    "deletions": []
+  },
+  "next": {
+    "user": "Start generate once in existing OFT environment using deployed040 configuration. If preparation completes with training_ready true, proceed to one C1 training without extra MVP or baseline.",
+    "Codex": "Only file/command preparation and later result review; no autonomous real jobs.",
+    "X": "No revision required for040 R1; no real jobs."
+  }
+}

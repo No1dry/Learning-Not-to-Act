@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-10：040软件验收部署通过，下一用户直接一次生产
+
+[R1](reviews/040_round1.md)接受PR15固定428c13585cebac1d6c90fd86a205e914caa2bb8f（实现0f24e9d46bfbc33edd001facf19d2c1c40ffc166）软件/CPU-fake与隔离文件部署，X无需返修，不自动merge。独立162项最终全通过，无遗留失败/错误/skip；初次11项因本地固定core/reporting映射缺失setup error，Codex一次cwd链接错误后复用现成原快照，仅重跑11项通过，原日志留存，未改X实现/测试断言或加全库/MVP。原60个egrs生产文件与accepted039字节一致，新8模块只扩040；固定train-only父源/原split、pair-only normal、原dev稳定选择、原C1/保存恢复/180接线和账本清理经审查。[机器证据](evidence/040_codex_acceptance.json)、[阶段](../docs/stage_summaries/2026-11-10_task040_accepted_deployed_user_generation.md)。
+
+新隔离代码/配置目录名task040-428c1358，70源码依赖和4实际配置SHA一致；原OFT worker与simulation两个venv无依赖升级地指向新包，在core cwd静态核对来源。原runtime逐字节复制（本地首个尾部空行差异被部署前字节守卫拒绝、恢复原字节后成功，原日志留存），原039 C1 eval JSON只改未来末1000 adapter；旧来源/core/reporting/双bridge/评分保持，旧数据、权重、失败、039 C1 58.89%/85.56%保留。
+
+**软件/文件部署100%，真实metadata/轨迹/标签索引生产、训练/eval均0%。** 未调用真实040 plan/generate/train/eval，production/train/eval输出均不存在；没有模型/仿真/GT生产。用户按[运行说明](../docs/experiment_plans/2026-11-10_task040_user_generation_training_commands.md)及聊天/本地私有绝对路径命令，在原OFT环境直接一次generate；有新增且training_ready=true即单C1 1000，不另等Codex预检/凑N，再由用户切simulation正式180。无额外pip/plan/MVP/重建状态/基线/第二report。预算沿60普通/360ten、reference9024/student24560/正式180，不追加S/C0/seed/续训。
+
+Codex只文件/命令准备及后续结果审查，全部真实作业用户亲启；X当前无返修或新任务。关键文件精确commit读回SHA本地归档manifest，固定X原回复/运行文档亦保留；服务器私有路径/具体命令留本地，不上GitHub。无merge/删除或启停真实作业，待删=[]。软件closed，真实数据与研究效果open；下方040未部署/待验收属历史，不启动旧039命令。
+
+---
+
 ## 2026-11-10：040方案与预算已获批准，工单交X直接实现
 
 用户明确“按你推荐的吧，提交工单吧”并要求继续。[040详细工单](tasks/040_parent_coverage_augmentation.md)已交X直接版本化实现、定向CPU/fake、新PR和responses/040_round1.md；不先泛审、不启动真实MVP。[已批方案](../docs/research/2026-11-10_task040_parent_coverage_proposal.md)、[批准机器记录](evidence/040_budget_approval_and_dispatch.json)、[阶段总结](../docs/stage_summaries/2026-11-10_task040_budget_approved_x_implementation.md)。
