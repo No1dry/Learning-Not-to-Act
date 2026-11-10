@@ -1,0 +1,5 @@
+{
+  "format": "task036-retention-index-config-v1",
+  "generated_export": "/absolute/path/to/data/trajectory035/generated-003/export",
+  "seed_manifest": "/absolute/path/to/configs/trajectory035-564c91c9/seeds.json"
+}

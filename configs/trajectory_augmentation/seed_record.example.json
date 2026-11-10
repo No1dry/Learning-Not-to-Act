@@ -1,0 +1,110 @@
+{
+  "source_id": "<EXACT_PRIOR_INVENTORY_SOURCE_ID_OR_NEW_COMPOUND_ID>",
+  "task_key": "basket",
+  "domain": "compound",
+  "file": "<EXACT_RELATIVE_HDF_PATH>",
+  "file_sha256": "<64_LOWERCASE_HEX_FILE_SHA256>",
+  "episode": "data/demo_0",
+  "instruction": "<EXACT_HDF_LANGUAGE_NOT_FILENAME_DERIVATION>",
+  "length": 0,
+  "split": null,
+  "group_ids": [],
+  "physical_ancestry": "unknown",
+  "provenance": "ordinary_expert_demo",
+  "mapping": {
+    "alignment_id": "<REVIEWED_IMAGE_STATE_ACTION_ALIGNMENT_ID>",
+    "alignment_basis": "<EVIDENCE_FOR_EXPLICIT_OFFSETS_NOT_ARRAY_LENGTH_GUESS>",
+    "observation_offset": 0,
+    "action_offset": 0,
+    "images": [
+      "obs/agentview_rgb",
+      "obs/eye_in_hand_rgb"
+    ],
+    "image_transforms": [
+      "<identity_OR_rotate_180>",
+      "<identity_OR_rotate_180>"
+    ],
+    "proprio": [
+      "obs/ee_states",
+      "obs/gripper_states"
+    ],
+    "action": "actions",
+    "action_dim": 7,
+    "proprio_dim": 8,
+    "axis_order": [
+      "x",
+      "y",
+      "z",
+      "rx",
+      "ry",
+      "rz",
+      "gripper"
+    ],
+    "axis_sign": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "gripper": {
+      "index": 6,
+      "kind": "affine",
+      "input_open": -1,
+      "input_closed": 1,
+      "output_open": 1,
+      "output_closed": 0
+    },
+    "action_normalization": {
+      "kind": "bounds_q99",
+      "stats_id": "<ORIGINAL_CHECKPOINT_UNNORM_KEY>",
+      "stats_sha256": "<ORIGINAL_DATASET_STATISTICS_JSON_SHA256>",
+      "q01": [],
+      "q99": [],
+      "mask": []
+    },
+    "proprio_normalization": {
+      "kind": "bounds_q99",
+      "stats_id": "<SAME_ORIGINAL_CHECKPOINT_UNNORM_KEY>",
+      "stats_sha256": "<SAME_ORIGINAL_DATASET_STATISTICS_JSON_SHA256>",
+      "q01": [],
+      "q99": [],
+      "mask": []
+    },
+    "processor_id": "<ORIGINAL_PROCESSOR_REVISION_OR_IDENTITY>",
+    "crop": "<ORIGINAL_PROCESSOR_CROP_CONTRACT_IDENTITY>",
+    "instruction_binding": {
+      "group": "data",
+      "attribute": "problem_info",
+      "json_key": "language_instruction"
+    }
+  },
+  "demo_index": 0,
+  "controller_binding": {
+    "type": "OSC_POSE",
+    "control_freq": 20,
+    "env_args_sha256": "<ACTUAL_CANONICAL_ENV_ARGS_SHA256>"
+  },
+  "official_task_name": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+  "active_goals": [
+    {
+      "id": "A",
+      "predicate": [
+        "in",
+        "alphabet_soup_1",
+        "basket_1_contain_region"
+      ]
+    },
+    {
+      "id": "B",
+      "predicate": [
+        "in",
+        "tomato_sauce_1",
+        "basket_1_contain_region"
+      ]
+    }
+  ],
+  "invariant_predicates": []
+}

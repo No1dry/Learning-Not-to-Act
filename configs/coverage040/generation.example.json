@@ -1,0 +1,5 @@
+{
+  "format": "task040-parent-coverage-config-v1",
+  "generation_config": "${LNA_ROOT}/configs/trajectory035-564c91c9/generate.json",
+  "old_task_control_index": "${LNA_ROOT}/data/coverage039/production-001/indices/task_control"
+}
