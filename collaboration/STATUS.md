@@ -1,5 +1,11 @@
 # 方法研究当前状态
 
+## 2026-11-10：040软件/定向CPU-fake交付，待Codex验收
+
+X基于acceptedPR14@113ded21及main工单3d92223直接实现，最终代码0f24e9d46bfbc33edd001facf19d2c1c40ffc166（首实现ea3c48b）。新040入口固定三任务demo_20..39共60候选、旧锚点/seed7alias分组、仅新train代表有界039生成，增量索引只追加合格train ten/pair；newnormal独立pair_sources、不混fresh，旧305ten/105fresh/180raw/305pair及全部旧dev记录/稳定选择顺序保留。只接一组C1固定1000与正式180，原模型/loss/评分及全部旧工件不改。[040回复](responses/040_round1.md)、[详细运行命令](../docs/task040_usage.md)、[阶段总结](../docs/stage_summaries/2026-11-10_task040_software_delivery.md)。
+
+受影响CPU/fake162通过、0失败/错误/skip（来源43/数据77/模型42），[JSON/JUnit](evidence/040_cpu_fake.json)真实保留；合成动作记录→040index→原C1微型save/resume/adapter链路接通。独立审查1项Important中断子worker未停止的问题已修复并定向复查闭合，旧039默认不动；输出未解析占位符亦拒绝。实现/定向测试交付100%、Codex验收pending；部署、真实元数据/标签/索引/生成/模型/仿真/训练/eval全部0%。预算已批准但仅用户亲启，下一Codex审查隔离部署/填实际路径；无新增合格train父组ten不加载模型重复训练，有新增按实际量推进，不加S/C0/N/MVP/seed/基线。旧039结果保持，真实覆盖/SR open；无自动merge/删除，发布后精确head读回与本地SHA备份。下方040实现0%为交付前历史。
+
 ## 2026-11-10：040方案与预算已获批准，工单交X直接实现
 
 用户明确“按你推荐的吧，提交工单吧”并要求继续。[040详细工单](tasks/040_parent_coverage_augmentation.md)已交X直接版本化实现、定向CPU/fake、新PR和responses/040_round1.md；不先泛审、不启动真实MVP。[已批方案](../docs/research/2026-11-10_task040_parent_coverage_proposal.md)、[批准机器记录](evidence/040_budget_approval_and_dispatch.json)、[阶段总结](../docs/stage_summaries/2026-11-10_task040_budget_approved_x_implementation.md)。

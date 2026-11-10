@@ -34,9 +34,9 @@ Interfaces: `build_plan(config_path, context=None)` returns config, parents(old1
 
 `generate(config_path, out, *, source_generator=None, context=None, plan=None)` returns `export` path, population/counts/sourceerrors and spent budget. Export retains original035 sample schema plus `generation_context.coverage040` binding complete fixed candidate plan/train-only/newnormal-role/ledger identity. Every attempt sidecar/recipe/lineage binds040 context while retaining039 algorithm/V2 provenance. No new control algorithm.
 
-- [ ] Write red tests for exactrange/seed7/anchors/alias/conflict/dev exclusion/unresolvedpaths and init-before-spent ledger/newoutput refusal.
-- [ ] Run red; implement minimal explicit planner and orchestration reusing039 helpers/native worker; run focused green and039 generation regressions only if affected.
-- [ ] Report code/test commands/results and boundary concerns to root; no real jobs or branch mutations.
+- [x] Write red tests for exactrange/seed7/anchors/alias/conflict/dev exclusion/unresolvedpaths and init-before-spent ledger/newoutput refusal.
+- [x] Run red; implement minimal explicit planner and orchestration reusing039 helpers/native worker; run focused green and039 generation regressions only if affected.
+- [x] Report code/test commands/results and boundary concerns to root; no real jobs or branch mutations.
 
 ## Task2 — explicit delta index and pair-only normal dataset
 
@@ -44,17 +44,17 @@ Files: create `egrs/coverage040/data.py`, `index.py`, related data CPU tests. Ne
 
 Interfaces: `build_indices(old_task_control_index, delta_export, out, context=None)` returns retention/task_control paths and corresponding reports. `CoverageTaskControlDataset(index_dir, split='train', context=None)` matches038 dataset including get_pair/normalization/report/data_kind; report.coverage040.new_qualified_train10 is actual int. New outeridentity binds old frozen inputs, validated delta and exact reused/dev keys; old035schema delta context carries040plan/train-only/range. Any further interface change is coordinated with root.
 
-- [ ] Red tests: oldfresh/raw/dev exactrecords and deterministic selections unchanged; newnormal only pair_sources; qualifiednewten survives missingpair; source/mask/provenance/root/stat changes reject.
-- [ ] Implement reference-only appended rows/labels/pairs preserving old objects verbatim; strict039actualcounts/identity anchors (private synthetic fixture overrides only in tests); validate new recorded pair using original1e-8/layout/active semantics.
-- [ ] Run focused green; report API/commands/results. No real data/index production.
+- [x] Red tests: oldfresh/raw/dev exactrecords and deterministic selections unchanged; newnormal only pair_sources; qualifiednewten survives missingpair; source/mask/provenance/root/stat changes reject.
+- [x] Implement reference-only appended rows/labels/pairs preserving old objects verbatim; strict039actualcounts/identity anchors (private synthetic fixture overrides only in tests); validate new recorded pair using original1e-8/layout/active semantics.
+- [x] Run focused green; report API/commands/results. No real data/index production.
 
 ## Task3 — root production/C1/CLI integration and handoff
 
 Files: create coverage040 `__init__.py`, `__main__.py`, `pipeline.py`, `training.py`;040 config examples; entry/integration tests; docs/task040_usage.md, responses/040_round1.md, stage summary and currentSTATUS/README pointer.
 
-- [ ] Red tests: one command plan/generate/buildindices shares context, refuses overlapping/existingoutput; C1only/no-newdata before model; eval delegates original038 C1.
-- [ ] Implement minimal wrappers, config env expansion delegated planner, separate user-started C1train/eval. Preserve original038 preset and compact logging.
-- [ ] Synthetic NumPy-only recording worker -> delta/index -> original038 tiny C1 (22student/8reference perupdate), save/resume/reload and fakeeval contracts; verify newpairs are actually consumed and normal never a main row.
-- [ ] Root-run only new/affected CPU/fake groups in separate file/model processes for known NumPyMKL/Torch OpenMP host issue; retain actual JUnit/results including skips/failures.
-- [ ] One independent whole040diff review, fix explicit defects with covering regressions, one scoped recheck. No platform/fullsuite/MVP gates.
+- [x] Red tests: one command plan/generate/buildindices shares context, refuses overlapping/existingoutput; C1only/no-newdata before model; eval delegates original038 C1.
+- [x] Implement minimal wrappers, config env expansion delegated planner, separate user-started C1train/eval. Preserve original038 preset and compact logging.
+- [x] Synthetic NumPy-only recording worker -> delta/index -> original038 tiny C1 (22student/8reference perupdate), save/resume/reload and fakeeval contracts; verify newpairs are actually consumed and normal never a main row.
+- [x] Root-run only new/affected CPU/fake groups in separate file/model processes for known NumPyMKL/Torch OpenMP host issue; retain actual JUnit/results including skips/failures.
+- [x] One independent whole040diff review, fix explicit defects with covering regressions, one scoped recheck. No platform/fullsuite/MVP gates.
 - [ ] Commit implementation then concise response including implementationSHA and complete conda/python/nohup/progress templates. NewPR to main explicitly states unmerged PR14dependency. Verify remote exacthead/tree/keyblobs and preserve local source/docs/CPUevidence archive with SHAmanifest. No auto-merge, cleanup or server operations.
