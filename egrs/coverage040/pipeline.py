@@ -14,7 +14,7 @@ from .plan import build_plan
 
 def generate(config_path, output, *, source_generator=None):
     expanded = os.path.expandvars(os.path.expanduser(str(output)))
-    if re.search(r'\$[A-Za-z_{]|%[^%]+%', expanded):
+    if re.search(r'\$[A-Za-z_{]|%[^%]+%|<[^>]+>', expanded):
         raise ValueError('Unresolved environment variable/placeholder in040 output')
     output = Path(expanded).resolve()
     if output.exists():

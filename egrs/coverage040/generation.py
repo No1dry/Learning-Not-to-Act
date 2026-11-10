@@ -3,14 +3,79 @@ from copy import deepcopy
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
+import time
 
 from egrs.augmentation.data import _require, identity, read_json
 from egrs.coverage039.generation import (AttemptLedger, Heartbeat, _recover_source,
-    _relative_attempt, durable_write, generate_source, initialization_failure, reconcile_attempts)
+    _relative_attempt, durable_write, initialization_failure, reconcile_attempts)
 from egrs.coverage039.io import HashContext, Progress
 from egrs.coverage039.recipe import generation_context
 from egrs.trajectory_augmentation.data import export_generated
+from egrs.trajectory_augmentation.native import TEACHER_V2
 from .plan import build_plan
+
+
+class WorkerCleanupFailure(BaseException):
+    """Abort without sealing/exporting when worker termination is unconfirmed."""
+
+
+def generate_source(source,config,data_root,output_dir):
+    """Launch unchanged039 native recording, reaping before any failure recovery."""
+    directory=Path(output_dir).resolve();directory.mkdir(parents=True,exist_ok=True)
+    config=deepcopy(config);config['teacher_policy']=TEACHER_V2
+    ledger=AttemptLedger(config.get('_budget_ledger',directory/'attempt_ledger.json'))
+    if not config.get('_normal_pre_reserved'):
+        ledger.reserve(source['source_id'],'normal','normal',0)
+    elif not ledger.contains(source['source_id'],'normal','normal',0):
+        raise ValueError('parent normal reservation missing')
+    config.update(_budget_ledger=str(ledger.path.resolve()),_normal_pre_reserved=True)
+    initialization_failure(source,directory,'native_initialization_interrupted')
+    request=directory/'request.json';response=directory/'result.json'
+    durable_write(request,{'source':source,'config':config,'data_root':str(Path(data_root).resolve()),
+                          'output_dir':str(directory)})
+    backend=config['native_backend'];python=backend.get('python',sys.executable)
+    # Preserve the literal venv entry, even when it is a symlink to a base Python.
+    command=[python,'-m','egrs.coverage039.native','--request',str(request)]
+    timeout=backend.get('source_timeout_seconds',7200)
+    if type(timeout) not in (int,float) or not 1<=timeout<=86400:
+        raise ValueError('source timeout must be1..86400 seconds')
+    progress=Progress('generation_worker');started=time.monotonic();process=None
+    try:
+        with (directory/'worker.stdout.log').open('wb') as out,(directory/'worker.stderr.log').open('wb') as err:
+            process=subprocess.Popen(command,cwd=str(Path(__file__).resolve().parents[2]),stdout=out,stderr=err)
+            while True:
+                fields={'source':source['source_id'],'attempt':'native_initialization',
+                        'elapsed_source_seconds':round(time.monotonic()-started,3)}
+                if (directory/'heartbeat.json').exists():fields.update(read_json(directory/'heartbeat.json'))
+                progress.update(**fields)
+                remaining=timeout-(time.monotonic()-started)
+                if remaining<=0:raise subprocess.TimeoutExpired(command,timeout)
+                try:
+                    code=process.wait(timeout=min(30,remaining))
+                    if code!=0:raise RuntimeError('native worker exited '+str(code))
+                    return read_json(response)
+                except subprocess.TimeoutExpired:
+                    if time.monotonic()-started>=timeout:raise
+    except BaseException as error:
+        if process is not None:
+            try:
+                # A second parent SIGINT must not skip reaping the first worker.
+                while True:
+                    try:
+                        if process.poll() is None:process.kill()
+                        process.wait()
+                        break
+                    except KeyboardInterrupt:
+                        continue
+            except BaseException as cleanup_error:
+                # The top-level ordinary failure path may recover only after
+                # the child can no longer mutate its ledger/metadata files.
+                raise WorkerCleanupFailure('native worker cleanup unconfirmed: '+str(cleanup_error)) from cleanup_error
+        if not isinstance(error,Exception):raise
+        result=_recover_source(source,directory,f'{type(error).__name__}: {error}',ledger)
+        durable_write(response,result);return result
 
 
 class GenerationHeartbeat(Heartbeat):

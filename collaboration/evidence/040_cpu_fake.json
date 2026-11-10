@@ -5,7 +5,7 @@
   "spec_main": "3d92223",
   "local_docs_merge": "fef4a95",
   "result": {
-    "passed": 155,
+    "passed": 162,
     "failed": 0,
     "errors": 0,
     "skipped": 0
@@ -13,13 +13,13 @@
   "groups": [
     {
       "name": "sources",
-      "passed": 37,
+      "passed": 43,
       "failed": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 37.026,
+      "seconds": 37.988,
       "junit": "040_cpu_sources.junit.xml",
-      "command": "python -m pytest tests/test_coverage040_plan.py tests/test_coverage040_generation.py tests/test_coverage039_generation.py tests/test_coverage039_io.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t40/final-sources01 --junitxml=../../.release-tools/t40/final-sources.xml"
+      "command": "python -m pytest tests/test_coverage040_plan.py tests/test_coverage040_generation.py tests/test_coverage039_generation.py tests/test_coverage039_io.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t40/final-sources-fixed01 --junitxml=../../.release-tools/t40/final-sources-fixed.xml"
     },
     {
       "name": "data",
@@ -29,17 +29,18 @@
       "skipped": 0,
       "seconds": 25.254,
       "junit": "040_cpu_data.junit.xml",
-      "command": "python -m pytest tests/test_coverage040_data.py tests/test_coverage039_data.py tests/test_task_control_index.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t40/final-data01 --junitxml=../../.release-tools/t40/final-data.xml"
+      "command": "python -m pytest tests/test_coverage040_data.py tests/test_coverage039_data.py tests/test_task_control_index.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t40/final-data01 --junitxml=../../.release-tools/t40/final-data.xml",
+      "unchanged_group_reuse": "Original final77 passed retained; data/index production files unchanged by launcher/placeholder fix."
     },
     {
       "name": "model",
-      "passed": 41,
+      "passed": 42,
       "failed": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 19.327,
+      "seconds": 18.145,
       "junit": "040_cpu_model.junit.xml",
-      "command": "python -m pytest tests/test_coverage040_entry.py tests/test_coverage040_integration.py tests/test_task_control_training.py tests/test_task_control_evaluation.py tests/test_coverage039_entry.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t40/final-model01 --junitxml=../../.release-tools/t40/final-model.xml"
+      "command": "python -m pytest tests/test_coverage040_entry.py tests/test_coverage040_integration.py tests/test_task_control_training.py tests/test_task_control_evaluation.py tests/test_coverage039_entry.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t40/final-model-fixed01 --junitxml=../../.release-tools/t40/final-model-fixed.xml"
     }
   ],
   "interpreter": "C:/ProgramData/anaconda3/python.exe",
@@ -51,12 +52,18 @@
     "Dev source/observation/pair stable keys and deterministic selected order equal old039; newtrain/dev share actual040identity; pair failures leave qualifiedten BC",
     "Live shared SHA context hashes stable files once; changed stat/masks/roots/normalization/provenance rejected; bounded visible progress",
     "Executed NumPy-only fake recording->actual040 export/index->unchanged038 tiny C1 with genuine seed7 newpair draw,22student/8reference perupdate, save/interruption/resume tensor equivalence and strict adapter/index binding",
-    "C1-only entry and original1000 preset; zero actual newtrain10 rejected before model loading; original shared dual-bridge180 fake evaluation and final1000 admission unchanged"
+    "C1-only entry and original1000 preset; zero actual newtrain10 rejected before model loading; original shared dual-bridge180 fake evaluation and final1000 admission unchanged",
+    "Parent interruption cleanup ordering, unconfirmed-worker barrier, ordinary failure/normal completion/literal interpreter unchanged; unresolved angle-token output rejected before planning."
   ],
   "independent_review": {
-    "status": "pending"
+    "critical": 0,
+    "important_found": 1,
+    "important_fixed": 1,
+    "scoped_rereview": "addressed; no new material issues",
+    "remaining_material": 0,
+    "fix": "New040 launcher stops and reaps native child before recovery/export on BaseException; unconfirmed cleanup aborts sealing; six fakePopen regressions."
   },
-  "development_boundary": "Baseline entry first had4passed/2temp-parent setup errors; after creating only the external temp parent,6passed. Root integration first asserted a nonexistent adapter student_calls field; corrected the test to read existing training_state.student_budget. New TDD reds/development failures are retained locally; final results above are fresh root-run actual outputs. NumPy fake recorder is a separate process for the already-known host MKL/Torch OpenMP incompatibility; no ignore flag or dependency change.",
+  "development_boundary": "Baseline entry first had4passed/2temp-parent setup errors; after creating only the external temp parent,6passed. Root integration first asserted a nonexistent adapter student_calls field; corrected the test to read existing training_state.student_budget. New TDD reds/development failures are retained locally; final results above are fresh root-run actual outputs. NumPy fake recorder is a separate process for the already-known host MKL/Torch OpenMP incompatibility; no ignore flag or dependency change. First staged whitespace check caught CRLF in two new JSON files; normalized final text before publication. Previous pre-review155-passed evidence and review/fix red/green artifacts remain locally preserved.",
   "approved_limits": {
     "ordinary": 60,
     "ten_attempts": 360,
@@ -77,5 +84,6 @@
     "S/C0/additional seed/baseline runs",
     "full repository/platform suite"
   ],
-  "preservation": "No prior035/036/038/039 source/default contracts, scores, states, data, weights, failures, reports, videos or server artifacts altered/deleted; no dependency upgrade or automatic PR merge."
+  "preservation": "No prior035/036/038/039 source/default contracts, scores, states, data, weights, failures, reports, videos or server artifacts altered/deleted; no dependency upgrade or automatic PR merge.",
+  "hash_boundary": "One live parent-process context deduplicates planning/export/index and train/dev readers. Each independent native worker retains its original strict first raw-HDF/statistics verification; no claim of once-per-entire-job hashing or persistent cross-process exemption."
 }

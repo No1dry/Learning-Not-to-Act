@@ -114,9 +114,10 @@ def test_preparation_cannot_overlap_old_data_or_inputs(monkeypatch, tmp_path):
         pipeline.generate('040.json', old/'child')
 
 
-def test_output_unexpanded_environment_variable_refuses_before_any_plan(monkeypatch):
+@pytest.mark.parametrize('output', ['$TASK040_UNDEFINED_OUTPUT/new', '<deployment-root>/new'])
+def test_output_unexpanded_environment_variable_refuses_before_any_plan(monkeypatch, output):
     from egrs.coverage040 import pipeline
     monkeypatch.delenv('TASK040_UNDEFINED_OUTPUT', raising=False)
     monkeypatch.setattr(pipeline, 'build_plan', lambda *args, **kw: pytest.fail('unresolved output reached plan'))
     with pytest.raises(ValueError, match='variable|placeholder|unresolved'):
-        pipeline.generate('040.json', '$TASK040_UNDEFINED_OUTPUT/new')
+        pipeline.generate('040.json', output)

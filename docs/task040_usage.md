@@ -57,7 +57,7 @@ python -u -m egrs.coverage040 generate \
 
 完成后的入口是`preparation_report.json`：包含新合格train10数、是否可训、路径和哈希工作量。`generated/`保留新attempts/HDF/audit/lineage、完整计划与预算；`indices/`提供新数据视图。旧039文件不重写/不建立可写hardlink。新normal只在独立pair来源表可解析，不带伪fresh池或零权重主样本；新ten缺pair仅单列缺口，不删除其BC数据。原pair按原字节来源复用；新pair以原1e-8非机器人比较和真实出站动作核验。
 
-同一准备中的稳定canonical path/stat共享一次SHA上下文，改变文件拒绝，不建立跨进程永久免校验缓存。进度以已处理train父组/计划train父组计算生产百分比，同时列已花normal/ten与预算；不能用已花/360当完成率。文件字节、阶段与worker控制进度每≤30秒可见。
+父生产进程的规划、export和索引共用稳定canonical path/stat的SHA上下文，同一文件在该上下文只算一次，改变文件拒绝；不建立跨进程永久免校验缓存。每个独立native worker仍按039原规则首次完整复验其原始HDF/统计，父进程缓存不豁免这次身份检查，因此子进程总读取量不是全任务只读一次。进度以已处理train父组/计划train父组计算生产百分比，同时列已花normal/ten与预算；不能用已花/360当完成率。文件字节、阶段与worker控制进度每≤30秒可见。
 
 若没有来自新增合格train父组的ten，报告`training_ready=false`，训练入口在加载模型前拒绝；有新增即按实际量继续，不设每任务N或新pair最低数，也不自动追加生成。
 

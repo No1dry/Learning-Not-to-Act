@@ -131,3 +131,88 @@ def test_parent_heartbeat_reports_overall_percent_current_controls_and_live_budg
     assert record['normal_attempts']==1 and record['ten_attempts']==1
     assert record['max_normal_replays']==60 and record['max_10_attempts']==360
     assert record['phase']=='bridge' and record['controls']==17
+
+
+def test_default_launcher_interrupt_reaps_child_before_recovery_and_export(tmp_path,monkeypatch):
+    import subprocess
+    from egrs.coverage040 import generation
+    from egrs.coverage040.plan import build_plan
+    path,_=prepared040(tmp_path,monkeypatch);plan=build_plan(path);events=[]
+    class Worker:
+        stopped=False
+        def poll(self): return -9 if self.stopped else None
+        def wait(self,timeout=None):
+            if not self.stopped: raise KeyboardInterrupt('parent-only SIGINT')
+            events.append('waited');return -9
+        def kill(self): self.stopped=True;events.append('killed')
+    monkeypatch.setattr(subprocess,'Popen',lambda *a,**k:Worker())
+    recover=generation._recover_source;export=generation.export_generated
+    def recovered(*args,**kwargs):
+        assert events[-2:]==['killed','waited']
+        events.append('recovered');return recover(*args,**kwargs)
+    def exported(*args,**kwargs):
+        assert 'waited' in events and events.index('waited')<events.index('recovered')
+        events.append('exported');return export(*args,**kwargs)
+    monkeypatch.setattr(generation,'_recover_source',recovered)
+    monkeypatch.setattr(generation,'export_generated',exported)
+    output=tmp_path/'parent-interrupt'
+    with pytest.raises(KeyboardInterrupt,match='parent-only SIGINT'):
+        generation.generate(path,output,plan=plan)
+    assert events==['killed','waited','recovered','exported']
+    assert read_json(output/'attempt_ledger.json')['normal_attempts']==1
+    assert read_json(output/'generation_report.json')['status']=='interrupted'
+
+
+@pytest.mark.parametrize('outcome',['success','failure','keyboard','system_exit','cleanup_failure'])
+def test040_launcher_preserves_literal_interpreter_and_original_worker_contract(tmp_path,monkeypatch,outcome):
+    import subprocess
+    from egrs.coverage040 import generation
+    from egrs.coverage039.generation import durable_write
+    from egrs.trajectory_augmentation.native import TEACHER_V2
+    from test_trajectory_generation import source
+    parent=source();literal=str(tmp_path/'venv-symlink'/'python');commands=[];events=[]
+    resolve=Path.resolve
+    def linked_resolution(self,*args,**kwargs):
+        if str(self)==literal: return tmp_path/'base-interpreter'
+        return resolve(self,*args,**kwargs)
+    monkeypatch.setattr(Path,'resolve',linked_resolution)
+    class Worker:
+        stopped=False
+        def poll(self): return -9 if self.stopped else None
+        def wait(self,timeout=None):
+            if self.stopped: events.append('waited');return -9
+            if outcome in ('keyboard','cleanup_failure'): raise KeyboardInterrupt('launcher interrupt')
+            if outcome=='system_exit': raise SystemExit('launcher shutdown')
+            if outcome=='failure': raise RuntimeError('worker transport failure')
+            return 0
+        def kill(self):
+            if outcome=='cleanup_failure': raise OSError('fake kill denied')
+            self.stopped=True;events.append('killed')
+    def launch(command,**kwargs):
+        commands.append(command)
+        request=read_json(command[-1])
+        assert request['config']['teacher_policy']==TEACHER_V2
+        assert request['config']['native_backend']['python']==literal
+        assert request['source']==parent
+        durable_write(tmp_path/'result.json',{'source_id':parent['source_id'],'attempts':[],'fake_result':True})
+        return Worker()
+    monkeypatch.setattr(subprocess,'Popen',launch)
+    cfg={'native_backend':{'python':literal,'source_timeout_seconds':5},'recipe':{'untouched':'config'}}
+    if outcome=='cleanup_failure':
+        with pytest.raises(generation.WorkerCleanupFailure,match='kill denied'):
+            generation.generate_source(parent,cfg,tmp_path/'raw',tmp_path)
+        # Cleanup failure bypasses the ordinary Exception/KeyboardInterrupt
+        # recovery handler, so no immutable export is claimed with a live child.
+        assert not issubclass(generation.WorkerCleanupFailure,Exception)
+    elif outcome in ('keyboard','system_exit'):
+        exception=KeyboardInterrupt if outcome=='keyboard' else SystemExit
+        with pytest.raises(exception): generation.generate_source(parent,cfg,tmp_path/'raw',tmp_path)
+        assert events==['killed','waited']
+    else:
+        result=generation.generate_source(parent,cfg,tmp_path/'raw',tmp_path)
+        if outcome=='success': assert result['fake_result'] and events==[]
+        else:
+            assert result['source_id']==parent['source_id'] and 'transport failure' in result['error']
+            assert events==['killed','waited']
+    assert commands[0][:4]==[literal,'-m','egrs.coverage039.native','--request']
+    assert cfg=={'native_backend':{'python':literal,'source_timeout_seconds':5},'recipe':{'untouched':'config'}}
