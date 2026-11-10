@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-10",
+  "status": "budget_approved_x_software_implementation_dispatched",
+  "authorization": {
+    "source": "direct_user_message_in_current_conversation",
+    "quote": "按你推荐的吧，提交工单吧",
+    "follow_up": "继续",
+    "scope": "recommended task040 proposal budget and GitHub implementation work order; not authorization for agents to launch real jobs"
+  },
+  "proposal_commit": "a9e3f291b1f5d1f0bc545a9de73954c6a2935118",
+  "proposal_path": "docs/research/2026-11-10_task040_parent_coverage_proposal.md",
+  "work_order_path": "collaboration/tasks/040_parent_coverage_augmentation.md",
+  "implementation_base_head": "113ded21434a06e2cdc156e5d6283a11c3f15488",
+  "baseline": {
+    "task039_c1": {
+      "ten_success": 53,
+      "ten_n": 90,
+      "ten_percent": 58.888888888888886,
+      "normal_success": 77,
+      "normal_n": 90,
+      "normal_percent": 85.55555555555556
+    },
+    "task_control_index_identity": "b85875658da033a144d6be1fb0da4726edc20033d4f3b8cf3ed7dfc4a18d377c"
+  },
+  "candidate_scope": {
+    "tasks": [
+      "stove",
+      "mug_pudding",
+      "two_pots"
+    ],
+    "demo_index_start": 20,
+    "demo_index_end_inclusive": 39,
+    "total_candidates": 60,
+    "split_seed": 7,
+    "generate_only": "new train parent representatives",
+    "new_dev": "metadata retained, no generation/training/dev inclusion",
+    "old_parent_split": {
+      "train": 136,
+      "dev": 44
+    },
+    "unknown_physical_ancestry_preserved": true
+  },
+  "data_delta": {
+    "old_ten": {
+      "train": 224,
+      "dev": 81
+    },
+    "old_fresh": {
+      "train": 78,
+      "dev": 27
+    },
+    "old_raw": {
+      "train": 136,
+      "dev": 44
+    },
+    "old_pairs": {
+      "train": 224,
+      "dev": 81
+    },
+    "additional_ten": "qualified new-train only",
+    "additional_pairs": "valid new-train only; no-pair qualified ten may remain in BC",
+    "new_normal": "generation evidence and pair-only source lookup, excluded from main fresh pool",
+    "old_dev_and_selection": "stable source/observation/pair keys and order unchanged",
+    "new_qualified_parent_counts": null
+  },
+  "budgets": {
+    "normal_replays": 60,
+    "ten_generation_attempts": 360,
+    "variants_per_parent": 3,
+    "bridge_slots_per_variant": 2,
+    "horizon_per_episode": 520,
+    "max_control_steps": 218400,
+    "teacher_closure_extra_steps_max": 40,
+    "training_arms": [
+      "c1"
+    ],
+    "updates": 1000,
+    "reference_calls_including_dev": 9024,
+    "student_calls_including_dev": 24560,
+    "formal_eval": {
+      "ten": 90,
+      "normal": 90,
+      "total": 180
+    },
+    "extra_S_or_C0_or_seeds_or_baseline_evals": 0
+  },
+  "roles": {
+    "X": "implementation, affected CPU/fake tests, new PR and response; no server deployment or real jobs",
+    "Codex": "research, advisory review, isolated deployment and commands after acceptance, results archive; no autonomous real jobs",
+    "user": "personally starts all real metadata/data generation/indices/training/evaluation jobs"
+  },
+  "current_progress": {
+    "specification_and_dispatch_percent": 100,
+    "implementation_percent": 0,
+    "deployment_percent": 0,
+    "real_data_percent": 0,
+    "training_percent": 0,
+    "evaluation_percent": 0
+  },
+  "execution": {
+    "real_jobs_started": false,
+    "implementation_changed_by_Codex": false,
+    "server_deployed": false,
+    "pull_requests_merged": false,
+    "deletions": []
+  }
+}

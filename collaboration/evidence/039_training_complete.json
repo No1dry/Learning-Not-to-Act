@@ -1,0 +1,193 @@
+{
+  "format": "task039-training-complete-handoff-v1",
+  "date": "2026-11-08",
+  "verdict": "accepted_existing_training_artifacts_only",
+  "training_percent": 100,
+  "evaluation_files_percent": 100,
+  "real_evaluation_percent": 0,
+  "arms": {
+    "c0": {
+      "arm": "c0",
+      "update": 1000,
+      "adapter_sha256": "e9d481030c35011498c9172db9c22c335b5cf4c52397b72309f9208a6fcb4060",
+      "training_state_sha256": "dc210b5d7ca0dd54564a39613a4cdf67b402ad07bd74a9e348f3a4c211e22098",
+      "index_identity": "b85875658da033a144d6be1fb0da4726edc20033d4f3b8cf3ed7dfc4a18d377c",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "student_calls": {
+        "budget": 24560,
+        "dev": 2560,
+        "total": 24560,
+        "train": 22000
+      },
+      "elapsed_training_body_seconds": 17585.54465867579,
+      "dev": {
+        "pool_l1": {
+          "ten": 0.12999988173988183,
+          "fresh": 0.021239225869067013,
+          "raw": 0.017689406397818987
+        },
+        "weighted_l1": 0.07473209893666241,
+        "ordinary_observations": 512,
+        "pair_count": 64,
+        "paired_diagnostics": {
+          "self": 0.10044681944418699,
+          "swap": 0.10135628847638145,
+          "align": 0.0015532977672592096,
+          "z_zero_action_delta_l1": 0.012656311409955379,
+          "z_distance_l2": 7.475905209779739
+        },
+        "count_class_coverage": {
+          "0": 93,
+          "1": 376,
+          "2": 43
+        },
+        "count_accuracy_by_class": {
+          "0": 0.989247311827957,
+          "1": 0.973404255319149,
+          "2": 0.8604651162790697
+        },
+        "count_accuracy": 0.966796875,
+        "reference_time_bins": {
+          "fresh": {
+            "prefix": 64,
+            "all": 64
+          },
+          "raw": {
+            "prefix": 64,
+            "all": 64
+          }
+        }
+      }
+    },
+    "c1": {
+      "arm": "c1",
+      "update": 1000,
+      "adapter_sha256": "6d340e99186090bab6739f173ecb118d03eb1bf574ae96d5f1c34241b02d644e",
+      "training_state_sha256": "b681bd0470e6a82e545cdf0dfd9c677003226d1056763dd6c6fa9fa8d8e24ae2",
+      "index_identity": "b85875658da033a144d6be1fb0da4726edc20033d4f3b8cf3ed7dfc4a18d377c",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "student_calls": {
+        "budget": 24560,
+        "dev": 2560,
+        "total": 24560,
+        "train": 22000
+      },
+      "elapsed_training_body_seconds": 17586.502972647548,
+      "dev": {
+        "pool_l1": {
+          "ten": 0.13007717956893317,
+          "fresh": 0.021219165064394474,
+          "raw": 0.017802509001090323
+        },
+        "weighted_l1": 0.07479400830083778,
+        "ordinary_observations": 512,
+        "pair_count": 64,
+        "paired_diagnostics": {
+          "self": 0.10098405880853534,
+          "swap": 0.10089725541183725,
+          "align": 0.0014684679504171072,
+          "z_zero_action_delta_l1": 0.011119467286334839,
+          "z_distance_l2": 7.298693545162678
+        },
+        "count_class_coverage": {
+          "0": 93,
+          "1": 376,
+          "2": 43
+        },
+        "count_accuracy_by_class": {
+          "0": 0.989247311827957,
+          "1": 0.9707446808510638,
+          "2": 0.8837209302325582
+        },
+        "count_accuracy": 0.966796875,
+        "reference_time_bins": {
+          "fresh": {
+            "prefix": 64,
+            "all": 64
+          },
+          "raw": {
+            "prefix": 64,
+            "all": 64
+          }
+        }
+      }
+    }
+  },
+  "shared_base_lineage": {
+    "checkpoint_source": {
+      "repository": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10",
+      "revision": "638918f3d1c2e43a39a8a20772bdb8b91835e4b7"
+    },
+    "component_checkpoint_sha256": {
+      "action_head--300000_checkpoint.pt": "f9647226ca9a1ee64ff8ed1ec380c89110afc6fc2bf6d0ae463cc4023165b4dc",
+      "proprio_projector--300000_checkpoint.pt": "1792c6e19381d3c7c814e2d49836a855d3a38b0693919416f52b3c5af39505c8"
+    },
+    "dataset_statistics_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3",
+    "normalization_statistics_sha256": "915467c67d0f68f0657ffedbf71be4558fe742ec6b4877eb99a20e4d76d15efc",
+    "repo_commit": "e4287e94541f459edc4feabc4e181f537cd569a8",
+    "unnorm_key": "libero_10_no_noops"
+  },
+  "same_run_config_except_arm": true,
+  "same_index_identity": "b85875658da033a144d6be1fb0da4726edc20033d4f3b8cf3ed7dfc4a18d377c",
+  "same_training_recipe": true,
+  "final_sampling_counts_equal": true,
+  "per_step_temporal_causal_audit_performed": false,
+  "combined_reference_calls": 18048,
+  "combined_student_calls": 49120,
+  "wall_seconds_pid_to_exit": 18467.20987701416,
+  "parallel_start_unix": 1794062579.3197303,
+  "parallel_end_unix": 1794081046.5296073,
+  "exit_status": "c0=0\nc1=0\n",
+  "preservation": {
+    "local_archive": "research_archive/Learning-Not-to-Act/task039_training_complete_2026-11-08",
+    "manifest_sha256": "06bafa448a78e395f4b297c777cf6d1a31d9e256ecdbd058ca512004233b9c96",
+    "verified_existing_files": 29,
+    "verified_bytes": 509523165,
+    "full_final_adapters_and_resume_states_preserved": true,
+    "large_raw_and_intermediate_checkpoints_still_preserved_on_server": true
+  },
+  "evaluation_configuration": {
+    "inputs_same_as038_except_explicit_runtime_path_arm_and_new_weights": true,
+    "arms": [
+      "c0",
+      "c1"
+    ],
+    "episodes_per_arm": {
+      "10": 90,
+      "00": 90
+    },
+    "total_episodes": 360,
+    "horizon": 520,
+    "chunk": 8,
+    "seed": 7,
+    "video": "all",
+    "finish_head": false,
+    "external_vlm": false,
+    "teacher_at_eval": false
+  },
+  "launcher": {
+    "server_path": "/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task039-113ded21/eval_both_sequential.sh",
+    "sha256": "33a94458cb83c045f458083dcba515cd0fd497eb874ce44da8c8543aecf84f5c",
+    "bash_syntax_passed": true,
+    "uploaded_sha_match": true,
+    "executed": false,
+    "c1_only_after_c0_successful_exit_and_formal_summary": true,
+    "automatic_retries": false
+  },
+  "new_real_plan_generated": false,
+  "model_or_simulator_loaded_by_codex": false,
+  "new_jobs_started_by_codex": false,
+  "new_budget_added": false,
+  "automatic_pr_merge": false,
+  "deletions": []
+}

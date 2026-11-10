@@ -1,10 +1,86 @@
 # 方法研究当前状态
 
-## 2026-11-07：039软件与CPU/fake已交付，待Codex验收
+## 2026-11-10：040方案与预算已获批准，工单交X直接实现
 
-X按039直接实现，commit `8a733d039aef69df1323bb34c896ed40895cff12`，保留accepted038 PR13@5a6452ab未merge依赖并合入main工单d919233。新增有界真实释放收尾、双壶仅新normal初态freejoint置换、60/360失败计账、旧221ten/75normal与180 raw引用合并、实际计数新索引/共享哈希进度、同038训练与评测入口。[039回复/命令](responses/039_round1.md)、[详细用法](../docs/task039_usage.md)、[阶段总结](../docs/stage_summaries/2026-11-07_task039_software_delivery.md)。网络/loss、原V2准入、正式bank/评分及035/036/038全部原工件不变。
+用户明确“按你推荐的吧，提交工单吧”并要求继续。[040详细工单](tasks/040_parent_coverage_augmentation.md)已交X直接版本化实现、定向CPU/fake、新PR和responses/040_round1.md；不先泛审、不启动真实MVP。[已批方案](../docs/research/2026-11-10_task040_parent_coverage_proposal.md)、[批准机器记录](evidence/040_budget_approval_and_dispatch.json)、[阶段总结](../docs/stage_summaries/2026-11-10_task040_budget_approved_x_implementation.md)。
 
-受影响CPU/fake277通过、0失败/错误、2跳过（Windows真实symlink权限不足；模拟路径回归通过），独立审查两项Important已集中修复并定向复查闭合，证据见[JSON](evidence/039_cpu_fake.json)及两份JUnit。实现/测试交付100%，软件验收pending；真实生成/标签/索引生产、模型/仿真/训练/eval、部署均0%。本轮没有真实作业或自动merge/删除。预算已批准，下一Codex审查隔离部署/填实际路径，用户亲自启动60普通＋360次10、C0/C1各1000与新模型360上限内作业；无新增合格train10则加载模型前拒绝训练，有新增按实际量继续，不加N/MVP。真实覆盖与效果open，旧038 R3closed保持。发布后精确commit远端读回并本地SHA备份；下方039实现0%为本轮交付前历史。
+范围为三任务stove/mug_pudding/two_pots各demo_20..39候选60，固定分组仅新train代表生成、dev封存；新普通≤60、10尝试≤360，原039生成动作/V2准入/5帧释放/仅双壶初始化置换/H520保持。旧180 split/305ten/105fresh/180raw与305pair不改，新增train10/pair追加，新normal只作生成与pair、不混fresh；原fresh/raw及原dev稳定键/选择顺序严格保持。C1从原SOG10新初始化一组1000、reference≤9024/student≤24560、固定末1000，正式10/00各90共180。无S/C0/续训/额外seed/新基线或评分变更，无新增合格train父组则拒同覆盖训练，有新增按实际量继续不凑N。
+
+规格/交接100%，040代码实现/部署/真实数据/索引/训练/eval均0%。X仅软件与fake，不部署/启动真实作业；Codex验收后隔离部署和完整conda/python命令，用户亲自启动全部真实阶段。PR14固定113ded21及039 C1 58.89%/85.56%保持、所有旧权重/原数据/失败/署名保留、不自动merge。覆盖增强不冒称ICML创新/保证SR，进度/保持未被证伪；不因偏好反复返修。本轮只GitHub文档/批准交接和精确commit本地SHA归档，未启动、部署或删文件，待删=[]。下方040“待批准/无工单”仅历史。
+
+---
+
+## 2026-11-10：039接手分析已复核，040覆盖提案待预算，暂不启动
+
+用户要求审阅接手分析及二次评审并推进下一步。Codex对照已有正式报告、census/部分trace与现成帧，结论与[证据纠错](../docs/research/2026-11-10_task039_analysis_review_corrections.md)已记录：C1的A回退为3条大位移＋2条双壶短暂回退，不是1＋4；物体B从未接近12厘米有5条（互斥桶只剩3），现有训练已任务均匀采样，不能把少父源等同曝光少。进度条件化、保持约束及更多训练未被证伪。原039正式58.89%/85.56%、所有分数/原稿/失败/权重不改，039交付closed保持，研究open。
+
+[040方案](../docs/research/2026-11-10_task040_parent_coverage_proposal.md)建议直接补stove/mug_pudding/two_pots新训练父源，S重采样不作必经验证。只读既有HDF键元信息确认各50个demo及20..39存在；不读新轨迹或生产新标签/索引。提案上限60普通＋360次10，仅新增train父源生成、dev封存；旧split/305ten/105fresh/180raw复用，原dev/参考池不变，新normal只用于生成和pair。保持039 C1网络/loss/任务采样，从原SOG10新训一组1000/reference≤9024/student≤24560，正式新模型10/00各90=180，无新基线/C0/S/续训或seed。属于覆盖增强强基线，非已证新机制/ICML创新。
+
+**方案文档100%，040实现/部署/真实生成/索引/训练/eval均0%；以上新数值预算尚未获用户批准，X尚无040实现工单，当前不改代码/部署/启动任何真实作业。** 下一用户确认预算后，Codex交详细工单＋短prompt，X直接实现/受影响CPU-fake，Codex验收隔离部署及常用命令，用户亲启。无需泛审/MVP/额外基线；PR14@113ded21保持未合并，main仍不是完整运行代码。旧文档“等待失败分析”由本节更新，但不重开旧run。
+
+[阶段总结](../docs/stage_summaries/2026-11-10_task039_review_task040_coverage_proposal.md)、[机器证据](evidence/040_existing_results_review.json)。本轮只读分析/文档提案，不新评分/模型/仿真/标签，不merge/删除/启停服务器。精确commit发布读回及本地SHA备份另记receipt/manifest；待删=[]。
+
+---
+
+## 2026-11-08：完整项目交接入口已整理，下一步仍为现有失败分析
+
+新接手请先读[项目主交接文档](../docs/handoffs/2026-11-08_project_handoff_after_task039.md)，再读AGENTS与本STATUS最新状态；README已改为当前路线入口，旧016/017候选保留为历史。文档包含一页状态、角色权限、9任务/00与10指标、C0C1模型和loss、三池数据/父划分、PR与代码/服务器环境、权重SHA、完整结果/本地视频、只读命令、下一步证据分析清单和可转发prompt。
+
+事实基线仍为039已完成R4：C1 10/00=58.89%/85.56%，数据/两组1000/正式360全部完成，main不是运行代码入口，已验收实现为未合并PR14@113ded21。下一接手Codex/研究agent按交接第11节分析已有白杯/双壶等失败，不能自动重跑039、续训/生成/改评分；8段视频已下载但尚未逐帧归因。040没有已批准新工单/预算，X无实现任务，用户暂不启动新实验。本次只交接文档/入口与精确commit本地SHA备份，不新建实验、merge或清理。
+
+---
+
+## 2026-11-08：039正式360与报告完成，C1小幅双升，交付closed
+
+[R4](reviews/039_round4.md)接受本轮两组各180模型/计分100%、exit0，无执行/清理/ledger错误或残留进程，X无需返修、PR14不自动merge。C0 10/00=56.67%（51/90）/80.00%（72/90），C1=58.89%（53/90）/85.56%（77/90）。C1同数据对C0 +2.22/+5.56pp（10新增5丢3、00新增6丢1）；对038 C1 +3.33/+1.11pp（10新增7丢4、00新增6丢5），本批微调当前最佳组合，00仍低原始1.11pp。非全面提升/显著性或把+34.44pp全归新约束。[阶段九任务表/解读](../docs/stage_summaries/2026-11-08_task039_final_results_coverage_recovery.md)、[机器结果](evidence/039_final_results.json)。
+
+恢复三任务10从3.33→16.67%，旧六81.67→80%，净增3条但仍25/37=67.57%不成功。C1开炉/双壶/白杯00均100%，10为30/20/0，支持外部预完成后的继续执行问题而非只不会普通任务；白杯训练仅1父源3变体，另2条释放确认未知，原二元不成功口径保持，不把所有失败混成同机制。wrong_grasp均7、goal_regression4→5，不声称全面成果保护。
+
+四份新旧plan任务/人口/runtime/core/reporting/双bridge预算指纹匹配，原90/90与逐episode对应，实际末1000 SHA e9d48103/6d340e99/index b8587565正确；完整性/兼容问题0、00信号100%。14正式/控制原文件＋四组8原配对视频本地SHA保留（manifest8c3806df），039最终权重/完整续训状态29文件与所有服务器中间权重/raw/视频、旧分数失败保持。仅读汇总/复制，未新评分、模型/仿真/标签/训练eval，视频未观看或重判，没全量下载360视频。
+
+**下一执行者Codex：分析现成白杯/双壶等10失败视频与证据，提出针对性方法取舍。** 用户暂不启动新作业，X无新实现/返修；不自动续训、加seed/生成、改指标或扩benchmark。039交付closed、研究机制/效果泛化仍open；文档/证据精确commit读回SHA本地阶段备份、manifest，无清理，待删=[]。下方eval0/待启动仅历史，不重开两个已完成run。
+
+---
+
+## 2026-11-08：039 C0/C1训练100%，用户直接一条正式360评测
+
+[R3](reviews/039_round3.md)接受两组连续1000/固定末1000/正常exit0、无残留训练进程，X无需返修、PR14@113ded21不自动merge。adapter SHA e9d481030c35/6d340e991860及完整training_state字节核对；同config除arm/index b8587565/base/recipe、最终采样计数一致，未追加逐步时序因果审计。reference共18048/student49120等于预算；北京时间11-07 22:42:59至11-08 03:50:46，总5h7m47s。dev10 L1 .129999882/.130077180约.06%差，非常接近而非SR/新方法有效结论，固定末1000不挑权重。
+
+29份末adapter/完整续训状态/metrics/配置/预算/实际eval配置/索引小记录已本地SHA保留，[证据](evidence/039_training_complete.json)、[阶段](../docs/stage_summaries/2026-11-08_task039_training_complete_evaluation_handoff.md)，manifest06bafa44。所有服务器中间checkpoint/039生产/旧035036038原始数据、权重、视频和失败保持，不伪称全部原数据下载。
+
+**训练/评测文件准备100%，正式模型eval0。下一用户按[完整一条命令](../docs/experiment_plans/2026-11-08_task039_dual_model_evaluation_commands.md)运行新eval_both_sequential.sh：C0完成包括正式报告且exit0后自动C1，各10/00各90共360。** 脚本只bash语法/上传SHA核对，未执行；自激活原simulation venv，模型仍原OFT worker，无需pip/plan/MVP/重建状态/重训/重测基线。原来源/core/reporting/双bridge/评分、H520/chunk8/seed7/全视频保持；run绑定真实末权重建plan，本轮没生成/冒称真实plan通过。已有run/marker拒绝防重复，错误保留且不退款重试或启后续arm。Codex只文件准备/归档，真实评测用户亲启，X无修改。305pair/白杯1训练父源3变体限制保持，不凑N。阶段关键文档精确commit读回SHA本地备份manifest，无清理。训练closed，正式SR/研究open；下方039训练0/待开训均历史。
+
+---
+
+## 2026-11-07：一条命令并行C0/C1，启动器已部署但未执行
+
+用户要求一次训练两组、允许自动接力或并行。Codex准备并上传`configs/task039-113ded21/train_both_parallel.sh`（[源](../docs/experiment_plans/scripts/task039_train_both_parallel.sh)），原039[完整命令顶端](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)给一条nohup及两日志进度。不再要求人工等C0再启动C1；旧逐组命令仅替代方式，不能叠加运行。
+
+A10080GB仅读时空闲；038 C0/C1独跑12574.55/12963.76秒，PyTorch已分配峰值各约16.4GB，两组有并行显存余量。选择并行利用可能的CPU/I/O空档，但单卡算力共享、没有实测保证更快/减半；串行主体约7h6，并行按5–8h预留只是估计，不另跑性能MVP。脚本只bash语法及上传SHA检查，未执行。原子launch marker/已有输出拒绝防重复，两个进程各原1000/seed7/同索引与独立账本/权重/日志，失败不退款重试/杀另一组，不启动eval；模型/损失/预算未改。039准备100%，训练/eval仍0；所有真实作业由用户启动。[阶段](../docs/stage_summaries/2026-11-07_task039_parallel_training_launch_handoff.md)与[证据](evidence/039_parallel_training_launcher.json)已精确commit读回SHA本地备份，未merge/清理。下方强制串行是历史选项。
+
+---
+
+## 2026-11-07：039数据准备100%，用户直接开始C0/C1
+
+[R2](reviews/039_round2.md)接受用户亲启production-001的现成准备完成报告，`training_ready=true`/source_errors0，无错误文件或残留进程，用时3小时31分。数据生成、合并、两索引均100%，训练/模型eval0；Codex只读/复制旧报告，不新开标签、索引、物理/模型或训练。软件R1/PR14@113ded21验收保持，X无需返修，不自动merge。[阶段](../docs/stage_summaries/2026-11-07_task039_preparation_complete_training_ready.md)、[证据](evidence/039_preparation_complete.json)。
+
+实际60普通/99ten尝试，合格30普通（50.00%）、84ten（84.85%），新增ten63train/21dev。开炉36/6、白杯3/9、双壶24/6；白杯训练1父源3变体偏少，但按既定有新增即训练，不改父split/凑N/自动追加预算或承诺SR。合并旧003得到305ten（224/81）、105fresh（78/27）、180raw（136/44），均九任务；130017行、305/305pair有效，计数标签78998/raw无标签51019合原合同。prepare identity b7a9b864，新index b8587565/report64a2d492，六个现成小工件服务器与本地SHA匹配，完整大数据仍保留服务器。
+
+**下一用户直接按[完整命令第二节](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)启动C0；1000正常完成后直接C1，不重跑generate/index或等额外人工预检/MVP。** 同原SOG10新初始化、同新索引/原网络loss/固定末1000，已批reference≤18048/student≤49120/新模型360保持；所有真实作业仍只用户启动。错误保留输出/账本反馈，不自主重开退款。阶段/证据精确commit读回SHA本地备份manifest，无删除。数据准备closed、训练/效果open；下方准备未完成/0%为历史。
+
+---
+
+## 2026-11-07：039软件accepted并部署，用户直接一次生产
+
+[R1](reviews/039_round1.md)接受[PR14](https://github.com/No1dry/Learning-Not-to-Act/pull/14)固定113ded21434a06e2cdc156e5d6283a11c3f15488（实现8a733d03、依赖accepted038 PR13），X无需返修，不自动merge。[阶段总结](../docs/stage_summaries/2026-11-07_task039_accepted_deployed_user_generation.md)、[机器证据](evidence/039_codex_acceptance.json)。本地受影响279个独立CPU/fake最终通过/无遗留失败或skip，含Windows原跳过symlink；初次缺历史fixture及一次Codex链接cwd错误保留，复用旧fc1b4990后只补测1项，不增加真实MVP。
+
+code/task039-113ded21、configs/task039-113ded21文件SHA匹配；原runtime逐字节复制，generation仅引用原035完整180配置/旧003 export/036 index。worker和simulation两原venv方法editable映射指新副本并核对来源，没有依赖升级/旧代码数据修改。5实际配置已填，未来eval绑定039各末1000，尚无真实adapter或新plan。真实收尾/双壶训练初始化置换、固定A/B/V2/旧评分/038网络loss、旧221ten/75normal/180raw引用复用均保持工单，实际数量待生产。
+
+**准备/部署100%，039真实生成/标签或索引生产/训练/评测0%。下一用户按[完整命令](../docs/experiment_plans/2026-11-07_task039_generation_training_evaluation_commands.md)直接一次generate；有新增合格train10即直接C0，完成后C1，之后依次正式eval，不再等Codex人工门槛。** 零新增入口拒训，技术错误保留目录/账本交回，不自主删账本/重开生产或改规则/预算。
+
+已批60普通＋360次10、原SOG10两组各1000/参考≤18048/student≤49120、两模型10/00各90共360，不授权Codex/X代跑。Codex本轮仅审查/CPU-fake/文件部署、读回与备份；没有真实物理/模型/标签/训练/eval。旧038/035/036所有权重/分数/原视频/数据/失败保持。039软件范围closed，真实恢复/效果与研究open。关键文档/证据精确commit读回SHA本地备份、manifest更新，X固定原稿保留署名，无清理，待删=[]；下方039实现0/未部署已过时。
+
+---
 
 ## 2026-11-07：039恢复三任务数据方案/预算已批准，X直接实现
 
