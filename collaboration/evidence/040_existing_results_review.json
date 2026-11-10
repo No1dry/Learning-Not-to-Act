@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-10",
+  "scope": "existing_results_and_local_HDF_key_metadata_only_no_new_experiment_or_rescoring",
+  "results_fact_commit": "f6e9b8b7668ab1c20505a2b162ccb7d1b8e93aa2",
+  "implementation_head": "113ded21434a06e2cdc156e5d6283a11c3f15488",
+  "official_sources_sha256_verified": [
+    {
+      "arm": "038c0",
+      "archive_relative_path": "task038_final_results_videos_2026-11-07/results/c0/summary.json",
+      "sha256": "a26441f503bf1ecf06cd3a14049b07c15a415aefd92a7748df9564954a4d14d3"
+    },
+    {
+      "arm": "038c1",
+      "archive_relative_path": "task038_final_results_videos_2026-11-07/results/c1/summary.json",
+      "sha256": "fb5fd65dee72cbc24cf864e28f0a677c2b16c34cb1e32c43ef1f421cb6b9c4bd"
+    },
+    {
+      "arm": "039c0",
+      "archive_relative_path": "task039_final_results_videos_2026-11-08/results/c0/summary.json",
+      "sha256": "befa0bc1c0ace91895da40530ce0699ead81cd0d3f51692f348f3436b654fc80"
+    },
+    {
+      "arm": "039c1",
+      "archive_relative_path": "task039_final_results_videos_2026-11-08/results/c1/summary.json",
+      "sha256": "77278ee4b8219799af42be93eaf98fd5fbd0f3b7c4a6c8735bf967cd00899861"
+    }
+  ],
+  "reviewed_documents": [
+    {
+      "filename": "2026-11-09_039_failure_mechanism_and_next_method_decision.md",
+      "sha256": "2d1ca83717785e581a00edf9d21047b42505006c2fc242cbf7ac6d9377b17ed4"
+    },
+    {
+      "filename": "Learning_Not_to_Act_Task039失败机理评审与040建议_2026-11-10.md",
+      "sha256": "cfc32de30fb45f9b765d945f5148bdc1100b3373aab48dfec65391dbd98c3734"
+    }
+  ],
+  "c1_mask10": {
+    "formal_success": 53,
+    "denominator": 90,
+    "percent": 58.888888888888886,
+    "unsuccessful": 37,
+    "never_achieved_native_full_goal": 32,
+    "ever_achieved_native_full_goal": 5,
+    "unsuccessful_at_horizon": 34,
+    "unsuccessful_goal_confirmed_exit": 3,
+    "B_within_10cm": 27,
+    "B_never_within_12cm_object_only": 5,
+    "A_regression_cases": 5
+  },
+  "A_regression_and_completion_examples": [
+    {
+      "episode_id": "mug_pudding_s006_10",
+      "A_max_displacement_m": 0.937769045583797,
+      "B_ever_true": true,
+      "A_false_steps": 378,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ]
+    },
+    {
+      "episode_id": "basket_cheese_butter_s000_10",
+      "A_max_displacement_m": 0.8724691691671257,
+      "B_ever_true": false,
+      "A_false_steps": 41,
+      "failure_reasons": [
+        "goal_regression",
+        "wrong_grasp",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": []
+    },
+    {
+      "episode_id": "basket_cheese_butter_s007_10",
+      "A_max_displacement_m": 1.0098501446281287,
+      "B_ever_true": false,
+      "A_false_steps": 214,
+      "failure_reasons": [
+        "goal_regression",
+        "wrong_grasp",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": []
+    },
+    {
+      "episode_id": "two_pots_s001_10",
+      "A_max_displacement_m": 0.06327018312345585,
+      "B_ever_true": false,
+      "A_false_steps": 13,
+      "failure_reasons": [
+        "goal_regression",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": []
+    },
+    {
+      "episode_id": "two_pots_s003_10",
+      "A_max_displacement_m": 0.030171392727283093,
+      "B_ever_true": false,
+      "A_false_steps": 2,
+      "failure_reasons": [
+        "goal_regression",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": []
+    },
+    {
+      "episode_id": "mug_pudding_s009_10",
+      "A_max_displacement_m": 0.0000038007289273004484,
+      "B_ever_true": true,
+      "A_false_steps": 0,
+      "failure_reasons": [],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ]
+    },
+    {
+      "episode_id": "mug_microwave_close_s009_10",
+      "A_max_displacement_m": 0.0001311207000366105,
+      "B_ever_true": false,
+      "A_false_steps": 0,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": []
+    }
+  ],
+  "C0_to_C1_native_goal_ever_transitions": {
+    "false_to_true": 4,
+    "true_to_false": 4,
+    "true_to_true": 54,
+    "false_to_false": 28
+  },
+  "sampling_evidence": {
+    "repository_file_at_implementation_head": "egrs/retention/training.py",
+    "algorithm": "pool/time_bin -> uniform_task -> uniform_parent -> uniform_variant -> uniform_window",
+    "training_ten_draws": 12000,
+    "expected_ten_draws_per_task": 1333.3333333333333,
+    "pair_sampling": "uniform_task -> uniform_parent -> uniform_variant",
+    "stored_trajectory_count_does_not_set_task_sampling_probability": true
+  },
+  "source_availability_metadata": {
+    "dataset_revision": "147fa5eb607bb696dd922c3518084a90954cd2f3",
+    "checked_tasks": [
+      "stove",
+      "mug_pudding",
+      "two_pots"
+    ],
+    "demos_per_HDF": 50,
+    "requested_candidate_range_inclusive": [
+      20,
+      39
+    ],
+    "all_requested_HDF_episode_keys_present": true,
+    "observations_actions_states_or_labels_read": false,
+    "new_manifest_or_training_index_generated": false
+  },
+  "status": {
+    "proposal_only": true,
+    "new_budget_approved": false,
+    "X_new_implementation_task_issued": false,
+    "real_jobs_started": false,
+    "scoring_changed": false,
+    "old_evidence_modified": false,
+    "deletions": []
+  }
+}
