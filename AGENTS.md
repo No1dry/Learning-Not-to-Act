@@ -1,5 +1,11 @@
 # 方法研究协作规则
 
+## 2026-11-10：用户已批准040预算，下一X直接软件交付
+
+用户“按你推荐的吧，提交工单吧”及后续继续，已批准040三任务demo_20..39固定候选、仅新增train父组生成，普通≤60/ten≤360，一组原SOG10新初始化C1 1000（reference≤9024/student≤24560）、新模型10/00各90共180。详细collaboration/tasks/040_parent_coverage_augmentation.md已下达X直接代码/定向CPU-fake/新PR与040_round1，不再泛审或真实MVP。旧305ten/105fresh/180raw及305pair保留，新ten/pair只追加train；新normal仅生成/pair，不混fresh，旧180 split及全部dev选择稳定键/顺序保持；原039算法/网络loss/任务采样/评分bank不改，无S/C0/续训/新seed/基线。PR14@113ded21未合并，039完成58.89%/85.56%不改。
+
+规格/交接100%，040实现/部署/真实数据/训练/eval0%；批准预算不扩代跑权限。X只软件/CPU-fake不SSH部署或真实生产；Codex审查隔离部署和常用命令，用户亲自启动全部真实阶段。无新合格train父组不重复同覆盖训练，有新增不凑N。方案/批准记录/阶段总结与STATUS优先，下方待预算/无X任务为历史。只发布文档并精确commit本地SHA备份，不改实现/merge/删除/启停实验；保留脏checkout和所有原证据/历史署名。本条不覆盖后续用户决定。
+
 ## 2026-11-10：039分析纠错已上库，040仅覆盖方案待数值预算
 
 最新入口docs/research/2026-11-10_task040_parent_coverage_proposal.md、同日task039_analysis_review_corrections.md与STATUS。039 C1正式58.89%/85.56%不改，交付closed/研究open；已纠正接手分析把C0/C1四条双壶当C1四条的混分，实际C1三条大位移＋两条短暂A回退；5条物体B未接近12cm不等于互斥桶3条，已有任务均匀采样，少父源不是抽样频率低，不排除进度/保护/更长训练。原稿/署名/原分数权重失败保持，不重评分。

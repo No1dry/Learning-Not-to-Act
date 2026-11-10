@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-10：040方案与预算已获批准，工单交X直接实现
+
+用户明确“按你推荐的吧，提交工单吧”并要求继续。[040详细工单](tasks/040_parent_coverage_augmentation.md)已交X直接版本化实现、定向CPU/fake、新PR和responses/040_round1.md；不先泛审、不启动真实MVP。[已批方案](../docs/research/2026-11-10_task040_parent_coverage_proposal.md)、[批准机器记录](evidence/040_budget_approval_and_dispatch.json)、[阶段总结](../docs/stage_summaries/2026-11-10_task040_budget_approved_x_implementation.md)。
+
+范围为三任务stove/mug_pudding/two_pots各demo_20..39候选60，固定分组仅新train代表生成、dev封存；新普通≤60、10尝试≤360，原039生成动作/V2准入/5帧释放/仅双壶初始化置换/H520保持。旧180 split/305ten/105fresh/180raw与305pair不改，新增train10/pair追加，新normal只作生成与pair、不混fresh；原fresh/raw及原dev稳定键/选择顺序严格保持。C1从原SOG10新初始化一组1000、reference≤9024/student≤24560、固定末1000，正式10/00各90共180。无S/C0/续训/额外seed/新基线或评分变更，无新增合格train父组则拒同覆盖训练，有新增按实际量继续不凑N。
+
+规格/交接100%，040代码实现/部署/真实数据/索引/训练/eval均0%。X仅软件与fake，不部署/启动真实作业；Codex验收后隔离部署和完整conda/python命令，用户亲自启动全部真实阶段。PR14固定113ded21及039 C1 58.89%/85.56%保持、所有旧权重/原数据/失败/署名保留、不自动merge。覆盖增强不冒称ICML创新/保证SR，进度/保持未被证伪；不因偏好反复返修。本轮只GitHub文档/批准交接和精确commit本地SHA归档，未启动、部署或删文件，待删=[]。下方040“待批准/无工单”仅历史。
+
+---
+
 ## 2026-11-10：039接手分析已复核，040覆盖提案待预算，暂不启动
 
 用户要求审阅接手分析及二次评审并推进下一步。Codex对照已有正式报告、census/部分trace与现成帧，结论与[证据纠错](../docs/research/2026-11-10_task039_analysis_review_corrections.md)已记录：C1的A回退为3条大位移＋2条双壶短暂回退，不是1＋4；物体B从未接近12厘米有5条（互斥桶只剩3），现有训练已任务均匀采样，不能把少父源等同曝光少。进度条件化、保持约束及更多训练未被证伪。原039正式58.89%/85.56%、所有分数/原稿/失败/权重不改，039交付closed保持，研究open。
