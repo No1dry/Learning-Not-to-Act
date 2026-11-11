@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-11：040全部完成，下一只读失败分析，不重开旧run
+
+040 R3接受C1连续1000/固定末1000与正式180完成，X无需返修/PR15@428c1358不自动merge。10合规58.89%（53/90）与039持平，00官方86.67%（78/90）+1.11pp；10新增9丢9、00新增5丢4，非全面/显著提升。新覆盖三任务10从16.67→33.33%、旧六80→71.67%，+5被−5抵消；开炉30→60、白杯0→30、双壶20→10。goal_regression5→9/wrong_grasp7→8/释放未知2→4是可重叠诊断，不全叫严重破坏；不能把新旧取舍确认为单一遗忘/梯度冲突，或排除进度/保护方法。
+
+正式执行/计分100%、software_exit success、execution/cleanup/ledger null，无进程；人口/原来源/runtime/core/reporting/双bridge/预算签名同039。训练参考9024/student24560，adapter a51f9062及完整training_state5a81a12d字节SHA匹配实际040index8ef04d91和eval。21原报告/末完整权重状态等文件＋4例8原配对视频本地SHA保存，manifest a933bec9；视频未逐帧归因或重判、原服务器所有raw/中间权重/视频/旧资料保留，不冒称全量下载。只读聚合/复制，没有新模型物理标签评分。见040_round3、040_final_results和2026-11-11_task040_final_results_targeted_gains_retention_tradeoff.md。
+
+040交付closed/研究open，保留040候选主权重及039配对对照。下一Codex只分析现有9条新增失败和旧成功，提出041模型/训练约束取舍；用户暂不新启动、X无新工单/泛审、041实现和实验预算未批准。不要重开040生成/训练/eval，不自动续训/加seed/S/C0/改评分扩benchmark或merge/删除。关键文档精确commit读回SHA本地manifest备份；下方待训练/eval0为历史，此条不覆盖未来用户决定。
+
 ## 2026-11-11：040真实准备完成，下一用户直接C1训练
 
 040 R2接受production-001现成ready报告，准备100%、source_errors0、原进程结束/无preparation_error，未采集独立shell退出码；46train代表/14dev封存，实际46normal69ten、新65train10/65pair，耗时6100.924秒。新总ten370（289/81）/pair370全有效/143960行；开炉train68父23、白杯12父4、双壶48父16，fresh105/raw180及原dev稳定选择不变。index8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe，报告c87e6eba，六小报告账本服务器/本地SHA一致，大数据/旧权重失败原地保留。
