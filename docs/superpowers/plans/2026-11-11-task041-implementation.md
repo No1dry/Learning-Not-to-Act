@@ -33,9 +33,9 @@ Owner files: new `retention041/reference.py`, `tests/test_retention041_reference
 
 Interfaces: `Old10Teacher(policy, verified_state, identity)` installs039 buffers/independent complete context using shared frozen original base while preserving student parameter names/objects. `.predict(policy,item,predict=None)` returns detached normalized1×8×7 actions; optional predict seam accepts explicit teacher modules. `preserve_rng()` and `original_reference_prediction(policy,item,predict=None)` protect exact RNG/modes; `Old10Budget(ledger_path=None)` durable limits train4000/dev0 (R0 budget constructed0 by explicit arm contract or disabled class). Full039 state is prevalidated by Task2.
 
-- [ ] Red tests then minimal branch/context implementation; no active-graph weight copying, no second backbone.
-- [ ] Test distinct base/teacher/student outputs, exact exception restoration/RNG, independent frozen teacher storage, no_grad and real checkpointed autograd backward safety. Original oft default regressions only affected paths.
-- [ ] Report API/test evidence externally, no commit/real jobs.
+- [x] Red tests then minimal branch/context implementation; no active-graph weight copying, no second backbone.
+- [x] Test distinct base/teacher/student outputs, exact exception restoration/RNG, independent frozen teacher storage, no_grad and real checkpointed autograd backward safety. Original oft default regressions only affected paths.
+- [x] Report API/test evidence externally, no commit/real jobs.
 
 ## Task2 — strict stage adapter/checkpoint and single-student eval
 
@@ -47,9 +47,9 @@ Checkpoint API `save_training_state(..., update,config,experiment_arm,index_iden
 
 Evaluation uses original retention.engine contract, new041schema/group/factory, base arm c1 plus experiment_arm, validates fixed phase-final1000 and040/039 identities; single student only. `run(config,out,experiment_arm)`, `build_plan(config,experiment_arm=None)`, report helpers preserve original180 population/score/videos/dualbridge.
 
-- [ ] Red tests for roleSHA/base/index/inventory rejection, complete040 initialization, newroot rejected by oldreader, full newstage save/reload/same-run resume and advanced ledgers.
-- [ ] Implement and test strict r0/r1 metadata; R0 requires no039model load. fake180 bindings use original fixed core/reporting fixture.
-- [ ] Report API/test evidence externally, no commit/real jobs.
+- [x] Red tests for roleSHA/base/index/inventory rejection, complete040 initialization, newroot rejected by oldreader, full newstage save/reload/same-run resume and advanced ledgers.
+- [x] Implement and test strict r0/r1 metadata; R0 requires no039model load. fake180 bindings use original fixed core/reporting fixture.
+- [x] Report API/test evidence externally, no commit/real jobs.
 
 ## Task3 — root data selection, training loop and delivery
 
@@ -57,8 +57,8 @@ Owner files: new `retention041/data.py`, `config.py`, `training.py`, `__main__.p
 
 Public config format `task041-old10-retention-training-v1`: experiment_arm, training_recipe(exact existing038PRESET), index_dir, initial_adapter, teacher_adapter(null forR0), benchmark_root, runtime. Environment-variable expansion explicit; output/resume CLI options separate. New041 config guards original1000preset and actual fixed inputs before model loading.
 
-- [ ] Red queue/mask tests: known old003 six train ten positions only, first4/less/zero/duplicates, strict unavailable ancestry errors, exact masked mean no fixed4 dilution. Reuse040 reader and preserve data/dev/selection.
-- [ ] Red loop tests then implement minimal C1 stage loop reusing original loss/dev/sampler/forward. References all precomputed under RNG isolation; R1 add old10 to same main student graph only. Save progress/old10 counters/coefficient and ancestry without huge sampling logs.
-- [ ] Tiny actual autograd/checkpointing init/teacher/state, matched R0/R1 sampling/RNG/base loss,22/8/≤4 calls, gradient isolation, interruption/resume equivalence and strict new eval reload; only targeted original regressions.
-- [ ] One whole041 review and scoped fixes; final root-run affected CPU/fake, keep actual JUnit/red failures and honest boundaries.
+- [x] Red queue/mask tests: known old003 six train ten positions only, first4/less/zero/duplicates, strict unavailable ancestry errors, exact masked mean no fixed4 dilution. Reuse040 reader and preserve data/dev/selection.
+- [x] Red loop tests then implement minimal C1 stage loop reusing original loss/dev/sampler/forward. References all precomputed under RNG isolation; R1 add old10 to same main student graph only. Save progress/old10 counters/coefficient and ancestry without huge sampling logs.
+- [x] Tiny actual autograd/checkpointing init/teacher/state, matched R0/R1 sampling/RNG/base loss,22/8/≤4 calls, gradient isolation, interruption/resume equivalence and strict new eval reload; only targeted original regressions.
+- [x] One whole041 review and scoped fixes; final root-run affected CPU/fake, keep actual JUnit/red failures and honest boundaries.
 - [ ] Commit code/evidence then concise responses/041_round1.md with commit, conda/python train/resume/eval/optional serial templates. NewPRto main lists unmerged PR15dependency, exacthead/tree/blob remote verification and local source/docs/CPU backup; no automaticmerge/deletion/deploy.
