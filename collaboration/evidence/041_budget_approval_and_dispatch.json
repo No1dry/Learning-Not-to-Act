@@ -1,0 +1,86 @@
+{
+  "format": "task041-budget-approval-and-dispatch-v1",
+  "date": "2026-11-11",
+  "authority": {
+    "source": "direct user async answer in this chat",
+    "question": "是否批准041两组正式对照：复用现有数据，均从040权重初始化、各新增1000步，仅R1增加039旧10行为保持；参考总≤22048、学生≤49120，两模型10/00各90、共360条，由X实现、你亲自启动？",
+    "answer": "批准两组并交X实现（推荐）",
+    "question_call_id": "call_50fc940d1d4e4bf7b1fea9192e45be46"
+  },
+  "proposal_commit": "601b5efaacc82337ec3b39bc4dbc081873f6de6e",
+  "implementation_dependency": {
+    "pull_request": 15,
+    "head": "428c13585cebac1d6c90fd86a205e914caa2bb8f",
+    "implementation": "0f24e9d46bfbc33edd001facf19d2c1c40ffc166"
+  },
+  "task": "collaboration/tasks/041_old10_behavior_retention.md",
+  "student_init": {
+    "task": "040 C1 fixed terminal1000",
+    "sha256": "a51f9062fc5a54982233ffdb93f7fa164eaf78b6dbdc097721db9d7f87f57b12",
+    "scope": "all added trainable modules",
+    "fresh_optimizer_and_scheduler": true,
+    "ancestor_updates": 1000,
+    "additional_updates_per_arm": 1000
+  },
+  "teacher": {
+    "task": "039 C1 fixed terminal1000",
+    "sha256": "6d340e99186090bab6739f173ecb118d03eb1bf574ae96d5f1c34241b02d644e",
+    "frozen": true,
+    "train_only": true,
+    "cohort": "existing old003 six-task train ten provenance",
+    "maximum_selected_per_update": 4,
+    "from_existing_twelve_ten_samples": true,
+    "coefficient": 0.1
+  },
+  "data": {
+    "reuse_index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+    "ten": 370,
+    "ten_train": 289,
+    "ten_dev": 81,
+    "pairs": 370,
+    "rows": 143960,
+    "fresh": 105,
+    "raw": 180,
+    "changed": false
+  },
+  "arms": {
+    "r0": {
+      "base_algorithm": "c1",
+      "old10_teacher": false
+    },
+    "r1": {
+      "base_algorithm": "c1",
+      "old10_teacher": true
+    }
+  },
+  "approved_limits": {
+    "new_simulation_or_data_or_label_generation": 0,
+    "new_updates_total": 2000,
+    "original_reference_per_arm": 9024,
+    "original_reference_total": 18048,
+    "old10_reference_r1_train": 4000,
+    "all_reference_total": 22048,
+    "student_per_arm": 24560,
+    "student_total": 49120,
+    "formal_episodes_per_arm": 180,
+    "formal_episodes_total": 360,
+    "new_seeds": 0,
+    "coefficient_search": 0,
+    "mvp": 0,
+    "baseline_reevaluation": 0
+  },
+  "roles": {
+    "X": "implementation, affected CPU/fake tests, new PR and response; no SSH/deployment/real jobs",
+    "Codex": "research, advisory review, later isolated file deployment and full commands",
+    "user": "starts/runs/supervises all real jobs"
+  },
+  "status": {
+    "specification": "approved and dispatched",
+    "implementation": "pending X",
+    "deployment": "not started",
+    "real_data_or_model_or_training_or_eval_started_by_Codex_or_X": false
+  },
+  "preserve_old_runs": true,
+  "auto_merge": false,
+  "deletions": []
+}

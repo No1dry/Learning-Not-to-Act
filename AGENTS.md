@@ -1,5 +1,39 @@
 # 方法研究协作规则
 
+## 2026-11-11：041已批准并交X直接实现
+
+用户明确批准041两组正式对照与工单。collaboration/tasks/041_old10_behavior_retention.md及041_budget_approval_and_dispatch为入口：基础R0/R1都C1、同040末权重全部模块初始化、新优化器/独立账本各新增1000；R0不是旧C0，不旧040resume。仅R1加0.10的039旧003六任务train10软动作保持，每更新已有12ten前最多4个，不换BC/加student或改采样；完整教师独立、全部参考先于学生图，恢复模式/hook/checkpoint/cache/RNG。原C1 loss/dev/采样/原SOG10普通参考/040index8ef04d91保持。
+
+预算0新数据仿真标签，两组新增2000、参考总≤22048（原18048＋039≤4000）、student≤49120、正式新模型360；无MVP/seed/系数搜索/基线。祖代1000与新增1000如实分记、主比R1−R0；不冒称A硬保护/ICML创新或把R1−040全归保持。规格交接100%，实现/部署/真实阶段0。X直接版本化代码/定向CPU-fake/新PR与responses/041_round1.md，依赖accepted PR15@428c1358、不先泛审；Codex验收后隔离部署/常用完整命令，用户亲启全部真实作业。不自动merge/部署或启停真实作业，不改旧数据/评分/权重/失败/署名，不重开039040。六关键文件精确commit读回SHA本地归档manifest；阶段2026-11-11_task041_budget_approved_x_implementation.md。下方待批准/无工单为历史，本条不覆盖未来决定。
+
+## 2026-11-11：041旧10行为保持提案已发布，尚未批准预算/下达实现
+
+新docs/research/2026-11-11_task040_findings_and_task041_retention_proposal.md解释040：扩覆盖三任务改善/旧六退化抵消，00保持不等于10保持；040从原底座重新训练，不能直接叫灾难遗忘。只读9条新增失败的正式字段与参考源码，8未满足完整原生目标/3带回退/1错抓（重叠），全部逐帧机理仍未完成。源码保持项教师是原SOG10普通fresh/raw，不是039旧10。
+
+建议041 R0/R1都从040末权重初始化、全新优化器/账本各新增1000（如实记录祖代更新，不执行旧040resume），原C1 loss/数据/采样/固定dev不变；R1追加0.10的039旧003六任务train10动作保持，最多复用每更新12ten中的4帧，不额外student前向，不替换专家标签，teacher训练独有。R0不是旧C0。只直接约束跨版本策略稳定性，不保证episode成果保护/SR，不把蒸馏当ICML创新或把Learning not to act改成持续学习。
+
+预算草案为0新数据/仿真、两组新增2000更新、参考≤22048（原18048＋旧10≤4000）、学生≤49120、新模型正式360，无MVP/seed/系数搜索/基线。用户本轮尚未确认数值预算，X无041实现工单、无新代码/部署/真实作业；批准后Codex详细工单＋prompt、X代码/fake、用户亲启。见041_existing_findings_reference_audit和同日proposal_after_task040阶段，精确commit本地SHA备份。040/039全部工件分数旧失败不改，不重开旧run/自动merge或删除；本条不覆盖未来用户决定。
+
+## 2026-11-11：040全部完成，下一只读失败分析，不重开旧run
+
+040 R3接受C1连续1000/固定末1000与正式180完成，X无需返修/PR15@428c1358不自动merge。10合规58.89%（53/90）与039持平，00官方86.67%（78/90）+1.11pp；10新增9丢9、00新增5丢4，非全面/显著提升。新覆盖三任务10从16.67→33.33%、旧六80→71.67%，+5被−5抵消；开炉30→60、白杯0→30、双壶20→10。goal_regression5→9/wrong_grasp7→8/释放未知2→4是可重叠诊断，不全叫严重破坏；不能把新旧取舍确认为单一遗忘/梯度冲突，或排除进度/保护方法。
+
+正式执行/计分100%、software_exit success、execution/cleanup/ledger null，无进程；人口/原来源/runtime/core/reporting/双bridge/预算签名同039。训练参考9024/student24560，adapter a51f9062及完整training_state5a81a12d字节SHA匹配实际040index8ef04d91和eval。21原报告/末完整权重状态等文件＋4例8原配对视频本地SHA保存，manifest a933bec9；视频未逐帧归因或重判、原服务器所有raw/中间权重/视频/旧资料保留，不冒称全量下载。只读聚合/复制，没有新模型物理标签评分。见040_round3、040_final_results和2026-11-11_task040_final_results_targeted_gains_retention_tradeoff.md。
+
+040交付closed/研究open，保留040候选主权重及039配对对照。下一Codex只分析现有9条新增失败和旧成功，提出041模型/训练约束取舍；用户暂不新启动、X无新工单/泛审、041实现和实验预算未批准。不要重开040生成/训练/eval，不自动续训/加seed/S/C0/改评分扩benchmark或merge/删除。关键文档精确commit读回SHA本地manifest备份；下方待训练/eval0为历史，此条不覆盖未来用户决定。
+
+## 2026-11-11：040真实准备完成，下一用户直接C1训练
+
+040 R2接受production-001现成ready报告，准备100%、source_errors0、原进程结束/无preparation_error，未采集独立shell退出码；46train代表/14dev封存，实际46normal69ten、新65train10/65pair，耗时6100.924秒。新总ten370（289/81）/pair370全有效/143960行；开炉train68父23、白杯12父4、双壶48父16，fresh105/raw180及原dev稳定选择不变。index8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe，报告c87e6eba，六小报告账本服务器/本地SHA一致，大数据/旧权重失败原地保留。
+
+下一用户直接原OFT环境C1 1000/末1000（reference9024/student24560），再正式10/00各90；不重跑generate/index、额外Codex预检/MVP/凑N或基线，不续训039。获取本快照时训练/eval0；Codex本轮仅读取/复制/命令归档，没有新标签/索引/验证器、物理或模型。软件PR15@428c1358保持、X无需返修/不自动merge；新父覆盖不当SR证明，039 58.89%/85.56%和全部旧数据权重失败署名不改删。见040_round2/040_preparation_complete及2026-11-11_task040_preparation_complete_training_ready.md，阶段关键文件精确commit SHA本地manifest备份。数据准备closed/训练效果open；下方待生产/收尾均历史，本条不覆盖未来用户决定。
+
+## 2026-11-10：040 R1软件accepted且文件已部署，下一用户启动生成
+
+PR15固定428c13585cebac1d6c90fd86a205e914caa2bb8f（实现0f24e9d4）R1接受软件/隔离部署，X无需返修、不自动merge；独立162定向CPU/fake最终全通过，初次11项缺本地固定core/reporting映射的setup error及Codex一次cwd错误保留，复用原快照后仅重跑11项通过，无源码/断言改动。原60egrs生产文件与039一致，新8模块范围保持。新code/config目录名task040-428c1358，70源码依赖/4配置SHA一致，两原venv无依赖升级映射新包并静态核对module origin；原runtime字节保持，eval只改未来末1000 adapter。用户具体路径命令仅聊天/本地私有文档，GitHub放脱敏说明。
+
+软件/文件准备100%，040真实metadata/轨迹/标签索引/模型/仿真/训练/eval0%，未建production/train/eval输出或代启停。下一用户按docs/experiment_plans/2026-11-10_task040_user_generation_training_commands.md及本地docs/040_服务器完整运行命令_2026-11-10.md在原OFT环境一次generate，有新增ready后直接C1 1000，不等额外Codex/MVP/凑N，再用户切simulation正式180；旧039命令不重开。60normal/360ten、C1单组1000/9024/24560/10+00各90原预算不变，新normal只pair、原fresh/raw/dev和评分bank不动，无S/C0/续训/seed/基线。旧分数权重数据失败署名全保留，039 58.89%/85.56%不改。见040_round1、040_codex_acceptance和同日accepted_deployed阶段；软件closed/真实数据效果open。文档/固定X原稿精确commit读回SHA本地manifest，无merge/删除/真实作业；本条覆盖下方040未验收/未部署历史，不覆盖未来用户决定。
+
 ## 2026-11-10：用户已批准040预算，下一X直接软件交付
 
 用户“按你推荐的吧，提交工单吧”及后续继续，已批准040三任务demo_20..39固定候选、仅新增train父组生成，普通≤60/ten≤360，一组原SOG10新初始化C1 1000（reference≤9024/student≤24560）、新模型10/00各90共180。详细collaboration/tasks/040_parent_coverage_augmentation.md已下达X直接代码/定向CPU-fake/新PR与040_round1，不再泛审或真实MVP。旧305ten/105fresh/180raw及305pair保留，新ten/pair只追加train；新normal仅生成/pair，不混fresh，旧180 split及全部dev选择稳定键/顺序保持；原039算法/网络loss/任务采样/评分bank不改，无S/C0/续训/新seed/基线。PR14@113ded21未合并，039完成58.89%/85.56%不改。

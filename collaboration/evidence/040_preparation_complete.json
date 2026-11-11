@@ -1,0 +1,537 @@
+{
+  "format": "task040-real-preparation-complete-v1",
+  "date": "2026-11-11",
+  "implementation_head": "428c13585cebac1d6c90fd86a205e914caa2bb8f",
+  "read_only_existing_artifacts": true,
+  "preparation": {
+    "status": "ready_for_user_c1_training",
+    "training_ready": true,
+    "source_errors": 0,
+    "completion_percent": 100,
+    "elapsed_seconds": 6100.924243558198,
+    "preparation_identity": "ff0aeb8fd984cf9f7a67bbeb95550f8a10893e2906c2acf021f7feadd6ebf0ed",
+    "new_qualified_train10": 65,
+    "new_pairs": 65,
+    "pair_gaps": {}
+  },
+  "population": {
+    "candidates": 60,
+    "selected_train_parents": 46,
+    "new_dev_sealed": 14,
+    "actual_normal_attempts": 46,
+    "actual_ten_attempts": 69,
+    "approved_normal_max": 60,
+    "approved_ten_max": 360,
+    "new_ten_attempt_qualification_percent": 94.20289855072464
+  },
+  "data": {
+    "rows": 143960,
+    "pairs": {
+      "candidates": 370,
+      "valid": 370,
+      "new_valid": 65,
+      "new_reasons": {}
+    },
+    "old_pool_counts": {
+      "fresh": {
+        "dev": 27,
+        "train": 78
+      },
+      "raw": {
+        "dev": 44,
+        "train": 136
+      },
+      "ten": {
+        "dev": 81,
+        "train": 224
+      }
+    },
+    "total_pool_counts": {
+      "fresh": {
+        "dev": 27,
+        "train": 78
+      },
+      "raw": {
+        "dev": 44,
+        "train": 136
+      },
+      "ten": {
+        "dev": 81,
+        "train": 289
+      }
+    },
+    "dev_selection_unchanged": true,
+    "fresh_raw_unchanged": true,
+    "by_task": {
+      "basket": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 9,
+            "train": 32
+          },
+          "total": {
+            "dev": 9,
+            "train": 32
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 9,
+            "train": 32
+          },
+          "total": {
+            "dev": 9,
+            "train": 32
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 1411,
+            "train": 4725
+          },
+          "total": {
+            "dev": 1411,
+            "train": 4725
+          }
+        },
+        "train_parent_groups": {
+          "new": 0,
+          "old": 11,
+          "total": 11
+        }
+      },
+      "basket_cheese_butter": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 24,
+            "train": 33
+          },
+          "total": {
+            "dev": 24,
+            "train": 33
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 24,
+            "train": 33
+          },
+          "total": {
+            "dev": 24,
+            "train": 33
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 3553,
+            "train": 4963
+          },
+          "total": {
+            "dev": 3553,
+            "train": 4963
+          }
+        },
+        "train_parent_groups": {
+          "new": 0,
+          "old": 11,
+          "total": 11
+        }
+      },
+      "basket_soup_cheese": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 9,
+            "train": 39
+          },
+          "total": {
+            "dev": 9,
+            "train": 39
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 9,
+            "train": 39
+          },
+          "total": {
+            "dev": 9,
+            "train": 39
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 1276,
+            "train": 6072
+          },
+          "total": {
+            "dev": 1276,
+            "train": 6072
+          }
+        },
+        "train_parent_groups": {
+          "new": 0,
+          "old": 13,
+          "total": 13
+        }
+      },
+      "bowl_drawer_close": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 12,
+            "train": 36
+          },
+          "total": {
+            "dev": 12,
+            "train": 36
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 12,
+            "train": 36
+          },
+          "total": {
+            "dev": 12,
+            "train": 36
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 1324,
+            "train": 4161
+          },
+          "total": {
+            "dev": 1324,
+            "train": 4161
+          }
+        },
+        "train_parent_groups": {
+          "new": 0,
+          "old": 12,
+          "total": 12
+        }
+      },
+      "dual_mugs": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 0,
+            "train": 6
+          },
+          "total": {
+            "dev": 0,
+            "train": 6
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 0,
+            "train": 6
+          },
+          "total": {
+            "dev": 0,
+            "train": 6
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 0,
+            "train": 895
+          },
+          "total": {
+            "dev": 0,
+            "train": 895
+          }
+        },
+        "train_parent_groups": {
+          "new": 0,
+          "old": 2,
+          "total": 2
+        }
+      },
+      "mug_microwave_close": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 6,
+            "train": 15
+          },
+          "total": {
+            "dev": 6,
+            "train": 15
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 6,
+            "train": 15
+          },
+          "total": {
+            "dev": 6,
+            "train": 15
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 0
+          },
+          "old": {
+            "dev": 480,
+            "train": 1824
+          },
+          "total": {
+            "dev": 480,
+            "train": 1824
+          }
+        },
+        "train_parent_groups": {
+          "new": 0,
+          "old": 5,
+          "total": 5
+        }
+      },
+      "mug_pudding": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 9
+          },
+          "old": {
+            "dev": 9,
+            "train": 3
+          },
+          "total": {
+            "dev": 9,
+            "train": 12
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 9
+          },
+          "old": {
+            "dev": 9,
+            "train": 3
+          },
+          "total": {
+            "dev": 9,
+            "train": 12
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 1320
+          },
+          "old": {
+            "dev": 1277,
+            "train": 612
+          },
+          "total": {
+            "dev": 1277,
+            "train": 1932
+          }
+        },
+        "train_parent_groups": {
+          "new": 3,
+          "old": 1,
+          "total": 4
+        }
+      },
+      "stove": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 32
+          },
+          "old": {
+            "dev": 6,
+            "train": 36
+          },
+          "total": {
+            "dev": 6,
+            "train": 68
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 32
+          },
+          "old": {
+            "dev": 6,
+            "train": 36
+          },
+          "total": {
+            "dev": 6,
+            "train": 68
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 6684
+          },
+          "old": {
+            "dev": 1356,
+            "train": 7406
+          },
+          "total": {
+            "dev": 1356,
+            "train": 14090
+          }
+        },
+        "train_parent_groups": {
+          "new": 11,
+          "old": 12,
+          "total": 23
+        }
+      },
+      "two_pots": {
+        "pair_gaps": {},
+        "pairs": {
+          "new": {
+            "dev": 0,
+            "train": 24
+          },
+          "old": {
+            "dev": 6,
+            "train": 24
+          },
+          "total": {
+            "dev": 6,
+            "train": 48
+          }
+        },
+        "ten": {
+          "new": {
+            "dev": 0,
+            "train": 24
+          },
+          "old": {
+            "dev": 6,
+            "train": 24
+          },
+          "total": {
+            "dev": 6,
+            "train": 48
+          }
+        },
+        "ten_windows": {
+          "new": {
+            "dev": 0,
+            "train": 5939
+          },
+          "old": {
+            "dev": 1460,
+            "train": 5988
+          },
+          "total": {
+            "dev": 1460,
+            "train": 11927
+          }
+        },
+        "train_parent_groups": {
+          "new": 8,
+          "old": 8,
+          "total": 16
+        }
+      }
+    },
+    "task_control_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+    "task_control_report_identity": "c87e6eba02fa987024cf57985f1fad4fff180b0132bc615042674ce9138c47c0"
+  },
+  "existing_report_sha256": {
+    "preparation_report.json": "32a267cbc40090d5098fd4a00dece38e77f5c47780d19d7db2bd63f3460d0750",
+    "indices/task_control/identity.json": "e2b2991ac760f3f339d5d811068ca5cc66f471e56374a3d9e477bcd9b9f2604b",
+    "indices/task_control/report.json": "28934c598c0c825ebd97ae9a3e28417a78b5758e64953e64ba5c7d6cea9317d6",
+    "indices/retention/report.json": "20f74715d3abeeebc5ae273c397d894d938c3bf10f4b0c92885764b2127be2f4",
+    "generated/attempt_ledger.json": "eab70b0ece9161b4c19a54ed828b5c206eb9d2b369c150532c0d4f9bcc7209b6",
+    "generated/generation_progress.json": "ea4bda1c84623071008d62f13275d9a9eac9e8677d19fb009c3117eb647b019b"
+  },
+  "boundaries": {
+    "artifacts_recomputed": false,
+    "new_simulation_or_model_or_label_jobs_started": false,
+    "old_results_or_data_modified": false,
+    "trained_checkpoint_exists_at_readback": false,
+    "formal_eval_started_at_readback": false,
+    "deletions": []
+  },
+  "decision": "accepted_completed_preparation_outputs_user_may_start_approved_single_C1_training_no_additional_precheck"
+}

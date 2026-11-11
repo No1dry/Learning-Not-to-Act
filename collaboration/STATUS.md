@@ -1,10 +1,58 @@
 # 方法研究当前状态
 
-## 2026-11-10：040软件/定向CPU-fake交付，待Codex验收
+## 2026-11-11：041两组预算已批准，正式工单交X实现
 
-X基于acceptedPR14@113ded21及main工单3d92223直接实现，最终代码0f24e9d46bfbc33edd001facf19d2c1c40ffc166（首实现ea3c48b）。新040入口固定三任务demo_20..39共60候选、旧锚点/seed7alias分组、仅新train代表有界039生成，增量索引只追加合格train ten/pair；newnormal独立pair_sources、不混fresh，旧305ten/105fresh/180raw/305pair及全部旧dev记录/稳定选择顺序保留。只接一组C1固定1000与正式180，原模型/loss/评分及全部旧工件不改。[040回复](responses/040_round1.md)、[详细运行命令](../docs/task040_usage.md)、[阶段总结](../docs/stage_summaries/2026-11-10_task040_software_delivery.md)。
+用户明确“批准两组并交X实现”。[041工单](tasks/041_old10_behavior_retention.md)、[批准证据](evidence/041_budget_approval_and_dispatch.json)、[已批方案](../docs/research/2026-11-11_task040_findings_and_task041_retention_proposal.md)现为执行入口。R0/R1基础都为C1，均从040末adapter全部可训练模块初始化、新优化器/独立账本各新增1000；R0不是旧C0，不对完成040执行resume。仅R1对已有12ten中前最多4个old003六任务train来源追加0.10的039冻结完整策略动作保持，不换BC/加student观测或改采样；原SOG10普通参考和原loss/dev不变。所有参考先于学生图，教师分支独立且恢复模式/RNG。
 
-受影响CPU/fake162通过、0失败/错误/skip（来源43/数据77/模型42），[JSON/JUnit](evidence/040_cpu_fake.json)真实保留；合成动作记录→040index→原C1微型save/resume/adapter链路接通。独立审查1项Important中断子worker未停止的问题已修复并定向复查闭合，旧039默认不动；输出未解析占位符亦拒绝。实现/定向测试交付100%、Codex验收pending；部署、真实元数据/标签/索引/生成/模型/仿真/训练/eval全部0%。预算已批准但仅用户亲启，下一Codex审查隔离部署/填实际路径；无新增合格train父组ten不加载模型重复训练，有新增按实际量推进，不加S/C0/N/MVP/seed/基线。旧039结果保持，真实覆盖/SR open；无自动merge/删除，发布后精确head读回与本地SHA备份。下方040实现0%为交付前历史。
+复用040 index8ef04d91、370ten/370pair、105fresh/180raw与143960行；新数据/仿真/标签0、两组新增2000、原参考≤18048＋039≤4000=全部≤22048、student≤49120、新模型正式360，无MVP/seed/搜索/基线重测。初始化祖代1000及本轮新增1000分别记录；主比较R1−R0，不把R1−040全归新项，也不将跨版本保持冒称A成果硬保护/ICML创新。
+
+规格交接100%，041实现/部署/真实训练/eval0%。**下一X直接实现＋定向CPU/fake＋新PR及responses/041_round1.md，不先泛审。** 基于accepted PR15@428c1358依赖链，Codex验收后隔离部署给完整conda/python命令，用户亲启全部真实作业。批准不授权Codex/X代跑、SSH部署或重开040/039；不自动merge/删旧数据权重失败。04058.89%/86.67%、03958.89%/85.56%保持。见[阶段总结](../docs/stage_summaries/2026-11-11_task041_budget_approved_x_implementation.md)，六文件精确commit读回SHA本地manifest备份；待删=[]。下方未批准/无工单为历史，本条不覆盖未来决定。
+
+---
+
+## 2026-11-11：040含义与参考源码已核查，041双域保持提案待预算
+
+用户要求下一步及040验证了什么。[041方案](../docs/research/2026-11-11_task040_findings_and_task041_retention_proposal.md)明确：覆盖包在开炉/白杯局部改善，三任务16.67→33.33%，旧六80→71.67%抵消，总10不变；00恢复不等于旧10保持。040从原SOG10重新训练，不是在039上续训，不能直接称灾难遗忘；未分离条数和多样性，也未检验进度模块。9新失败8条未满足完整原生目标、3带回退/1错抓（重叠）；未完成全部视频/trace逐帧机理归因。
+
+参考源码审计确认现有fresh/raw蒸馏旁路新增分支、教师为原SOG10，没有显式039旧10行为锚。[证据](evidence/041_existing_findings_reference_audit.json)。建议041两正式臂R0/R1（基础算法都为C1，R0不是旧C0）：同040末权重初始化、新建优化器/账本、各新增1000更新；R1对现有12ten中最多4个旧003六任务train样本追加0.10的039冻结动作保持，不换专家BC，不加学生观测/推理教师或改变原00保持。两个臂隔离额外微调和保持项效应，R1−040不能全归新项。策略保持与episode内A成果保护不同，未保证后者/SR；已有蒸馏不包装ICML创新，研究问题仍外部预完成后的剩余任务适配。
+
+**仅方案/预算草案，041未获数值批准，X无实现工单，无部署/新实验。** 新数据/物理0，两组新增2000更新、参考≤22048（原两组18048＋R1旧10≤4000）、学生≤49120、正式360；不先MVP/新baseline/加seed/系数搜索，未承接040剩余额度。用户确认后Codex详细工单＋prompt，X直接实现/CPU-fake、Codex验收部署、用户亲启。040已closed，原数据权重分数失败不变，不重开旧run，不merge/删除。[阶段](../docs/stage_summaries/2026-11-11_task041_proposal_after_task040.md)与方案/证据精确commit读回本地SHA/manifest备份，待删=[]。当前040机制归因/041研究仍open。
+
+---
+
+## 2026-11-11：040训练及正式180完成，10持平/00微升，本轮交付closed
+
+[R3](reviews/040_round3.md)接受040 C1固定末1000与正式180交付，X无需返修/PR15不自动merge。模型执行/计分100%，formal_complete true、software_exit success，execution/cleanup/ledger错误null，无残留方法进程；10完整性0、00工件/兼容0、官方信号100%。**10合规58.89%（53/90），对039 C1持平；00官方86.67%（78/90），+1.11pp。** 10新增9成功丢9、00新增5丢4，不是同一成功集合；00总分等于原模型不证明逐例能力全保留。[九任务与解释](../docs/stage_summaries/2026-11-11_task040_final_results_targeted_gains_retention_tradeoff.md)、[机器结果](evidence/040_final_results.json)。
+
+新覆盖三任务10为33.33%（原16.67%，净+5），旧六为71.67%（原80%，净−5）；开炉30→60、白杯0→30、双壶20→10。不是数据完全无用，也没有总体10提升或所有目标任务改善。37不成功中goal_regression记录5→9、wrong_grasp7→8、释放未知2→4；标签重叠/严重程度待查，不照旧互斥归因。固定dev10 L1 .130077→.124277下降未变SR。提示续接与旧能力/成果保护需联合考虑，未证明灾难遗忘/梯度冲突等单一原因；不排除进度或保持路线，不继续机械加数据/步数。
+
+训练记录1..1000连续，原配方除040index外一致，reference9024/student24560；实际adapter a51f9062、完整training_state5a81a12d与保存/实文件及eval匹配，末权重固定不挑选。039/040计划人口/tasks/原source端点/runtime/core/reporting/双bridge/代理预算签名一致。21个原报告/计划/末权重及完整续训状态/metrics配置索引小记录＋4例8原配对视频已本地SHA保存，manifest a933bec9；所有服务器raw/中间权重/视频及035036038039旧证据不改删，不假称全180视频本地备份，视频未逐帧归因或重判。只读复制聚合，无新模型/物理/标签或评分任务。
+
+**040数据/训练/正式评测均结束，别重开任何040/039命令。** 040保留为10并列、00总分略好的候选主权重，039保留配对对照，不冒称显著或ICML创新。下一Codex只分析现有9条新增失败与旧成功，提出041研究取舍；用户暂不新启动，X无新任务/泛审，041预算未批准，不自动续训/加seed/S/C0/改指标/扩benchmark。本轮交付closed、研究open；阶段关键文档与证据精确commit读回SHA本地备份manifest，无merge/清理，待删=[]。下方040训练/eval0及旧启动入口均历史。
+
+---
+
+## 2026-11-11：040真实准备100%，下一用户直接单C1训练
+
+[R2](reviews/040_round2.md)接受用户亲启production-001现成准备完成：training_ready=true、source_errors0、进程已结束/无preparation_error；未采集独立shell退出码。耗时6100.924秒约1h41m41s，46train代表全部处理、14新dev封存，实际46normal/69ten未超60/360；新增合格65train10/65pair，pair gap0，尝试资格率94.20%非模型SR。开炉train36→68/父12→23，白杯3→12/父1→4，双壶24→48/父8→16；原六保持。新总ten370（289/81）、pair370全有效、143960行，fresh105/raw180及旧dev稳定选择保持，新normal仍仅pair。
+
+新task-control identity8ef04d91、reportc87e6eba，[完整证据](evidence/040_preparation_complete.json)、[阶段](../docs/stage_summaries/2026-11-11_task040_preparation_complete_training_ready.md)。六现成小报告/账本已取回本地且与服务器SHA一致，大HDF/raw/原数据权重失败全部保留，不伪全量备份。本轮仅读取复制/归档，无新标签/索引生产、物理或模型校验，也未启停真实作业。
+
+**准备100%，获取本快照时训练/eval0%。下一用户按[命令第2节](../docs/experiment_plans/2026-11-10_task040_user_generation_training_commands.md)在原OFT环境直接单C1 1000/末1000、reference≤9024/student≤24560，之后正式新180。** 不再生成/index/等额外Codex预检/MVP/凑N或重跑基线；从原SOG10新初始化，不续训039。X无返修，PR15@428c1358软件验收保持、不自动merge。旧039 58.89%/85.56%及全部原证据保留，新覆盖增加不等于SR或独立布局证明。阶段关键文档精确commit本地SHA备份manifest，无清理/改评分；数据准备closed，训练与效果open。下方040待生成/收尾/真实0是历史。
+
+---
+
+## 2026-11-10：040软件验收部署通过，下一用户直接一次生产
+
+[R1](reviews/040_round1.md)接受PR15固定428c13585cebac1d6c90fd86a205e914caa2bb8f（实现0f24e9d46bfbc33edd001facf19d2c1c40ffc166）软件/CPU-fake与隔离文件部署，X无需返修，不自动merge。独立162项最终全通过，无遗留失败/错误/skip；初次11项因本地固定core/reporting映射缺失setup error，Codex一次cwd链接错误后复用现成原快照，仅重跑11项通过，原日志留存，未改X实现/测试断言或加全库/MVP。原60个egrs生产文件与accepted039字节一致，新8模块只扩040；固定train-only父源/原split、pair-only normal、原dev稳定选择、原C1/保存恢复/180接线和账本清理经审查。[机器证据](evidence/040_codex_acceptance.json)、[阶段](../docs/stage_summaries/2026-11-10_task040_accepted_deployed_user_generation.md)。
+
+新隔离代码/配置目录名task040-428c1358，70源码依赖和4实际配置SHA一致；原OFT worker与simulation两个venv无依赖升级地指向新包，在core cwd静态核对来源。原runtime逐字节复制（本地首个尾部空行差异被部署前字节守卫拒绝、恢复原字节后成功，原日志留存），原039 C1 eval JSON只改未来末1000 adapter；旧来源/core/reporting/双bridge/评分保持，旧数据、权重、失败、039 C1 58.89%/85.56%保留。
+
+**软件/文件部署100%，真实metadata/轨迹/标签索引生产、训练/eval均0%。** 未调用真实040 plan/generate/train/eval，production/train/eval输出均不存在；没有模型/仿真/GT生产。用户按[运行说明](../docs/experiment_plans/2026-11-10_task040_user_generation_training_commands.md)及聊天/本地私有绝对路径命令，在原OFT环境直接一次generate；有新增且training_ready=true即单C1 1000，不另等Codex预检/凑N，再由用户切simulation正式180。无额外pip/plan/MVP/重建状态/基线/第二report。预算沿60普通/360ten、reference9024/student24560/正式180，不追加S/C0/seed/续训。
+
+Codex只文件/命令准备及后续结果审查，全部真实作业用户亲启；X当前无返修或新任务。关键文件精确commit读回SHA本地归档manifest，固定X原回复/运行文档亦保留；服务器私有路径/具体命令留本地，不上GitHub。无merge/删除或启停真实作业，待删=[]。软件closed，真实数据与研究效果open；下方040未部署/待验收属历史，不启动旧039命令。
+
+---
 
 ## 2026-11-10：040方案与预算已获批准，工单交X直接实现
 
