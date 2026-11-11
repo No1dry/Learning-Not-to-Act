@@ -1,0 +1,124 @@
+{
+  "format": "task041-existing-findings-reference-audit-proposal-v1",
+  "date": "2026-11-11",
+  "facts_commit": "7b8de72992b7898ad9fe4c07979cd45c2b89e48d",
+  "existing_analysis_sha256": "2a6886865871ddd346946a7ab6bbc4cfca749faacf4e9d880b2821ee473938eb",
+  "scores": {
+    "039": {
+      "10": {
+        "numerator": 53,
+        "denominator": 90,
+        "percent": 58.888888888888886
+      },
+      "00": {
+        "numerator": 77,
+        "denominator": 90,
+        "percent": 85.55555555555556
+      }
+    },
+    "040": {
+      "10": {
+        "numerator": 53,
+        "denominator": 90,
+        "percent": 58.888888888888886
+      },
+      "00": {
+        "numerator": 78,
+        "denominator": 90,
+        "percent": 86.66666666666667
+      }
+    }
+  },
+  "slices": {
+    "039": {
+      "expanded_three": {
+        "successes": 5,
+        "denominator": 30,
+        "percent": 16.666666666666668
+      },
+      "unchanged_six": {
+        "successes": 48,
+        "denominator": 60,
+        "percent": 80
+      }
+    },
+    "040": {
+      "expanded_three": {
+        "successes": 10,
+        "denominator": 30,
+        "percent": 33.333333333333336
+      },
+      "unchanged_six": {
+        "successes": 43,
+        "denominator": 60,
+        "percent": 71.66666666666667
+      }
+    }
+  },
+  "paired_counts": {
+    "10": {
+      "both_success": 44,
+      "gained": 9,
+      "lost": 9,
+      "both_unsuccessful": 28
+    },
+    "00": {
+      "both_success": 73,
+      "gained": 5,
+      "lost": 4,
+      "both_unsuccessful": 8
+    }
+  },
+  "new_failures": {
+    "n": 9,
+    "without_native_full_goal": 8,
+    "with_goal_regression": 3,
+    "with_wrong_grasp": 1,
+    "labels_overlap": true,
+    "all_video_trace_mechanisms_resolved": false
+  },
+  "code_audit": {
+    "implementation_head": "428c13585cebac1d6c90fd86a205e914caa2bb8f",
+    "files_sha256": {
+      "egrs/task_control/reference.py": "3c61142f32804c44392122677f84740d43eaa1624b5df2f8c5212c82ed8409a6",
+      "egrs/task_control/training.py": "b2ff09c29fa64ddc912dac7ca6ca1642db8056bc2ccd3a09d4faaf08317fabdf"
+    },
+    "current_reference_teacher": "original SOG10 with all added branches bypassed",
+    "current_reference_domains": [
+      "ordinary fresh",
+      "ordinary raw"
+    ],
+    "explicit039_old10_behavior_anchor": false,
+    "task040_initialization": "original SOG10, not task039 continuation"
+  },
+  "task041_proposal": {
+    "new_data_or_physics": 0,
+    "initialization": "both arms from immutable task040 terminal adapter; fresh optimizer/scheduler/ledgers; lineage retains prior1000",
+    "arms": {
+      "R0": "unchanged task040 C1 objective,1000 additional updates",
+      "R1": "same plus0.10 old003-six-task train10 action anchor to frozen039C1"
+    },
+    "baseline_task_control_arm": "c1 in both; R0 is not old C0",
+    "student_forward_budget_total": 49120,
+    "SOG10_reference_budget_total": 18048,
+    "old039_reference_budget_train_max": 4000,
+    "all_reference_budget_total": 22048,
+    "new_updates_total": 2000,
+    "formal_eval_episodes_total": 360,
+    "new_student_observations_for_anchor": 0,
+    "teacher_inference_at_eval": false,
+    "numerical_budget_approved": false,
+    "X_implementation_order_issued": false
+  },
+  "literature_primary_sources": [
+    "https://arxiv.org/abs/1606.09282",
+    "https://proceedings.mlr.press/v15/ross11a.html"
+  ],
+  "scope": {
+    "existing_report_and_code_reads_only": true,
+    "new_real_jobs_started": false,
+    "new_implementation_changes": false,
+    "scoring_changed": false,
+    "deletions": []
+  }
+}
