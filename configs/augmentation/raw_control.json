@@ -1,0 +1,14 @@
+{
+  "name": "raw_control",
+  "view_weights": {"RAW": 1.0, "PROGRESS": 0.0, "ATOMIC": 0.0},
+  "photometric_probability": 0.0,
+  "seed": 7,
+  "updates": 1000,
+  "save_every": 250,
+  "learning_rate": 0.00002,
+  "warmup_updates": 50,
+  "gradient_accumulation": 16,
+  "microbatch": 1,
+  "precision": "bf16",
+  "gradient_checkpointing": true
+}

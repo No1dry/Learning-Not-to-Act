@@ -1,5 +1,11 @@
 # 方法研究当前状态
 
+## 2026-11-11：041软件与定向CPU/fake交付，待Codex验收
+
+X基于acceptedPR15@428c1358及mainbe43704直接实现，commit c51df70e597021d2c33a5bca013feabf723d879f。新041 R0/R1基础均C1、完整040初始化、新optimizer各新增1000；仅R1对原12ten中前最多4个旧003train位置加.10完整039动作保持，不替BC/改原采样/dev/数据/评分，不加student，R0不是C0。独立教师完整分支共享冻结骨干、全部参考先于学生图，精确模式/RNG恢复；新严格schema、三前扣账本、同run完整恢复/单学生原180评测保持。[041回复](responses/041_round1.md)、[完整命令](../docs/task041_usage.md)、[阶段总结](../docs/stage_summaries/2026-11-11_task041_software_delivery.md)。
+
+root定向CPU/fake166通过，0失败/错误/skip（65数据/32参考/43身份评测/26stage），[实际JSON/JUnit](evidence/041_cpu_fake.json)；匹配批次和基础C1 loss、0选择R1=R0、checkpoint autograd、同run中断恢复tensor等值、前扣失败计数及新041各fake180均验证。独立集中审查0 Critical/Important/Minor，无硬阻塞；实现/定向测试交付100%，Codex验收pending。部署、真实数据/索引/模型/仿真/训练/eval全部0%，无SSH/新基线/数据/seed/MVP或自动merge/删除。预算已批准仍仅用户亲启，下一Codex验收隔离部署与实际命令、用户新训2000并评360；保留所有039040权重/分数/数据/失败，祖代/新增更新分记，真实效果open。发布后精确head读回与本地SHA备份；下方041实现0%为交付前历史。
+
 ## 2026-11-11：041两组预算已批准，正式工单交X实现
 
 用户明确“批准两组并交X实现”。[041工单](tasks/041_old10_behavior_retention.md)、[批准证据](evidence/041_budget_approval_and_dispatch.json)、[已批方案](../docs/research/2026-11-11_task040_findings_and_task041_retention_proposal.md)现为执行入口。R0/R1基础都为C1，均从040末adapter全部可训练模块初始化、新优化器/独立账本各新增1000；R0不是旧C0，不对完成040执行resume。仅R1对已有12ten中前最多4个old003六任务train来源追加0.10的039冻结完整策略动作保持，不换BC/加student观测或改采样；原SOG10普通参考和原loss/dev不变。所有参考先于学生图，教师分支独立且恢复模式/RNG。

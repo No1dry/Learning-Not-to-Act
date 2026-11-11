@@ -1,0 +1,14 @@
+{
+  "module": "<PATH_TO_SEPARATELY_REVIEWED_LOCAL_EVIDENCE_PRODUCER_PY>",
+  "module_sha256": "<64_LOWERCASE_HEX_REVIEWED_MODULE_SHA256>",
+  "callable": "recover",
+  "producer": "<PINNED_PRODUCER_VERSION_AND_DEPENDENCY_LOCK_REFERENCE>",
+  "trust_basis": "<ACTUAL_ALIGNMENT_AND_LOCAL_EVIDENCE_REVIEW_REFERENCE>",
+  "requests": [
+    {
+      "source_id": "<COMPOUND_SOURCE_ID>",
+      "windows": [[0, 1]],
+      "purpose": "stage_anchor_and_skill_boundary"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "format": "task041-cpu-fake-verification-v1",
+  "date": "2026-11-11",
+  "base_implementation": "428c13585cebac1d6c90fd86a205e914caa2bb8f",
+  "spec_main": "be43704",
+  "local_docs_merge": "6fe4bb9",
+  "result": {
+    "passed": 166,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "groups": [
+    {
+      "name": "data",
+      "passed": 65,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 22.766,
+      "junit": "041_cpu_data.junit.xml",
+      "command": "python -m pytest tests/test_retention041_data.py tests/test_coverage040_data.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t41/final-data01 --junitxml=../../.release-tools/t41/final-data.xml"
+    },
+    {
+      "name": "reference",
+      "passed": 32,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.678,
+      "junit": "041_cpu_reference.junit.xml",
+      "command": "python -m pytest tests/test_retention041_reference.py tests/test_task_control_reference.py tests/test_task_control_model.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t41/final-reference01 --junitxml=../../.release-tools/t41/final-reference.xml"
+    },
+    {
+      "name": "identity",
+      "passed": 43,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 20.593,
+      "junit": "041_cpu_identity.junit.xml",
+      "command": "python -m pytest tests/test_retention041_identity.py tests/test_retention041_evaluation.py tests/test_task_control_training.py tests/test_task_control_evaluation.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t41/final-identity01 --junitxml=../../.release-tools/t41/final-identity.xml"
+    },
+    {
+      "name": "stage",
+      "passed": 26,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 8.567,
+      "junit": "041_cpu_stage.junit.xml",
+      "command": "python -m pytest tests/test_retention041_training.py tests/test_retention041_entry.py tests/test_coverage040_entry.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t41/final-stage01 --junitxml=../../.release-tools/t41/final-stage.xml"
+    }
+  ],
+  "interpreter": "C:/ProgramData/anaconda3/python.exe",
+  "device": "CPU",
+  "validation": [
+    "Both stages use base C1 and all040 learned LoRA/context/residual/count tensors, fresh optimizer/scheduler and same seed7 sampler; R0 is not C0 and no old040 optimizer/RNG is resumed",
+    "Fixed040 source and039 teacher identities/SHA/base lineages and complete tensor keys/shapes/dtypes/hashes validated; independent039 LoRA buffers/context share only frozen original backbone, teacher not saved/optimized as student",
+    "Original SOG10 and039 references finish before student graphs, no_grad/eval with exact mixed modes/hooks/checkpoint/cache/requiresgrad/Python-NumPy-Torch RNG restoration; actual tiny nonreentrant checkpoint autograd backward covered",
+    "Existing040 data/old003 explicit lineage queues, front4/less/zero/repeated-position selection preserve RNG and original20main+2pair observations; no task/path guessing, fallback or test sources",
+    "Masked7D action mean per observation then mean across actual selected count at0.10 within original corresponding student graph; BC and complete C1 losses retained,22student/8base/at most4old039 perupdate",
+    "Matched base batches/dev and first-step original C1 losses; zero-selected R1 is tensor-identical R0 without any old039 forward; short selection not divided by4",
+    "All three durable ledgers including explicit R0zero, teacher failure pre-spent8base/1old/0student without refund; full checkpoint/RNG/optimizer/sampler resume matches uninterrupted student tensors; cross-arm/init/teacher/index/config/advanced-ledger and copied-run redirect rejected",
+    "Explicit041 root schema rejected by oldreader, full student reload, single-policy R0/R1 fake180 each with original binary10/official00 scoring, sources/dualbridge/video contract and no teacher evaluation"
+  ],
+  "independent_review": {
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "status": "read-only whole-diff review clean; final JUnit inspected"
+  },
+  "approved_limits": {
+    "experiment_arms": [
+      "r0",
+      "r1"
+    ],
+    "base_arm": "c1",
+    "ancestor_updates_each": 1000,
+    "additional_updates_each": 1000,
+    "reference_base_each": 9024,
+    "reference_old039_r0": 0,
+    "reference_old039_r1": 4000,
+    "all_references_total": 22048,
+    "student_each": 24560,
+    "student_total": 49120,
+    "formal_model_episodes_each": 180,
+    "formal_model_episodes_total": 360
+  },
+  "development_boundary": "Meaningful red/green and early Windows default pytest-temp setup/fixture failures remain in local t41 XML/reports. Root reds caught missing CLI/training, copied-run resume path binding and absent explicit zero ledger files; corrected with covering regressions. A temporary test insertion-placement issue and extra EOF blank were corrected before final verification. No dependency upgrade or unsafe OpenMP override. All source SHA constants patched only for synthetic fixtures; real040/039 weights/data not accessed.",
+  "not_run": [
+    "real data/labels/index preparation or production",
+    "real040/039/base model/teacher/feature loading",
+    "real simulation",
+    "real training/evaluation",
+    "CUDA/GPU numerical or memory/speed tests",
+    "SSH/server deployment/operations",
+    "new baseline/seed/coefficient scan/MVP",
+    "full repository/platform suite"
+  ],
+  "preservation": "No old data/weights/checkpoints/scores/states/videos/failures or readers/default contracts changed. Only task_control/oft.py has optional explicit modules extension, with default behavior tested unchanged. No automatic PR merge or deletion."
+}

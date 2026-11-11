@@ -1,0 +1,41 @@
+{
+    "schema_version":  "task038-task-control-eval-v1",
+    "group":  "task_control_factorization",
+    "environment_dispatch":  {
+                                 "legacy_root":  "\u003cunchanged-LIBERO-Remain-ac130177-checkout\u003e"
+                             },
+    "benchmark_root":  "\u003caccepted-core-d8541ef4\u003e",
+    "reporting_root":  "\u003ctask034-reporting-checkout\u003e",
+    "base_runtime":  "\u003cfrozen-sog10-runtime.json\u003e",
+    "adapter":  "\u003cnew-task038-c1-train\u003e/update-001000",
+    "legacy_sources_10":  {
+                              "basket":  {
+                                             "manifest":  "\u003coriginal-basket-manifest.json\u003e",
+                                             "candidate_replay":  "\u003coriginal-basket-replay.json\u003e"
+                                         },
+                              "basket_cheese_butter":  {
+                                                           "manifest":  "\u003coriginal-basket_cheese_butter-manifest.json\u003e",
+                                                           "candidate_replay":  "\u003coriginal-basket_cheese_butter-replay.json\u003e"
+                                                       },
+                              "stove":  {
+                                            "manifest":  "\u003coriginal-stove-manifest.json\u003e",
+                                            "candidate_replay":  "\u003coriginal-stove-replay.json\u003e"
+                                        },
+                              "dual_mugs":  {
+                                                "manifest":  "\u003coriginal-dual_mugs-manifest.json\u003e",
+                                                "candidate_replay":  "\u003coriginal-dual_mugs-replay.json\u003e"
+                                            },
+                              "mug_pudding":  {
+                                                  "manifest":  "\u003coriginal-mug_pudding-manifest.json\u003e",
+                                                  "candidate_replay":  "\u003coriginal-mug_pudding-replay.json\u003e"
+                                              },
+                              "basket_soup_cheese":  {
+                                                         "manifest":  "\u003coriginal-basket_soup_cheese-manifest.json\u003e",
+                                                         "candidate_replay":  "\u003coriginal-basket_soup_cheese-replay.json\u003e"
+                                                     }
+                          },
+    "legacy_sources_00":  "\u003coriginal-normal00-control-composite-sources.json\u003e",
+    "new_sources_10":  "\u003caccepted-nine-mask10-sources.json\u003e",
+    "new_sources_00":  "\u003caccepted-nine-normal00-sources.json\u003e",
+    "arm":  "c1"
+}
