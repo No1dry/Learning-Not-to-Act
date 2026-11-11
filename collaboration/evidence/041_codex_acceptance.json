@@ -1,0 +1,121 @@
+{
+  "format": "task041-codex-software-acceptance-and-file-deployment-v1",
+  "date": "2026-11-11",
+  "review": {
+    "decision": "accepted",
+    "scope": "affected software, independent CPU/fake tests, isolated file deployment; no real experimental claim",
+    "blocking_findings": [],
+    "X_revision_required": false
+  },
+  "pull_request": {
+    "number": 16,
+    "url": "https://github.com/No1dry/Learning-Not-to-Act/pull/16",
+    "head": "e8dcf87979d14d081666629a2de3483629a4f59c",
+    "implementation": "c51df70e597021d2c33a5bca013feabf723d879f",
+    "dependency_pr15": "428c13585cebac1d6c90fd86a205e914caa2bb8f",
+    "automatically_merged": false
+  },
+  "independent_tests": {
+    "passed": 166,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "groups": {
+      "data": 65,
+      "reference": 32,
+      "identity": 43,
+      "stage": 26
+    },
+    "real_pretrained_model_or_simulator": false,
+    "junit_sha256": {
+      "data": "0f05cf467d95b05f1216d4955c4a424c05ea2d78f4e5708d203f306ce11eba89",
+      "reference": "6806791a8bb3d5e9b082f68f861eb808893a368df81ff4d4da7fb23980618723",
+      "identity": "3e9eb676130cdc384281f2b0dfa09621124d9f7bdb9d6761f552bc7e11f7b751",
+      "stage": "5880244008d16fe5da8e112c2798e010bde1f4a6822dbc4efc8d6841458c6a9e"
+    },
+    "method": "same affected four groups listed in X evidence, local reused pinned core/reporting fixtures; no assertion/source changes"
+  },
+  "source_comparison": {
+    "accepted040_files": 70,
+    "unchanged": 69,
+    "changed": [
+      "egrs/task_control/oft.py"
+    ],
+    "change": "explicit optional modules argument for independent teacher, old defaults unchanged",
+    "new_modules": 10,
+    "namespace": "egrs/retention041"
+  },
+  "verified_contracts": [
+    "R0 and R1 both base c1, same complete040 initialization, fresh optimizer/scheduler, each1000 additional updates",
+    "039 teacher complete independent added branches; only original frozen backbone shared; all references precede all student graphs, safe no-grad routing/modes/hooks/cache/checkpoint/RNG restoration",
+    "explicit040-039-old003 train ten provenance; first up to4 already drawn ten positions, no sampler/student-count/BC changes; correct masked means and zero cohort behavior",
+    "strict versioned041 identity, full student checkpoint/resume, independent three durable pre-forward ledgers with no refund",
+    "single-student fake180 perarm, unchanged original dual-population/bridge/scoring/video contracts; no teacher in inference"
+  ],
+  "deployment": {
+    "completed": true,
+    "code_directory_name": "task041-e8dcf879",
+    "config_directory_name": "task041-e8dcf879",
+    "archive_sha256": "42af9184433d39bad7cb3534404a82b66c193378c2537f840396cbfda3a76b9f",
+    "source_and_dependency_files_sha_matched": 80,
+    "config_and_launcher_files_sha_matched": 8,
+    "config_names": [
+      "training.r0.json",
+      "training.r1.json",
+      "evaluation.r0.json",
+      "evaluation.r1.json",
+      "base-runtime.json",
+      "session041.sh",
+      "train_both_sequential.sh",
+      "eval_both_sequential.sh"
+    ],
+    "original_runtime_bytes_unchanged": true,
+    "eval_changed_fields": [
+      "schema_version",
+      "group",
+      "experiment_arm",
+      "adapter"
+    ],
+    "base_arm_unchanged": "c1",
+    "existing_worker_and_simulation_environment_mapping_updated": true,
+    "core_cwd_static_module_origins_verified": true,
+    "dependency_upgrades": false,
+    "launchers_syntax_only_not_executed": true,
+    "private_receipt_sha256": "9336f3066380439b15afd353fa0628918d82205ce6bfe3b210b15c6c6d18e97d"
+  },
+  "existing_source_adapters_sha_verified": {
+    "initial040": "a51f9062fc5a54982233ffdb93f7fa164eaf78b6dbdc097721db9d7f87f57b12",
+    "teacher039": "6d340e99186090bab6739f173ecb118d03eb1bf574ae96d5f1c34241b02d644e"
+  },
+  "approved_limits": {
+    "new_data_simulation_labels_index_production": 0,
+    "new_updates_each": 1000,
+    "new_updates_total": 2000,
+    "original_reference_total": 18048,
+    "old039_reference_r1_only": 4000,
+    "all_reference_total": 22048,
+    "student_total": 49120,
+    "formal_episodes_total": 360
+  },
+  "snapshot": {
+    "software_preparation_percent": 100,
+    "training_percent": 0,
+    "formal_evaluation_percent": 0,
+    "future_training_eval_and_launcher_marker_paths_absent": true
+  },
+  "next": {
+    "executor": "user",
+    "action": "launch prepared sequential R0 then R1 training once, no regenerate/index/extra precheck/MVP/baseline; formal360 is separate user launch after both terminal checkpoints"
+  },
+  "real_jobs_started_by_Codex": false,
+  "model_loaded": false,
+  "simulation_created": false,
+  "real_metadata_or_index_generated": false,
+  "old_data_weights_scores_failures_preserved": true,
+  "deletions": [],
+  "caveats": [
+    "CPU/fake evidence is not real GPU memory/speed or success-rate evidence",
+    "R1-R0 is main comparison; R1-040 also includes extra training and optimizer restart",
+    "Cross-version behavior retention is not hard protection of A within an episode"
+  ]
+}

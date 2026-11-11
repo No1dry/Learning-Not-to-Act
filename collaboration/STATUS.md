@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-11：041 R1已accepted并隔离部署，下一用户直接R0→R1训练
+
+[审查](reviews/041_round1.md)接受PR16固定e8dcf879（实现c51df70e，依赖accepted PR15@428c1358），X无需返修、不自动merge。独立166受影响CPU/fake首次全过、0失败/错误/skip，原固定fixture复用，无源码/断言改动或全库/真模型/物理MVP。70原部署源/依赖中69不变，旧OFT仅显式可选modules扩展，新retention041十模块；完整040初始化/039教师独立与前向顺序、old003队列/mask/同批、三账本/完整恢复及单学生原180/臂接线已核对。[证据](evidence/041_codex_acceptance.json)。
+
+新code/config目录task041-e8dcf879，80源/依赖＋8配置SHA一致；两原venv仅no-deps editable映射/静态模块来源核对，无依赖升级；040/039实际adapter SHA正确、runtime字节保持、eval仅041包络/experiment_arm/未来adapter变化，基础C1/来源/评分/bridge不变。启动器只bash -n、未执行；未来训练/eval/launch目录均不存在，没有模型加载/新metadata、标签、索引、仿真、训练或eval。
+
+**准备100%，真实训练/eval0%；下一用户按[命令](../docs/experiment_plans/2026-11-11_task041_user_training_evaluation_commands.md)及本地041完整命令直接一条R0→R1各新增1000，正常后另行正式360。** 不generate/index/额外Codex预检/MVP/新baseline/seed/系数搜索、不旧040resume或重开039。R0/R1都C1、同040完整初始化新优化器，只有R1增加0.10的039旧六train10软保持；参考≤22048/student≤49120/原数据dev保持。祖代1000与新增1000分记，主比R1−R0，不把R1−040全归保持/把跨版本稳定性当A硬保护或ICML创新。
+
+软件交付closed、训练与效果open；X目前无修改任务，全部真实阶段用户亲启。六关键文档/固定X8原稿精确commit读回SHA本地备份manifest，源tar/独立JUnit/私有部署收据保留；原dirty checkout与全部旧权重/数据/分数/失败/署名不改、不merge/删除，待删=[]。见[阶段](../docs/stage_summaries/2026-11-11_task041_accepted_deployed_user_training.md)。下方未实现/未部署为历史，本条不覆盖未来决定。
+
+---
+
 ## 2026-11-11：041两组预算已批准，正式工单交X实现
 
 用户明确“批准两组并交X实现”。[041工单](tasks/041_old10_behavior_retention.md)、[批准证据](evidence/041_budget_approval_and_dispatch.json)、[已批方案](../docs/research/2026-11-11_task040_findings_and_task041_retention_proposal.md)现为执行入口。R0/R1基础都为C1，均从040末adapter全部可训练模块初始化、新优化器/独立账本各新增1000；R0不是旧C0，不对完成040执行resume。仅R1对已有12ten中前最多4个old003六任务train来源追加0.10的039冻结完整策略动作保持，不换BC/加student观测或改采样；原SOG10普通参考和原loss/dev不变。所有参考先于学生图，教师分支独立且恢复模式/RNG。

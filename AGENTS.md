@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-11：041 R1 accepted且隔离部署完成，下一用户直接两臂训练
+
+PR16固定e8dcf87979d14d081666629a2de3483629a4f59c（实现c51df70e、依赖accepted PR15@428c1358）软件/定向CPU-fake/文件部署accepted，X无需返修、不自动merge。Codex独立166全过/0失败错误skip、原fixture复用，未改源码断言/跑全库或真模型物理MVP；旧70部署源依赖69不变，OFT仅显式可选modules扩展，新retention041十模块。完整040初始化/独立039教师和所有参考先于学生图、旧003队列/mask/同批、三账本恢复及单学生评测接线保持。
+
+新code/config task041-e8dcf879的80源依赖＋8配置SHA一致，两原venv仅no-deps映射静态模块定位、原runtime字节与全部来源评分bridge不变，040/039实际adapter SHA匹配。脚本只语法检查、未执行；未来train/eval/launch输出不存在。准备100%，真实训练/eval0；下一用户直接train_both_sequential.sh按R0→R1各新增1000，正常后另行正式360。不重generate/index、额外预检/MVP/基线或旧039040，R0不是C0/不旧040resume，参考≤22048/student≤49120/原数据dev保持、主比R1−R0。完整常用命令本地docs/041_服务器完整运行命令_2026-11-11.md，公开脱敏运行文档和reviews/041_round1为入口。
+
+所有真实阶段只用户启动、Codex/X未模型/仿真/新标签索引/训练eval。软件closed/研究与效果open，X暂无任务，旧数据权重分数失败署名保留；六关键文档与固定X8原稿精确commit读回SHA本地manifest，源tar/独立JUnit/私有收据保存，无自动merge/删除。阶段2026-11-11_task041_accepted_deployed_user_training.md优先，下方未验收/部署0均历史；本条不覆盖未来决定。
+
 ## 2026-11-11：041已批准并交X直接实现
 
 用户明确批准041两组正式对照与工单。collaboration/tasks/041_old10_behavior_retention.md及041_budget_approval_and_dispatch为入口：基础R0/R1都C1、同040末权重全部模块初始化、新优化器/独立账本各新增1000；R0不是旧C0，不旧040resume。仅R1加0.10的039旧003六任务train10软动作保持，每更新已有12ten前最多4个，不换BC/加student或改采样；完整教师独立、全部参考先于学生图，恢复模式/hook/checkpoint/cache/RNG。原C1 loss/dev/采样/原SOG10普通参考/040index8ef04d91保持。
