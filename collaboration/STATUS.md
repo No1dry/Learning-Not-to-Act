@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-11：041首次启动被Codex配置类型错误挡住，configfix1已部署
+
+用户22:01:50启动R0、22:01:55在严格load_config失败，R1未启动、数据/模型/输出账本均未创建，训练0/参考0。根因是Codex生成配置时把photometric_probability的浮点0.0写为整数0；不是X代码错误，也不放宽严格检查。原166软件测试仍有效，但没有覆盖Codex后生成的错误部署配置；原验收已加[勘误](reviews/041_round1.md)，不抹掉失败。
+
+新training.r0/r1.configfix1.json仅0→0.0，旧配置/失败日志/launch-001不改删；新train_both_sequential.configfix1.sh读新文件、用独立configfix1 marker，原train-001两run因尚未创建而沿用。新三文件服务器/本地SHA一致；本地复现旧拒绝、两份新配置在本地及服务器原worker实际严格读取均通过，bash语法通过，无dataset/模型/GPU/标签/index或训练eval、未重复166。[证据](evidence/041_deployment_configfix1.json)、[阶段](../docs/stage_summaries/2026-11-11_task041_deployment_configfix1.md)。
+
+**修复文件准备100%，训练/eval0%。下一用户直接新版configfix1一条R0→R1，不再运行旧启动器，不需X返修或新prepare/MVP。** 原代码/数据/权重/loss/采样/dev/评分/预算不变，无预算退款/清零；参考≤22048/student≤49120/正式360及用户亲启规则保持。六关键文档精确commit读回SHA本地manifest备份，旧失败日志与命令版本另存；无merge/删除/代启停。下方原部署通过及可启动记录是修复前快照，本条不覆盖未来决定。
+
+---
+
 ## 2026-11-11：041 R1已accepted并隔离部署，下一用户直接R0→R1训练
 
 [审查](reviews/041_round1.md)接受PR16固定e8dcf879（实现c51df70e，依赖accepted PR15@428c1358），X无需返修、不自动merge。独立166受影响CPU/fake首次全过、0失败/错误/skip，原固定fixture复用，无源码/断言改动或全库/真模型/物理MVP。70原部署源/依赖中69不变，旧OFT仅显式可选modules扩展，新retention041十模块；完整040初始化/039教师独立与前向顺序、old003队列/mask/同批、三账本/完整恢复及单学生原180/臂接线已核对。[证据](evidence/041_codex_acceptance.json)。

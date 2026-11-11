@@ -2,15 +2,19 @@
 
 2026-11-11，Codex。[R1](../../collaboration/reviews/041_round1.md)已accepted并隔离部署；固定PR16@e8dcf879，80源码/依赖＋8配置SHA匹配。准备100%，真实训练/eval0%。本文脱敏，实际绝对路径见聊天及本地docs/041_服务器完整运行命令_2026-11-11.md，不上传凭证/私有服务器路径。
 
+## 2026-11-11部署勘误：改用configfix1
+
+首次用户启动在数据/模型前因Codex把浮点0.0写成整数0而失败；不是X源码错误。新两份training.r0/r1.configfix1.json仅修该类型，本地和服务器实际严格配置loader通过、SHA一致；旧配置、失败日志和launch-001保留，没有真实调用/账本/训练输出，不退款清零。下面入口已更新，别重复原脚本。
+
 ## 下一直接训练，不再准备数据
 
-用户只需启动已部署configs/task041-e8dcf879/train_both_sequential.sh一次。脚本自己激活原Conda＋OFT venv，R0新增1000正常结束才接R1新增1000，独立日志/输出/账本；失败即停，不退款重试，不自动接评测。已有输出或原子marker拒重复；不要叠加逐臂命令。脚本仅语法检查，Codex未执行。
+用户只需启动已部署configs/task041-e8dcf879/train_both_sequential.configfix1.sh一次。脚本自己激活原Conda＋OFT venv，R0新增1000正常结束才接R1新增1000，独立日志/输出/账本；失败即停，不退款重试，不自动接评测。已有输出或原子marker拒重复；不要叠加逐臂命令。脚本仅语法检查，Codex未执行。
 
 若希望显式普通命令，进入原OFT环境后使用：
 
 ~~~bash
 python -u -m egrs.retention041 train \
-  --config "$LNA_CONFIG/training.r0.json" \
+  --config "$LNA_CONFIG/training.r0.configfix1.json" \
   --output-dir "$LNA_ROOT/runs/task041-r0-train-001"
 ~~~
 

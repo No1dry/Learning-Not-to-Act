@@ -1,5 +1,11 @@
 # 方法研究协作规则
 
+## 2026-11-11：041 Codex部署配置勘误已修，用户改用configfix1重启
+
+首次R0用户启动22:01:50→22:01:55在load_config拒绝，R1未启。Codex把photometric_probability的0.0写成0，严格类型拒绝正确；X源码/166软件验收保持、无需返修，但原实际部署配置未被这些测试覆盖。新training.r0/r1.configfix1.json仅修正0→0.0，不覆盖旧配置；新train_both_sequential.configfix1.sh使用新配置及task041-train-launch-configfix1，旧launch-001/失败日志完整保留。数据/模型/训练输出账本此前均未创建，调用0、没有预算退款重置，原两个train-001 run ID沿用。
+
+本地复现旧失败，实际新两配置在本地及服务器原worker现有严格loader通过，三新文件SHA与bash语法一致；没有数据/index/模型/GPU/仿真/训练eval，CUDA未初始化。修复准备100%、训练/eval0，下一用户直接新版configfix1一条R0→R1，不再旧脚本、不加MVP/重复166/prepare；代码数据权重loss评分及参考22048/student49120/正式360预算不变。reviews/041_round1新增勘误、041_deployment_configfix1证据和同日阶段/命令优先，六文档精确commit SHA本地备份。Codex/X未代启停，无merge/删除，历史失败署名保留；下方可启动为修复前快照，本条不覆盖未来决定。
+
 ## 2026-11-11：041 R1 accepted且隔离部署完成，下一用户直接两臂训练
 
 PR16固定e8dcf87979d14d081666629a2de3483629a4f59c（实现c51df70e、依赖accepted PR15@428c1358）软件/定向CPU-fake/文件部署accepted，X无需返修、不自动merge。Codex独立166全过/0失败错误skip、原fixture复用，未改源码断言/跑全库或真模型物理MVP；旧70部署源依赖69不变，OFT仅显式可选modules扩展，新retention041十模块。完整040初始化/独立039教师和所有参考先于学生图、旧003队列/mask/同批、三账本恢复及单学生评测接线保持。

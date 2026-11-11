@@ -1,5 +1,17 @@
 # Task041 R1审查：accepted，已隔离部署
 
+## 2026-11-11部署勘误：Codex配置序列化错误已修复
+
+用户首次启动R0于22:01:50开始、22:01:55在load_config退出，R1未开始。Codex把JSON中的浮点`photometric_probability: 0.0`序列化成整数0，严格类型检查正确拒绝。**这是Codex部署配置错误，不是X代码返修项；原166项软件CPU/fake通过结论保持，但它们没有覆盖Codex之后生成的实际错误配置。** 先前“可直接启动”部署结论缺少这一配置读取检查，现补正而不抹去原验收/失败。
+
+仅创建`training.r0/r1.configfix1.json`，精确修正0→0.0，旧配置不覆盖；新`train_both_sequential.configfix1.sh`改读这两文件、使用独立configfix1启动标记，旧launch-001和两份失败日志保留。新旧训练run仍原r0/r1-train-001，因为失败发生在数据/模型/输出/预算创建前，两个run与账本均不存在；已花模型/参考调用0，不是退款或清零续训。
+
+本地重现旧配置拒绝，并在本地和服务器原worker中分别对两份实际新文件调用现有严格load_config通过，三新文件SHA一致、bash语法通过；没有进入dataset/index/模型/仿真/训练/eval，CUDA未初始化，不重复166或追加GPU预跑。X源码、数据、权重、loss/采样/dev/评分与已批预算均不变，无需X返修。
+
+下一用户按更新命令直接启动configfix1版本R0→R1，不重复原启动器；训练/正式评测仍0%。[修复证据](../evidence/041_deployment_configfix1.json)、[阶段](../../docs/stage_summaries/2026-11-11_task041_deployment_configfix1.md)已记录，全部原始失败与历史署名保留，无删除或Codex代启停。原PR16不自动merge，软件accepted保持、真实训练效果open。
+
+---
+
 2026-11-11，Codex。接受PR16固定head `e8dcf87979d14d081666629a2de3483629a4f59c`（实现 `c51df70e597021d2c33a5bca013feabf723d879f`，继承accepted PR15@428c1358）的软件/定向CPU-fake/隔离文件部署交付。**X无需返修，不自动merge。** [固定X原回复](https://github.com/No1dry/Learning-Not-to-Act/blob/e8dcf87979d14d081666629a2de3483629a4f59c/collaboration/responses/041_round1.md)、[机器证据](../evidence/041_codex_acceptance.json)。
 
 ## 已核对
