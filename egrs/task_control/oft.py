@@ -68,24 +68,25 @@ def _instruction_mask(processor, prompt, instruction, ids, attention):
     return mask.reshape(1, -1)
 
 
-def decode(policy, encoded, z=None):
+def decode(policy, encoded, z=None, *, modules=None):
     """Reuse the receiver's cached H/proprio and optionally exchange only z."""
     if encoded.h is None or encoded.proprio is None or encoded.z is None:
         raise ValueError('decode requires a student encoded observation')
     context = encoded.z if z is None else z
     if context.shape != (1, 128):
         raise ValueError('task context must have shape (1, 128)')
-    hidden = policy.model.task_control(encoded.h, context, encoded.proprio)
+    modules = policy.model.task_control if modules is None else modules
+    hidden = modules(encoded.h, context, encoded.proprio)
     actions = policy.action_head.predict_action(hidden)
     if actions.shape != (1, 8, 7):
         raise ValueError('Original OFT action head must return (1, 8, 7)')
     return actions
 
 
-def prediction(policy, item):
+def prediction(policy, item, *, modules=None):
     """Only images, full original instruction and normalized proprio enter OFT."""
     clean = {key: item[key] for key in ('images', 'instruction', 'proprio')}
-    modules = policy.model.task_control
+    modules = policy.model.task_control if modules is None else modules
     if not modules.enabled:
         from egrs.augmentation.oft import training_prediction
         return Prediction(training_prediction(policy, clean), None, None, None, None)
@@ -137,5 +138,5 @@ def prediction(policy, item):
     h = states[:, inserted:-1][action_mask].reshape(1, 56, -1)
     z = modules.encode_context(visual_hidden, instruction_hidden)
     result = Prediction(None, h, z, proprio, modules.count_head(z))
-    result.actions = decode(policy, result)
+    result.actions = decode(policy, result, modules=modules)
     return result

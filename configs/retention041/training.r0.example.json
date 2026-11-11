@@ -1,0 +1,46 @@
+{
+  "format": "task041-old10-retention-training-v1",
+  "experiment_arm": "r0",
+  "training_recipe": {
+    "name": "task_control_factorization",
+    "data_kind": "task038-task-control-data-v1",
+    "pool_weights": {
+      "ten": 0.5,
+      "fresh": 0.25,
+      "raw": 0.25
+    },
+    "pool_samples": {
+      "ten": 12,
+      "fresh": 4,
+      "raw": 4
+    },
+    "reference_prefix_samples": {
+      "fresh": 2,
+      "raw": 2
+    },
+    "prefix": "max(1,ceil(T_obs/3))",
+    "photometric_probability": 0.0,
+    "seed": 7,
+    "updates": 1000,
+    "save_every": 250,
+    "learning_rate": 2e-05,
+    "warmup_updates": 50,
+    "gradient_accumulation": 22,
+    "microbatch": 1,
+    "precision": "bf16",
+    "gradient_checkpointing": true,
+    "dev_ten_limit": 256,
+    "dev_reference_per_pool": 128,
+    "dev_prefix_per_pool": 64,
+    "dev_pair_limit": 64,
+    "reference_budget": 9024,
+    "student_budget": 24560,
+    "pairs_per_update": 1,
+    "checkpoint_selection": "fixed_terminal_update"
+  },
+  "index_dir": "${LNA_ROOT}/data/coverage040/production-001/indices/task_control",
+  "initial_adapter": "${LNA_ROOT}/runs/task040-c1-train-001/update-001000",
+  "teacher_adapter": null,
+  "benchmark_root": "${LNA_CORE}",
+  "runtime": "${LNA_RUNTIME}"
+}
