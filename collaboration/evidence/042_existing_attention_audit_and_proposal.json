@@ -1,0 +1,90 @@
+{
+  "format": "task042-existing-attention-audit-and-unapproved-proposal-v1",
+  "date": "2026-11-12",
+  "facts_commit": "c5082df352194c644c8ca59e4fb08eca12b4075d",
+  "accepted_implementation": "e8dcf87979d14d081666629a2de3483629a4f59c",
+  "files_sha256": {
+    "egrs/task_control/oft.py": "f4b401c15d523bbf3a4d05b3e1252fa9e12da89a478a1835933e66c4b352b46c",
+    "egrs/task_control/model.py": "43782a48a8fe3ca3d4e5baff419f1c967692b7b0af889704b98f359db5c7bbaa",
+    "egrs/task_control/reference.py": "3c61142f32804c44392122677f84740d43eaa1624b5df2f8c5212c82ed8409a6"
+  },
+  "existing_runtime_source": {
+    "module": "transformers.models.llama.modeling_llama",
+    "sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+    "transformers": "4.40.1",
+    "torch": "2.4.1+cu121",
+    "static_branch": "LlamaSdpaAttention.forward last-row expansion plus is_causal=False",
+    "intent": "native OFT padding-only bidirectional attention",
+    "source_copied_read_only_and_local_SHA_verified": true,
+    "actual_7B_attention_class_instantiated_or_traced": false,
+    "no_global_package_changes": true
+  },
+  "observations": [
+    "z is computed from post-fusion visual and language hidden states; dropping the proprio slot does not remove incoming proprio information",
+    "native SDPA source can overwrite upstream per-query masks by expanding its last row",
+    "blocking only direct proprio keys does not remove multilayer control-to-prefix feedback in bidirectional attention",
+    "first shifted action hidden must remain a control query even if it occupies a final scaffold token"
+  ],
+  "proposal": {
+    "name": "Task-Control Information Firewall (TCIF)",
+    "implementation_authorized": false,
+    "budget_approved": false,
+    "arms": [
+      "f0",
+      "f1"
+    ],
+    "base_algorithm_each": "c1",
+    "initial_source": "041 r0 fixed stage final1000",
+    "initial_sha256": "d4e726a867531f655d28e11f358ce0af597d4ada0f4928f4597aeadb28d38397",
+    "ancestor_updates": 2000,
+    "additional_updates_each": 1000,
+    "total_ancestral_updates_each": 3000,
+    "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+    "data_and_losses_unchanged": true,
+    "no_new_parameters_or_per_object_labels": true,
+    "f0": "explicit native OFT bidirectional padding-only SDPA",
+    "f1": "same effective graph except all task-prefix queries blocked from all control-region keys, every layer",
+    "control_queries_native_access_preserved": true,
+    "reference_view_native_base_without_firewall_or_added_branches": true,
+    "no_causal_standard_mask_assumption": true
+  },
+  "proposed_limits": {
+    "new_updates_total": 2000,
+    "base_reference_total": 18048,
+    "student_total": 49120,
+    "new_formal_episodes": 360,
+    "new_simulation_data_labels_index_generation": 0,
+    "old10_teacher_forwards": 0,
+    "extra_seeds_or_search_MVP_baseline_reevaluation": 0
+  },
+  "theory_scope": "fixed-parameter numeric proprio noninterference for z under fixed pixels/text/layout and no hidden cache/cross-region leak; not real-rewind RGB invariance or semantic identification/SR guarantee",
+  "literature": [
+    {
+      "title": "ReViP",
+      "url": "https://arxiv.org/html/2601.16667v3",
+      "overlap": "modality rebalance, stage feedback, prefix/suffix route"
+    },
+    {
+      "title": "ProgressVLA",
+      "url": "https://arxiv.org/abs/2603.27670"
+    },
+    {
+      "title": "CycleVLA",
+      "url": "https://arxiv.org/abs/2601.02295"
+    },
+    {
+      "title": "PyTorch SDPA",
+      "url": "https://docs.pytorch.org/docs/2.2/generated/torch.nn.functional.scaled_dot_product_attention.html"
+    }
+  ],
+  "no_new_real_models_frames_labels_index_simulation_training_eval_or_scoring": true,
+  "no_additional_video_frames_viewed_or_rejudged": true,
+  "original_results_untouched": true,
+  "roles": {
+    "Codex": "proposal now, detailed work order after approval, later advisory review/deployment/commands",
+    "X": "no current implementation task; after approved order software/affected CPU-fake/new PR only",
+    "user": "approves budget and starts all real jobs"
+  },
+  "auto_merge": false,
+  "deletions": []
+}

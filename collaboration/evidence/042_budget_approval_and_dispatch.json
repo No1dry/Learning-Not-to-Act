@@ -1,0 +1,75 @@
+{
+  "format": "task042-budget-approval-and-dispatch-v1",
+  "date": "2026-11-12",
+  "authority": {
+    "source": "direct human user reply in this chat following the recommended042 proposal and numerical budget",
+    "user_message": "按推荐的来吧",
+    "approved_proposal_commit": "fb24fce4da318d126b6d848ff6488d3cbde4e1f3",
+    "scope": "two matched formal arms F0/F1 and dispatch to X implementation; user still starts all real jobs"
+  },
+  "task": "collaboration/tasks/042_task_control_information_firewall.md",
+  "dependency": {
+    "pr": 16,
+    "head": "e8dcf87979d14d081666629a2de3483629a4f59c",
+    "implementation": "c51df70e597021d2c33a5bca013feabf723d879f",
+    "unmerged_dependency_preserved": true
+  },
+  "initialization": {
+    "source": "041 R0 fixed stage terminal1000, all trained modules",
+    "adapter_sha256": "d4e726a867531f655d28e11f358ce0af597d4ada0f4928f4597aeadb28d38397",
+    "base_algorithm_each": "c1",
+    "ancestor_updates": 2000,
+    "additional_updates_each": 1000,
+    "cumulative_updates_each_after_stage": 3000,
+    "fresh_optimizer_scheduler_sampler_and_ledgers": true
+  },
+  "data": {
+    "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+    "ten": 370,
+    "pairs": 370,
+    "fresh": 105,
+    "raw": 180,
+    "rows": 143960,
+    "new_data_labels_index_generation": false,
+    "original_split_dev_sampling_unchanged": true
+  },
+  "execution": {
+    "backend_each": "explicit matched SDPA",
+    "f0": "native OFT padding-only bidirectional effective graph",
+    "f1": "same graph except task-prefix query cannot attend any control-region key at every layer",
+    "action_queries_preserve_native_access": true,
+    "first_shifted_action_hidden_is_control": true,
+    "mask_per_observation_immutable_checkpoint_argument": true,
+    "original_base_reference_bypasses_firewall": true,
+    "no_new_parameters_or_losses": true,
+    "audited_runtime_source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e"
+  },
+  "approved_limits": {
+    "updates_each": 1000,
+    "updates_total": 2000,
+    "base_reference_each": 9024,
+    "base_reference_total": 18048,
+    "student_each": 24560,
+    "student_total": 49120,
+    "formal_episodes_each": 180,
+    "formal_episodes_total": 360,
+    "old039_teacher_forwards": 0,
+    "new_simulation_data_labels_index_or_state_rebuild": 0,
+    "extra_seeds_coefficient_search_MVP_baseline_reevaluation": 0
+  },
+  "roles": {
+    "X": "implementation, affected CPU/fake, new PR and042 response; no SSH/deployment or real model/data jobs",
+    "Codex": "research, detailed order, advisory review, later isolated file deployment/full commands",
+    "user": "starts/runs/supervises all real experiments"
+  },
+  "status": {
+    "specification_percent": 100,
+    "implementation_percent": 0,
+    "deployment_percent": 0,
+    "real_training_eval_percent": 0
+  },
+  "real_jobs_started_by_Codex_or_X": false,
+  "actual_7B_attention_class_traced_in_this_dispatch": false,
+  "auto_merge": false,
+  "deletions": []
+}

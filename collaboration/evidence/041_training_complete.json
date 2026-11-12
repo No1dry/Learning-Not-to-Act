@@ -1,0 +1,147 @@
+{
+  "format": "task041-both-stages-terminal1000-complete-v1",
+  "date": "2026-11-12",
+  "accepted_software": {
+    "pr": 16,
+    "head": "e8dcf87979d14d081666629a2de3483629a4f59c",
+    "configfix1_only": "Codex 0.0 numeric type fix; X software unchanged",
+    "source_code_changed_in_this_review": false
+  },
+  "completion": {
+    "r0_additional_updates": 1000,
+    "r1_additional_updates": 1000,
+    "both_ancestor_updates": 1000,
+    "total_ancestral_updates_each": 2000,
+    "continuous_metrics_records_each": 1000,
+    "training_percent": 100,
+    "formal_evaluation_percent": 0,
+    "all_success_markers": [
+      "nohup: ignoring input",
+      "2026-11-11T22:12:34+08:00 START r0 configfix1",
+      "2026-11-12T01:43:05+08:00 COMPLETE r0 additional_updates=1000",
+      "2026-11-12T01:43:05+08:00 START r1 configfix1",
+      "2026-11-12T05:28:12+08:00 COMPLETE r1 additional_updates=1000",
+      "2026-11-12T05:28:12+08:00 COMPLETE both; evaluation is a separate user launch"
+    ],
+    "no_running_processes": true,
+    "current_attempt_error_lines": []
+  },
+  "init040_sha256": "a51f9062fc5a54982233ffdb93f7fa164eaf78b6dbdc097721db9d7f87f57b12",
+  "teacher039_sha256": "6d340e99186090bab6739f173ecb118d03eb1bf574ae96d5f1c34241b02d644e",
+  "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+  "arms": {
+    "r0": {
+      "base_arm": "c1",
+      "experiment_arm": "r0",
+      "update": 1000,
+      "adapter_sha256": "d4e726a867531f655d28e11f358ce0af597d4ada0f4928f4597aeadb28d38397",
+      "training_state_sha256": "3da3cd0a12116b9f1cd87dc7ffdfaec50dac92c7ecbec8ba94bcc67c75a05dd9",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "old10_calls": {
+        "budget": 0,
+        "dev": 0,
+        "total": 0,
+        "train": 0
+      },
+      "student_calls": {
+        "budget": 24560,
+        "dev": 2560,
+        "total": 24560,
+        "train": 22000
+      },
+      "dev_ten_l1": 0.11904363203830795,
+      "dev_weighted_l1": 0.06936113352793591,
+      "last_train_old10_loss": 0,
+      "training_body_seconds": 11861.191570471972
+    },
+    "r1": {
+      "base_arm": "c1",
+      "experiment_arm": "r1",
+      "update": 1000,
+      "adapter_sha256": "456801220a677f4dbde7b41e2bd7857b14eeee8d731510cae926c1e944879ae9",
+      "training_state_sha256": "d2df244a56270694a2b6e3698f55147c40a7d160af99a526f9f85851a24121c3",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "old10_calls": {
+        "budget": 4000,
+        "dev": 0,
+        "total": 3999,
+        "train": 3999
+      },
+      "student_calls": {
+        "budget": 24560,
+        "dev": 2560,
+        "total": 24560,
+        "train": 22000
+      },
+      "dev_ten_l1": 0.11829563766692518,
+      "dev_weighted_l1": 0.06876303028585332,
+      "last_train_old10_loss": 0.07998459949158132,
+      "training_body_seconds": 12572.281716167927
+    }
+  },
+  "comparisons": {
+    "same_training_config_except_experiment_arm_stage_teacher_output": true,
+    "same_initialization_base_and_recipe": true,
+    "same_recorded_sampling_counts_and_batch_summaries_at_all1000_updates": true,
+    "independent_full_stepwise_causal_or_tensor_RNG_audit_performed": false
+  },
+  "approved_budget_actual": {
+    "original_SOG10_reference_total": 18048,
+    "old039_reference_total": 3999,
+    "all_reference_total": 22047,
+    "all_reference_limit": 22048,
+    "student_total": 49120,
+    "student_limit": 49120,
+    "new_real_model_episodes_executed": 0,
+    "next_formal_episodes_approved": 360
+  },
+  "timing": {
+    "start_beijing": "2026-11-11T22:12:34+08:00",
+    "end_beijing": "2026-11-12T05:28:12+08:00",
+    "wall_seconds": 26138,
+    "wall_description": "7h15m38s including both startup/input-read phases",
+    "normal_exit_evidence": "launcher shell success branches COMPLETE R0, COMPLETE R1, COMPLETE both; no separate numeric shell-exit file collected"
+  },
+  "preservation": {
+    "verified_original_files": 34,
+    "verified_bytes": 514830066,
+    "includes": "both terminal adapters, identity, full optimizer/RNG training states, metrics/configs/call ledgers, consoles, actual eval configs and original index small records",
+    "manifest_sha256": "80db2c4e5d9428e3fa79f4311a188a697a6cbf5e155487ceacca17c9d1b7f967",
+    "all_intermediate_checkpoints_server_data_old_failures_preserved": true
+  },
+  "next_evaluation": {
+    "each_arm": {
+      "10": 90,
+      "00": 90
+    },
+    "total": 360,
+    "checkpoint": "fixed terminal additional1000",
+    "configs_bind_actual_own_weights": true,
+    "population_runtime_core_reporting_scoring_bridges_same_as040": true,
+    "launcher_sha256": "cbf69a1befe6d13bcbff367ec1b0ca51c930619e889685fe6420aaa1026b68e8",
+    "launcher_syntax_only_checked": true,
+    "already_created_evaluation_or_launch_marker": false,
+    "executor": "user",
+    "sequential": "R0 formal180 and success exit before R1 formal180",
+    "no_new_plan_MVP_or_data_generation_gate": true
+  },
+  "interpretation": {
+    "lower_dev_loss_not_SR": true,
+    "main_comparison": "R1 minus R0; not R1 minus040 alone",
+    "no_novelty_significance_or_A_hard_protection_claim": true
+  },
+  "Codex_started_real_data_or_models_or_training_or_eval": false,
+  "X_revision_required": false,
+  "auto_merge": false,
+  "deletions": []
+}

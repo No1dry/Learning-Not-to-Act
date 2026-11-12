@@ -1,0 +1,81 @@
+{
+  "format": "task041-codex-deployment-configfix1-v1",
+  "date": "2026-11-11",
+  "responsibility": "Codex deployment JSON serialization, not X implementation",
+  "observed_user_launch": {
+    "r0_started": "2026-11-11T22:01:50+08:00",
+    "r0_failed": "2026-11-11T22:01:55+08:00",
+    "exit_code": 1,
+    "r1_started": false,
+    "stage": "strict config load, before dataset and model construction",
+    "exception": "041 training_recipe must equal the complete fixed task038 1000-update preset"
+  },
+  "root_cause": {
+    "field": "training_recipe.photometric_probability",
+    "deployed_value": 0,
+    "deployed_json_type": "integer",
+    "required_value_description": "0.0",
+    "required_json_type": "float",
+    "strict_type_check_preserved": true
+  },
+  "correction": {
+    "new_config_names": {
+      "r0": "training.r0.configfix1.json",
+      "r1": "training.r1.configfix1.json"
+    },
+    "only_config_edit": "photometric_probability: 0 -> 0.0",
+    "old_configs_unchanged": true,
+    "new_launcher": "train_both_sequential.configfix1.sh",
+    "new_marker": "task041-train-launch-configfix1",
+    "old_failed_marker_preserved": true,
+    "old_logs_preserved": true,
+    "failed_logs_sha256": {
+      "task041-both-train-001.console.log": "883717809d9ccf52c9fc23069457dc8ffcd5171d5815c0ad5c34b31cda8f2693",
+      "task041-r0-train-001.console.log": "e88d1c43f6a54cf60fe8a3dfdd71fa5f58184233bd9a03be0b64785cc5197bad"
+    }
+  },
+  "validation": {
+    "old_deployment_configs_reproduce_failure": true,
+    "local_exact_accepted_loader_new_configs_passed": 2,
+    "server_existing_worker_exact_accepted_loader_new_configs_passed": 2,
+    "only_static_config_and_shell_syntax": true,
+    "server_and_local_new_config_sha256": {
+      "r0": "b62d4774ab16d6576f4ae27e04938e2213e9597863f29165a7cf164be1f6aaba",
+      "r1": "74a0a2027b7a7a4a24e716dc8e2d50f8effbe8d91c4c326b99a68e0955d9ae3e"
+    },
+    "server_and_local_new_launcher_sha256": "04e472835c63b563ea36c295d29e6ff35d2d7d2232e8660637e2055c760f0075",
+    "cuda_initialized": false,
+    "model_or_dataset_or_index_or_training_or_eval_executed": false
+  },
+  "unchanged": {
+    "X_PR16_head": "e8dcf87979d14d081666629a2de3483629a4f59c",
+    "X_revision_required": false,
+    "method_source_changed": false,
+    "accepted_cpu_fake_tests": 166,
+    "repeated_full_test_suite": false,
+    "data_weights_losses_sampling_dev_scoring_and_evaluation_configs": true,
+    "approved_budget": true
+  },
+  "budget_accounting": {
+    "model_and_reference_forward_calls_in_failed_launch": 0,
+    "training_updates": 0,
+    "no_checkpoint_or_call_ledger_created": true,
+    "refund_or_reset": false,
+    "new_budget_requested": false
+  },
+  "outputs": {
+    "training_run_directories_present": false,
+    "new_launch_marker_present": false,
+    "original_failed_marker_present": true,
+    "training_percent": 0,
+    "formal_eval_percent": 0
+  },
+  "next": {
+    "executor": "user",
+    "action": "launch new configfix1 sequential R0 then R1 script once; original run IDs retained because no run was created; no old launcher retry",
+    "formal_eval": "separate user launch after both terminal checkpoints"
+  },
+  "Codex_started_real_jobs": false,
+  "auto_merge": false,
+  "deletions": []
+}

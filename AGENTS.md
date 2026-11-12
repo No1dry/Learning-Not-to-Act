@@ -1,5 +1,51 @@
 # 方法研究协作规则
 
+## 2026-11-12：042预算已批准、工单交X直接实现
+
+用户“按推荐的来吧”已批准推荐F0/F1两组正式预算并交X。collaboration/tasks/042_task_control_information_firewall.md、042_budget_approval_and_dispatch与042_audited_sdpa_source_excerpt现为入口；源附件保留版权/完整SDPA forward供X不SSH复现native最后行扩展，静态SHA3aac24ce不冒称历史7B实例已追踪。F0 native padding-only双向、F1仅禁任务T query读整个控制C key，控制仍native读取；两臂同R0完整末参数、base C1、新optimizer/RNG/账本各新增1000，祖代2000＋新增1000=3000，非旧C0/C1/旧run resume。
+
+原040 index8ef04d91、370ten/pair/105fresh/180raw/143960行、原C1 loss/采样/dev/参数量不变。已批新增2000/reference≤18048/student≤49120/正式360，新数据仿真标签index/039teacher/额外seed搜索/MVP/基线0。首个shifted动作隐藏归C、最终每层mask防last-row覆盖、每u/v不可变mask走checkpoint、reference同时旁路边界/新增分支、新042 schema完整状态与执行合同/旧reader保持、实际配置0.0类型是关键功能。
+
+交接100%、实现部署真实阶段0，下一X直接实现＋定向CPU-fake＋新PR/042_round1，不先泛审/SSH/加载真实模型。依赖accepted PR16固定e8dcf879及新main文档，不自动merge；Codex建议式验收后隔离部署/常用完整命令，用户亲启所有真实阶段，批准不扩代跑权限。主比F1−F0，信息非干涉不保证目标识别/A保护/SR/novelty。七文档精确commit SHA本地归档manifest，现存完整源只读快照和所有039040041权重数据分数失败署名保留，旧dirty checkout不改，无部署/启停/merge/删除，待删=[]。同日task042_budget_approved_x_implementation阶段与最新STATUS优先；下方待批准/无X工单为历史，不覆盖未来决定。
+
+## 2026-11-12：042 TCIF两组提案已发布，未批准预算/下达X实现
+
+docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md与042_existing_attention_audit_and_proposal提出F0原OFT双向padding-onlySDPA、F1逐层禁任务前缀读整个控制区，动作仍读proprio。原z来自融合后隐藏；现存LlamaSDPA的last-row复制可能覆盖上游mask，且只挡P直连会留下多层C回流。只读源SHA3aac24ce、Transformers4.40.1/Torch2.4.1+cu121，本地SHA一致，未构造7B或断言历史实际类；不把041既有设计说成错误或改分。首个shifted动作隐藏归C，mask随每个样本进入checkpoint，原参考旁路防火墙，不编辑全局package/core/OFT旧源。
+
+F0/F1都以R0完整末权重d4e726a8新初始化、各新增1000（祖代2000＋新增1000=3000），同040 index8ef04d91/370ten/pair/105fresh/180raw/原dev与C1 loss采样，不增参数/实体标签/新index或外部VLM/FINISH/039蒸馏。预算草案2000更新、原参考18048/student49120、正式360，新数据/仿真/标签/MVP/seed/搜索/基线0；主比F1−F0，不以旧R0替匹配对照。ReViP等已有prefix/模态重平衡近邻，数值非干涉不保证真实机器人不变/目标识别/A保护/SR或ICML novelty。
+
+提案100%、042实现部署真实阶段0，数值预算尚待用户确认、X无实现工单；批准后Codex详细工单＋prompt、X直接CPU-fake软件/新PR，不先泛审，验收后部署、用户启动全部真实作业。五文档精确commit读回SHA本地manifest，现存运行源只读备份；041 closed/R0主候选/全部旧权重数据失败署名保持，无自动merge/删除/热改/新训或重开旧run，待删=[]。同日task042_attention_firewall_proposal阶段与最新STATUS优先，本条不覆盖后续决定。
+
+## 2026-11-12：041正式360全完成，本轮交付closed，下一研究042未授权新实验
+
+041 R3接受R0/R1各180执行/计分100%、software_exit success、execution/cleanup/ledger均null，无残留进程。R0 10/00=65.56%（59/90）/82.22%（74/90），R1=64.44%（58/90）/83.33%（75/90）；主控R1−R0 −1.11/+1.11pp（10新增4丢5，00新增5丢4），旧六80→78.33%、新三同36.67%。R1相对040少丢2vs5、也少新增7vs11是取舍，不是额外总体10提升/显著普遍负效。按10第一优先推荐R0当前已测10最高主候选/后续对照；040保留较高00、R1保留证据，未改服务器默认模型。R0对040＋6.67/−4.44pp不能全归蒸馏，dev更低不代SR。
+
+两末d4e726a8/45680122与plan/报告匹配，来源人口/runtime/core/reporting/双bridge/评分预算同040，factory仅041封装有意不同、C1路径保持；10完整性0/00兼容工件0/信号100%。15原报告控制文件268638099字节＋4组8原配对视频本地SHA备份manifest0fe92b5c，未逐帧归因重判/全360视频下载；两末完整续训状态沿34文件80db2c4e、服务器raw/中间权重/旧失败署名均保留。白杯/双壶10仍R0 20/20、R1 20/10%，贡献51.61%/53.13%不成功；goal_regression各8等诊断重叠，不当互斥因果或改分。
+
+041本轮交付closed、研究机制/新颖性与042 open；用户暂不新启动，X无需返修/泛审或改代码，PR16@e8dcf879不自动merge。下一Codex只据现成失败和配对收敛042剩余目标控制/成果保护方案与一次预算；042数值/实现尚未批准，不自动续训/加seed/系数搜索/生成/改评分/新baseline，不旧EGRS/VLM/FINISH。旧041全部启动命令历史，别重开完成run。R3/041_final_results/同日final_results_old10_retention_control阶段及STATUS优先；六文档精确commit读回SHA本地manifest，dirty checkout和旧数据权重失败不改、无删除待删=[]。本条不覆盖未来用户新决定。
+
+## 2026-11-12：041两组训练100%，下一用户一条正式360评测
+
+041 R2接受R0/R1连续新增1000/固定末1000，启动器成功分支COMPLETE两臂及总COMPLETE、无进程/本次错误，未另采数值exit文件；祖代1000＋新增1000分记。末adapter d4e726a8/45680122及完整state3da3cd0a/d2df244a SHA一致，040初值/index/C1同配方除arm/teacher/stage/output保持，记录的逐更新采样计数与batch摘要一致，不冒称全tensor/RNG因果审计。原参考18048＋039旧10实际3999=22047≤22048，student49120等于上限，不补1次参考凑数。串行11-11 22:12:34至11-12 05:28:12共7h15m38含输入读取，dev10 L1 .119043632/.118295638不是SR。
+
+34个原文件514830066字节两末完整续训状态/metrics配置账本/console/eval配置/原index小记录已服务器本地SHA备份manifest80db2c4e，旧中间权重原数据失败全保留。训练100%、正式eval0；下一用户按docs/experiment_plans/2026-11-12_task041_dual_model_evaluation_commands.md及本地041完整命令第3节，直接eval_both_sequential.sh，原simulation环境R0正式180正常后R1正式180，共360。两模型实际配置绑定各自末1000，原来源/runtime/core/reporting/双bridge/评分/视频/H520/chunk8/seed7保持，脚本SHA原部署相同仅语法检查未执行，未来eval/marker不存在。无需新prepare/index/plan/MVP/资格/GPU预检或基线，不重训/挑checkpoint/加seed，不继承旧分数。
+
+Codex本轮只读比较/复制，未模型/仿真/新标签索引/训练eval，用户亲启真实作业；X无需返修/泛审，PR16@e8dcf879不自动merge。六关键文档精确commit读回SHA本地manifest、原34工件另存，无删除/脏checkout改动；旧configfix1失败及署名保留。训练closed、SR研究open，主比R1−R0，不把额外训练/重启全归保持，或把跨版本保持当A硬保护/ICML创新。下方训练0为历史，别重开已完成run；本条不覆盖未来决定。
+
+## 2026-11-11：041 Codex部署配置勘误已修，用户改用configfix1重启
+
+首次R0用户启动22:01:50→22:01:55在load_config拒绝，R1未启。Codex把photometric_probability的0.0写成0，严格类型拒绝正确；X源码/166软件验收保持、无需返修，但原实际部署配置未被这些测试覆盖。新training.r0/r1.configfix1.json仅修正0→0.0，不覆盖旧配置；新train_both_sequential.configfix1.sh使用新配置及task041-train-launch-configfix1，旧launch-001/失败日志完整保留。数据/模型/训练输出账本此前均未创建，调用0、没有预算退款重置，原两个train-001 run ID沿用。
+
+本地复现旧失败，实际新两配置在本地及服务器原worker现有严格loader通过，三新文件SHA与bash语法一致；没有数据/index/模型/GPU/仿真/训练eval，CUDA未初始化。修复准备100%、训练/eval0，下一用户直接新版configfix1一条R0→R1，不再旧脚本、不加MVP/重复166/prepare；代码数据权重loss评分及参考22048/student49120/正式360预算不变。reviews/041_round1新增勘误、041_deployment_configfix1证据和同日阶段/命令优先，六文档精确commit SHA本地备份。Codex/X未代启停，无merge/删除，历史失败署名保留；下方可启动为修复前快照，本条不覆盖未来决定。
+
+## 2026-11-11：041 R1 accepted且隔离部署完成，下一用户直接两臂训练
+
+PR16固定e8dcf87979d14d081666629a2de3483629a4f59c（实现c51df70e、依赖accepted PR15@428c1358）软件/定向CPU-fake/文件部署accepted，X无需返修、不自动merge。Codex独立166全过/0失败错误skip、原fixture复用，未改源码断言/跑全库或真模型物理MVP；旧70部署源依赖69不变，OFT仅显式可选modules扩展，新retention041十模块。完整040初始化/独立039教师和所有参考先于学生图、旧003队列/mask/同批、三账本恢复及单学生评测接线保持。
+
+新code/config task041-e8dcf879的80源依赖＋8配置SHA一致，两原venv仅no-deps映射静态模块定位、原runtime字节与全部来源评分bridge不变，040/039实际adapter SHA匹配。脚本只语法检查、未执行；未来train/eval/launch输出不存在。准备100%，真实训练/eval0；下一用户直接train_both_sequential.sh按R0→R1各新增1000，正常后另行正式360。不重generate/index、额外预检/MVP/基线或旧039040，R0不是C0/不旧040resume，参考≤22048/student≤49120/原数据dev保持、主比R1−R0。完整常用命令本地docs/041_服务器完整运行命令_2026-11-11.md，公开脱敏运行文档和reviews/041_round1为入口。
+
+所有真实阶段只用户启动、Codex/X未模型/仿真/新标签索引/训练eval。软件closed/研究与效果open，X暂无任务，旧数据权重分数失败署名保留；六关键文档与固定X8原稿精确commit读回SHA本地manifest，源tar/独立JUnit/私有收据保存，无自动merge/删除。阶段2026-11-11_task041_accepted_deployed_user_training.md优先，下方未验收/部署0均历史；本条不覆盖未来决定。
+
 ## 2026-11-11：041已批准并交X直接实现
 
 用户明确批准041两组正式对照与工单。collaboration/tasks/041_old10_behavior_retention.md及041_budget_approval_and_dispatch为入口：基础R0/R1都C1、同040末权重全部模块初始化、新优化器/独立账本各新增1000；R0不是旧C0，不旧040resume。仅R1加0.10的039旧003六任务train10软动作保持，每更新已有12ten前最多4个，不换BC/加student或改采样；完整教师独立、全部参考先于学生图，恢复模式/hook/checkpoint/cache/RNG。原C1 loss/dev/采样/原SOG10普通参考/040index8ef04d91保持。
