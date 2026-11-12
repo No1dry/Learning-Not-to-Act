@@ -32,8 +32,8 @@
     "transformers": "not installed"
   },
   "junit": "042_cpu_fake.junit.xml",
-  "junit_sha256": "5d930471890716213892eb638d44e66527b8aa7194c8839e856944480fecb28c",
-  "junit_redaction": "Only hostname normalized to cpu-local; raw XML preserved locally outside repository",
+  "junit_sha256": "65770d72accc618b7012142613835e5acd26bf4caea60c447573c1455341128b",
+  "junit_redaction": "Hostname normalized to cpu-local and text line endings normalized to LF; raw XML preserved locally outside repository",
   "coverage": [
     "Actual final SDPA mask/output/gradient vs independent native bidirectional formula; RoPE/GQA/dropout and Parameter/path identity",
     "Three-layer P-to-C-to-T leak counterexample, F1 task numerical noninterference and control proprio access",
