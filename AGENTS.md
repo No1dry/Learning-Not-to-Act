@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-12：041两组训练100%，下一用户一条正式360评测
+
+041 R2接受R0/R1连续新增1000/固定末1000，启动器成功分支COMPLETE两臂及总COMPLETE、无进程/本次错误，未另采数值exit文件；祖代1000＋新增1000分记。末adapter d4e726a8/45680122及完整state3da3cd0a/d2df244a SHA一致，040初值/index/C1同配方除arm/teacher/stage/output保持，记录的逐更新采样计数与batch摘要一致，不冒称全tensor/RNG因果审计。原参考18048＋039旧10实际3999=22047≤22048，student49120等于上限，不补1次参考凑数。串行11-11 22:12:34至11-12 05:28:12共7h15m38含输入读取，dev10 L1 .119043632/.118295638不是SR。
+
+34个原文件514830066字节两末完整续训状态/metrics配置账本/console/eval配置/原index小记录已服务器本地SHA备份manifest80db2c4e，旧中间权重原数据失败全保留。训练100%、正式eval0；下一用户按docs/experiment_plans/2026-11-12_task041_dual_model_evaluation_commands.md及本地041完整命令第3节，直接eval_both_sequential.sh，原simulation环境R0正式180正常后R1正式180，共360。两模型实际配置绑定各自末1000，原来源/runtime/core/reporting/双bridge/评分/视频/H520/chunk8/seed7保持，脚本SHA原部署相同仅语法检查未执行，未来eval/marker不存在。无需新prepare/index/plan/MVP/资格/GPU预检或基线，不重训/挑checkpoint/加seed，不继承旧分数。
+
+Codex本轮只读比较/复制，未模型/仿真/新标签索引/训练eval，用户亲启真实作业；X无需返修/泛审，PR16@e8dcf879不自动merge。六关键文档精确commit读回SHA本地manifest、原34工件另存，无删除/脏checkout改动；旧configfix1失败及署名保留。训练closed、SR研究open，主比R1−R0，不把额外训练/重启全归保持，或把跨版本保持当A硬保护/ICML创新。下方训练0为历史，别重开已完成run；本条不覆盖未来决定。
+
 ## 2026-11-11：041 Codex部署配置勘误已修，用户改用configfix1重启
 
 首次R0用户启动22:01:50→22:01:55在load_config拒绝，R1未启。Codex把photometric_probability的0.0写成0，严格类型拒绝正确；X源码/166软件验收保持、无需返修，但原实际部署配置未被这些测试覆盖。新training.r0/r1.configfix1.json仅修正0→0.0，不覆盖旧配置；新train_both_sequential.configfix1.sh使用新配置及task041-train-launch-configfix1，旧launch-001/失败日志完整保留。数据/模型/训练输出账本此前均未创建，调用0、没有预算退款重置，原两个train-001 run ID沿用。

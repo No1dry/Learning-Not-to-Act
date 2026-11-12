@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-12：041两组训练100%，末完整状态已备份，下一用户正式360
+
+[R2](reviews/041_round2.md)接受R0/R1各连续新增1000/固定末1000，启动器两臂及总COMPLETE成功分支、无残留进程/本次异常；未另采独立数值shell exit文件。末adapter d4e726a8/45680122、完整state3da3cd0a/d2df244a SHA匹配身份与实际文件，原040初始化/index和C1配方相同（除臂/teacher/stage/output），最终及逐更新记录采样计数/batch摘要相同，不冒称全tensor/RNG因果审计。原SOG10参考18048＋R1旧039参考3999=总22047≤22048，student49120等于上限，0旧10调用不补数。[证据](evidence/041_training_complete.json)。
+
+11-11 22:12:34至11-12 05:28:12总7h15m38，含输入读取；R0/R1 dev10 L1 .119043632/.118295638，略低不是SR。34个原文件514830066字节已服务器/本地SHA保存，含两末完整续训状态/metrics配置账本/console、实际eval配置与原index小记录，manifest80db2c4e；服务器全部中间checkpoint/大数据/旧权重失败保留，旧configfix1前部署错误不混为当前训练错误。
+
+**训练100%，正式eval0%；下一用户按[命令](../docs/experiment_plans/2026-11-12_task041_dual_model_evaluation_commands.md)及本地041第3节，直接一条eval_both_sequential.sh，R0正式180正常完成后R1正式180，共360。** 实际配置绑定各自末1000、来源/runtime/core/reporting/双bridge/评分/视频/H520/chunk8/seed7保持；脚本SHA与原部署一致、仅语法核对，未来eval及marker均不存在，Codex未执行。无新prepare/index/plan/MVP/资格扫描/GPU预检或基线，不重开训练、加seed或挑checkpoint；不继承旧分数。
+
+训练closed、SR与研究open；用户启动所有真实作业，X无需返修/泛审，PR16@e8dcf879不自动merge。六关键文档精确commit读回SHA本地manifest备份，34原工件另存；dirty checkout与原数据权重分数失败署名不改删，待删=[]。见[阶段](../docs/stage_summaries/2026-11-12_task041_training_complete_evaluation_handoff.md)。主比较R1−R0，不把额外训练/重启全归保持项，不保证A硬保护/ICML创新。下方训练0或待启动均历史，不重开已完成两run。
+
+---
+
 ## 2026-11-11：041首次启动被Codex配置类型错误挡住，configfix1已部署
 
 用户22:01:50启动R0、22:01:55在严格load_config失败，R1未启动、数据/模型/输出账本均未创建，训练0/参考0。根因是Codex生成配置时把photometric_probability的浮点0.0写为整数0；不是X代码错误，也不放宽严格检查。原166软件测试仍有效，但没有覆盖Codex后生成的错误部署配置；原验收已加[勘误](reviews/041_round1.md)，不抹掉失败。
