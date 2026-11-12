@@ -83,7 +83,7 @@ def decode(policy, encoded, z=None, *, modules=None):
     return actions
 
 
-def prediction(policy, item, *, modules=None):
+def prediction(policy, item, *, modules=None, forward=None):
     """Only images, full original instruction and normalized proprio enter OFT."""
     clean = {key: item[key] for key in ('images', 'instruction', 'proprio')}
     modules = policy.model.task_control if modules is None else modules
@@ -117,11 +117,13 @@ def prediction(policy, item, *, modules=None):
     if proprio.numel() != 8 or not torch.isfinite(proprio).all():
         raise ValueError('Current normalized proprio must contain eight finite values')
     proprio = proprio.reshape(1, 8)
-    output = model(input_ids=ids, attention_mask=attention,
+    model_kwargs = dict(input_ids=ids, attention_mask=attention,
         pixel_values=torch.cat((primary['pixel_values'], wrist['pixel_values']), dim=1),
         labels=labels, proprio=proprio, proprio_projector=policy.proprio_projector,
         use_film=False, output_hidden_states=True, output_projector_features=True,
         return_dict=True, use_cache=False)
+    output = model(**model_kwargs) if forward is None else forward(
+        model, instruction_mask=instruction_mask, **model_kwargs)
     states = output.hidden_states[-1]
     inserted = output.projector_features.shape[1]
     visual = model.vision_backbone.get_num_patches() * model.vision_backbone.get_num_images_in_input()

@@ -1,0 +1,57 @@
+{
+  "format": "task042-cpu-fake-evidence-v1",
+  "date": "2026-11-12",
+  "author": "X",
+  "accepted_code_base": "e8dcf87979d14d081666629a2de3483629a4f59c",
+  "main_document_merge": "e4c0b4a",
+  "scope": "Affected CPU/fake only; no real model, data production, GPU, simulation or server jobs",
+  "command": "python -m pytest tests/test_tcif042_attention.py tests/test_tcif042_layout.py tests/test_tcif042_identity.py tests/test_tcif042_evaluation.py tests/test_tcif042_entry.py tests/test_tcif042_training.py tests/test_task_control_model.py tests/test_task_control_reference.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t42/final01 --junitxml=collaboration/evidence/042_cpu_fake.junit.xml",
+  "exit_code": 0,
+  "tests": 109,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": 109,
+  "seconds": 16.455,
+  "groups": {
+    "tests.test_tcif042_attention": 20,
+    "tests.test_tcif042_layout": 22,
+    "tests.test_tcif042_identity": 28,
+    "tests.test_tcif042_evaluation": 7,
+    "tests.test_tcif042_entry": 8,
+    "tests.test_tcif042_training": 5,
+    "tests.test_task_control_model": 14,
+    "tests.test_task_control_reference": 5
+  },
+  "environment": {
+    "python": "3.12.7",
+    "platform": "Windows CPU execution",
+    "torch": "2.12.0+cu130",
+    "numpy": "1.26.4",
+    "pytest": "7.4.4",
+    "transformers": "not installed"
+  },
+  "junit": "042_cpu_fake.junit.xml",
+  "junit_sha256": "5d930471890716213892eb638d44e66527b8aa7194c8839e856944480fecb28c",
+  "junit_redaction": "Only hostname normalized to cpu-local; raw XML preserved locally outside repository",
+  "coverage": [
+    "Actual final SDPA mask/output/gradient vs independent native bidirectional formula; RoPE/GQA/dropout and Parameter/path identity",
+    "Three-layer P-to-C-to-T leak counterexample, F1 task numerical noninterference and control proprio access",
+    "Actual shifted56 first action in control, actual fused P check, variable lengths/scaffold/stop/padding",
+    "Different-length pair reentrant checkpoint graphs retain own masks after another forward/reference",
+    "Default shared042 prediction with real tiny SDPA and nonreentrant checkpoint, eight native references before22 students, no extra vision/projector passes",
+    "Complete genuine041R0 fixture payload,2000 ancestral updates, independent strict042 schema and old reader rejection",
+    "Full optimizer/scheduler/sampler/RNG/two ledgers same-run continuation, typed config/runtime/arm/source/index contract rejection, no refund on failure",
+    "Actual generated f0/f1 JSON config exact preset and float0.0; CLI/early identity and output guards",
+    "Each arm fake180 single student/no reference, original90binary10+90official00, source/score/fullvideo/raw/dualbridge contract"
+  ],
+  "limitations": [
+    "Local CPU Torch is not the audited production runtime. Tests patch only a private runtime inspector or synthetic source/expected digest, without production bypass flags.",
+    "No real7B instance admission, GPU numerical equivalence/performance, simulator rollout, physical invariance, semantic target identity or SR claims.",
+    "No old166/full-repository repeat. Historical outputs, frozen deployments and source audit remain unchanged."
+  ],
+  "implementation_progress_percent": 100,
+  "deployment_percent": 0,
+  "real_training_percent": 0,
+  "real_evaluation_percent": 0
+}
