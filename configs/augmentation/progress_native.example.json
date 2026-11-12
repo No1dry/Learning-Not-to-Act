@@ -1,0 +1,69 @@
+{
+  "format": "egrs.augmentation.progress-config.v1",
+  "backend": {
+    "kind": "native",
+    "historical_root": "/absolute/path/to/Learning-Not-to-Act-at-fc1b49906b8b4e5b3bf9994c139ac3f61ec7b391",
+    "python": "/absolute/path/to/annotation-env/bin/python",
+    "module_paths": [
+      "/absolute/path/to/LIBERO",
+      "/absolute/path/to/native-library-root"
+    ],
+    "timeout_seconds": 600,
+    "native": {
+      "core": {
+        "root": "/absolute/path/to/LIBERO-core-at-c6dc98de0c54517c976057598b60f4cedf7fa3e5",
+        "revision": "c6dc98de0c54517c976057598b60f4cedf7fa3e5",
+        "allow_reference": true
+      },
+      "bddl_root": "/absolute/path/to/LIBERO/libero/libero/bddl_files",
+      "asset_roots": {
+        "libero": "/absolute/path/to/LIBERO/libero/libero/assets",
+        "robosuite": "/absolute/path/to/robosuite/models/assets"
+      },
+      "versions": {},
+      "module_sha256": {},
+      "libero_source": {
+        "revision": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+        "bddl_sha256": {}
+      },
+      "probe_count": 3,
+      "rgb_threshold": 0.03,
+      "min_visible_pixels": 16,
+      "max_reset_attempts": 3,
+      "max_physics_substeps": 100,
+      "replay_state_atol": 0.000001,
+      "seed": 0,
+      "surface_inset_m": 0.002,
+      "surface_normal_z_min": 0.7,
+      "surface_neighbor_m": 0.03,
+      "surface_vertical_margin_m": 0.005,
+      "table_vertical_margin_m": 0.025
+    }
+  },
+  "selection": {
+    "start": 0,
+    "stride": 25,
+    "max_anchors_per_source": 8
+  },
+  "task_bindings": {
+    "basket": {
+      "official_task_name": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "active_goals": [
+        {"id": "A", "predicate": ["in", "alphabet_soup_1", "basket_1_contain_region"]},
+        {"id": "B", "predicate": ["in", "tomato_sauce_1", "basket_1_contain_region"]}
+      ],
+      "invariant_predicates": [],
+      "state_field": "states",
+      "state_alignment_basis": "<REPLACE_WITH_EXISTING_SOURCE_BOUND_STATE_RGB_ACTION_ALIGNMENT_EVIDENCE_REFERENCE>",
+      "orientation": "opengl",
+      "alignment": {
+        "rule": "same_state",
+        "orientation": "identity",
+        "state_offset": 0,
+        "observation_offset": 0,
+        "action_offset": 0
+      }
+    }
+  },
+  "source_bindings": {}
+}

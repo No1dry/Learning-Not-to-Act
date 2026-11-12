@@ -1,0 +1,35 @@
+{
+  "schema_version": "task030-adapter-eval-v1",
+  "group": "raw_control",
+  "benchmark_root": "<accepted-core-d8541ef4>",
+  "reporting_root": "<task034-reporting-checkout>",
+  "base_runtime": "<frozen-sog10-runtime.json>",
+  "adapter": "<raw_control-selected-update-directory>",
+  "legacy_sources": {
+    "basket": {
+      "manifest": "<original-basket-manifest.json>",
+      "candidate_replay": "<original-basket-replay.json>"
+    },
+    "basket_cheese_butter": {
+      "manifest": "<original-basket_cheese_butter-manifest.json>",
+      "candidate_replay": "<original-basket_cheese_butter-replay.json>"
+    },
+    "stove": {
+      "manifest": "<original-stove-manifest.json>",
+      "candidate_replay": "<original-stove-replay.json>"
+    },
+    "dual_mugs": {
+      "manifest": "<original-dual_mugs-manifest.json>",
+      "candidate_replay": "<original-dual_mugs-replay.json>"
+    },
+    "mug_pudding": {
+      "manifest": "<original-mug_pudding-manifest.json>",
+      "candidate_replay": "<original-mug_pudding-replay.json>"
+    },
+    "basket_soup_cheese": {
+      "manifest": "<original-basket_soup_cheese-manifest.json>",
+      "candidate_replay": "<original-basket_soup_cheese-replay.json>"
+    }
+  },
+  "new_sources": "<accepted-new-three-composite-sources.json>"
+}
