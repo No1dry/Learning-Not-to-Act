@@ -2,6 +2,8 @@
 
 2026-11-12，X。实现commit **`03e0efcd5a999c77549ed8d7b549a29feb731c13`**，基于accepted PR16@`e8dcf87979d14d081666629a2de3483629a4f59c`，同步main@`ff707d3`工单/预算和附带SDPA源审计（本地merge `e4c0b4a`）。本次新042分支继承尚未合并的PR16及其依赖；未合并或改写旧PR。**实现/定向CPU交付100%，待Codex验收；部署、真实训练、真实评测均0%。**
 
+已提交[新PR17](https://github.com/No1dry/Learning-Not-to-Act/pull/17)，分支`x/task042`，保持open、未合并。代码、回复、完整命令和CPU证据均在该PR；发布后核对精确head及关键文件blob，软件源码/证据另作本地SHA备份，不复制真实数据或权重。
+
 - **F0/F1基础均为原C1。** 两者同一实例级SDPA、同尺寸显式dense mask，F0保留原OFT padding-only双向有效图；F1仅禁`T query ← C key`，C仍读T/C，T内部仍双向，最终所有层`is_causal=False`。没有新增参数、loss、索引、标注、教师或评分变化，不把F0替换为旧R0分数。
 - `egrs/tcif042/attention.py`适配审计`LlamaSdpaAttention`的最终primitive，去掉会抹除禁边的last-row expand；原q/k/v/o及LoRA Parameter对象/键名、RoPE、GQA、缩放/dropout/输出投影和并行动作保留。只绑定042实例，不编辑site-packages、OFT/core或全局torch。实际初始化只读类/版本/源SHA/dtype，不做额外前向；严格支持Transformers4.40.1、Torch2.4.1+cu121及审计源SHA `3aac24ce…0554c52e`，不支持的类/backend/source/cache/output_attentions或eager回退明确报错。历史静态审计不冒称旧7B动态分支追踪。
 - `layout.py`使用原placeholder labels的shifted56、原指令token map、真实patch数量及本次融合长度；同一原forward捕获proprio输出核对实际P。`a0=min(A)`，T是有效`pos<a0`排除P，其他有效位置为C；全部H_v/H_l在T，P/A在C，**首个A保留读P权限**。padding key保留屏蔽，不整行偷偷解禁。完整4D tensor显式进入LM→decoder→每层checkpoint，变长u/v各保存自己的mask，重算不读最近样本状态；scoped hooks在finally清除。原共享`task_control/oft.py`仅增可选`forward`回调，默认保持；042训练/dev/eval共用`tcif042.oft.prediction`，单次vision/projector/VLA。

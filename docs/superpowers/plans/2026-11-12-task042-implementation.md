@@ -76,4 +76,4 @@ Reuse immutable041StageDataset/040reader (no queue needed), exactexistingC1PRESE
 - [x] Only affectedCPU/fake root verification; onewhole042diff read-onlyreview, scopedfixes. Recordactualpass/fail/skip andCPU-only/GPUunrun boundaries, nofull166repeat gate.
 - [x] Commit then042_round1 withimplementationSHA/nativeaudit/primitive masks/immutablecheckpoint/refbypass/ancestry/contracts andfullconda train/resume/eval/nohup/serial-failstop commands. NewPR lists unmergedPR16dependency; exacthead/tree/blobreadback andlocalSHA softwarebackup. Noautomerge/deploy/deletion.
 
-Execution: implementation03e0efcd; affected109passed, independent review no blocker. Publication/readback/backup is the remaining delivery step tracked by root. No real jobs or deployment.
+Execution: implementation03e0efcd; affected109passed, independent review no blocker. PR17 open/unmerged; exact-head readback and local SHA software backup are tracked by root's delivery receipts. No real jobs or deployment.
