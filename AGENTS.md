@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-12：042 TCIF两组提案已发布，未批准预算/下达X实现
+
+docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md与042_existing_attention_audit_and_proposal提出F0原OFT双向padding-onlySDPA、F1逐层禁任务前缀读整个控制区，动作仍读proprio。原z来自融合后隐藏；现存LlamaSDPA的last-row复制可能覆盖上游mask，且只挡P直连会留下多层C回流。只读源SHA3aac24ce、Transformers4.40.1/Torch2.4.1+cu121，本地SHA一致，未构造7B或断言历史实际类；不把041既有设计说成错误或改分。首个shifted动作隐藏归C，mask随每个样本进入checkpoint，原参考旁路防火墙，不编辑全局package/core/OFT旧源。
+
+F0/F1都以R0完整末权重d4e726a8新初始化、各新增1000（祖代2000＋新增1000=3000），同040 index8ef04d91/370ten/pair/105fresh/180raw/原dev与C1 loss采样，不增参数/实体标签/新index或外部VLM/FINISH/039蒸馏。预算草案2000更新、原参考18048/student49120、正式360，新数据/仿真/标签/MVP/seed/搜索/基线0；主比F1−F0，不以旧R0替匹配对照。ReViP等已有prefix/模态重平衡近邻，数值非干涉不保证真实机器人不变/目标识别/A保护/SR或ICML novelty。
+
+提案100%、042实现部署真实阶段0，数值预算尚待用户确认、X无实现工单；批准后Codex详细工单＋prompt、X直接CPU-fake软件/新PR，不先泛审，验收后部署、用户启动全部真实作业。五文档精确commit读回SHA本地manifest，现存运行源只读备份；041 closed/R0主候选/全部旧权重数据失败署名保持，无自动merge/删除/热改/新训或重开旧run，待删=[]。同日task042_attention_firewall_proposal阶段与最新STATUS优先，本条不覆盖后续决定。
+
 ## 2026-11-12：041正式360全完成，本轮交付closed，下一研究042未授权新实验
 
 041 R3接受R0/R1各180执行/计分100%、software_exit success、execution/cleanup/ledger均null，无残留进程。R0 10/00=65.56%（59/90）/82.22%（74/90），R1=64.44%（58/90）/83.33%（75/90）；主控R1−R0 −1.11/+1.11pp（10新增4丢5，00新增5丢4），旧六80→78.33%、新三同36.67%。R1相对040少丢2vs5、也少新增7vs11是取舍，不是额外总体10提升/显著普遍负效。按10第一优先推荐R0当前已测10最高主候选/后续对照；040保留较高00、R1保留证据，未改服务器默认模型。R0对040＋6.67/−4.44pp不能全归蒸馏，dev更低不代SR。

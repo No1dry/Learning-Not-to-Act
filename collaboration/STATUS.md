@@ -1,5 +1,15 @@
 # 方法研究当前状态
 
+## 2026-11-12：042 TCIF提案已发布，预算待用户确认，X暂不实现
+
+[方案](../docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md)、[现存注意力审计](evidence/042_existing_attention_audit_and_proposal.json)推荐两组任务—控制信息隔离正式对照：F0原OFT padding-only双向SDPA，F1仅禁任务前缀T读控制区C，动作区仍可读proprio/上下文；每层有效、显式样本mask随checkpoint，保留首个shifted动作隐藏在控制区。原z使用融合后隐藏，SDPA源的last-row扩展会覆盖简单mask且存在P→控制隐状态→z回流；源码审计SHA3aac24ce/Transformers4.40.1/Torch2.4.1，本轮未构造7B追踪实际类或运行新模型，不把历史结果说成无效。
+
+两臂从041 R0完整末权重d4e726a8初始化、新优化器/账本各新增1000（祖代2000＋新增1000），复用040 index8ef04d91及全部370ten/pair、105fresh/180raw/原dev，原C1 loss/采样/参数量不变，不加FINISH/外部VLM/实体标签或旧10蒸馏。草案2000新增更新、参考≤18048/student≤49120、正式新模型360；新数据/标签/index/仿真/seed/搜索/MVP/新baseline0。主比F1−F0，原R0不能替代本轮匹配control。
+
+**042数值预算未批准、无X实施工单/部署/真实作业。** 提案100%，实现/实验0%；用户确认后Codex一次详细工单＋短prompt，X直接软件/CPU-fake/新PR，Codex验收部署给普通命令，用户亲启。ReViP/ProgressVLA/CycleVLA为明确近邻，条件数值非干涉不是新理论/SR/成果保护/zero-shot保证。见[阶段](../docs/stage_summaries/2026-11-12_task042_attention_firewall_proposal.md)，五文件精确commit读回SHA本地manifest，现存源码复制不改动。041 closed/R0主候选与所有旧结果权重失败保持；不merge/删除、热改运行包或自动新训，待删=[]。下方042无方案等属历史，本条不覆盖未来决定。
+
+---
+
 ## 2026-11-12：041正式360完成，R0 65.56%/82.22%、R1 64.44%/83.33%，本轮closed
 
 [R3](reviews/041_round3.md)接受两臂各180/正式计分100%、software_exit success、execution/cleanup/ledger均null、无残留进程；两末d4e726a8/45680122与plan报告相符。10完整性0、00工件/兼容0、官方信号100%，人口/来源/runtime/core/reporting/双bridge/评分/预算同040（041adapter factory有意版本化，C1路径保持）。[证据](evidence/041_final_results.json)、[九任务/研究决策](../docs/stage_summaries/2026-11-12_task041_final_results_old10_retention_control.md)。
