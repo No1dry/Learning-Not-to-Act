@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-12：042两组预算已批准，正式工单交X直接实现
+
+用户回复“按推荐的来吧”，已批准[042方案](../docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md)两组预算及交X。[工单](tasks/042_task_control_information_firewall.md)、[批准](evidence/042_budget_approval_and_dispatch.json)、[现存SDPA原版权/完整forward附件](evidence/042_audited_sdpa_source_excerpt.md)现为入口。F0/F1基础都C1、同041 R0完整末参数新初始化、新optimizer/账本各新增1000，祖代2000＋新增1000=3000；同数据/C1 loss/采样/dev/backend，唯一区别是F1禁T query读整个C key，F0保留native padding-only双向，不误作causal或旧C0。
+
+固定shifted56映射/首个A归C、逐层最终SDPA mask不能被last-row expand抹掉，每条u/v自己mask走checkpoint、原SOG10参考同时旁路防火墙/新增分支，是工单关键合同。源SHA3aac24ce静态附件供X无需SSH复现，不冒称历史7B实际类已追踪；不编辑全局安装包/core/OFT旧源。新042身份完整保存执行合同和全部参数/状态，旧reader不放宽，实际JSON保留0.0并严格读取。
+
+已批新增2000更新、reference≤18048/student≤49120、两模型10/00各90共360；复用040 index8ef04d91/370ten/pair/105fresh/180raw/143960行，原split/dev保持，新数据/仿真/标签/index/039教师/seed/搜索/MVP/新baseline0。规格交接100%，实现/部署/真实阶段0%。**现在X直接软件＋受影响CPU/fake＋新PR及042_round1，不再泛审/SSH或真实预跑；Codex验收后隔离部署/完整conda-python命令，用户亲启所有真实阶段。** 继承accepted PR16@e8dcf879与最新main文档，不自动merge。
+
+主比F1−F0，不把旧R0替control/额外训练全归边界，不承诺ICML/成果保护/SR。见[阶段](../docs/stage_summaries/2026-11-12_task042_budget_approved_x_implementation.md)，七文件精确commit读回SHA本地manifest，旧源码快照/dirty checkout/数据权重分数原失败署名不改。无部署/启停/删除/merge，待删=[]；下方未批准/无工单为历史，本条不覆盖后续用户决定。
+
+---
+
 ## 2026-11-12：042 TCIF提案已发布，预算待用户确认，X暂不实现
 
 [方案](../docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md)、[现存注意力审计](evidence/042_existing_attention_audit_and_proposal.json)推荐两组任务—控制信息隔离正式对照：F0原OFT padding-only双向SDPA，F1仅禁任务前缀T读控制区C，动作区仍可读proprio/上下文；每层有效、显式样本mask随checkpoint，保留首个shifted动作隐藏在控制区。原z使用融合后隐藏，SDPA源的last-row扩展会覆盖简单mask且存在P→控制隐状态→z回流；源码审计SHA3aac24ce/Transformers4.40.1/Torch2.4.1，本轮未构造7B追踪实际类或运行新模型，不把历史结果说成无效。

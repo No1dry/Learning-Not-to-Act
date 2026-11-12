@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-12：042预算已批准、工单交X直接实现
+
+用户“按推荐的来吧”已批准推荐F0/F1两组正式预算并交X。collaboration/tasks/042_task_control_information_firewall.md、042_budget_approval_and_dispatch与042_audited_sdpa_source_excerpt现为入口；源附件保留版权/完整SDPA forward供X不SSH复现native最后行扩展，静态SHA3aac24ce不冒称历史7B实例已追踪。F0 native padding-only双向、F1仅禁任务T query读整个控制C key，控制仍native读取；两臂同R0完整末参数、base C1、新optimizer/RNG/账本各新增1000，祖代2000＋新增1000=3000，非旧C0/C1/旧run resume。
+
+原040 index8ef04d91、370ten/pair/105fresh/180raw/143960行、原C1 loss/采样/dev/参数量不变。已批新增2000/reference≤18048/student≤49120/正式360，新数据仿真标签index/039teacher/额外seed搜索/MVP/基线0。首个shifted动作隐藏归C、最终每层mask防last-row覆盖、每u/v不可变mask走checkpoint、reference同时旁路边界/新增分支、新042 schema完整状态与执行合同/旧reader保持、实际配置0.0类型是关键功能。
+
+交接100%、实现部署真实阶段0，下一X直接实现＋定向CPU-fake＋新PR/042_round1，不先泛审/SSH/加载真实模型。依赖accepted PR16固定e8dcf879及新main文档，不自动merge；Codex建议式验收后隔离部署/常用完整命令，用户亲启所有真实阶段，批准不扩代跑权限。主比F1−F0，信息非干涉不保证目标识别/A保护/SR/novelty。七文档精确commit SHA本地归档manifest，现存完整源只读快照和所有039040041权重数据分数失败署名保留，旧dirty checkout不改，无部署/启停/merge/删除，待删=[]。同日task042_budget_approved_x_implementation阶段与最新STATUS优先；下方待批准/无X工单为历史，不覆盖未来决定。
+
 ## 2026-11-12：042 TCIF两组提案已发布，未批准预算/下达X实现
 
 docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md与042_existing_attention_audit_and_proposal提出F0原OFT双向padding-onlySDPA、F1逐层禁任务前缀读整个控制区，动作仍读proprio。原z来自融合后隐藏；现存LlamaSDPA的last-row复制可能覆盖上游mask，且只挡P直连会留下多层C回流。只读源SHA3aac24ce、Transformers4.40.1/Torch2.4.1+cu121，本地SHA一致，未构造7B或断言历史实际类；不把041既有设计说成错误或改分。首个shifted动作隐藏归C，mask随每个样本进入checkpoint，原参考旁路防火墙，不编辑全局package/core/OFT旧源。
