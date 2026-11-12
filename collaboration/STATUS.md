@@ -1,5 +1,17 @@
 # 方法研究当前状态
 
+## 2026-11-12：042 R1 accepted且隔离部署完成，下一用户直接F0→F1训练
+
+[R1](reviews/042_round1.md)接受PR17固定7d28d515（实现03e0efcd，继承accepted PR16@e8dcf879），X无需返修、不自动merge。[证据](evidence/042_codex_acceptance.json)。109独立不同CPU/fake最终全过；首次103过＋6因Codex cwd链接错误的固定fixture setup error保留，复用原映射只补6通过，无源码断言改动/全库旧166重跑。另用现有HF4.40.1/Torch2.4.1作随机2层hidden16 CPU接口验证，native-F0一致/F1数值p非干涉/控制p/变长checkpoint反向通过，无预训练VLA/GPU/轨迹/optimizer更新，不计入109或声称真实SR/性能。
+
+最终SDPA禁边/首个shiftedA/P/每样本checkpoint、原SOG10 reference旁路/全参数与完整状态/预算/0.0/单学生180接线已核对；原80部署源依赖79不变，旧oft仅可选forward seam，新12模块。新code/config task042-7d28d515的92源依赖＋8配置SHA一致，R0源d4e726a8正确；原runtime字节、HF源3aac24ce和来源/评分/双bridge不变，两原venv只no-deps映射/静态来源定位，无升级。两实际JSON严格读取及0.0通过、脚本仅语法未执行，未来train/eval/marker均不存在。
+
+**准备100%，真实训练/eval0%。下一用户按[命令](../docs/experiment_plans/2026-11-12_task042_user_training_evaluation_commands.md)和本地042完整命令，直接一条train_both_sequential.sh按F0→F1各新增1000，正常后另启正式360。** 不generate/index/plan/额外Codex GPU预检/MVP/旧资格/基线或重开041；失败保留/不退款重试/自动eval，marker拒重复。source祖代2000＋新增1000、reference≤18048/student≤49120/正式360/原C1数据dev保持；主比F1−F0，不把旧R0替control/不承诺保护或novelty。
+
+软件与文件交付closed、真实训练/SR/研究open；X暂无任务，用户亲启所有真实阶段。见[阶段](../docs/stage_summaries/2026-11-12_task042_accepted_deployed_user_training.md)，六关键文档/固定X六原稿精确commit读回SHA本地manifest，源tar/JUnit/随机CPU/私有收据保留；旧dirty checkout和全部旧数据权重失败署名不改，无merge/删除/代启停、待删=[]。下方未实现部署0为历史，不覆盖后续决定。
+
+---
+
 ## 2026-11-12：042两组预算已批准，正式工单交X直接实现
 
 用户回复“按推荐的来吧”，已批准[042方案](../docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md)两组预算及交X。[工单](tasks/042_task_control_information_firewall.md)、[批准](evidence/042_budget_approval_and_dispatch.json)、[现存SDPA原版权/完整forward附件](evidence/042_audited_sdpa_source_excerpt.md)现为入口。F0/F1基础都C1、同041 R0完整末参数新初始化、新optimizer/账本各新增1000，祖代2000＋新增1000=3000；同数据/C1 loss/采样/dev/backend，唯一区别是F1禁T query读整个C key，F0保留native padding-only双向，不误作causal或旧C0。

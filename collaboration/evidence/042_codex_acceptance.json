@@ -1,0 +1,165 @@
+{
+  "format": "task042-codex-acceptance-isolated-deployment-v1",
+  "date": "2026-11-12",
+  "decision": {
+    "status": "accepted",
+    "X_revision_required": false,
+    "scope": "software, affected CPU/fake and isolated file deployment; not real model performance"
+  },
+  "source": {
+    "pr": 17,
+    "head": "7d28d515be610f33f959f36d25623e86796671ce",
+    "implementation": "03e0efcd5a999c77549ed8d7b549a29feb731c13",
+    "dependency_pr16": "e8dcf87979d14d081666629a2de3483629a4f59c",
+    "automatic_merge": false
+  },
+  "independent_CPU": {
+    "final_distinct_passed": 109,
+    "unresolved_failures": 0,
+    "unresolved_errors": 0,
+    "skipped": 0,
+    "first_attempt": {
+      "passed": 103,
+      "setup_errors": 6,
+      "cause": "Codex initial fixture symlink command used the wrong working-directory-relative destination; pinned CPU dependencies were absent"
+    },
+    "followup": {
+      "only_previous6_setup_cases_rerun": true,
+      "passed": 6,
+      "deselected_previous_already_passed_evaluation_case": 1,
+      "source_or_assertions_changed": false,
+      "original_logs_retained": true
+    },
+    "junit_sha256": {
+      "first": "d809fd28cf73abe972e9837616ccdd80707f4c050f457942f70c42121f2bf781",
+      "followup": "29ae21172d936fce8690508cb76c6a4786f110af0a183d894534b0e8fa5f7f4e"
+    }
+  },
+  "separate_actual_installed_HF_random_tiny_CPU_check": {
+    "format": "task042-actual-installed-HF-random-tiny-CPU-interface-v1",
+    "runtime": {
+      "f0": {
+        "transformers_version": "4.40.1",
+        "torch_version": "2.4.1+cu121",
+        "language_model_class": "transformers.models.llama.modeling_llama.LlamaForCausalLM",
+        "decoder_class": "transformers.models.llama.modeling_llama.LlamaModel",
+        "attention_class": "transformers.models.llama.modeling_llama.LlamaSdpaAttention",
+        "attention_layer_count": 2,
+        "source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+        "dtype": "torch.float32",
+        "backend": "torch.nn.functional.scaled_dot_product_attention"
+      },
+      "f1": {
+        "transformers_version": "4.40.1",
+        "torch_version": "2.4.1+cu121",
+        "language_model_class": "transformers.models.llama.modeling_llama.LlamaForCausalLM",
+        "decoder_class": "transformers.models.llama.modeling_llama.LlamaModel",
+        "attention_class": "transformers.models.llama.modeling_llama.LlamaSdpaAttention",
+        "attention_layer_count": 2,
+        "source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+        "dtype": "torch.float32",
+        "backend": "torch.nn.functional.scaled_dot_product_attention"
+      }
+    },
+    "native_F0_output_equivalent": true,
+    "F1_prefix_numeric_proprio_noninterference": true,
+    "control_can_read_proprio": true,
+    "different_length_nonreentrant_checkpoint_backward": true,
+    "device": "CPU",
+    "random_layers": 2,
+    "hidden_dim": 16,
+    "pretrained_weights_loaded": false,
+    "real_data_or_models_or_simulation_training_eval": false,
+    "CUDA_initialized": false,
+    "note": "software interface check separate from109pytest cases; no7B or productionGPU guarantee",
+    "stdout_sha256": "514cfc3dc237e98f33a4ce8bde4dd4fda923da374a434831e05fdc51cd1e3c27",
+    "not_added_to109_count": true,
+    "no_production_runtime_inspector_mock": true,
+    "optimizer_updates": 0
+  },
+  "reviewed_contracts": [
+    "F0 native OFT padding-only bidirectional SDPA; F1 only T-query/C-key prohibition, every final primitive and all control queries retained",
+    "actual shifted56/P/insertion layout with firstA control, no task truth or expert actions used for routing",
+    "immutable observation masks passed to actual decoder/checkpoint; different-length pair recomputation and original-reference restoration",
+    "complete041R0 initialization and2000 ancestor+1000 additional; no039teacher/newdata/loss/parameters; same C1 budget and dev",
+    "strict042 schema, complete same-run resume and two durable pre-forward ledgers; no refund; old reader/default route retained",
+    "shared train/dev/eval path, fake180 each with original source/dualbridge/binary10/official00/fullvideo contract"
+  ],
+  "source_comparison": {
+    "accepted041_source_dependency_files": 80,
+    "unchanged": 79,
+    "only_old_file_changed": "egrs/task_control/oft.py",
+    "change": "explicit optional forward callback, old default unchanged",
+    "new_tcif042_modules": 12
+  },
+  "deployment": {
+    "complete": true,
+    "code_directory_name": "task042-7d28d515",
+    "config_directory_name": "task042-7d28d515",
+    "archive_sha256": "caaacddbea4c9c295ef6a6b46b1afd9c066a9abb6d1bf9181fad0df1ccd5d895",
+    "source_dependency_SHA_matched": 92,
+    "config_launcher_SHA_matched": 8,
+    "config_names": [
+      "training.f0.json",
+      "training.f1.json",
+      "evaluation.f0.json",
+      "evaluation.f1.json",
+      "base-runtime.json",
+      "session042.sh",
+      "train_both_sequential.sh",
+      "eval_both_sequential.sh"
+    ],
+    "two_actual_uploaded_training_configs_strictly_loaded": true,
+    "float0_0_retained": true,
+    "original_runtime_bytes_unchanged": true,
+    "eval_changed_fields": {
+      "f0": [
+        "adapter",
+        "experiment_arm",
+        "group",
+        "schema_version"
+      ],
+      "f1": [
+        "adapter",
+        "experiment_arm",
+        "group",
+        "schema_version"
+      ]
+    },
+    "existing_worker_and_simulation_no_deps_mappings_updated": true,
+    "core_cwd_static_module_origins_correct": true,
+    "installed_HF_source_unchanged": true,
+    "source_R0_byte_SHA_verified": "d4e726a867531f655d28e11f358ce0af597d4ada0f4928f4597aeadb28d38397",
+    "private_receipt_sha256": "73e01914e8710dfb3377707aecbe86e523008d4b63edbe53a6a84a034b54917c",
+    "dependency_upgrades": false,
+    "launchers_executed": false,
+    "all_future_training_eval_marker_paths_absent": true
+  },
+  "actual_pretrained_VLA_or_GPU_or_trajectory_data_or_simulation_or_training_or_eval_started_by_Codex": false,
+  "approved_limits": {
+    "updates_each": 1000,
+    "total_updates": 2000,
+    "source_ancestral_updates": 2000,
+    "cumulative_updates_each_after_stage": 3000,
+    "reference_total": 18048,
+    "student_total": 49120,
+    "formal_eval_episodes_total": 360,
+    "new_simulation_data_labels_or_index": 0
+  },
+  "snapshot": {
+    "software_file_preparation_percent": 100,
+    "real_training_percent": 0,
+    "formal_eval_percent": 0
+  },
+  "next": {
+    "executor": "user",
+    "action": "direct single sequentialF0-F1 training launch; no generate/index/plan/MVP/GPUpreflight or baseline; evaluate separately after both terminal checkpoints"
+  },
+  "caveats": [
+    "Random tiny CPU/HF software evidence is not7B admission/GPU speed/memory or SR evidence",
+    "Real pretrained instance admission/layout is verified by the normal user-started job, not by extra uncounted forwards",
+    "Primary comparison F1-F0; oldR0 difference also contains added updates/backend; no semantic identity/A protection/novelty guarantee"
+  ],
+  "auto_merge": false,
+  "deletions": []
+}

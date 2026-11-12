@@ -1,5 +1,15 @@
 # 方法研究协作规则
 
+## 2026-11-12：042 R1 accepted并隔离部署，下一用户直接两组训练
+
+PR17固定7d28d515be610f33f959f36d25623e86796671ce（实现03e0efcd、依赖accepted PR16@e8dcf879）软件/CPU-fake/文件部署accepted，X无需返修、不自动merge。109独立不同CPU/fake最终全过，首次103过＋6由Codex cwd fixture映射失误的setup error保留，只补6过未改源码断言/重跑旧166。另在现有HF4.40.1/Torch2.4.1作随机2层hidden16 CPU接口，native-F0数值一致、F1任务p非干涉/控制p/变长非reentrant反向通过，无预训练VLA/GPU/轨迹/optimizer更新，不计入109或假称真实SR性能。
+
+最终SDPA/shifted56首A/P/每样本checkpoint、原reference旁路、完整R0初始化/祖代记账/保存恢复/前扣预算/实际JSON0.0和原180接线保持。原80部署源依赖79不变，旧oft仅可选forward seam，新12模块；新code/config task042-7d28d515共92源依赖＋8配置SHA一致，R0 d4e726a8源正确，原runtime/HF源3aac24ce/评分来源双bridge不变，两原venv仅no-deps映射静态定位，无升级。实际服务器两JSON严格读取及0.0通过；启动器仅语法未执行，未来train/eval/marker不存在。
+
+准备100%、真实训练eval0；下一用户直接train_both_sequential.sh按F0→F1各新增1000（source祖代2000＋新增1000），正常后另启正式360，reference≤18048/student≤49120不变。完整conda/python及5秒实时进度在本地docs/042_服务器完整运行命令_2026-11-12.md，公开命令/R1/阶段为入口；不再新prepare/index/plan/MVP/GPU预检/旧资格或baseline，不重开041。真实预训练实例/布局准入由用户正常作业承担，无额外诊断前向。
+
+软件closed，训练/SR/研究open；用户亲启所有真实作业，X暂无修改任务。六关键文档和固定X六原稿精确commit读回SHA本地manifest，源tar/独立JUnit/随机CPU/私有部署收据保存；旧dirty checkout及全部数据权重分数失败署名保持，无merge/删除/代启停、待删=[]。同日task042_accepted_deployed_user_training阶段/STATUS优先，原未部署为历史；本条不覆盖未来决定。
+
 ## 2026-11-12：042预算已批准、工单交X直接实现
 
 用户“按推荐的来吧”已批准推荐F0/F1两组正式预算并交X。collaboration/tasks/042_task_control_information_firewall.md、042_budget_approval_and_dispatch与042_audited_sdpa_source_excerpt现为入口；源附件保留版权/完整SDPA forward供X不SSH复现native最后行扩展，静态SHA3aac24ce不冒称历史7B实例已追踪。F0 native padding-only双向、F1仅禁任务T query读整个控制C key，控制仍native读取；两臂同R0完整末参数、base C1、新optimizer/RNG/账本各新增1000，祖代2000＋新增1000=3000，非旧C0/C1/旧run resume。
