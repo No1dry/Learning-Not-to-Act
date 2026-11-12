@@ -1,5 +1,9 @@
 # 方法研究当前状态
 
+## 2026-11-12：X交付042统一SDPA与F0/F1，待验收
+
+实现03e0efcd，基于accepted PR16@e8dcf879并同步042源审计/预算工单。两臂同完整041 R0初始化、原C1各新1000（祖代2000）；同实例级显式SDPA，F0原native双向，F1仅禁T query读C key。真实插入/shifted56/P与首A核验、逐样本显式checkpoint mask、原SOG10参考旁路、完整严格schema/两预算/resume/单学生180接线完成。109/109定向CPU/fake通过、独立集中审查无阻断；实现/定向测试100%，部署/真实训练/评测0%。见responses/042_round1.md、docs/task042_usage.md和阶段总结。下一Codex验收后隔离部署填配置，用户亲启两训练及正式360；不重跑旧基线、不热改冻结目录、不自动merge/清理。旧039–041证据全部保留，最新本节优先。
+
 ## 2026-11-12：042两组预算已批准，正式工单交X直接实现
 
 用户回复“按推荐的来吧”，已批准[042方案](../docs/research/2026-11-12_task042_task_control_attention_firewall_proposal.md)两组预算及交X。[工单](tasks/042_task_control_information_firewall.md)、[批准](evidence/042_budget_approval_and_dispatch.json)、[现存SDPA原版权/完整forward附件](evidence/042_audited_sdpa_source_excerpt.md)现为入口。F0/F1基础都C1、同041 R0完整末参数新初始化、新optimizer/账本各新增1000，祖代2000＋新增1000=3000；同数据/C1 loss/采样/dev/backend，唯一区别是F1禁T query读整个C key，F0保留native padding-only双向，不误作causal或旧C0。

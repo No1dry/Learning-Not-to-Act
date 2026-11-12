@@ -38,9 +38,9 @@ Interfaces: `contract_for(experiment_arm)` returns deterministic JSON-only042con
 
 Controller studentforward calls Task2 `prepare_layout(...)`, captures actualproprio projector output and registers one scoped LM prehook closing onlyoverthispreparedobject. Hook calls `build_layout(...)` on actualfusedembedding/padding/proprio, then `final_attention_mask(layout, arm, dtype)` into LM attention_mask. Hooks removed finally; mask itself enters existing layercheckpoint. Originalrefs have nohook and stay native. Fake runtime inspector seams only in tests, never public disable-check flags.
 
-- [ ] Red then implement primitive masks/native equality/grad, GQA/RoPE/dropout/param inventory, unsupported/cache/eager rejection, actualsourceaudit guard and per-instance ownership.
-- [ ] Test multi-layer numeric noninterference/control access and explicitcheckpointu/v masks with actual SDPA; reference native afterstudent hooksremoved, noaddedforward or params.
-- [ ] External report/test evidence; no commit/real jobs.
+- [x] Red then implement primitive masks/native equality/grad, GQA/RoPE/dropout/param inventory, unsupported/cache/eager rejection, actualsourceaudit guard and per-instance ownership.
+- [x] Test multi-layer numeric noninterference/control access and explicitcheckpointu/v masks with actual SDPA; reference native afterstudent hooksremoved, noaddedforward or params.
+- [x] External report/test evidence; no commit/real jobs.
 
 ## Task2 — prepared/fused layout and shared prediction
 
@@ -50,9 +50,9 @@ Interfaces: `prepare_layout(model,input_ids,labels,instruction_mask)` returns im
 
 Old sharedprediction adds optional forward callback, default model(**kwargs) unchanged; callback receivesmodel plus originalkwargs and instruction_mask, noexpertvalues. `tcif042.oft.prediction(policy,item)` delegates originalpreparation/encode/decode and042controller.forward; no rerun ofimages/vision/projectors. Keep normaldecoder matrices/taskcontext unchanged. Controller layoutresult can be checked against returnedprojector_features in call without mutable latest fields.
 
-- [ ] Red tests for shifted firstA, H_v/H_l/T/P, variablelength/scaffold/stop/padding, no legalkeys/invalidlayout; exactoneprojector/visioncall and originalsharedhidden/action selection.
-- [ ] Prove pair graphs checkpoint eachownmask, unsupportedshape/cache errors, rawitem white list. Coordinate with Task1 controller implementation.
-- [ ] External report; no commit/real jobs.
+- [x] Red tests for shifted firstA, H_v/H_l/T/P, variablelength/scaffold/stop/padding, no legalkeys/invalidlayout; exactoneprojector/visioncall and originalsharedhidden/action selection.
+- [x] Prove pair graphs checkpoint eachownmask, unsupportedshape/cache errors, rawitem white list. Coordinate with Task1 controller implementation.
+- [x] External report; no commit/real jobs.
 
 ## Task3 — R0 initialization, strict042 adapter/checkpoint/policy/eval
 
@@ -62,9 +62,9 @@ Pure metadata accepts real041R0root throughstrict041reader, then fixedsourceSHA/
 
 save/load adapters/checkpoints mirror041 APIs minus teacher/old10, add attention_contract via stageidentity or explicitmatching parameter. Restore configuration/arm/source/index/contract+allstudent/optimizer/scheduler/sampler/RNG/twoledgers, rejectadvancedbudgets and oldreaders. Policy only onebase+student then042attention install; prediction explicitly uses042shared path, no039teacher. Eval originalengine180/H520/chunk8/seed7/sources/score/videos with f0/f1 and basec1.
 
-- [ ] Red real041syntheticR0source/full restore/newschema/type/contract/source/budget/run identity rejection, safe failedsave.
-- [ ] fake180/arm singlepolicy and sharedpredict, reference absent at eval, originalbinary10/official00report; nooldreaderrelaxation.
-- [ ] External report/API; no commit/real jobs.
+- [x] Red real041syntheticR0source/full restore/newschema/type/contract/source/budget/run identity rejection, safe failedsave.
+- [x] fake180/arm singlepolicy and sharedpredict, reference absent at eval, originalbinary10/official00report; nooldreaderrelaxation.
+- [x] External report/API; no commit/real jobs.
 
 ## Task4 — root fixeddata/config/training and delivery
 
@@ -72,6 +72,8 @@ Owner `tcif042/config.py`, `training.py`, `__main__.py`, `__init__.py`; configex
 
 Reuse immutable041StageDataset/040reader (no queue needed), exactexistingC1PRESET and actual0.0 JSONtype. Config fixed042 format/f0f1, training_recipe,index_dir,initial_adapter,benchmark_root,runtime; no teacher paths/old10 knobs. Rootloop composes originalC1 functions: full041R0init thenattentioninstall, fresh optimizer/RNG andreference/studentledgers,8protectednative references before22student, unchangedpair/dev/microbatch, allpredictions042path. Same-run outputbound in runconfig; strictresume/noautomaticphases.
 
-- [ ] Red parser/actual generatedconfigfloat types/rolepreflight/zeroold10, matchedF0F1sampling/C1loss formulas, actual tinycheckpoint training+references+fullresume andsingleforward budgets.
-- [ ] Only affectedCPU/fake root verification; onewhole042diff read-onlyreview, scopedfixes. Recordactualpass/fail/skip andCPU-only/GPUunrun boundaries, nofull166repeat gate.
-- [ ] Commit then042_round1 withimplementationSHA/nativeaudit/primitive masks/immutablecheckpoint/refbypass/ancestry/contracts andfullconda train/resume/eval/nohup/serial-failstop commands. NewPR lists unmergedPR16dependency; exacthead/tree/blobreadback andlocalSHA softwarebackup. Noautomerge/deploy/deletion.
+- [x] Red parser/actual generatedconfigfloat types/rolepreflight/zeroold10, matchedF0F1sampling/C1loss formulas, actual tinycheckpoint training+references+fullresume andsingleforward budgets.
+- [x] Only affectedCPU/fake root verification; onewhole042diff read-onlyreview, scopedfixes. Recordactualpass/fail/skip andCPU-only/GPUunrun boundaries, nofull166repeat gate.
+- [x] Commit then042_round1 withimplementationSHA/nativeaudit/primitive masks/immutablecheckpoint/refbypass/ancestry/contracts andfullconda train/resume/eval/nohup/serial-failstop commands. NewPR lists unmergedPR16dependency; exacthead/tree/blobreadback andlocalSHA softwarebackup. Noautomerge/deploy/deletion.
+
+Execution: implementation03e0efcd; affected109passed, independent review no blocker. Publication/readback/backup is the remaining delivery step tracked by root. No real jobs or deployment.
