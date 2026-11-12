@@ -5,8 +5,8 @@
 直接运行已部署configs/task041-e8dcf879/eval_both_sequential.sh一次即可。实际绝对路径命令在聊天/本地docs/041_服务器完整运行命令_2026-11-11.md第3节，不在GitHub暴露私有路径/凭证。脚本自动激活原Conda和simulation venv，模型在原OFT worker执行；内部仍是两条普通python：
 
 ~~~bash
-python -u -m egrs.retention041 eval --experiment-arm r0 --mode run \\
-  --config "$LNA_CONFIG/evaluation.r0.json" \\
+python -u -m egrs.retention041 eval --experiment-arm r0 --mode run \
+  --config "$LNA_CONFIG/evaluation.r0.json" \
   --output "$LNA_ROOT/runs/task041-r0-eval-001"
 ~~~
 
