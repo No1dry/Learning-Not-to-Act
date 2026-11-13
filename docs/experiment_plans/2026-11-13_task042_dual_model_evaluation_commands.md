@@ -1,5 +1,7 @@
 # 042固定末1000两模型正式360评测
 
+> 2026-11-13已完成：F0/F1训练及正式360均100%，10/00分别68.89%/80%与70%/80%。以下启动命令仅历史，勿重开。当前入口为[042详细结果](../research/2026-11-13_task042_results_and_failure_mechanisms.md)和[最终阶段总结](../stage_summaries/2026-11-13_task042_final_results_attention_firewall.md)。
+
 2026-11-13，Codex。F0/F1新增1000均100%完成，[R2文件审查](../../collaboration/reviews/042_round2.md)accepted；完整权重和续训状态已本地SHA备份，正式eval0%。下一步所有真实作业仍由用户启动。
 
 直接一次运行已部署configs/task042-7d28d515/eval_both_sequential.sh即可，自动激活原Conda与simulation venv；模型使用原OFT worker。完整绝对路径命令在本地docs/042_正式评测命令_2026-11-13.md和聊天，不在公开GitHub暴露私有服务器路径。

@@ -1,5 +1,7 @@
 # 042用户训练与正式评测交接
 
+> 2026-11-13已完成：F0/F1训练及正式360均100%，10/00分别68.89%/80%与70%/80%。以下启动命令仅历史，勿重开。当前入口为[042详细结果](../research/2026-11-13_task042_results_and_failure_mechanisms.md)和[最终阶段总结](../stage_summaries/2026-11-13_task042_final_results_attention_firewall.md)。
+
 2026-11-12，Codex。[R1](../../collaboration/reviews/042_round1.md)已accepted并隔离部署，固定PR17@7d28d515，92源/依赖＋8配置SHA匹配。准备100%，真实训练/eval0%；此页脱敏，具体绝对路径在聊天与本地docs/042_服务器完整运行命令_2026-11-12.md。
 
 用户直接启动已部署configs/task042-7d28d515/train_both_sequential.sh一次。脚本自动激活原Conda peft-openvla＋OFT venv，F0新增1000正常完成后接F1新增1000，不自动评测/重试/退款；已有输出或marker拒重复。原R0完整初始化、原C1及数据/采样/dev保持，祖代2000＋新增1000累计3000。内部仍是普通python，单臂替代入口：
