@@ -1,5 +1,14 @@
 # 方法研究协作规则
 
+## 2026-11-13：043 REGA详细候选已发布，待用户批准完整预算
+
+042交付closed，F1 70%/80%及所有权重结果保留。新043提案docs/research/2026-11-13_task043_release_aware_goal_entity_action_proposal.md将原当前事实扩展为目标实体集合、U未达成/H已达成未释放/S已达成释放、训练用相对TCP位置，预测节点显式条件化动作；双壶无序实例匹配，不用隐藏ID/在线GT/外部VLM/FINISH。S仅当前事实，门/抽屉依赖允许合法暂时改变，不硬锁。回应037同类对称/观测与潜态/几何改变等问题，不声称首次或安全/SR保证；ControlVLA/INDI/AffordanceVLA为明确近邻。
+
+静态核对040已验收code和现成小report：主行143960，旧标签143982（available92963/missing51019含22pair-only），370ten/105fresh/180raw及370pairs不改；原audit有每目标事实/物体release/位置/TCP的生产契约，本轮未全量导标签/读新像素/启动数据模型或物理。候选一次CPU sidecar≤143982keys/最多2slots，零新仿真生成，从042 F0 8afe299e完整末参数共同初始化G0/G1、native路由，各新1000祖代3000＋1000=4000；同结构/监督/loss，G0固定1/2聚合，G1预测pU+pH/pS，主控差仅路由。保留原C1＋.10状态/.05定位，预测而非GT接actor，reference先于学生/全部新旧模块旁路，旧pair只换z、几何留接收端。
+
+候选总2000更新/reference≤18048/student≤49120/正式360，零新teacher/MVP/seed搜索/基线重测，全部真实阶段仍用户亲启；新数值预算尚未批准，X尚无043实现工单，不提前改代码/泛审/SSH或代跑。设计100%、实现/sidecar/部署/训练eval0；批准后Codex直接正式工单＋短prompt，X定向CPU/fake交付，不重复准备门槛。五关键文档精确commit读回SHA本地manifest；旧数据权重署名、PR17不自动merge、dirty checkout保持，无删除待删=[]。本条不覆盖未来决定。
+
+
 ## 2026-11-13：042正式360完成，F1 70%/80%，匹配对照仅净增1条
 
 042 R3接受F0/F1各180执行与正式计分100%、software_exit success、execution/cleanup/ledger均null、无残留实验进程。F0 10/00=68.89%（62/90）/80%（72/90），F1=70%（63/90）/80%；主控F1−F0 +1.11/0pp，10新增6丢5、00新增4丢4，不是稳定全面提升或保护机制确认。F1相对R0 +4.44/−2.22pp含额外1000/重启/统一执行影响，不能全归TCIF。F1为当前已测10最高候选，未改默认；F0/R0/040与全部旧数据权重失败署名保留。实际末8afe299e/79ad5b7f与训练验收一致，原人口/runtime/core/reporting/双bridge/评分预算指纹匹配，完整性/兼容0、00信号100%。
