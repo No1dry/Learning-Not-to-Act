@@ -1,0 +1,40 @@
+{
+  "format": "task043-hint-training-v1",
+  "arm": "h0",
+  "index_dir": "${LNA043_ROOT}/data/coverage040/production-001/indices/task_control",
+  "sidecar_dir": "${LNA043_ROOT}/data/hint043/status-001",
+  "benchmark_root": "${LNA043_CORE}",
+  "runtime": "${LNA043_RUNTIME}",
+  "training_recipe": {
+    "name": "language_status_transfer",
+    "updates": 1000,
+    "seed": 7,
+    "save_every": 250,
+    "learning_rate": 0.00002,
+    "warmup_updates": 50,
+    "precision": "bf16",
+    "gradient_checkpointing": true,
+    "microbatch": 1,
+    "photometric_probability": 0.0,
+    "pool_samples": {
+      "ten": 12,
+      "fresh": 4,
+      "raw": 4
+    },
+    "pool_weights": {
+      "ten": 0.5,
+      "fresh": 0.25,
+      "raw": 0.25
+    },
+    "auxiliary_max": 4,
+    "auxiliary_weight": 0.25,
+    "transfer_weight_max": 0.1,
+    "transfer_zero_through": 100,
+    "transfer_full_at": 200,
+    "dev_ten_limit": 256,
+    "dev_reference_per_pool": 128,
+    "reference_budget": 9024,
+    "model_forward_budget": 27072,
+    "checkpoint_selection": "fixed_terminal_1000"
+  }
+}

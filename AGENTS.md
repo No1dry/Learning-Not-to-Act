@@ -1,5 +1,9 @@
 # 方法研究协作规则
 
+## 2026-11-15：043-v2本轮用户改由Codex直接实现
+
+用户在批准043-v2完整预算后明确“这次你自己改一下吧”。本轮Codex直接实现、受影响CPU/fake、自查、版本化发布和隔离部署；X不重复实现/泛审。完整规格见docs/research/2026-11-15_task043_v2_language_status_transfer_spec.md，旧043 REGA不执行。H0/H1原始OFT新LoRA、训练辅助提示/部署无提示；各1000、reference≤18048、模型前向≤54144、正式360，零新增仿真。所有真实CPU文字生产、训练和评测仍用户亲启，不因本轮软件权限推导代启停许可。旧数据/权重/失败署名、脏checkout及评分保持，不自动merge。下方旧任务/分工为历史；后续main最新STATUS优先。
+
 ## 2026-11-12：042预算已批准、工单交X直接实现
 
 用户“按推荐的来吧”已批准推荐F0/F1两组正式预算并交X。collaboration/tasks/042_task_control_information_firewall.md、042_budget_approval_and_dispatch与042_audited_sdpa_source_excerpt现为入口；源附件保留版权/完整SDPA forward供X不SSH复现native最后行扩展，静态SHA3aac24ce不冒称历史7B实例已追踪。F0 native padding-only双向、F1仅禁任务T query读整个控制C key，控制仍native读取；两臂同R0完整末参数、base C1、新optimizer/RNG/账本各新增1000，祖代2000＋新增1000=3000，非旧C0/C1/旧run resume。
