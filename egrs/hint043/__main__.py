@@ -12,13 +12,17 @@ def main(argv=None):
     args=parser.parse_args(argv)
     if args.command=='prepare':
         from .prepare import build_sidecar
-        result=build_sidecar(args.index_dir,args.output)
+        manifest=build_sidecar(args.index_dir,args.output)
+        result={k:manifest[k] for k in ('format','identity','rows','training_ready')}
     elif args.command=='train':
         from .training import run
         result=run(args.config,args.output,resume=args.resume)
     else:
         from .evaluation import run
-        result=run(args.config,args.output,arm=args.arm)
+        report=run(args.config,args.output,arm=args.arm)
+        result={'schema_version':report['schema_version'],'arm':report['arm'],
+                'formal_complete':report['formal_complete'],
+                'formal_SR':{k:report['conditions'][k]['formal_SR'] for k in ('10','00')}}
     print(json.dumps(result,ensure_ascii=False),flush=True)
 
 

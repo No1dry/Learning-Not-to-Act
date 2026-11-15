@@ -302,3 +302,18 @@ def test_full1000_fake_training_checkpoints_and_exact_resume(tmp_path):
             reference_budget=ReferenceBudget(tmp_path/'run/reference_budget.json'),model_budget=ModelBudget(tmp_path/'run/model_budget.json'))
     final=adapter.read_adapter_identity(tmp_path/'run/update-001000')
     assert final['deployment_hint'] is False and final['initialization']=='original_sog10_research_update_zero'
+
+
+def test_cli_does_not_dump_large_manifests_or_full_episode_reports(monkeypatch,capsys):
+    from egrs.hint043 import prepare,evaluation
+    from egrs.hint043.__main__ import main
+    monkeypatch.setattr(prepare,'build_sidecar',lambda *a:{'format':'fake','identity':'a'*64,
+        'rows':3,'training_ready':True,'inputs':{'do not dump':'private metadata'}})
+    main(['prepare','--index-dir','fake','--output','fake'])
+    text=capsys.readouterr().out
+    assert 'private metadata' not in text and len(text)<300
+    monkeypatch.setattr(evaluation,'run',lambda *a,**k:{'schema_version':'fake','arm':'h1','formal_complete':True,
+        'conditions':{b:{'formal_SR':{'percent':50},'episodes':'not printed'} for b in ('10','00')}})
+    main(['evaluate','--config','fake','--output','fake','--arm','h1'])
+    text=capsys.readouterr().out
+    assert 'not printed' not in text and 'formal_SR' in text and len(text)<300
