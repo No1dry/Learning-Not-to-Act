@@ -1,5 +1,13 @@
 # 当前协作状态
 
+## 2026-11-15：043-v2完整预算已获明确批准，正式交X直接实现
+
+用户已对完整数值问题明确选择“批准预算并交X实现（推荐）”。[正式工单](tasks/043_v2_language_status_transfer.md)、[权威规格](../docs/research/2026-11-15_task043_v2_language_status_transfer_spec.md)、[批准证据](evidence/043_v2_budget_and_authorization.json)和[派发阶段](../docs/stage_summaries/2026-11-15_task043_v2_budget_approved_x_implementation.md)已发布。X现在直接版本化实现＋受影响CPU/fake、新PR和responses/043_v2_round1.md，不先泛审；依赖accepted PR17固定7d28d515，不自动merge。
+
+已批：一次现有JSON文字sidecar≤143960主键，零新仿真/像素/旧索引重建；H0/H1从原始OFT新LoRA各1000，原底座reference总≤18048，含aux/dev训练模型前向≤54144，固定末1000正式10/00各90×两模型共360，无MVP/搜索/基线重测。两臂同040数据/036保持/20主样本＋最多4复用ten辅助；仅H1辅助输入有当前状态语言，推理均无提示。移除旧z/count/pair/TCIF，不续042→4000或执行旧043 REGA。当前事实不混释放证书/未来/测试真值，双壶不泄漏隐藏实例ID。
+
+授权与规格交接100%，代码/CPU真实生产/部署/训练eval0。预算批准不授权Codex/X代跑任何真实阶段；X不SSH，Codex验收后隔离部署并给完整conda/python命令，所有真实文字生产、训练与正式评测仍用户亲启。保留042 F1 70%/80%及全部旧数据权重失败署名，不改评分或默认模型，旧dirty checkout未动，无自动merge/删除/启停、待删=[]。本轮关键文档精确commit读回SHA本地备份；下方同日“预算待批/X等待”为已保留的批准前历史。
+
 ## 2026-11-15：043-v2语言状态提示迁移规格就绪，方向已同意、数值预算待确认
 
 用户在“原始OFT底座第0步微调、训练有提示/无提示双视图、部署只用原指令”简述后明确“可以，下一步”，确认方法方向与规格推进；未预先批准本轮新增数值上限。详见[完整规格](../docs/research/2026-11-15_task043_v2_language_status_transfer_spec.md)、[工单草案](tasks/043_v2_language_status_transfer.md)与[证据](evidence/043_v2_budget_and_authorization.json)，数值批准请求已发出、尚待回复。X当前等待，不实现或泛审；旧043 REGA/G0G1与042→4000均未授权。

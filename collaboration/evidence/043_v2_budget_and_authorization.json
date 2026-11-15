@@ -1,12 +1,13 @@
 {
-  "format": "task043-v2-language-status-transfer-proposal-v1",
+  "format": "task043-v2-language-status-transfer-approved-v1",
   "date": "2026-11-15",
   "direction_approved": true,
   "direction_evidence": "After the concise explanation of original-base initialization and hinted/unhinted training views with unhinted deployment, the user replied: 可以，下一步",
-  "numerical_budget_approved": false,
-  "numerical_budget_status": "explicit async approval requested; no answer received at preparation time",
-  "x_implementation_authorized": false,
-  "x_current_action": "wait; do not implement or perform a generic review before numerical approval",
+  "numerical_budget_approved": true,
+  "numerical_budget_status": "explicit user reply received: 批准预算并交X实现（推荐）",
+  "approval_question": "是否批准043-v2完整方案与预算，并交X实现：一次CPU状态文字整理最多143960个现有观测键，零新增仿真；对照/方法均从原始OFT底座各训1000步，原策略参考合计最多18048次、训练模型前向最多54144次；两模型分别评测10/00各90条，共360条。全部真实整理、训练和评测仍由你启动。",
+  "x_implementation_authorized": true,
+  "x_current_action": "direct versioned implementation and affected CPU/fake tests; new PR and043_v2_round1; no generic pre-review",
   "superseded_candidate": "old unapproved043 REGA G0/G1 from042; retained historically, not authorized",
   "original_base": {
     "repository": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10",
@@ -33,7 +34,7 @@
     "external_vlm": false,
     "separate_7b_teacher": false
   },
-  "proposed_limits": {
+  "approved_limits": {
     "cpu_sidecar_main_keys": 143960,
     "cpu_sidecar_productions": 1,
     "optimizer_updates_total": 2000,
