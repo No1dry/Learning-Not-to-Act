@@ -1,5 +1,14 @@
 # 当前协作状态
 
+## 2026-11-16：043-v2两组训练100%，下一用户直接正式360评测
+
+R2接受H0/H1各连续1000/固定末1000，原串行启动器两臂及总COMPLETE、无残留进程；未另采数值shell退出文件。原SOG10新LoRA祖代0/新增1000，同040索引8ef04d91和sidecar44fd03bb，各1000行metrics/采样数量及记录batch-key摘要相同，不冒称全tensor/RNG因果审计。末adapter371f9f13/1479edd4，完整state8f39bca3/32c4768d按字节SHA核对，32原文件518497361字节服务器到本地SHA备份。原参考18048/模型54144恰等批准上限，旧数据/中间权重/失败署名保持。
+
+训练100%、正式eval0；最终无提示dev10 L1 .1234438700/.1230172414不是SR或方法有效证明，固定末1000、不挑checkpoint。下一用户按2026-11-16_task043_dual_model_evaluation_commands及本地043-v2正式命令，在原simulation环境source pathfix1 session直接eval_both_sequential.sh：H0正式180正常后H1正式180，共360、全视频、两臂无提示/sidecar/教师。原九任务来源/H520/chunk8/seed7/双bridge/评分保持。未来eval/marker不存在；脚本仅语法/原SHA核对未执行，不新prepare/index/plan/MVP/预检/基线或重训。旧043训练命令均历史，勿重开。
+
+Codex只读取/复制/归档/交接，所有真实阶段用户亲启，X无需返修/泛审，PR17/18不自动merge。训练交付closed、SR研究open；阶段/状态/命令精确commit SHA本地备份并更新manifest，旧dirty checkout/全部旧资料保持，无删除待删=[]。本条覆盖下方旧0%快照，不覆盖未来用户执行。
+
+
 ## 2026-11-15：043-v2首次prepare路径配置勘误已修，下一用户启动pathfix1
 
 首次用户启动在写入第一条标注前因sidecar位于旧generated宽data根内被保护检查拦截。Codex部署路径配置有误，原保护规则正确；旧两失败日志/空launch marker保留，实际标签/参考/学生前向/训练更新均0，无真实043进程。新增独立pathfix1七配置：sidecar改为data树外annotations/task043/status-001，两训练JSON仅sidecar变化，session/marker/prepare日志版本化；运行模型源码、网络loss/数据/评测配置/预算保持。实际服务器两严格配置/全部保护根无重叠/三bash语法及七文件SHA通过，新增2项CPU/fake最终通过；首次fake参数索引错误留JUnit，不称真实训练。

@@ -1,0 +1,231 @@
+{
+  "format": "task043-v2-training-acceptance-v1",
+  "date": "2026-11-16",
+  "runtime_source_head": "da666bc4a5d1aaa04381d64c29dbc0412fee6628",
+  "template_pathfix_head": "1edc6e0a7d08861381c46a34c2bc8640ac9acd1c",
+  "approved_source": "3dee3d4aee1ec3f3c1f33ee5188c0bb473ae0fbc",
+  "captured_at": "2026-11-15T17:37:34.918153+00:00",
+  "arms": {
+    "h0": {
+      "update": 1000,
+      "selection": {
+        "checkpoint": "update-001000",
+        "selection": "fixed_terminal_1000",
+        "update": 1000
+      },
+      "adapter_sha256": "371f9f137333b48060ce3ba3ec295970a240365d862d1c1a10565577f60dae6f",
+      "training_state_sha256": "8f39bca36cb8c7fb7c52e779d6696d2df6dc380c52b41cc24db24835a268e434",
+      "base_lineage": {
+        "checkpoint_source": {
+          "repository": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10",
+          "revision": "638918f3d1c2e43a39a8a20772bdb8b91835e4b7"
+        },
+        "component_checkpoint_sha256": {
+          "action_head--300000_checkpoint.pt": "f9647226ca9a1ee64ff8ed1ec380c89110afc6fc2bf6d0ae463cc4023165b4dc",
+          "proprio_projector--300000_checkpoint.pt": "1792c6e19381d3c7c814e2d49836a855d3a38b0693919416f52b3c5af39505c8"
+        },
+        "dataset_statistics_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3",
+        "normalization_statistics_sha256": "915467c67d0f68f0657ffedbf71be4558fe742ec6b4877eb99a20e4d76d15efc",
+        "repo_commit": "e4287e94541f459edc4feabc4e181f537cd569a8",
+        "unnorm_key": "libero_10_no_noops"
+      },
+      "sidecar_identity": "44fd03bbdbdf1f9180e8db540ca50984d4ee5f92fdd2edbc69bfc5d39dede954",
+      "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+      "initialization": "original_sog10_research_update_zero",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "model_calls": {
+        "aux_dev": 1024,
+        "aux_train": 4000,
+        "budget": 27072,
+        "main_dev": 2048,
+        "main_train": 20000,
+        "total": 27072
+      },
+      "continuous_updates_verified": true,
+      "sampling_counts_verified": true,
+      "progress_elapsed_seconds": 11214.559902071953,
+      "dev": {
+        "250": {
+          "pool_l1": {
+            "ten": 0.15209610771691467,
+            "fresh": 0.014570417417417048,
+            "raw": 0.012276606548766722
+          },
+          "weighted_l1": 0.08275980985000328,
+          "auxiliary_bc": 0.15209610771691467,
+          "transfer_l1": 0,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        },
+        "500": {
+          "pool_l1": {
+            "ten": 0.1352545882854796,
+            "fresh": 0.022421143923565978,
+            "raw": 0.018710991618718253
+          },
+          "weighted_l1": 0.07791032802831085,
+          "auxiliary_bc": 0.1352545882854796,
+          "transfer_l1": 0,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        },
+        "750": {
+          "pool_l1": {
+            "ten": 0.12728179818311813,
+            "fresh": 0.022196728801645804,
+            "raw": 0.01863556555690593
+          },
+          "weighted_l1": 0.073848972681197,
+          "auxiliary_bc": 0.12728179818311813,
+          "transfer_l1": 0,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        },
+        "1000": {
+          "pool_l1": {
+            "ten": 0.12344387003311343,
+            "fresh": 0.022984413964877604,
+            "raw": 0.01932941859558923
+          },
+          "weighted_l1": 0.07230039315667341,
+          "auxiliary_bc": 0.12344387003311343,
+          "transfer_l1": 0,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        }
+      },
+      "checkpoint_directories": [
+        "update-000250",
+        "update-000500",
+        "update-000750",
+        "update-001000"
+      ]
+    },
+    "h1": {
+      "update": 1000,
+      "selection": {
+        "checkpoint": "update-001000",
+        "selection": "fixed_terminal_1000",
+        "update": 1000
+      },
+      "adapter_sha256": "1479edd46c47ae10fe66eafa85e928c7043fd9954d54a126e06d83442a1b6aee",
+      "training_state_sha256": "32c4768d8eb868de78bf2910622bc501537b82d900cb25909bd02d0ed946312d",
+      "base_lineage": {
+        "checkpoint_source": {
+          "repository": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10",
+          "revision": "638918f3d1c2e43a39a8a20772bdb8b91835e4b7"
+        },
+        "component_checkpoint_sha256": {
+          "action_head--300000_checkpoint.pt": "f9647226ca9a1ee64ff8ed1ec380c89110afc6fc2bf6d0ae463cc4023165b4dc",
+          "proprio_projector--300000_checkpoint.pt": "1792c6e19381d3c7c814e2d49836a855d3a38b0693919416f52b3c5af39505c8"
+        },
+        "dataset_statistics_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3",
+        "normalization_statistics_sha256": "915467c67d0f68f0657ffedbf71be4558fe742ec6b4877eb99a20e4d76d15efc",
+        "repo_commit": "e4287e94541f459edc4feabc4e181f537cd569a8",
+        "unnorm_key": "libero_10_no_noops"
+      },
+      "sidecar_identity": "44fd03bbdbdf1f9180e8db540ca50984d4ee5f92fdd2edbc69bfc5d39dede954",
+      "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+      "initialization": "original_sog10_research_update_zero",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "model_calls": {
+        "aux_dev": 1024,
+        "aux_train": 4000,
+        "budget": 27072,
+        "main_dev": 2048,
+        "main_train": 20000,
+        "total": 27072
+      },
+      "continuous_updates_verified": true,
+      "sampling_counts_verified": true,
+      "progress_elapsed_seconds": 11217.815462190658,
+      "dev": {
+        "250": {
+          "pool_l1": {
+            "ten": 0.1509949262948266,
+            "fresh": 0.014975850433984306,
+            "raw": 0.012245860376424389
+          },
+          "weighted_l1": 0.08230289085001548,
+          "auxiliary_bc": 0.15761403288788517,
+          "transfer_l1": 0.047841990011083205,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        },
+        "500": {
+          "pool_l1": {
+            "ten": 0.13376310949119374,
+            "fresh": 0.021555207087658346,
+            "raw": 0.0176066905096377
+          },
+          "weighted_l1": 0.07667202914492088,
+          "auxiliary_bc": 0.14028841129339356,
+          "transfer_l1": 0.047640998665406324,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        },
+        "750": {
+          "pool_l1": {
+            "ten": 0.12737925931863175,
+            "fresh": 0.021645587767125107,
+            "raw": 0.018295780655535054
+          },
+          "weighted_l1": 0.07367497176498092,
+          "auxiliary_bc": 0.13291474825389699,
+          "transfer_l1": 0.04456936567744044,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        },
+        "1000": {
+          "pool_l1": {
+            "ten": 0.12301724143955804,
+            "fresh": 0.023529949346993817,
+            "raw": 0.01930847893891041
+          },
+          "weighted_l1": 0.07221822779125509,
+          "auxiliary_bc": 0.12989336071502616,
+          "transfer_l1": 0.043992315525944466,
+          "auxiliary_valid_scalars": 14084,
+          "not_closed_loop_SR": true
+        }
+      },
+      "checkpoint_directories": [
+        "update-000250",
+        "update-000500",
+        "update-000750",
+        "update-001000"
+      ]
+    }
+  },
+  "per_update_recorded_batch_keys_equal": true,
+  "all_original_artifacts_server_to_local_sha_verified": true,
+  "verified_original_files": 32,
+  "verified_original_bytes": 518497361,
+  "training_percent": 100,
+  "formal_evaluation_percent": 0,
+  "totals": {
+    "reference_calls": 18048,
+    "reference_limit": 18048,
+    "model_calls": 54144,
+    "model_limit": 54144
+  },
+  "launch_complete_both": true,
+  "active_real_processes": [],
+  "eval_outputs_preexisting": false,
+  "numerical_shell_exit_file_separately_captured": false,
+  "torch_or_model_or_state_deserialized": false,
+  "new_real_jobs_started_by_codex": false,
+  "automatic_merge": false,
+  "deletions": [],
+  "next": "User directly launches existing sequential360 evaluation in original simulation environment; no new precheck or MVP."
+}
