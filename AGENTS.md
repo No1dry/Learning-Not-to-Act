@@ -1,5 +1,12 @@
 # 方法研究协作规则
 
+## 2026-11-15：043-v2首次prepare路径配置勘误已修，下一用户启动pathfix1
+
+首次用户启动在写入第一条标注前因sidecar位于旧generated宽data根内被保护检查拦截。Codex部署路径配置有误，原保护规则正确；旧两失败日志/空launch marker保留，实际标签/参考/学生前向/训练更新均0，无真实043进程。新增独立pathfix1七配置：sidecar改为data树外annotations/task043/status-001，两训练JSON仅sidecar变化，session/marker/prepare日志版本化；运行模型源码、网络loss/数据/评测配置/预算保持。实际服务器两严格配置/全部保护根无重叠/三bash语法及七文件SHA通过，新增2项CPU/fake最终通过；首次fake参数索引错误留JUnit，不称真实训练。
+
+下一用户按更新本地043-v2完整命令source pathfix1 session，一次准备→H0→H1；Codex未代启停，不增加预检/MVP/预算或重跑旧基线，X不重复实现。正式评测仍用户另启。PR18模板/文档修复head 1edc6e0a7d08861381c46a34c2bc8640ac9acd1c，未自动merge；运行源仍原da666bc4部署（egrs字节未改）。新阶段2026-11-15_task043_v2_prepare_pathfix1及更新公开运行文档优先。两日志/新旧配置/两个JUnit/部署收据本地保留，阶段精确commit SHA备份，旧dirty checkout/全部数据权重失败署名保持，无删除待删=[]。本条不覆盖后续执行状态。
+
+
 ## 2026-11-15：043-v2本轮Codex自行实现并部署，下一用户直接准备＋H0→H1
 
 用户明确“这次你自己改一下吧”，本轮改由Codex直接代码/CPU-fake/自查与文件部署，X无需重复实现/泛审。PR18固定da666bc4a5d1aaa04381d64c29dbc0412fee6628，依赖accepted PR17@7d28d515，base=x/task042只审增量；两PR未自动merge。见[Codex交付](collaboration/responses/043_v2_codex_round1.md)、[机器证据](collaboration/evidence/043_v2_codex_implementation.json)、[自查裁决](collaboration/reviews/043_v2_codex_selfcheck.md)、[用户运行交接](docs/experiment_plans/2026-11-15_task043_user_prepare_train_commands.md)和[本阶段](docs/stage_summaries/2026-11-15_task043_v2_codex_implemented_deployed.md)。

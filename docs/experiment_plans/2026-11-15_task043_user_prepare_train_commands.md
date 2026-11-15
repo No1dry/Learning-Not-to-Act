@@ -1,5 +1,11 @@
 # 043-v2：软件已实现部署，用户直接准备＋训练
 
+## 最新：pathfix1替代首次启动命令
+
+首次用户启动因sidecar输出位于旧输入声明的宽data根目录内，被防覆盖检查正确拦截；这是Codex部署路径配置错误，不是模型或数据失败。写入首条标注之前退出，状态输出和两个训练run均未创建，模型前向0。保留旧日志/空launch marker；不删marker、不放宽保护规则。
+
+Codex已新建`configs/task043-codex-pathfix1`七份配置，仅训练配置的sidecar路径改为data树外的`annotations/task043/status-001`，session绑定新配置目录，启动marker/prepare日志独立版本化。模型源码/配方/评测配置不变。实际服务器两个严格配置及全部保护根不相交检查通过；新增两项CPU/fake最终通过（首次fake参数索引错误保留，不算生产失败）。没有代启prepare/训练/eval。下一用户source本地完整命令中的**pathfix1 session**后启动下方命令；预算不变。
+
 2026-11-15。用户明确本轮由Codex直接改代码，X无需重复实现/泛审。PR18固定head `da666bc4a5d1aaa04381d64c29dbc0412fee6628`，依赖accepted PR17@7d28d515；两个PR均未自动合并。
 
 71个不同CPU/fake最终通过，108源码/依赖/模板和7实际配置SHA一致；两原有环境无依赖升级映射新隔离副本。实际训练配置严格解析及正式来源保持已核对，不构造数据/模型，真实状态文字生产、训练和评测0%。
@@ -12,7 +18,7 @@
 
 ```bash
 nohup bash "$LNA043_CONFIG/prepare_and_train_both.sh" \
-  >> "$LNA043_ROOT/runs/task043-launch-001.console.log" 2>&1 &
+  >> "$LNA043_ROOT/runs/task043-launch-pathfix1.console.log" 2>&1 &
 echo "PID=$!"
 ```
 
