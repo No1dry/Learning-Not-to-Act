@@ -317,3 +317,50 @@ def test_cli_does_not_dump_large_manifests_or_full_episode_reports(monkeypatch,c
     main(['evaluate','--config','fake','--output','fake','--arm','h1'])
     text=capsys.readouterr().out
     assert 'not printed' not in text and 'formal_SR' in text and len(text)<300
+
+
+def test_deployed_templates_keep_sidecar_outside_legacy_broad_data_root(tmp_path):
+    templates=Path(__file__).parents[1]/'configs/hint043'
+    data=tmp_path/'data'
+    protected=[data,data/'trajectory035/raw',data/'coverage040/production-001/generated']
+    with pytest.raises(ValueError,match='overlaps protected input'):
+        c.forbid_overlap(data/'hint043/status-001',protected)
+    for arm in ('h0','h1'):
+        config=json.loads((templates/f'training.{arm}.example.json').read_text().replace('${LNA043_ROOT}',str(tmp_path)))
+        assert c.forbid_overlap(config['sidecar_dir'],protected)==tmp_path/'annotations/task043/status-001'
+    script=(templates/'prepare_and_train_both.sh').read_text()
+    assert '$LNA043_ROOT/annotations/task043/status-001' in script
+    assert 'data/hint043/status-001' not in script
+
+
+def test_pathfix_launcher_fake_calls_and_preserves_failed_launch_marker(tmp_path):
+    import os
+    templates=Path(__file__).parents[1]/'configs/hint043'
+    config=tmp_path/'config';config.mkdir()
+    (tmp_path/'runs/task043-train-launch-001').mkdir(parents=True)
+    binary=tmp_path/'bin';binary.mkdir()
+    fake=binary/'python'
+    fake.write_text('#!'+sys.executable+'\n'+'''import json,sys,os
+from pathlib import Path
+args=sys.argv[1:]
+with open(os.environ['FAKE_CALLS'],'a') as f:f.write(json.dumps(args)+'\\n')
+out=Path(args[args.index('--output')+1]);out.mkdir(parents=True)
+if args[3]=='train':
+ (out/'update-001000').mkdir()
+ (out/'update-001000/identity.json').write_text('{}')
+ (out/'selected_checkpoint.json').write_text('{}')
+''')
+    fake.chmod(0o755)
+    calls=tmp_path/'calls.jsonl'
+    env=dict(os.environ,LNA043_ROOT=str(tmp_path),LNA043_CODE=str(tmp_path),LNA043_CONFIG=str(config),
+             FAKE_CALLS=str(calls),PATH=str(binary)+os.pathsep+os.environ['PATH'])
+    result=subprocess.run(['bash',str(templates/'prepare_and_train_both.sh')],env=env,capture_output=True,text=True)
+    assert result.returncode==0,result.stderr
+    records=[json.loads(x) for x in calls.read_text().splitlines()]
+    assert [r[3] for r in records]==['prepare','train','train']
+    assert records[0][-1]==str(tmp_path/'annotations/task043/status-001')
+    assert (tmp_path/'runs/task043-train-launch-001').is_dir()
+    assert (tmp_path/'runs/task043-train-launch-pathfix1').is_dir()
+    assert 'COMPLETE both' in result.stdout
+    again=subprocess.run(['bash',str(templates/'prepare_and_train_both.sh')],env=env,capture_output=True,text=True)
+    assert again.returncode!=0 and len(calls.read_text().splitlines())==3

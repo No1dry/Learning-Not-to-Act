@@ -1,5 +1,9 @@
 # Task043-v2：Codex直接实现
 
+## 2026-11-15 pathfix1部署勘误
+
+首次用户启动在prepare写入任何标签前被`Output overlaps protected input`拦截：旧040输入generated根实际声明为整个data目录，原部署将新sidecar放在其内。保留保护规则和失败证据，模板改为data树外`annotations/task043/status-001`，使用新`task043-train-launch-pathfix1`和prepare日志。训练配置仅sidecar路径改变；无模型/损失/预算改动，首次标签和模型前向消耗均0。用户亲自重启新版配置，不删除旧marker或自动重试。新增宽根路径回归及三次fake调用/H0→H1衔接测试；不将fake当真实训练通过。
+
 用户2026-11-15明确“这次你自己改一下吧”，本轮实现/软件测试由Codex负责，X不需重复实现；已批准数值预算与用户亲启全部真实阶段的规则不变。实现以accepted PR17@7d28d515为依赖，不自动merge旧PR。
 
 ## 新入口

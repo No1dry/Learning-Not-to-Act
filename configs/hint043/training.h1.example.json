@@ -2,7 +2,7 @@
   "format": "task043-hint-training-v1",
   "arm": "h1",
   "index_dir": "${LNA043_ROOT}/data/coverage040/production-001/indices/task_control",
-  "sidecar_dir": "${LNA043_ROOT}/data/hint043/status-001",
+  "sidecar_dir": "${LNA043_ROOT}/annotations/task043/status-001",
   "benchmark_root": "${LNA043_CORE}",
   "runtime": "${LNA043_RUNTIME}",
   "training_recipe": {

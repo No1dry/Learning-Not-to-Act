@@ -11,18 +11,18 @@ for arm in h0 h1; do
     exit 2
   fi
 done
-if [[ -e "$LNA043_ROOT/data/hint043/status-001" ]]; then
+if [[ -e "$LNA043_ROOT/annotations/task043/status-001" ]]; then
   echo "Existing status production; preserve it. Use explicit documented train commands if already ready." >&2
   exit 2
 fi
-mkdir "$LNA043_ROOT/runs/task043-train-launch-001"
+mkdir "$LNA043_ROOT/runs/task043-train-launch-pathfix1"
 cd "$LNA043_CODE"
 echo "START status text; current recorded JSON only"
 lna043_phase=prepare
 python -u -m egrs.hint043 prepare \
   --index-dir "$LNA043_ROOT/data/coverage040/production-001/indices/task_control" \
-  --output "$LNA043_ROOT/data/hint043/status-001" \
-  >> "$LNA043_ROOT/runs/task043-prepare-001.console.log" 2>&1
+  --output "$LNA043_ROOT/annotations/task043/status-001" \
+  >> "$LNA043_ROOT/runs/task043-prepare-pathfix1.console.log" 2>&1
 for arm in h0 h1; do
   lna043_phase="train-$arm"
   echo "START train $arm updates=1000 original_base=true"
