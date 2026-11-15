@@ -1,5 +1,15 @@
 # 当前协作状态
 
+## 2026-11-15：043-v2本轮Codex自行实现并部署，下一用户直接准备＋H0→H1
+
+用户明确“这次你自己改一下吧”，本轮改由Codex直接代码/CPU-fake/自查与文件部署，X无需重复实现/泛审。PR18固定da666bc4a5d1aaa04381d64c29dbc0412fee6628，依赖accepted PR17@7d28d515，base=x/task042只审增量；两PR未自动merge。见[Codex交付](responses/043_v2_codex_round1.md)、[机器证据](evidence/043_v2_codex_implementation.json)、[自查裁决](reviews/043_v2_codex_selfcheck.md)、[用户运行交接](../docs/experiment_plans/2026-11-15_task043_user_prepare_train_commands.md)和[本阶段](../docs/stage_summaries/2026-11-15_task043_v2_codex_implemented_deployed.md)。
+
+71个不同受影响CPU/fake最终过（70＋1CLI），另3个重复复测不累计；含完整1000 tiny软件循环/两臂180假接线，无预训练VLA/GPU或真实仿真。初次2个fixture setup error、HTTP2克隆失败、实际JSON0/0.0拦截与修正保留。属于Codex自查，不冒称独立外部审查。源码树d166847f与GitHub/本地一致，最终归档SHA5a625b0c；108源码/依赖/模板和7实际配置SHA匹配，原worker/simulation两venv仅no-deps editable映射，无依赖升级。实际训练配置严格解析、eval原来源保持核对通过，无模型/数据构造或torch/h5py导入；启动器未执行、全部未来真实输出不存在。
+
+算法/预算保持043-v2：原始OFT新LoRA，无旧z/count/pair/TCIF；训练辅助提示仅H1，部署两臂无提示。一次现成JSON文字≤143960主键，零新仿真；H0/H1各1000，reference总≤18048、含aux/dev模型前向≤54144、末1000正式360，原评分/银行/双bridge/H520/chunk8/seed7/全视频保持。旧裁剪父记录与完整lineage仅按稳定源身份/原生语义兼容，不放宽谓词或造标签。
+
+软件/文件部署100%，真实文字/训练/eval0%。下一用户按本地docs/043-v2_服务器完整运行命令_2026-11-15.md直接启动prepare→H0→H1，正常后另启正式360；脚本通过即继续，不再等X/额外Codex、plan/MVP/旧资格/基线/GPU预跑。所有真实阶段仍用户亲启，Codex未代启停。软件交付closed，真实提示覆盖/SR/机制open；04270%/80%、全部数据权重失败署名与旧dirty checkout保留，无merge/删除，待删=[]。本轮文档精确commit读回SHA本地归档；下方“X下一实现/代码0”仅历史，后续新决定优先。
+
 ## 2026-11-15：043-v2完整预算已获明确批准，正式交X直接实现
 
 用户已对完整数值问题明确选择“批准预算并交X实现（推荐）”。[正式工单](tasks/043_v2_language_status_transfer.md)、[权威规格](../docs/research/2026-11-15_task043_v2_language_status_transfer_spec.md)、[批准证据](evidence/043_v2_budget_and_authorization.json)和[派发阶段](../docs/stage_summaries/2026-11-15_task043_v2_budget_approved_x_implementation.md)已发布。X现在直接版本化实现＋受影响CPU/fake、新PR和responses/043_v2_round1.md，不先泛审；依赖accepted PR17固定7d28d515，不自动merge。
