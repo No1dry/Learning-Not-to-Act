@@ -141,7 +141,7 @@ def load_trained_adapter(policy, directory):
     return attach_trained_adapter(policy, directory)
 
 
-def training_prediction(policy, item, images=None):
+def training_prediction(policy, item, images=None, *, prompt_override=None):
     """Differentiable equivalent of pinned L1 inference, before unnormalization.
 
     Uses official input/label helpers and the official shifted hidden-state
@@ -158,6 +158,10 @@ def training_prediction(policy, item, images=None):
               for image in (item['images'] if images is None else images)]
     images = prepare_images_for_vla(images, policy.cfg)
     prompt = f"In: What action should the robot take to {item['instruction'].lower()}?\nOut:"
+    if prompt_override is not None:
+        if not isinstance(prompt_override, str) or not prompt_override.strip():
+            raise ValueError('Explicit prompt override must be nonempty text')
+        prompt = prompt_override
     inputs = policy.processor(prompt, images[0]).to(device, dtype=torch.bfloat16)
     wrist = policy.processor(prompt, images[1]).to(device, dtype=torch.bfloat16)
     pixel_values = torch.cat([inputs['pixel_values'], wrist['pixel_values']], dim=1)

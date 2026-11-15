@@ -1,0 +1,41 @@
+{
+  "schema_version": "task043-hint-eval-v1",
+  "environment_dispatch": {
+    "legacy_root": "EXISTING_LEGACY_ENVIRONMENT"
+  },
+  "group": "language_status_transfer",
+  "benchmark_root": "${LNA043_CORE}",
+  "reporting_root": "${LNA043_REPORTING}",
+  "base_runtime": "${LNA043_RUNTIME}",
+  "adapter": "${LNA043_ROOT}/runs/task043-h1-train-001/update-001000",
+  "legacy_sources_10": {
+    "basket": {
+      "manifest": "LEGACY_basket_MANIFEST",
+      "candidate_replay": "LEGACY_basket_REPLAY"
+    },
+    "basket_cheese_butter": {
+      "manifest": "LEGACY_basket_cheese_butter_MANIFEST",
+      "candidate_replay": "LEGACY_basket_cheese_butter_REPLAY"
+    },
+    "stove": {
+      "manifest": "LEGACY_stove_MANIFEST",
+      "candidate_replay": "LEGACY_stove_REPLAY"
+    },
+    "dual_mugs": {
+      "manifest": "LEGACY_dual_mugs_MANIFEST",
+      "candidate_replay": "LEGACY_dual_mugs_REPLAY"
+    },
+    "mug_pudding": {
+      "manifest": "LEGACY_mug_pudding_MANIFEST",
+      "candidate_replay": "LEGACY_mug_pudding_REPLAY"
+    },
+    "basket_soup_cheese": {
+      "manifest": "LEGACY_basket_soup_cheese_MANIFEST",
+      "candidate_replay": "LEGACY_basket_soup_cheese_REPLAY"
+    }
+  },
+  "legacy_sources_00": "EXISTING_LEGACY_00_SOURCES",
+  "new_sources_10": "EXISTING_NEW3_10_SOURCES",
+  "new_sources_00": "EXISTING_NEW3_00_SOURCES",
+  "arm": "h1"
+}
