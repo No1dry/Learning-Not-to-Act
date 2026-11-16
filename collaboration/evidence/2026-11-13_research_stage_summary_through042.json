@@ -1,0 +1,610 @@
+{
+  "format": "learning-not-to-act-stage-summary-through042-v1",
+  "date": "2026-11-13",
+  "summary_scope": "completed035-042 and early trained routes;043 explicitly deferred by user",
+  "main_research_question": "当人或外部过程提前完成任意部分任务后，VLA能否根据当前观测重新确定剩余目标，并在保留已有成果的同时完成任务？",
+  "subquestions": [
+    "goal-state and entity grounding under partial observation",
+    "remaining action selection and spatial execution",
+    "release-aware completion and preservation",
+    "task-context vs receiver-control state",
+    "10 adaptation vs00 retention",
+    "data efficiency and generalization"
+  ],
+  "empirical_scope": {
+    "suite": "nine LIBERO-10 compound tasks",
+    "official_task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+    ],
+    "conditions": [
+      "10 compliant",
+      "00 official"
+    ],
+    "episodes_per_task_per_condition": 10,
+    "condition_denominator": 90,
+    "arbitrary_completion_subsets_or_unseen_tasks_proven": false
+  },
+  "formal_models": [
+    {
+      "stage": "原始SOG10",
+      "method": "原始OpenVLA-OFT；无本项目微调",
+      "ten": 22,
+      "normal": 78,
+      "updates": 0,
+      "denominator": 90,
+      "ten_percent": 24.444444444444443,
+      "normal00_percent": 86.66666666666667
+    },
+    {
+      "stage": "035",
+      "method": "10增强＋普通重执行动作BC",
+      "ten": 49,
+      "normal": 66,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 54.44444444444444,
+      "normal00_percent": 73.33333333333333
+    },
+    {
+      "stage": "036",
+      "method": "10增强＋普通观测原策略蒸馏",
+      "ten": 45,
+      "normal": 74,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 50,
+      "normal00_percent": 82.22222222222223
+    },
+    {
+      "stage": "038 C0",
+      "method": "上下文/计数模块＋pair self",
+      "ten": 48,
+      "normal": 75,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 53.333333333333336,
+      "normal00_percent": 83.33333333333333
+    },
+    {
+      "stage": "038 C1",
+      "method": "同结构，增加上下文swap/align组合",
+      "ten": 50,
+      "normal": 76,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 55.55555555555556,
+      "normal00_percent": 84.44444444444444
+    },
+    {
+      "stage": "039 C0",
+      "method": "补齐困难任务覆盖，原C0",
+      "ten": 51,
+      "normal": 72,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 56.666666666666664,
+      "normal00_percent": 80
+    },
+    {
+      "stage": "039 C1",
+      "method": "相同新数据，原C1",
+      "ten": 53,
+      "normal": 77,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 58.888888888888886,
+      "normal00_percent": 85.55555555555556
+    },
+    {
+      "stage": "040 C1",
+      "method": "增加三困难任务父源，C1不变",
+      "ten": 53,
+      "normal": 78,
+      "updates": 1000,
+      "denominator": 90,
+      "ten_percent": 58.888888888888886,
+      "normal00_percent": 86.66666666666667
+    },
+    {
+      "stage": "041 R0",
+      "method": "从040初始化再训1000",
+      "ten": 59,
+      "normal": 74,
+      "updates": 2000,
+      "denominator": 90,
+      "ten_percent": 65.55555555555556,
+      "normal00_percent": 82.22222222222223
+    },
+    {
+      "stage": "041 R1",
+      "method": "与R0匹配，额外旧10动作蒸馏",
+      "ten": 58,
+      "normal": 75,
+      "updates": 2000,
+      "denominator": 90,
+      "ten_percent": 64.44444444444444,
+      "normal00_percent": 83.33333333333333
+    },
+    {
+      "stage": "042 F0",
+      "method": "从041 R0再训1000，native路由",
+      "ten": 62,
+      "normal": 72,
+      "updates": 3000,
+      "denominator": 90,
+      "ten_percent": 68.88888888888889,
+      "normal00_percent": 80
+    },
+    {
+      "stage": "042 F1",
+      "method": "与F0匹配，任务—控制注意力隔离",
+      "ten": 63,
+      "normal": 72,
+      "updates": 3000,
+      "denominator": 90,
+      "ten_percent": 70,
+      "normal00_percent": 80
+    }
+  ],
+  "task_history_all_variants": [
+    {
+      "task": "basket",
+      "label": "汤罐＋番茄酱入篮",
+      "original": 0,
+      "035": 90,
+      "036": 40,
+      "038C0": 80,
+      "038C1": 80,
+      "039C0": 80,
+      "039C1": 70,
+      "040": 50,
+      "041R0": 80,
+      "041R1": 70,
+      "042F0": 70,
+      "042F1": 80,
+      "adapted_min": 40,
+      "adapted_max": 90,
+      "latest00": 40,
+      "delta": 80
+    },
+    {
+      "task": "basket_cheese_butter",
+      "label": "奶酪＋黄油入篮",
+      "original": 20,
+      "035": 60,
+      "036": 30,
+      "038C0": 40,
+      "038C1": 40,
+      "039C0": 40,
+      "039C1": 50,
+      "040": 40,
+      "041R0": 40,
+      "041R1": 40,
+      "042F0": 40,
+      "042F1": 40,
+      "adapted_min": 30,
+      "adapted_max": 60,
+      "latest00": 60,
+      "delta": 20
+    },
+    {
+      "task": "stove",
+      "label": "开炉并放摩卡壶",
+      "original": 0,
+      "035": 0,
+      "036": 0,
+      "038C0": 0,
+      "038C1": 0,
+      "039C0": 30,
+      "039C1": 30,
+      "040": 60,
+      "041R0": 70,
+      "041R1": 80,
+      "042F0": 90,
+      "042F1": 80,
+      "adapted_min": 0,
+      "adapted_max": 90,
+      "latest00": 100,
+      "delta": 80
+    },
+    {
+      "task": "bowl_drawer_close",
+      "label": "黑碗入抽屉并关屉",
+      "original": 0,
+      "035": 100,
+      "036": 100,
+      "038C0": 100,
+      "038C1": 100,
+      "039C0": 100,
+      "039C1": 100,
+      "040": 100,
+      "041R0": 100,
+      "041R1": 100,
+      "042F0": 100,
+      "042F1": 100,
+      "adapted_min": 100,
+      "adapted_max": 100,
+      "latest00": 100,
+      "delta": 100
+    },
+    {
+      "task": "dual_mugs",
+      "label": "两杯分别放左右碟",
+      "original": 100,
+      "035": 50,
+      "036": 70,
+      "038C0": 70,
+      "038C1": 70,
+      "039C0": 70,
+      "039C1": 70,
+      "040": 50,
+      "041R0": 90,
+      "041R1": 70,
+      "042F0": 80,
+      "042F1": 80,
+      "adapted_min": 50,
+      "adapted_max": 90,
+      "latest00": 70,
+      "delta": -20
+    },
+    {
+      "task": "mug_pudding",
+      "label": "白杯上盘、布丁放盘右",
+      "original": 0,
+      "035": 0,
+      "036": 20,
+      "038C0": 20,
+      "038C1": 10,
+      "039C0": 0,
+      "039C1": 0,
+      "040": 30,
+      "041R0": 20,
+      "041R1": 20,
+      "042F0": 50,
+      "042F1": 50,
+      "adapted_min": 0,
+      "adapted_max": 50,
+      "latest00": 90,
+      "delta": 50
+    },
+    {
+      "task": "basket_soup_cheese",
+      "label": "汤罐＋奶酪入篮",
+      "original": 90,
+      "035": 100,
+      "036": 100,
+      "038C0": 90,
+      "038C1": 100,
+      "039C0": 90,
+      "039C1": 100,
+      "040": 90,
+      "041R0": 90,
+      "041R1": 90,
+      "042F0": 100,
+      "042F1": 100,
+      "adapted_min": 90,
+      "adapted_max": 100,
+      "latest00": 60,
+      "delta": 10
+    },
+    {
+      "task": "two_pots",
+      "label": "两个摩卡壶放炉上",
+      "original": 10,
+      "035": 0,
+      "036": 0,
+      "038C0": 0,
+      "038C1": 0,
+      "039C0": 10,
+      "039C1": 20,
+      "040": 10,
+      "041R0": 20,
+      "041R1": 10,
+      "042F0": 10,
+      "042F1": 10,
+      "adapted_min": 0,
+      "adapted_max": 20,
+      "latest00": 100,
+      "delta": 0
+    },
+    {
+      "task": "mug_microwave_close",
+      "label": "杯子入微波炉并关门",
+      "original": 0,
+      "035": 90,
+      "036": 90,
+      "038C0": 80,
+      "038C1": 100,
+      "039C0": 90,
+      "039C1": 90,
+      "040": 100,
+      "041R0": 80,
+      "041R1": 100,
+      "042F0": 80,
+      "042F1": 90,
+      "adapted_min": 80,
+      "adapted_max": 100,
+      "latest00": 100,
+      "delta": 90
+    }
+  ],
+  "training_data": {
+    "base_index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+    "source_metadata_sha256": {
+      "task_control": "8f991bf01c1b8408ef33ad1931e533181fd47a9af5822246f3856a490b102c75",
+      "retention": "f5e22f66022a90e9f399a906e618a1cd628ade0df204fc428778a143d1dddcd8"
+    },
+    "pool_counts_by_task": {
+      "basket": {
+        "ten": {
+          "train": 32,
+          "dev": 9
+        },
+        "fresh": {
+          "train": 11,
+          "dev": 3
+        },
+        "raw": {
+          "train": 14,
+          "dev": 6
+        }
+      },
+      "basket_cheese_butter": {
+        "ten": {
+          "train": 33,
+          "dev": 24
+        },
+        "fresh": {
+          "train": 11,
+          "dev": 8
+        },
+        "raw": {
+          "train": 11,
+          "dev": 9
+        }
+      },
+      "basket_soup_cheese": {
+        "ten": {
+          "train": 39,
+          "dev": 9
+        },
+        "fresh": {
+          "train": 13,
+          "dev": 3
+        },
+        "raw": {
+          "train": 16,
+          "dev": 4
+        }
+      },
+      "bowl_drawer_close": {
+        "ten": {
+          "train": 36,
+          "dev": 12
+        },
+        "fresh": {
+          "train": 13,
+          "dev": 4
+        },
+        "raw": {
+          "train": 14,
+          "dev": 6
+        }
+      },
+      "dual_mugs": {
+        "ten": {
+          "train": 6,
+          "dev": 0
+        },
+        "fresh": {
+          "train": 2,
+          "dev": 0
+        },
+        "raw": {
+          "train": 14,
+          "dev": 6
+        }
+      },
+      "mug_microwave_close": {
+        "ten": {
+          "train": 15,
+          "dev": 6
+        },
+        "fresh": {
+          "train": 5,
+          "dev": 2
+        },
+        "raw": {
+          "train": 16,
+          "dev": 4
+        }
+      },
+      "mug_pudding": {
+        "ten": {
+          "train": 12,
+          "dev": 9
+        },
+        "fresh": {
+          "train": 1,
+          "dev": 3
+        },
+        "raw": {
+          "train": 16,
+          "dev": 4
+        }
+      },
+      "stove": {
+        "ten": {
+          "train": 68,
+          "dev": 6
+        },
+        "fresh": {
+          "train": 13,
+          "dev": 2
+        },
+        "raw": {
+          "train": 18,
+          "dev": 2
+        }
+      },
+      "two_pots": {
+        "ten": {
+          "train": 48,
+          "dev": 6
+        },
+        "fresh": {
+          "train": 9,
+          "dev": 2
+        },
+        "raw": {
+          "train": 17,
+          "dev": 3
+        }
+      }
+    },
+    "ten_coverage_by_task": [
+      {
+        "task": "basket",
+        "ten_train": 32,
+        "ten_dev": 9,
+        "parent_train": 11,
+        "windows_train": 4725,
+        "windows_dev": 1411
+      },
+      {
+        "task": "basket_cheese_butter",
+        "ten_train": 33,
+        "ten_dev": 24,
+        "parent_train": 11,
+        "windows_train": 4963,
+        "windows_dev": 3553
+      },
+      {
+        "task": "stove",
+        "ten_train": 68,
+        "ten_dev": 6,
+        "parent_train": 23,
+        "windows_train": 14090,
+        "windows_dev": 1356
+      },
+      {
+        "task": "bowl_drawer_close",
+        "ten_train": 36,
+        "ten_dev": 12,
+        "parent_train": 12,
+        "windows_train": 4161,
+        "windows_dev": 1324
+      },
+      {
+        "task": "dual_mugs",
+        "ten_train": 6,
+        "ten_dev": 0,
+        "parent_train": 2,
+        "windows_train": 895,
+        "windows_dev": 0
+      },
+      {
+        "task": "mug_pudding",
+        "ten_train": 12,
+        "ten_dev": 9,
+        "parent_train": 4,
+        "windows_train": 1932,
+        "windows_dev": 1277
+      },
+      {
+        "task": "basket_soup_cheese",
+        "ten_train": 39,
+        "ten_dev": 9,
+        "parent_train": 13,
+        "windows_train": 6072,
+        "windows_dev": 1276
+      },
+      {
+        "task": "two_pots",
+        "ten_train": 48,
+        "ten_dev": 6,
+        "parent_train": 16,
+        "windows_train": 11927,
+        "windows_dev": 1460
+      },
+      {
+        "task": "mug_microwave_close",
+        "ten_train": 15,
+        "ten_dev": 6,
+        "parent_train": 5,
+        "windows_train": 1824,
+        "windows_dev": 480
+      }
+    ],
+    "ten_training_parent_groups_sum": 97,
+    "ten_training_windows": 50589,
+    "main_rows_train_and_dev_all_pools": 143960,
+    "source_entry_totals": {
+      "ten": {
+        "train": 289,
+        "dev": 81
+      },
+      "fresh": {
+        "train": 78,
+        "dev": 27
+      },
+      "raw": {
+        "train": 136,
+        "dev": 44
+      }
+    },
+    "source_counts_not_independent_demo_counts": true,
+    "no_new_data_created": true
+  },
+  "latest_failure_concentration": {
+    "tasks": [
+      "two_pots",
+      "basket_cheese_butter",
+      "mug_pudding"
+    ],
+    "successes": 10,
+    "episodes": 30,
+    "percent": 33.333333333333336,
+    "unsuccessful": 20,
+    "all_unsuccessful": 27,
+    "failure_share_percent": 74.07407407407408,
+    "other_six_successes": 53,
+    "other_six_episodes": 60,
+    "other_six_percent": 88.33333333333333
+  },
+  "evidence_boundaries": {
+    "existing042_trace_files_summarized": 60,
+    "selected_original_videos_local": 18,
+    "selected_complete_raw_local": 9,
+    "videos_sampled_with_contact_sheets": 7,
+    "new_rescoring": false,
+    "zero_shot_or_safety_or_mechanism_guarantee": false
+  },
+  "task043": {
+    "status": "discussion_deferred_user_chose_not_approved",
+    "budget_approved": false,
+    "implementation_work_order_dispatched": false,
+    "labels_or_index_materialized": false,
+    "code_deployed": false,
+    "real_training_or_eval_started": false
+  },
+  "retention": {
+    "preservation_manifest042": "1b03274b0ebc4786f1c93d85efd1d6ca7a5892d219dc4040eb495e5f75a2597a",
+    "terminal_training_manifest042": "ec0667263a5d3bf38998f728cc99e49324c5a6758d210614380e18c68b5aed34"
+  },
+  "this_turn": {
+    "read_existing_metadata_only": true,
+    "new_model_simulation_training_eval_label_index_jobs": 0,
+    "implementation_changes": false,
+    "automatic_merge": false,
+    "deletions": []
+  }
+}

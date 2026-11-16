@@ -1,0 +1,10 @@
+{
+  "schema_version": "task044-prompt-eval-v1",
+  "variant": "p1",
+  "prompt_manifest": "../../collaboration/evidence/044_prompt_manifest.json",
+  "reference_plan": "${LNA_REFERENCE_PLAN}",
+  "benchmark_root": "${LNA_CORE}",
+  "reporting_root": "${LNA_REPORTING}",
+  "base_runtime": "${LNA_RUNTIME}",
+  "environment_dispatch": {"legacy_root": "${LNA_LEGACY_CORE}"}
+}

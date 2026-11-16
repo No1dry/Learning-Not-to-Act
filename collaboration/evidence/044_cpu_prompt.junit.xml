@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="60" time="11.409" timestamp="2026-11-16T10:07:09.254900" hostname="cpu-local">
+    <testcase classname="tests.test_prompt044_policy" name="test_all_eighteen_exact_frozen_prompts_and_no_instance_identifiers" time="0.003" />
+    <testcase classname="tests.test_prompt044_policy" name="test_prompt_lookup_rejects_unknown_variant_or_changed_manifest" time="0.013" />
+    <testcase classname="tests.test_prompt044_policy" name="test_actual_native_predict_sees_exact_static_language_only_allowlisted_sensors[p1]" time="0.062" />
+    <testcase classname="tests.test_prompt044_policy" name="test_actual_native_predict_sees_exact_static_language_only_allowlisted_sensors[p2]" time="0.035" />
+    <testcase classname="tests.test_prompt044_policy" name="test_research_or_wrong_variant_options_refused_before_load[mutation0]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_research_or_wrong_variant_options_refused_before_load[mutation1]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_research_or_wrong_variant_options_refused_before_load[mutation2]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_research_or_wrong_variant_options_refused_before_load[mutation3]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_research_or_wrong_variant_options_refused_before_load[mutation4]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_metadata_and_original_loader_identity_remain_strict" time="0.028" />
+    <testcase classname="tests.test_prompt044_policy" name="test_repeat_audit_cannot_reload_and_reset_is_required" time="0.033" />
+    <testcase classname="tests.test_prompt044_policy" name="test_failed_predict_is_durably_spent_before_call_and_fixed_within_episode" time="0.040" />
+    <testcase classname="tests.test_prompt044_policy" name="test_episode_language_change_and_call_ceilings_reject_without_extra_forward" time="0.080" />
+    <testcase classname="tests.test_prompt044_policy" name="test_prompt_mapping_import_does_not_load_native_libraries" time="0.088" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_option_type_and_frozen_contract_fail_before_construction[mutation0]" time="0.018" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_option_type_and_frozen_contract_fail_before_construction[mutation1]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_option_type_and_frozen_contract_fail_before_construction[mutation2]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_option_type_and_frozen_contract_fail_before_construction[mutation3]" time="0.018" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_option_type_and_frozen_contract_fail_before_construction[mutation4]" time="0.017" />
+    <testcase classname="tests.test_prompt044_policy" name="test_native_option_type_and_frozen_contract_fail_before_construction[mutation5]" time="0.035" />
+    <testcase classname="tests.test_prompt044_policy" name="test_audit_write_failure_does_not_allow_unlogged_model_calls_or_retry" time="0.029" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_plan_has_only_exact_native90_same_original_scoring_sources" time="0.232" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_invalid_or_foreign_contract_fails_before_model[variant]" time="0.141" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_invalid_or_foreign_contract_fails_before_model[extra]" time="0.143" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_invalid_or_foreign_contract_fails_before_model[reference]" time="0.139" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_invalid_or_foreign_contract_fails_before_model[runtime]" time="0.166" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_invalid_or_foreign_contract_fails_before_model[source]" time="0.197" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_outputs_reject_input_roots_and_existing_directories" time="0.231" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_fake90_only_native_single_worker_scores_original_targets_and_audit[p1]" time="1.203" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_fake90_only_native_single_worker_scores_original_targets_and_audit[p2]" time="1.370" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_failure_keeps_fixed_denominator_no_retry_and_retains_spent_query" time="0.376" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_corrupt_prompt_query_invalidates_formal_score_without_changing_original_raw" time="1.330" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_audit_rejects_inconsistent_actual_call_records[result_error]" time="0.178" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_audit_rejects_inconsistent_actual_call_records[result_ordinal]" time="0.194" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_audit_rejects_inconsistent_actual_call_records[bool_sequence]" time="0.185" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_audit_rejects_inconsistent_actual_call_records[schema]" time="0.169" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_audit_rejects_inconsistent_actual_call_records[reset_missing]" time="0.173" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_audit_binds_zero_query_initial_failure_without_spending_a_prediction" time="0.186" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_original_scoring_and_binary_mapping_keep_a_protection_even_after_full_goals_restored[goal_regression]" time="0.232" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_original_scoring_and_binary_mapping_keep_a_protection_even_after_full_goals_restored[wrong_grasp]" time="0.235" />
+    <testcase classname="tests.test_prompt044_evaluation" name="test_original_scoring_and_binary_mapping_keep_a_protection_even_after_full_goals_restored[invariant_regression]" time="0.259" />
+    <testcase classname="tests.test_prompt044_entry" name="test_evaluate_cli_only_dispatches_requested_new_run" time="0.004" />
+    <testcase classname="tests.test_prompt044_entry" name="test_both_cli_preserves_explicit_paths" time="0.001" />
+    <testcase classname="tests.test_prompt044_entry" name="test_fake_full_two_groups_launch_fresh_processes_and_keep_complete_marker" time="0.035" />
+    <testcase classname="tests.test_prompt044_entry" name="test_first_arm_failure_never_starts_second_and_preserves_marker[exit]" time="0.019" />
+    <testcase classname="tests.test_prompt044_entry" name="test_first_arm_failure_never_starts_second_and_preserves_marker[incomplete]" time="0.020" />
+    <testcase classname="tests.test_prompt044_entry" name="test_first_arm_failure_never_starts_second_and_preserves_marker[missing]" time="0.018" />
+    <testcase classname="tests.test_prompt044_entry" name="test_first_arm_failure_never_starts_second_and_preserves_marker[raises]" time="0.018" />
+    <testcase classname="tests.test_prompt044_entry" name="test_launch_rejects_overlaps_existing_or_unmatched_pair_before_process[same]" time="0.004" />
+    <testcase classname="tests.test_prompt044_entry" name="test_launch_rejects_overlaps_existing_or_unmatched_pair_before_process[nested]" time="0.003" />
+    <testcase classname="tests.test_prompt044_entry" name="test_launch_rejects_overlaps_existing_or_unmatched_pair_before_process[marker_nested]" time="0.004" />
+    <testcase classname="tests.test_prompt044_entry" name="test_launch_rejects_overlaps_existing_or_unmatched_pair_before_process[existing]" time="0.004" />
+    <testcase classname="tests.test_prompt044_entry" name="test_launch_rejects_overlaps_existing_or_unmatched_pair_before_process[wrong_arm]" time="0.008" />
+    <testcase classname="tests.test_prompt044_entry" name="test_launch_rejects_overlaps_existing_or_unmatched_pair_before_process[different_inputs]" time="0.012" />
+    <testcase classname="tests.test_prompt044_entry" name="test_actual_templates_and_shell_wrapper_are_explicit_and_do_not_launch" time="0.001" />
+    <testcase classname="tests.test_prompt044_entry" name="test_actual_config_templates_load_strictly_with_existing_path_expansion[p1]" time="0.006" />
+    <testcase classname="tests.test_prompt044_entry" name="test_actual_config_templates_load_strictly_with_existing_path_expansion[p2]" time="0.006" />
+    <testcase classname="tests.test_prompt044_entry" name="test_complete_fake90_then90_uses_real_preflight_and_formal_reports[False]" time="2.564" />
+    <testcase classname="tests.test_prompt044_entry" name="test_complete_fake90_then90_uses_real_preflight_and_formal_reports[True]" time="0.379" />
+    <testcase classname="tests.test_prompt044_entry" name="test_real_launcher_preflight_protects_data_root_for_marker" time="0.200" />
+  </testsuite>
+</testsuites>

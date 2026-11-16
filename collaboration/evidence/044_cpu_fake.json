@@ -1,0 +1,84 @@
+{
+  "format": "task044-cpu-fake-evidence-v1",
+  "date": "2026-11-16",
+  "author": "X",
+  "accepted_dependency": "7d28d515be610f33f959f36d25623e86796671ce",
+  "main_docs": "5e48028",
+  "scope": "Targeted CPU/fake only; no SSH, deployment, model download/loading, GPU, simulation or real evaluation",
+  "passed": 80,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "groups": [
+    {
+      "file": "044_cpu_prompt.junit.xml",
+      "sha256": "6d95db7ebe282c5ecae0dff8895e15870be94d511273356ed0a8028eacec515f",
+      "tests": 60,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 11.409,
+      "test_files": {
+        "tests.test_prompt044_policy": 21,
+        "tests.test_prompt044_evaluation": 20,
+        "tests.test_prompt044_entry": 19
+      }
+    },
+    {
+      "file": "044_cpu_bridges.junit.xml",
+      "sha256": "e9a7917d8f3c697261781afb08d13b911e50cd37fef298130f52752a043cf7a0",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.221,
+      "test_files": {
+        "tests.test_trajectory_environment_dispatch": 12,
+        "tests.test_trajectory_proxy_transition": 8
+      }
+    }
+  ],
+  "commands": [
+    "python -m pytest tests/test_prompt044_policy.py tests/test_prompt044_evaluation.py tests/test_prompt044_entry.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t44/final01 --junitxml=collaboration/evidence/044_cpu_prompt.junit.xml",
+    "python -m pytest tests/test_trajectory_environment_dispatch.py tests/test_trajectory_proxy_transition.py -q --tb=short --show-capture=no --basetemp=../../.release-tools/t44/bridges01 --junitxml=collaboration/evidence/044_cpu_bridges.junit.xml",
+    "bash -n scripts/prompt044/run_both_sequential.sh",
+    "python -m egrs.prompt044 --help",
+    "git diff --check"
+  ],
+  "junit_redaction": "Only hostname cpu-local and LF text normalization; original raw XML retained locally",
+  "coverage": [
+    "Frozen18 exact prompts and original native loader/sensors, original metadata, no research adapters",
+    "Actual pre-call language and SHA audit, per-episode fixed initial fact, pre-spend budgets and durable failure/duplicate guards",
+    "Exact original90 ten sources/36units, source instructions and goals intact, original full-task binary scoring and A violations",
+    "Audit schema/order/attempts/query/results/zero-query/failed calls, incomplete evidence not formal success",
+    "Fake90 P1 then90 P2 with separate workers and actual strict preflight/report gate; first failure stops second; protected data/output/marker",
+    "Actual generated JSON templates and shell syntax, original strict two bridge identity and bidirectional proxy compatibility"
+  ],
+  "limitations": [
+    "Synthetic fixtures patch only frozen reference hashes and model/execution boundaries; no production bypass flags.",
+    "P0 is historical22/90 aggregate-only; no fabricated paired evidence or baseline rerun.",
+    "Complete reference plan byte hash is authoritative; published ten projection lacks a field definition and is disclosed without guessing.",
+    "CPU/fake tests do not establish real model prompt benefit, real rollout SR or production performance."
+  ],
+  "additional_affected_checks": {
+    "passed": 4,
+    "included_in_primary_80": false,
+    "commands": [
+      "python -m pytest -q --basetemp ../../.release-tools/t44/review-reader-temp 'tests/test_trajectory_evaluation.py::test_original_readers_verify_archive_actions_observations_and_video[v3-mask10]' 'tests/test_trajectory_evaluation.py::test_original_readers_verify_archive_actions_observations_and_video[v3-nine-mask10]'",
+      "python -m pytest -q tests/test_headless_runner.py::test_single_goal_a_regression_is_sticky_even_after_recovery tests/test_headless_nine_runtime.py::test_nine10_preserves_invariant_and_original_five_observation_endpoint"
+    ],
+    "cwd": [
+      "Learning-Not-to-Act-task044",
+      "LIBERO-Remain-task033-r2 accepted local CPU fixture"
+    ],
+    "seconds": [
+      5.76,
+      0.14
+    ],
+    "evidence": "Focused implementation review log retained in local task044 delivery archive; not a separate Codex acceptance."
+  },
+  "implementation_percent": 100,
+  "deployment_percent": 0,
+  "real_evaluation_percent": 0,
+  "deletions": []
+}

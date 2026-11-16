@@ -2,6 +2,8 @@
 
 研究外部过程提前完成部分任务后，VLA能否根据当前观测重新确定剩余目标，在保留已有成果的同时完成任务。
 
+Task044软件已交付、待验收：[回复](collaboration/responses/044_round1.md)与[完整命令](docs/task044_usage.md)。原版官方SOG10的P1/P2各90条，冻结语言仅改模型输入，原初态、完整任务评分及A保护保持，不加载研究权重。80项主组＋4项补充定向CPU/fake通过；未SSH、部署或启动真实实验。最新状态见[STATUS](collaboration/STATUS.md)，下方旧交付/结果保留。
+
 Task042软件已交付、待验收：[回复](collaboration/responses/042_round1.md)与[完整命令](docs/task042_usage.md)。基于accepted PR16，F0/F1均为041 R0完整初始化的原C1，各新1000；同显式SDPA，F0保留native双向，F1仅增加T读C禁边。109项定向CPU/fake通过，未部署或启动真实实验；最新状态见[STATUS](collaboration/STATUS.md)，下方旧交付/结果保留。
 
 Task041软件已交付、待验收：[回复](collaboration/responses/041_round1.md)与[完整命令](docs/task041_usage.md)。R0/R1均从040完整权重初始化、基础均C1，各新增1000；仅R1增加039旧10行为保持，原数据/采样/评分保持。本轮未部署或启动真实作业，旧039/040结果与工件保留。
