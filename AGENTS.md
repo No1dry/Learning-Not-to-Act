@@ -1,5 +1,16 @@
 # 方法研究协作规则
 
+## 2026-11-16：044正式180全完成，P1 0%、P2 22.22%，原版提示无总体收益
+
+044 R2接受P1/P2各90执行/正式核验100%，software_exit success、execution/cleanup/ledger均null、完整性0，无残留进程。P1原完整指令＋初始A完成事实0%（0/90），P2仅B22.22%（20/90），P0历史24.44%只引用、不重测/不虚构逐episode配对。P1全部520步且原生完整目标也0，不是严格合规挡住成功；P2原生目标36/90=40%与历史P0汇总相同。P2关抽屉0→30/白杯布丁0→10的+4被汤罐奶酪90→50/奶酪黄油20→0的−6抵消。
+
+原官方SOG10、同90来源/runtime/完整评分保持，180来源metadata身份和10743次实际API提示字串/SHA核对，原audit/summary/完成marker hash一致、无研究adapter。三对raw初始观测/state/XML/BDDL相同；P1样本动作非零、B未达成，不称学会finish。双杯一组仅8帧抽样，无视频重判。没有发现既有传参/模型身份/计分异常，但不能把P1当作模型已理解oracle状态后的理想控制；语言分布偏移/控制退化为解释候选，不外推所有prompt或完成信息无用。P2非理论上界，低分不单独证明低层动作是唯一瓶颈。
+
+17原报告/audit控制文件113639408字节＋6原视频/6原raw本地SHA保存，合计398226500字节，服务器全180原工件/旧权重/失败署名保持。不新model/physics/reader/评分/标签/索引或代启停，不自动mergePR19，无删除待删=[]。结果/阶段/R2/证据/STATUS精确commit SHA备份并登记manifest。
+
+044实验交付closed、研究解释和下一方法open；全部044启动命令现历史，勿重开。X无需因低SR返修/泛审，用户暂不新启动；下一Codex结合043/044收敛方法与一次明确预算，不自动搜prompt/加seed/续训/生成或重测基线。以同日task044_final_results_prompt_diagnostics及docs/research/2026-11-16_task044_original_prompt_diagnostic_results.md为准。本条覆盖运行中/旧0%快照，不覆盖未来决定。
+
+
 ## 2026-11-16：044 R1 accepted且隔离部署完成，下一用户直接正式180
 
 PR19固定e8445b6ae640f21446533592326c645a6d42894b（实现8259a104、acceptedPR17@7d28d515依赖）软件/文件部署accepted，X无需返修或泛审，PR19/17/18不自动merge。Codex新60项CPU/fake全过，另旧1bridge/2reader/2A与炉子约束通过，共65不同通过；19旧bridge/proxy因本地归档缺Git历史setup error保留，原代码未变、复用accepted及X20兼容证据，不冒称80全过，不为恢复历史/真实MVP阻塞。既有90个egrs生产文件逐字节未改。

@@ -1,5 +1,7 @@
 # 044：验收部署完成，用户直接P1→P2正式180
 
+> P1/P2正式180现已完成，下方所有启动命令均为历史，勿重开。当前结果见[044正式结果与分析](../research/2026-11-16_task044_original_prompt_diagnostic_results.md)，用户暂不启动新实验。
+
 2026-11-16。PR19固定e8445b6a软件/文件部署accepted，新增60项CPU/fake通过，原未改bridge fixture历史缺失保留说明，不加真实预检。原90个生产源不变，101源码/依赖与3实际配置SHA一致，原两环境无依赖升级接线。真实模型/仿真/评测尚未启动。
 
 本地完整conda/venv/服务器路径在用户项目docs/044_服务器完整运行命令_2026-11-16.md。按该文件激活原simulation环境、source部署session044.sh并进入LNA_CODE，然后只启动：
