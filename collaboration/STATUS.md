@@ -2,6 +2,8 @@
 
 ## 2026-11-16：044软件已交付，下一Codex验收隔离部署
 
+新[PR19](https://github.com/No1dry/Learning-Not-to-Act/pull/19)已发布、open未合并，固定实现`8259a104`、交付正文`9812638c`；最终PR head/tree及文件blob另作精确远端校验和本地备份。
+
 X已完成044隔离native ten-only实现，commit `8259a1040b0a83551678db5cbb7849c836bac090`，依赖accepted PR17@`7d28d515`并同步main@`5e48028`批准工单；新分支`x/task044`、PR base=`x/task042`，不自动mergePR17/18或新PR。详见[044_round1](responses/044_round1.md)、[机器证据](evidence/044_cpu_fake.json)、[运行文档](../docs/task044_usage.md)和[阶段总结](../docs/stage_summaries/2026-11-16_task044_software_delivery.md)。
 
 冻结P1/P2各90，只在原native模型语言边界替换，真实原/模型字符串及SHA持久审计；原SOG10、同90个10初态、完整A+B/保护/错抓/释放/炉子约束、双bridge、H520/chunk8/seed7及全视频保持。P0仅历史22/90 aggregate-only，不加载H0/H1或研究adapter，不重测。原36单元逐源一致性＋完整reference字节SHA保留，未知投影定义不伪报匹配。新输出/持久marker保护，每臂≤5850predict，P1正常完整报告后P2，失败停止并保留现场。
