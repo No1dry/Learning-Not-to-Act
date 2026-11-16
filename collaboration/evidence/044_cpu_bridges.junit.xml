@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="20" time="2.221" timestamp="2026-11-16T10:02:56.134651" hostname="cpu-local">
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_actual_bridge_identity_and_original_headless_constructor[legacy-ac130177-fa85ae08e1a09fcab1b95f0d25880d4fcb6d0948088e1f49ca7e3746ab95d603]" time="0.334" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_actual_bridge_identity_and_original_headless_constructor[current-d8541ef4-3a515dddc29311012180d4479dacd77511b510de44021ab6bc09516ca9a51efa]" time="0.120" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_full_runtime_lock_changes_are_rejected[source]" time="0.128" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_full_runtime_lock_changes_are_rejected[asset]" time="0.122" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_full_runtime_lock_changes_are_rejected[version]" time="0.119" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_full_runtime_lock_changes_are_rejected[compat]" time="0.120" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_full_runtime_lock_changes_are_rejected[unknown_bridge]" time="0.106" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_full_runtime_lock_changes_are_rejected[lock_fingerprint]" time="0.104" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_changed_legacy_dependency_bytes_rejected[libero_env.py]" time="0.100" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_changed_legacy_dependency_bytes_rejected[libero_compat.py]" time="0.100" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_changed_legacy_dependency_bytes_rejected[schema.py]" time="0.119" />
+    <testcase classname="tests.test_trajectory_environment_dispatch" name="test_forged_dispatch_description_rejected" time="0.102" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_same_utils_bidirectional_and_repeat_calls[sequence0]" time="0.079" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_same_utils_bidirectional_and_repeat_calls[sequence1]" time="0.074" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_foreign_or_subclass_proxy_is_rejected_untouched[object]" time="0.071" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_foreign_or_subclass_proxy_is_rejected_untouched[namespace]" time="0.078" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_foreign_or_subclass_proxy_is_rejected_untouched[old_subclass]" time="0.072" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_foreign_or_subclass_proxy_is_rejected_untouched[new_subclass]" time="0.073" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_actual_factory_guards_each_original_reset_and_keeps_identity" time="0.160" />
+    <testcase classname="tests.test_trajectory_proxy_transition" name="test_coordination_identity_is_method_source_not_old_parent_identity" time="0.001" />
+  </testsuite>
+</testsuites>

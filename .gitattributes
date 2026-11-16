@@ -1,1 +1,3 @@
 egrs/augmentation/* text eol=lf
+collaboration/evidence/044_prompt_manifest.json -text
+scripts/prompt044/*.sh text eol=lf
