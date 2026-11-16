@@ -1,5 +1,18 @@
 # 当前协作状态
 
+## 2026-11-16：045由Codex直接完成参数化并部署，下一用户续训
+
+用户要求H0/H1各从完整1000续到3000、固定测试2000/3000，并明确“这个你直接改一下吧”。本轮Codex直接修改/CPU自查/隔离部署，X不重复。PR20固定10531b626998d02f6168d23df02501ce64d36969，基于accepted PR18@1edc6e0，不自动merge。只hint043步数/预算/完整状态/显式checkpoint-step接线，旧1000 v1兼容、新延长v2绑定父字节SHA；原数据模型loss/dev选取不变。
+
+完整恢复LoRA/AdamW/LambdaLR/sampler/Python/NumPy/Torch/CUDA RNG到新输出，不重新warmup或重训第一段；原账本只读，新账本累计继承父消耗不退款。原71＋新增19共90不同CPU/fake过、0失败错误skip，包括tiny1000→3000/两节点读取/父文件不变/完整恢复/防退款/串行脚本。是Codex自查，不独立第三方或真实7B效果。GitHub与本地代码树一致，PR已关联聊天。
+
+新code/config task045-hint-length-v1，110源码依赖/模板和9实际配置SHA一致，原两venv仅no-deps映射无升级；真实原1000父adapter/state字节SHA匹配，未反序列化真实state/加载模型。数据及eval来源、实际0.0类型/路径分离/脚本语法通过；未新prepare/index/plan/MVP/模型/物理或真实作业，未来两train/四eval/两marker不存在。准备100%，真实0。
+
+当前按已讨论范围准备新增4000更新、参考≤36096/学生≤108288，固定四快照10/00各90共720新eval；原1000/基线复用，零新数据/标签/index或额外seed/prompt。用户先一条extend_train_both.sh按H0→H1续训，两组完成后用户另在simulation环境启动eval_training_length.sh；所有真实阶段用户亲启，不自动代跑。完整命令本地045_续训与评测完整命令_2026-11-16.md，公开2026-11-16_task045_user_training_evaluation_commands可见。
+
+七关键文档、固定源tar/原CPUJUnit/配置/私有收据精确commit SHA本地归档manifest登记，dirty checkout及所有旧数据权重分数失败署名保持，无删除待删=[]。软件closed，实际训练/SR open，X暂无任务。本条覆盖旧无045实现快照，不覆盖未来决定。
+
+
 ## 2026-11-16：044正式180全完成，P1 0%、P2 22.22%，原版提示无总体收益
 
 044 R2接受P1/P2各90执行/正式核验100%，software_exit success、execution/cleanup/ledger均null、完整性0，无残留进程。P1原完整指令＋初始A完成事实0%（0/90），P2仅B22.22%（20/90），P0历史24.44%只引用、不重测/不虚构逐episode配对。P1全部520步且原生完整目标也0，不是严格合规挡住成功；P2原生目标36/90=40%与历史P0汇总相同。P2关抽屉0→30/白杯布丁0→10的+4被汤罐奶酪90→50/奶酪黄油20→0的−6抵消。
