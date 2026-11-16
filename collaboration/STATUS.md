@@ -1,5 +1,16 @@
 # 当前协作状态
 
+## 2026-11-16：044 R1 accepted且隔离部署完成，下一用户直接正式180
+
+PR19固定e8445b6ae640f21446533592326c645a6d42894b（实现8259a104、acceptedPR17@7d28d515依赖）软件/文件部署accepted，X无需返修或泛审，PR19/17/18不自动merge。Codex新60项CPU/fake全过，另旧1bridge/2reader/2A与炉子约束通过，共65不同通过；19旧bridge/proxy因本地归档缺Git历史setup error保留，原代码未变、复用accepted及X20兼容证据，不冒称80全过，不为恢复历史/真实MVP阻塞。既有90个egrs生产文件逐字节未改。
+
+新code/config task044-e8445b6a，101源码/依赖/模板＋3实际配置SHA一致。原worker/simulation仅no-deps editable映射，无升级；实际两JSON/固定原模型runtime/reference/提示表、输出marker与保护根分离、bash语法及模块来源通过。现成metadata完整ten投影也匹配ed9b5027，未新build_plan或模型/物理。X文档worker解释器层级示例的小错误由Codex正确部署命令规避，非阻断不返修。
+
+软件准备100%，真实eval0；两个eval与marker不存在。用户现在按2026-11-16_task044_user_evaluation_commands及本地044完整命令，在原simulation环境source新session044.sh，一条P1正式90正常后P2正式90，共180全视频/≤11700predict，原官方SOG10、不H0/H1。只变模型语言，原完整A+B/10二元评分/A保护和双bridge/H520/chunk8/seed7不变。P0历史24.44%只引用，不新00/训练/prepare/index/plan/资格/MVP/预检或基线；别重开043。所有真实阶段仍用户亲启，Codex未代启动/排队/监督。
+
+六关键文档及固定X原稿、源tar、原JUnit/配置/私有收据精确commit SHA本地归档manifest登记，dirty checkout和所有旧数据权重分数失败署名保持，无删除待删=[]。软件closed、真实SR研究open。下一执行者用户正式180；X暂无实现任务，Codex待交回结果审查。本条覆盖下方044实现/部署0快照，不覆盖未来决定。
+
+
 ## 2026-11-16：044原版模型提示词对照已批准，正式工单交X
 
 用户“可以，下一步”批准P1原完整指令＋初始A完成事实、P2仅剩余B，各90共180新评测。P0原官方模型历史24.44%（22/90）仅复用引用、不重测，H0不是P0。官方SOG10原权重/归一化、九任务同90个10初态、原H520/chunk8/seed7/双bridge/视频/完整任务二元评分保持；不因P2仅写B取消A保护/错抓。固定初始语义提示不随GT更新，双壶集合化无隐藏ID；诊断不是自主RGB主方法或理论上界。
