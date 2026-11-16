@@ -1,0 +1,702 @@
+{
+  "format": "task043-v2-final-results-acceptance-v1",
+  "date": "2026-11-16",
+  "captured_at": "2026-11-16T01:20:10.054669+00:00",
+  "arms": {
+    "h0": {
+      "formal_complete": true,
+      "model_completed": 180,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null,
+      "adapter_sha256": "371f9f137333b48060ce3ba3ec295970a240365d862d1c1a10565577f60dae6f",
+      "deployment_hint": false,
+      "ancestor_updates": 0,
+      "additional_updates": 1000,
+      "conditions": {
+        "10": {
+          "formal_SR": {
+            "denominator": 90,
+            "numerator": 55,
+            "percent": 61.111111111111114
+          },
+          "tasks": [
+            {
+              "task_id": "basket",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 7,
+                "percent": 70
+              },
+              "official_task_SR": null,
+              "unsuccessful": 3
+            },
+            {
+              "task_id": "basket_cheese_butter",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 4,
+                "percent": 40
+              },
+              "official_task_SR": null,
+              "unsuccessful": 6
+            },
+            {
+              "task_id": "basket_soup_cheese",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 9,
+                "percent": 90
+              },
+              "official_task_SR": null,
+              "unsuccessful": 1
+            },
+            {
+              "task_id": "bowl_drawer_close",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "official_task_SR": null,
+              "unsuccessful": 0
+            },
+            {
+              "task_id": "dual_mugs",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "official_task_SR": null,
+              "unsuccessful": 4
+            },
+            {
+              "task_id": "mug_microwave_close",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "official_task_SR": null,
+              "unsuccessful": 0
+            },
+            {
+              "task_id": "mug_pudding",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 3,
+                "percent": 30
+              },
+              "official_task_SR": null,
+              "unsuccessful": 7
+            },
+            {
+              "task_id": "stove",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "official_task_SR": null,
+              "unsuccessful": 4
+            },
+            {
+              "task_id": "two_pots",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 0,
+                "percent": 0
+              },
+              "official_task_SR": null,
+              "unsuccessful": 10
+            }
+          ],
+          "failure_reason_episode_counts": {
+            "wrong_grasp": 9,
+            "goal_not_confirmed_by_horizon": 26,
+            "wrong_placement": 4,
+            "goal_regression": 12
+          },
+          "confirmed_event_episode_counts": {
+            "wrong_grasp": 9,
+            "wrong_placement": 4
+          },
+          "diagnostic_unknown_reason_episode_counts": {
+            "event_evidence_unknown": 3,
+            "completion_release_unknown": 6
+          },
+          "primary_diagnostic_classification_counts": {
+            "success": 55,
+            "failure": 35
+          },
+          "binary_successes": 55,
+          "binary_failures": 35
+        },
+        "00": {
+          "formal_SR": {
+            "denominator": 90,
+            "numerator": 76,
+            "percent": 84.44444444444444
+          },
+          "tasks": [
+            {
+              "task_id": "basket",
+              "official_task_id": 0,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 7,
+                "percent": 70
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "basket_cheese_butter",
+              "official_task_id": 1,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 8,
+                "percent": 80
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "stove",
+              "official_task_id": 2,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "bowl_drawer_close",
+              "official_task_id": 3,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 9,
+                "percent": 90
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "dual_mugs",
+              "official_task_id": 4,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 9,
+                "percent": 90
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "mug_pudding",
+              "official_task_id": 6,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 8,
+                "percent": 80
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "basket_soup_cheese",
+              "official_task_id": 7,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 5,
+                "percent": 50
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "two_pots",
+              "official_task_id": 8,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "mug_microwave_close",
+              "official_task_id": 9,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "unsuccessful": null
+            }
+          ],
+          "failure_reason_episode_counts": {
+            "official_goal_never_achieved": 14
+          },
+          "confirmed_event_episode_counts": {},
+          "diagnostic_unknown_reason_episode_counts": {},
+          "primary_diagnostic_classification_counts": {
+            "success": 76,
+            "failure": 14
+          },
+          "binary_successes": 76,
+          "binary_failures": 14
+        }
+      },
+      "plan_tasks_identity": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+      "environment_dispatch_identity": "186087e7321b6b5e672a1d0c8e76ddd08b63a9797f24e049223f0a02d926f889"
+    },
+    "h1": {
+      "formal_complete": true,
+      "model_completed": 180,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null,
+      "adapter_sha256": "1479edd46c47ae10fe66eafa85e928c7043fd9954d54a126e06d83442a1b6aee",
+      "deployment_hint": false,
+      "ancestor_updates": 0,
+      "additional_updates": 1000,
+      "conditions": {
+        "10": {
+          "formal_SR": {
+            "denominator": 90,
+            "numerator": 61,
+            "percent": 67.77777777777777
+          },
+          "tasks": [
+            {
+              "task_id": "basket",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "official_task_SR": null,
+              "unsuccessful": 4
+            },
+            {
+              "task_id": "basket_cheese_butter",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 5,
+                "percent": 50
+              },
+              "official_task_SR": null,
+              "unsuccessful": 5
+            },
+            {
+              "task_id": "basket_soup_cheese",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "official_task_SR": null,
+              "unsuccessful": 0
+            },
+            {
+              "task_id": "bowl_drawer_close",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "official_task_SR": null,
+              "unsuccessful": 0
+            },
+            {
+              "task_id": "dual_mugs",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "official_task_SR": null,
+              "unsuccessful": 4
+            },
+            {
+              "task_id": "mug_microwave_close",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "official_task_SR": null,
+              "unsuccessful": 0
+            },
+            {
+              "task_id": "mug_pudding",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "official_task_SR": null,
+              "unsuccessful": 4
+            },
+            {
+              "task_id": "stove",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "official_task_SR": null,
+              "unsuccessful": 4
+            },
+            {
+              "task_id": "two_pots",
+              "official_task_id": null,
+              "formal_SR": {
+                "denominator": 10,
+                "numerator": 2,
+                "percent": 20
+              },
+              "official_task_SR": null,
+              "unsuccessful": 8
+            }
+          ],
+          "failure_reason_episode_counts": {
+            "goal_not_confirmed_by_horizon": 22,
+            "wrong_placement": 5,
+            "wrong_grasp": 7,
+            "goal_regression": 7
+          },
+          "confirmed_event_episode_counts": {
+            "wrong_placement": 5,
+            "wrong_grasp": 7
+          },
+          "diagnostic_unknown_reason_episode_counts": {
+            "event_evidence_unknown": 5,
+            "completion_release_unknown": 5
+          },
+          "primary_diagnostic_classification_counts": {
+            "success": 61,
+            "failure": 28,
+            "unknown": 1
+          },
+          "binary_successes": 61,
+          "binary_failures": 29
+        },
+        "00": {
+          "formal_SR": {
+            "denominator": 90,
+            "numerator": 70,
+            "percent": 77.77777777777777
+          },
+          "tasks": [
+            {
+              "task_id": "basket",
+              "official_task_id": 0,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 6,
+                "percent": 60
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "basket_cheese_butter",
+              "official_task_id": 1,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 8,
+                "percent": 80
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "stove",
+              "official_task_id": 2,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 8,
+                "percent": 80
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "bowl_drawer_close",
+              "official_task_id": 3,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 9,
+                "percent": 90
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "dual_mugs",
+              "official_task_id": 4,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 9,
+                "percent": 90
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "mug_pudding",
+              "official_task_id": 6,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 9,
+                "percent": 90
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "basket_soup_cheese",
+              "official_task_id": 7,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 4,
+                "percent": 40
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "two_pots",
+              "official_task_id": 8,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 7,
+                "percent": 70
+              },
+              "unsuccessful": null
+            },
+            {
+              "task_id": "mug_microwave_close",
+              "official_task_id": 9,
+              "formal_SR": null,
+              "official_task_SR": {
+                "denominator": 10,
+                "numerator": 10,
+                "percent": 100
+              },
+              "unsuccessful": null
+            }
+          ],
+          "failure_reason_episode_counts": {
+            "official_goal_never_achieved": 20
+          },
+          "confirmed_event_episode_counts": {},
+          "diagnostic_unknown_reason_episode_counts": {},
+          "primary_diagnostic_classification_counts": {
+            "success": 70,
+            "failure": 20
+          },
+          "binary_successes": 70,
+          "binary_failures": 20
+        }
+      },
+      "plan_tasks_identity": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+      "environment_dispatch_identity": "186087e7321b6b5e672a1d0c8e76ddd08b63a9797f24e049223f0a02d926f889"
+    }
+  },
+  "paired": {
+    "10": {
+      "gained": [
+        "basket_cheese_butter_s004_10",
+        "basket_soup_cheese_s005_10",
+        "dual_mugs_s000_10",
+        "dual_mugs_s001_10",
+        "mug_pudding_s001_10",
+        "mug_pudding_s003_10",
+        "mug_pudding_s006_10",
+        "two_pots_s005_10",
+        "two_pots_s008_10"
+      ],
+      "lost": [
+        "basket_s008_10",
+        "dual_mugs_s003_10",
+        "dual_mugs_s004_10"
+      ],
+      "both_success_count": 52,
+      "both_failure_count": 26,
+      "net_successes": 6,
+      "common_success_mean_path_m": {
+        "h0": 0.7661145916280012,
+        "h1": 0.7448247474957076
+      },
+      "00_path_note": null
+    },
+    "00": {
+      "gained": [
+        "dual_mugs_s006_00",
+        "mug_pudding_s009_00"
+      ],
+      "lost": [
+        "basket_s001_00",
+        "basket_soup_cheese_s005_00",
+        "dual_mugs_s003_00",
+        "stove_s000_00",
+        "stove_s002_00",
+        "two_pots_s001_00",
+        "two_pots_s002_00",
+        "two_pots_s006_00"
+      ],
+      "both_success_count": 68,
+      "both_failure_count": 12,
+      "net_successes": -6,
+      "common_success_mean_path_m": null,
+      "00_path_note": "Do not pool different original endpoints for00 efficiency."
+    }
+  },
+  "all360_actual_episode_method_adapter_and_arm_verified": true,
+  "matched_source_runtime_scoring_protocol_plan_fields_equal": true,
+  "formal_completion_percent": 100,
+  "active_processes": [],
+  "original_report_file_count": 15,
+  "original_report_bytes": 194362697,
+  "selected_videos": [
+    {
+      "arm": "h0",
+      "condition": "10",
+      "episode_id": "mug_pudding_s001_10",
+      "task_id": "mug_pudding",
+      "change_h1_vs_h0": "gained",
+      "formal_success": false,
+      "sha256": "8ea11cfae4c2024689b711ecb3c23aab4b883b8bc9db50b39b8e34f6635c7650",
+      "bytes": 521826
+    },
+    {
+      "arm": "h1",
+      "condition": "10",
+      "episode_id": "mug_pudding_s001_10",
+      "task_id": "mug_pudding",
+      "change_h1_vs_h0": "gained",
+      "formal_success": true,
+      "sha256": "1ea2cdaab7800f83e1490c60a47728dce6aaff4881185f84d0786e563336f37f",
+      "bytes": 463520
+    },
+    {
+      "arm": "h0",
+      "condition": "10",
+      "episode_id": "two_pots_s005_10",
+      "task_id": "two_pots",
+      "change_h1_vs_h0": "gained",
+      "formal_success": false,
+      "sha256": "41fc928f7ecf03efc94d67f62f6528a4fb9d93cb887f4a6aeafdeb35df3d96bd",
+      "bytes": 311495
+    },
+    {
+      "arm": "h1",
+      "condition": "10",
+      "episode_id": "two_pots_s005_10",
+      "task_id": "two_pots",
+      "change_h1_vs_h0": "gained",
+      "formal_success": true,
+      "sha256": "da7a8c50b9e1599e3baed95b58639123a4a2bbbdd844cdf5cb210e686c52219f",
+      "bytes": 319909
+    },
+    {
+      "arm": "h0",
+      "condition": "10",
+      "episode_id": "basket_cheese_butter_s004_10",
+      "task_id": "basket_cheese_butter",
+      "change_h1_vs_h0": "gained",
+      "formal_success": false,
+      "sha256": "98d1753fa086955a94116e2429699d95ec835659a4f61689976f18838d8041fb",
+      "bytes": 422073
+    },
+    {
+      "arm": "h1",
+      "condition": "10",
+      "episode_id": "basket_cheese_butter_s004_10",
+      "task_id": "basket_cheese_butter",
+      "change_h1_vs_h0": "gained",
+      "formal_success": true,
+      "sha256": "437137766ebb7a9f61d874e2433aa66971a1cf85346fef441885d848cef59b11",
+      "bytes": 286650
+    },
+    {
+      "arm": "h0",
+      "condition": "10",
+      "episode_id": "basket_s008_10",
+      "task_id": "basket",
+      "change_h1_vs_h0": "lost",
+      "formal_success": true,
+      "sha256": "e22092679c46dcbd672e4476442630ddf7a7b18a7650c1df9dd79a26f3669fe0",
+      "bytes": 276382
+    },
+    {
+      "arm": "h1",
+      "condition": "10",
+      "episode_id": "basket_s008_10",
+      "task_id": "basket",
+      "change_h1_vs_h0": "lost",
+      "formal_success": false,
+      "sha256": "ce84f35ea906891081ba13ca396af25012d9ac10253077746af3f8bf47f954db",
+      "bytes": 727040
+    },
+    {
+      "arm": "h0",
+      "condition": "00",
+      "episode_id": "two_pots_s001_00",
+      "task_id": "two_pots",
+      "change_h1_vs_h0": "lost",
+      "formal_success": true,
+      "sha256": "0af595294b3ec03dc76325d0b49c85286e7e2757d6fc0cbd1b021b4307f857db",
+      "bytes": 522553
+    },
+    {
+      "arm": "h1",
+      "condition": "00",
+      "episode_id": "two_pots_s001_00",
+      "task_id": "two_pots",
+      "change_h1_vs_h0": "lost",
+      "formal_success": false,
+      "sha256": "b7a5ccf9094dd784eab8a13b38b794d085b9a539f37929b267d7852301382024",
+      "bytes": 709710
+    }
+  ],
+  "preserved_report_plus_selected_video_bytes": 198923855,
+  "underlying_diagnostic_unknown_mapped_to_unsuccessful": {
+    "arm": "h1",
+    "episode_id": "two_pots_s007_10",
+    "reason": "completion_release_unknown",
+    "official_goals_achieved": true,
+    "formal_success": false
+  },
+  "new_scoring_or_model_or_simulation_run": false,
+  "automatic_merge": false,
+  "deletions": []
+}
