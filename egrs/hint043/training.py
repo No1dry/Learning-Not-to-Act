@@ -12,11 +12,12 @@ import torch
 from egrs.augmentation import training as base
 from egrs.augmentation.adapter_identity import RETENTION_STATS_SHA
 from egrs.retention.training import ThreePoolSampler, batch_weights, dev_indices
-from egrs.retention.reference import ReferenceBudget, reference_prediction
+from egrs.retention.reference import reference_prediction
 from egrs.retention041.reference import preserve_rng
 from .contracts import (INDEX_IDENTITY, RECIPE, require, sensors, transfer_weight,
-                        write_json, read_json, identity, forbid_overlap, load_config)
-from .budget import ModelBudget
+                        write_json, read_json, identity, forbid_overlap, load_config,
+                        training_recipe, EXTENDED_CONFIG_FORMAT)
+from .budget import ModelBudget, ReferenceBudget
 from .prepare import Sidecar
 from . import adapter, checkpoint
 from .oft import prediction
@@ -64,7 +65,7 @@ def mask(item, device):
     return torch.as_tensor(item['action_mask'],dtype=torch.bool,device=device).reshape(1,8)
 
 
-def train_update(policy,items,pools,texts,slots,*,update,arm,reference_budget,model_budget,predict=prediction):
+def train_update(policy,items,pools,texts,slots,*,update,arm,reference_budget,model_budget,predict=prediction,target_updates=1000):
     """One software-testable update, no optimizer step inside this function."""
     scales,batch = batch_weights(items,pools)
     targets = [torch.as_tensor(item['actions']).reshape(1,8,7) if pool=='ten'
@@ -89,13 +90,13 @@ def train_update(policy,items,pools,texts,slots,*,update,arm,reference_budget,mo
             if i in detached:
                 portion = sum(item['action_mask'])*7/denominator
                 transfer = base.masked_l1(out,detached.pop(i),m)*portion
-                loss = loss+transfer_weight(update)*transfer
+                loss = loss+transfer_weight(update,target_updates=target_updates)*transfer
                 transfer_loss += transfer.detach().item()
         main_loss += (loss.detach().item())
         loss.backward()
         del out,loss
     return {'main_and_transfer_loss':main_loss,'auxiliary_bc':auxiliary_loss,
-            'transfer_l1':transfer_loss,'transfer_weight':transfer_weight(update),
+            'transfer_l1':transfer_loss,'transfer_weight':transfer_weight(update,target_updates=target_updates),
             'auxiliary_draws':len(slots),'batch':batch}
 
 
@@ -130,8 +131,12 @@ def evaluate_dev(policy,dataset,selection,sidecar,*,arm,reference_budget,model_b
             'auxiliary_valid_scalars':aux_count,'not_closed_loop_SR':True}
 
 
-def run_loaded(config,output,train,dev,sidecar,policy,*,resume=None,predict=prediction):
+def run_loaded(config,output,train,dev,sidecar,policy,*,resume=None,init_from=None,predict=prediction):
     out=Path(output).resolve();arm=config['arm']
+    target_updates=config['training_recipe']['updates']
+    require(not (resume and init_from), 'Choose same-run resume or original1000 continuation, not both')
+    require(target_updates==1000 or resume is not None or init_from is not None,
+            'Extended training must restore a full parent state, never restart optimizer')
     require(train.identity==dev.identity==INDEX_IDENTITY, 'Original train/dev index differs')
     require(policy.cfg.unnorm_key=='libero_10_no_noops' and policy.metadata['dataset_statistics_sha256']==RETENTION_STATS_SHA,
             'Original SOG10 statistics required')
@@ -152,30 +157,45 @@ def run_loaded(config,output,train,dev,sidecar,policy,*,resume=None,predict=pred
               for b in ('prefix','all')} for p in ('fresh','raw')}}
     run_config=dict(deepcopy(config),output_dir=str(out),sidecar_identity=sidecar.manifest['identity'],
                     dev_selection=selected_keys,initialization='original_sog10_research_update_zero')
+    if target_updates > 1000:
+        if init_from:
+            run_config.update(continuation_parent=checkpoint.parent_binding(init_from),
+                              continuation_source=str(Path(init_from).resolve()))
+        else:
+            prior=read_json(out/'run_config.json')
+            run_config.update(continuation_parent=prior['continuation_parent'],continuation_source=prior['continuation_source'])
     # JSON roundtrip keeps resume equality independent of tuple/list serialization.
     run_config=json.loads(json.dumps(run_config))
     out.mkdir(parents=True,exist_ok=True)
-    reference_budget=ReferenceBudget(out/'reference_budget.json');model_budget=ModelBudget(out/'model_budget.json')
+    reference_budget=ReferenceBudget(out/'reference_budget.json',target_updates=target_updates)
+    model_budget=ModelBudget(out/'model_budget.json',target_updates=target_updates)
     reference_budget._persist();model_budget.persist()
     update=0
     if resume:
         update=checkpoint.load(resume,policy,optimizer,scheduler,sampler,config=run_config,
             sidecar_identity=sidecar.manifest['identity'],reference_budget=reference_budget,model_budget=model_budget)
+    elif init_from:
+        require(target_updates>1000, 'Continuation target must exceed1000')
+        update=checkpoint.extend_from(init_from,policy,optimizer,scheduler,sampler,config=run_config,
+            sidecar_identity=sidecar.manifest['identity'],reference_budget=reference_budget,model_budget=model_budget)
     else:
         require(reference_budget.report()['total']==model_budget.report()['total']==0,'Spent budget cannot be reset')
-    require(update<1000,'Training already complete')
+    require(update<target_updates,'Training already complete')
     write_json(out/'run_config.json',run_config)
     started=time.monotonic();start_update=update
     with (out/'metrics.jsonl').open('a',encoding='utf-8') as log:
-        while update<1000:
+        while update<target_updates:
             _student_train_mode(policy);optimizer.zero_grad(set_to_none=True)
             indices=sampler.draw_batch();items=[train[i] for i in indices];pools=[train.rows[i]['pool'] for i in indices]
             slots=aux_slots(train.rows,indices,sidecar)
             texts={i:sidecar.for_row(train.rows[indices[i]])['text'] for i in slots}
             values=train_update(policy,items,pools,texts,slots,update=update+1,arm=arm,
-                reference_budget=reference_budget,model_budget=model_budget,predict=predict)
+                reference_budget=reference_budget,model_budget=model_budget,predict=predict,target_updates=target_updates)
             optimizer.step();scheduler.step();update+=1
-            metrics=dict(values,arm=arm,update=update,expected_updates=1000,completion_percent=100*update/1000,
+            ancestor=run_config.get('continuation_parent',{}).get('update',0)
+            metrics=dict(values,arm=arm,update=update,expected_updates=target_updates,completion_percent=100*update/target_updates,
+                ancestor_updates=ancestor,additional_updates=update-ancestor,
+                additional_expected=target_updates-ancestor,additional_completion_percent=100*(update-ancestor)/(target_updates-ancestor),
                 elapsed_seconds=time.monotonic()-started,
                 seconds_per_update=(time.monotonic()-started)/(update-start_update),
                 sampling=sampler.report(),batch_keys_sha256=identity({'draws':[(train.rows[i]['source_id'],train.rows[i]['observation_index']) for i in indices]}))
@@ -185,20 +205,34 @@ def run_loaded(config,output,train,dev,sidecar,policy,*,resume=None,predict=pred
                 directory=out/f'update-{update:06d}'
                 checkpoint.save(directory,policy,optimizer,scheduler,sampler,update=update,config=run_config,
                     sidecar_identity=sidecar.manifest['identity'],reference_budget=reference_budget,model_budget=model_budget)
-                if update==1000:write_json(out/'selected_checkpoint.json',{'checkpoint':directory.name,'update':update,'selection':'fixed_terminal_1000'})
+                if update==target_updates:
+                    write_json(out/'selected_checkpoint.json',{'checkpoint':directory.name,'update':update,
+                        'selection':'fixed_terminal_1000' if target_updates==1000 else 'fixed_terminal_'+str(target_updates)})
+                if target_updates>1000 and update%1000==0:
+                    write_json(out/'evaluation_checkpoints.json',{'selection':'fixed_thousand_step_milestones',
+                        'checkpoints':{str(n):f'update-{n:06d}' for n in range(2000,update+1,1000)}})
             metrics.update(reference_calls=reference_budget.report(),model_calls=model_budget.report())
             log.write(json.dumps(metrics,allow_nan=False)+'\n');log.flush();write_json(out/'progress.json',metrics)
-            print(f"043 {arm} train {update}/1000 ({update/10:.1f}%) aux={len(slots)} loss={values['main_and_transfer_loss']:.5f}",flush=True)
-    return {'complete':True,'arm':arm,'update':update,'selected_checkpoint':str(out/'update-001000'),
+            print(f"043 {arm} train {update}/{target_updates} ({100*update/target_updates:.1f}%) continued={update-ancestor}/{target_updates-ancestor} ({metrics['additional_completion_percent']:.1f}%) aux={len(slots)} loss={values['main_and_transfer_loss']:.5f}",flush=True)
+    return {'complete':True,'arm':arm,'update':update,'ancestor_updates':run_config.get('continuation_parent',{}).get('update',0),
+            'selected_checkpoint':str(out/f'update-{target_updates:06d}'),
             'reference_calls':reference_budget.report(),'model_calls':model_budget.report()}
 
 
-def run(config_path,output,*,resume=None):
+def run(config_path,output,*,resume=None,init_from=None,target_updates=None):
     from egrs.coverage040.data import CoverageTaskControlDataset
     from egrs.coverage039.io import HashContext
     from egrs.augmentation.dependencies import activate_core
     cfg=load_config(config_path)
+    if target_updates is not None:
+        training_recipe(target_updates)
+        require(target_updates>=cfg['training_recipe']['updates'], 'Cannot shorten the configured training horizon')
+        cfg['training_recipe']=training_recipe(target_updates)
+        if target_updates>1000:cfg['format']=EXTENDED_CONFIG_FORMAT
+    require(not (resume and init_from), 'Choose same-run resume or new-output init-from, not both')
+    require(not init_from or cfg['training_recipe']['updates']>1000, 'init-from requires target-updates greater than1000')
     forbid_overlap(output,[cfg[k] for k in ('index_dir','sidecar_dir','benchmark_root','runtime')])
+    if init_from:forbid_overlap(output,[Path(init_from).resolve().parent])
     if not resume:require(not Path(output).exists(),'New run output required')
     sidecar=Sidecar(cfg['sidecar_dir'],cfg['index_dir'])
     context=HashContext()
@@ -212,5 +246,5 @@ def run(config_path,output,*,resume=None):
     forbid_overlap(output,[runtime['adapter_options'][k] for k in ('repo_path','checkpoint')])
     policy=OpenVLAOFTPolicy(runtime)
     try:
-        return run_loaded(cfg,output,train,dev,sidecar,policy,resume=resume)
+        return run_loaded(cfg,output,train,dev,sidecar,policy,resume=resume,init_from=init_from)
     finally:policy.close()

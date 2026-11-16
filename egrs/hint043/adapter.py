@@ -4,8 +4,9 @@ from pathlib import Path
 
 from egrs.augmentation.adapter_identity import (
     BASE_SOURCE, OFT_REVISION, LINEAGE_KEYS, TARGET, RETENTION_STATS_SHA, _lineage)
-from .contracts import ADAPTER_FORMAT, GROUP, INDEX_IDENTITY, RECIPE, require, read_json, write_json, sha, same
-from .budget import ModelBudget
+from .contracts import (ADAPTER_FORMAT, EXTENDED_ADAPTER_FORMAT, GROUP, INDEX_IDENTITY, RECIPE,
+                        require, read_json, write_json, sha, same, training_recipe)
+from .budget import ModelBudget, ReferenceBudget
 
 
 def valid_digest(value):
@@ -14,10 +15,12 @@ def valid_digest(value):
 
 def validate(identity):
     v = identity
-    require(v.get('schema_version') == ADAPTER_FORMAT and v.get('group') == GROUP
-        and v.get('arm') in ('h0','h1') and type(v.get('update')) is int and 1 <= v['update'] <= 1000
-        and v.get('final_update') == 1000 and v.get('index_identity') == INDEX_IDENTITY
-        and valid_digest(v.get('sidecar_identity')) and same(v.get('training_recipe'),RECIPE)
+    target = v.get('final_update')
+    recipe = training_recipe(target)
+    require(v.get('schema_version') == (ADAPTER_FORMAT if target == 1000 else EXTENDED_ADAPTER_FORMAT) and v.get('group') == GROUP
+        and v.get('arm') in ('h0','h1') and type(v.get('update')) is int and 1 <= v['update'] <= target
+        and v.get('index_identity') == INDEX_IDENTITY
+        and valid_digest(v.get('sidecar_identity')) and same(v.get('training_recipe'),recipe)
         and v.get('initialization') == 'original_sog10_research_update_zero'
         and v.get('deployment_input_fields') == ['images','instruction','proprio']
         and v.get('deployment_hint') is False, 'Invalid043 adapter recipe/inputs')
@@ -43,12 +46,17 @@ def validate(identity):
         and all(valid_digest(h) for h in v['tensor_sha256'].values()) and valid_digest(v.get('adapter_sha256')), 'Invalid tensor identities')
     # Structural reference validation stays free of torch/model imports.
     calls = v.get('reference_calls',{})
-    require(set(calls)=={'train','dev','total','budget'} and all(type(x) is int for x in calls.values())
-        and calls['train']==8*v['update'] and 0<=calls['dev']<=1024
-        and calls['total']==calls['train']+calls['dev'] and calls['budget']==9024 and calls['total']<=9024,
+    ReferenceBudget.validated(calls, target_updates=target)
+    require(calls['train']==8*v['update'],
         'Invalid reference counters')
-    forward = ModelBudget.validated(v.get('model_calls'))
+    forward = ModelBudget.validated(v.get('model_calls'), target_updates=target)
     require(forward['main_train']==20*v['update'] and forward['aux_train']<=4*v['update'], 'Model counters differ from update')
+    if target > 1000:
+        parent = v.get('continuation_parent',{})
+        require(v['update'] > 1000 and set(parent) == {'update','arm','adapter_sha256','training_state_sha256','identity_sha256','run_config_sha256'}
+            and parent['update'] == 1000 and parent['arm'] == v['arm']
+            and all(valid_digest(parent[k]) for k in ('adapter_sha256','training_state_sha256','identity_sha256','run_config_sha256')),
+            'Extended043 requires exact original1000 parent provenance')
 
 
 def read_adapter_identity(directory):
@@ -76,13 +84,15 @@ def install(policy):
     return inject_language_lora(policy)
 
 
-def save_adapter(policy,directory,*,arm,update,sidecar_identity,reference_calls,model_calls):
+def save_adapter(policy,directory,*,arm,update,sidecar_identity,reference_calls,model_calls,
+                 target_updates=1000,continuation_parent=None):
     import torch
     p = Path(directory)
     require(not p.exists(), 'Checkpoint already exists')
     tensors = state(policy)
-    v = {'schema_version':ADAPTER_FORMAT,'group':GROUP,'arm':arm,'update':update,'final_update':1000,
-        'index_identity':INDEX_IDENTITY,'sidecar_identity':sidecar_identity,'training_recipe':deepcopy(RECIPE),
+    v = {'schema_version':ADAPTER_FORMAT if target_updates == 1000 else EXTENDED_ADAPTER_FORMAT,
+        'group':GROUP,'arm':arm,'update':update,'final_update':target_updates,
+        'index_identity':INDEX_IDENTITY,'sidecar_identity':sidecar_identity,'training_recipe':training_recipe(target_updates),
         'initialization':'original_sog10_research_update_zero','base_lineage':_lineage(policy),
         'deployment_input_fields':['images','instruction','proprio'],'deployment_hint':False,
         'rank':16,'alpha':32,'dropout':0.0,
@@ -91,6 +101,8 @@ def save_adapter(policy,directory,*,arm,update,sidecar_identity,reference_calls,
         'tensor_dtypes':{n:str(t.dtype) for n,t in tensors.items()},
         'tensor_sha256':{n:tensor_sha(t) for n,t in tensors.items()},
         'reference_calls':reference_calls,'model_calls':model_calls,'adapter_sha256':'0'*64}
+    if target_updates > 1000:
+        v['continuation_parent'] = deepcopy(continuation_parent)
     require(tensors and all(torch.isfinite(t).all() for t in tensors.values()), 'No finite LoRA state')
     validate(v)
     p.mkdir(parents=True)
@@ -117,9 +129,10 @@ def restore(policy,directory,v=None):
     return v
 
 
-def attach(policy,directory,arm):
+def attach(policy,directory,arm,*,checkpoint_step=1000):
     v = read_adapter_identity(directory)
-    require(v['arm']==arm and v['update']==1000, 'Requested043 final arm differs')
+    require(type(checkpoint_step) is int and checkpoint_step >= 1000 and checkpoint_step % 1000 == 0
+            and v['arm']==arm and v['update']==checkpoint_step, 'Requested043 checkpoint step/arm differs')
     targets = install(policy)
     require(targets==v['target_modules'], 'Loaded LoRA target inventory differs')
     restore(policy,directory,v)

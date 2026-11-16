@@ -11,7 +11,9 @@ MAX_KEYS = 143960
 GROUP = 'language_status_transfer'
 SIDECAR_FORMAT = 'task043-status-language-v1'
 ADAPTER_FORMAT = 'task043-hint-adapter-v1'
+EXTENDED_ADAPTER_FORMAT = 'task043-hint-adapter-v2'
 CONFIG_FORMAT = 'task043-hint-training-v1'
+EXTENDED_CONFIG_FORMAT = 'task043-hint-training-v2'
 TEMPLATE_VERSION = 'current-native-goal-relations-v1'
 SENSOR_FIELDS = frozenset(('images', 'instruction', 'proprio'))
 RELATIONS = {
@@ -112,8 +114,19 @@ def sensors(item):
     return {k:item[k] for k in SENSOR_FIELDS}
 
 
-def transfer_weight(update):
-    require(type(update) is int and 1 <= update <= 1000, 'Update must be 1..1000')
+def training_recipe(target_updates=1000):
+    require(type(target_updates) is int and target_updates >= 1000 and target_updates % 1000 == 0,
+            'Target updates must be a positive multiple of1000')
+    result = json.loads(json.dumps(RECIPE))
+    result.update(updates=target_updates, reference_budget=9024*(target_updates//1000),
+                  model_forward_budget=27072*(target_updates//1000),
+                  checkpoint_selection='fixed_terminal_1000' if target_updates == 1000 else 'fixed_thousand_step_milestones')
+    return result
+
+
+def transfer_weight(update, *, target_updates=1000):
+    training_recipe(target_updates)
+    require(type(update) is int and 1 <= update <= target_updates, 'Update outside requested training horizon')
     return .1 * min(1., max(0., (update - 100) / 100))
 
 
@@ -129,8 +142,11 @@ def input_path(value, directory):
 def load_config(path):
     cfg = read_json(path)
     require(set(cfg) == {'format','arm','index_dir','sidecar_dir','benchmark_root','runtime','training_recipe'}
-            and cfg['format'] == CONFIG_FORMAT and cfg['arm'] in ('h0','h1'), 'Exact043 configuration required')
-    require(same(cfg['training_recipe'], RECIPE), 'Fixed approved043 training recipe required')
+            and cfg['format'] in (CONFIG_FORMAT, EXTENDED_CONFIG_FORMAT) and cfg['arm'] in ('h0','h1'), 'Exact043 configuration required')
+    target = cfg['training_recipe'].get('updates')
+    expected_format = CONFIG_FORMAT if target == 1000 else EXTENDED_CONFIG_FORMAT
+    require(cfg['format'] == expected_format and same(cfg['training_recipe'], training_recipe(target)),
+            'Fixed043 recipe required; only the declared training horizon/budgets may change')
     for key in ('index_dir','sidecar_dir','benchmark_root','runtime'):
         cfg[key] = input_path(cfg[key], Path(path).resolve().parent)
     return cfg

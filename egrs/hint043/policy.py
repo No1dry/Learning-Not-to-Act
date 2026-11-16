@@ -13,13 +13,16 @@ class HintPolicy:
         require(not {'hint','status','sidecar','sidecar_dir','teacher_adapter','task_control_arm','experiment_arm'} & cfg.keys(),
                 'Deployment cannot receive training hints or a historical research controller')
         directory=cfg.pop('method_adapter');arm=cfg.pop('hint043_arm')
+        step=cfg.pop('hint043_checkpoint_step',1000)
         require(arm in ('h0','h1'),'043 evaluation arm required')
         cfg['policy_factory']=FACTORY
         self.base=OpenVLAOFTPolicy(cfg)
         try:
-            value=attach(self.base,directory,arm)
+            value=(attach(self.base,directory,arm) if step==1000
+                   else attach(self.base,directory,arm,checkpoint_step=step))
             self.metadata=deepcopy(self.base.metadata)
             self.metadata.update(method_adapter=value,hint043_arm=arm,deployment_hint=False)
+            if step!=1000:self.metadata['hint043_checkpoint_step']=step
         except BaseException:
             self.base.close()
             raise
