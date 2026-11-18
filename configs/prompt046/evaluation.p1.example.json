@@ -1,0 +1,14 @@
+{
+  "schema_version": "task046-prompt-eval-v1",
+  "variant": "p1",
+  "prompt_manifest": "${LNA046_CODE}/collaboration/evidence/044_prompt_manifest.json",
+  "reference_plan": "${LNA046_ROOT}/runs/task045-h1-step3000-eval-001/plan.json",
+  "p0_summary": "${LNA046_ROOT}/runs/task045-h1-step3000-eval-001/summary.json",
+  "method_adapter": "${LNA046_ROOT}/runs/task045-h1-train-001/update-003000",
+  "benchmark_root": "${LNA046_CORE}",
+  "reporting_root": "${LNA046_REPORTING}",
+  "base_runtime": "${LNA046_RUNTIME}",
+  "environment_dispatch": {
+    "legacy_root": "${LNA046_LEGACY_CORE}"
+  }
+}

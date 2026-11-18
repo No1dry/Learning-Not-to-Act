@@ -1,0 +1,121 @@
+{
+  "format": "task044-static-prompt-map-v1",
+  "version": 1,
+  "condition": "10",
+  "fact_time": "episode_initial_only",
+  "fixed_during_episode": true,
+  "original_instruction_matches": "exact; no fuzzy matching or runtime-generated paraphrases",
+  "prompt_construction": "p1 = original_instruction + '. ' + p1_added_initial_fact; p2 = p2_instruction",
+  "model_prompt_wrapper": "unchanged official OFT formatting, tokenization and native forward",
+  "provided_information": "Human-declared initial completed goal for diagnostic purposes; not autonomous visual state inference; not online GT.",
+  "tasks": [
+    {
+      "official_task_id": 0,
+      "task_id": "basket",
+      "original_instruction": "put both the alphabet soup and the tomato sauce in the basket",
+      "p1_added_initial_fact": "the alphabet soup has already been placed in the basket.",
+      "p1_instruction": "put both the alphabet soup and the tomato sauce in the basket. the alphabet soup has already been placed in the basket.",
+      "p2_instruction": "put the tomato sauce in the basket",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 1,
+      "task_id": "basket_cheese_butter",
+      "original_instruction": "put both the cream cheese box and the butter in the basket",
+      "p1_added_initial_fact": "the cream cheese box has already been placed in the basket.",
+      "p1_instruction": "put both the cream cheese box and the butter in the basket. the cream cheese box has already been placed in the basket.",
+      "p2_instruction": "put the butter in the basket",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 2,
+      "task_id": "stove",
+      "original_instruction": "turn on the stove and put the moka pot on it",
+      "p1_added_initial_fact": "the stove has already been turned on.",
+      "p1_instruction": "turn on the stove and put the moka pot on it. the stove has already been turned on.",
+      "p2_instruction": "put the moka pot on the stove",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 3,
+      "task_id": "bowl_drawer_close",
+      "original_instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+      "p1_added_initial_fact": "the black bowl has already been placed in the bottom drawer of the cabinet.",
+      "p1_instruction": "put the black bowl in the bottom drawer of the cabinet and close it. the black bowl has already been placed in the bottom drawer of the cabinet.",
+      "p2_instruction": "close the bottom drawer of the cabinet",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 4,
+      "task_id": "dual_mugs",
+      "original_instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "p1_added_initial_fact": "the white mug has already been placed on the left plate.",
+      "p1_instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate. the white mug has already been placed on the left plate.",
+      "p2_instruction": "put the yellow and white mug on the right plate",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 6,
+      "task_id": "mug_pudding",
+      "original_instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+      "p1_added_initial_fact": "the white mug has already been placed on the plate.",
+      "p1_instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate. the white mug has already been placed on the plate.",
+      "p2_instruction": "put the chocolate pudding to the right of the plate",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 7,
+      "task_id": "basket_soup_cheese",
+      "original_instruction": "put both the alphabet soup and the cream cheese box in the basket",
+      "p1_added_initial_fact": "the alphabet soup has already been placed in the basket.",
+      "p1_instruction": "put both the alphabet soup and the cream cheese box in the basket. the alphabet soup has already been placed in the basket.",
+      "p2_instruction": "put the cream cheese box in the basket",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 8,
+      "task_id": "two_pots",
+      "original_instruction": "put both moka pots on the stove",
+      "p1_added_initial_fact": "one of the two moka pots has already been placed on the stove.",
+      "p1_instruction": "put both moka pots on the stove. one of the two moka pots has already been placed on the stove.",
+      "p2_instruction": "put the remaining moka pot on the stove",
+      "initial_mask": [
+        true,
+        false
+      ]
+    },
+    {
+      "official_task_id": 9,
+      "task_id": "mug_microwave_close",
+      "original_instruction": "put the yellow and white mug in the microwave and close it",
+      "p1_added_initial_fact": "the yellow and white mug has already been placed in the microwave.",
+      "p1_instruction": "put the yellow and white mug in the microwave and close it. the yellow and white mug has already been placed in the microwave.",
+      "p2_instruction": "close the microwave door",
+      "initial_mask": [
+        true,
+        false
+      ]
+    }
+  ]
+}
