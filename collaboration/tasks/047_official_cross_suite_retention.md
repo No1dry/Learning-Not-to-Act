@@ -1,3 +1,5 @@
+> 后续裁决：用户改为“你直接完成吧”。Codex已直接实现并部署PR22@bd871dea，X无需重复实现/泛审；3000真实评测仍待用户启动。预算及原官方pipeline约定不变。以047_codex_round1、2026-11-18_task047_codex_implemented_deployed及本轮运行文档为准，下方待X为历史。
+
 # 047 工单：直接复用官方OFT流程，三任务集×50条×两模型
 
 状态：用户已批准完整3000条预算，X直接实现最小接线；不先泛审、MVP或额外真实验证。方法仓库 `No1dry/Learning-Not-to-Act`，不修改benchmark/Eval库。

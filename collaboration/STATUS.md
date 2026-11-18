@@ -1,5 +1,17 @@
 # 当前协作状态
 
+## 2026-11-18：047由Codex直接实现并部署，下一用户正式3000
+
+用户新授权“你直接完成吧”覆盖047待X工单。PR22固定bd871dea127a2049134be4fb0fa7f392061d28d5、依赖PR21@a1179099，源树dbff1510与本地测试树一致，不自动merge。新047直接调用固定官方OFT eval_libero原主体及run_task/run_episode、原环境/观察动作/原生done/全视频；只H1在官方初始化后加一次原rank16 LoRA，base不注入，官方cfg rank32保持。旧生产egrs逐字未改，训练10 identity/PT保持，推理各suite使用官方各自统计，不伪造lineage或放宽旧restore；不接Remain评分/FINISH/VLM/提示/教师或训练辅助分支。
+
+42不同CPU/fake最终过（31首轮＋8追加＋3直接Observer测试cwd装配修正后补过，原红灯JUnit保留）；含未改且附MIT许可官方runner的六组假500及toy LoRA/RNG/统计/正常False/技术错误。是Codex自查，不独立第三方或真实模型物理验证。技术错误若被原runner捕获，旁路显式报告软件不完整并停后续，不静默伪称有效满额模型SR。
+
+隔离code/config task047-official-cross-suite-v1，126源依赖模板与8实际配置脚本SHA一致；只显式PYTHONPATH，无pip/依赖升级/全局editable重映射。实际六配置、H1 adapter78a96aa7、三套统计、60个BDDL/init文件路径核对；未导入ML/物理、反序列化真实初态或training_state。实际conda/venv/session下只读progress返回not_started，未来run不存在，未代开实验。
+
+准备100%、真实正式0。用户按2026-11-18_task047_user_evaluation_commands或本地047_三任务集官方评测完整命令，一条Python run-all按base/H1的Spatial→Object→Goal两两串行，六cell各500/每模型1500/共3000，正常自动下一组；官方220/280/300、seed7/env0/等待10/chunk8/两图proprio/crop/50原初态保持，保存全视频/live SR/总百分比/最终任务及三套总体SR差值。预算自然动作块上限101000，零新训练/生成/标签index/真实MVP、预检前向或额外基线/seed。异常保留停止，无自动重试/退款删除；旧九任务不拼四套AVG。
+
+软件交付closed、真实效果open；X不重复实现/泛审。源tar/原JUnit/实际配置/私有receipt、关键文档精确commit读回SHA本地归档manifest登记，脏研究checkout和所有旧数据权重失败署名保持，无合并/删除待删=[]。047旧待X/实现部署0为历史，本条不覆盖未来决定。
+
 ## 2026-11-18：047官方三套能力保持评测已批准3000，交X最小接线
 
 用户明确要求直接用OpenVLA-OFT源码pipeline，规模3×10×50×2=3000，一步正式完成，覆盖此前建议600。base为官方四套联合SOG10，h1为同底座＋045 H1@3000 adapter78a96aa7；Spatial/Object/Goal各全部10任务×50官方初态，每模型1500。新047直接委托固定OFT e4287e94原eval_libero/run_task/run_episode、环境/图像动作/原生done/全视频，不接Remain评分器、不新训练/标签index/教师/FINISH/VLM/提示或额外seed/MVP。官方归一化与上限220/280/300、seed7/env seed0/等待10/chunk8、两图proprio/center_crop/task order0/init0..49保持。
