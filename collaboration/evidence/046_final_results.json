@@ -1,0 +1,322 @@
+{
+  "format": "task046-existing-results-analysis-v1",
+  "date": "2026-11-18",
+  "method_adapter_sha256": "78a96aa79fc996f22fda3dd1680a6edc0ff0dd59312c501d1aa4f96be740201d",
+  "prompt_manifest_sha256": "e648ef202c31e6e99e14478f6ec36952a1791d2187bf023a224b25974f669566",
+  "p0_reused_not_new_execution": true,
+  "new_formal_episodes": 180,
+  "task_order": [
+    "basket",
+    "basket_cheese_butter",
+    "stove",
+    "bowl_drawer_close",
+    "dual_mugs",
+    "mug_pudding",
+    "basket_soup_cheese",
+    "two_pots",
+    "mug_microwave_close"
+  ],
+  "variants": {
+    "p1": {
+      "summary_sha256": "da2b4fb4ea0b3a826ad4979c8eace9672a51312be4e2e8af10b9329af2707113",
+      "formal_SR": {
+        "numerator": 0,
+        "denominator": 90,
+        "percent": 0.0
+      },
+      "predict_calls": 5850,
+      "audit_event_counts": {
+        "initialized": 1,
+        "episode_reset": 90,
+        "predict": 5850,
+        "predict_result": 5850
+      },
+      "software_exit": "success",
+      "episode_metadata_checked": 90,
+      "task_successes": {
+        "basket": 0,
+        "basket_cheese_butter": 0,
+        "stove": 0,
+        "bowl_drawer_close": 0,
+        "dual_mugs": 0,
+        "mug_pudding": 0,
+        "basket_soup_cheese": 0,
+        "two_pots": 0,
+        "mug_microwave_close": 0
+      },
+      "failure_diagnostics": {
+        "goal_regression": 13,
+        "goal_not_confirmed_by_horizon": 90,
+        "wrong_grasp": 1
+      },
+      "diagnostic_unknowns": {},
+      "exit_reasons": {
+        "horizon": 90
+      },
+      "native_full_goals": 0,
+      "all_horizon520": true
+    },
+    "p2": {
+      "summary_sha256": "3c5530b6cc79f6dfb6c8f8719a913a970b6d976d557e24bf14899327943f1690",
+      "formal_SR": {
+        "numerator": 57,
+        "denominator": 90,
+        "percent": 63.333333333333336
+      },
+      "predict_calls": 3282,
+      "audit_event_counts": {
+        "initialized": 1,
+        "episode_reset": 90,
+        "predict": 3282,
+        "predict_result": 3282
+      },
+      "software_exit": "success",
+      "episode_metadata_checked": 90,
+      "task_successes": {
+        "basket": 8,
+        "basket_cheese_butter": 2,
+        "stove": 8,
+        "bowl_drawer_close": 10,
+        "dual_mugs": 5,
+        "mug_pudding": 3,
+        "basket_soup_cheese": 10,
+        "two_pots": 1,
+        "mug_microwave_close": 10
+      },
+      "failure_diagnostics": {
+        "wrong_grasp": 9,
+        "wrong_placement": 10,
+        "goal_not_confirmed_by_horizon": 24,
+        "goal_regression": 10
+      },
+      "diagnostic_unknowns": {
+        "event_evidence_unknown": 8,
+        "completion_release_unknown": 6
+      },
+      "exit_reasons": {
+        "goal_confirmed": 60,
+        "horizon": 30
+      },
+      "native_full_goals": 67,
+      "all_horizon520": false
+    },
+    "p0": {
+      "formal_SR": {
+        "numerator": 62,
+        "denominator": 90,
+        "percent": 68.88888888888889
+      },
+      "task_successes": {
+        "basket": 7,
+        "basket_cheese_butter": 7,
+        "stove": 9,
+        "bowl_drawer_close": 10,
+        "dual_mugs": 7,
+        "mug_pudding": 2,
+        "basket_soup_cheese": 9,
+        "two_pots": 1,
+        "mug_microwave_close": 10
+      },
+      "failure_diagnostics": {
+        "goal_not_confirmed_by_horizon": 19,
+        "wrong_grasp": 5,
+        "wrong_placement": 3,
+        "goal_regression": 11
+      },
+      "diagnostic_unknowns": {
+        "event_evidence_unknown": 2,
+        "completion_release_unknown": 6
+      },
+      "exit_reasons": {
+        "horizon": 25,
+        "goal_confirmed": 65
+      },
+      "native_full_goals": 71,
+      "all_horizon520": false
+    }
+  },
+  "paired": {
+    "p1_vs_p0": {
+      "counts": {
+        "both": 0,
+        "gained": 0,
+        "lost": 62,
+        "neither": 28
+      },
+      "gained": [],
+      "lost": [
+        "basket_cheese_butter_s001_10",
+        "basket_cheese_butter_s002_10",
+        "basket_cheese_butter_s003_10",
+        "basket_cheese_butter_s004_10",
+        "basket_cheese_butter_s005_10",
+        "basket_cheese_butter_s008_10",
+        "basket_cheese_butter_s009_10",
+        "basket_s001_10",
+        "basket_s002_10",
+        "basket_s003_10",
+        "basket_s004_10",
+        "basket_s005_10",
+        "basket_s006_10",
+        "basket_s008_10",
+        "basket_soup_cheese_s000_10",
+        "basket_soup_cheese_s001_10",
+        "basket_soup_cheese_s002_10",
+        "basket_soup_cheese_s004_10",
+        "basket_soup_cheese_s005_10",
+        "basket_soup_cheese_s006_10",
+        "basket_soup_cheese_s007_10",
+        "basket_soup_cheese_s008_10",
+        "basket_soup_cheese_s009_10",
+        "bowl_drawer_close_s000_10",
+        "bowl_drawer_close_s001_10",
+        "bowl_drawer_close_s002_10",
+        "bowl_drawer_close_s003_10",
+        "bowl_drawer_close_s004_10",
+        "bowl_drawer_close_s005_10",
+        "bowl_drawer_close_s006_10",
+        "bowl_drawer_close_s007_10",
+        "bowl_drawer_close_s008_10",
+        "bowl_drawer_close_s009_10",
+        "dual_mugs_s000_10",
+        "dual_mugs_s002_10",
+        "dual_mugs_s003_10",
+        "dual_mugs_s005_10",
+        "dual_mugs_s007_10",
+        "dual_mugs_s008_10",
+        "dual_mugs_s009_10",
+        "mug_microwave_close_s000_10",
+        "mug_microwave_close_s001_10",
+        "mug_microwave_close_s002_10",
+        "mug_microwave_close_s003_10",
+        "mug_microwave_close_s004_10",
+        "mug_microwave_close_s005_10",
+        "mug_microwave_close_s006_10",
+        "mug_microwave_close_s007_10",
+        "mug_microwave_close_s008_10",
+        "mug_microwave_close_s009_10",
+        "mug_pudding_s004_10",
+        "mug_pudding_s009_10",
+        "stove_s000_10",
+        "stove_s001_10",
+        "stove_s003_10",
+        "stove_s004_10",
+        "stove_s005_10",
+        "stove_s006_10",
+        "stove_s007_10",
+        "stove_s008_10",
+        "stove_s009_10",
+        "two_pots_s005_10"
+      ]
+    },
+    "p2_vs_p0": {
+      "counts": {
+        "both": 54,
+        "gained": 3,
+        "lost": 8,
+        "neither": 25
+      },
+      "gained": [
+        "basket_s000_10",
+        "basket_soup_cheese_s003_10",
+        "mug_pudding_s008_10"
+      ],
+      "lost": [
+        "basket_cheese_butter_s002_10",
+        "basket_cheese_butter_s003_10",
+        "basket_cheese_butter_s004_10",
+        "basket_cheese_butter_s005_10",
+        "basket_cheese_butter_s009_10",
+        "dual_mugs_s002_10",
+        "dual_mugs_s003_10",
+        "stove_s009_10"
+      ]
+    },
+    "p2_vs_p1": {
+      "counts": {
+        "both": 0,
+        "gained": 57,
+        "lost": 0,
+        "neither": 33
+      },
+      "gained": [
+        "basket_cheese_butter_s001_10",
+        "basket_cheese_butter_s008_10",
+        "basket_s000_10",
+        "basket_s001_10",
+        "basket_s002_10",
+        "basket_s003_10",
+        "basket_s004_10",
+        "basket_s005_10",
+        "basket_s006_10",
+        "basket_s008_10",
+        "basket_soup_cheese_s000_10",
+        "basket_soup_cheese_s001_10",
+        "basket_soup_cheese_s002_10",
+        "basket_soup_cheese_s003_10",
+        "basket_soup_cheese_s004_10",
+        "basket_soup_cheese_s005_10",
+        "basket_soup_cheese_s006_10",
+        "basket_soup_cheese_s007_10",
+        "basket_soup_cheese_s008_10",
+        "basket_soup_cheese_s009_10",
+        "bowl_drawer_close_s000_10",
+        "bowl_drawer_close_s001_10",
+        "bowl_drawer_close_s002_10",
+        "bowl_drawer_close_s003_10",
+        "bowl_drawer_close_s004_10",
+        "bowl_drawer_close_s005_10",
+        "bowl_drawer_close_s006_10",
+        "bowl_drawer_close_s007_10",
+        "bowl_drawer_close_s008_10",
+        "bowl_drawer_close_s009_10",
+        "dual_mugs_s000_10",
+        "dual_mugs_s005_10",
+        "dual_mugs_s007_10",
+        "dual_mugs_s008_10",
+        "dual_mugs_s009_10",
+        "mug_microwave_close_s000_10",
+        "mug_microwave_close_s001_10",
+        "mug_microwave_close_s002_10",
+        "mug_microwave_close_s003_10",
+        "mug_microwave_close_s004_10",
+        "mug_microwave_close_s005_10",
+        "mug_microwave_close_s006_10",
+        "mug_microwave_close_s007_10",
+        "mug_microwave_close_s008_10",
+        "mug_microwave_close_s009_10",
+        "mug_pudding_s004_10",
+        "mug_pudding_s008_10",
+        "mug_pudding_s009_10",
+        "stove_s000_10",
+        "stove_s001_10",
+        "stove_s003_10",
+        "stove_s004_10",
+        "stove_s005_10",
+        "stove_s006_10",
+        "stove_s007_10",
+        "stove_s008_10",
+        "two_pots_s005_10"
+      ],
+      "lost": []
+    }
+  },
+  "matched_plan_fields_equal": [
+    "base_runtime",
+    "core_revision",
+    "reporting_revision",
+    "reference_plan_sha256",
+    "expected",
+    "tasks",
+    "environment_dispatch",
+    "proxy_coordination",
+    "source_projection",
+    "budget",
+    "adapter_identity",
+    "p0"
+  ],
+  "actual_prompt_predictions_checked": 9132,
+  "original_file_count": 20,
+  "original_file_bytes": 130619331,
+  "read_only_existing_reports_no_new_scoring_or_model_or_physics": true
+}
