@@ -1,0 +1,72 @@
+{
+  "format": "task047-fixed-reference-bindings-v1",
+  "date": "2026-11-18",
+  "official_checkpoint_source": {
+    "repository": "moojink/openvla-7b-oft-finetuned-libero-spatial-object-goal-10",
+    "revision": "638918f3d1c2e43a39a8a20772bdb8b91835e4b7"
+  },
+  "OFT_source": {
+    "repository": "https://github.com/moojink/openvla-oft",
+    "revision": "e4287e94541f459edc4feabc4e181f537cd569a8",
+    "runner_path": "experiments/robot/libero/run_libero_eval.py",
+    "runner_sha256": "701a20b6ca2942aa36e0e7d567b25647268b936a23af79c5893534f10bec7802",
+    "libero_utils_path": "experiments/robot/libero/libero_utils.py",
+    "libero_utils_sha256": "489c16dc8220845b2936ddb81aafd7469061d2009b0edddb2f85703bc51a204f",
+    "openvla_utils_sha256": "eed754d7c5f9821aae2fe0531dbe01df8c11df0d5c79b4aeeb9bb4452124bdf5",
+    "robot_utils_sha256": "93541b01edd4de49fcc9a1d9249e11fea008b9502fd755096503aaec93773da0",
+    "runner_and_libero_utils_read_only_downloaded_and_SHA_match_historical_provenance": true,
+    "all_four_files_newly_downloaded": false,
+    "new_model_or_simulator_imported": false
+  },
+  "method_source_reference": {
+    "pull_request": "https://github.com/No1dry/Learning-Not-to-Act/pull/20",
+    "head": "10531b626998d02f6168d23df02501ce64d36969",
+    "attach_reference": "egrs/hint043/adapter.py",
+    "linear_reference": "egrs/augmentation/oft.py",
+    "unchanged_old_contracts_required": true
+  },
+  "h1": {
+    "arm": "h1",
+    "update": 3000,
+    "final_update": 3000,
+    "adapter_sha256": "78a96aa79fc996f22fda3dd1680a6edc0ff0dd59312c501d1aa4f96be740201d",
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.0,
+    "training_normalization_key_preserved": "libero_10_no_noops",
+    "training_normalization_statistics_sha256": "915467c67d0f68f0657ffedbf71be4558fe742ec6b4877eb99a20e4d76d15efc",
+    "evaluation_normalization": "selected_by_original_check_unnorm_key_for_each_suite_not_libero10",
+    "training_identity_is_not_rewritten_as_evaluation_identity": true
+  },
+  "base_components": {
+    "dataset_statistics_sha256": "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3",
+    "action_head--300000_checkpoint.pt": "f9647226ca9a1ee64ff8ed1ec380c89110afc6fc2bf6d0ae463cc4023165b4dc",
+    "proprio_projector--300000_checkpoint.pt": "1792c6e19381d3c7c814e2d49836a855d3a38b0693919416f52b3c5af39505c8"
+  },
+  "evaluation": {
+    "suites": ["libero_spatial", "libero_object", "libero_goal"],
+    "horizons": {"libero_spatial": 220, "libero_object": 280, "libero_goal": 300},
+    "official_default_initial_states": true,
+    "initial_state_indexes_inclusive": [0, 49],
+    "task_order_index": 0,
+    "policy_seed": 7,
+    "environment_seed": 0,
+    "num_steps_wait": 10,
+    "num_open_loop_steps": 8,
+    "center_crop": true,
+    "num_images_in_input": 2,
+    "use_proprio": true,
+    "use_l1_regression": true,
+    "use_diffusion": false,
+    "use_film": false,
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "official_cfg_lora_rank_unchanged": 32,
+    "prompt": "original_task_language_only",
+    "score": "original_official_env_done_success_no_Remain_scorer",
+    "video": "all_official_rollout_videos_separate_output_per_cell",
+    "execution_order": ["base-spatial", "h1-spatial", "base-object", "h1-object", "base-goal", "h1-goal"]
+  },
+  "new_real_work_already_executed": false,
+  "server_access_performed_this_dispatch": false
+}

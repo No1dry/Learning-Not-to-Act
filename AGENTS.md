@@ -1,5 +1,15 @@
 # 方法研究协作规则
 
+## 2026-11-18：047官方三套能力保持评测已批准3000，交X最小接线
+
+用户明确要求直接用OpenVLA-OFT源码pipeline，规模3×10×50×2=3000，一步正式完成，覆盖此前建议600。base为官方四套联合SOG10，h1为同底座＋045 H1@3000 adapter78a96aa7；Spatial/Object/Goal各全部10任务×50官方初态，每模型1500。新047直接委托固定OFT e4287e94原eval_libero/run_task/run_episode、环境/图像动作/原生done/全视频，不接Remain评分器、不新训练/标签index/教师/FINISH/VLM/提示或额外seed/MVP。官方归一化与上限220/280/300、seed7/env seed0/等待10/chunk8、两图proprio/center_crop/task order0/init0..49保持。
+
+H1是原rank16原生LoRA，官方cfg.lora_rank32不变；047独立核验同底座、原训练10统计与固定tensor，再由官方选择实际推理suite统计，不能改旧identity/PT、伪造metadata、固定10归一化或放宽旧043/045验证器。初始化后仅加载一次H1，原版不注入；官方已合并原LoRA不重加。两模型同初态对应，不拿论文数字代现场base。
+
+一条串行六cell，各500正常完自动下一组，全3000视频/官方日志/轻量逐条JSON/实时百分比live SR/最终任务及三套总体SR差值；技术异常单列并停后续，不把被官方捕获的异常伪称有效满额SR、不自动重试换初态或删除。预算正式3000、动作块请求自然上限101000，零新增真实预检前向。旧九任务结果不拼成官方四套AVG，不能称严格zero-shot。
+
+工单047_official_cross_suite_retention、两份047证据及2026-11-18_task047_official_cross_suite_retention方案已发布。X直接基于accepted PR20@10531b62最小实现＋定向CPU/fake，新PR与047_round1，不先泛审/SSH/真实作业；Codex建议式验收后隔离部署与常用完整命令，用户亲启全部真实阶段。交接100%、实现部署正式0；批准不授权Codex代跑或自动merge。046已closed（68.89/0/63.33%），勿重开旧命令。关键文档精确commit SHA本地归档manifest，脏checkout和所有旧数据权重失败署名不改，无删除待删=[]。本条覆盖下方无新实验许可/待执行历史，不覆盖未来决定。
+
 ## 2026-11-18：046由Codex直接实现并部署，下一用户一条P1→P2
 
 用户明确“要改的话你改一下就行了”，覆盖此前待X工单；X无需重复实现/泛审。PR21固定a1179099c61317aba90ef8af4bc334f21fb10c88，依赖accepted045并逐字携带X的044模块，源树412f9ab7与本地测试树相同，不自动merge。仅组合045 HintPolicy/一次H1@3000 attach与044原predict/reset/close/白名单/实际文字审计；旧045生产文件和旧044六模块逐字未改，模型/权重/评分/控制后处理不变。046元数据如实区分外层初始语义提示与artifact内部原无提示身份。
