@@ -1,5 +1,16 @@
 # 方法研究协作规则
 
+## 2026-11-18：046由Codex直接实现并部署，下一用户一条P1→P2
+
+用户明确“要改的话你改一下就行了”，覆盖此前待X工单；X无需重复实现/泛审。PR21固定a1179099c61317aba90ef8af4bc334f21fb10c88，依赖accepted045并逐字携带X的044模块，源树412f9ab7与本地测试树相同，不自动merge。仅组合045 HintPolicy/一次H1@3000 attach与044原predict/reset/close/白名单/实际文字审计；旧045生产文件和旧044六模块逐字未改，模型/权重/评分/控制后处理不变。046元数据如实区分外层初始语义提示与artifact内部原无提示身份。
+
+83不同CPU/fake最终通过（旧60/新23）；初次缺旧配置模板和7个新fixture tmp_path碰撞保留原JUnit，补装配后只补受影响用例，生产断言/旧源码不改；强化串行报告后重复1项不另计。Codex自查，不是独立第三方/真实7B或物理效果验证。隔离code/config task046-h1-prompt-v1，117源依赖模板/4实际配置SHA一致，原两venv仅no-deps映射无升级；实际H1 adapter78a96aa7与P0 plan1d1c79e0/summary4e745dbe/逐episode62of90、冻结文本e648ef20文件核对。未模型/训练state反序列化/物理/新plan/评分，两新run与marker不存在，无代启动。
+
+准备100%，新正式0。用户现在按2026-11-18_task046_user_evaluation_commands或本地046_H1_3000提示词评测完整命令在原simulation环境source本轮session，一条python run-both先P1正式90正常后P2正式90，共180/≤11700predict，P0复用同H1@3000 68.89%不新跑；全视频/原90初态/H520/chunk8/seed7/完整A+B评分保持，无新训练/00/标签索引/数据/MVP/额外prompt或seed。无需X、pip/prepare/index/plan或额外GPU检查，不重开旧044/045。完成后marker下comparison.md/json给三组总分/九任务及所有配对得失，技术异常保留不删除重开。
+
+软件交付closed、真实效果open；关键文档精确commit读回SHA本地归档/manifest，源tar、原JUnit与修正记录、实际配置/私有收据保留，脏研究checkout与全部旧权重数据失败署名不改，无清理待删=[]。用户亲启实验，Codex等结果后审查；网站上传问题独立，不阻塞本轮。本条覆盖下方待X/实现0快照，不覆盖未来决定。
+
+
 ## 2026-11-18：046 H1@3000提示词诊断交X实现，用户亲启
 
 用户要求“原来的改prompt，p0，p1，p2。在这个045 H1@3000步上跑一遍”。P0复用已完成同模型62/90=68.89%，新增P1/P2各90共180、predict总≤11700；此复用解释已向用户说明，不冒称新跑P0，用户若另要求再单列90。固定H1@3000 adapter78a96aa7、原P0 plan1d1c79e0/summary4e745dbe完整SHA，原044九任务逐字提示、同90个10来源/H520/chunk8/seed7/双bridge/完整A+B评分保持，不新增00/训练/标签index/物理训练数据、seed/prompt搜索/MVP或FINISH/VLM/在线GT。
