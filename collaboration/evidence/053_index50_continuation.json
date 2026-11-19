@@ -1,0 +1,96 @@
+{
+  "format": "task053-index50-result-evidence-fix-v1",
+  "date": "2026-11-19",
+  "cause": {
+    "owner": "Codex",
+    "stage": "post-rollout result/evidence validation",
+    "missed_guard": "headless/schema.py _validate_result initial_state_index>9",
+    "not_model_or_RGB_failure": true,
+    "original_error": "ValueError: task011 sources are official indices zero through nine"
+  },
+  "state": {
+    "ready_sources": 450,
+    "total_sources": 450,
+    "source_readiness_percent": 100,
+    "source_bank_sha256": "54a225330e43bb88cd6299109798885ee2ac6af06d9492f8d5639f2d62e29747",
+    "source_builds_new": 0,
+    "prior_base_executed": 11,
+    "old_base_reported": 10,
+    "old_base_reported_successes": 0,
+    "h1_executed": 0
+  },
+  "implementation": {
+    "pull_request": 28,
+    "source_commit": "cdef3d39d53ed6d28bee64e09b7bc660d5d03e41",
+    "source_tree": "c41f912413c924f87026cd1dc7b23763d74a40b6",
+    "local_commit": "282caba77b88ffa7c27a3eaac7d334485b543263",
+    "new_files": 6,
+    "canonical_core_changed": false,
+    "old049_051_052_production_changed": false,
+    "private_result_index_domain": [
+      0,
+      49
+    ],
+    "nested_evidence_same_validator": true,
+    "mandatory_full_schema_checks_per_episode": 1,
+    "score_modified": false,
+    "source_archive_sha256": "4b8ffa87d690215a9e8f7af19096ceee0c3f7ac2c9cc78885aa28ef757f22a81"
+  },
+  "checks": {
+    "CPU_fake_passed": 38,
+    "new_tests": 15,
+    "old049_tests": 23,
+    "initial_fixture_errors_retained": [
+      "test looked for import module in co_consts instead of co_names",
+      "synthetic H1 config omitted adapter"
+    ],
+    "actual_parent_old10": "original partial summary SHA, metadata/raw/video/inputs/source snapshot hashes; old outcomes unchanged, no old trace regrading",
+    "actual_episode11": "full private schema/evidence/source/raw/video validation, no new actions",
+    "actual_inherited": 11,
+    "inherited_successes": 0,
+    "subset_only_not_formal450": true,
+    "torch_imported": false,
+    "new_native_or_model_calls": 0,
+    "earlier_Codex_redundant_readonly_diagnostic_cancelled": true,
+    "user_experiments_stopped": false
+  },
+  "deployment": {
+    "directory": "task053-index50-continuation-v2",
+    "source_file_count": 146,
+    "actual_config_files": 3,
+    "byte_SHA_verified": true,
+    "new_run_exists": false,
+    "launch_marker_exists": false
+  },
+  "continuation": {
+    "parent_plan_file_sha256": "68a4e754f398c5abaaff96dc9f4f84aa3692ba7e08adae2d2fbdcf74f5c6a0d4",
+    "parent_partial_summary_sha256": "05b388fd112f5644811da6895252c2be3d18bf3a0362ea7a5f73dcec5266f7d4",
+    "old052_run_marked_complete": false,
+    "inherited_episode_ids": [
+      "basket_s000_10",
+      "basket_s001_10",
+      "basket_s002_10",
+      "basket_s003_10",
+      "basket_s004_10",
+      "basket_s005_10",
+      "basket_s006_10",
+      "basket_s007_10",
+      "basket_s008_10",
+      "basket_s009_10",
+      "basket_s010_10"
+    ],
+    "base_new_execution_limit": 439,
+    "h1_new_execution_limit": 450,
+    "total_unique_execution_limit": 900,
+    "no_new_source_generation": true,
+    "no_training": true,
+    "real_job_initiator": "user",
+    "failed_records_preserved": true
+  },
+  "archives": {
+    "no_raw_or_video_redownload_claim": true,
+    "old_plan_summary_sources_data_weights_logs_preserved": true,
+    "automatic_merge": false,
+    "deleted_files": []
+  }
+}
