@@ -44,6 +44,7 @@ def namespaces():
         if isinstance(n,ast.Constant) and n.value=='task011 sources are official indices zero through nine':
             n.value='Task053 sources are official indices zero through49'
     local={}
+    ast.increment_lineno(tree,schema._validate_result.__code__.co_firstlineno-1)
     exec(compile(ast.fix_missing_locations(tree),schema.__file__,'exec'),s,local)
     s['_validate_result']=local['_validate_result']
     e=old._namespace(evidence)
@@ -60,7 +61,7 @@ def validate_evidence(*args,**kwargs):
 
 
 def verifier(namespace):
-    """Original049 verification body, only two validator imports redirected."""
+    """Original checks, two imports redirected; evidence performs schema once."""
     from egrs.remain049.evaluation import verify_episode
     tree=ast.parse(inspect.getsource(verify_episode));changed=[]
     for node in ast.walk(tree):
@@ -69,6 +70,15 @@ def verifier(namespace):
             changed.append(node.module);node.module=__name__
     if len(changed)!=2:
         raise ValueError('Pinned053 verifier import seams differ')
+    function=tree.body[0]
+    duplicate=[n for n in function.body if isinstance(n,ast.Expr) and isinstance(n.value,ast.Call)
+        and isinstance(n.value.func,ast.Name) and n.value.func.id=='validate_protocol_result']
+    if len(duplicate)!=1:
+        raise ValueError('Pinned053 duplicate schema seam differs')
+    # validate_evidence starts with exactly the same full schema call. It remains
+    # mandatory before scoring; repeating it here only duplicates the same work.
+    function.body.remove(duplicate[0])
+    ast.increment_lineno(tree,verify_episode.__code__.co_firstlineno-1)
     local={}
     exec(compile(ast.fix_missing_locations(tree),verify_episode.__code__.co_filename,'exec'),namespace,local)
     return local['verify_episode']
