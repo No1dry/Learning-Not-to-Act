@@ -1,0 +1,21 @@
+{
+  "format": "task051-strict-bounded-recovery-software-v1",
+  "source_commit": "498e2f61a5127ba2a902c4ceb1d4ef0397afa5df",
+  "source_tree": "b0dfe3c94935e81a330a46b90bba8cb3a95e2277",
+  "pull_request": "https://github.com/No1dry/Learning-Not-to-Act/pull/26",
+  "original049_report_sha256": "2b34a4f34bf9fae699098d34f39a277ee01ea3a2cd65dc987e8087198b6829e9",
+  "original_counts": {"ready":405,"failed":45,"expected":450},
+  "failure_breakdown": {"Codex_omitted_R7_index_gate":40,"RGB_correspondence":5},
+  "repair": "private pinned helper package extends all four index guards only, canonical module and file identities preserved",
+  "recovery_limits": {"ready_reused_unchanged":405,"source_builds":42,"source_replays":45,"replay_only_sources":3,"rounds_per_failed_source":1,"original_inner_candidate_bounds_unchanged":true},
+  "physics_RGB_and_scoring_changes": false,
+  "old_failure_relabel_or_budget_refund": false,
+  "model_episodes": {"original049_pending_budget_reused":900,"new_additional_budget":0},
+  "software_tests": {"CPU_fake":45,"old049":23,"new051":22,"final_passed":45,"real_simulator_or_model_tests":0},
+  "source_archive_sha256": "4207a1eb1a156bc37c997be242c37fea7cf2ebfef268763f8d5934f06149ce6a",
+  "deployment": {"source_files":136,"actual_configs_scripts":3,"SHA_match":true,"representative_old_source_plan_SHA_unchanged":3,"torch_imported":false,"new_bank_or_model_run_created":false},
+  "new_real_physics_or_model_calls":0,
+  "real_job_starter":"user",
+  "automatic_merge":false,
+  "deleted_files":[]
+}
