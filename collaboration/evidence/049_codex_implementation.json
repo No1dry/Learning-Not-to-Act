@@ -1,0 +1,23 @@
+{
+  "schema_version": "task049-codex-software-delivery-v1",
+  "source_commit": "d601f289d98f34d9daf8da162383bc7106d43c78",
+  "source_tree": "05fca15f388eb8f47b425bdcd74a4b8fc9f6a907",
+  "pull_request": "https://github.com/No1dry/Learning-Not-to-Act/pull/24",
+  "parent_pr23": "4d8762c4504a09f7d9efac099137a7ce8ff35a3b",
+  "source_archive_sha256": "c0fc7e2cfc24fdac87e8ecb295d42317d80e738d54ff680e8803c36768197e72",
+  "deployment": {"source_files": 127, "actual_configurations": 3, "byte_match": true, "pip_or_global_mapping": false},
+  "cpu_fake_tests": {"unique": 23, "final_passed": 23, "independent_review": false, "original_failures_retained": true},
+  "population": {"tasks": 9, "indices_per_task": [0, 49], "existing_state_sources_reused": 90, "new_sources_to_prepare": 360, "per_model": 450, "models": ["base", "045-h1-update3000"], "new_model_episodes": 900},
+  "index_extension": "three exact private AST index-admission guard constants 10->50; legacy selected catalogue reused; original core modules/files unchanged",
+  "physics_and_score_changes": false,
+  "base_and_h1_original_instruction": true,
+  "live_metric": "same034 binary compliant success per completed episode; technical/integrity errors stay unresolved",
+  "file_only_old_sources_accepted": 90,
+  "new_physics_calls": 0,
+  "new_real_model_calls": 0,
+  "new_bank_or_eval_outputs_created": false,
+  "real_job_starter": "user unless separately expressly delegated",
+  "new_training": false,
+  "auto_merge": false,
+  "deleted_files": []
+}

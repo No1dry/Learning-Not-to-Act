@@ -98,6 +98,10 @@ class Observer:
             from .adapter import attach_h1
             attach_h1(model, action_head, proprio, self.identity["method_adapter"],
                       self.config["method_adapter"], cfg)
+        elif self.config["arm"] == "h0":
+            from egrs.official050.adapter import attach_h0
+            attach_h0(model, action_head, proprio, self.identity["method_adapter"],
+                      self.config["method_adapter"], cfg)
         self.loaded = True
         c.write(self.output/"model_identity.json", dict(
             self.identity, arm=self.config["arm"], checkpoint_original=self.config["checkpoint"],
