@@ -42,9 +42,11 @@ def verify_cell(output, config):
         c.require(adapter is None and identity["research_adapter_loaded"] is False,
                   "047 baseline unexpectedly loaded an adapter")
     else:
-        c.require(isinstance(adapter, dict) and adapter.get("adapter_sha256") == c.ADAPTER_SHA
-                  and adapter.get("arm") == "h1" and adapter.get("update") == adapter.get("final_update") == 3000
-                  and identity["research_adapter_loaded"] is True, "047 wrong completed H1 artifact")
+        arm = config["arm"]
+        expected_sha = c.H0_ADAPTER_SHA if arm == "h0" else c.ADAPTER_SHA
+        c.require(isinstance(adapter, dict) and adapter.get("adapter_sha256") == expected_sha
+                  and adapter.get("arm") == arm and adapter.get("update") == adapter.get("final_update") == 3000
+                  and identity["research_adapter_loaded"] is True, "Official completed research artifact differs")
     stats = c.read(Path(config["checkpoint"])/"dataset_statistics.json")
     key = c.expected_key(config["suite"], stats)
     c.require(identity["unnorm_key"] == key and identity["normalization_statistics_sha256"]

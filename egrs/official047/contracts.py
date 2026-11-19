@@ -15,6 +15,7 @@ BASE_SOURCE = {
     "revision": "638918f3d1c2e43a39a8a20772bdb8b91835e4b7",
 }
 ADAPTER_SHA = "78a96aa79fc996f22fda3dd1680a6edc0ff0dd59312c501d1aa4f96be740201d"
+H0_ADAPTER_SHA = "e361121756cc7ee25b90ccb1cb4aa296ce4ea93ac07bd0841409df09b0e16c20"
 STATS_SHA = "6ec6ef68d0d5bae4cb5f9fc9acb715a22b9f4545e9e9b300d0d88695cd7afec3"
 SOURCE_HASHES = {
     "experiments/robot/libero/run_libero_eval.py": "701a20b6ca2942aa36e0e7d567b25647268b936a23af79c5893534f10bec7802",
@@ -36,10 +37,15 @@ CELLS = tuple((arm, suite) for suite in HORIZONS for arm in ("base", "h1"))
 EPISODES = 500
 TOTAL = 3000
 LIBERO10_SCHEMA = "task048-official-libero10-v1"
+H0_LIBERO10_SCHEMA = "task050-official-h0-libero10-v1"
 
 
 def protocol(scope="three-suites"):
-    require(scope in ("three-suites", "libero10"), "Unknown official evaluation scope")
+    require(scope in ("three-suites", "libero10", "h0-libero10"), "Unknown official evaluation scope")
+    if scope == "h0-libero10":
+        return {"schema": H0_LIBERO10_SCHEMA, "label": "050", "module": "egrs.official050",
+                "horizons": {"libero_10": 520}, "total": 500,
+                "cells": (("h0", "libero_10"),), "title": "H0 LIBERO-10"}
     ten = scope == "libero10"
     horizons = {"libero_10": 520} if ten else dict(HORIZONS)
     return {"schema": LIBERO10_SCHEMA if ten else SCHEMA, "label": "048" if ten else "047",
@@ -50,6 +56,8 @@ def protocol(scope="three-suites"):
 
 
 def config_protocol(config):
+    if config.get("schema_version") == H0_LIBERO10_SCHEMA:
+        return protocol("h0-libero10")
     require(config.get("schema_version") in (SCHEMA, LIBERO10_SCHEMA), "Unknown official config schema")
     return protocol("libero10" if config["schema_version"] == LIBERO10_SCHEMA else "three-suites")
 
@@ -108,7 +116,7 @@ def load_config(path):
         "schema_version", "arm", "suite", "repo_path", "checkpoint", "method_adapter"},
         "047 configuration fields differ")
     spec = config_protocol(value)
-    require(value["arm"] in ("base", "h1") and value["suite"] in spec["horizons"],
+    require((value["arm"], value["suite"]) in spec["cells"],
             "Official evaluation schema/arm/suite mismatch")
     for key in ("repo_path", "checkpoint"):
         require(isinstance(value[key], str) and Path(value[key]).is_absolute(),
@@ -153,6 +161,14 @@ def read_h1(directory):
     return identity
 
 
+def read_h0(directory):
+    from egrs.hint043.adapter import read_adapter_identity
+    identity = read_adapter_identity(directory)
+    require(identity["arm"] == "h0" and identity["update"] == identity["final_update"] == 3000
+            and identity["adapter_sha256"] == H0_ADAPTER_SHA, "050 requires frozen H0@3000 bytes")
+    return identity
+
+
 def verify_inputs(config):
     repo, checkpoint = [Path(config[k]).resolve() for k in ("repo_path", "checkpoint")]
     revision = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
@@ -164,7 +180,8 @@ def verify_inputs(config):
         require(sha(checkpoint/name) == digest, "047 original checkpoint component differs: " + name)
     stats = read(checkpoint/"dataset_statistics.json")
     key = expected_key(config["suite"], stats)
-    identity = read_h1(config["method_adapter"]) if config["arm"] == "h1" else None
+    identity = (read_h0(config["method_adapter"]) if config["arm"] == "h0" else
+                read_h1(config["method_adapter"]) if config["arm"] == "h1" else None)
     if identity:
         lineage = identity["base_lineage"]
         require(lineage["checkpoint_source"] == BASE_SOURCE and lineage["repo_commit"] == REVISION
