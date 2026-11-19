@@ -35,6 +35,27 @@ HORIZONS = {"libero_spatial": 220, "libero_object": 280, "libero_goal": 300}
 CELLS = tuple((arm, suite) for suite in HORIZONS for arm in ("base", "h1"))
 EPISODES = 500
 TOTAL = 3000
+LIBERO10_SCHEMA = "task048-official-libero10-v1"
+
+
+def protocol(scope="three-suites"):
+    require(scope in ("three-suites", "libero10"), "Unknown official evaluation scope")
+    ten = scope == "libero10"
+    horizons = {"libero_10": 520} if ten else dict(HORIZONS)
+    return {"schema": LIBERO10_SCHEMA if ten else SCHEMA, "label": "048" if ten else "047",
+            "module": "egrs.official048" if ten else "egrs.official047",
+            "horizons": horizons, "total": 1000 if ten else 3000,
+            "cells": tuple((arm, suite) for suite in horizons for arm in ("base", "h1")),
+            "title": "LIBERO-10" if ten else "three-suite retention"}
+
+
+def config_protocol(config):
+    require(config.get("schema_version") in (SCHEMA, LIBERO10_SCHEMA), "Unknown official config schema")
+    return protocol("libero10" if config["schema_version"] == LIBERO10_SCHEMA else "three-suites")
+
+
+def horizon(config):
+    return config_protocol(config)["horizons"][config["suite"]]
 
 
 def require(condition, message):
@@ -86,8 +107,9 @@ def load_config(path):
     require(isinstance(value, dict) and set(value) == {
         "schema_version", "arm", "suite", "repo_path", "checkpoint", "method_adapter"},
         "047 configuration fields differ")
-    require(value["schema_version"] == SCHEMA and value["arm"] in ("base", "h1")
-            and value["suite"] in HORIZONS, "047 unknown schema/arm/suite")
+    spec = config_protocol(value)
+    require(value["arm"] in ("base", "h1") and value["suite"] in spec["horizons"],
+            "Official evaluation schema/arm/suite mismatch")
     for key in ("repo_path", "checkpoint"):
         require(isinstance(value[key], str) and Path(value[key]).is_absolute(),
                 "047 requires an absolute " + key)

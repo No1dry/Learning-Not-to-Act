@@ -40,7 +40,7 @@ def make_native_config(api, config, checkpoint, output):
         center_crop=True, num_open_loop_steps=8, lora_rank=32,
         load_in_8bit=False, load_in_4bit=False, task_suite_name=config["suite"],
         num_steps_wait=10, num_trials_per_task=50, initial_states_path="DEFAULT",
-        env_img_res=256, seed=7, use_wandb=False, run_id_note="047-" + config["arm"],
+        env_img_res=256, seed=7, use_wandb=False, run_id_note=c.config_protocol(config)["label"]+"-"+config["arm"],
         local_log_dir=str(output/"official_logs"))
 
 
@@ -48,6 +48,7 @@ class Observer:
     """Bookkeeping only; the original task/episode/action/video functions run."""
     def __init__(self, api, config, output, completed_before, identity):
         self.api, self.config, self.output = api, config, output
+        self.protocol = c.config_protocol(config)
         self.completed_before, self.identity = completed_before, identity
         self.original = {name: getattr(api, name) for name in
                          ("initialize_model", "run_task", "run_episode", "get_action",
@@ -60,7 +61,7 @@ class Observer:
         self.requests = 0
         self.episode_requests = 0
         self.loaded = False
-        self.limit_per_episode = (c.HORIZONS[config["suite"]] + 7)//8
+        self.limit_per_episode = (c.horizon(config) + 7)//8
         self.row_stream = (output/"episodes.jsonl").open("x", encoding="utf-8")
 
     def progress(self, phase="evaluation"):
@@ -68,12 +69,12 @@ class Observer:
         successes = sum(row["success"] for row in self.rows)
         value = {"phase": phase, "cell": c.cell_name(self.config["arm"], self.config["suite"]),
                  "cell_completed": n, "cell_expected": 500, "cell_percent": 100*n/500,
-                 "total_completed": self.completed_before+n, "total_expected": 3000,
-                 "total_percent": 100*(self.completed_before+n)/3000,
+                 "total_completed": self.completed_before+n, "total_expected": self.protocol["total"],
+                 "total_percent": 100*(self.completed_before+n)/self.protocol["total"],
                  "live_successes": successes, "live_SR_percent": None if n == 0 else 100*successes/n,
                  "predict_calls": self.requests, "formal_complete": False}
         c.write(self.output/"progress.json", value)
-        print("[047] " + json.dumps(value, ensure_ascii=False), flush=True)
+        print("["+self.protocol["label"]+"] " + json.dumps(value, ensure_ascii=False), flush=True)
 
     def initialize_model(self, cfg):
         c.require(not self.loaded, "047 native model initialized more than once")
@@ -216,13 +217,13 @@ def summarize(config, identity, observer, native_rate, error):
                       "instruction": values[0]["instruction"] if values else None,
                       "completed": len(values), "expected": 50,
                       "successes": sum(x["success"] for x in values)})
-    return {"schema_version": c.SCHEMA, "arm": config["arm"], "suite": config["suite"],
+    return {"schema_version": config["schema_version"], "arm": config["arm"], "suite": config["suite"],
             "formal_complete": complete, "software_exit": "success" if complete else "failed",
             "execution_error": error, "completed": n, "expected": 500, "tasks": tasks,
             "formal_SR": {"numerator": count, "denominator": 500, "percent": count/5} if complete else None,
             "live_completed_SR": None if not rows else 100*count/n,
             "predict_calls": observer.requests if observer else 0,
-            "predict_call_limit": ((c.HORIZONS[config["suite"]]+7)//8)*500,
+            "predict_call_limit": ((c.horizon(config)+7)//8)*500,
             "model_identity": identity, "native_pipeline": True,
             "scorer": "official_env_done", "all_videos_required": True,
             "deployment_hint": False, "new_training_or_labels": False}
@@ -230,8 +231,9 @@ def summarize(config, identity, observer, native_rate, error):
 
 def run_cell(config_path, output, *, completed_before=0):
     config = c.load_config(config_path)
+    spec = c.config_protocol(config)
     output = c.validate_output(config, output, inputs=[config_path])
-    c.require(type(completed_before) is int and completed_before in range(0, 2501, 500),
+    c.require(type(completed_before) is int and completed_before in range(0, spec["total"], 500),
               "047 invalid completed-before count")
     identity = c.verify_inputs(config)
     output.mkdir(parents=True, exist_ok=False)
@@ -241,12 +243,12 @@ def run_cell(config_path, output, *, completed_before=0):
     observer = None
     original_cwd = Path.cwd()
     try:
-        print("[047] START " + c.cell_name(config["arm"], config["suite"]) + " official500; loading", flush=True)
+        print("["+spec["label"]+"] START " + c.cell_name(config["arm"], config["suite"]) + " official500; loading", flush=True)
         api = import_official(config["repo_path"])
         with c.checkpoint_view(config["checkpoint"]) as view:
             os.chdir(output)
             native_config = make_native_config(api, config, view, output)
-            c.require(api.TASK_MAX_STEPS[config["suite"]] == c.HORIZONS[config["suite"]],
+            c.require(api.TASK_MAX_STEPS[config["suite"]] == c.horizon(config),
                       "047 official horizon changed")
             observer = Observer(api, config, output, completed_before, identity)
             body = inspect.unwrap(api.eval_libero)
@@ -260,10 +262,10 @@ def run_cell(config_path, output, *, completed_before=0):
             observer.progress("complete")
             c.write(output/"progress.json", {"phase": "complete", "formal_complete": True,
                      "cell_completed": 500, "cell_percent": 100.0,
-                     "total_completed": completed_before+500, "total_expected": 3000,
-                     "total_percent": 100*(completed_before+500)/3000,
+                     "total_completed": completed_before+500, "total_expected": spec["total"],
+                     "total_percent": 100*(completed_before+500)/spec["total"],
                      "formal_SR": summary["formal_SR"]})
-            print("[047] COMPLETE " + c.cell_name(config["arm"], config["suite"])
+            print("["+spec["label"]+"] COMPLETE " + c.cell_name(config["arm"], config["suite"])
                   + f" SR={summary['formal_SR']['percent']:.2f}% (500/500)", flush=True)
             return summary
     except BaseException as error:
