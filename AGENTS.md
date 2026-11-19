@@ -1,5 +1,13 @@
 # 方法研究协作规则
 
+## 2026-11-19：050 H0@3000官方LIBERO-10单500已部署，用户直接启动
+
+用户要求先跑H0、LIBERO-10 500次，Codex准备命令。PR25固定52806e6c59bc91458b088418ae49c7c678f8f4dd/树6f785c13（本地577a251同树），依赖PR24、不自动merge；9实际050文件，另携带4已main049文档。只H0身份/scope与加载分派最小扩展，旧047三套3000/048双模型1000/H1固定SHA保持；原官方loop/观察动作/done/视频不改。045 H0@3000 e3611217与原identity/PT不变，原rank16/alpha32，不是原版/H1，也不是LoRA减幅候选。十任务含task5×50默认init0..49，原完整语言/seed7/env0/H520/wait10/chunk8/双RGB+proprio/crop/libero_10_no_noops；全视频/live SR/brief每5秒进度/最终任务统计，正式500/动作块≤32500，零新训练/数据/生成/提示/MVP/额外seed或基线重跑。
+
+64不同CPU/fake首轮全过（旧53+新11），含原native假500、H0/H1隔离、tensor/RNG与正确500分母；是Codex自查非独立审查/真实模型物理效果。新task050-h0-official-libero10-v1隔离code/config，143源依赖测试模板＋2实际配置SHA一致、源包bef02d5e；实际原conda/venv/session读取配置/H0字节/底座统计和bash语法通过，progress not_started=0/500，torch未导入、新run不存在。无ML/仿真/代启正式、依赖升级、全局editable改动或启停049。
+
+准备100%、真实500为0。下一用户直接本地050_H0官方LIBERO10评测完整命令，普通conda/python nohup启动；绝对路径brief watch新终端也可看，空闲卡历史量级2–3小时非保证。048原版94.80%/H1 88.80%旧1000保留，只复用；H0完成后Codex查同初态配对，判断共同配方与提示/迁移整体改动影响，不提前归因语言语义或训练长度。X不重复实现/泛审，旧资料权重分数失败署名与dirty研究checkout保持。关键文档精确commit SHA本地归档/manifest、原JUnit/源包/配置私有receipt保留，软件closed/真实结果open，不merge/清理，待删=[]。
+
 ## 2026-11-19：049九任务50源/模型450的合规评测已部署，真实阶段用户启动
 
 用户要求把10评测扩为九任务各50并实时显示SR，Codex直接实现。PR24固定d601f289d98f34d9daf8da162383bc7106d43c78、源树05fca15f（本地88ed9d5同树），依赖PR23，不自动merge；只增7文件，旧生产源码/原评分不变。原90初态字节复用，按官方源索引10..49补建360，原版与045 H1@3000各新执行450、共900；不是旧10重复5遍，不含task5/00/新训练。旧六精确旧producer/bridge，新三原selected-A/RGB v6/microwave pose v7；只在私有命名空间明确扩三个index准入guard 10→50，原物理/阈值/rollout/034二元评分直接调用，无冻结文件或全局模块热改。失败来源保留、不换容易初态，450全准入才模型eval；六旧任务的其他mask只是原配对构造技术伴随产物，不增加模型episode。
