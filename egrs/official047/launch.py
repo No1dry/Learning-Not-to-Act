@@ -25,7 +25,7 @@ def read_episodes(output, summary):
 
 def verify_cell(output, config):
     summary = c.read(Path(output)/"summary.json")
-    c.require(summary.get("schema_version") == c.SCHEMA and summary.get("formal_complete") is True
+    c.require(summary.get("schema_version") == config["schema_version"] and summary.get("formal_complete") is True
               and summary.get("software_exit") == "success" and summary.get("execution_error") is None
               and summary.get("arm") == config["arm"] and summary.get("suite") == config["suite"]
               and summary.get("completed") == summary.get("expected") == 500
@@ -60,12 +60,13 @@ def verify_cell(output, config):
     return summary, rows
 
 
-def compare(output, configs):
+def compare(output, configs, scope="three-suites"):
     output = Path(output)
+    spec = c.protocol(scope)
     suites = {}
     totals = {"base": 0, "h1": 0}
     rows_out = []
-    for suite in c.HORIZONS:
+    for suite in spec["horizons"]:
         reports, episodes = {}, {}
         for arm in ("base", "h1"):
             summary, rows = verify_cell(output/c.cell_name(arm, suite), configs[(arm, suite)])
@@ -100,21 +101,22 @@ def compare(output, configs):
         suites[suite] = {"rates": rates, "delta_percentage_points": rates["h1"]["percent"]-rates["base"]["percent"],
                          "paired": {"gained": gained, "lost": lost, "both": both, "neither": neither},
                          "tasks": tasks}
-    result = {"format": "task047-official-comparison-v1", "formal_complete": True,
-              "total_completed_episodes": 3000, "suites": suites, "tasks": rows_out,
-              "overall": {arm: {"numerator": n, "denominator": 1500, "percent": 100*n/1500}
+    denominator = spec["total"]//2
+    result = {"format": "task"+spec["label"]+"-official-comparison-v1", "formal_complete": True,
+              "total_completed_episodes": spec["total"], "suites": suites, "tasks": rows_out,
+              "overall": {arm: {"numerator": n, "denominator": denominator, "percent": 100*n/denominator}
                           for arm, n in totals.items()},
               "official_pipeline": True, "score": "official_env_done", "single_policy_seed": 7,
               "not_strict_zero_shot": True, "old_LIBERO10_results_not_pooled": True}
     result["overall_delta_percentage_points"] = result["overall"]["h1"]["percent"]-result["overall"]["base"]["percent"]
     c.write(output/"comparison.json", result)
-    lines = ["# 047 Official three-suite retention", "",
+    lines = ["# "+spec["label"]+" Official "+spec["title"], "",
              "| Suite | Base SR | H1@3000 SR | H1 - Base |", "|---|---:|---:|---:|"]
     for suite, value in suites.items():
         rates = value["rates"]
         lines.append(f"| {suite} | {rates['base']['percent']:.2f}% | {rates['h1']['percent']:.2f}% | {value['delta_percentage_points']:+.2f}pp |")
     a, b = result["overall"]["base"], result["overall"]["h1"]
-    lines += [f"| Three-suite total | {a['percent']:.2f}% ({a['numerator']}/1500) | {b['percent']:.2f}% ({b['numerator']}/1500) | {result['overall_delta_percentage_points']:+.2f}pp |",
+    lines += [f"| Total | {a['percent']:.2f}% ({a['numerator']}/{denominator}) | {b['percent']:.2f}% ({b['numerator']}/{denominator}) | {result['overall_delta_percentage_points']:+.2f}pp |",
               "", "| Suite | Task | Instruction | Base | H1 | Delta |",
               "|---|---:|---|---:|---:|---:|"]
     for row in rows_out:
@@ -123,13 +125,15 @@ def compare(output, configs):
     return result
 
 
-def run_all(config_dir, output):
+def run_all(config_dir, output, scope="three-suites"):
     config_dir, output = Path(config_dir).resolve(), Path(output).resolve()
-    paths = {(arm, suite): config_dir/c.config_name(arm, suite) for arm, suite in c.CELLS}
+    spec = c.protocol(scope)
+    paths = {(arm, suite): config_dir/c.config_name(arm, suite) for arm, suite in spec["cells"]}
     configs = {key: c.load_config(path) for key, path in paths.items()}
     h1_directories = set()
     for key, config in configs.items():
         c.require((config["arm"], config["suite"]) == key, "047 six-cell config ordering differs")
+        c.require(config["schema_version"] == spec["schema"], "Official launch/config scope mismatch")
         c.validate_output(config, output, inputs=paths.values())
         c.require(all(config[k] == next(iter(configs.values()))[k] for k in ("repo_path", "checkpoint")),
                   "047 cells do not share original model/source")
@@ -138,23 +142,23 @@ def run_all(config_dir, output):
     c.require(len(h1_directories) == 1, "047 H1 cells have different checkpoints")
     # Fixed file-only admission, not a GPU/model/physics diagnostic.
     for arm in ("base", "h1"):
-        c.verify_inputs(configs[(arm, "libero_spatial")])
+        c.verify_inputs(configs[(arm, next(iter(spec["horizons"])))])
     stats = c.read(Path(next(iter(configs.values()))["checkpoint"])/"dataset_statistics.json")
-    for suite in c.HORIZONS:
+    for suite in spec["horizons"]:
         c.expected_key(suite, stats)
     output.mkdir(parents=True, exist_ok=False)
     digests = {c.cell_name(*key): c.sha(path) for key, path in paths.items()}
-    state = {"format": "task047-official-launch-v1", "status": "running",
-             "expected_episodes": 3000, "completed_episodes": 0, "cells": {},
+    state = {"format": "task"+spec["label"]+"-official-launch-v1", "status": "running",
+             "schema_version": spec["schema"], "expected_episodes": spec["total"], "completed_episodes": 0, "cells": {},
              "config_sha256": digests, "implicit_retry": False}
     c.write(output/"status.json", state)
     try:
-        for index, key in enumerate(c.CELLS):
+        for index, key in enumerate(spec["cells"]):
             name = c.cell_name(*key)
             c.require(c.sha(paths[key]) == digests[name], "047 config changed after launch")
             state["cells"][name] = {"status": "running"}
             c.write(output/"status.json", state)
-            command = [sys.executable, "-u", "-m", "egrs.official047", "run-cell",
+            command = [sys.executable, "-u", "-m", spec["module"], "run-cell",
                        "--config", str(paths[key]), "--output", str(output/name),
                        "--completed-before", str(index*500)]
             process = subprocess.run(command, check=False)
@@ -164,10 +168,10 @@ def run_all(config_dir, output):
                                     "summary_sha256": c.sha(output/name/"summary.json")}
             state["completed_episodes"] += 500
             c.write(output/"status.json", state)
-        result = compare(output, configs)
+        result = compare(output, configs, scope=scope)
         state["status"] = "complete"
         c.write(output/"status.json", state)
-        print(f"[047] ALL COMPLETE 3000/3000 (100%); Base={result['overall']['base']['percent']:.2f}% H1={result['overall']['h1']['percent']:.2f}%", flush=True)
+        print(f"[{spec['label']}] ALL COMPLETE {spec['total']}/{spec['total']} (100%); Base={result['overall']['base']['percent']:.2f}% H1={result['overall']['h1']['percent']:.2f}%", flush=True)
         return result
     except BaseException as error:
         state.update(status="failed", error=f"{type(error).__name__}: {error}")
@@ -175,22 +179,25 @@ def run_all(config_dir, output):
         raise
 
 
-def progress(output):
+def progress(output, scope="three-suites"):
     output = Path(output)
+    total = c.protocol(scope)["total"]
     if not (output/"status.json").is_file():
-        return {"status": "not_started", "completed": 0, "expected": 3000, "percent": 0.0}
+        return {"status": "not_started", "completed": 0, "expected": total, "percent": 0.0}
     state = c.read(output/"status.json")
+    c.require(state["expected_episodes"] == total, "Official progress/output scope mismatch")
     completed = state["completed_episodes"]
     result = {"status": state["status"], "completed": completed,
-              "expected": 3000, "percent": 100*completed/3000}
+              "expected": total, "percent": 100*completed/total}
     for name, value in state["cells"].items():
         if value["status"] == "running":
+            result.update(cell=name, phase="starting_or_loading")
             path = output/name/"progress.json"
             if path.is_file():
                 cell = c.read(path)
                 result.update(cell=name, phase=cell["phase"],
                               completed=completed+cell["cell_completed"],
-                              percent=100*(completed+cell["cell_completed"])/3000,
+                              percent=100*(completed+cell["cell_completed"])/total,
                               cell_completed=cell["cell_completed"],
                               live_SR_percent=cell.get("live_SR_percent"))
     if state.get("error"):

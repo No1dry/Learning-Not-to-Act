@@ -2,8 +2,8 @@ import argparse
 import json
 
 
-def main():
-    parser = argparse.ArgumentParser(description="047: original OFT pipeline, optional frozen H1@3000")
+def main(scope="three-suites"):
+    parser = argparse.ArgumentParser(description="Original OFT pipeline, optional frozen H1@3000; "+scope)
     commands = parser.add_subparsers(dest="command", required=True)
     all_parser = commands.add_parser("run-all")
     all_parser.add_argument("--config-dir", required=True)
@@ -17,13 +17,13 @@ def main():
     args = parser.parse_args()
     if args.command == "run-all":
         from .launch import run_all
-        run_all(args.config_dir, args.output)
+        run_all(args.config_dir, args.output, scope=scope)
     elif args.command == "run-cell":
         from .runner import run_cell
         run_cell(args.config, args.output, completed_before=args.completed_before)
     else:
         from .launch import progress
-        print(json.dumps(progress(args.output), ensure_ascii=False), flush=True)
+        print(json.dumps(progress(args.output, scope=scope), ensure_ascii=False), flush=True)
     return 0
 
 

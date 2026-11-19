@@ -1,0 +1,8 @@
+{
+  "schema_version": "task048-official-libero10-v1",
+  "arm": "h1",
+  "suite": "libero_10",
+  "repo_path": "/PATH/TO/PINNED/openvla-oft",
+  "checkpoint": "/PATH/TO/official-combined-SOG10",
+  "method_adapter": "/PATH/TO/task045-h1-train-001/update-003000"
+}
