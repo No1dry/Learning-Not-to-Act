@@ -132,6 +132,9 @@ def run(cfg,output,model,*,continue_from=None):
     original.protect_output(cfg,output)
     if (model=='base')!=(continue_from is not None):
         raise ValueError('053 base requires explicit parent; H1 must be a fresh450 run')
+    # A fresh CLI process has not imported the pinned benchmark package yet.
+    # Activate before engine/validation.identity, not only later inside parent.
+    old.activate(cfg)
     namespace=engine();records={};loaded=None
     receipt={'format':'task053-fresh-h1-v1','new_execution_limit':450,
              'validation_extension':validation.identity()}

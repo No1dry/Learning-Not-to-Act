@@ -86,6 +86,7 @@ def test053_fake450_preserves11_and_executes_only439_then_h1_450(tmp_path,monkey
         record=_record(e,p,'success' if e['initial_state_index']%2==0 else 'failure')
         record['source']['new_execution']=False;records[e['episode_id']]=record
     monkeypatch.setattr(old,'protect_output',lambda *a,**k:None)
+    monkeypatch.setattr(sources,'activate',lambda *a:{})
     monkeypatch.setattr(old,'_verify_model',lambda *a:None)
     monkeypatch.setattr(scope,'helpers',lambda:{})
     monkeypatch.setattr(new,'parent',lambda *a:(frozen,records,None,{'format':'fake053','inherited_executed':11}))
@@ -124,3 +125,42 @@ def test053_no_base_full_rerun_or_h1_parent_silently_allowed(tmp_path,monkeypatc
     monkeypatch.setattr(e.original,'protect_output',lambda *a:None)
     with pytest.raises(ValueError,match='explicit parent'):e.run({},tmp_path/'out','base')
     with pytest.raises(ValueError,match='explicit parent'):e.run({},tmp_path/'out','h1',continue_from=tmp_path/'parent')
+
+
+def test053_fresh_cli_activates_dependencies_before_parent_without_model_or_physics(tmp_path):
+    """Separate interpreter defeats this suite's already-activated-core fixture."""
+    import json,subprocess,sys
+    from egrs.remain049.sources import SCHEMA,write
+    repo=Path(__file__).resolve().parents[1]
+    cfg={'schema_version':SCHEMA,'benchmark_root':os.environ['EGRS049_CORE'],
+        'reporting_root':os.environ['EGRS049_REPORTING'],'legacy_root':os.environ['EGRS049_LEGACY'],
+        'reference_config':str(tmp_path/'inputs/reference.json'),'base_runtime':str(tmp_path/'inputs/runtime.json'),
+        'adapter':str(tmp_path/'weights'),'source_bank':str(tmp_path/'bank')}
+    config=tmp_path/'inputs/evaluation.json';write(config,cfg)
+    output=tmp_path/'out'
+    script='''
+import sys
+from pathlib import Path
+from egrs.remain053 import evaluation as e
+from egrs.remain053.__main__ import main
+assert 'benchmark' not in sys.modules
+class CPUParentReached(Exception):pass
+def stop_before_parent_data(*args):
+    assert 'benchmark' in sys.modules
+    assert 'torch' not in sys.modules
+    assert not any(k.startswith('libero.libero.envs') for k in sys.modules)
+    raise CPUParentReached()
+e.parent=stop_before_parent_data
+try:
+    main(['run','--config',sys.argv[1],'--model','base','--continue-from',sys.argv[2],'--output',sys.argv[3]])
+except CPUParentReached:
+    assert not Path(sys.argv[3]).exists()
+    print('FRESH_CLI_PARENT_ENTRY_REACHED_NO_MODEL_OR_PHYSICS')
+else:raise AssertionError('CPU stop was bypassed')
+'''
+    env={**os.environ,'PYTHONPATH':str(repo),'CUDA_VISIBLE_DEVICES':'','PYTHONDONTWRITEBYTECODE':'1'}
+    result=subprocess.run([sys.executable,'-c',script,str(config),str(tmp_path/'parent'),str(output)],
+        env=env,cwd=repo,text=True,capture_output=True,check=False)
+    assert result.returncode==0,result.stdout+result.stderr
+    assert 'FRESH_CLI_PARENT_ENTRY_REACHED_NO_MODEL_OR_PHYSICS' in result.stdout
+    assert not output.exists()
