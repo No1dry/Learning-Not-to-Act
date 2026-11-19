@@ -1,5 +1,15 @@
 # 当前协作状态
 
+## 2026-11-19：051修复049遗漏R7索引，只补45失败，405成功只读复用
+
+用户确认049构建失败并批准修复。实际405/450 ready=90%、45失败=10%；新增360中315/360=87.5%通过。40微波炉10..49因Codex漏扩R7内层validate_scope仍0..9，原CPU23没覆盖；另stove21与pots11/34/36/45共5项仅observation_matches_fresh失败，抽查腕RGB差2档超原1档，物理检查通过不等于可放宽。原source报告2b34a4f34bf9fae699098d34f39a277ee01ea3a2cd65dc987e8087198b6829e9保留，原049模型eval0，错误不归模型或篡改旧失败。
+
+PR26固定498e2f61a5127ba2a902c4ceb1d4ef0397afa5df/树b0dfe3c9（本地18295a7同树），依赖PR25、不自动merge；7新增051文件，旧生产不动，另携带4已main050文档。私有pinned helper导入图统一四个index gate至0..49，含R7构造/replay/validator/reader；canonical模块/冻结文件不动，原native bridge/compat直接alias，完整身份和两个proxy保持，RGB/非RGB/物理/评分阈值完全不改。45不同CPU/fake最终过（旧23＋新22），覆盖遗漏内层、canonical仍拒49、RGB2仍拒、精确405复用/42+3与不重试/完整假450，非真实物理模型效果或独立审查。
+
+新task051-remain50-recovery-v1隔离部署136源依赖文档测试＋3实际配置SHA匹配，源包4207a1eb；parent405/45配置及basket0/pots10/microwave0计划SHA不变，torch未导入、session help/bash语法过，新bank/run不存在。软件100%、真实补救0。下一用户直接本地051_只补45项并接续评测：405原成功条目/origin/state/plan只读复用；40微波炉＋stove21/pots34共42源build，pots11/36/45复用已过构造只新replay，source replay≤45，原内部24候选/150/2×150等不变、只一轮新补救。旧消耗不退款，不改阈值/换容易index；5RGB仍可能失败，失败保留不循环，未450全准入不启动模型。405不另跑全量资格预检，原eval loader使用前必要源证据核验保持。
+
+450就绪才自动原版450→H1@3000 450→comparison，沿原049已批900，原rollout/证据/scorer/034二元映射与权重指令保持，schema沿049带repair溯源，不追加训练/模型预算/seed/MVP。仅用户亲启，不启停050/049，不重开旧049script；X无重复实现/泛审任务。关键文档精确commit SHA、本地parent原件/诊断/源包/JUnit/私有收据归档，旧dirty研究checkout、所有原数据权重分数失败账本署名保持，无merge/删除、待删=[]。本条纠正旧049对内层覆盖不足的就绪结论，不宣称实际补建必成功，真实结果open。
+
 ## 2026-11-19：050 H0@3000官方LIBERO-10单500已部署，用户直接启动
 
 用户要求先跑H0、LIBERO-10 500次，Codex准备命令。PR25固定52806e6c59bc91458b088418ae49c7c678f8f4dd/树6f785c13（本地577a251同树），依赖PR24、不自动merge；9实际050文件，另携带4已main049文档。只H0身份/scope与加载分派最小扩展，旧047三套3000/048双模型1000/H1固定SHA保持；原官方loop/观察动作/done/视频不改。045 H0@3000 e3611217与原identity/PT不变，原rank16/alpha32，不是原版/H1，也不是LoRA减幅候选。十任务含task5×50默认init0..49，原完整语言/seed7/env0/H520/wait10/chunk8/双RGB+proprio/crop/libero_10_no_noops；全视频/live SR/brief每5秒进度/最终任务统计，正式500/动作块≤32500，零新训练/数据/生成/提示/MVP/额外seed或基线重跑。
