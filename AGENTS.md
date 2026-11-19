@@ -1,5 +1,12 @@
 # 方法研究协作规则
 
+## 2026-11-19：053启动顺序configfix1已修，改用v3
+
+v2用户启动在identity前未激活benchmark而退出，模型/动作0、新run未建；是Codex顺序错误，旧fixture预导入遮住。PR28最新8fc4a041ebc58fa4d83b059899c99749c5593724（本地19658d1同树c87d0608），仅提前old.activate(cfg)，源/评分/权重/预算不改。受影响16项含全新独立CLI通过；实际同conda/venv/session CLI在parent前CPU-only哨兵通过，无模型/物理/旧数据重审。
+
+最终task053-index50-continuation-v3的147源＋3配置SHA一致；新marker/log用configfix1，旧v1/v2/marker/日志不删除。新run未建，沿原run ID，仍用户亲启继承11＋base439→H1 450，共原900；不重开旧v2/052、重建/重训/MVP，不代启停/merge/删除。旧38索引/证据/续跑验收保留，完整文档与最新STATUS优先。本条不覆盖未来决定。
+
+
 ## 2026-11-19：053结果/evidence索引修复已部署，保留11条只续439＋450
 
 052补3已全过，450来源ready；用户报错为原版第11条index10在raw结果校验仍受0..9限制，是Codex遗漏。PR28固定cdef3d39d53ed6d28bee64e09b7bc660d5d03e41（本地282caba同树c41f9124），新私有schema/evidence统一0..49，canonical/原评分/源物理/权重不动；同一schema条件经evidence完整执行一次，不重复两次。
