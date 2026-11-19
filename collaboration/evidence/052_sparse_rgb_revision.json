@@ -1,0 +1,132 @@
+{
+  "format": "task052-codex-sparse-rgb-recovery-v1",
+  "date": "2026-11-19",
+  "approval": {
+    "source": "direct user conversation",
+    "decision": "approved sparse RGB revision; retain all450 indices",
+    "rule": {
+      "max_abs_channel_error": 2,
+      "max_changed_fraction": 0.0001,
+      "changed_pixels_at_256_square": 6
+    },
+    "real_job_initiator": "user"
+  },
+  "original051": {
+    "source_report_sha256": "8657805313b12d384d6252011b46fb3008eedda45706d3db60a712339deb1eef",
+    "ready": 447,
+    "failed": 3,
+    "ready_percent": 99.33333333333333,
+    "model_rollouts": 0,
+    "failures": [
+      {
+        "episode_id": "stove_s021_10",
+        "stage": "construction",
+        "bad_frames": [
+          11
+        ],
+        "maximum_channel_error": 2,
+        "maximum_changed_wrist_pixels": 2
+      },
+      {
+        "episode_id": "two_pots_s011_10",
+        "stage": "independent_replay",
+        "bad_frames": [
+          0,
+          2
+        ],
+        "maximum_channel_error": 2,
+        "maximum_changed_wrist_pixels": 4
+      },
+      {
+        "episode_id": "two_pots_s045_10",
+        "stage": "independent_replay",
+        "bad_frames": [
+          2,
+          1
+        ],
+        "maximum_channel_error": 2,
+        "maximum_changed_wrist_pixels": 2
+      }
+    ],
+    "other_reported_checks_passed": true,
+    "not_proven_GPU_or_cache_bug": true
+  },
+  "implementation": {
+    "repository": "No1dry/Learning-Not-to-Act",
+    "pull_request": 27,
+    "source_commit": "429e4d7483477dd48533db1c2f7ea66e6694c94e",
+    "source_tree": "2407679e7a3828ee42e7708692b0b9f5c95084c2",
+    "local_commit": "c1aec1d5a9ca9b647d3cd377721a2859b8161ad5",
+    "new_files": 8,
+    "prior_production_changed": false,
+    "canonical_modules_changed": false,
+    "source_archive_sha256": "705befe9e2d1f2102e3a7e9fa6dd81f9a2109f367b01b19163c96863fccef6cd"
+  },
+  "cpu_fake": {
+    "passed": 61,
+    "failed_final": 0,
+    "not_independent_review": true,
+    "initial_issues_retained": [
+      "first run58 passed/1 missing EGRS049_LEGACY test fixture environment",
+      "second60 passed/1 synthetic fixture missing mandatory reviewed_by"
+    ],
+    "new_targeted_tests": 16,
+    "old049_051_tests": 45,
+    "coverage": [
+      "sparse6/error2 pass;7/error2 and1/error3 reject",
+      "canonical1-level remains;unchanged-state and non-RGB guards",
+      "actual pinned legacy/current producer namespaces and native aliases",
+      "explicit only3 source-version routing",
+      "exact447 reuse/1build/3replay and no implicit failed retries",
+      "150-frame physical arithmetic plus2 independent replay artifacts and archive verification",
+      "old v6 pot construction/new sparse2 replay round trip",
+      "fake450 original worker/live034 binary scoring"
+    ]
+  },
+  "deployment": {
+    "source_files": 143,
+    "actual_config_files": 3,
+    "all_bytes_sha_verified": true,
+    "parent_sha_unchanged": true,
+    "ready447_plan_samples": [
+      "basket_s000_10",
+      "two_pots_s010_10",
+      "mug_microwave_close_s049_10"
+    ],
+    "old_v6_pot_candidates_file_verified": [
+      "two_pots_s011_10",
+      "two_pots_s045_10"
+    ],
+    "new_bank_exists": false,
+    "new_eval_exists": false,
+    "launch_marker_exists": false,
+    "torch_imported": false,
+    "real_native_or_model_calls": 0
+  },
+  "authorized_work": {
+    "source_builds_limit": 1,
+    "independent_source_replays_limit": 3,
+    "replay_repeats": 2,
+    "replay_steps_per_repeat": 150,
+    "original_bounded_construction_preserved": true,
+    "eval_episodes_per_model": 450,
+    "eval_models": [
+      "base",
+      "045_H1_at3000"
+    ],
+    "new_training": 0,
+    "new_policy_episode_budget": 0,
+    "original_policy_budget_continued": 900
+  },
+  "boundaries": {
+    "old447_and_all_failed_evidence_preserved": true,
+    "policy_images_modified": false,
+    "physics_or_action_score_modified": false,
+    "automatic_merge": false,
+    "automatic_retry": false,
+    "new_real_recovery_started": false,
+    "not_renderer_calibration": true,
+    "not_policy_invariance_claim": true,
+    "deletions": []
+  }
+}
