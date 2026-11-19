@@ -1,5 +1,13 @@
 # 当前协作状态
 
+## 2026-11-19：049九任务50源/模型450的合规评测已部署，真实阶段用户启动
+
+用户要求把10评测扩为九任务各50并实时显示SR，Codex直接实现。PR24固定d601f289d98f34d9daf8da162383bc7106d43c78、源树05fca15f（本地88ed9d5同树），依赖PR23，不自动merge；只增7文件，旧生产源码/原评分不变。原90初态字节复用，按官方源索引10..49补建360，原版与045 H1@3000各新执行450、共900；不是旧10重复5遍，不含task5/00/新训练。旧六精确旧producer/bridge，新三原selected-A/RGB v6/microwave pose v7；只在私有命名空间明确扩三个index准入guard 10→50，原物理/阈值/rollout/034二元评分直接调用，无冻结文件或全局模块热改。失败来源保留、不换容易初态，450全准入才模型eval；六旧任务的其他mask只是原配对构造技术伴随产物，不增加模型episode。
+
+每条证据/视频核验后即用原034二元mapper输出任务与总合规SR、百分比，最后live/formal一致；unknown诊断按既定映为不成功，技术缺失/损坏不伪记模型失败或满额450。23不同CPU/fake最终全过，最初regex消息和追加发现的私有依赖import顺序问题已修、所有原JUnit保留；是Codex自查，不是独立审查/真模型物理实验。新task049-remain50-v1隔离code/config，127源/依赖文档测试＋3实际配置SHA一致，原90仅文件核验90/90、固定H1匹配；原worker读到的现有046 HintPolicy/adapter SHA相同，未加载torch、无需升级依赖/重映射。实际conda/venv/session CLI help和bash语法通过；新状态bank及模型run不存在，无新增真实物理/模型调用。
+
+软件/部署100%、新360状态/900正式0%；当前048用户作业不干扰。下一用户等048退出后启动已交付一条串行补建→base450→H1 450→comparison，完整本地049命令文档/公开脱敏049_user_evaluation_commands已给，原角色不因“执行准备”擅自扩成代启真实作业。X无需重复实现/泛审，Codex等交回结果后分析；不新增MVP/预检前向/seed/训练或评分修订，不重开047048。源tar c0fc7e2c、原JUnit/配置/私有收据与精确commit文档SHA本地归档，旧dirty研究checkout/全部资料权重分数失败署名保持，无merge/删除，待删=[]。软件closed、状态与SR open；本条覆盖旧048“未启动”快照（本轮只读见048已在H1），不覆盖未来决定。
+
 ## 2026-11-19：048完整LIBERO-10官方500×两模型已部署，用户下一启动1000
 
 用户要求“按这套pipeline再测下libero-10的500次x2模型”，本轮新增正式1000。Codex沿前轮直接实现职责做最小scope扩展，X无需实现。PR23固定4d8762c4504a09f7d9efac099137a7ce8ff35a3b、依赖PR22@bd871dea，源树e936c92f与本地测试树一致，不自动merge。4个共享047模块仅参数化profile/schema/suite/horizon/总数和CLI，默认047三套3000保持；新048 schema只许libero_10/两cell/总1000，原OFT循环/观察动作/原生done/视频与H1加载器不变。全10任务含task5书/收纳盒，各50原初态，不是旧九任务450，不复用旧分数。H1仍78a96aa7，原版无研究adapter；10统计/H520/等待10/chunk8/seed7/env0/两图proprio/crop/原语言保持，无Remain评分/提示/FINISH或训练。
