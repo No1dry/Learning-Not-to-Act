@@ -1,5 +1,15 @@
 # 方法研究协作规则
 
+## 2026-11-19：048完整LIBERO-10官方500×两模型已部署，用户下一启动1000
+
+用户要求“按这套pipeline再测下libero-10的500次x2模型”，本轮新增正式1000。Codex沿前轮直接实现职责做最小scope扩展，X无需实现。PR23固定4d8762c4504a09f7d9efac099137a7ce8ff35a3b、依赖PR22@bd871dea，源树e936c92f与本地测试树一致，不自动merge。4个共享047模块仅参数化profile/schema/suite/horizon/总数和CLI，默认047三套3000保持；新048 schema只许libero_10/两cell/总1000，原OFT循环/观察动作/原生done/视频与H1加载器不变。全10任务含task5书/收纳盒，各50原初态，不是旧九任务450，不复用旧分数。H1仍78a96aa7，原版无研究adapter；10统计/H520/等待10/chunk8/seed7/env0/两图proprio/crop/原语言保持，无Remain评分/提示/FINISH或训练。
+
+53不同CPU/fake一次全过（旧047回归42＋新04811），包括两组假500和原生520超时/正确1000分母/task5/scope隔离，不是独立审查或真实模型物理验证。新code/config task048-official-libero10-v1，131源依赖模板与4实际配置脚本SHA一致，实际2配置/H1字节/20个BDDL-init路径及10归一化静态核对。实际conda/venv/session只读progress返回not_started/expected1000；未加载ML/物理、反序列化真实状态或开正式run，新目录/PYTHONPATH无依赖升级或全局editable改动，旧047安装/结果不覆盖。
+
+准备100%、新正式0。用户按2026-11-19_task048_user_evaluation_commands或本地048_LIBERO10官方评测完整命令，一条Python run-all先base500正常后自动H1 500，共1000/动作块自然上限65000，全视频、live SR/百分比/最终逐任务与两模型官方SR。无新训练/生成/标签index/教师/MVP或额外seed，不重开047；技术异常保留停后续，无自动重试/退款删除。软件closed、真实效果open。
+
+047前轮已由用户完成3000，三套原版97.20%/H1 96.53%（−0.67pp）；逐条已核对六组各10任务×50不同初态、3000实际视频与同初态对应，旧工件留服务器。048完成后再汇总四套同口径官方结果，不能将旧九任务Remain/00拼入四套AVG。本轮源tar/原JUnit/实际配置/私有receipt及精确commit文档SHA本地归档manifest；脏研究checkout和所有旧数据权重分数失败署名保持，无merge或删除待删=[]。本条覆盖旧047待启动快照，不覆盖未来决定。
+
 ## 2026-11-18：047由Codex直接实现并部署，下一用户正式3000
 
 用户新授权“你直接完成吧”覆盖047待X工单。PR22固定bd871dea127a2049134be4fb0fa7f392061d28d5、依赖PR21@a1179099，源树dbff1510与本地测试树一致，不自动merge。新047直接调用固定官方OFT eval_libero原主体及run_task/run_episode、原环境/观察动作/原生done/全视频；只H1在官方初始化后加一次原rank16 LoRA，base不注入，官方cfg rank32保持。旧生产egrs逐字未改，训练10 identity/PT保持，推理各suite使用官方各自统计，不伪造lineage或放宽旧restore；不接Remain评分/FINISH/VLM/提示/教师或训练辅助分支。
