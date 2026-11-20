@@ -1,0 +1,63 @@
+{
+  "format": "task053-startup-activation-configfix1-v1",
+  "date": "2026-11-19",
+  "owner": "Codex",
+  "failure": {
+    "old_version": "v2",
+    "error": "ModuleNotFoundError: No module named 'benchmark'",
+    "cause": "validation.identity called before pinned dependency activation in fresh run CLI",
+    "prior_tests_preimported_core": true,
+    "models_loaded": 0,
+    "new_actions": 0,
+    "new_run_created": false,
+    "old_marker_preserved": true
+  },
+  "change": {
+    "source_commit": "8fc4a041ebc58fa4d83b059899c99749c5593724",
+    "source_tree": "c87d06086b9383a3f64ea99c211f3949e84a29ad",
+    "local_commit": "19658d1c39494a04a4d00bbe22b30a939b253318",
+    "PR": 28,
+    "production_change": "one old.activate(cfg) before engine/identity",
+    "changed_production_files": 1,
+    "score_or_data_or_budget_changed": false,
+    "old_code_or_failed_log_overwritten": false
+  },
+  "software": {
+    "affected_CPU_fake_passed": 16,
+    "separate_interpreter_CLI_regression": true,
+    "prior38_result_index_and_continuation_evidence_retained": true,
+    "not_rerun_old23": true
+  },
+  "actual_deployment": {
+    "final_directory": "task053-index50-continuation-v3",
+    "source_files": 147,
+    "actual_config_files": 3,
+    "byte_SHA_verified": true,
+    "archive_sha256": "22d3ae34ba8db3084d566f52ba4cc33d7ce7cf2d9a693ee0f9c8a28808135b38",
+    "fresh_same_conda_venv_session_CLI": true,
+    "started_without_benchmark": true,
+    "parent_entry_reached": true,
+    "CPU_sentinel_stopped_before_parent_data": true,
+    "torch_imported": false,
+    "native_env_imported": false,
+    "new_model_or_physics_calls": 0,
+    "old_marker_exists": true,
+    "new_marker_exists": false,
+    "new_run_exists": false,
+    "source_bank_sha256": "54a225330e43bb88cd6299109798885ee2ac6af06d9492f8d5639f2d62e29747",
+    "parent_partial_summary_sha256": "05b388fd112f5644811da6895252c2be3d18bf3a0362ea7a5f73dcec5266f7d4"
+  },
+  "handoff": {
+    "real_job_initiator": "user",
+    "base_inherited": 11,
+    "base_new": 439,
+    "h1_new": 450,
+    "total_original_budget": 900,
+    "no_new_sources_or_training": true,
+    "new_marker_suffix": "configfix1",
+    "new_log_suffix": "configfix1",
+    "old_logs_and_markers_preserved": true,
+    "merge": false,
+    "deletions": []
+  }
+}
