@@ -1,6 +1,6 @@
 # Task043-v2：语言状态提示迁移（正式实现工单，预算已批准）
 
-**本轮执行者更新：用户后续明确要求Codex自己实现。本轮由Codex承担代码、CPU/fake和部署；正文批准时的X分工为历史，不要求X重复实现。预算/算法与用户亲启真实阶段不变。**
+**本轮后继裁决：用户明确改由Codex直接实现，现已完成71项不同CPU/fake和隔离部署，见[Codex交付](../responses/043_v2_codex_round1.md)。X无需重复实现或泛审，下面原交X的需求/短prompt保留作规格历史。下一执行者为用户，按[运行交接](../../docs/experiment_plans/2026-11-15_task043_user_prepare_train_commands.md)直接启动准备＋H0→H1；全部真实阶段尚未开始。**
 
 2026-11-15 · Codex → X。
 

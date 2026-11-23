@@ -1,0 +1,80 @@
+{
+  "format": "task046-h1-3000-prompt-reference-v1",
+  "date": "2026-11-18",
+  "model": {
+    "arm": "h1",
+    "update": 3000,
+    "adapter_sha256": "78a96aa79fc996f22fda3dd1680a6edc0ff0dd59312c501d1aa4f96be740201d",
+    "source_pr20_head": "10531b626998d02f6168d23df02501ce64d36969"
+  },
+  "p0": {
+    "reuse_only": true,
+    "source_run": "task045-h1-step3000-eval-001",
+    "plan_sha256": "1d1c79e0147c2758dbabaa0b9cf171c8095e437486dde6bd015785b60b23a9eb",
+    "summary_sha256": "4e745dbeba93f0a5f16fc637c90dbe19a816c10f7915d1ae6f0d4a4a381107f4",
+    "condition": "10",
+    "formal_SR": {
+      "denominator": 90,
+      "numerator": 62,
+      "percent": 68.88888888888889
+    },
+    "new_execution": false,
+    "original_model044_P0_not_used": true
+  },
+  "prompt_manifest": {
+    "repository_path": "collaboration/evidence/044_prompt_manifest.json",
+    "sha256": "e648ef202c31e6e99e14478f6ec36952a1791d2187bf023a224b25974f669566",
+    "same_exact044_text": true
+  },
+  "reference_prompt_implementation_head": "e8445b6ae640f21446533592326c645a6d42894b",
+  "source_population": {
+    "suite": "libero_10",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+    ],
+    "episodes_per_task": 10,
+    "total10": 90,
+    "initial_mask": [
+      true,
+      false
+    ],
+    "full_original_A_B_scoring_unchanged": true,
+    "core_revision": "d8541ef4a4bb4cc2e34c95b10227ea5fcaddaff9",
+    "reporting_revision": "d2afce4eb074b777364daddea2c08bd70731865f",
+    "policy_seed": 7,
+    "horizon": 520,
+    "chunk": 8
+  },
+  "new_work_envelope": {
+    "p1_episodes": 90,
+    "p2_episodes": 90,
+    "new_total_episodes": 180,
+    "max_predict_calls_per_episode": 65,
+    "max_predict_calls_per_variant": 5850,
+    "max_predict_calls_total": 11700,
+    "p0_retests": 0,
+    "new00": 0,
+    "training_updates": 0,
+    "new_training_data_or_labels_or_index": 0,
+    "extra_prompts_or_seeds": 0,
+    "real_MVP": 0
+  },
+  "user_request": "先跑一个实验，就是原来的改prompt，p0，p1，p2。在这个045 H1@3000步上跑一遍。",
+  "execution_interpretation": "Reuse the already-completed same-model P0 and execute only P1/P2; this reduces duplicate work, not a claim that the user separately specified the number180. If the user explicitly requests a fresh P0, dispatch its additional90 separately.",
+  "roles": {
+    "x": "implementation and affected CPU/fake only",
+    "codex": "review file deployment and full commands",
+    "user": "start all real evaluation jobs"
+  },
+  "implementation_and_real_evaluation_started": false,
+  "old_scores_weights_failures_retained": true,
+  "deleted_files": []
+}
