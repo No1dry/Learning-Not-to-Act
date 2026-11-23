@@ -397,3 +397,46 @@ def test_raw_result_creates_parent_directory(tmp_path):
     assert path == tmp_path / 'episode' / 'raw' / 'composition_soup_butter_s000_10.json'
     assert path.is_file()
     assert json.loads(path.read_text()) == result
+
+
+def test_index50_continuation_inherits_prefix_without_replaying(tmp_path, monkeypatch):
+    rows = []
+    for index in range(15):
+        rows.append({'episode_id': f'{TASK_ORDER[0]}_s{index:03d}_10', 'task_id': TASK_ORDER[0],
+                     'suite': TASK_SUITE, 'initial_state_index': index, 'initial_mask': [True, False]})
+    config, cfg = config_fixture(tmp_path)
+    cfg['_rows'] = rows
+    write_json(tmp_path / 'bank' / 'sources.json', {'rows': rows})
+    install_fake_run(monkeypatch, cfg)
+
+    def stop_at_index10(folder, source, frozen, policy):
+        index = source['episodes'][0]['initial_state_index']
+        if index == 10:
+            raise ValueError('task011 sources are official indices zero through nine')
+        return fake_record(folder, source['episodes'][0], frozen['model'], index % 2 == 0)
+
+    monkeypatch.setattr(evaluation, 'execute_episode', stop_at_index10)
+    parent = tmp_path / 'parent'
+    with pytest.raises(ValueError, match='indices zero through nine'):
+        evaluation.run(config, parent, 'base')
+    progress = json.loads((parent / 'progress.json').read_text())
+    assert progress['completed'] == 10 and progress['episode_id'].endswith('s009_10')
+    write_json(parent / 'episodes' / f'{TASK_ORDER[0]}_s010_10' / 'task_run.json', {'status': 'completed'})
+    new_calls = []
+
+    def continue_execution(folder, source, frozen, policy):
+        episode = source['episodes'][0]
+        new_calls.append(episode['episode_id'])
+        return fake_record(folder, episode, frozen['model'], episode['initial_state_index'] % 2 == 0)
+
+    monkeypatch.setattr(evaluation, 'execute_episode', continue_execution)
+    monkeypatch.setattr(evaluation, 'verify_episode', lambda folder, source, frozen: fake_record(
+        folder, source['episodes'][0], frozen['model'], source['episodes'][0]['initial_state_index'] % 2 == 0))
+    output = tmp_path / 'continued'
+    report = evaluation.run(config, output, 'base', continue_from=parent)
+    assert report['counts']['completed'] == 15
+    assert report['inherited_completed'] == 11 and report['new_execution_attempts'] == 4
+    assert new_calls == [f'{TASK_ORDER[0]}_s{index:03d}_10' for index in range(11, 15)]
+    receipt = json.loads((output / 'continuation.json').read_text())
+    assert receipt['inherited_completed'] == 11 and receipt['new_execution_limit'] == 4
+    assert receipt['repeated_episodes'] == 0

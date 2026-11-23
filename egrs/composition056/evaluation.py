@@ -188,10 +188,11 @@ def execute_episode(folder, source, frozen, policy):
 
 def verify_episode(folder, source, frozen):
     from benchmark.remaining_goals.headless import workflow
-    from benchmark.remaining_goals.headless.schema import validate_protocol_result
-    from benchmark.remaining_goals.headless.evidence import validate_evidence
     from benchmark.remaining_goals.headless.offline_scoring import score_verified_result
+    from egrs.remain053 import validation
+    from .catalog import register
 
+    register(source, Path(source['source']['manifest']).parent)
     folder = Path(folder)
     metadata = read(folder / 'task_run.json')
     episode = source['episodes'][0]
@@ -214,10 +215,10 @@ def verify_episode(folder, source, frozen):
         raise ValueError('056 raw bytes changed')
     raw = read(path)
     identity = workflow.evidence_identity(metadata, episode)
-    validate_protocol_result(raw, episode, identity)
+    validation.validate_protocol_result(raw, episode, identity)
     if raw.get('model_identity') != workflow._model_identity(metadata):
         raise ValueError('056 raw loaded model identity differs')
-    checked = validate_evidence(folder, raw, episode, identity)
+    checked = validation.validate_evidence(folder, raw, episode, identity)
     if checked.get('verified') is False or raw['status'] != 'completed':
         raise ValueError('056 incomplete evidence cannot become a policy failure')
     video = raw['video']
@@ -277,29 +278,94 @@ class Live:
               f"overall_SR={value['live_compliant_SR_percent']:.2f}% ({successes}/{n})", flush=True)
 
 
-def run(config_path, output, model):
+def continuation(cfg, model, parent_path):
+    parent = Path(parent_path).resolve()
+    parent_plan = read(parent / 'plan.json')
+    summary = read(parent / 'summary.json')
+    progress = read(parent / 'progress.json')
+    if (parent_plan.get('schema_version') != SCHEMA or parent_plan.get('model') != model
+            or parent_plan.get('source_bank_sha256') != BANK_SHA256
+            or parent_plan.get('preparation_identity') != PREPARATION_IDENTITY
+            or summary.get('model') != model or summary.get('software_exit') != 'incomplete'
+            or summary.get('plan_sha256') != parent_plan.get('plan_sha256')
+            or summary.get('source_bank_sha256') != BANK_SHA256
+            or summary.get('preparation_identity') != PREPARATION_IDENTITY):
+        raise ValueError('056 continuation requires the same incomplete model/bank/plan')
+    errors = summary.get('execution_errors', [])
+    if (len(errors) != 1 or 'indices zero through nine' not in errors[0].get('error', '')
+            or summary['counts']['formal_SR'] is not None):
+        raise ValueError('056 only resumes the specific index10 schema interruption')
+    completed = progress['completed']
+    if not completed or progress['episode_id'] != parent_plan['sources'][completed - 1]['episodes'][0]['episode_id']:
+        raise ValueError('056 continuation requires a contiguous completed prefix')
+    if summary['counts']['completed'] != completed:
+        raise ValueError('056 parent summary/progress completed counts differ')
+    while completed < len(parent_plan['sources']):
+        source = parent_plan['sources'][completed]
+        folder = parent / 'episodes' / source['episodes'][0]['episode_id']
+        if not folder.exists():
+            break
+        metadata = read(folder / 'task_run.json')
+        if metadata.get('status') != 'completed':
+            break
+        completed += 1
+    prefix = parent_plan['sources'][:completed]
+    remaining = parent_plan['sources'][completed:]
+    for source in remaining:
+        folder = parent / 'episodes' / source['episodes'][0]['episode_id']
+        if folder.exists() and read(folder / 'task_run.json').get('status') == 'completed':
+            raise ValueError('056 parent has a non-contiguous completed episode')
+    frozen = deepcopy(parent_plan)
+    receipt = {
+        'format': 'task056-explicit-index50-continuation-v1',
+        'parent_run': str(parent),
+        'parent_plan_sha256': parent_plan['plan_sha256'],
+        'inherited_completed': len(prefix),
+        'new_execution_limit': len(remaining),
+        'parent_failure_preserved': errors[0]['error'],
+        'repeated_episodes': 0,
+    }
+    return frozen, parent, len(prefix), receipt
+
+
+def run(config_path, output, model, continue_from=None):
     cfg = load_config(config_path)
     output = protect(cfg, output, config_path)
-    frozen = plan(cfg, model)
+    if continue_from is None:
+        frozen = plan(cfg, model)
+        parent, inherited, receipt = None, 0, None
+    else:
+        frozen, parent, inherited, receipt = continuation(cfg, model, continue_from)
     frozen['source_config_population'] = read(Path(cfg['source_bank']) / 'sources.json')['rows']
     output.mkdir(parents=True)
     write(output / 'plan.json', frozen)
+    if receipt is not None:
+        write(output / 'continuation.json', receipt)
     from egrs.augmentation.dependencies import activate_reporting
     activate_reporting(Path(cfg['reporting_root']))
     live = Live(output, model, frozen['expected'])
     from benchmark.remaining_goals.isolated_policy import SubprocessPolicy
     from libero_remain_reporting import map_verified_results, render_report
 
+    for source in frozen['sources'][:inherited]:
+        episode = source['episodes'][0]
+        folder = parent / 'episodes' / episode['episode_id']
+        record = verify_episode(folder, source, frozen)
+        live.add(episode, record)
+
     policy = None
     errors = []
+    new_count = 0
     try:
-        policy = SubprocessPolicy(worker(frozen))
-        verify_model(frozen, policy.provenance)
-        for source in frozen['sources']:
-            episode = source['episodes'][0]
-            folder = output / 'episodes' / episode['episode_id']
-            record = execute_episode(folder, source, frozen, policy)
-            live.add(episode, record)
+        if inherited < len(frozen['sources']):
+            policy = SubprocessPolicy(worker(frozen))
+            verify_model(frozen, policy.provenance)
+            for source in frozen['sources'][inherited:]:
+                episode = source['episodes'][0]
+                folder = output / 'episodes' / episode['episode_id']
+                record = execute_episode(folder, source, frozen, policy)
+                new_count += 1
+                live.add(episode, record)
     except BaseException as error:
         errors.append({'phase': 'execution', 'error': f'{type(error).__name__}: {error}'})
         raise
@@ -315,6 +381,7 @@ def run(config_path, output, model):
                       preparation_identity=frozen['preparation_identity'],
                       evaluation_scope=frozen['evaluation_scope'],
                       ordinary_episodes=0, source_generation=0,
+                      inherited_completed=inherited, new_execution_attempts=new_count,
                       software_exit='success' if report['counts']['formal_SR'] else 'incomplete',
                       execution_errors=errors, plan_sha256=frozen['plan_sha256'])
         if report['counts']['successes'] != sum(live.outcomes.values()):

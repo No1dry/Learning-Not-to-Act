@@ -15,7 +15,7 @@ python -m egrs.composition056 compare --base /new/output/base --h0 /new/output/h
 
 每个模型在独立CLI进程中运行。计划前只读检查完整bank与manifest/artifact SHA；执行时使用对应派生`task.bddl`和冻结`state.npy`，私有注册新suite/task ID，不把新组合冒充旧任务。原HeadlessLiberoEnv、runner、完整视频、证据验证及034二元合规评分保持。
 
-输出保护拒绝覆盖。技术错误停止，不自动重试或启动后续模型。最终comparison包含三模型总数、逐任务结果、配对新增/丢失、原生目标及重叠诊断。新旧人口不混算，不声称unseen-scene或任意任务泛化。
+结果验证复用053的index50私有校验，接受固定索引0..49但不改变评分。输出保护拒绝覆盖。技术错误停止，不自动重试或启动后续模型。若父run仅因原core索引10上限中断，可用`--continue-from`显式继承连续完成前缀；新输出仍必须为空，父run和旧结果不修改。最终comparison包含三模型总数、逐任务结果、配对新增/丢失、原生目标及重叠诊断。新旧人口不混算，不声称unseen-scene或任意任务泛化。
 
 ## 定向测试
 
