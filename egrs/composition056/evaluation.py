@@ -337,6 +337,8 @@ def run(config_path, output, model, continue_from=None):
     else:
         frozen, parent, inherited, receipt = continuation(cfg, model, continue_from)
     frozen['source_config_population'] = read(Path(cfg['source_bank']) / 'sources.json')['rows']
+    from egrs.augmentation.dependencies import activate_core
+    activate_core(Path(frozen['source_config']['benchmark_root']))
     output.mkdir(parents=True)
     write(output / 'plan.json', frozen)
     if receipt is not None:

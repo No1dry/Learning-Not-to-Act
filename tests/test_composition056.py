@@ -190,7 +190,7 @@ def fake_frozen(rows, model):
         'source_bank_sha256': BANK_SHA256,
         'preparation_identity': PREPARATION_IDENTITY,
         'evaluation_scope': 'fake056',
-        'source_config': {},
+        'source_config': {'benchmark_root': os.environ['LNA_CORE']},
         'source_config_population': rows,
         'plan_sha256': 'fake-plan',
     }
