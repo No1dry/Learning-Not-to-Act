@@ -37,7 +37,8 @@ def register(source, archived_directory):
         def __init__(self, task_order_index=0):
             super().__init__(task_order_index=task_order_index)
             self.name = TASK_SUITE
-            self._make_benchmark()
+            self.tasks = list(native_benchmark.task_maps[TASK_SUITE].values())
+            self.n_tasks = len(self.tasks)
 
     native_benchmark.BENCHMARK_MAPPING[TASK_SUITE] = CompositionBenchmark
     profile = {
