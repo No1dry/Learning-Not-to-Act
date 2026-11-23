@@ -1,0 +1,8 @@
+{
+  "schema_version": "task056-composition-eval-v1",
+  "source_bank": "${LNA055_BANK}",
+  "base_runtime": "${LNA_BASE_RUNTIME}",
+  "adapter_h0": "${LNA_H0_ADAPTER}",
+  "adapter_h1": "${LNA_H1_ADAPTER}",
+  "protected_roots": ["${LNA_EXISTING_DATA_ROOT}", "${LNA_EXISTING_RUNS_ROOT}"]
+}
