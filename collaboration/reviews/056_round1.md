@@ -21,14 +21,14 @@
 
 代码：`/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task056-composition150-v1`。配置：`/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1`。
 
-最终源包SHA `e722a625dc56afdf840c8be556063c6a330230a586113d1558ede0608accbbda`；实际评测配置SHA `52b59ca1fb9199712579366d38d71942ecaf5b503eee58f7c70f354e2a7f9d33`；启动器SHA `5771c1369828cd67bbc3318c059ed028de074f412d9a42a082333dda12e30122`。`evaluate_450.sh`语法通过，002输出`composition055-evaluation-002`尚不存在。
+最终源包SHA `23fa81c093f1d6271019add4a403ffedc11d8d4162259b6f2429251611d07e62`；实际评测配置SHA `52b59ca1fb9199712579366d38d71942ecaf5b503eee58f7c70f354e2a7f9d33`；启动器SHA `c66eaa4f3d11cad83384b5dee8f9c96b4fd3009b8a9ffff6eb27bd7077c02915`。`evaluate_450.sh`语法通过，003输出`composition055-evaluation-003`尚不存在。
 
-首次用户启动001在模型加载前报`ModuleNotFoundError: libero_remain_reporting`，episode为0。已补充`reporting_root`及`run`内显式激活，服务器实际reporting导入和10项测试通过。001失败现场完整保留，002使用全新输出，未删除旧结果或重跑任何episode。
+首次用户启动001在模型加载前报`ModuleNotFoundError: libero_remain_reporting`，episode为0，已补充`reporting_root`及`run`内显式激活。002首条rollout写结果时因`raw/`父目录不存在退出，已增加`write_raw_result`和回归测试。001/002失败现场均保留，未删除旧结果或重跑episode；服务器11项测试及实际raw写入通过，003使用全新输出。
 
 下一用户只启动一次：
 
 ```bash
-nohup bash /HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1/evaluate_450.sh > /HUBU-AI096/zp/ICML/Learning-Not-to-Act/logs/task056-composition150.console.log 2>&1 &
+nohup bash /HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1/evaluate_450.sh > /HUBU-AI096/zp/ICML/Learning-Not-to-Act/logs/task056-composition150-003.console.log 2>&1 &
 echo "PID=$!"
 ```
 
