@@ -1,0 +1,8 @@
+{
+  "schema_version": "task055-composition-build-v1",
+  "benchmark_root": "${LNA_CORE}",
+  "canonical_bddl": "${LNA_CANONICAL_BDDL}",
+  "canonical_initial_states": "${LNA_CANONICAL_STATES}",
+  "environment_config": "${LNA_ENVIRONMENT_CONFIG}",
+  "protected_roots": ["${LNA_EXISTING_DATA_ROOT}", "${LNA_EXISTING_RUNS_ROOT}"]
+}

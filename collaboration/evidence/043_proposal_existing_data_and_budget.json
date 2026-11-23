@@ -1,0 +1,81 @@
+{
+  "format": "task043-proposal-existing-data-contract-and-unapproved-budget-v1",
+  "date": "2026-11-13",
+  "proposal_only": true,
+  "budget_approved": false,
+  "X_implementation_dispatched": false,
+  "baseline": "042 F0 fixed final1000 complete adapter",
+  "initial_adapter_sha256": "8afe299e47b0cde3ac9fb21f888a895b4fefaa0a8f64a15ee8f3cc10a8829d88",
+  "baseline_ancestor_updates": 3000,
+  "base_index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+  "read_only_existing_report": {
+    "main_rows": 143960,
+    "label_available": 92963,
+    "label_missing": 51019,
+    "total_label_keys": 143982,
+    "pair_only_extra_keys": 22,
+    "pairs": 370,
+    "ten": {
+      "train": 289,
+      "dev": 81
+    },
+    "fresh": {
+      "train": 78,
+      "dev": 27
+    },
+    "raw": {
+      "train": 136,
+      "dev": 44
+    }
+  },
+  "source_contract": {
+    "fixed_code_head": "7d28d515be610f33f959f36d25623e86796671ce",
+    "count_from_goal_vector": "egrs/task_control/index.py:_active_values and build_index",
+    "append_sidecar_source": "egrs/coverage040/index.py",
+    "current_frame_facts": "egrs/trajectory_augmentation/native.py:NativeSession.capture",
+    "new043_labels_not_yet_materialized": true,
+    "not_claiming_full_spatial_or_release_field_coverage": true
+  },
+  "proposed_budget": {
+    "CPU_sidecar_key_upper_bound": 143982,
+    "entity_slots_per_key_upper_bound": 2,
+    "additional_updates_each": 1000,
+    "arms": [
+      "g0",
+      "g1"
+    ],
+    "reference_calls_total": 18048,
+    "student_calls_total": 49120,
+    "formal_evaluation_total": 360,
+    "new_simulation_generation_or_replay": 0,
+    "new_teacher_or_pretrained_weights": 0,
+    "extra_seeds_or_search_or_MVP": 0
+  },
+  "comparison": {
+    "same_architecture_supervision_initialization_data_losses": true,
+    "only_research_difference": "constant half weights vs predicted U+H/S weights into action contexts",
+    "initial_actions_equal_same_F0_source": true,
+    "labels_never_actor_inputs": true,
+    "symmetric_instances_unordered_matching": true,
+    "relative_geometry_receiver_specific": true,
+    "current_satisfied_not_hard_protection_or_FINISH": true
+  },
+  "references": [
+    {
+      "title": "ControlVLA",
+      "url": "https://arxiv.org/html/2506.16211v1"
+    },
+    {
+      "title": "Act with Intent / INDI",
+      "url": "https://arxiv.org/html/2608.23478v1"
+    },
+    {
+      "title": "AffordanceVLA",
+      "url": "https://arxiv.org/abs/2606.06155"
+    }
+  ],
+  "actual_new_sidecar_model_or_simulation_jobs": 0,
+  "implementation_or_deployment_done": false,
+  "PR_merged": false,
+  "deletions": []
+}

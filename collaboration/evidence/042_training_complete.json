@@ -1,0 +1,243 @@
+{
+  "format": "task042-training-complete-and-formal-eval-handoff-v1",
+  "date": "2026-11-13",
+  "implementation_head": "7d28d515be610f33f959f36d25623e86796671ce",
+  "training_percent": 100,
+  "formal_evaluation_percent": 0,
+  "additional_updates_each": 1000,
+  "ancestor_updates": 2000,
+  "total_ancestral_updates_each": 3000,
+  "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+  "arms": {
+    "f0": {
+      "update": 1000,
+      "ancestor_updates": 2000,
+      "total_ancestral_updates": 3000,
+      "adapter_sha256": "8afe299e47b0cde3ac9fb21f888a895b4fefaa0a8f64a15ee8f3cc10a8829d88",
+      "training_state_sha256": "f5ee96efc72dcf93f2a68f978b3534a92c78424c78066b7330334251c1bef596",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "student_calls": {
+        "budget": 24560,
+        "dev": 2560,
+        "total": 24560,
+        "train": 22000
+      },
+      "dev": {
+        "pool_l1": {
+          "ten": 0.11690946831533226,
+          "fresh": 0.022988853410684636,
+          "raw": 0.016681493434589356
+        },
+        "weighted_l1": 0.06837232086898463,
+        "ordinary_observations": 512,
+        "pair_count": 64,
+        "paired_diagnostics": {
+          "self": 0.0962944055791013,
+          "swap": 0.09598131774691865,
+          "align": 0.0013578499352888684,
+          "z_zero_action_delta_l1": 0.01909457011061022,
+          "z_distance_l2": 7.844630938023329
+        },
+        "count_class_coverage": {
+          "0": 93,
+          "1": 376,
+          "2": 43
+        },
+        "count_accuracy_by_class": {
+          "0": 0.978494623655914,
+          "1": 0.9707446808510638,
+          "2": 0.9302325581395349
+        },
+        "count_accuracy": 0.96875,
+        "reference_time_bins": {
+          "fresh": {
+            "prefix": 64,
+            "all": 64
+          },
+          "raw": {
+            "prefix": 64,
+            "all": 64
+          }
+        }
+      },
+      "training_body_seconds": 11779.227194204926,
+      "attention_contract": {
+        "audited_source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+        "backend": "torch.nn.functional.scaled_dot_product_attention",
+        "checkpoint_mask": "immutable-per-observation-explicit-layer-input",
+        "control_reads_task_and_control": true,
+        "experiment_arm": "f0",
+        "format": "task042-attention-contract-v1",
+        "implementation": "instance-audited-llama-sdpa-v1",
+        "is_causal": false,
+        "mask": "explicit-dense-additive-0-negative-infinity",
+        "native_graph": "padding-only-bidirectional",
+        "reference": "native-padding-only-without-student-layout-hook",
+        "routing": "native-padding-only",
+        "torch_version": "2.4.1+cu121",
+        "transformers_version": "4.40.1",
+        "use_cache": false
+      },
+      "attention_runtime": {
+        "attention_class": "transformers.models.llama.modeling_llama.LlamaSdpaAttention",
+        "attention_layer_count": 32,
+        "backend": "torch.nn.functional.scaled_dot_product_attention",
+        "decoder_class": "transformers.models.llama.modeling_llama.LlamaModel",
+        "dtype": "torch.bfloat16",
+        "language_model_class": "transformers.models.llama.modeling_llama.LlamaForCausalLM",
+        "source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+        "torch_version": "2.4.1+cu121",
+        "transformers_version": "4.40.1"
+      },
+      "final_sampling": {
+        "pool_draw_counts": {
+          "ten": 12000,
+          "fresh": 4000,
+          "raw": 4000
+        },
+        "time_bin_draw_counts": {
+          "ten|expert": 12000,
+          "fresh|prefix": 2000,
+          "fresh|all": 2000,
+          "raw|prefix": 2000,
+          "raw|all": 2000
+        },
+        "pair_draws": 1000,
+        "detail": "full hierarchy/RNG state retained in each checkpoint"
+      }
+    },
+    "f1": {
+      "update": 1000,
+      "ancestor_updates": 2000,
+      "total_ancestral_updates": 3000,
+      "adapter_sha256": "79ad5b7f78fe11ab0721c2b7e38b3f170a768f6dbba70b383ef24dd0f2fe0ac1",
+      "training_state_sha256": "94a548e359ba90de6c94332003577051dcac10cff51aa3519d7d160424156ea3",
+      "reference_calls": {
+        "budget": 9024,
+        "dev": 1024,
+        "total": 9024,
+        "train": 8000
+      },
+      "student_calls": {
+        "budget": 24560,
+        "dev": 2560,
+        "total": 24560,
+        "train": 22000
+      },
+      "dev": {
+        "pool_l1": {
+          "ten": 0.11963601143767773,
+          "fresh": 0.032502378220669925,
+          "raw": 0.02729190299786361
+        },
+        "weighted_l1": 0.07476657602347224,
+        "ordinary_observations": 512,
+        "pair_count": 64,
+        "paired_diagnostics": {
+          "self": 0.1004878212697804,
+          "swap": 0.09958069369895384,
+          "align": 0.0018676198178582126,
+          "z_zero_action_delta_l1": 0.0174478480257676,
+          "z_distance_l2": 9.847734712064266
+        },
+        "count_class_coverage": {
+          "0": 93,
+          "1": 376,
+          "2": 43
+        },
+        "count_accuracy_by_class": {
+          "0": 0.989247311827957,
+          "1": 0.9388297872340425,
+          "2": 1
+        },
+        "count_accuracy": 0.953125,
+        "reference_time_bins": {
+          "fresh": {
+            "prefix": 64,
+            "all": 64
+          },
+          "raw": {
+            "prefix": 64,
+            "all": 64
+          }
+        }
+      },
+      "training_body_seconds": 11882.519557923079,
+      "attention_contract": {
+        "audited_source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+        "backend": "torch.nn.functional.scaled_dot_product_attention",
+        "checkpoint_mask": "immutable-per-observation-explicit-layer-input",
+        "control_reads_task_and_control": true,
+        "experiment_arm": "f1",
+        "format": "task042-attention-contract-v1",
+        "implementation": "instance-audited-llama-sdpa-v1",
+        "is_causal": false,
+        "mask": "explicit-dense-additive-0-negative-infinity",
+        "native_graph": "padding-only-bidirectional",
+        "reference": "native-padding-only-without-student-layout-hook",
+        "routing": "block-task-query-control-key-every-layer",
+        "torch_version": "2.4.1+cu121",
+        "transformers_version": "4.40.1",
+        "use_cache": false
+      },
+      "attention_runtime": {
+        "attention_class": "transformers.models.llama.modeling_llama.LlamaSdpaAttention",
+        "attention_layer_count": 32,
+        "backend": "torch.nn.functional.scaled_dot_product_attention",
+        "decoder_class": "transformers.models.llama.modeling_llama.LlamaModel",
+        "dtype": "torch.bfloat16",
+        "language_model_class": "transformers.models.llama.modeling_llama.LlamaForCausalLM",
+        "source_sha256": "3aac24cec583a6ef5f60b6ec634a8bd3c8377784c5c63c8cc14cb6790554c52e",
+        "torch_version": "2.4.1+cu121",
+        "transformers_version": "4.40.1"
+      },
+      "final_sampling": {
+        "pool_draw_counts": {
+          "ten": 12000,
+          "fresh": 4000,
+          "raw": 4000
+        },
+        "time_bin_draw_counts": {
+          "ten|expert": 12000,
+          "fresh|prefix": 2000,
+          "fresh|all": 2000,
+          "raw|prefix": 2000,
+          "raw|all": 2000
+        },
+        "pair_draws": 1000,
+        "detail": "full hierarchy/RNG state retained in each checkpoint"
+      }
+    }
+  },
+  "reference_calls_total": 18048,
+  "student_calls_total": 49120,
+  "wall_seconds": 24932,
+  "verified_original_files": 32,
+  "verified_original_bytes": 514407216,
+  "local_manifest_sha256": "ec0667263a5d3bf38998f728cc99e49324c5a6758d210614380e18c68b5aed34",
+  "same_recorded_sampling_and_batch_summaries_all1000": true,
+  "not_claiming_stepwise_tensor_or_RNG_causal_audit": true,
+  "terminal_only_fixed_selection": true,
+  "source_initial_adapter_sha256": "d4e726a867531f655d28e11f358ce0af597d4ada0f4928f4597aeadb28d38397",
+  "evaluation_population_runtime_scoring_bridges_same_as041": true,
+  "evaluation_configs_bind_actual_final1000": true,
+  "evaluation_launcher_sha256": "a6de7deff37111031a573724a6e25a837b769cd3be5b4b1bd3c23af0f2178c2c",
+  "launcher_only_syntax_checked_not_executed": true,
+  "no_running_processes": true,
+  "no_console_error_markers": true,
+  "success_observed_from_shell_COMPLETE_branches": true,
+  "independent_numeric_shell_exit_file_not_collected": true,
+  "future_eval_outputs_or_marker_exist": false,
+  "formal_budget": 360,
+  "real_jobs_started_by_Codex": false,
+  "model_loaded_or_training_state_deserialized_by_Codex": false,
+  "PR_merged": false,
+  "deletions": [],
+  "X_revision_required": false,
+  "next_executor": "user"
+}

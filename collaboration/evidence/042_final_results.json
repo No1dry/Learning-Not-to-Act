@@ -1,0 +1,4490 @@
+{
+  "format": "task042-final-results-attention-firewall-v1",
+  "date": "2026-11-13",
+  "complete": true,
+  "model_execution_percent": 100,
+  "formal_reporting_percent": 100,
+  "episodes_total": 360,
+  "implementation_head": "7d28d515be610f33f959f36d25623e86796671ce",
+  "scores": {
+    "040": {
+      "10": {
+        "numerator": 53,
+        "denominator": 90,
+        "percent": 58.888888888888886
+      },
+      "00": {
+        "numerator": 78,
+        "denominator": 90,
+        "percent": 86.66666666666667
+      }
+    },
+    "r0": {
+      "10": {
+        "numerator": 59,
+        "denominator": 90,
+        "percent": 65.55555555555556
+      },
+      "00": {
+        "numerator": 74,
+        "denominator": 90,
+        "percent": 82.22222222222223
+      }
+    },
+    "f0": {
+      "10": {
+        "numerator": 62,
+        "denominator": 90,
+        "percent": 68.88888888888889
+      },
+      "00": {
+        "numerator": 72,
+        "denominator": 90,
+        "percent": 80
+      }
+    },
+    "f1": {
+      "10": {
+        "numerator": 63,
+        "denominator": 90,
+        "percent": 70
+      },
+      "00": {
+        "numerator": 72,
+        "denominator": 90,
+        "percent": 80
+      }
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "basket",
+      "label": "汤罐＋番茄酱入篮",
+      "scores": {
+        "040": {
+          "10": 50,
+          "00": 60
+        },
+        "r0": {
+          "10": 80,
+          "00": 50
+        },
+        "f0": {
+          "10": 70,
+          "00": 60
+        },
+        "f1": {
+          "10": 80,
+          "00": 40
+        }
+      }
+    },
+    {
+      "task_id": "basket_cheese_butter",
+      "label": "奶酪＋黄油入篮",
+      "scores": {
+        "040": {
+          "10": 40,
+          "00": 90
+        },
+        "r0": {
+          "10": 40,
+          "00": 70
+        },
+        "f0": {
+          "10": 40,
+          "00": 70
+        },
+        "f1": {
+          "10": 40,
+          "00": 60
+        }
+      }
+    },
+    {
+      "task_id": "stove",
+      "label": "开炉并放摩卡壶",
+      "scores": {
+        "040": {
+          "10": 60,
+          "00": 100
+        },
+        "r0": {
+          "10": 70,
+          "00": 100
+        },
+        "f0": {
+          "10": 90,
+          "00": 100
+        },
+        "f1": {
+          "10": 80,
+          "00": 100
+        }
+      }
+    },
+    {
+      "task_id": "bowl_drawer_close",
+      "label": "黑碗入抽屉并关屉",
+      "scores": {
+        "040": {
+          "10": 100,
+          "00": 90
+        },
+        "r0": {
+          "10": 100,
+          "00": 100
+        },
+        "f0": {
+          "10": 100,
+          "00": 90
+        },
+        "f1": {
+          "10": 100,
+          "00": 100
+        }
+      }
+    },
+    {
+      "task_id": "dual_mugs",
+      "label": "两杯分别放左右碟",
+      "scores": {
+        "040": {
+          "10": 50,
+          "00": 100
+        },
+        "r0": {
+          "10": 90,
+          "00": 90
+        },
+        "f0": {
+          "10": 80,
+          "00": 80
+        },
+        "f1": {
+          "10": 80,
+          "00": 70
+        }
+      }
+    },
+    {
+      "task_id": "mug_pudding",
+      "label": "白杯上盘、布丁放盘右",
+      "scores": {
+        "040": {
+          "10": 30,
+          "00": 90
+        },
+        "r0": {
+          "10": 20,
+          "00": 80
+        },
+        "f0": {
+          "10": 50,
+          "00": 80
+        },
+        "f1": {
+          "10": 50,
+          "00": 90
+        }
+      }
+    },
+    {
+      "task_id": "basket_soup_cheese",
+      "label": "汤罐＋奶酪入篮",
+      "scores": {
+        "040": {
+          "10": 90,
+          "00": 60
+        },
+        "r0": {
+          "10": 90,
+          "00": 50
+        },
+        "f0": {
+          "10": 100,
+          "00": 60
+        },
+        "f1": {
+          "10": 100,
+          "00": 60
+        }
+      }
+    },
+    {
+      "task_id": "two_pots",
+      "label": "两个摩卡壶放炉上",
+      "scores": {
+        "040": {
+          "10": 10,
+          "00": 90
+        },
+        "r0": {
+          "10": 20,
+          "00": 100
+        },
+        "f0": {
+          "10": 10,
+          "00": 80
+        },
+        "f1": {
+          "10": 10,
+          "00": 100
+        }
+      }
+    },
+    {
+      "task_id": "mug_microwave_close",
+      "label": "杯子入微波炉并关门",
+      "scores": {
+        "040": {
+          "10": 100,
+          "00": 100
+        },
+        "r0": {
+          "10": 80,
+          "00": 100
+        },
+        "f0": {
+          "10": 80,
+          "00": 100
+        },
+        "f1": {
+          "10": 90,
+          "00": 100
+        }
+      }
+    }
+  ],
+  "slices": {
+    "040": {
+      "expanded_three": {
+        "successes": 10,
+        "denominator": 30,
+        "percent": 33.333333333333336
+      },
+      "old_six": {
+        "successes": 43,
+        "denominator": 60,
+        "percent": 71.66666666666667
+      }
+    },
+    "r0": {
+      "expanded_three": {
+        "successes": 11,
+        "denominator": 30,
+        "percent": 36.666666666666664
+      },
+      "old_six": {
+        "successes": 48,
+        "denominator": 60,
+        "percent": 80
+      }
+    },
+    "f0": {
+      "expanded_three": {
+        "successes": 15,
+        "denominator": 30,
+        "percent": 50
+      },
+      "old_six": {
+        "successes": 47,
+        "denominator": 60,
+        "percent": 78.33333333333333
+      }
+    },
+    "f1": {
+      "expanded_three": {
+        "successes": 14,
+        "denominator": 30,
+        "percent": 46.666666666666664
+      },
+      "old_six": {
+        "successes": 49,
+        "denominator": 60,
+        "percent": 81.66666666666667
+      }
+    }
+  },
+  "diagnostics": {
+    "040": {
+      "all10": {
+        "episodes": 90,
+        "successes": 53,
+        "ever_native_complete": 61,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 29,
+          "goal_regression": 9,
+          "wrong_grasp": 8,
+          "wrong_placement": 6
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 5,
+          "completion_release_unknown": 4
+        },
+        "mean_steps": 303.44444444444446,
+        "mean_path_m": 0.9853975773394206
+      },
+      "unsuccessful10": {
+        "episodes": 37,
+        "successes": 0,
+        "ever_native_complete": 8,
+        "failure_reasons": {
+          "goal_not_confirmed_by_horizon": 29,
+          "goal_regression": 9,
+          "wrong_grasp": 8,
+          "wrong_placement": 6
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 5,
+          "completion_release_unknown": 4
+        },
+        "mean_steps": 495.6216216216216,
+        "mean_path_m": 1.2917745774991303
+      }
+    },
+    "r0": {
+      "all10": {
+        "episodes": 90,
+        "successes": 59,
+        "ever_native_complete": 71,
+        "failure_reasons": {
+          "wrong_grasp": 8,
+          "wrong_placement": 7,
+          "goal_not_confirmed_by_horizon": 19,
+          "goal_regression": 8
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 5,
+          "completion_release_unknown": 7
+        },
+        "mean_steps": 263.53333333333336,
+        "mean_path_m": 0.9146732423097426
+      },
+      "unsuccessful10": {
+        "episodes": 31,
+        "successes": 0,
+        "ever_native_complete": 12,
+        "failure_reasons": {
+          "wrong_grasp": 8,
+          "wrong_placement": 7,
+          "goal_not_confirmed_by_horizon": 19,
+          "goal_regression": 8
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 5,
+          "completion_release_unknown": 7
+        },
+        "mean_steps": 486.83870967741933,
+        "mean_path_m": 1.2947073283220114
+      }
+    },
+    "f0": {
+      "all10": {
+        "episodes": 90,
+        "successes": 62,
+        "ever_native_complete": 74,
+        "failure_reasons": {
+          "goal_regression": 8,
+          "goal_not_confirmed_by_horizon": 18,
+          "wrong_grasp": 7,
+          "wrong_placement": 7
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 4,
+          "completion_release_unknown": 4
+        },
+        "mean_steps": 260.6333333333333,
+        "mean_path_m": 0.9049613675322926
+      },
+      "unsuccessful10": {
+        "episodes": 28,
+        "successes": 0,
+        "ever_native_complete": 12,
+        "failure_reasons": {
+          "goal_regression": 8,
+          "goal_not_confirmed_by_horizon": 18,
+          "wrong_grasp": 7,
+          "wrong_placement": 7
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 4,
+          "completion_release_unknown": 4
+        },
+        "mean_steps": 479.67857142857144,
+        "mean_path_m": 1.2522583516661827
+      }
+    },
+    "f1": {
+      "all10": {
+        "episodes": 90,
+        "successes": 63,
+        "ever_native_complete": 71,
+        "failure_reasons": {
+          "wrong_grasp": 8,
+          "wrong_placement": 5,
+          "goal_not_confirmed_by_horizon": 19,
+          "goal_regression": 8
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 4,
+          "completion_release_unknown": 4
+        },
+        "mean_steps": 259.9111111111111,
+        "mean_path_m": 0.9522060363132865
+      },
+      "unsuccessful10": {
+        "episodes": 27,
+        "successes": 0,
+        "ever_native_complete": 8,
+        "failure_reasons": {
+          "wrong_grasp": 8,
+          "wrong_placement": 5,
+          "goal_not_confirmed_by_horizon": 19,
+          "goal_regression": 8
+        },
+        "unknown_reasons": {
+          "event_evidence_unknown": 4,
+          "completion_release_unknown": 4
+        },
+        "mean_steps": 485.037037037037,
+        "mean_path_m": 1.4436894736021126
+      }
+    }
+  },
+  "paired": {
+    "f1_vs_f0": {
+      "10": {
+        "counts": {
+          "both_success": 57,
+          "gained": 6,
+          "lost": 5,
+          "both_unsuccessful": 22
+        },
+        "delta_percentage_points": 1.1111111111111112,
+        "exact_two_sided_discordant_binomial_p_descriptive": 1
+      },
+      "00": {
+        "counts": {
+          "both_success": 68,
+          "gained": 4,
+          "lost": 4,
+          "both_unsuccessful": 14
+        },
+        "delta_percentage_points": 0,
+        "exact_two_sided_discordant_binomial_p_descriptive": 1
+      }
+    },
+    "f0_vs_r0": {
+      "10": {
+        "counts": {
+          "both_success": 55,
+          "gained": 7,
+          "lost": 4,
+          "both_unsuccessful": 24
+        },
+        "delta_percentage_points": 3.3333333333333335,
+        "exact_two_sided_discordant_binomial_p_descriptive": 0.548828125
+      },
+      "00": {
+        "counts": {
+          "both_success": 70,
+          "gained": 2,
+          "lost": 4,
+          "both_unsuccessful": 14
+        },
+        "delta_percentage_points": -2.2222222222222223,
+        "exact_two_sided_discordant_binomial_p_descriptive": 0.6875
+      }
+    },
+    "f1_vs_r0": {
+      "10": {
+        "counts": {
+          "both_success": 55,
+          "gained": 8,
+          "lost": 4,
+          "both_unsuccessful": 23
+        },
+        "delta_percentage_points": 4.444444444444445,
+        "exact_two_sided_discordant_binomial_p_descriptive": 0.3876953125
+      },
+      "00": {
+        "counts": {
+          "both_success": 69,
+          "gained": 3,
+          "lost": 5,
+          "both_unsuccessful": 13
+        },
+        "delta_percentage_points": -2.2222222222222223,
+        "exact_two_sided_discordant_binomial_p_descriptive": 0.7265625
+      }
+    },
+    "f1_vs040": {
+      "10": {
+        "counts": {
+          "both_success": 48,
+          "gained": 15,
+          "lost": 5,
+          "both_unsuccessful": 22
+        },
+        "delta_percentage_points": 11.11111111111111,
+        "exact_two_sided_discordant_binomial_p_descriptive": 0.04138946533203125
+      },
+      "00": {
+        "counts": {
+          "both_success": 70,
+          "gained": 2,
+          "lost": 8,
+          "both_unsuccessful": 10
+        },
+        "delta_percentage_points": -6.666666666666667,
+        "exact_two_sided_discordant_binomial_p_descriptive": 0.109375
+      }
+    }
+  },
+  "paired_common_success_efficiency": {
+    "f1_vs_f0": {
+      "10": {
+        "n": 57,
+        "n_steps": {
+          "before_mean": 153.91228070175438,
+          "after_mean": 157.73684210526315,
+          "mean_paired_delta": 3.824561403508772,
+          "median_paired_delta": 0,
+          "decreased": 28,
+          "increased": 25,
+          "equal": 4
+        },
+        "path_length_m": {
+          "before_mean": 0.7422038484834852,
+          "after_mean": 0.7423003344395417,
+          "mean_paired_delta": 0.00009648595605648442,
+          "median_paired_delta": -0.0013310725068936824,
+          "decreased": 31,
+          "increased": 26,
+          "equal": 0
+        }
+      },
+      "00": {
+        "n": 68,
+        "n_steps": {
+          "before_mean": 287.13235294117646,
+          "after_mean": 293.25,
+          "mean_paired_delta": 6.117647058823529,
+          "median_paired_delta": 3,
+          "decreased": 26,
+          "increased": 37,
+          "equal": 5
+        },
+        "path_length_m": {
+          "before_mean": 1.6743987944424392,
+          "after_mean": 1.6699800529007065,
+          "mean_paired_delta": -0.0044187415417327345,
+          "median_paired_delta": 0.0023015192079548497,
+          "decreased": 32,
+          "increased": 36,
+          "equal": 0
+        }
+      }
+    },
+    "f0_vs_r0": {
+      "10": {
+        "n": 55,
+        "n_steps": {
+          "before_mean": 143.29090909090908,
+          "after_mean": 144.6,
+          "mean_paired_delta": 1.309090909090909,
+          "median_paired_delta": 2,
+          "decreased": 18,
+          "increased": 34,
+          "equal": 3
+        },
+        "path_length_m": {
+          "before_mean": 0.7163387746175709,
+          "after_mean": 0.7126995948807957,
+          "mean_paired_delta": -0.0036391797367751576,
+          "median_paired_delta": 0.007454781226680862,
+          "decreased": 18,
+          "increased": 37,
+          "equal": 0
+        }
+      },
+      "00": {
+        "n": 70,
+        "n_steps": {
+          "before_mean": 286.6142857142857,
+          "after_mean": 285.6857142857143,
+          "mean_paired_delta": -0.9285714285714286,
+          "median_paired_delta": 0,
+          "decreased": 31,
+          "increased": 32,
+          "equal": 7
+        },
+        "path_length_m": {
+          "before_mean": 1.654928023980793,
+          "after_mean": 1.6784929262259545,
+          "mean_paired_delta": 0.023564902245161386,
+          "median_paired_delta": 0.0019117217208615145,
+          "decreased": 34,
+          "increased": 36,
+          "equal": 0
+        }
+      }
+    },
+    "f1_vs_r0": {
+      "10": {
+        "n": 55,
+        "n_steps": {
+          "before_mean": 143.05454545454546,
+          "after_mean": 151.56363636363636,
+          "mean_paired_delta": 8.50909090909091,
+          "median_paired_delta": 2,
+          "decreased": 18,
+          "increased": 34,
+          "equal": 3
+        },
+        "path_length_m": {
+          "before_mean": 0.7198011789750771,
+          "after_mean": 0.7338505216773002,
+          "mean_paired_delta": 0.014049342702223229,
+          "median_paired_delta": 0.00834127087345038,
+          "decreased": 16,
+          "increased": 39,
+          "equal": 0
+        }
+      },
+      "00": {
+        "n": 69,
+        "n_steps": {
+          "before_mean": 289.3188405797101,
+          "after_mean": 294.82608695652175,
+          "mean_paired_delta": 5.507246376811594,
+          "median_paired_delta": 3,
+          "decreased": 24,
+          "increased": 39,
+          "equal": 6
+        },
+        "path_length_m": {
+          "before_mean": 1.6544535509489648,
+          "after_mean": 1.673646458922422,
+          "mean_paired_delta": 0.019192907973457133,
+          "median_paired_delta": 0.00843080709580124,
+          "decreased": 27,
+          "increased": 42,
+          "equal": 0
+        }
+      }
+    },
+    "f1_vs040": {
+      "10": {
+        "n": 48,
+        "n_steps": {
+          "before_mean": 157.77083333333334,
+          "after_mean": 145.125,
+          "mean_paired_delta": -12.645833333333334,
+          "median_paired_delta": -5,
+          "decreased": 29,
+          "increased": 18,
+          "equal": 1
+        },
+        "path_length_m": {
+          "before_mean": 0.7738349781897713,
+          "after_mean": 0.7180847570490531,
+          "mean_paired_delta": -0.05575022114071831,
+          "median_paired_delta": -0.003923972237070361,
+          "decreased": 28,
+          "increased": 20,
+          "equal": 0
+        }
+      },
+      "00": {
+        "n": 70,
+        "n_steps": {
+          "before_mean": 290.5285714285714,
+          "after_mean": 296.9142857142857,
+          "mean_paired_delta": 6.385714285714286,
+          "median_paired_delta": 2,
+          "decreased": 25,
+          "increased": 38,
+          "equal": 7
+        },
+        "path_length_m": {
+          "before_mean": 1.6530245659180403,
+          "after_mean": 1.6767578492879456,
+          "mean_paired_delta": 0.02373328336990534,
+          "median_paired_delta": 0.01916671666115688,
+          "decreased": 26,
+          "increased": 44,
+          "equal": 0
+        }
+      }
+    }
+  },
+  "existing_trace_groups": {
+    "f0": {
+      "two_pots": {
+        "episodes": 10,
+        "successes": 1,
+        "A_ever_false": 2,
+        "B_ever_true": 2,
+        "both_ever_true": 2,
+        "both_and_released_true_ever": 1,
+        "A_false_final": 0,
+        "failures_A_always_true_B_never_true": 7
+      },
+      "mug_pudding": {
+        "episodes": 10,
+        "successes": 5,
+        "A_ever_false": 4,
+        "B_ever_true": 9,
+        "both_ever_true": 9,
+        "both_and_released_true_ever": 5,
+        "A_false_final": 4,
+        "failures_A_always_true_B_never_true": 1
+      },
+      "basket_cheese_butter": {
+        "episodes": 10,
+        "successes": 4,
+        "A_ever_false": 1,
+        "B_ever_true": 8,
+        "both_ever_true": 8,
+        "both_and_released_true_ever": 8,
+        "A_false_final": 0,
+        "failures_A_always_true_B_never_true": 2
+      }
+    },
+    "f1": {
+      "two_pots": {
+        "episodes": 10,
+        "successes": 1,
+        "A_ever_false": 2,
+        "B_ever_true": 2,
+        "both_ever_true": 2,
+        "both_and_released_true_ever": 2,
+        "A_false_final": 0,
+        "failures_A_always_true_B_never_true": 7
+      },
+      "mug_pudding": {
+        "episodes": 10,
+        "successes": 5,
+        "A_ever_false": 4,
+        "B_ever_true": 9,
+        "both_ever_true": 9,
+        "both_and_released_true_ever": 5,
+        "A_false_final": 4,
+        "failures_A_always_true_B_never_true": 1
+      },
+      "basket_cheese_butter": {
+        "episodes": 10,
+        "successes": 4,
+        "A_ever_false": 2,
+        "B_ever_true": 6,
+        "both_ever_true": 6,
+        "both_and_released_true_ever": 6,
+        "A_false_final": 1,
+        "failures_A_always_true_B_never_true": 2
+      }
+    }
+  },
+  "existing_trace_episodes": [
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s000_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression",
+        "wrong_grasp",
+        "wrong_placement"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 345,
+      "raw_sha256": "c183e97448df99335dca5db900663a95b2ed17664b8b8613d061c0ac71399350",
+      "raw_bytes": 45433755,
+      "A_ever_false": true,
+      "A_false_frames": 4,
+      "first_A_false_step": 204,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 341,
+      "both_ever_true": true,
+      "first_both_true_step": 341,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 341,
+      "goal_confirmed_step": 345,
+      "logged_goal_regression": true,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 52,
+          "confirmation_step": 56
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 209,
+          "confirmation_step": 213
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.025150987086539126,
+            0.2258372415639212,
+            0.462695664212238
+          ],
+          "final_position": [
+            0.025025959338634125,
+            0.22613585006951897,
+            0.4626956233657009
+          ],
+          "max_translation_from_initial_m": 0.01839437760449776
+        },
+        "butter_1": {
+          "initial_position": [
+            0.0489602377124352,
+            0.05760379687259051,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.024891756417615988,
+            0.24979877616429802,
+            0.5640377527550111
+          ],
+          "max_translation_from_initial_m": 0.27162211014866944
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s001_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 135,
+      "raw_sha256": "48a3d48559a18e84d3036b7ad8f3e88927c32bd198661b1c988fccf8493961e0",
+      "raw_bytes": 19470035,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 131,
+      "both_ever_true": true,
+      "first_both_true_step": 131,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 131,
+      "goal_confirmed_step": 135,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.02015138404957065,
+            0.22734248174978822,
+            0.46269566422480574
+          ],
+          "final_position": [
+            0.020154456249834023,
+            0.22728787672984363,
+            0.4626955083424754
+          ],
+          "max_translation_from_initial_m": 0.00011153606559200783
+        },
+        "butter_1": {
+          "initial_position": [
+            0.03504816625408551,
+            0.06299035293625024,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.01426562920745467,
+            0.258909496792255,
+            0.4777702261501024
+          ],
+          "max_translation_from_initial_m": 0.2720186256507442
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s002_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 317,
+      "raw_sha256": "13945351925b9a57e9efd3556bd70fe5e0c356fd919dedf522b0f013ce4ad92e",
+      "raw_bytes": 43842449,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 313,
+      "both_ever_true": true,
+      "first_both_true_step": 313,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 313,
+      "goal_confirmed_step": 317,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 52,
+          "confirmation_step": 56
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 177,
+          "confirmation_step": 181
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.012577982055444617,
+            0.21382358408849086,
+            0.4626956642255512
+          ],
+          "final_position": [
+            0.012558687925339464,
+            0.2137709019150508,
+            0.46269122000203566
+          ],
+          "max_translation_from_initial_m": 0.00006053120352906614
+        },
+        "butter_1": {
+          "initial_position": [
+            0.02599305674820226,
+            0.07450489107508533,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.020348672761566197,
+            0.21550436234377376,
+            0.511878960085423
+          ],
+          "max_translation_from_initial_m": 0.26223066931100525
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s003_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 129,
+      "raw_sha256": "357d1926fab73fcf5cf21182116c9b29c75c9f98ca62e82d5bc9ced2ea775ce3",
+      "raw_bytes": 18379744,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 123,
+      "both_ever_true": true,
+      "first_both_true_step": 123,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 125,
+      "goal_confirmed_step": 129,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.012612919708624146,
+            0.2227431397555216,
+            0.4626956642121053
+          ],
+          "final_position": [
+            0.012627910561599068,
+            0.22272292611159505,
+            0.4626894423904332
+          ],
+          "max_translation_from_initial_m": 0.000025923505523445328
+        },
+        "butter_1": {
+          "initial_position": [
+            0.0715773796680597,
+            0.04788022845008967,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.04093457488538215,
+            0.27543331911699626,
+            0.49672394996015756
+          ],
+          "max_translation_from_initial_m": 0.28983824973305006
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s004_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 310,
+      "raw_sha256": "3f950b224d0fdcb58f3b3e2007ebdbe5eff0dd568e8976fb97941e27342721ac",
+      "raw_bytes": 43034049,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 306,
+      "both_ever_true": true,
+      "first_both_true_step": 306,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 306,
+      "goal_confirmed_step": 310,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 59,
+          "confirmation_step": 63
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 137,
+          "confirmation_step": 141
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.020076785517777297,
+            0.23053169908928092,
+            0.4626956642120005
+          ],
+          "final_position": [
+            0.020017789966495964,
+            0.23038825273677935,
+            0.4626940360801357
+          ],
+          "max_translation_from_initial_m": 0.0001588369239371712
+        },
+        "butter_1": {
+          "initial_position": [
+            0.05150525326982455,
+            0.03442297878858672,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.003043556851769647,
+            0.22652881841368336,
+            0.49691849532041416
+          ],
+          "max_translation_from_initial_m": 0.28490894579214077
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s005_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 127,
+      "raw_sha256": "dad65ca4a782b87a1895842cd54aa6da005c27730787d5d7ddd674216ed411aa",
+      "raw_bytes": 18166028,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 123,
+      "both_ever_true": true,
+      "first_both_true_step": 123,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 123,
+      "goal_confirmed_step": 127,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.012092517525273648,
+            0.22624225951163868,
+            0.46269566421192126
+          ],
+          "final_position": [
+            0.01218090511242415,
+            0.22601119925226565,
+            0.4626955001790553
+          ],
+          "max_translation_from_initial_m": 0.00025544586970366404
+        },
+        "butter_1": {
+          "initial_position": [
+            0.031261412308385694,
+            0.0688993118936432,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.026006735735160342,
+            0.26514716230490365,
+            0.4722669294190498
+          ],
+          "max_translation_from_initial_m": 0.2676265963578717
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s006_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 258,
+      "raw_sha256": "da7698404f01cd0d79250ef7f3924c5b65dd6b07a355162a010a545ef9bf0623",
+      "raw_bytes": 34878056,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 252,
+      "both_ever_true": true,
+      "first_both_true_step": 252,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 254,
+      "goal_confirmed_step": 258,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 58,
+          "confirmation_step": 62
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 134,
+          "confirmation_step": 138
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.013980913201028039,
+            0.22414456925473975,
+            0.46269566422480574
+          ],
+          "final_position": [
+            0.017359147407639577,
+            0.22776206907924956,
+            0.4626704555997398
+          ],
+          "max_translation_from_initial_m": 0.005310397833119524
+        },
+        "butter_1": {
+          "initial_position": [
+            0.0577690869008459,
+            0.06480112558442383,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.02891632522940455,
+            0.23128419128348682,
+            0.5132832972037735
+          ],
+          "max_translation_from_initial_m": 0.2770608773436183
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s007_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "addd639ba6c75d14bd8d349a799b9cb3ccc6a042aa3801ced76e58ec547eb9d8",
+      "raw_bytes": 87109431,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.018791220655793178,
+            0.217781698235114,
+            0.46269566422480574
+          ],
+          "final_position": [
+            -0.07824937723344987,
+            0.2297874262219134,
+            0.46269566855935584
+          ],
+          "max_translation_from_initial_m": 0.09778044356206816
+        },
+        "butter_1": {
+          "initial_position": [
+            0.05150698333790145,
+            0.0681205038857377,
+            0.44546992152000003
+          ],
+          "final_position": [
+            0.051771126815239876,
+            0.07218998393283364,
+            0.44546992152000003
+          ],
+          "max_translation_from_initial_m": 0.008749694662220994
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s008_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 126,
+      "raw_sha256": "48204574caf457726ccd790256961a82c03bae2152f19359272fcbe96b680e80",
+      "raw_bytes": 17149313,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 121,
+      "both_ever_true": true,
+      "first_both_true_step": 121,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 122,
+      "goal_confirmed_step": 126,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.008930354983535017,
+            0.22912987403422172,
+            0.46269566422478137
+          ],
+          "final_position": [
+            0.00901833851894004,
+            0.22875667539207215,
+            0.4626955124346448
+          ],
+          "max_translation_from_initial_m": 0.000383600260209575
+        },
+        "butter_1": {
+          "initial_position": [
+            0.036756529051968696,
+            0.05044983113521427,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.013056802619526657,
+            0.2665513777119168,
+            0.47214647020318756
+          ],
+          "max_translation_from_initial_m": 0.28668243593409687
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s009_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "b2fd647147e618d8df916e2d8cbc843083a187397327985bde08021cc9fecd7c",
+      "raw_bytes": 68339725,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 75,
+          "confirmation_step": 79
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 488,
+          "confirmation_step": 492
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.015956885689388307,
+            0.21458121816375467,
+            0.4626956642255512
+          ],
+          "final_position": [
+            0.015989898184592854,
+            0.21424848087041878,
+            0.4626954058857905
+          ],
+          "max_translation_from_initial_m": 0.0004154921109263278
+        },
+        "butter_1": {
+          "initial_position": [
+            0.027871713583100456,
+            0.05722321706409089,
+            0.44546992152000003
+          ],
+          "final_position": [
+            0.027871713583100456,
+            0.05722321706409089,
+            0.44546992152000003
+          ],
+          "max_translation_from_initial_m": 0
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s000_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "90349735862d41a4c5c51d16ccd2c8fce381405e187d9df07bc1a33e52ab827c",
+      "raw_bytes": 40679945,
+      "A_ever_false": true,
+      "A_false_frames": 375,
+      "first_A_false_step": 146,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 118,
+      "both_ever_true": true,
+      "first_both_true_step": 118,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.14910029268360145,
+            0.005616702580245826,
+            0.4427802830510677
+          ],
+          "final_position": [
+            0.6189697984230026,
+            -0.6922812473549227,
+            0.05349539675383931
+          ],
+          "max_translation_from_initial_m": 0.9585864047978906
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.039668604834255425,
+            0.11704305614696939,
+            0.44983992152
+          ],
+          "final_position": [
+            2.722159730345771,
+            -0.9895737447759295,
+            0.013065477418608118
+          ],
+          "max_translation_from_initial_m": 3.0157072446468223
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s001_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "127482428b1780fbc4e9ebbb2aa03126bf971ed14637cc7ee3fc24a7affc2b07",
+      "raw_bytes": 39931328,
+      "A_ever_false": true,
+      "A_false_frames": 393,
+      "first_A_false_step": 128,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 101,
+      "both_ever_true": true,
+      "first_both_true_step": 101,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.17276828089357454,
+            0.010791652190289634,
+            0.44279136216519116
+          ],
+          "final_position": [
+            0.47753650614723453,
+            -0.4107472658467811,
+            -0.0023936225659470568
+          ],
+          "max_translation_from_initial_m": 0.6852434258995515
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.0328595235831771,
+            0.0982114878972235,
+            0.44983992152
+          ],
+          "final_position": [
+            1.7312980328019274,
+            -0.471842646726918,
+            0.013065477418608112
+          ],
+          "max_translation_from_initial_m": 1.9067432174962184
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s002_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 387,
+      "raw_sha256": "73eb9e44aad5dd5a7aa20af7f74dda7f8d98f34383612dd0d8d1d22e2bcaf8f1",
+      "raw_bytes": 40118729,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 188,
+      "both_ever_true": true,
+      "first_both_true_step": 188,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 383,
+      "goal_confirmed_step": 387,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.1698731438432363,
+            0.015132848950170273,
+            0.4428116223719015
+          ],
+          "final_position": [
+            0.16987622546014547,
+            0.015135847172291201,
+            0.44281244520160573
+          ],
+          "max_translation_from_initial_m": 0.0000043775275422869665
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.06161595791891997,
+            0.10887879990530927,
+            0.44983992152
+          ],
+          "final_position": [
+            0.16395797228205372,
+            0.13831632302998506,
+            0.4498399239052653
+          ],
+          "max_translation_from_initial_m": 0.2274876404809499
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s003_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 182,
+      "raw_sha256": "b96e1b5ffa81945acb05e905427527884aa1380702a704ae5796003a76b8db4c",
+      "raw_bytes": 17147755,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 115,
+      "both_ever_true": true,
+      "first_both_true_step": 115,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 178,
+      "goal_confirmed_step": 182,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.15883341601550768,
+            -0.0026368160088610076,
+            0.4427802594443502
+          ],
+          "final_position": [
+            0.1588336575793662,
+            -0.0026354917466748025,
+            0.4427802082580035
+          ],
+          "max_translation_from_initial_m": 0.0000013470870341755124
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.05242032303003,
+            0.09933694226693504,
+            0.44983992152
+          ],
+          "final_position": [
+            0.13110713878180694,
+            0.10757027304119186,
+            0.44983992152
+          ],
+          "max_translation_from_initial_m": 0.1906431233276236
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s004_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 250,
+      "raw_sha256": "1a29d49ea43006b120aee683a0180237233a7527125331a5701186f12e897385",
+      "raw_bytes": 24966323,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 147,
+      "both_ever_true": true,
+      "first_both_true_step": 147,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 246,
+      "goal_confirmed_step": 250,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.13336164142004656,
+            -0.006296032592644047,
+            0.44278026567973694
+          ],
+          "final_position": [
+            0.13336197297290772,
+            -0.006294225000505753,
+            0.4427801870589816
+          ],
+          "max_translation_from_initial_m": 0.0000018394286779704339
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.06736791566112979,
+            0.08774344728256249,
+            0.44983992152
+          ],
+          "final_position": [
+            0.1107211803837202,
+            0.10558614972282362,
+            0.44983990746874214
+          ],
+          "max_translation_from_initial_m": 0.17898334149321446
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s005_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "dc72b04ad4c0817a2f06ae694db917fea452ff5ce9cc717778e3e45c3bd15836",
+      "raw_bytes": 35389482,
+      "A_ever_false": true,
+      "A_false_frames": 388,
+      "first_A_false_step": 133,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 101,
+      "both_ever_true": true,
+      "first_both_true_step": 101,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.1576962617287708,
+            -0.004435225337597977,
+            0.4427802633679677
+          ],
+          "final_position": [
+            0.733366354965391,
+            -0.8104855358385512,
+            0.024545952747049786
+          ],
+          "max_translation_from_initial_m": 1.0832268395771973
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.061321389960352045,
+            0.08284981581614514,
+            0.44983992152
+          ],
+          "final_position": [
+            2.2650058716507933,
+            -0.42550408669353273,
+            0.013065477418608109
+          ],
+          "max_translation_from_initial_m": 2.423381439243652
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s006_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "329e17d4b7a22ff1678488b960b46a8565a4b19c2cc53e89007f2d77e7716715",
+      "raw_bytes": 38106616,
+      "A_ever_false": true,
+      "A_false_frames": 380,
+      "first_A_false_step": 141,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 111,
+      "both_ever_true": true,
+      "first_both_true_step": 111,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.1466952320069057,
+            -0.002572311307853121,
+            0.4427802830510677
+          ],
+          "final_position": [
+            0.34404418365202727,
+            -0.8599472371771687,
+            0.10845776149157328
+          ],
+          "max_translation_from_initial_m": 0.957845653702338
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.049132924845691976,
+            0.0956013728912793,
+            0.44983992152
+          ],
+          "final_position": [
+            0.22414543864454678,
+            0.04558564634988824,
+            0.4498399021875289
+          ],
+          "max_translation_from_initial_m": 0.2995640208035484
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s007_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "9edba6fd3d5523fb5655d4c9025e35eb8c2aba6ebaa09e321a026dcc72f74289",
+      "raw_bytes": 49003591,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.13356673037146083,
+            0.019771378570965323,
+            0.4439576343950664
+          ],
+          "final_position": [
+            0.13357049817220942,
+            0.01977391042533831,
+            0.4439568639884013
+          ],
+          "max_translation_from_initial_m": 0.000004604360485104183
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.051162040697115545,
+            0.09416118703352633,
+            0.44983992152
+          ],
+          "final_position": [
+            -0.03798097558868484,
+            0.09727566911092576,
+            0.46714192791059567
+          ],
+          "max_translation_from_initial_m": 0.02197270809762293
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s008_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 212,
+      "raw_sha256": "445bf410b410c20b8af63b4a5594bd858e06e2d76d31a55d80c34aa32feb977d",
+      "raw_bytes": 21401177,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 106,
+      "both_ever_true": true,
+      "first_both_true_step": 106,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 208,
+      "goal_confirmed_step": 212,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.17498838439525616,
+            0.01586549839547602,
+            0.44278235952850686
+          ],
+          "final_position": [
+            0.17498963277486565,
+            0.015867165171883538,
+            0.44278386485619736
+          ],
+          "max_translation_from_initial_m": 0.000002569553793528975
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.060221077222233486,
+            0.10057728115428878,
+            0.44983992152
+          ],
+          "final_position": [
+            0.15451359380022978,
+            0.1263731533358499,
+            0.4498399148106168
+          ],
+          "max_translation_from_initial_m": 0.21628313739343477
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s009_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 301,
+      "raw_sha256": "fa58a7a9a41732aa768df2c38538c56f8e14729d89ae492f297e12c3c9f3c37d",
+      "raw_bytes": 32385271,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 232,
+      "both_ever_true": true,
+      "first_both_true_step": 232,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 297,
+      "goal_confirmed_step": 301,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.12642450903821933,
+            -0.0035405879407644407,
+            0.44278026567973694
+          ],
+          "final_position": [
+            0.12642490620154315,
+            -0.003538416313692182,
+            0.4427801664293219
+          ],
+          "max_translation_from_initial_m": 0.0000022098763521149034
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.039951067203224985,
+            0.11941580882300346,
+            0.44983992152
+          ],
+          "final_position": [
+            0.13568827274710113,
+            0.11818083675049519,
+            0.44983992147707597
+          ],
+          "max_translation_from_initial_m": 0.17565570646277626
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s000_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "5b9432dfe3e37cddb370c0c30a8befc27ef83f38699349f85fefcc19bf2c2cf7",
+      "raw_bytes": 33401009,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.018899364970616367,
+            -0.1764751947701454,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.017105875796803026,
+            -0.1741497960699012,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0.021066049870473707
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04144782033013016,
+            0.042578394110412136,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.04304576663311639,
+            -0.003739496757273122,
+            1.0134824119130716
+          ],
+          "max_translation_from_initial_m": 0.1073734208424477
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s001_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "ace416e5101f47a3678e978b5317e0891553d767e15dc9da9361b2293a7ca34c",
+      "raw_bytes": 31979219,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.009005846619313014,
+            -0.19176194366784016,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.008646846867235668,
+            -0.19301703761369007,
+            0.9966058538799804
+          ],
+          "max_translation_from_initial_m": 0.00205950349863863
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.034012417280696185,
+            0.034389211426321835,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.025543605371634377,
+            -0.027980442033505002,
+            0.9466267526695887
+          ],
+          "max_translation_from_initial_m": 0.12181601677121423
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s002_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "6baef12f83a8ae6b0cca9e49a7cb9e3631b3478ae2bcd1efb6814b8f2b18db60",
+      "raw_bytes": 28251702,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.02123164984507459,
+            -0.17988701887641284,
+            0.9966058538799804
+          ],
+          "final_position": [
+            -0.021402892684154365,
+            -0.1796307235016313,
+            0.9966058538799804
+          ],
+          "max_translation_from_initial_m": 0.010962268714889865
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04091480667182739,
+            0.03368953245924851,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.06280404053073826,
+            -0.009164300754112249,
+            0.9466267526695887
+          ],
+          "max_translation_from_initial_m": 0.13637090133999144
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s003_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "c3335050972f03c0791cc5bc7195fc50066d79b1b27c00d29da39b531e8f1ee3",
+      "raw_bytes": 30204903,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.017431530859237675,
+            -0.1793268145795035,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.015756945027307886,
+            -0.17781459042480355,
+            0.9966058538799804
+          ],
+          "max_translation_from_initial_m": 0.010887609197156756
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.03720163836619755,
+            0.07408159456006917,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.032717534381325394,
+            -0.029111090506987927,
+            0.9466267526695887
+          ],
+          "max_translation_from_initial_m": 0.18717721416620986
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s004_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "e691d0098e4047e17d987b854dc4f3d9899340914a2dfee507f2c79d853a8d38",
+      "raw_bytes": 27102969,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.006900181803625718,
+            -0.18903285070370474,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.006900181803626372,
+            -0.18903285070370474,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 6.539907504432563e-16
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.05414068569071121,
+            0.07243873193621549,
+            0.9661058538799803
+          ],
+          "final_position": [
+            0.06346650146089416,
+            0.08168152157440253,
+            0.9661058538799803
+          ],
+          "max_translation_from_initial_m": 0.02506275059523517
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s005_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "1b1e7737a673ce54f25cc5f892f3b347274faf590ad6ab63c5b5f499a6177b1b",
+      "raw_bytes": 19112212,
+      "A_ever_false": true,
+      "A_false_frames": 10,
+      "first_A_false_step": 186,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 170,
+      "both_ever_true": true,
+      "first_both_true_step": 170,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.07838299825535525,
+            -0.1839452892206983,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.07734619027500289,
+            -0.2724498913818704,
+            0.9890211529606389
+          ],
+          "max_translation_from_initial_m": 0.1225633391311181
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.031631321721245546,
+            0.0705651860458592,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.04999841733262918,
+            -0.014130433171001504,
+            0.9472324159251726
+          ],
+          "max_translation_from_initial_m": 0.22996868183934185
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s006_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 373,
+      "raw_sha256": "c49fd779b6c96e9608b298c7263a6dce7177a22df54b3f39cc6c436bf098eca7",
+      "raw_bytes": 19377552,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 263,
+      "both_ever_true": true,
+      "first_both_true_step": 263,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 369,
+      "goal_confirmed_step": 373,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.011850553220158109,
+            -0.1819489672918133,
+            0.9966058538799802
+          ],
+          "final_position": [
+            0.01678123468611732,
+            -0.25795862830987615,
+            0.9908920685423425
+          ],
+          "max_translation_from_initial_m": 0.08760715808891223
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.041721438075490905,
+            0.05179485198484273,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.05436834005502796,
+            -0.1695510411321441,
+            0.9999855652462798
+          ],
+          "max_translation_from_initial_m": 0.24406911853076824
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s007_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "22cbec38f40fec8a35112553fe4df982a25a2a60b56ee04e319c5dfae9d504c5",
+      "raw_bytes": 29007563,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.010493414625044424,
+            -0.18492176194223728,
+            0.9966058538799804
+          ],
+          "final_position": [
+            0.011515695411803095,
+            -0.19297584224668035,
+            1.0013057698843872
+          ],
+          "max_translation_from_initial_m": 0.023903103242318976
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.03209370307417434,
+            0.0649060495106225,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.043982663681339726,
+            -0.03148241768769631,
+            0.9466267526695887
+          ],
+          "max_translation_from_initial_m": 0.16881380717480357
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s008_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "4864f973b97b021544531710a744e66e99a691bda88c3819c222f9624f947dc9",
+      "raw_bytes": 27824046,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.012320703865490088,
+            -0.1799160536097299,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.015377112500815917,
+            -0.1834307634696175,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0.008012374723695682
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04307889384588132,
+            0.07445931333414059,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.028206514754602233,
+            -0.023232736903659658,
+            0.9466267526695887
+          ],
+          "max_translation_from_initial_m": 0.18175375103948715
+        }
+      }
+    },
+    {
+      "stage": "f0",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s009_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "013c02b3e54ab6ba3c2f1b6381550cdbdaeecca0d67d8b003d1dda6a5a9645f5",
+      "raw_bytes": 23524127,
+      "A_ever_false": true,
+      "A_false_frames": 1,
+      "first_A_false_step": 172,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.01965822254612392,
+            -0.1889741686011523,
+            0.9966058538799804
+          ],
+          "final_position": [
+            -0.026618312583206634,
+            -0.18105122094027526,
+            0.9969845995338906
+          ],
+          "max_translation_from_initial_m": 0.02480566073183289
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04686680009863751,
+            0.037772453088671144,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.028884731036111368,
+            -0.06236139972203573,
+            0.9708486511361636
+          ],
+          "max_translation_from_initial_m": 0.14121936846013572
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s000_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression",
+        "wrong_grasp",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "1e5ce801303a4272224ba87fe8d6cb5c54acc38f848f08429775f58a68a9b522",
+      "raw_bytes": 64613320,
+      "A_ever_false": true,
+      "A_false_frames": 176,
+      "first_A_false_step": 339,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 59,
+          "confirmation_step": 63
+        },
+        {
+          "event": "table_drop",
+          "object": "basket_1",
+          "start_step": 344,
+          "confirmation_step": 348
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.025150987086539126,
+            0.2258372415639212,
+            0.462695664212238
+          ],
+          "final_position": [
+            0.03609184353654568,
+            1.0648767604921794,
+            0.008782772333553054
+          ],
+          "max_translation_from_initial_m": 0.9629275253010782
+        },
+        "butter_1": {
+          "initial_position": [
+            0.0489602377124352,
+            0.05760379687259051,
+            0.44546992152000003
+          ],
+          "final_position": [
+            0.0489602377124352,
+            0.05760379687259051,
+            0.44546992152000003
+          ],
+          "max_translation_from_initial_m": 0
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s001_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 125,
+      "raw_sha256": "82ea41961b48a3d84336f29d3eb39ef9417db3d102c85cc64e16b4c6be947b3d",
+      "raw_bytes": 17770429,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 121,
+      "both_ever_true": true,
+      "first_both_true_step": 121,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 121,
+      "goal_confirmed_step": 125,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.02015138404957065,
+            0.22734248174978822,
+            0.46269566422480574
+          ],
+          "final_position": [
+            0.020151384203058134,
+            0.22734248084524727,
+            0.4626956630156966
+          ],
+          "max_translation_from_initial_m": 4.203819007986914e-9
+        },
+        "butter_1": {
+          "initial_position": [
+            0.03504816625408551,
+            0.06299035293625024,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.013785194986731019,
+            0.2813973287059016,
+            0.4624695891757774
+          ],
+          "max_translation_from_initial_m": 0.2796678087871218
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s002_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 366,
+      "raw_sha256": "14f012e62b7cba4538ca7ce88a9ff226820457512804002cbf0544360e6d04e7",
+      "raw_bytes": 51035962,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 362,
+      "both_ever_true": true,
+      "first_both_true_step": 362,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 362,
+      "goal_confirmed_step": 366,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 52,
+          "confirmation_step": 56
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 196,
+          "confirmation_step": 200
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.012577982055444617,
+            0.21382358408849086,
+            0.4626956642255512
+          ],
+          "final_position": [
+            0.012435478051591897,
+            0.21362300778871296,
+            0.4632554051102049
+          ],
+          "max_translation_from_initial_m": 0.0006114311908134674
+        },
+        "butter_1": {
+          "initial_position": [
+            0.02599305674820226,
+            0.07450489107508533,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.017995006584905843,
+            0.20737825237745405,
+            0.513480570152951
+          ],
+          "max_translation_from_initial_m": 0.24816122176291133
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s003_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 129,
+      "raw_sha256": "f184afebc9b6cfb088a72d0731e4a422da3f8c8fa09772b2ff4129124e3b7728",
+      "raw_bytes": 18493973,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 124,
+      "both_ever_true": true,
+      "first_both_true_step": 124,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 125,
+      "goal_confirmed_step": 129,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.012612919708624146,
+            0.2227431397555216,
+            0.4626956642121053
+          ],
+          "final_position": [
+            0.012612894014596296,
+            0.22274323280220257,
+            0.4626954653842416
+          ],
+          "max_translation_from_initial_m": 2.2102123716918564e-7
+        },
+        "butter_1": {
+          "initial_position": [
+            0.0715773796680597,
+            0.04788022845008967,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.039990570086572995,
+            0.2549216256908694,
+            0.5070815899424752
+          ],
+          "max_translation_from_initial_m": 0.2838576320911885
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s004_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "c0617298551b77132b1abbe2940e7f0dddefd2c5af50df2ed850376a36c99e84",
+      "raw_bytes": 74617978,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "alphabet_soup_1",
+          "start_step": 184,
+          "confirmation_step": 188
+        },
+        {
+          "event": "wrong_grasp",
+          "object": "tomato_sauce_1",
+          "start_step": 328,
+          "confirmation_step": 332
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.020076785517777297,
+            0.23053169908928092,
+            0.4626956642120005
+          ],
+          "final_position": [
+            0.04164722949647416,
+            0.28137983058056076,
+            0.4626956681260136
+          ],
+          "max_translation_from_initial_m": 0.05621860890848587
+        },
+        "butter_1": {
+          "initial_position": [
+            0.05150525326982455,
+            0.03442297878858672,
+            0.44546992152000003
+          ],
+          "final_position": [
+            0.05150525326982455,
+            0.03442297878858672,
+            0.4454699215200001
+          ],
+          "max_translation_from_initial_m": 5.551115123125783e-17
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s005_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 129,
+      "raw_sha256": "d861710cc208ff567e9e5b6751696962ab6be67d15c51a3864582fe3c65e1cdd",
+      "raw_bytes": 18588497,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 125,
+      "both_ever_true": true,
+      "first_both_true_step": 125,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 125,
+      "goal_confirmed_step": 129,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.012092517525273648,
+            0.22624225951163868,
+            0.46269566421192126
+          ],
+          "final_position": [
+            0.012325364733418198,
+            0.2258340013136408,
+            0.46269565673091523
+          ],
+          "max_translation_from_initial_m": 0.00046999210485832794
+        },
+        "butter_1": {
+          "initial_position": [
+            0.031261412308385694,
+            0.0688993118936432,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.027324813838602777,
+            0.2768209136097484,
+            0.462469568851204
+          ],
+          "max_translation_from_initial_m": 0.2645316571226802
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s006_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 292,
+      "raw_sha256": "1184a1afde769a7d41a37bd7e7d57b53beef6f55bdf27180bb0f09c444a83966",
+      "raw_bytes": 39247581,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 288,
+      "both_ever_true": true,
+      "first_both_true_step": 288,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 288,
+      "goal_confirmed_step": 292,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 59,
+          "confirmation_step": 63
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 157,
+          "confirmation_step": 161
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.013980913201028039,
+            0.22414456925473975,
+            0.46269566422480574
+          ],
+          "final_position": [
+            0.013898985914405809,
+            0.22372945033864094,
+            0.46269505341138895
+          ],
+          "max_translation_from_initial_m": 0.00042312665702996517
+        },
+        "butter_1": {
+          "initial_position": [
+            0.0577690869008459,
+            0.06480112558442383,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.016155596451176243,
+            0.2297287919179537,
+            0.49324471370715095
+          ],
+          "max_translation_from_initial_m": 0.2966103697168061
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s007_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression",
+        "wrong_grasp",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "2dc0b28fac3ae237885a00c12c9fcdde777cb03fa58de48659605d46fc6fd2de",
+      "raw_bytes": 64849849,
+      "A_ever_false": true,
+      "A_false_frames": 34,
+      "first_A_false_step": 173,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 67,
+          "confirmation_step": 71
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.018791220655793178,
+            0.217781698235114,
+            0.46269566422480574
+          ],
+          "final_position": [
+            -0.18654593515075013,
+            0.8257749575876386,
+            0.462695699674522
+          ],
+          "max_translation_from_initial_m": 0.641731369792665
+        },
+        "butter_1": {
+          "initial_position": [
+            0.05150698333790145,
+            0.0681205038857377,
+            0.44546992152000003
+          ],
+          "final_position": [
+            0.05150698333790145,
+            0.0681205038857377,
+            0.44546992152000003
+          ],
+          "max_translation_from_initial_m": 0
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s008_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 126,
+      "raw_sha256": "65e65562f11c7d1c5ad92e6b904ab02712de5ced3d59948cfb2b088c62833e2c",
+      "raw_bytes": 17907602,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 121,
+      "both_ever_true": true,
+      "first_both_true_step": 121,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 122,
+      "goal_confirmed_step": 126,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.008930354983535017,
+            0.22912987403422172,
+            0.46269566422478137
+          ],
+          "final_position": [
+            0.008930354970351459,
+            0.2291298730401223,
+            0.4626956629062647
+          ],
+          "max_translation_from_initial_m": 3.9810023174976137e-8
+        },
+        "butter_1": {
+          "initial_position": [
+            0.036756529051968696,
+            0.05044983113521427,
+            0.44546992152000003
+          ],
+          "final_position": [
+            -0.0293209644221279,
+            0.2785511591831641,
+            0.4624696204033996
+          ],
+          "max_translation_from_initial_m": 0.2890551483254132
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "basket_cheese_butter",
+      "episode_id": "basket_cheese_butter_s009_10",
+      "success": false,
+      "failure_reasons": [
+        "wrong_grasp",
+        "wrong_placement",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [
+        "event_evidence_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "4500b57e98669f12408872de8f27ce7f51426be86b142f46c9eca586b5e19f0f",
+      "raw_bytes": 70322904,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [
+        {
+          "event": "wrong_grasp",
+          "object": "milk_1",
+          "start_step": 59,
+          "confirmation_step": 63
+        },
+        {
+          "event": "wrong_placement",
+          "object": "milk_1",
+          "start_step": 276,
+          "confirmation_step": 280
+        },
+        {
+          "event": "wrong_grasp",
+          "object": "tomato_sauce_1",
+          "start_step": 348,
+          "confirmation_step": 352
+        }
+      ],
+      "target_position_diagnostics": {
+        "cream_cheese_1": {
+          "initial_position": [
+            0.015956885689388307,
+            0.21458121816375467,
+            0.4626956642255512
+          ],
+          "final_position": [
+            0.016371223519530447,
+            0.21347999105428492,
+            0.4626931519675865
+          ],
+          "max_translation_from_initial_m": 0.004691998256663817
+        },
+        "butter_1": {
+          "initial_position": [
+            0.027871713583100456,
+            0.05722321706409089,
+            0.44546992152000003
+          ],
+          "final_position": [
+            0.027871713583100456,
+            0.05722321706409089,
+            0.44546992152000003
+          ],
+          "max_translation_from_initial_m": 0
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s000_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 248,
+      "raw_sha256": "95fe4d7e177bb76df2d0781369ee7c522ad5b904be640df5989bd666385eb0f1",
+      "raw_bytes": 24772926,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 129,
+      "both_ever_true": true,
+      "first_both_true_step": 129,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 244,
+      "goal_confirmed_step": 248,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.14910029268360145,
+            0.005616702580245826,
+            0.4427802830510677
+          ],
+          "final_position": [
+            0.1491006157116694,
+            0.0056184956744487185,
+            0.44278020525815387
+          ],
+          "max_translation_from_initial_m": 0.0000018236188446550844
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.039668604834255425,
+            0.11704305614696939,
+            0.44983992152
+          ],
+          "final_position": [
+            0.14226377316936867,
+            0.12885596267286625,
+            0.44983989205668395
+          ],
+          "max_translation_from_initial_m": 0.18235965959852604
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s001_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "6ac8f374b73b9ab5722d0147aaee654b12862c4b5050d9d59da9457156997441",
+      "raw_bytes": 37068396,
+      "A_ever_false": true,
+      "A_false_frames": 384,
+      "first_A_false_step": 137,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 103,
+      "both_ever_true": true,
+      "first_both_true_step": 103,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.17276828089357454,
+            0.010791652190289634,
+            0.44279136216519116
+          ],
+          "final_position": [
+            0.462083316445162,
+            -0.4200653774672578,
+            -0.002393622565947059
+          ],
+          "max_translation_from_initial_m": 0.6838702733029131
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.0328595235831771,
+            0.0982114878972235,
+            0.44983992152
+          ],
+          "final_position": [
+            2.268102009733433,
+            -0.7189206492582586,
+            0.023145477418608104
+          ],
+          "max_translation_from_initial_m": 2.4789316090082294
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s002_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "417c553a2af98b0c8a487631eda58dd333009566c378335934bb7712196d9957",
+      "raw_bytes": 44844675,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.1698731438432363,
+            0.015132848950170273,
+            0.4428116223719015
+          ],
+          "final_position": [
+            0.1698773692732694,
+            0.015136700394252422,
+            0.44281232030361095
+          ],
+          "max_translation_from_initial_m": 0.000005759773359578111
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.06161595791891997,
+            0.10887879990530927,
+            0.44983992152
+          ],
+          "final_position": [
+            6.13623194987175,
+            -1.4883754850103388,
+            0.023145477418608115
+          ],
+          "max_translation_from_initial_m": 6.434091270781424
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s003_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "137be5424baa63d87074ac2fe7ff469db12ab97c6c51979604c4e264e3dc391f",
+      "raw_bytes": 38983891,
+      "A_ever_false": true,
+      "A_false_frames": 369,
+      "first_A_false_step": 152,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 117,
+      "both_ever_true": true,
+      "first_both_true_step": 117,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.15883341601550768,
+            -0.0026368160088610076,
+            0.4427802594443502
+          ],
+          "final_position": [
+            0.59689312877607,
+            -0.5752936387822392,
+            0.04049223606387975
+          ],
+          "max_translation_from_initial_m": 0.8316283431035169
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.05242032303003,
+            0.09933694226693504,
+            0.44983992152
+          ],
+          "final_position": [
+            2.7514380354848456,
+            -1.11820324855563,
+            0.013065477418608109
+          ],
+          "max_translation_from_initial_m": 3.0878690011325105
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s004_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 307,
+      "raw_sha256": "3c7913d50e59669dfabeb979fd225d08428396b764a02986aa8143e9c2fbb7c4",
+      "raw_bytes": 32716069,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 135,
+      "both_ever_true": true,
+      "first_both_true_step": 135,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 303,
+      "goal_confirmed_step": 307,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.13336164142004656,
+            -0.006296032592644047,
+            0.44278026567973694
+          ],
+          "final_position": [
+            0.13336204630233922,
+            -0.0062938181376793936,
+            0.4427801640022754
+          ],
+          "max_translation_from_initial_m": 0.0000022534592890887065
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.06736791566112979,
+            0.08774344728256249,
+            0.44983992152
+          ],
+          "final_position": [
+            0.15650915140826163,
+            0.10037478443385917,
+            0.44983991019994957
+          ],
+          "max_translation_from_initial_m": 0.22423311940469862
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s005_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "987902914584e38d1420d4c3af0b996d8940faefe657351a60ebcec10c950755",
+      "raw_bytes": 38335220,
+      "A_ever_false": true,
+      "A_false_frames": 377,
+      "first_A_false_step": 144,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 108,
+      "both_ever_true": true,
+      "first_both_true_step": 108,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.1576962617287708,
+            -0.004435225337597977,
+            0.4427802633679677
+          ],
+          "final_position": [
+            0.5606817908724486,
+            -0.5941174352025836,
+            0.05349539675383931
+          ],
+          "max_translation_from_initial_m": 0.8617697288337361
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.061321389960352045,
+            0.08284981581614514,
+            0.44983992152
+          ],
+          "final_position": [
+            2.294550143744388,
+            -0.6018900272533836,
+            0.013065477418608116
+          ],
+          "max_translation_from_initial_m": 2.4952372224307
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s006_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [
+        "completion_release_unknown"
+      ],
+      "n_steps": 520,
+      "raw_sha256": "905402f3f34e0c5c47312603fbf931936b93f3de7b5dd304b766361e01e433cb",
+      "raw_bytes": 36580521,
+      "A_ever_false": true,
+      "A_false_frames": 375,
+      "first_A_false_step": 146,
+      "final_goals": [
+        false,
+        false
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 113,
+      "both_ever_true": true,
+      "first_both_true_step": 113,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.1466952320069057,
+            -0.002572311307853121,
+            0.4427802830510677
+          ],
+          "final_position": [
+            0.22068653650294826,
+            -0.5399275832174804,
+            0.49649658652457807
+          ],
+          "max_translation_from_initial_m": 0.5477781143398263
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.049132924845691976,
+            0.0956013728912793,
+            0.44983992152
+          ],
+          "final_position": [
+            0.27259899533382836,
+            0.024424837287626313,
+            0.44983992050826715
+          ],
+          "max_translation_from_initial_m": 0.35423633284737843
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s007_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 286,
+      "raw_sha256": "d2683c25c23e90e67b3f8129858d75a8313012081fc9e83e0fb72a88554da76e",
+      "raw_bytes": 30870847,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 120,
+      "both_ever_true": true,
+      "first_both_true_step": 120,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 282,
+      "goal_confirmed_step": 286,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.13356673037146083,
+            0.019771378570965323,
+            0.4439576343950664
+          ],
+          "final_position": [
+            0.13357128339191604,
+            0.01974259762689827,
+            0.4439570056349094
+          ],
+          "max_translation_from_initial_m": 0.00003517147997360321
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.051162040697115545,
+            0.09416118703352633,
+            0.44983992152
+          ],
+          "final_position": [
+            0.14023406539830108,
+            0.1222660660337174,
+            0.4592519256067375
+          ],
+          "max_translation_from_initial_m": 0.1937431036862524
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s008_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 163,
+      "raw_sha256": "7a43a051527e22cc813a09371c18a6aa6b1ba522f126639745d716fdeead2784",
+      "raw_bytes": 15698888,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 112,
+      "both_ever_true": true,
+      "first_both_true_step": 112,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 159,
+      "goal_confirmed_step": 163,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.17498838439525616,
+            0.01586549839547602,
+            0.44278235952850686
+          ],
+          "final_position": [
+            0.17498931275173352,
+            0.015866869208853905,
+            0.4427839000465958
+          ],
+          "max_translation_from_initial_m": 0.0000022614533044832593
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.060221077222233486,
+            0.10057728115428878,
+            0.44983992152
+          ],
+          "final_position": [
+            0.1451111177529839,
+            0.12356659936029853,
+            0.44983989283833603
+          ],
+          "max_translation_from_initial_m": 0.20661518577591614
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "mug_pudding",
+      "episode_id": "mug_pudding_s009_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 239,
+      "raw_sha256": "10775f1c19e415903c8ca5b4f1c16c117bf7d0a64ffb33e0f079ebfd2ce69ea8",
+      "raw_bytes": 25413475,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 154,
+      "both_ever_true": true,
+      "first_both_true_step": 154,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 235,
+      "goal_confirmed_step": 239,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "porcelain_mug_1": {
+          "initial_position": [
+            0.12642450903821933,
+            -0.0035405879407644407,
+            0.44278026567973694
+          ],
+          "final_position": [
+            0.12642482643998512,
+            -0.0035388588654598372,
+            0.4427801915084609
+          ],
+          "max_translation_from_initial_m": 0.0000017595302407482323
+        },
+        "chocolate_pudding_1": {
+          "initial_position": [
+            -0.039951067203224985,
+            0.11941580882300346,
+            0.44983992152
+          ],
+          "final_position": [
+            0.13860414477580849,
+            0.12279018725494921,
+            0.4498398853768354
+          ],
+          "max_translation_from_initial_m": 0.1785873717030031
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s000_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "72e5100529352142fadd098ffacf499e97f7e70a08dbe348a12e6f5d18570e83",
+      "raw_bytes": 27486078,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.018899364970616367,
+            -0.1764751947701454,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.018899364970616367,
+            -0.1764751947701454,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04144782033013016,
+            0.042578394110412136,
+            0.9661058538799803
+          ],
+          "final_position": [
+            0.009683761091535749,
+            0.09481138292277864,
+            0.9661058538799803
+          ],
+          "max_translation_from_initial_m": 0.06331492739211222
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s001_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "079e978b7b09e675371c0acb2466fab3b7220f931b26c38072dea0caeb82bca6",
+      "raw_bytes": 27518861,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.009005846619313014,
+            -0.19176194366784016,
+            0.9966058538799802
+          ],
+          "final_position": [
+            0.015991534345108856,
+            -0.18747378449112193,
+            0.9966061039917419
+          ],
+          "max_translation_from_initial_m": 0.031711808764836855
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.034012417280696185,
+            0.034389211426321835,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.055334885555801336,
+            -0.035528437978576834,
+            0.9466267526695887
+          ],
+          "max_translation_from_initial_m": 0.14611058671759455
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s002_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "a82091f973327946f69e275ac483b3a8f329d59d60be7e70b9912733fa4cb1a2",
+      "raw_bytes": 24144968,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.02123164984507459,
+            -0.17988701887641284,
+            0.9966058538799804
+          ],
+          "final_position": [
+            -0.021883695372960404,
+            -0.17957773902205448,
+            0.9966058538799804
+          ],
+          "max_translation_from_initial_m": 0.001526118720792015
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04091480667182739,
+            0.03368953245924851,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.13247475531711805,
+            -0.0438882451944229,
+            0.9737140434852658
+          ],
+          "max_translation_from_initial_m": 0.1901055926096621
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s003_10",
+      "success": true,
+      "failure_reasons": [],
+      "unknown_reasons": [],
+      "n_steps": 250,
+      "raw_sha256": "a6a7b73048c25a3d106ee65e2e7bb25032d8a9c0046325df49f7f92582e692bd",
+      "raw_bytes": 11686530,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 172,
+      "both_ever_true": true,
+      "first_both_true_step": 172,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 246,
+      "goal_confirmed_step": 250,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.017431530859237675,
+            -0.1793268145795035,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.010629834773131785,
+            -0.2553196837006613,
+            0.9908983510341467
+          ],
+          "max_translation_from_initial_m": 0.08890541083272403
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.03720163836619755,
+            0.07408159456006917,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.05123463972336374,
+            -0.12388247118461497,
+            0.9966062217659556
+          ],
+          "max_translation_from_initial_m": 0.22019517298338265
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s004_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "7687397c76fedee4c2e4ccb10bb0bff873134bf60e90c61a2f02598d46b4be0f",
+      "raw_bytes": 29835862,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.006900181803625718,
+            -0.18903285070370474,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.00690018180362634,
+            -0.18903285070370474,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 6.218983661376853e-16
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.05414068569071121,
+            0.07243873193621549,
+            0.9661058538799803
+          ],
+          "final_position": [
+            0.05364785051149348,
+            0.011707838386197905,
+            0.9603983510341466
+          ],
+          "max_translation_from_initial_m": 0.06106161024850429
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s005_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 199,
+      "raw_sha256": "61fdc22dc110b9b823749446397256c24ce3c24c399955ec015b89279a315787",
+      "raw_bytes": 9669755,
+      "A_ever_false": true,
+      "A_false_frames": 1,
+      "first_A_false_step": 149,
+      "final_goals": [
+        true,
+        true
+      ],
+      "B_ever_true": true,
+      "first_B_true_step": 152,
+      "both_ever_true": true,
+      "first_both_true_step": 152,
+      "both_and_released_true_ever": true,
+      "first_both_released_true_step": 195,
+      "goal_confirmed_step": 199,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.07838299825535525,
+            -0.1839452892206983,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.08959642215328274,
+            -0.19640104874966346,
+            0.9966058538799804
+          ],
+          "max_translation_from_initial_m": 0.01969186504806372
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.031631321721245546,
+            0.0705651860458592,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.016100532061620064,
+            -0.1509806737713198,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0.22867257786556303
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s006_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_regression",
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "9e56974a5e4b731696fe08616c19a86ba4fbda8907a67bf58ae01bf60a617ee4",
+      "raw_bytes": 28409781,
+      "A_ever_false": true,
+      "A_false_frames": 1,
+      "first_A_false_step": 234,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": true,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.011850553220158109,
+            -0.1819489672918133,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.028509905810334316,
+            -0.17676513002286567,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0.021155513698425898
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.041721438075490905,
+            0.05179485198484273,
+            0.9661058538799803
+          ],
+          "final_position": [
+            0.01584944852950337,
+            -0.017009351895716437,
+            0.9383932608448182
+          ],
+          "max_translation_from_initial_m": 0.1669289678436867
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s007_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "8c9cba77ccdffe4cb4ed55382b7c3e9065b3dc4e7f9840e4dc71aae8c9088c9d",
+      "raw_bytes": 29701959,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.010493414625044424,
+            -0.18492176194223728,
+            0.9966058538799804
+          ],
+          "final_position": [
+            -0.023593683070120705,
+            -0.18105908414124824,
+            0.9966058538799804
+          ],
+          "max_translation_from_initial_m": 0.02121643073778023
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.03209370307417434,
+            0.0649060495106225,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.06698413669659888,
+            -0.048308113433807955,
+            0.9596247278779625
+          ],
+          "max_translation_from_initial_m": 0.22203731773809615
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s008_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "28ec5c6bd0e067512db0319b9d8af9e7d5cfc1761a03ebddf12595ea124358f7",
+      "raw_bytes": 21659222,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.012320703865490088,
+            -0.1799160536097299,
+            0.9966058538799802
+          ],
+          "final_position": [
+            -0.043000588928933686,
+            -0.17270825868550146,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0.03196687656189543
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04307889384588132,
+            0.07445931333414059,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.1782788629489744,
+            -0.009431745281019416,
+            0.9380423572187575
+          ],
+          "max_translation_from_initial_m": 0.23837895472058176
+        }
+      }
+    },
+    {
+      "stage": "f1",
+      "task_id": "two_pots",
+      "episode_id": "two_pots_s009_10",
+      "success": false,
+      "failure_reasons": [
+        "goal_not_confirmed_by_horizon"
+      ],
+      "unknown_reasons": [],
+      "n_steps": 520,
+      "raw_sha256": "866c08a3979c81217fcb832db513d377a3697dbdc69c3ad018596da2ef15b596",
+      "raw_bytes": 26721235,
+      "A_ever_false": false,
+      "A_false_frames": 0,
+      "first_A_false_step": null,
+      "final_goals": [
+        true,
+        false
+      ],
+      "B_ever_true": false,
+      "first_B_true_step": null,
+      "both_ever_true": false,
+      "first_both_true_step": null,
+      "both_and_released_true_ever": false,
+      "first_both_released_true_step": null,
+      "goal_confirmed_step": null,
+      "logged_goal_regression": false,
+      "confirmed_events": [],
+      "target_position_diagnostics": {
+        "moka_pot_1": {
+          "initial_position": [
+            -0.01965822254612392,
+            -0.1889741686011523,
+            0.9966058538799804
+          ],
+          "final_position": [
+            -0.028128735246857058,
+            -0.1894700917809253,
+            0.9966058538799802
+          ],
+          "max_translation_from_initial_m": 0.009332911860676002
+        },
+        "moka_pot_2": {
+          "initial_position": [
+            0.04686680009863751,
+            0.037772453088671144,
+            0.9661058538799803
+          ],
+          "final_position": [
+            -0.08018523539481011,
+            -0.04412390472248045,
+            0.9468561794044981
+          ],
+          "max_translation_from_initial_m": 0.17483435769856337
+        }
+      }
+    }
+  ],
+  "existing_trace_file_count": 60,
+  "trace_evidence_sha256": "28d194d50e340dd987309effcf4bbae1746e35e1887b0a88f54f77766a789b6a",
+  "existing_analysis_sha256": "b67e69cd96660412c21aaab9c1d8e17f943a2d7c671bf687c3257d23c2880af3",
+  "preservation_manifest_sha256": "1b03274b0ebc4786f1c93d85efd1d6ca7a5892d219dc4040eb495e5f75a2597a",
+  "terminal_training_manifest_sha256": "ec0667263a5d3bf38998f728cc99e49324c5a6758d210614380e18c68b5aed34",
+  "copied_original_report_files": 15,
+  "copied_original_report_bytes": 299125530,
+  "copied_original_videos": 18,
+  "copied_complete_selected_raw": 9,
+  "visual_inspection": "uniform8-frame contact sheets for seven selected clips, not full18 continuous playback",
+  "scores_unchanged_after_viewing": true,
+  "scoring_sensitive_example": {
+    "episode_id": "two_pots_s005_10",
+    "original_success": false,
+    "A_false_steps": [
+      149
+    ],
+    "terminal_goals": [
+      true,
+      true
+    ],
+    "goal_confirmed_step": 199,
+    "score_not_changed": true
+  },
+  "experiment_processes_remaining": 0,
+  "Codex_real_jobs_started": 0,
+  "Codex_experiment_processes_stopped": 0,
+  "Codex_own_bulk_raw_copy_stopped": true,
+  "partial_copy_preserved": true,
+  "PR_merged": false,
+  "deletions": [],
+  "next_budget_approved": false,
+  "X_revision_required": false,
+  "adapter_sha256": {
+    "040": "a51f9062fc5a54982233ffdb93f7fa164eaf78b6dbdc097721db9d7f87f57b12",
+    "r0": "d4e726a867531f655d28e11f358ce0af597d4ada0f4928f4597aeadb28d38397",
+    "f0": "8afe299e47b0cde3ac9fb21f888a895b4fefaa0a8f64a15ee8f3cc10a8829d88",
+    "f1": "79ad5b7f78fe11ab0721c2b7e38b3f170a768f6dbba70b383ef24dd0f2fe0ac1"
+  },
+  "index_identity": "8ef04d9164a5b8e522763b930e7fdad09c5ec07bf215cfed88a20c700ee6c7fe",
+  "metadata": {
+    "040": {
+      "formal_complete": true,
+      "model_completed": 180,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null
+    },
+    "r0": {
+      "formal_complete": true,
+      "model_completed": 180,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null
+    },
+    "f0": {
+      "formal_complete": true,
+      "model_completed": 180,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null
+    },
+    "f1": {
+      "formal_complete": true,
+      "model_completed": 180,
+      "software_exit": "success",
+      "execution_error": null,
+      "cleanup_warning": null,
+      "ledger_warning": null
+    }
+  },
+  "source_plan_signatures": {
+    "040": {
+      "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+      "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+      "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+      "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+      "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+      "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+      "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+      "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+      "source_config": "592ffbe933fce45f007fa13cf23f724201eee0b2d13a00a117a403b5f67c9fc5"
+    },
+    "r0": {
+      "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+      "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+      "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+      "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+      "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+      "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+      "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+      "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+      "source_config": "592ffbe933fce45f007fa13cf23f724201eee0b2d13a00a117a403b5f67c9fc5"
+    },
+    "f0": {
+      "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+      "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+      "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+      "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+      "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+      "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+      "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+      "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+      "source_config": "592ffbe933fce45f007fa13cf23f724201eee0b2d13a00a117a403b5f67c9fc5"
+    },
+    "f1": {
+      "tasks": "9c616aa7499b6e87c4d1f45265b1e66dc095c03e29161fef56f59ecd892930a7",
+      "expected": "7cbf53548b22de5e4bd8f153661dcabb55961d55473d15bc4046a9eb30bafd32",
+      "base_runtime": "05f389baf3b944b23f0ef454d6d50a05c47b538b80353e476787c77710ac41be",
+      "core_revision": "58c246765e7fd662e71e1e2b8b5459d8589e67727b49366ee1fc0b93c9ad4076",
+      "reporting_revision": "bdca1eb1daa1b08c0fcfcaca625efee6559f11dcafd5b0ddd0bfc774d60aaa9f",
+      "environment_dispatch": "91cb9c722236b31fa11fc3887ac3a85f6dc14c2dd8fdc403730fb6a4a9c17cd0",
+      "proxy_coordination": "eb678f41d9ef7bc53a7b46de7baefcb55ff7e5626b95269c25de6cb3ff126410",
+      "budget": "ff83ae8869cd01870f2aae80c94e5c6a73dce33bf4ec6839d8f3a121ea13d71a",
+      "source_config": "592ffbe933fce45f007fa13cf23f724201eee0b2d13a00a117a403b5f67c9fc5"
+    }
+  },
+  "policy_factories": {
+    "040": "egrs.task_control.policy:make_policy",
+    "r0": "egrs.retention041.policy:make_policy",
+    "f0": "egrs.tcif042.policy:make_policy",
+    "f1": "egrs.tcif042.policy:make_policy"
+  },
+  "same_population_sources_runtime_core_reporting_bridges_scoring_budget": true
+}

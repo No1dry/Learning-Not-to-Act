@@ -1,0 +1,36 @@
+{
+  "format": "task054-h0-remain450-software-handoff-v1",
+  "date": "2026-11-20",
+  "user_request": "可以再跑个H0@3000的10x450",
+  "interpretation": "Remain mask10; nine tasks x50 =450; not4500 or official LIBERO-10",
+  "source_commit": "9bb9bfc92d4a8632223567261d99f0162cc469a0",
+  "source_tree": "061554544b94761343e7d8e8f65c8da48de67344",
+  "pull_request": "https://github.com/No1dry/Learning-Not-to-Act/pull/29",
+  "adapter_sha256": "e361121756cc7ee25b90ccb1cb4aa296ce4ea93ac07bd0841409df09b0e16c20",
+  "source_bank_sha256": "54a225330e43bb88cd6299109798885ee2ac6af06d9492f8d5639f2d62e29747",
+  "budget": {
+    "new_model_episodes": 450,
+    "source_generation": 0,
+    "training": 0,
+    "base_or_h1_repeats": 0
+  },
+  "software": {
+    "cpu_fake_passed": 21,
+    "failed": 0,
+    "fresh_cli_test": true,
+    "real_core_nested_evidence_indices": [
+      0,
+      9,
+      10,
+      49
+    ]
+  },
+  "state": {
+    "software": "prepared",
+    "deployment": "pending_ssh_connection_refused",
+    "real_evaluation_started": false
+  },
+  "source_archive_sha256": "c700dd87c86897109a307ef6208576804e3787a5f7a328f223371d61bf5ba598",
+  "test_report_sha256": "d765dc4a5811e92b857f69962f605c9f3820c96dc80aa881b10b6c200ca3a947",
+  "deleted_files": []
+}
