@@ -21,14 +21,14 @@
 
 代码：`/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task056-composition150-v1`。配置：`/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1`。
 
-最终源包SHA `1938f5d448a4910ce5e57716da58a98e95e1f0c9624a088d42a79a322df4b5d7`；实际评测配置SHA `52b59ca1fb9199712579366d38d71942ecaf5b503eee58f7c70f354e2a7f9d33`；启动器SHA `622d071157fbd1b07468ac621851b7b668942bd9c317708bcb84bc7efc9a514a`。`evaluate_450.sh`语法通过，004输出`composition055-evaluation-004`尚不存在。
+最终源包SHA `3aba8cde6c43a3b06d091b78688dbb98c9503a51d28d771dc97463c052f6686d`；实际评测配置SHA `52b59ca1fb9199712579366d38d71942ecaf5b503eee58f7c70f354e2a7f9d33`；启动器SHA `e5c793fea0bd200c560783fa2582d3b9c8e0b43e9d7167d08126ac50a06cf6d9`。`evaluate_450.sh`语法通过，005输出`composition055-evaluation-005`尚不存在。
 
-001在模型加载前报`libero_remain_reporting`缺失，002在首条rollout写结果时缺少`raw/`父目录，003前10条及`s010`均执行完成后被原core索引10上限中断。已分别补充reporting激活、raw目录创建、053 index50验证与显式continuation。004按连续完成工件继承11条、只新执行139条；`s010`已通过实际继承验证，旧001/002/003现场均保留。服务器12项测试通过，未重跑已继承episode。
+001在模型加载前报`libero_remain_reporting`缺失，002在首条rollout写结果时缺少`raw/`父目录，003前10条及`s010`均执行完成后被原core索引10上限中断，004续跑路径又绕过`plan→read_bank→activate_core`。已分别补充reporting激活、raw目录创建、053 index50验证、显式continuation和统一`run`路径的core激活。005继承003的11条、只新执行139条；`s010`已通过实际继承验证，`SubprocessPolicy`导入通过。旧001/002/003/004现场均保留，服务器12项测试通过，未重跑已继承episode。
 
 下一用户只启动一次：
 
 ```bash
-nohup bash /HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1/evaluate_450.sh > /HUBU-AI096/zp/ICML/Learning-Not-to-Act/logs/task056-composition150-004.console.log 2>&1 &
+nohup bash /HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1/evaluate_450.sh > /HUBU-AI096/zp/ICML/Learning-Not-to-Act/logs/task056-composition150-005.console.log 2>&1 &
 echo "PID=$!"
 ```
 
