@@ -21,7 +21,9 @@
 
 代码：`/HUBU-AI096/zp/ICML/Learning-Not-to-Act/code/task056-composition150-v1`。配置：`/HUBU-AI096/zp/ICML/Learning-Not-to-Act/configs/task056-composition150-v1`。
 
-最终源包SHA `1124eb2c0773a7c4011d11c3779a2ac6cec0efd3629813249d2474b0e537e61b`；实际评测配置SHA `267c44387524014e5cc43aec9cbff6809429a86c823367e6351347f7f3562fa5`；启动器SHA `fba1c36b2c557eaa0d4874b0d4582d1be76253d22a647984afc1bb63ed3a4869`。`evaluate_450.sh`语法通过，输出`composition055-evaluation-001`尚不存在。
+最终源包SHA `e722a625dc56afdf840c8be556063c6a330230a586113d1558ede0608accbbda`；实际评测配置SHA `52b59ca1fb9199712579366d38d71942ecaf5b503eee58f7c70f354e2a7f9d33`；启动器SHA `5771c1369828cd67bbc3318c059ed028de074f412d9a42a082333dda12e30122`。`evaluate_450.sh`语法通过，002输出`composition055-evaluation-002`尚不存在。
+
+首次用户启动001在模型加载前报`ModuleNotFoundError: libero_remain_reporting`，episode为0。已补充`reporting_root`及`run`内显式激活，服务器实际reporting导入和10项测试通过。001失败现场完整保留，002使用全新输出，未删除旧结果或重跑任何episode。
 
 下一用户只启动一次：
 
