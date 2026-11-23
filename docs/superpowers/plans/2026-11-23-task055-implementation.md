@@ -63,6 +63,6 @@ Interfaces: `load_config(path)` performs pure strict parsing; `prepare(config_pa
 - [x] Focused implementation review against the work order; resolve concrete integration defects only.
 - [x] Final affected CPU/fake commands and honest JUnit/summary evidence; no complete-suite or real-MVP gate.
 - [x] `docs/task055_usage.md`, `collaboration/responses/055_round1.md`, stage/STATUS entry, configuration and limitations.
-- [ ] New PR against latest accepted code dependency, no merge; verify exact remote head/files, retain local source/evidence backup.
+- [x] New PR against latest accepted code dependency, no merge; verify exact remote head/files, retain local source/evidence backup (PR30; final delivery receipt saved locally).
 
 The user has approved the scope and direct implementation. Skill suggestions to reconfirm design, broaden testing or remove old workspaces do not apply to this explicit task. Original evidence and all old worktrees stay untouched.
