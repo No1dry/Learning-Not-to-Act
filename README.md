@@ -2,6 +2,8 @@
 
 研究外部过程提前完成部分任务后，VLA能否根据当前观测重新确定剩余目标，在保留已有成果的同时完成任务。
 
+Task055新增三个未见物体组合的独立预完成构建入口：每任务50来源、共150，仅预完成状态，无普通状态库。[交付回复](collaboration/responses/055_round1.md)与[配置及完整命令](docs/task055_usage.md)。54项定向CPU/fake通过；真实构建0，待Codex验收、隔离部署后由用户亲启。旧九任务、450来源、训练与结果保留。
+
 Task042软件已交付、待验收：[回复](collaboration/responses/042_round1.md)与[完整命令](docs/task042_usage.md)。基于accepted PR16，F0/F1均为041 R0完整初始化的原C1，各新1000；同显式SDPA，F0保留native双向，F1仅增加T读C禁边。109项定向CPU/fake通过，未部署或启动真实实验；最新状态见[STATUS](collaboration/STATUS.md)，下方旧交付/结果保留。
 
 Task041软件已交付、待验收：[回复](collaboration/responses/041_round1.md)与[完整命令](docs/task041_usage.md)。R0/R1均从040完整权重初始化、基础均C1，各新增1000；仅R1增加039旧10行为保持，原数据/采样/评分保持。本轮未部署或启动真实作业，旧039/040结果与工件保留。
