@@ -13,7 +13,7 @@ import pytest
 from egrs.augmentation.dependencies import activate_core, activate_reporting
 
 activate_core(Path(os.environ['LNA_CORE']))
-activate_reporting(Path(os.environ.get('LNA_REPORTING', Path(__file__).resolve().parents[2] / 'LIBERO-Remain-task034')))
+activate_reporting(Path(os.environ.get('LNA_REPORTING', Path(__file__).resolve().parents[3] / 'implementations/LIBERO-Remain-task034')))
 
 from egrs.composition055.catalog import TASK_ORDER, get_task
 from egrs.composition056.catalog import ADAPTER_SHA256, BANK_SHA256, PREPARATION_IDENTITY, TASK_SUITE
@@ -167,6 +167,7 @@ def config_fixture(tmp_path):
         'schema_version': 'task056-composition-eval-v1',
         'source_bank': str(bank),
         'base_runtime': str(runtime),
+        'reporting_root': os.environ['LNA_REPORTING'],
         'adapter_h0': str(h0),
         'adapter_h1': str(h1),
         'protected_roots': [str(protected)],
@@ -355,6 +356,7 @@ def test_template_expands_and_output_protection_refuses_bank_overlap(tmp_path, m
     config, cfg = config_fixture(tmp_path)
     template = Path(__file__).resolve().parents[1] / 'configs/composition056/evaluation.example.json'
     for key, value in {'LNA055_BANK': cfg['source_bank'], 'LNA_BASE_RUNTIME': cfg['base_runtime'],
+                       'LNA_REPORTING': cfg['reporting_root'],
                        'LNA_H0_ADAPTER': cfg['adapter_h0'], 'LNA_H1_ADAPTER': cfg['adapter_h1'],
                        'LNA_EXISTING_DATA_ROOT': cfg['protected_roots'][0],
                        'LNA_EXISTING_RUNS_ROOT': cfg['protected_roots'][0]}.items():

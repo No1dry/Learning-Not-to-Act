@@ -13,7 +13,7 @@ from .source import adapt, archive, make_environment, validate_archive
 
 SCHEMA = 'task056-composition-eval-v1'
 RUN_SCHEMA = 'task056-composition-source-run-v1'
-FIELDS = {'schema_version', 'source_bank', 'base_runtime', 'adapter_h0', 'adapter_h1', 'protected_roots'}
+FIELDS = {'schema_version', 'source_bank', 'base_runtime', 'reporting_root', 'adapter_h0', 'adapter_h1', 'protected_roots'}
 
 
 def load_config(path):
@@ -277,6 +277,8 @@ def run(config_path, output, model):
     frozen['source_config_population'] = read(Path(cfg['source_bank']) / 'sources.json')['rows']
     output.mkdir(parents=True)
     write(output / 'plan.json', frozen)
+    from egrs.augmentation.dependencies import activate_reporting
+    activate_reporting(Path(cfg['reporting_root']))
     live = Live(output, model, frozen['expected'])
     from benchmark.remaining_goals.isolated_policy import SubprocessPolicy
     from libero_remain_reporting import map_verified_results, render_report

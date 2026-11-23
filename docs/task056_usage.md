@@ -11,7 +11,7 @@ python -m egrs.composition056 run --config configs/composition056/evaluation.exa
 python -m egrs.composition056 compare --base /new/output/base --h0 /new/output/h0 --h1 /new/output/h1 --output /new/output/comparison.json
 ```
 
-配置使用环境变量展开：`LNA055_BANK`、`LNA_BASE_RUNTIME`、`LNA_H0_ADAPTER`、`LNA_H1_ADAPTER`、`LNA_EXISTING_DATA_ROOT`、`LNA_EXISTING_RUNS_ROOT`。实际部署时使用绝对路径，不保留占位符。
+配置使用环境变量展开：`LNA055_BANK`、`LNA_BASE_RUNTIME`、`LNA_REPORTING`、`LNA_H0_ADAPTER`、`LNA_H1_ADAPTER`、`LNA_EXISTING_DATA_ROOT`、`LNA_EXISTING_RUNS_ROOT`。实际部署时使用绝对路径，不保留占位符。`run`在导入`libero_remain_reporting`前显式激活`reporting_root`，避免仅完成core激活后缺少报告包。
 
 每个模型在独立CLI进程中运行。计划前只读检查完整bank与manifest/artifact SHA；执行时使用对应派生`task.bddl`和冻结`state.npy`，私有注册新suite/task ID，不把新组合冒充旧任务。原HeadlessLiberoEnv、runner、完整视频、证据验证及034二元合规评分保持。
 
