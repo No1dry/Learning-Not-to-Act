@@ -388,3 +388,12 @@ main()
     result = subprocess.run([sys.executable, '-c', code], capture_output=True, text=True)
     assert result.returncode == 0, result.stderr
     assert '{run,compare}' in result.stdout
+
+
+def test_raw_result_creates_parent_directory(tmp_path):
+    result = {'status': 'completed', 'episode_id': 'composition_soup_butter_s000_10', 'trace': []}
+    episode = {'episode_id': 'composition_soup_butter_s000_10'}
+    path = evaluation.write_raw_result(tmp_path / 'episode', result, episode)
+    assert path == tmp_path / 'episode' / 'raw' / 'composition_soup_butter_s000_10.json'
+    assert path.is_file()
+    assert json.loads(path.read_text()) == result

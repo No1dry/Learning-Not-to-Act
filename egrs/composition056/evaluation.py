@@ -112,6 +112,14 @@ def verify_model(frozen, provenance):
         raise ValueError('056 loaded model/adapter identity differs from frozen plan')
 
 
+def write_raw_result(folder, result, episode):
+    folder = Path(folder)
+    path = folder / 'raw' / (episode['episode_id'] + '.json')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    write(path, result)
+    return path
+
+
 def execute_episode(folder, source, frozen, policy):
     from benchmark.remaining_goals.headless import workflow
     from benchmark.remaining_goals.headless.runner import run_episode
@@ -154,8 +162,7 @@ def execute_episode(folder, source, frozen, policy):
         if result.get('video', {}).get('status') == 'saved':
             path = 'videos/' + episode['episode_id'] + '.mp4'
             result['video'].update(path=path, sha256=sha(folder / path))
-        raw_path = folder / 'raw' / (episode['episode_id'] + '.json')
-        write(raw_path, result)
+        raw_path = write_raw_result(folder, result, episode)
         metadata.update(phase='verification', missing=[], results=[{
             'episode_id': episode['episode_id'],
             'path': raw_path.relative_to(folder).as_posix(),
