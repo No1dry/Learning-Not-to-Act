@@ -116,7 +116,7 @@ def test_private_task_registration_binds_new_suite_bddl_and_roles(tmp_path, monk
     registration = register(source, manifest.parent)
     assert registration['libero_task_id'] == expected_index
     assert registration['problem_folder'] == str(manifest.parent)
-    task = native.BENCHMARK_MAPPING[TASK_SUITE]().get_task(0)
+    task = native.BENCHMARK_MAPPING[TASK_SUITE]().get_task(expected_index)
     assert task.name == get_task(task_id)['name']
     assert task.language == get_task(task_id)['instruction']
     assert task.problem_folder == str(manifest.parent)
@@ -399,7 +399,8 @@ def test_raw_result_creates_parent_directory(tmp_path):
     assert json.loads(path.read_text()) == result
 
 
-def test_index50_continuation_inherits_prefix_without_replaying(tmp_path, monkeypatch):
+@pytest.mark.parametrize('failure_kind', ['schema', 'registration'])
+def test_index50_continuation_inherits_prefix_without_replaying(tmp_path, monkeypatch, failure_kind):
     rows = []
     for index in range(15):
         rows.append({'episode_id': f'{TASK_ORDER[0]}_s{index:03d}_10', 'task_id': TASK_ORDER[0],
@@ -412,12 +413,16 @@ def test_index50_continuation_inherits_prefix_without_replaying(tmp_path, monkey
     def stop_at_index10(folder, source, frozen, policy):
         index = source['episodes'][0]['initial_state_index']
         if index == 10:
-            raise ValueError('task011 sources are official indices zero through nine')
+            if failure_kind == 'schema':
+                raise ValueError('task011 sources are official indices zero through nine')
+            raise IndexError('list index out of range')
         return fake_record(folder, source['episodes'][0], frozen['model'], index % 2 == 0)
 
     monkeypatch.setattr(evaluation, 'execute_episode', stop_at_index10)
     parent = tmp_path / 'parent'
-    with pytest.raises(ValueError, match='indices zero through nine'):
+    expected_error = ValueError if failure_kind == 'schema' else IndexError
+    message = 'indices zero through nine' if failure_kind == 'schema' else 'list index out of range'
+    with pytest.raises(expected_error, match=message):
         evaluation.run(config, parent, 'base')
     progress = json.loads((parent / 'progress.json').read_text())
     assert progress['completed'] == 10 and progress['episode_id'].endswith('s009_10')
@@ -440,3 +445,46 @@ def test_index50_continuation_inherits_prefix_without_replaying(tmp_path, monkey
     receipt = json.loads((output / 'continuation.json').read_text())
     assert receipt['inherited_completed'] == 11 and receipt['new_execution_limit'] == 4
     assert receipt['repeated_episodes'] == 0
+
+
+def test_continuation_chain_finds_inherited_artifacts_in_grandparent(tmp_path, monkeypatch):
+    rows = []
+    for index in range(3):
+        rows.append({'episode_id': f'{TASK_ORDER[0]}_s{index:03d}_10', 'task_id': TASK_ORDER[0],
+                     'suite': TASK_SUITE, 'initial_state_index': index, 'initial_mask': [True, False]})
+    config, cfg = config_fixture(tmp_path)
+    cfg['_rows'] = rows
+    write_json(tmp_path / 'bank' / 'sources.json', {'rows': rows})
+    install_fake_run(monkeypatch, cfg)
+
+    def first_failure(folder, source, frozen, policy):
+        if source['episodes'][0]['initial_state_index'] == 1:
+            raise ValueError('task011 sources are official indices zero through nine')
+        return fake_record(folder, source['episodes'][0], 'base', True)
+
+    monkeypatch.setattr(evaluation, 'execute_episode', first_failure)
+    parent1 = tmp_path / 'parent1'
+    with pytest.raises(ValueError, match='indices zero through nine'):
+        evaluation.run(config, parent1, 'base')
+
+    def second_failure(folder, source, frozen, policy):
+        if source['episodes'][0]['initial_state_index'] == 2:
+            raise IndexError('list index out of range')
+        return fake_record(folder, source['episodes'][0], 'base', True)
+
+    monkeypatch.setattr(evaluation, 'execute_episode', second_failure)
+    monkeypatch.setattr(evaluation, 'verify_episode', lambda folder, source, frozen: fake_record(
+        folder, source['episodes'][0], 'base', True))
+    parent2 = tmp_path / 'parent2'
+    with pytest.raises(IndexError, match='list index out of range'):
+        evaluation.run(config, parent2, 'base', continue_from=parent1)
+    assert json.loads((parent2 / 'continuation.json').read_text())['inherited_completed'] == 1
+
+    monkeypatch.setattr(evaluation, 'execute_episode', lambda folder, source, frozen, policy: fake_record(
+        folder, source['episodes'][0], 'base', True))
+    parent3 = tmp_path / 'parent3'
+    report = evaluation.run(config, parent3, 'base', continue_from=parent2)
+    assert report['counts']['completed'] == 3
+    assert report['inherited_completed'] == 2 and report['new_execution_attempts'] == 1
+    receipt = json.loads((parent3 / 'continuation.json').read_text())
+    assert receipt['artifact_parent'] == str(parent1)

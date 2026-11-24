@@ -292,9 +292,11 @@ def continuation(cfg, model, parent_path):
             or summary.get('preparation_identity') != PREPARATION_IDENTITY):
         raise ValueError('056 continuation requires the same incomplete model/bank/plan')
     errors = summary.get('execution_errors', [])
-    if (len(errors) != 1 or 'indices zero through nine' not in errors[0].get('error', '')
+    if (len(errors) != 1
+            or not any(marker in errors[0].get('error', '') for marker in
+                       ('indices zero through nine', 'IndexError: list index out of range'))
             or summary['counts']['formal_SR'] is not None):
-        raise ValueError('056 only resumes the specific index10 schema interruption')
+        raise ValueError('056 only resumes a specific index or registration interruption')
     completed = progress['completed']
     if not completed or progress['episode_id'] != parent_plan['sources'][completed - 1]['episodes'][0]['episode_id']:
         raise ValueError('056 continuation requires a contiguous completed prefix')
@@ -315,6 +317,16 @@ def continuation(cfg, model, parent_path):
         folder = parent / 'episodes' / source['episodes'][0]['episode_id']
         if folder.exists() and read(folder / 'task_run.json').get('status') == 'completed':
             raise ValueError('056 parent has a non-contiguous completed episode')
+    artifact_parent = None
+    parent_continuation = parent / 'continuation.json'
+    if parent_continuation.exists():
+        chain = read(parent_continuation)
+        if (chain.get('parent_plan_sha256') != parent_plan['plan_sha256']
+                or chain.get('repeated_episodes') != 0 or type(chain.get('inherited_completed')) is not int):
+            raise ValueError('056 continuation chain identity differs')
+        artifact_parent = Path(chain['parent_run']).resolve()
+        if artifact_parent == parent or not artifact_parent.is_dir():
+            raise ValueError('056 inherited artifact parent is unavailable')
     frozen = deepcopy(parent_plan)
     receipt = {
         'format': 'task056-explicit-index50-continuation-v1',
@@ -324,6 +336,7 @@ def continuation(cfg, model, parent_path):
         'new_execution_limit': len(remaining),
         'parent_failure_preserved': errors[0]['error'],
         'repeated_episodes': 0,
+        'artifact_parent': None if artifact_parent is None else str(artifact_parent),
     }
     return frozen, parent, len(prefix), receipt
 
@@ -352,6 +365,8 @@ def run(config_path, output, model, continue_from=None):
     for source in frozen['sources'][:inherited]:
         episode = source['episodes'][0]
         folder = parent / 'episodes' / episode['episode_id']
+        if not folder.exists() and receipt is not None and receipt.get('artifact_parent'):
+            folder = Path(receipt['artifact_parent']) / 'episodes' / episode['episode_id']
         record = verify_episode(folder, source, frozen)
         live.add(episode, record)
 

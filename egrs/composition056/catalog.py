@@ -1,5 +1,5 @@
 """Private runtime registration for the three frozen composition tasks."""
-from egrs.composition055.catalog import TASK_ORDER
+from egrs.composition055.catalog import TASK_ORDER, get_task
 
 TASK_SUITE = 'libero_remain_composition055'
 PROTOCOL = 'mask10'
@@ -28,10 +28,13 @@ def register(source, archived_directory):
     task_index(task_id)
     if episode['suite'] != TASK_SUITE:
         raise ValueError('056 source suite differs from the isolated composition suite')
-    task = native_benchmark.Task(
-        name=episode['task_name'], language=episode['instruction'], problem='Libero',
-        problem_folder=str(archived_directory), bddl_file='task.bddl', init_states_file='state.npy')
-    native_benchmark.task_maps[TASK_SUITE] = {episode['task_name']: task}
+    task_rows = []
+    for key in TASK_ORDER:
+        profile = get_task(key)
+        task_rows.append(native_benchmark.Task(
+            name=profile['name'], language=profile['instruction'], problem='Libero',
+            problem_folder=str(archived_directory), bddl_file='task.bddl', init_states_file='state.npy'))
+    native_benchmark.task_maps[TASK_SUITE] = {task.name: task for task in task_rows}
 
     class CompositionBenchmark(native_benchmark.Benchmark):
         def __init__(self, task_order_index=0):

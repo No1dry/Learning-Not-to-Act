@@ -14,9 +14,9 @@
 
 ## 定向验证
 
-本地和服务器相同12项CPU/fake均通过，0失败、0跳过。覆盖三个任务注册、manifest/artifact绑定、固定150、三模型fake450及配对、adapter分离、bank拒绝、输出保护、失败保留、raw父目录创建、index50续跑和冷启动帮助。
+本地和服务器相同14项CPU/fake均通过，0失败、0跳过。覆盖三个任务注册、manifest/artifact绑定、固定150、三模型fake450及配对、adapter分离、bank拒绝、输出保护、失败保留、raw父目录创建、index50续跑和冷启动帮助。
 
-服务器完整计划检查中首先发现`load_runtime`在bank激活前导入的冷启动错误，已将导入移到`read_bank`之后；随后实际注册又发现原benchmark默认按10任务重排与单任务注册表不兼容，已改为显式设置当前组合任务列表。首次用户启动001在模型加载前发现`libero_remain_reporting`未激活，已补充`reporting_root`及`run`内显式激活并改用002。002在首条rollout写结果时发现`raw/`父目录未创建，已增加`write_raw_result`及回归测试并改用003。003前10条及`s010`均执行完成但汇总被原core索引上限中断，已接入053 index50验证并新增显式continuation，004按连续完成工件继承11条、只新执行139条。004续跑路径随后发现`plan→read_bank→activate_core`被绕过，已在统一`run`路径补充`activate_core`并改用005，003的11条继承不变。001/002/003/004失败现场均保留。修复后重新通过12项测试和服务器实际reporting导入。
+服务器完整计划检查中首先发现`load_runtime`在bank激活前导入的冷启动错误，已将导入移到`read_bank`之后；随后实际注册又发现原benchmark默认按10任务重排与单任务注册表不兼容，已改为显式设置当前组合任务列表。首次用户启动001在模型加载前发现`libero_remain_reporting`未激活，已补充`reporting_root`及`run`内显式激活并改用002。002在首条rollout写结果时发现`raw/`父目录未创建，已增加`write_raw_result`及回归测试并改用003。003前10条及`s010`均执行完成但汇总被原core索引上限中断，已接入053 index50验证并新增显式continuation，004按连续完成工件继承11条、只新执行139条。004续跑路径随后发现`plan→read_bank→activate_core`被绕过，已在统一`run`路径补充`activate_core`并改用005，003的11条继承不变。005完成首个组合50条后，第二组合因注册表仅含当前任务而索引越界；已改为注册全部三任务并覆盖第二/第三任务实际索引。006继承005的50条完成记录，其中前11条通过`artifact_parent`回指003，后续只新执行100条；未把父子链重复计数。001/002/003/004/005失败现场均保留。修复后重新通过14项测试和服务器实际reporting导入。
 
 ## 边界
 
